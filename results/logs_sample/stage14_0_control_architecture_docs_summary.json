@@ -1,0 +1,16 @@
+{
+  "stage": "14.0",
+  "name": "control_architecture_and_interview_explanation_docs",
+  "pass": true,
+  "simulation_only_project": true,
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "generated_docs": [
+    "docs/CONTROL_ARCHITECTURE_OVERVIEW.md",
+    "docs/WBC_QP_EXPLAINED.md",
+    "docs/ONE_PAGE_TECHNICAL_REPORT.md",
+    "docs/interview/INTERVIEW_3MIN_SYSTEM_EXPLANATION.md"
+  ]
+}
