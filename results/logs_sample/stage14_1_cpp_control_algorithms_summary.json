@@ -1,0 +1,17 @@
+{
+  "stage": "14.1",
+  "name": "cpp_control_algorithm_submodules",
+  "pass": true,
+  "simulation_only_project": true,
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "modules": [
+    "gait_scheduler",
+    "swing_trajectory",
+    "torque_safety_filter"
+  ],
+  "test_command": "g++ -std=c++17 ... && /tmp/test_control_algorithms",
+  "test_result": "C++ control algorithm tests passed"
+}
