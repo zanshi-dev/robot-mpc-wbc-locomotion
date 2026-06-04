@@ -1,0 +1,13 @@
+{
+  "stage": "14.2",
+  "name": "readme_interview_entry_upgrade",
+  "pass": true,
+  "simulation_only_project": true,
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "updated_file": "README.md",
+  "backup_file": "README.md.bak_stage14_2",
+  "purpose": "Turn GitHub README into an interview-facing project entry page focused on control architecture, WBC/QP explanation, final mixed baseline, C++ algorithm modules, demo video, and simulation-only boundary."
+}
