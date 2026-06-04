@@ -61,4 +61,35 @@ install(DIRECTORY
   DESTINATION include
 )
 
+
+# Stage 14.3: clean C++ control algorithm library and tests.
+add_library(control_algorithms
+  src/control/gait_scheduler.cpp
+  src/control/swing_trajectory.cpp
+  src/control/torque_safety_filter.cpp
+)
+
+target_include_directories(control_algorithms PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+
+target_compile_features(control_algorithms PUBLIC cxx_std_17)
+
+if(BUILD_TESTING)
+  find_package(ament_cmake_gtest QUIET)
+
+  add_executable(test_control_algorithms
+    test/test_control_algorithms.cpp
+  )
+
+  target_link_libraries(test_control_algorithms
+    control_algorithms
+  )
+
+  target_compile_features(test_control_algorithms PRIVATE cxx_std_17)
+
+  add_test(NAME test_control_algorithms COMMAND test_control_algorithms)
+endif()
+
 ament_package()

@@ -1,0 +1,18 @@
+{
+  "stage": "14.3",
+  "name": "integrate_cpp_control_algorithm_tests_into_colcon",
+  "timestamp": "2026-06-04T14:44:22",
+  "pass": true,
+  "fail_reasons": [],
+  "simulation_only_project": true,
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "cmake_updated": true,
+  "build_returncode": 0,
+  "test_returncode": 0,
+  "build_stdout_tail": "Starting >>> robot_mpc_wbc_cpp_controller\nFinished <<< robot_mpc_wbc_cpp_controller [1.20s]\n\nSummary: 1 package finished [1.34s]\n",
+  "test_stdout_tail": "Starting >>> robot_mpc_wbc_cpp_controller\nUpdateCTestConfiguration  from :/home/zanshi/robot-mpc-wbc-locomotion/build/robot_mpc_wbc_cpp_controller/CTestConfiguration.ini\nParse Config file:/home/zanshi/robot-mpc-wbc-locomotion/build/robot_mpc_wbc_cpp_controller/CTestConfiguration.ini\n   Site: zanshi-Legion-Y7000P-IAX10\n   Build name: (empty)\n Add coverage exclude regular expressions.\nCreate new tag: 20260604-0644 - Experimental\nUpdateCTestConfiguration  from :/home/zanshi/robot-mpc-wbc-locomotion/build/robot_mpc_wbc_cpp_controller/CTestConfiguration.ini\nParse Config file:/home/zanshi/robot-mpc-wbc-locomotion/build/robot_mpc_wbc_cpp_controller/CTestConfiguration.ini\nTest project /home/zanshi/robot-mpc-wbc-locomotion/build/robot_mpc_wbc_cpp_controller\nConstructing a list of tests\nDone constructing a list of tests\nUpdating test list for fixtures\nAdded 0 tests to meet fixture requirements\nChecking test dependency graph...\nChecking test dependency graph end\ntest 1\n    Start 1: test_control_algorithms\n\n1: Test command: /home/zanshi/robot-mpc-wbc-locomotion/build/robot_mpc_wbc_cpp_controller/test_control_algorithms\n1: Working Directory: /home/zanshi/robot-mpc-wbc-locomotion/build/robot_mpc_wbc_cpp_controller\n1: Test timeout computed to be: 10000000\n1: C++ control algorithm tests passed\n1/1 Test #1: test_control_algorithms ..........   Passed    0.00 sec\n\n100% tests passed, 0 tests failed out of 1\n\nTotal Test time (real) =   0.00 sec\nFinished <<< robot_mpc_wbc_cpp_controller [0.05s]\n\nSummary: 1 package finished [0.16s]\nSummary: 1 test, 0 errors, 0 failures, 0 skipped\n",
+  "test_target": "test_control_algorithms"
+}
