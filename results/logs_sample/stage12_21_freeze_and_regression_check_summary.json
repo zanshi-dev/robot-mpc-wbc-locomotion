@@ -1,0 +1,93 @@
+{
+  "stage": "12.21",
+  "name": "freeze_and_regression_check_after_stage1220",
+  "timestamp": "2026-06-03T17:25:20",
+  "pass": false,
+  "fail_reasons": [
+    "bounded streaming regression failed: pass",
+    "bounded streaming regression failed: stream_message_count_in_1_to_30",
+    "bounded streaming regression failed: all_stream_payloads_length_12",
+    "bounded streaming regression failed: all_stream_payload_values_finite",
+    "bounded streaming regression failed: all_stream_payload_values_zero_safe",
+    "bounded streaming regression failed: continuous_torque_streaming_completed"
+  ],
+  "stage1220_completed_remains_true": false,
+  "continuous_torque_streaming_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "hardware_deployment_completed": false,
+  "control_law_changed": false,
+  "baseline_type": "mixed_online_control_baseline",
+  "source_checks": {
+    "source_exists": true,
+    "source_hash": "b2d7371786b58300ca68be5542372d5cf8aa2814678b9f451e09bdb8061aa138",
+    "source_hash_matches_stage1220e": true,
+    "publish_call_count": 1,
+    "publish_call_count_is_1": true,
+    "has_enable_continuous_torque_streaming": true,
+    "has_confirm_continuous_torque_streaming": true,
+    "has_continuous_timer": true,
+    "has_four_flag_gate": true,
+    "has_10hz_timer": true,
+    "has_max_ticks_30_bound": true,
+    "has_max_duration_3s_bound": true,
+    "has_repaired_helper_call_with_args": true
+  },
+  "build_ok": true,
+  "default_off_regression_checks": {
+    "pass": true,
+    "node_seen": true,
+    "params_default_false": true,
+    "echo_timeout": true,
+    "echo_has_data_false": true,
+    "torque_command_published_under_default_false_false": true,
+    "torque_enable_ready_false": true,
+    "torque_publisher_enabled_false": true,
+    "hardware_deployment_completed_false": true,
+    "control_law_changed_false": true
+  },
+  "bounded_streaming_regression_checks": {
+    "pass": false,
+    "node_seen": true,
+    "param_set_ok": true,
+    "stream_message_count_in_1_to_30": false,
+    "all_stream_payloads_length_12": false,
+    "all_stream_payload_values_finite": false,
+    "all_stream_payload_values_zero_safe": false,
+    "final_flags_false": true,
+    "after_stop_echo_timeout": true,
+    "after_stop_echo_has_data_false": true,
+    "continuous_torque_streaming_completed": false,
+    "torque_enable_ready_false": true,
+    "torque_publisher_enabled_false": true,
+    "hardware_deployment_completed_false": true,
+    "control_law_changed_false": true
+  },
+  "commands": [
+    {
+      "name": "colcon_build",
+      "cmd": "source /opt/ros/jazzy/setup.bash && colcon build --packages-select robot_mpc_wbc_cpp_controller",
+      "returncode": 0,
+      "log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_colcon_build.log"
+    },
+    {
+      "name": "runtime_default_off",
+      "cmd": "bash scripts/stage12_20c_r1_runtime_default_off_regression.sh",
+      "returncode": 0,
+      "log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_runtime_default_off.log"
+    },
+    {
+      "name": "runtime_bounded_streaming_original",
+      "cmd": "bash scripts/stage12_20d_runtime_bounded_streaming_regression.sh",
+      "returncode": 0,
+      "log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_runtime_bounded_streaming_original.log"
+    },
+    {
+      "name": "runtime_bounded_streaming_reparse",
+      "cmd": "/usr/bin/python3 scripts/stage12_20d_r1_reparse_existing_evidence.py",
+      "returncode": 0,
+      "log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_runtime_bounded_streaming_reparse.log"
+    }
+  ],
+  "next_stage": "Stage 12.22 planning only for post-streaming safety freeze; no hardware deployment"
+}

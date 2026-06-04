@@ -1,0 +1,8 @@
+component,name,type,implemented_in_stage112,default_state,guard,description
+future_member,torque_cmd_publisher_,rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr,False,nullptr,must not be constructed unless future stage explicitly allows disabled publisher skeleton,Future publisher handle. Stage 11.2 only designs it.
+future_topic,/go1/joint_torque_cmd,std_msgs/msg/Float64MultiArray,False,absent from controller source,"payload length 12, MuJoCo actuator order",Future torque command topic.
+future_gate,publisher_construct_allowed,bool,False,false,manual enable flags must both be true and source guard must be updated in separate stage,Gate for constructing publisher object.
+future_gate,publish_allowed,bool,False,false,"publisher exists, state_ready, inputs_fresh, manual flags active, safety filter passed",Gate for actual publish call. Must not be introduced with skeleton construction.
+future_payload,safe_torque_command_msg,std_msgs::msg::Float64MultiArray,False,not constructed,data.size == 12; all finite; clampTorqueCommand applied,Future message object from safe_torque_dry_run_.
+future_runtime_guard,publisher_count_guard,runtime check,False,publisher_count must remain 0 until explicit implementation stage,ros2 topic info /go1/joint_torque_cmd,Runtime guard before any publisher skeleton implementation.
+future_runtime_guard,dry_run_first_policy,policy,False,observe-only,first publisher skeleton must still avoid publish call,"Publisher skeleton may exist later, but publish call remains forbidden until a later stage."

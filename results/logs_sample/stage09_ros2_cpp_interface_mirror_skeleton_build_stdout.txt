@@ -1,0 +1,4 @@
+Starting >>> robot_mpc_wbc_cpp_interface
+Finished <<< robot_mpc_wbc_cpp_interface [10.7s]
+
+Summary: 1 package finished [10.8s]

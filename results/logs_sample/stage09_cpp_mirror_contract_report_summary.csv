@@ -1,0 +1,27 @@
+metric,value
+stage,Stage 9.5
+test_name,cpp_mirror_contract_report
+stage90_pass,True
+stage91_pass,True
+stage92_pass,True
+stage93_pass,True
+stage94_pass,True
+topic_present_count,6
+topic_type_match_count,6
+published_topic_echo_success_count,5
+torque_cmd_publisher_count,0
+torque_cmd_subscription_count,2
+control_law_changed,False
+torque_command_published_by_stage95,False
+stage9_scope,cpp_mirror_contract_report_only
+baseline_type,mixed_online_control_baseline
+pure_wbc_locomotion_completed,False
+ros2_cpp_realtime_controller_completed,False
+ekf_completed,False
+full_3d_centroidal_mpc_completed,False
+num_checks,32
+num_failed_checks,0
+pass,True
+log_csv,results/logs_sample/stage09_cpp_mirror_contract_report_log.csv
+summary_csv,results/logs_sample/stage09_cpp_mirror_contract_report_summary.csv
+doc,docs/STAGE09_CPP_MIRROR_CONTRACT_REPORT.md

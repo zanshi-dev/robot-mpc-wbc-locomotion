@@ -1,0 +1,67 @@
+{
+  "stage": "13.2A-R2",
+  "name": "create_2400step_derived_wbc_runner_recommended_runner_and_swing_target",
+  "timestamp": "2026-06-04T10:07:46",
+  "pass": true,
+  "fail_reasons": [],
+  "simulation_only_project": true,
+  "hardware_deployment_scope": "out_of_scope_by_user_constraint",
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "baseline_type": "mixed_online_control_baseline",
+  "source_changed": false,
+  "original_sources_unchanged": true,
+  "pre_hashes": {
+    "src_wbc": "248bb046d5c8e07ffa05487d95c79c80e8e1e6c719e8eba9ed03e3a1fcdb41b8",
+    "src_recommended": "d04462aca40eff00667cdbeab96aa61f95bc4d7465bc9ce3e029cee7a1212ef1",
+    "src_swing": "a7fc8dec80fe62179359c6025112537b5997026f5761a43af8203f81c791f47d"
+  },
+  "post_hashes": {
+    "src_wbc": "248bb046d5c8e07ffa05487d95c79c80e8e1e6c719e8eba9ed03e3a1fcdb41b8",
+    "src_recommended": "d04462aca40eff00667cdbeab96aa61f95bc4d7465bc9ce3e029cee7a1212ef1",
+    "src_swing": "a7fc8dec80fe62179359c6025112537b5997026f5761a43af8203f81c791f47d",
+    "derived_wbc": "dd3486e885e6d1ca91baa230eda34b0b8dc3a8713cc3f644f59c819ffb934349",
+    "derived_recommended": "4ae0d1a751db5e32bf7a85ca88322cdafcdfc41cefe64fd1f2ec1d910fc2e225",
+    "derived_swing": "1e9b1e36fefe514968aad43053293f121ac2115ce1f02c3505387aec7694abed"
+  },
+  "patch_info": {
+    "wbc_total_steps_replacements": 1,
+    "wbc_path_replacements": {
+      "CONTACT_WBC_CSV = \"results/logs_sample/stage07_contact_schedule_wbc_qp.csv\"": 1,
+      "LOG_CSV = \"results/logs_sample/stage07_online_full_wbc_scheduler_recommended_run_log.csv\"": 1,
+      "SUMMARY_CSV = \"results/logs_sample/stage07_online_full_wbc_scheduler_recommended_run_summary.csv\"": 1
+    },
+    "recommended_path_replacements": {
+      "WBC_SCRIPT = \"scripts/stage07_online_full_wbc_scheduler_recommended_run.py\"": 1,
+      "SWING_TARGET_CSV = \"results/logs_sample/stage07_online_swing_trajectory_tracking_check.csv\"": 1,
+      "LOG_CSV = \"results/logs_sample/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test_log.csv\"": 1,
+      "SUMMARY_CSV = \"results/logs_sample/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test_summary.csv\"": 1,
+      "print(\"Stage 7 online stance PD WBC plus swing PD recommended test\")": 1
+    }
+  },
+  "swing_row_count": 1200,
+  "derived_swing_row_count": 2400,
+  "static_checks": {
+    "derived_wbc_has_TOTAL_STEPS_2400": true,
+    "derived_wbc_no_TOTAL_STEPS_1200": true,
+    "derived_recommended_points_to_derived_wbc": true,
+    "derived_recommended_points_to_derived_swing_csv": true,
+    "derived_swing_row_count_2400": true
+  },
+  "compile_wbc": {
+    "returncode": 0,
+    "output": ""
+  },
+  "compile_recommended": {
+    "returncode": 0,
+    "output": ""
+  },
+  "derived_files": {
+    "derived_wbc_runner": "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py",
+    "derived_recommended_runner": "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py",
+    "derived_swing_target_csv": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv"
+  },
+  "recommended_next_stage": "Stage 13.2B run 2400-step simulation-only robustness regression"
+}

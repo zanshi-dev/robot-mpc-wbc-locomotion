@@ -1,0 +1,7 @@
+phase,param,returncode,value,stdout,stderr
+during_test,enable_torque_publisher,0,True,Boolean value is: True,
+during_test,confirm_torque_publisher_enable,0,True,Boolean value is: True,
+revert_false,confirm_torque_publisher_enable,0,,Set parameter successful,
+revert_false,enable_torque_publisher,0,,Set parameter successful,
+after_revert,enable_torque_publisher,0,False,Boolean value is: False,
+after_revert,confirm_torque_publisher_enable,0,False,Boolean value is: False,

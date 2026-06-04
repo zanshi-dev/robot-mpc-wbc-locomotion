@@ -1,0 +1,10 @@
+[Stage 8.4] runtime mapping duplication audit
+pass=True
+files_with_findings=68
+total_findings=244
+high_severity_findings=85
+medium_severity_findings=55
+low_severity_findings=104
+log_csv=results/logs_sample/stage08_runtime_mapping_duplication_audit_log.csv
+summary_csv=results/logs_sample/stage08_runtime_mapping_duplication_audit_summary.csv
+doc=docs/STAGE08_RUNTIME_MAPPING_DUPLICATION_AUDIT.md

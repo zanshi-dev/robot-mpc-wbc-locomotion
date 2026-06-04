@@ -1,0 +1,97 @@
+{
+  "stage": "12.21-R2C",
+  "name": "capture_helper_failure_inspection",
+  "timestamp": "2026-06-04T09:27:33",
+  "pass": true,
+  "inspection_only": true,
+  "source_changed": false,
+  "r2b_pass": false,
+  "r2b_fail_reasons": [
+    "subscriber_ready_before_activation",
+    "capture_ok",
+    "stream_message_count_in_1_to_30",
+    "all_stream_payloads_length_12",
+    "all_stream_payload_values_finite",
+    "all_stream_payload_values_zero_safe"
+  ],
+  "capture_returncode": 2,
+  "after_stop_capture_returncode": 2,
+  "files": {
+    "r2b_summary": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2b_robust_subscriber_warmup_rerun_summary.json",
+      "exists": true,
+      "size": 2995,
+      "sha256": "7ce0b89721b8bf1fd972cba03f0c58d4c4d962faefdaf890a7861fa8cd251321"
+    },
+    "capture_script": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage12_21_r2b_capture.py",
+      "exists": false,
+      "size": null,
+      "sha256": null
+    },
+    "main_script": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage12_21_r2b_robust_subscriber_warmup_rerun.py",
+      "exists": true,
+      "size": 13575,
+      "sha256": "ce883913c2eef8bcf5adeb6532d680ff1354576d9fa2422a0d9c7979071b132f"
+    },
+    "capture_log": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2b_capture.log",
+      "exists": true,
+      "size": 145,
+      "sha256": "5ef6a92b240d690d16a8b0d56aa712caf6de55389a5c3e1f0989aa12a473f391"
+    },
+    "after_stop_capture_log": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2b_after_stop_capture.log",
+      "exists": true,
+      "size": 145,
+      "sha256": "5ef6a92b240d690d16a8b0d56aa712caf6de55389a5c3e1f0989aa12a473f391"
+    },
+    "capture_json": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2b_capture.json",
+      "exists": false,
+      "size": null,
+      "sha256": null
+    },
+    "after_stop_capture_json": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2b_after_stop_capture.json",
+      "exists": false,
+      "size": null,
+      "sha256": null
+    },
+    "param_set_log": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2b_param_set.log",
+      "exists": true,
+      "size": 945,
+      "sha256": "e0b2796fe69dea16bc676eeab0945a105f89d273d564f9f19c51cf138818b9dd"
+    },
+    "param_final_log": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2b_param_final.log",
+      "exists": true,
+      "size": 230,
+      "sha256": "a800a3fa10388706da3a365f32649dcd673d6297353dfecb8ca191231bc4abb8"
+    },
+    "node_log": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2b_node.log",
+      "exists": true,
+      "size": 4038,
+      "sha256": "ec49d582de333f7755b06b91cf6e762de3b6699eab83b582a23fc0a2c8376713"
+    }
+  },
+  "capture_log_excerpt": "/usr/bin/python3: can't open file '/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage12_21_r2b_capture.py': [Errno 2] No such file or directory\n",
+  "after_stop_capture_log_excerpt": "/usr/bin/python3: can't open file '/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage12_21_r2b_capture.py': [Errno 2] No such file or directory\n",
+  "diagnosis": [
+    "capture helper script missing",
+    "capture helper path/file not found at runtime",
+    "capture process exited before writing capture_json"
+  ],
+  "param_set_ok_from_r2b": true,
+  "final_flags_false_from_r2b": true,
+  "recommended_next_stage": "Stage 12.21-R2D repair capture launch path / helper execution, then rerun subscriber-warmup regression; no source change",
+  "safety": {
+    "torque_enable_ready": false,
+    "torque_publisher_enabled": false,
+    "hardware_deployment_completed": false,
+    "control_law_changed": false
+  }
+}

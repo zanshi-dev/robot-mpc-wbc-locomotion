@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# ROS2 / colcon
+build/
+install/
+log/
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+
+# Local runtime/cache
+*.log~
+*.tmp
+.cache/
+
+# Large raw recording/data formats
+*.bag
+*.db3
+*.mcap
+
+# Do not ignore final demo video
+# demo_videos/stage13_5a_r2_mujoco_offscreen_2400step_mixed_baseline_demo_720p.mp4 is part of the frozen package.

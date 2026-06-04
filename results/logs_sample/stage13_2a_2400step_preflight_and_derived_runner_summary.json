@@ -1,0 +1,42 @@
+{
+  "stage": "13.2A",
+  "name": "2400step_simulation_only_preflight_and_derived_runner_creation",
+  "timestamp": "2026-06-04T09:59:37",
+  "pass": false,
+  "fail_reasons": [
+    "could not locate direct 1200-step assignment to patch",
+    "derived runner does not contain 2400 after patch"
+  ],
+  "simulation_only_project": true,
+  "hardware_deployment_scope": "out_of_scope_by_user_constraint",
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "baseline_type": "mixed_online_control_baseline",
+  "source_stage7_runner": "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py",
+  "derived_2400_runner": "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py",
+  "original_runner_hash_before": "d04462aca40eff00667cdbeab96aa61f95bc4d7465bc9ce3e029cee7a1212ef1",
+  "original_runner_hash_after": "d04462aca40eff00667cdbeab96aa61f95bc4d7465bc9ce3e029cee7a1212ef1",
+  "original_runner_unchanged": true,
+  "derived_runner_hash": null,
+  "candidate_matches": {
+    "total_steps_assignment": 0,
+    "num_steps_assignment": 0,
+    "n_steps_assignment": 0,
+    "steps_assignment": 0,
+    "N_STEPS_assignment": 0
+  },
+  "patch_replacements": {
+    "total_steps_assignment": 0,
+    "num_steps_assignment": 0,
+    "n_steps_assignment": 0,
+    "steps_assignment": 0,
+    "N_STEPS_assignment": 0
+  },
+  "derived_runner_exists": false,
+  "py_compile": null,
+  "stage13_1b_pass": true,
+  "stage13_1b_total_steps": 1200,
+  "recommended_next_stage": "Stage 13.2A-R inspect 2400-step runner derivation failure"
+}

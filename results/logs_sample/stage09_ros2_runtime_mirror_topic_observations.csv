@@ -1,0 +1,7 @@
+topic,expected_type,present_in_topic_list,type_returncode,observed_type,type_match,publisher_count,subscription_count,echo_once_returncode,echo_once_nonempty,echo_file
+/go1/joint_states,sensor_msgs/msg/JointState,True,0,sensor_msgs/msg/JointState,True,1,1,0,True,results/logs_sample/stage09_ros2_runtime_mirror_echo_go1_joint_states.txt
+/go1/base_state,std_msgs/msg/Float64MultiArray,True,0,std_msgs/msg/Float64MultiArray,True,1,1,0,True,results/logs_sample/stage09_ros2_runtime_mirror_echo_go1_base_state.txt
+/go1/imu,sensor_msgs/msg/Imu,True,0,sensor_msgs/msg/Imu,True,1,1,0,True,results/logs_sample/stage09_ros2_runtime_mirror_echo_go1_imu.txt
+/go1/foot_contacts,std_msgs/msg/Int32MultiArray,True,0,std_msgs/msg/Int32MultiArray,True,1,1,0,True,results/logs_sample/stage09_ros2_runtime_mirror_echo_go1_foot_contacts.txt
+/go1/sim_time,std_msgs/msg/Float64,True,0,std_msgs/msg/Float64,True,1,1,0,True,results/logs_sample/stage09_ros2_runtime_mirror_echo_go1_sim_time.txt
+/go1/joint_torque_cmd,std_msgs/msg/Float64MultiArray,True,0,std_msgs/msg/Float64MultiArray,True,0,2,,,

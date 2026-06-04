@@ -1,0 +1,2 @@
+max_abs_roll,max_abs_roll_step,roll_margin_to_0p15,max_abs_pitch,max_abs_pitch_step,pitch_margin_to_0p15,min_z,min_z_step,z_margin_to_0p22,final_z,final_roll,final_pitch,roll_abs_last_100_min,roll_abs_last_100_max,base_z_last_100_min,base_z_last_100_max,pass_margin
+0.147238297335,247,0.002761702665,0.048544437721,893,0.101455562279,0.284935407676,0,0.064935407676,0.295566302923,-0.009458420484,-0.002801135657,0.000026512318,0.028053140161,0.288591301311,0.298259648565,False

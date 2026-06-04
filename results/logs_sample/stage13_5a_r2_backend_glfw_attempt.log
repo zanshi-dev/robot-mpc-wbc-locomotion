@@ -1,0 +1,125 @@
+Stage 13.2 2400-step simulation-only mixed baseline regression
+wbc_script=scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py
+swing_target_csv=results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv
+total_steps=2400
+transition_count=11
+trot_FR_RL_steps=1200
+trot_FL_RR_steps=1200
+stance_kp=60.0
+stance_kd=2.0
+swing_kp=80.0
+swing_kd=2.0
+stance_wbc_scale=0.2
+swing_pd_scale=1.0
+swing_target_scale=0.35
+torque_limit=23.7
+initial_z=0.284805846483
+final_z=0.286030728906
+min_z=0.274552192756
+max_z=0.293169864411
+delta_z=0.001224882422
+final_roll=-0.000918501417
+final_pitch=-0.016903082043
+max_abs_roll=0.056707402709
+roll_margin_to_0p20=0.143292597291
+max_abs_pitch=0.048329482530
+pitch_margin_to_0p20=0.151670517470
+z_margin_to_0p22=0.054552192756
+max_joint_error=0.077233662573
+max_swing_joint_error=0.051395902876
+max_stance_joint_error=0.077233662573
+max_tau_stance_pd_abs=11.083222358114
+max_tau_stance_wbc_abs=2.125887056052
+max_tau_swing_pd_abs=9.659563043535
+max_tau_total_raw_abs=9.659563043535
+max_tau_total_abs=9.659563043535
+max_cmd_step_jump_norm=25.788963931985
+max_cmd_step_jump_abs=11.568156828496
+max_dyn_res_norm=7.732488454756e-08
+max_stance_acc_res_norm=3.520891005970e-09
+max_swing_acc_error_norm=2.545718566371e-01
+qp_fail_steps=0
+saturation_steps=0
+pass=True
+pass_margin=True
+saved_log=/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_5a_r2_video_rollout_mixed_baseline_log.csv
+saved_summary=/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_5a_r2_video_rollout_mixed_baseline_summary.csv
+{
+  "stage": "13.5A-R2",
+  "name": "mujoco_offscreen_rollout_video_fixed_ffmpeg",
+  "timestamp": "2026-06-04T11:18:30",
+  "pass": true,
+  "fail_reasons": [],
+  "simulation_only_project": true,
+  "hardware_deployment_scope": "out_of_scope_by_user_constraint",
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "baseline_type": "mixed_online_control_baseline",
+  "method": "MuJoCo offscreen rendering at 640x480 + policy rollout + raw RGB pipe to ffmpeg + aspect-correct 720p encode",
+  "mujoco_gl_backend": "glfw",
+  "runner": "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py",
+  "video_path": "/home/zanshi/robot-mpc-wbc-locomotion/demo_videos/stage13_5a_r2_mujoco_offscreen_2400step_mixed_baseline_demo_720p.mp4",
+  "video_exists": true,
+  "video_size_bytes": 2606663,
+  "render_width": 640,
+  "render_height": 480,
+  "output_width": 1280,
+  "output_height": 720,
+  "fps": 30,
+  "render_every": 4,
+  "mj_steps_seen": 2400,
+  "frames_rendered": 600,
+  "expected_frames_about": 600,
+  "ffmpeg_returncode": 0,
+  "ffmpeg_stderr_tail": " 512kB time=00:00:05.00 bitrate= 838.9kbits/s speed= 1.2x    \rframe=  169 fps= 36 q=24.0 size=     512kB time=00:00:05.56 bitrate= 753.5kbits/s speed=1.18x    \rframe=  189 fps= 36 q=24.0 size=     768kB time=00:00:06.23 bitrate=1009.4kbits/s speed= 1.2x    \rframe=  217 fps= 38 q=24.0 size=     768kB time=00:00:07.16 bitrate= 877.9kbits/s speed=1.25x    \rframe=  247 fps= 40 q=24.0 size=    1024kB time=00:00:08.16 bitrate=1027.2kbits/s speed=1.31x    \rframe=  269 fps= 40 q=24.0 size=    1024kB time=00:00:08.90 bitrate= 942.6kbits/s speed=1.32x    \rframe=  291 fps= 40 q=24.0 size=    1024kB time=00:00:09.63 bitrate= 870.8kbits/s speed=1.33x    \rframe=  322 fps= 42 q=24.0 size=    1280kB time=00:00:10.66 bitrate= 983.1kbits/s speed=1.38x    \rframe=  345 fps= 42 q=24.0 size=    1280kB time=00:00:11.43 bitrate= 917.2kbits/s speed=1.38x    \rframe=  374 fps= 43 q=24.0 size=    1536kB time=00:00:12.40 bitrate=1014.8kbits/s speed=1.41x    \rframe=  407 fps= 44 q=24.0 size=    1536kB time=00:00:13.50 bitrate= 932.1kbits/s speed=1.45x    \rframe=  438 fps= 45 q=24.0 size=    1792kB time=00:00:14.53 bitrate=1010.1kbits/s speed=1.48x    \rframe=  467 fps= 45 q=24.0 size=    1792kB time=00:00:15.50 bitrate= 947.1kbits/s speed= 1.5x    \rframe=  485 fps= 45 q=24.0 size=    1792kB time=00:00:16.10 bitrate= 911.8kbits/s speed=1.49x    \rframe=  517 fps= 46 q=24.0 size=    2048kB time=00:00:17.16 bitrate= 977.3kbits/s speed=1.52x    \rframe=  546 fps= 46 q=24.0 size=    2304kB time=00:00:18.13 bitrate=1040.9kbits/s speed=1.53x    \r[mp4 @ 0x585aa424d8c0] Starting second pass: moving the moov atom to the beginning of the file\n[out#0/mp4 @ 0x585aa424cd00] video:2538kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.310746%\nframe=  600 fps= 49 q=-1.0 Lsize=    2546kB time=00:00:19.90 bitrate=1047.9kbits/s speed=1.62x    \n[libx264 @ 0x585aa424e480] frame I:3     Avg QP:11.41  size: 53120\n[libx264 @ 0x585aa424e480] frame P:151   Avg QP:15.65  size: 10502\n[libx264 @ 0x585aa424e480] frame B:446   Avg QP:18.13  size:  1912\n[libx264 @ 0x585aa424e480] consecutive B-frames:  0.8%  0.0%  0.5% 98.7%\n[libx264 @ 0x585aa424e480] mb I  I16..4: 43.7%  8.2% 48.1%\n[libx264 @ 0x585aa424e480] mb P  I16..4:  2.6%  0.6%  0.2%  P16..4: 25.8% 14.4%  6.6%  0.0%  0.0%    skip:49.7%\n[libx264 @ 0x585aa424e480] mb B  I16..4:  0.1%  0.0%  0.0%  B16..8:  6.8%  2.8%  0.5%  direct: 2.2%  skip:87.6%  L0:36.1% L1:41.5% BI:22.5%\n[libx264 @ 0x585aa424e480] 8x8 transform intra:14.2% inter:30.6%\n[libx264 @ 0x585aa424e480] coded y,uvDC,uvAC intra: 34.8% 41.5% 26.4% inter: 4.9% 1.5% 0.2%\n[libx264 @ 0x585aa424e480] i16 v,h,dc,p: 52% 28% 17%  4%\n[libx264 @ 0x585aa424e480] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu:  6% 26% 35%  4%  9%  3% 11%  1%  6%\n[libx264 @ 0x585aa424e480] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 11% 40% 13%  4%  5%  2% 13%  1% 11%\n[libx264 @ 0x585aa424e480] i8c dc,h,v,p: 65% 23% 11%  2%\n[libx264 @ 0x585aa424e480] Weighted P-Frames: Y:0.0% UV:0.0%\n[libx264 @ 0x585aa424e480] kb/s:1039.16\n",
+  "demo_rollout_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_5a_r2_video_rollout_mixed_baseline_log.csv",
+  "demo_rollout_summary_csv": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_5a_r2_video_rollout_mixed_baseline_summary.csv",
+  "rollout_summary": {
+    "wbc_script": "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py",
+    "swing_target_csv": "results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv",
+    "total_steps": "2400",
+    "transition_count": "11",
+    "trot_FR_RL_steps": "1200",
+    "trot_FL_RR_steps": "1200",
+    "stance_kp": "60.0",
+    "stance_kd": "2.0",
+    "swing_kp": "80.0",
+    "swing_kd": "2.0",
+    "stance_wbc_scale": "0.2",
+    "swing_pd_scale": "1.0",
+    "swing_target_scale": "0.35",
+    "torque_limit": "23.7",
+    "initial_z": "0.284805846483",
+    "final_z": "0.286030728906",
+    "min_z": "0.274552192756",
+    "max_z": "0.293169864411",
+    "delta_z": "0.001224882422",
+    "final_roll": "-0.000918501417",
+    "final_pitch": "-0.016903082043",
+    "max_abs_roll": "0.056707402709",
+    "roll_margin_to_0p20": "0.143292597291",
+    "max_abs_pitch": "0.048329482530",
+    "pitch_margin_to_0p20": "0.151670517470",
+    "z_margin_to_0p22": "0.054552192756",
+    "max_joint_error": "0.077233662573",
+    "max_swing_joint_error": "0.051395902876",
+    "max_stance_joint_error": "0.077233662573",
+    "max_tau_stance_pd_abs": "11.083222358114",
+    "max_tau_stance_wbc_abs": "2.125887056052",
+    "max_tau_swing_pd_abs": "9.659563043535",
+    "max_tau_total_raw_abs": "9.659563043535",
+    "max_tau_total_abs": "9.659563043535",
+    "max_cmd_step_jump_norm": "25.788963931985",
+    "max_cmd_step_jump_abs": "11.568156828496",
+    "max_dyn_res_norm": "7.732488454756e-08",
+    "max_stance_acc_res_norm": "3.520891005970e-09",
+    "max_swing_acc_error_norm": "2.545718566371e-01",
+    "qp_fail_steps": "0",
+    "saturation_steps": "0",
+    "pass": "True",
+    "pass_margin": "True"
+  },
+  "exception_text": ""
+}

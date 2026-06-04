@@ -1,0 +1,9 @@
+[INFO] [1780468028.941028626] [go1_interface_mirror_node]: Go1 C++ interface mirror node started. This node subscribes only and does not publish torque commands.
+[INFO] [1780468029.941197827] [go1_interface_mirror_node]: mirror status: joint=1 base=1 base_size=14 imu=1 contacts=1 sim_time=1 torque_cmd=0. No torque publisher exists.
+[INFO] [1780468035.941216250] [go1_interface_mirror_node]: mirror status: joint=1 base=1 base_size=14 imu=1 contacts=1 sim_time=1 torque_cmd=0. No torque publisher exists.
+[INFO] [1780468041.941110105] [go1_interface_mirror_node]: mirror status: joint=1 base=1 base_size=14 imu=1 contacts=1 sim_time=1 torque_cmd=0. No torque publisher exists.
+[INFO] [1780468047.941108390] [go1_interface_mirror_node]: mirror status: joint=1 base=1 base_size=14 imu=1 contacts=1 sim_time=1 torque_cmd=0. No torque publisher exists.
+[INFO] [1780468053.941189367] [go1_interface_mirror_node]: mirror status: joint=1 base=1 base_size=14 imu=1 contacts=1 sim_time=1 torque_cmd=0. No torque publisher exists.
+[INFO] [1780468058.941471763] [go1_interface_mirror_node]: mirror status: joint=1 base=1 base_size=14 imu=1 contacts=1 sim_time=1 torque_cmd=0. No torque publisher exists.
+[INFO] [1780468064.941098462] [go1_interface_mirror_node]: mirror status: joint=1 base=1 base_size=14 imu=1 contacts=1 sim_time=1 torque_cmd=0. No torque publisher exists.
+[INFO] [1780468069.117606861] [rclcpp]: signal_handler(SIGINT/SIGTERM)

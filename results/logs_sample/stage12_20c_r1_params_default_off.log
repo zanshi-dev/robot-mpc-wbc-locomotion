@@ -1,0 +1,17 @@
+enable_torque_publisher:
+Boolean value is: False
+
+confirm_torque_publisher_enable:
+Boolean value is: False
+
+enable_continuous_torque_streaming:
+Boolean value is: False
+
+confirm_continuous_torque_streaming:
+Boolean value is: False
+
+continuous_torque_streaming_max_ticks:
+Integer value is: 10
+
+continuous_torque_streaming_max_duration_sec:
+Double value is: 1.5

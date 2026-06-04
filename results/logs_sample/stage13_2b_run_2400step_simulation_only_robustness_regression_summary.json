@@ -1,0 +1,52 @@
+{
+  "stage": "13.2B",
+  "name": "run_2400step_simulation_only_robustness_regression",
+  "timestamp": "2026-06-04T10:09:03",
+  "pass": false,
+  "fail_reasons": [
+    "2400-step runner returned nonzero: 1",
+    "2400-step run did not produce mixed baseline summary CSV",
+    "2400-step run did not produce mixed baseline log CSV",
+    "2400-step run did not produce WBC summary CSV",
+    "2400-step run did not produce WBC log CSV"
+  ],
+  "simulation_only_project": true,
+  "hardware_deployment_scope": "out_of_scope_by_user_constraint",
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "baseline_type": "mixed_online_control_baseline",
+  "rerun_returncode": 1,
+  "rerun_timeout": false,
+  "runner_changed": false,
+  "swing_csv_changed": false,
+  "pre_hashes": {
+    "runner": "4ae0d1a751db5e32bf7a85ca88322cdafcdfc41cefe64fd1f2ec1d910fc2e225",
+    "swing_csv": "1e9b1e36fefe514968aad43053293f121ac2115ce1f02c3505387aec7694abed",
+    "mixed_summary": null,
+    "mixed_log": null,
+    "wbc_summary": null,
+    "wbc_log": null
+  },
+  "post_hashes": {
+    "runner": "4ae0d1a751db5e32bf7a85ca88322cdafcdfc41cefe64fd1f2ec1d910fc2e225",
+    "swing_csv": "1e9b1e36fefe514968aad43053293f121ac2115ce1f02c3505387aec7694abed",
+    "mixed_summary": null,
+    "mixed_log": null,
+    "wbc_summary": null,
+    "wbc_log": null
+  },
+  "parsed_mixed_summary": {},
+  "parsed_wbc_summary": {},
+  "checks": {},
+  "evidence_files": {
+    "stdout": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_run_2400step_stdout.log",
+    "mixed_summary": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_2400step_mixed_baseline_summary.csv",
+    "mixed_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_2400step_mixed_baseline_log.csv",
+    "wbc_summary": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_2400step_wbc_summary.csv",
+    "wbc_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_2400step_wbc_log.csv",
+    "backup_dir": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_backup"
+  },
+  "recommended_next_stage": "Stage 13.2B-R inspect 2400-step robustness regression failure"
+}

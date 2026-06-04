@@ -1,0 +1,105 @@
+{
+  "stage": "13.0",
+  "name": "simulation_only_locomotion_preflight_inventory",
+  "timestamp": "2026-06-04T09:50:24",
+  "pass": true,
+  "fail_reasons": [],
+  "simulation_only_project": true,
+  "hardware_deployment_scope": "out_of_scope_by_user_constraint",
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "baseline_type": "mixed_online_control_baseline",
+  "file_status": {
+    "stage12_22_summary": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_22_simulation_only_scope_freeze_summary.json",
+      "exists": true,
+      "size": 1406,
+      "sha256": "6e355a2e644c90de0596895dfcf43679a4438b469165d4b0c896c329737c4c51"
+    },
+    "simulation_scope_doc": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/docs/SIMULATION_ONLY_SCOPE.md",
+      "exists": true,
+      "size": 965,
+      "sha256": "4cfdf4ce53c1d29ee96c0a9d26ad01c4b207625bac3447dab8110b4cd6283cbf"
+    },
+    "project_status": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/PROJECT_STATUS.md",
+      "exists": true,
+      "size": 158691,
+      "sha256": "9da1695fc041871431ff5e9272c6d5ee9765bd2ebe5f0260071314d9556640f5"
+    },
+    "stage07_recommended_script": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py",
+      "exists": true,
+      "size": 12774,
+      "sha256": "d04462aca40eff00667cdbeab96aa61f95bc4d7465bc9ce3e029cee7a1212ef1"
+    },
+    "stage07_input_wbc_script": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage07_online_full_wbc_scheduler_recommended_run.py",
+      "exists": true,
+      "size": 19109,
+      "sha256": "248bb046d5c8e07ffa05487d95c79c80e8e1e6c719e8eba9ed03e3a1fcdb41b8"
+    },
+    "stage07_swing_tracking_csv": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage07_online_swing_trajectory_tracking_check.csv",
+      "exists": true,
+      "size": 468476,
+      "sha256": "a7fc8dec80fe62179359c6025112537b5997026f5761a43af8203f81c791f47d"
+    },
+    "stage07_recommended_log": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test_log.csv",
+      "exists": true,
+      "size": 431953,
+      "sha256": "638755cb03b8d749f88f384206b4a6c84aba194d5c284dce304facc6ec7d75aa"
+    },
+    "stage07_recommended_summary": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test_summary.csv",
+      "exists": true,
+      "size": 1256,
+      "sha256": "bdd08281f261b3ccb056a735c639e213ee917366dbee722e748eee45a42e35d4"
+    },
+    "go1_mujoco_scene": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/assets/go1/scene.xml",
+      "exists": true,
+      "size": 861,
+      "sha256": "29756f129f663b91f3c11251308d8f10d36f909441a2920b10bce2dcea6fb7a6"
+    },
+    "go1_urdf": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/assets/go1/urdf/go1.urdf",
+      "exists": true,
+      "size": 62096,
+      "sha256": "8c4c22e581b549027c1918259627bb5172afdf56ab970814b0c6f62ecf5604ff"
+    },
+    "ros2_cpp_controller_source": {
+      "path": "/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp",
+      "exists": true,
+      "size": 15293,
+      "sha256": "b2d7371786b58300ca68be5542372d5cf8aa2814678b9f451e09bdb8061aa138"
+    }
+  },
+  "dependency_checks": {
+    "numpy": {
+      "returncode": 0,
+      "output": "1.26.4"
+    },
+    "mujoco": {
+      "returncode": 0,
+      "output": "3.9.0"
+    },
+    "pinocchio": {
+      "returncode": 0,
+      "output": "3.9.0"
+    },
+    "scipy": {
+      "returncode": 0,
+      "output": "1.11.4"
+    },
+    "osqp": {
+      "returncode": 0,
+      "output": "1.1.1"
+    }
+  },
+  "recommended_next_stage": "Stage 13.1 compare existing Stage 7 baseline summary and optionally rerun 1200-step regression"
+}

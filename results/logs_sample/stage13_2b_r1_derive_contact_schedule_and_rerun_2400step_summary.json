@@ -1,0 +1,209 @@
+{
+  "stage": "13.2B-R1",
+  "name": "derive_2400step_contact_schedule_and_rerun_robustness_regression",
+  "timestamp": "2026-06-04T10:16:51",
+  "pass": true,
+  "fail_reasons": [],
+  "simulation_only_project": true,
+  "hardware_deployment_scope": "out_of_scope_by_user_constraint",
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "baseline_type": "mixed_online_control_baseline",
+  "previous_stage13_2b_pass": false,
+  "previous_stage13_2b_failure_classified_as_missing_contact_schedule": true,
+  "source_contact_rows": 3,
+  "derived_contact_rows": 2400,
+  "derived_contact_line_count": 2401,
+  "wbc_returncode": 0,
+  "wbc_timeout": false,
+  "mixed_returncode": 0,
+  "mixed_timeout": false,
+  "runner_changed": false,
+  "wbc_runner_changed": false,
+  "derived_swing_changed": false,
+  "source_contact_changed": false,
+  "pre_hashes": {
+    "src_contact": "a6a6915121a4c07d312bda1f81239bd5a1e60e6784cba0919b618d962114757e",
+    "derived_swing": "1e9b1e36fefe514968aad43053293f121ac2115ce1f02c3505387aec7694abed",
+    "wbc_runner": "dd3486e885e6d1ca91baa230eda34b0b8dc3a8713cc3f644f59c819ffb934349",
+    "mixed_runner": "4ae0d1a751db5e32bf7a85ca88322cdafcdfc41cefe64fd1f2ec1d910fc2e225"
+  },
+  "post_hashes": {
+    "src_contact": "a6a6915121a4c07d312bda1f81239bd5a1e60e6784cba0919b618d962114757e",
+    "derived_contact": "2d612dad6063a333982128e6ce2b535060cc7cdc1b67a131e9fa9435ef268eaa",
+    "derived_swing": "1e9b1e36fefe514968aad43053293f121ac2115ce1f02c3505387aec7694abed",
+    "wbc_runner": "dd3486e885e6d1ca91baa230eda34b0b8dc3a8713cc3f644f59c819ffb934349",
+    "mixed_runner": "4ae0d1a751db5e32bf7a85ca88322cdafcdfc41cefe64fd1f2ec1d910fc2e225",
+    "wbc_summary": "e7ec4f1742ba8538b6096c14222e80c7214ec25768e8a36ae152ae66e40bb5a0",
+    "wbc_log": "89aae719df7c06a98b53cc70938cc4ed7b5123b9d295eb879f970393e4bdf37e",
+    "mixed_summary": "ad177850ad605fb220e4e1f55cce5c07b544d94424eab8bcc1d64a6b42c0d514",
+    "mixed_log": "772bc8db15c9a0f165ae4e690e1ffc2cf783bb8c914297551142ef119677e818"
+  },
+  "parsed_mixed_summary": {
+    "wbc_script": "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py",
+    "swing_target_csv": "results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv",
+    "total_steps": 2400,
+    "transition_count": 11,
+    "trot_FR_RL_steps": 1200,
+    "trot_FL_RR_steps": 1200,
+    "stance_kp": 60,
+    "stance_kd": 2,
+    "swing_kp": 80,
+    "swing_kd": 2,
+    "stance_wbc_scale": 0.2,
+    "swing_pd_scale": 1,
+    "swing_target_scale": 0.35,
+    "torque_limit": 23.7,
+    "initial_z": 0.284805846483,
+    "final_z": 0.286030728906,
+    "min_z": 0.274552192756,
+    "max_z": 0.293169864411,
+    "delta_z": 0.001224882422,
+    "final_roll": -0.000918501417,
+    "final_pitch": -0.016903082043,
+    "max_abs_roll": 0.056707402709,
+    "roll_margin_to_0p20": 0.143292597291,
+    "max_abs_pitch": 0.04832948253,
+    "pitch_margin_to_0p20": 0.15167051747,
+    "z_margin_to_0p22": 0.054552192756,
+    "max_joint_error": 0.077233662573,
+    "max_swing_joint_error": 0.051395902876,
+    "max_stance_joint_error": 0.077233662573,
+    "max_tau_stance_pd_abs": 11.083222358114,
+    "max_tau_stance_wbc_abs": 2.125887056052,
+    "max_tau_swing_pd_abs": 9.659563043535,
+    "max_tau_total_raw_abs": 9.659563043535,
+    "max_tau_total_abs": 9.659563043535,
+    "max_cmd_step_jump_norm": 25.788963931985,
+    "max_cmd_step_jump_abs": 11.568156828496,
+    "max_dyn_res_norm": 7.732488454756e-08,
+    "max_stance_acc_res_norm": 3.52089100597e-09,
+    "max_swing_acc_error_norm": 0.2545718566371,
+    "qp_fail_steps": 0,
+    "saturation_steps": 0,
+    "pass": true,
+    "pass_margin": true
+  },
+  "parsed_wbc_summary": {
+    "scheduler": "phase_trot",
+    "total_steps": 2400,
+    "dt": 0.002,
+    "period_steps": 400,
+    "half_period_steps": 200,
+    "trot_FR_RL_steps": 1200,
+    "trot_FL_RR_steps": 1200,
+    "transition_count": 11,
+    "kp_posture": 60,
+    "kd_posture": 2,
+    "torque_limit": 23.7,
+    "base_qdd_z_ref": 0.03,
+    "swing_acc_ref_x": 0.1,
+    "swing_acc_ref_y": 0,
+    "swing_acc_ref_z": 0.2,
+    "ramp_alpha": 0.15,
+    "initial_z": 0.284805846483,
+    "final_z": 0.304968764218,
+    "min_z": 0.284525843843,
+    "max_z": 0.325211798729,
+    "delta_z": 0.020162917735,
+    "final_roll": 0.116402583877,
+    "final_pitch": 0.060223800924,
+    "max_abs_roll": 0.163118252883,
+    "roll_margin_to_limit": 0.036881747117,
+    "max_abs_pitch": 0.106881861177,
+    "pitch_margin_to_limit": 0.093118138823,
+    "z_margin_to_limit": 0.064525843843,
+    "max_tau_pd_abs": 17.914484841257,
+    "max_tau_wbc_abs": 10.722716789116,
+    "max_tau_total_abs": 11.520998707973,
+    "max_cmd_step_jump_norm": 3.444357031147,
+    "max_cmd_step_jump_abs": 1.782238605127,
+    "max_dyn_res_norm": 1.072235565455e-07,
+    "max_stance_acc_res_norm": 4.121509819804e-09,
+    "max_swing_acc_error_norm": 0.6846131992978,
+    "qp_fail_steps": 0,
+    "saturation_steps": 0,
+    "pass": true,
+    "pass_margin": true
+  },
+  "checks": {
+    "total_steps_eq_2400": {
+      "actual": 2400,
+      "expected": 2400,
+      "pass": true
+    },
+    "transition_count_eq_11": {
+      "actual": 11,
+      "expected": 11,
+      "pass": true
+    },
+    "trot_FR_RL_steps_eq_1200": {
+      "actual": 1200,
+      "expected": 1200,
+      "pass": true
+    },
+    "trot_FL_RR_steps_eq_1200": {
+      "actual": 1200,
+      "expected": 1200,
+      "pass": true
+    },
+    "pass_eq_True": {
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    "pass_margin_eq_True": {
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    "qp_fail_steps_eq_0": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "saturation_steps_eq_0": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "min_z_>=_0.22": {
+      "actual": 0.274552192756,
+      "threshold": 0.22,
+      "pass": true
+    },
+    "max_abs_roll_<=_0.08": {
+      "actual": 0.056707402709,
+      "threshold": 0.08,
+      "pass": true
+    },
+    "max_abs_pitch_<=_0.08": {
+      "actual": 0.04832948253,
+      "threshold": 0.08,
+      "pass": true
+    },
+    "max_joint_error_<=_0.12": {
+      "actual": 0.077233662573,
+      "threshold": 0.12,
+      "pass": true
+    },
+    "max_tau_total_abs_<=_23.7": {
+      "actual": 9.659563043535,
+      "threshold": 23.7,
+      "pass": true
+    }
+  },
+  "evidence_files": {
+    "wbc_stdout": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_r1_wbc_rerun_stdout.log",
+    "mixed_stdout": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_r1_mixed_rerun_stdout.log",
+    "derived_contact": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_r1_2400step_contact_schedule_wbc_qp.csv",
+    "wbc_summary": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_r1_2400step_wbc_summary.csv",
+    "wbc_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_r1_2400step_wbc_log.csv",
+    "mixed_summary": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_r1_2400step_mixed_summary.csv",
+    "mixed_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_r1_2400step_mixed_log.csv",
+    "backup_dir": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_2b_r1_backup"
+  },
+  "recommended_next_stage": "Stage 13.2C final 2400-step robustness evidence freeze"
+}

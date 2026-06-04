@@ -1,0 +1,10 @@
+item,value,required,description
+source_change_allowed_in_stage114,false,True,Stage 11.4 is preflight only and must not edit disabled_controller_node.cpp.
+future_stage_minimum,Stage 11.5,True,A later stage may add dormant source skeleton only after this preflight passes.
+future_create_publisher_allowed,false,True,The next implementation stage must still avoid create_publisher.
+future_publish_call_allowed,false,True,No publish call may appear in the disabled skeleton implementation stage.
+future_torque_topic_string_allowed_in_controller_source,false,True,The exact /go1/joint_torque_cmd string must remain outside controller source until explicit publisher construction stage.
+future_skeleton_allowed_elements,"compile-time constants, inactive helper methods, nullptr member, no ROS publisher construction",True,Skeleton means dormant code structure only.
+future_runtime_expected_publisher_count,0,True,Runtime publisher count must remain zero after any no-publish skeleton stage.
+manual_enable_active_expected,false,True,Manual enable flags must remain default false.
+torque_enable_ready_expected,false,True,Torque enable must remain false because no active publisher or publish call exists.

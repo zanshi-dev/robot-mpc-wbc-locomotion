@@ -1,0 +1,61 @@
+check,value,expected,pass,detail
+Stage 10.0_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_controller_implementation_plan_and_safety_gate_summary.csv
+Stage 10.0_pass,True,True,True,
+Stage 10.1_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_disabled_cpp_controller_skeleton_check_summary.csv
+Stage 10.1_pass,True,True,True,
+Stage 10.2_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_cpp_state_cache_runtime_validation_summary.csv
+Stage 10.2_pass,True,True,True,
+Stage 10.3_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_zero_torque_dry_run_internal_validation_summary.csv
+Stage 10.3_pass,True,True,True,
+Stage 10.4_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_python_frozen_baseline_ab_regression_summary.csv
+Stage 10.4_pass,True,True,True,
+Stage 10.5_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_torque_publisher_enable_gate_design_summary.csv
+Stage 10.5_pass,True,True,True,
+Stage 10.6_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_0_5_controller_planning_freeze_summary.csv
+Stage 10.6_pass,True,True,True,
+Stage 10.7_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_clamp_watchdog_utility_without_publisher_summary.csv
+Stage 10.7_pass,True,True,True,
+Stage 10.8_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_disabled_controller_uses_safety_utilities_summary.csv
+Stage 10.8_pass,True,True,True,
+Stage 10.9_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_7_8_safety_utility_freeze_summary.csv
+Stage 10.9_pass,True,True,True,
+Stage 10.10_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_manual_enable_params_disabled_without_publisher_summary.csv
+Stage 10.10_pass,True,True,True,
+Stage 10.11_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_manual_enable_param_guard_freeze_summary.csv
+Stage 10.11_pass,True,True,True,
+control_law_changed_any,False,False,True,
+torque_publisher_enabled_any,False,False,True,
+torque_command_published_any,False,False,True,
+ros2_cpp_realtime_controller_completed_any,False,False,True,
+pure_wbc_locomotion_completed_any,False,False,True,
+ekf_completed_any,False,False,True,
+full_3d_centroidal_mpc_completed_any,False,False,True,
+cpp_source_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp
+safety_header_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_controller/include/robot_mpc_wbc_cpp_controller/torque_safety.hpp
+zero_header_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_controller/include/robot_mpc_wbc_cpp_controller/zero_torque_dry_run.hpp
+source_has_no_create_publisher,False,False,True,
+source_has_no_publish_call,False,False,True,
+source_does_not_reference_torque_topic,False,False,True,
+source_declares_enable_param_default_false,True,True,True,
+source_declares_confirm_param_default_false,True,True,True,
+source_reads_enable_param,True,True,True,
+source_reads_confirm_param,True,True,True,
+source_has_manual_enable_active_state,True,True,True,
+source_uses_safety_utilities,True,True,True,
+safety_header_has_clamp_watchdog,True,True,True,
+zero_header_declares_12,True,True,True,
+final_safety_gate_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_torque_publisher_safety_gate_after_stage1010.csv
+G0_status_final,True,True,True,
+G1_status_final,True,True,True,
+G2_status_final,True,True,True,
+G3_status_final,True,True,True,
+G4_status_final,True,True,True,
+G5_status_final,True,True,True,
+G6_status_final,True,True,True,
+G7_status_final,True,True,True,
+G8_status_final,False,False,True,
+G9_status_final,False,False,True,
+G10_status_final,True,True,True,
+G11_status_final,True,True,True,
+torque_enable_ready_final,False,False,True,
+missing_freeze_file_count,0,0,True,

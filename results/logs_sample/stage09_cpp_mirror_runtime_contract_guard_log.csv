@@ -1,0 +1,16 @@
+check,value,expected,pass,detail
+stage95_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_cpp_mirror_contract_report_summary.csv
+stage95_pass,True,True,True,
+stage95_torque_cmd_publisher_count_zero,0,0,True,
+stage95_control_law_unchanged,False,False,True,
+colcon_build_returncode,0,0,True,
+bridge_alive_after_startup,True,True,True,
+mirror_alive_after_startup,True,True,True,
+sample_row_count,30,30,True,
+all_sample_topic_types_match,True,True,True,
+torque_cmd_publishers_all_zero,"[0, 0, 0, 0, 0]",all 0,True,
+torque_cmd_subscribers_positive,"[2, 2, 2, 2, 2]",all >=2,True,
+published_topics_have_publishers,True,True,True,
+published_topics_have_subscribers,True,True,True,
+source_has_no_create_publisher,False,False,True,ros2_ws/src/robot_mpc_wbc_cpp_interface/src/interface_mirror_node.cpp
+source_has_no_publish_call,False,False,True,ros2_ws/src/robot_mpc_wbc_cpp_interface/src/interface_mirror_node.cpp

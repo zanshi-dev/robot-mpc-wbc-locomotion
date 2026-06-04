@@ -1,0 +1,35 @@
+{
+  "stage": "12.20B-R2",
+  "timestamp": "2026-06-03T17:10:16",
+  "source": "/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp",
+  "pass": true,
+  "patch_applied": true,
+  "fail_reasons": [],
+  "pre_hash": "1970e55723158545b775a707b99f4e5801f80d96f93cf1f3301f5e27aa15d3e6",
+  "pre_publish_call_count": 1,
+  "class_candidates": [
+    {
+      "name": "Go1DisabledControllerNode",
+      "score": 210,
+      "start": 544,
+      "close": 11772
+    }
+  ],
+  "detected_class_name": "Go1DisabledControllerNode",
+  "detected_class_score": 210,
+  "detected_publish_helper": "publishBoundedZeroSafeTorqueOnceIfAllowed",
+  "constructor_header": "public: Go1DisabledControllerNode() : Node(\"go1_disabled_controller_node\")",
+  "post_hash_candidate": "0873b101328d54813a0e8b765060abf72207f2ca84f92afe10670a3ae7d3308d",
+  "post_publish_call_count_candidate": 1,
+  "post_has_continuous_params_candidate": true,
+  "post_has_four_flag_gate_candidate": true,
+  "post_has_continuous_timer_candidate": true,
+  "post_calls_existing_publish_helper_candidate": true,
+  "backup": "/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp.stage1219_pre_stage1220b_r2.bak",
+  "post_hash": "0873b101328d54813a0e8b765060abf72207f2ca84f92afe10670a3ae7d3308d",
+  "post_publish_call_count": 1,
+  "post_has_continuous_params": true,
+  "post_has_four_flag_gate": true,
+  "post_has_continuous_timer": true,
+  "post_calls_existing_publish_helper": true
+}

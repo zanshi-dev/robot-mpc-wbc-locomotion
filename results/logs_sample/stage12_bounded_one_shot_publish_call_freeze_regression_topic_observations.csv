@@ -1,0 +1,11 @@
+phase,sample_index,topic,topic_info_returncode,publisher_count,subscription_count,publisher_count_positive,subscription_count_positive
+default_disabled_after_timer,0,/go1/joint_torque_cmd,0,1,1,True,True
+default_disabled_after_timer,1,/go1/joint_torque_cmd,0,1,1,True,True
+default_disabled_after_timer,2,/go1/joint_torque_cmd,0,1,1,True,True
+default_disabled_after_timer,3,/go1/joint_torque_cmd,0,1,1,True,True
+enabled_after_first_publish,0,/go1/joint_torque_cmd,0,1,1,True,True
+enabled_after_first_publish,1,/go1/joint_torque_cmd,0,1,1,True,True
+enabled_after_first_publish,2,/go1/joint_torque_cmd,0,1,1,True,True
+enabled_after_first_publish,3,/go1/joint_torque_cmd,0,1,1,True,True
+enabled_after_first_publish,4,/go1/joint_torque_cmd,0,1,1,True,True
+enabled_after_first_publish,5,/go1/joint_torque_cmd,0,1,1,True,True

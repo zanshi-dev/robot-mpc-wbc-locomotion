@@ -1,0 +1,3 @@
+variant,qp_pass,support_pass,margin_pass,tau_max_abs,max_tau_total_abs,max_abs_roll,roll_margin_to_0p15,max_abs_pitch,pitch_margin_to_0p15,min_z,z_margin_to_0p22,saturation_steps,accepted_baseline,reject_reason
+base_wrench_qp,True,True,True,5.309219364818,8.865605439903,0.142713128163,0.007286871837,0.027806141378,0.122193858622,0.284697187237,0.064697187237,0,True,
+posture_regularized_qp,True,True,False,5.307369014842,9.208799641206,0.147238297335,0.002761702665,0.048544437721,0.101455562279,0.284805846483,0.064935407676,0,False,margin_check_failed

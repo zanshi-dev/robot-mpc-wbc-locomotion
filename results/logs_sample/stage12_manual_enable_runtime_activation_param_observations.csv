@@ -1,0 +1,11 @@
+phase,param,returncode,value,stdout,stderr
+initial,enable_torque_publisher,0,False,Boolean value is: False,
+initial,confirm_torque_publisher_enable,0,False,Boolean value is: False,
+set_true,enable_torque_publisher,0,,Set parameter successful,
+set_true,confirm_torque_publisher_enable,0,,Set parameter successful,
+activated,enable_torque_publisher,0,True,Boolean value is: True,
+activated,confirm_torque_publisher_enable,0,True,Boolean value is: True,
+revert_false,confirm_torque_publisher_enable,0,,Set parameter successful,
+revert_false,enable_torque_publisher,0,,Set parameter successful,
+reverted,enable_torque_publisher,0,False,Boolean value is: False,
+reverted,confirm_torque_publisher_enable,0,False,Boolean value is: False,

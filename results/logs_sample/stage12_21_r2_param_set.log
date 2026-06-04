@@ -1,0 +1,16 @@
+set continuous_torque_streaming_max_ticks=10
+Set parameter successful
+set continuous_torque_streaming_max_duration_sec=1.5
+Set parameter successful
+set enable_torque_publisher=true
+Set parameter successful
+set confirm_torque_publisher_enable=true
+Set parameter successful
+set enable_continuous_torque_streaming=true
+Set parameter successful
+set confirm_continuous_torque_streaming=true
+Set parameter successful
+Set parameter successful
+Set parameter successful
+Set parameter successful
+Set parameter successful

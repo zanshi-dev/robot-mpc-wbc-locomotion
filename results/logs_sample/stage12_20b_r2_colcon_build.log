@@ -1,0 +1,19 @@
+Starting >>> robot_mpc_wbc_cpp_controller
+--- stderr: robot_mpc_wbc_cpp_controller
+/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp: In lambda function:
+/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp:247:56: error: no matching function for call to ‘Go1DisabledControllerNode::publishBoundedZeroSafeTorqueOnceIfAllowed()’
+  247 |         this->publishBoundedZeroSafeTorqueOnceIfAllowed();
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp:382:8: note: candidate: ‘bool Go1DisabledControllerNode::publishBoundedZeroSafeTorqueOnceIfAllowed(bool, bool, bool)’
+  382 |   bool publishBoundedZeroSafeTorqueOnceIfAllowed(
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp:382:8: note:   candidate expects 3 arguments, 0 provided
+gmake[2]: *** [CMakeFiles/go1_disabled_controller_node.dir/build.make:76: CMakeFiles/go1_disabled_controller_node.dir/src/disabled_controller_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:141: CMakeFiles/go1_disabled_controller_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
+---
+Failed   <<< robot_mpc_wbc_cpp_controller [6.19s, exited with code 2]
+
+Summary: 0 packages finished [6.43s]
+  1 package failed: robot_mpc_wbc_cpp_controller
+  1 package had stderr output: robot_mpc_wbc_cpp_controller

@@ -1,0 +1,9 @@
+[Stage 8.10] freeze integrity check
+pass=True
+all_files_exist=True
+missing_file_count=0
+recommended_entrypoint_returncode=0
+adapter_preflight_stdout_pass=True
+hash_log=results/logs_sample/stage08_freeze_integrity_hashes.csv
+summary_csv=results/logs_sample/stage08_freeze_integrity_check_summary.csv
+doc=docs/STAGE08_FREEZE_INTEGRITY_CHECK.md

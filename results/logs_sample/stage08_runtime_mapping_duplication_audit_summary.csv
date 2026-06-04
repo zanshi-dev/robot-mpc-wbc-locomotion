@@ -1,0 +1,15 @@
+metric,value
+stage,Stage 8.4
+test_name,runtime_mapping_duplication_audit
+adapter_module,scripts/common/go1_runtime_interface.py
+adapter_module_exists,True
+stage83_summary,results/logs_sample/stage08_adapter_backed_stage07_baseline_ab_test_summary.csv
+stage83_pass,True
+files_with_findings,68
+total_findings,244
+high_severity_findings,85
+medium_severity_findings,55
+low_severity_findings,104
+pass,True
+log_csv,results/logs_sample/stage08_runtime_mapping_duplication_audit_log.csv
+summary_csv,results/logs_sample/stage08_runtime_mapping_duplication_audit_summary.csv

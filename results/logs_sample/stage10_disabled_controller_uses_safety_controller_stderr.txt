@@ -1,0 +1,3 @@
+[INFO] [1780469780.506200048] [go1_disabled_controller_node]: Go1 disabled C++ controller skeleton started with clamp/watchdog utilities. No torque publisher is created.
+[INFO] [1780469781.506289496] [go1_disabled_controller_node]: disabled controller skeleton: state_ready=1 inputs_fresh=1 internal_safe_tau_size=12 internal_safe_tau_max_abs=0.000000 clamp_applied=0 torque_publisher_enabled=0 uses_safety_utilities=1
+[INFO] [1780469786.698130318] [rclcpp]: signal_handler(SIGINT/SIGTERM)

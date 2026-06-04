@@ -1,0 +1,16 @@
+check,value,expected,pass,detail
+adapter_qpos_roundtrip,0.0,<=1e-12,True,
+adapter_qvel_roundtrip,0.0,<=1e-12,True,
+adapter_torque_roundtrip,0.0,<=1e-12,True,
+stage07_script_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py
+stage07_subprocess_returncode,0,0,True,
+stage07_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test_summary.csv
+stage07_pass,True,True,True,
+stage07_pass_margin,True,True,True,
+stage07_qp_fail_steps,0.0,0,True,
+stage07_saturation_steps,0.0,0,True,
+stage07_max_tau_total_abs_within_limit,9.659563043535,<=23.7,True,
+stage07_min_z_margin,0.278419161322,>=0.22,True,
+stage07_roll_bound_guard,0.056707402709,<=0.08,True,
+stage07_pitch_bound_guard,0.04832948253,<=0.08,True,
+stage07_joint_error_guard,0.077233662573,<=0.12,True,

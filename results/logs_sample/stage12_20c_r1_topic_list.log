@@ -1,0 +1,8 @@
+/go1/base_state [std_msgs/msg/Float64MultiArray]
+/go1/foot_contacts [std_msgs/msg/Int32MultiArray]
+/go1/imu [sensor_msgs/msg/Imu]
+/go1/joint_states [sensor_msgs/msg/JointState]
+/go1/joint_torque_cmd [std_msgs/msg/Float64MultiArray]
+/go1/sim_time [std_msgs/msg/Float64]
+/parameter_events [rcl_interfaces/msg/ParameterEvent]
+/rosout [rcl_interfaces/msg/Log]

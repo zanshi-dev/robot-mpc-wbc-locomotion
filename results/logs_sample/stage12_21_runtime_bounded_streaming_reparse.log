@@ -1,0 +1,58 @@
+{
+  "stage": "12.20D-R1",
+  "name": "reparse_existing_stage1220d_evidence_with_case_insensitive_param_success",
+  "timestamp": "2026-06-03T17:25:20",
+  "pass": false,
+  "fail_reasons": [
+    "stream message count not in 1..30: 0",
+    "not all stream payloads have length 12: lengths=[]",
+    "not all stream payload values are finite",
+    "not all stream payload values are zero-safe"
+  ],
+  "original_stage1220d_pass": false,
+  "original_stage1220d_fail_reasons": [
+    "parameter set log does not show successful four-flag activation",
+    "stream message count not in 1..30: 0",
+    "not all stream payloads have length 12: lengths=[]",
+    "not all stream payload values are finite",
+    "not all stream payload values are zero-safe"
+  ],
+  "node_seen": true,
+  "param_set_ok": true,
+  "param_command_results": {
+    "set continuous_torque_streaming_max_ticks=10": true,
+    "set continuous_torque_streaming_max_duration_sec=1.5": true,
+    "set enable_torque_publisher=true": true,
+    "set confirm_torque_publisher_enable=true": true,
+    "set enable_continuous_torque_streaming=true": true,
+    "set confirm_continuous_torque_streaming=true": true,
+    "fail-closed revert confirm_continuous_torque_streaming=false": true,
+    "fail-closed revert enable_continuous_torque_streaming=false": true,
+    "fail-closed revert confirm_torque_publisher_enable=false": true,
+    "fail-closed revert enable_torque_publisher=false": true
+  },
+  "stream_message_count": 0,
+  "stream_message_count_in_1_to_30": false,
+  "stream_payload_lengths": [],
+  "all_stream_payloads_length_12": false,
+  "all_stream_payload_values_finite": false,
+  "all_stream_payload_values_zero_safe": false,
+  "final_flags_false": true,
+  "after_stop_echo_returncode": 124,
+  "after_stop_echo_timeout": true,
+  "after_stop_echo_has_data": false,
+  "continuous_torque_streaming_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "hardware_deployment_completed": false,
+  "control_law_changed": false,
+  "logs": {
+    "original_summary": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_runtime_bounded_streaming_regression_summary.json",
+    "stream_echo_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_stream_echo.log",
+    "after_stop_echo_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_after_stop_echo.log",
+    "param_set_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_param_set.log",
+    "param_final_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_param_final.log",
+    "node_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_node.log",
+    "node_list_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_node_list.log"
+  }
+}

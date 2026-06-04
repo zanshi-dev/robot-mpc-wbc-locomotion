@@ -1,0 +1,45 @@
+# PROJECT_STATUS
+
+## Project
+robot-mpc-wbc-locomotion
+
+## Current Stage
+Stage 0: MuJoCo torque control validation
+
+## Completed
+- Repository initialized.
+- Minimal MuJoCo torque-control demo scaffold prepared.
+
+## Current Goal
+Run a minimal MuJoCo torque control demo that loads an MJCF model, reads qpos/qvel/body/contact states, sends torque commands, and logs simulation data.
+
+## Current Problem
+Data missing:
+- Go1 MJCF path is not provided.
+- Local MuJoCo/Python versions are not confirmed.
+
+## Environment
+- OS:
+- Python:
+- MuJoCo:
+- C++ compiler:
+- ROS2:
+- Pinocchio:
+- OSQP:
+- Eigen:
+- CMake:
+
+## Repository Structure
+
+```text
+robot-mpc-wbc-locomotion/
+├── README.md
+├── PROJECT_STATUS.md
+├── docs/
+├── scripts/
+├── src/
+├── config/
+├── assets/
+├── ros2_ws/
+└── results/
+

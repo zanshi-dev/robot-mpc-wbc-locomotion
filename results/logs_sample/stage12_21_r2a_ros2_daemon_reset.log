@@ -1,0 +1,4 @@
+ros2 daemon stop
+The daemon has been stopped
+ros2 daemon start
+The daemon has been started

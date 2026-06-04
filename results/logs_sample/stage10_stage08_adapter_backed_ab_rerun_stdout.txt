@@ -1,0 +1,5 @@
+[Stage 8.3] adapter-backed Stage 7 baseline A/B test
+pass=True
+log_csv=results/logs_sample/stage08_adapter_backed_stage07_baseline_ab_test_log.csv
+summary_csv=results/logs_sample/stage08_adapter_backed_stage07_baseline_ab_test_summary.csv
+doc=docs/STAGE08_ADAPTER_BACKED_STAGE07_BASELINE_AB_TEST.md

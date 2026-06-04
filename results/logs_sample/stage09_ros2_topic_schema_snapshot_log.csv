@@ -1,0 +1,25 @@
+check,value,expected,pass,detail
+stage90_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_ros2_cpp_interface_contract_inventory_summary.csv
+stage90_pass,True,True,True,
+bridge_package_found,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_bridge
+topic_found_/go1/joint_states,True,True,True,"[{""file"": ""ros2_ws/src/robot_mpc_wbc_bridge/robot_mpc_wbc_bridge/mujoco_bridge_node.py"", ""direction"": ""publish"", ""topic"": ""/go1/joint_states"", ""type_expr"": ""JointState"", ""ros_type"": ""sensor_msgs/msg/JointState""}]"
+type_inferred_/go1/joint_states,True,True,True,sensor_msgs/msg/JointState
+schema_available_/go1/joint_states,True,True,True,
+topic_found_/go1/base_state,True,True,True,"[{""file"": ""ros2_ws/src/robot_mpc_wbc_bridge/robot_mpc_wbc_bridge/mujoco_bridge_node.py"", ""direction"": ""publish"", ""topic"": ""/go1/base_state"", ""type_expr"": ""Float64MultiArray"", ""ros_type"": ""std_msgs/msg/Float64MultiArray""}]"
+type_inferred_/go1/base_state,True,True,True,std_msgs/msg/Float64MultiArray
+schema_available_/go1/base_state,True,True,True,
+topic_found_/go1/imu,True,True,True,"[{""file"": ""ros2_ws/src/robot_mpc_wbc_bridge/robot_mpc_wbc_bridge/mujoco_bridge_node.py"", ""direction"": ""publish"", ""topic"": ""/go1/imu"", ""type_expr"": ""Imu"", ""ros_type"": ""sensor_msgs/msg/Imu""}]"
+type_inferred_/go1/imu,True,True,True,sensor_msgs/msg/Imu
+schema_available_/go1/imu,True,True,True,
+topic_found_/go1/foot_contacts,True,True,True,"[{""file"": ""ros2_ws/src/robot_mpc_wbc_bridge/robot_mpc_wbc_bridge/mujoco_bridge_node.py"", ""direction"": ""publish"", ""topic"": ""/go1/foot_contacts"", ""type_expr"": ""Int32MultiArray"", ""ros_type"": ""std_msgs/msg/Int32MultiArray""}]"
+type_inferred_/go1/foot_contacts,True,True,True,std_msgs/msg/Int32MultiArray
+schema_available_/go1/foot_contacts,True,True,True,
+topic_found_/go1/sim_time,True,True,True,"[{""file"": ""ros2_ws/src/robot_mpc_wbc_bridge/robot_mpc_wbc_bridge/mujoco_bridge_node.py"", ""direction"": ""publish"", ""topic"": ""/go1/sim_time"", ""type_expr"": ""Float64"", ""ros_type"": ""std_msgs/msg/Float64""}]"
+type_inferred_/go1/sim_time,True,True,True,std_msgs/msg/Float64
+schema_available_/go1/sim_time,True,True,True,
+topic_found_/go1/joint_torque_cmd,True,True,True,"[{""file"": ""ros2_ws/src/robot_mpc_wbc_bridge/robot_mpc_wbc_bridge/mujoco_bridge_node.py"", ""direction"": ""subscribe"", ""topic"": ""/go1/joint_torque_cmd"", ""type_expr"": ""Float64MultiArray"", ""ros_type"": ""std_msgs/msg/Float64MultiArray""}]"
+type_inferred_/go1/joint_torque_cmd,True,True,True,std_msgs/msg/Float64MultiArray
+schema_available_/go1/joint_torque_cmd,True,True,True,
+all_expected_topics_found,6,6,True,
+all_topic_types_inferred,6,6,True,
+all_topic_schemas_available,6,6,True,

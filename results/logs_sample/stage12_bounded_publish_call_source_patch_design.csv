@@ -1,0 +1,16 @@
+item,value,applied_in_stage1212,allowed_in_future_patch_stage,guard,description
+stage12_scope,bounded_publish_call_source_patch_design_only,False,True,Stage 12.12 must not edit C++ source and must not add publish call,Only records the future bounded publish-call source patch design.
+future_patch_target,ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp,False,True,source hash must be checked before and after future patch,Future source patch target.
+future_stage_marker,kStage1213BoundedPublishCallImplemented = true; kStage1213ContinuousPublishImplemented = false,False,True,marker must explicitly distinguish bounded publish from continuous streaming,Future stage marker.
+future_publish_helper,publishBoundedZeroSafeTorqueOnceIfAllowed(),False,True,helper may contain the only allowed publish call in the future patch,Future bounded publish helper.
+future_message_helper,makeStage1213ZeroSafeTorqueCommandMessage(),False,True,message helper must return Float64MultiArray length 12,Future zero/safe message construction helper.
+future_publish_call_site,active_torque_cmd_publisher_->publish(msg),False,True,future patch must allow exactly one bounded publish site,Future publish call site.
+future_precondition_gate,manual flags true && active_torque_cmd_publisher_ != nullptr && state_ready && allInputsFresh(...),False,True,publish helper must return false without publishing if gate fails,Future runtime gate.
+future_safety_chain,watchdogFallbackZeroTorque then clampTorqueCommand before Float64MultiArray conversion,False,True,no raw unclamped torque may reach the message,Future safety chain.
+future_payload_contract,"length=12; finite; zero/safe torque; order FR,FL,RR,RL hip,thigh,calf",False,True,invalid payload must abort or publish nothing,Future message contract.
+future_publish_count_limit,max 1 message in first implementation stage,False,True,continuous or timer-based streaming forbidden in first patch,Future bounded publish limit.
+future_no_timer_loop_rule,no periodic torque publisher timer in bounded first publish stage,False,True,timer-based continuous publication requires later stage,Future streaming prevention rule.
+future_no_control_law_change_rule,"do not modify estimator, MPC, WBC, gait, or baseline control computation",False,True,future diff must be limited to publish-gated output path,Future source patch boundary.
+future_runtime_evidence,manual flags true; one message echoed; payload length 12; all finite; flags reverted,False,True,future publish stage must collect runtime evidence,Future evidence requirements.
+future_revert_procedure,set confirm flag false; set enable flag false; stop controller,False,True,future script must fail closed in finally block,Future cleanup rule.
+future_abort_conditions,unexpected source hash; more than one publish site; timer loop; payload invalid; message count unexpected; controller exits,False,True,future implementation must abort before publishing if any check fails,Future abort policy.

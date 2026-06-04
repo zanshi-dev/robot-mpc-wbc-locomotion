@@ -1,0 +1,25 @@
+check,value,expected,pass,detail
+Stage 9.0_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_ros2_cpp_interface_contract_inventory_summary.csv
+Stage 9.0_pass,True,True,True,
+Stage 9.1_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_ros2_topic_schema_snapshot_summary.csv
+Stage 9.1_pass,True,True,True,
+Stage 9.2_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_python_baseline_ros2_field_mapping_summary.csv
+Stage 9.2_pass,True,True,True,
+Stage 9.3_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_ros2_cpp_interface_mirror_skeleton_check_summary.csv
+Stage 9.3_pass,True,True,True,
+Stage 9.4_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_ros2_runtime_mirror_smoke_test_summary.csv
+Stage 9.4_pass,True,True,True,
+Stage 9.5_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_cpp_mirror_contract_report_summary.csv
+Stage 9.5_pass,True,True,True,
+Stage 9.6_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_cpp_mirror_runtime_contract_guard_summary.csv
+Stage 9.6_pass,True,True,True,
+control_law_changed_any,False,False,True,
+torque_published_any,False,False,True,
+ros2_cpp_realtime_controller_completed_any,False,False,True,
+pure_wbc_locomotion_completed_any,False,False,True,
+ekf_completed_any,False,False,True,
+stage94_torque_cmd_publisher_count_zero,0,0,True,
+stage96_torque_cmd_publishers_all_zero,True,True,True,
+stage96_source_has_no_create_publisher,True,True,True,
+stage96_source_has_no_publish_call,True,True,True,
+freeze_files_missing_count,0,0,True,

@@ -1,0 +1,6 @@
+Starting >>> robot_mpc_wbc_bridge
+Starting >>> robot_mpc_wbc_cpp_interface
+Finished <<< robot_mpc_wbc_cpp_interface [0.25s]
+Finished <<< robot_mpc_wbc_bridge [1.01s]
+
+Summary: 2 packages finished [1.10s]

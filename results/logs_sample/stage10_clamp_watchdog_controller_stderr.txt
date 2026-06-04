@@ -1,0 +1,3 @@
+[INFO] [1780469674.755214968] [go1_disabled_controller_node]: Go1 disabled C++ controller skeleton started. No torque publisher is created.
+[INFO] [1780469675.755304891] [go1_disabled_controller_node]: disabled controller skeleton: state_ready=1 zero_torque_size=12 torque_publisher_enabled=0 no_publish_call=1
+[INFO] [1780469678.863531692] [rclcpp]: signal_handler(SIGINT/SIGTERM)

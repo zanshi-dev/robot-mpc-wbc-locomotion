@@ -1,0 +1,50 @@
+header:
+  stamp:
+    sec: 1780468953
+    nanosec: 536239231
+  frame_id: trunk
+orientation:
+  x: 0.00030133389677606127
+  y: -0.9999999526344818
+  z: 3.055377201423665e-05
+  w: -5.473011092233897e-05
+orientation_covariance:
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+angular_velocity:
+  x: 6.505424842007552e-10
+  y: 2.108424416002131e-08
+  z: -7.869217561744497e-11
+angular_velocity_covariance:
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+linear_acceleration:
+  x: 0.0
+  y: 0.0
+  z: 0.0
+linear_acceleration_covariance:
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+---
+\nSTDERR:\n

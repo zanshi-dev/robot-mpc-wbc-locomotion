@@ -1,0 +1,12 @@
+item,value,implemented_in_stage1211,allowed_in_future_bounded_publish_stage,guard,description
+stage12_scope,bounded_zero_safe_publish_call_implementation_plan_only,False,True,Stage 12.11 must not edit C++ source and must not add publish call,Only records the future bounded zero/safe publish-call implementation plan.
+future_publish_call_limit,one-shot or bounded finite count; no continuous torque streaming,False,True,Continuous publishing requires a later separate stage,Future first publish stage must be bounded.
+future_publish_payload,zero or watchdog-safe torque only; Float64MultiArray length=12; all finite,False,True,Invalid payload must abort or fall back to zero,First published payload must be safe and bounded.
+future_payload_order,"Go1 actuator order FR,FL,RR,RL hip,thigh,calf",False,True,Order mismatch must abort future publish test,Payload ordering contract.
+future_preconditions,active publisher exists && manual flags true && state_ready && inputs_fresh,False,True,"If any precondition is false, publish is forbidden",Runtime conditions before any future publish call.
+future_safety_chain,watchdogFallbackZeroTorque then clampTorqueCommand before message conversion,False,True,No raw unclamped torque may be published,Safety processing required before future publication.
+future_source_patch_boundary,future diff limited to publish-gated output path and Stage 12 publish markers,False,True,"No control law, estimator, MPC, or WBC logic changes",Future source patch must be minimal.
+future_runtime_evidence,topic echo receives bounded message count; payload length=12; finite; zero/safe; params reverted,False,True,Missing runtime evidence aborts future publish stage,Evidence required after future bounded publish test.
+future_revert_procedure,set confirm_torque_publisher_enable false; set enable_torque_publisher false; stop controller,False,True,Revert must run in finally block,Fail-closed cleanup for future publish test.
+future_abort_conditions,unexpected source hash; publish call outside allowed block; param set failure; controller exit; invalid payload; unexpected message count,False,True,Future publish script must fail closed,Abort policy for future bounded publish implementation.
+future_stage_boundary,bounded publish test is not realtime controller completion and not hardware deployment,False,True,"Do not claim pure WBC, EKF, full MPC, or realtime controller completion",Explicit scope boundary.

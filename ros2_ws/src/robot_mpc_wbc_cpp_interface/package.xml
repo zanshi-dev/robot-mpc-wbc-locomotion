@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>robot_mpc_wbc_cpp_interface</name>
+  <version>0.0.1</version>
+  <description>C++ ROS2 interface mirror skeleton for robot-mpc-wbc-locomotion. No control law is implemented.</description>
+
+  <maintainer email="2645694430@qq.com">zanshi</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

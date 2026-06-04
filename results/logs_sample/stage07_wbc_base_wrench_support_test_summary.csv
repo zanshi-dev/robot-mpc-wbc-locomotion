@@ -1,0 +1,2 @@
+sim_steps,kp,kd,torque_limit,initial_z,final_z,min_z,max_z,delta_z,max_abs_roll,max_abs_pitch,max_tau_pd_abs,max_tau_wbc_abs,max_tau_total_abs,saturation_steps,pass,torque_source
+1000,80.0,2.0,23.7,0.284805846483,0.296097865333,0.284697187237,0.306443647985,0.011292018850,0.142713128163,0.027806141378,14.174824804721,5.309219364818,8.865605439903,0,True,stage07_wbc_base_wrench_qp

@@ -1,0 +1,4 @@
+pkill go1_disabled_controller_node
+pkill stage12_21_r2_subscriber_capture.py
+pkill stage12_21_r2_joint_torque_capture
+pkill ros2 topic echo /go1/joint_torque_cmd

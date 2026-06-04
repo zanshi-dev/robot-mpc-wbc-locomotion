@@ -1,0 +1,9 @@
+patch_item,planned_value,applied_in_stage122,allowed_in_future_construction_stage,guard,description
+target_source,ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp,False,True,source hash must be checked before and after construction stage,Future patch target. Stage 12.2 does not edit it.
+future_include_dependency,std_msgs/msg/float64_multi_array.hpp,False,True,header is already present; no source patch needed in Stage 12.2,Message type needed by future publisher.
+future_publisher_member,rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr active_torque_cmd_publisher_,False,True,member alone must not imply publish call,Future publisher handle.
+future_publisher_topic,/go1/joint_torque_cmd,False,True,topic string must appear only in explicit construction stage,Future active publisher topic.
+future_create_publisher_call,create_publisher<std_msgs::msg::Float64MultiArray>,False,True,construction stage must still forbid publish call,Future publisher construction only; not a torque publish stage.
+future_publish_call,forbidden,False,False,no .publish( or ->publish( in construction source patch,Publish call must remain absent in the construction stage.
+future_runtime_default,"manual flags false, publisher count remains 0",False,True,runtime topic observations required after construction patch,Future construction patch must remain default-disabled.
+future_abort_policy,"abort on hash mismatch, publish call, topic count anomaly, parameter default violation",False,True,construction script must fail closed,Safety policy for later implementation stage.

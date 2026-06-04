@@ -1,0 +1,9 @@
+missing results/logs_sample/stage12_21_r2_subscriber_warmup_bounded_streaming_rerun_summary.json
+missing docs/stage12_21_r2_subscriber_warmup_bounded_streaming_rerun.md
+missing results/logs_sample/stage12_21_r2_capture.json
+missing results/logs_sample/stage12_21_r2_after_stop_capture.json
+exists size=155 results/logs_sample/stage12_21_r2_capture.log
+exists size=0 results/logs_sample/stage12_21_r2_after_stop_capture.log
+exists size=511 results/logs_sample/stage12_21_r2_param_set.log
+exists size=0 results/logs_sample/stage12_21_r2_param_final.log
+exists size=26638 results/logs_sample/stage12_21_r2_node.log

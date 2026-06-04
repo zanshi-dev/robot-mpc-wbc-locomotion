@@ -1,0 +1,17 @@
+check,value,expected,pass,detail
+stage92_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_python_baseline_ros2_field_mapping_summary.csv
+stage92_pass,True,True,True,
+exists_ros2_ws/src/robot_mpc_wbc_cpp_interface,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_interface
+exists_ros2_ws/src/robot_mpc_wbc_cpp_interface/package.xml,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_interface/package.xml
+exists_ros2_ws/src/robot_mpc_wbc_cpp_interface/CMakeLists.txt,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_interface/CMakeLists.txt
+exists_ros2_ws/src/robot_mpc_wbc_cpp_interface/src/interface_mirror_node.cpp,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_interface/src/interface_mirror_node.cpp
+exists_ros2_ws/src/robot_mpc_wbc_cpp_interface/launch/interface_mirror.launch.py,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_interface/launch/interface_mirror.launch.py
+subscription_topic_found_/go1/joint_states,True,True,True,
+subscription_topic_found_/go1/base_state,True,True,True,
+subscription_topic_found_/go1/imu,True,True,True,
+subscription_topic_found_/go1/foot_contacts,True,True,True,
+subscription_topic_found_/go1/sim_time,True,True,True,
+subscription_topic_found_/go1/joint_torque_cmd,True,True,True,
+no_torque_command_publisher,False,False,True,
+no_publish_call_in_skeleton,False,False,True,
+colcon_build_returncode,0,0,True,

@@ -1,0 +1,25 @@
+metric,value
+stage,Stage 8.2
+test_name,adapter_zero_control_regression_guard
+adapter_module,scripts/common/go1_runtime_interface.py
+stage07_script,scripts/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py
+stage07_summary,results/logs_sample/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test_summary.csv
+adapter_qpos_roundtrip_max_abs,0.0
+adapter_qvel_roundtrip_max_abs,0.0
+adapter_torque_roundtrip_max_abs,0.0
+stage07_pass,True
+stage07_pass_margin,True
+stage07_qp_fail_steps,0.0
+stage07_saturation_steps,0.0
+stage07_min_z,0.278419161322
+stage07_max_abs_roll,0.056707402709
+stage07_max_abs_pitch,0.04832948253
+stage07_max_joint_error,0.077233662573
+stage07_max_tau_total_abs,9.659563043535
+num_checks,15
+num_failed_checks,0
+pass,True
+log_csv,results/logs_sample/stage08_adapter_zero_control_regression_guard_log.csv
+summary_csv,results/logs_sample/stage08_adapter_zero_control_regression_guard_summary.csv
+stage07_stdout,results/logs_sample/stage08_adapter_zero_control_regression_guard_stage07_stdout.txt
+stage07_stderr,results/logs_sample/stage08_adapter_zero_control_regression_guard_stage07_stderr.txt

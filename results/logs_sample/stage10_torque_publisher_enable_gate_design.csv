@@ -1,0 +1,13 @@
+item,value,required,implemented_in_stage105,description
+manual_enable_flag_name,enable_torque_publisher,True,False,Future ROS2 parameter. Must default to false. Stage 10.5 only designs it.
+manual_enable_default,false,True,False,Torque publisher must remain disabled unless explicitly enabled by manual parameter.
+second_confirm_flag_name,confirm_torque_publisher_enable,True,False,Future second independent confirmation parameter. Must default to false.
+publisher_topic,/go1/joint_torque_cmd,True,False,Future publisher topic. Must not appear in Stage 10.5 C++ source.
+message_type,std_msgs/msg/Float64MultiArray,True,False,Future torque command message type. Data length must be 12.
+torque_vector_length,12,True,False,"Must match MuJoCo actuator order FR, FL, RR, RL with hip, thigh, calf per leg."
+startup_policy,disabled,True,False,No torque publisher at startup unless all gates pass and manual flags are true.
+clamp_policy,hard limit per joint plus finite check,True,False,Future implementation must reject NaN/Inf and clamp absolute torque per joint.
+watchdog_policy,state freshness timeout then zero torque,True,False,Future implementation must command zero torque internally if state is stale.
+publish_rate_policy,fixed timer only after state valid,True,False,Future publisher must not publish before all required state topics are valid.
+first_publisher_stage_allowed,not earlier than Stage 10.6,True,False,Stage 10.5 does not create publisher. Future Stage 10.6 may only add disabled publisher skeleton after explicit instruction.
+control_law_policy,unchanged,True,True,Stage 10.5 does not alter control law.

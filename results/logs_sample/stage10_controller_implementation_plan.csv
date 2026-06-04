@@ -1,0 +1,6 @@
+stage,name,allowed,torque_publisher_enabled,control_law_changed,description,exit_criteria
+Stage 10.1,disabled controller skeleton,True,False,False,Create C++ controller skeleton with subscriptions and internal state cache only. No torque publisher.,Build passes; source check confirms no create_publisher and no publish call.
+Stage 10.2,state cache and schema validator,True,False,False,Mirror joint/base/imu/contact/sim_time into C++ state cache and validate sizes/orders.,Runtime guard shows topic schema stable; no torque publisher.
+Stage 10.3,zero torque dry-run command object,True,False,False,Compute internal zero torque vector but do not publish it.,Internal vector length 12; no ROS publisher; logs only.
+Stage 10.4,Python baseline replay comparison,True,False,False,Compare C++ state cache observations against Stage 8 frozen Python baseline logs.,Field/order checks pass; no controller output used.
+Stage 10.5,torque publisher enable proposal,False,False,False,Only prepare proposal and explicit gate conditions. Do not enable publisher.,Manual approval required before any torque publisher appears in source.

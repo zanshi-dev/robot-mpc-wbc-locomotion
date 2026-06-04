@@ -1,0 +1,22 @@
+metric,value
+stage,Stage 9.2
+test_name,python_baseline_ros2_field_mapping
+stage91_pass,True
+field_mapping_rows,11
+all_types_match_stage91_schema,True
+stage8_adapter_exists,True
+stage8_entrypoint_exists,True
+bridge_source_exists,True
+control_law_changed,False
+stage9_scope,field_mapping_table_only
+baseline_type,mixed_online_control_baseline
+pure_wbc_locomotion_completed,False
+ros2_cpp_realtime_controller_completed,False
+ekf_completed,False
+full_3d_centroidal_mpc_completed,False
+num_checks,17
+num_failed_checks,0
+pass,True
+log_csv,results/logs_sample/stage09_python_baseline_ros2_field_mapping_log.csv
+field_map_csv,results/logs_sample/stage09_python_baseline_ros2_field_mapping.csv
+summary_csv,results/logs_sample/stage09_python_baseline_ros2_field_mapping_summary.csv

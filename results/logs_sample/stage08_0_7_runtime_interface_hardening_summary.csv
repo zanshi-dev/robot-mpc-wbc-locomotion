@@ -1,0 +1,16 @@
+metric,value
+stage,Stage 8.8
+test_name,stage08_0_7_runtime_interface_hardening_summary
+summary_doc,docs/STAGE08_0_7_RUNTIME_INTERFACE_HARDENING_SUMMARY.md
+recommended_entrypoint,scripts/stage08_adapter_backed_stage07_recommended_test.py
+recommended_command,/usr/bin/python3 scripts/stage08_adapter_backed_stage07_recommended_test.py
+stage80_to_stage87_completed,True
+runtime_adapter_module,scripts/common/go1_runtime_interface.py
+active_high_severity_findings_after_refactor,0
+control_law_changed,False
+baseline_type,mixed_online_control_baseline
+pure_wbc_locomotion_completed,False
+ros2_cpp_realtime_controller_completed,False
+ekf_completed,False
+full_3d_centroidal_mpc_completed,False
+pass,True

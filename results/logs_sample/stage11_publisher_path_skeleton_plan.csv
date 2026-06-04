@@ -1,0 +1,11 @@
+item,value,implemented_in_stage110,required_before_publish,description
+publisher_path_stage,not earlier than Stage 11.2,False,True,Stage 11.0 only plans the publisher path. No C++ publisher is added.
+publisher_topic,/go1/joint_torque_cmd,False,True,Future publisher topic. Must remain absent from controller source in Stage 11.0.
+publisher_msg_type,std_msgs/msg/Float64MultiArray,False,True,Future publisher message type.
+publisher_default_state,not constructed,False,True,Stage 11.0 does not construct a publisher object.
+manual_gate_policy,enable_torque_publisher && confirm_torque_publisher_enable,False,True,Future path must require both manual flags true.
+state_gate_policy,state_ready && inputs_fresh,False,True,Future publishing must require valid and fresh state.
+safety_filter_policy,zero fallback then clampTorqueCommand,False,True,Future publishing must use watchdog fallback and clamp utility.
+publish_payload_length,12,False,True,Future payload must match 12 MuJoCo actuators.
+actuator_order,"FR,FL,RR,RL each hip,thigh,calf",False,True,Future payload order must match MuJoCo actuator order.
+first_runtime_policy,observe-only until separate disabled-publisher skeleton stage passes,False,True,No torque command publish in Stage 11.0.

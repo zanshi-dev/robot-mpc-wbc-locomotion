@@ -1,0 +1,10 @@
+item,value,applied_in_stage126,allowed_in_future_activation_stage,guard,description
+stage12_scope,manual_enable_activation_design_only,False,True,Stage 12.6 must not set runtime params true,Only records the future activation protocol.
+future_enable_param,enable_torque_publisher := true,False,True,Can only be set in a later explicit runtime activation stage,First manual confirmation flag.
+future_confirm_param,confirm_torque_publisher_enable := true,False,True,Can only be set in a later explicit runtime activation stage,Second manual confirmation flag.
+future_activation_commands,ros2 param set /go1_disabled_controller_node enable_torque_publisher true; ros2 param set /go1_disabled_controller_node confirm_torque_publisher_enable true,False,True,Commands are documentation only in Stage 12.6,Future runtime-only activation commands.
+future_no_source_change_rule,manual activation stage must not edit C++ source,False,True,source hash before/after must match,Manual activation is runtime-only.
+future_no_publish_rule,manual activation stage must still forbid .publish( and ->publish(,False,True,source must still contain no publish call,Manual enable does not imply torque command publishing.
+future_runtime_observation,publisher count positive; params true; no torque command publishing,False,True,runtime observations required after activation,Future activation stage must observe params and topic state.
+future_revert_procedure,set confirm_torque_publisher_enable false; set enable_torque_publisher false,False,True,must be available before activation test,Fail-closed revert sequence.
+future_abort_conditions,publish call appears; source hash changes; param set fails; unexpected topic count; controller exits,False,True,future activation script must fail closed,Abort policy for later activation stage.

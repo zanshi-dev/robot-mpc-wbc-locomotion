@@ -1,0 +1,29 @@
+{
+  "stage": "12.21-R2A",
+  "name": "cleanup_and_failed_capture_inspection_before_rerun",
+  "timestamp": "2026-06-03T17:34:09",
+  "pass": true,
+  "fail_reasons": [],
+  "source_changed": false,
+  "inspection_only": true,
+  "node_before_returncode": 0,
+  "node_after_returncode": 0,
+  "duplicate_warning_before": true,
+  "duplicate_warning_after": false,
+  "target_process_after_count": 0,
+  "go1_node_after_count": 0,
+  "capture_node_after_count": 0,
+  "r2_summary_exists": true,
+  "r2_capture_exists": true,
+  "r2_after_stop_capture_exists": true,
+  "recommended_next_stage": "Stage 12.21-R2B robust subscriber-warmup rerun with pre-cleanup and always-write summary; no source change",
+  "logs": {
+    "processes_before": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2a_processes_before_cleanup.log",
+    "processes_after": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2a_processes_after_cleanup.log",
+    "nodes_before": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2a_nodes_before_cleanup.log",
+    "nodes_after": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2a_nodes_after_cleanup.log",
+    "daemon_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2a_ros2_daemon_reset.log",
+    "kill_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2a_kill.log",
+    "r2_file_status": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_r2a_r2_file_status.log"
+  }
+}

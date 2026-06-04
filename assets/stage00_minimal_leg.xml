@@ -1,0 +1,38 @@
+<mujoco model="stage00_minimal_leg">
+  <compiler angle="radian"/>
+  <option timestep="0.002" gravity="0 0 -9.81"/>
+
+  <default>
+    <joint damping="0.1" armature="0.01"/>
+    <geom friction="1.0 0.005 0.0001"/>
+  </default>
+
+  <worldbody>
+    <light name="top_light" pos="0 0 2"/>
+    <geom name="floor" type="plane" size="3 3 0.05" rgba="0.8 0.8 0.8 1"/>
+
+    <body name="base" pos="0 0 0.45">
+      <freejoint name="base_free"/>
+      <geom name="base_geom" type="box" size="0.12 0.06 0.035" mass="2.0" rgba="0.2 0.3 0.8 1"/>
+
+      <body name="upper_leg" pos="0 0 -0.02">
+        <joint name="hip_joint" type="hinge" axis="0 1 0" range="-1.5 1.5" limited="true"/>
+        <geom name="upper_leg_geom" type="capsule" fromto="0 0 0 0 0 -0.20" size="0.018" mass="0.25" rgba="0.8 0.3 0.2 1"/>
+
+        <body name="lower_leg" pos="0 0 -0.20">
+          <joint name="knee_joint" type="hinge" axis="0 1 0" range="-2.5 0.2" limited="true"/>
+          <geom name="lower_leg_geom" type="capsule" fromto="0 0 0 0 0 -0.20" size="0.015" mass="0.20" rgba="0.2 0.7 0.3 1"/>
+
+          <body name="foot" pos="0 0 -0.20">
+            <geom name="foot_geom" type="sphere" size="0.03" mass="0.05" rgba="0.1 0.1 0.1 1"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor name="hip_motor" joint="hip_joint" gear="1" ctrllimited="true" ctrlrange="-5 5"/>
+    <motor name="knee_motor" joint="knee_joint" gear="1" ctrllimited="true" ctrlrange="-5 5"/>
+  </actuator>
+</mujoco>

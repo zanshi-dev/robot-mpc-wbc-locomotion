@@ -1,0 +1,23 @@
+{
+  "stage": "13.5A-R1",
+  "name": "mujoco_offscreen_rollout_video_640fb",
+  "timestamp": "2026-06-04T11:13:50",
+  "pass": false,
+  "fail_reasons": [
+    "backend glfw failed with returncode 1",
+    "backend egl failed with returncode 1",
+    "backend osmesa failed with returncode 1"
+  ],
+  "attempt_logs": [
+    "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_5a_r1_backend_glfw_attempt.log",
+    "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_5a_r1_backend_egl_attempt.log",
+    "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_5a_r1_backend_osmesa_attempt.log"
+  ],
+  "simulation_only_project": true,
+  "hardware_deployment_scope": "out_of_scope_by_user_constraint",
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "video_path": "/home/zanshi/robot-mpc-wbc-locomotion/demo_videos/stage13_5a_r1_mujoco_offscreen_2400step_mixed_baseline_demo_720p.mp4"
+}

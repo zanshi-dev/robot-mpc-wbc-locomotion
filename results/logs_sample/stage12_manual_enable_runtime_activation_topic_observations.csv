@@ -1,0 +1,7 @@
+phase,sample_index,topic,topic_info_returncode,publisher_count,subscription_count,publisher_count_positive,subscription_count_positive
+initial,0,/go1/joint_torque_cmd,0,1,1,True,True
+initial,1,/go1/joint_torque_cmd,0,1,1,True,True
+activated,0,/go1/joint_torque_cmd,0,1,1,True,True
+activated,1,/go1/joint_torque_cmd,0,1,1,True,True
+activated,2,/go1/joint_torque_cmd,0,1,1,True,True
+activated,3,/go1/joint_torque_cmd,0,1,1,True,True

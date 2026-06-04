@@ -1,0 +1,226 @@
+#!/usr/bin/env python3
+import csv
+from pathlib import Path
+
+import mujoco
+import numpy as np
+
+
+SCENE = "assets/go1/scene.xml"
+FORCE_CSV = "results/logs_sample/stage05_standing_contact_force_qp.csv"
+LOG_CSV = "results/logs_sample/stage06_qp_torque_support_test_log.csv"
+SUMMARY_CSV = "results/logs_sample/stage06_qp_torque_support_test_summary.csv"
+
+LEG_ORDER = ["FR", "FL", "RR", "RL"]
+STANDING_Q_PER_LEG = [0.0, 0.9, -1.8]
+
+KP = 80.0
+KD = 2.0
+TORQUE_LIMIT = 23.7
+SIM_STEPS = 1000
+
+
+def read_forces():
+    forces = {}
+    with open(FORCE_CSV, "r", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            leg = row["leg"].strip().upper()
+            if leg in LEG_ORDER:
+                forces[leg] = np.array(
+                    [float(row["fx"]), float(row["fy"]), float(row["fz"])],
+                    dtype=float,
+                )
+
+    missing = [leg for leg in LEG_ORDER if leg not in forces]
+    if missing:
+        raise RuntimeError(f"缺少这些腿的接触力: {missing}")
+
+    return forces
+
+
+def actuator_dofs(model):
+    dofs = []
+    qadrs = []
+    for act_id in range(model.nu):
+        jid = int(model.actuator_trnid[act_id, 0])
+        dofs.append(int(model.jnt_dofadr[jid]))
+        qadrs.append(int(model.jnt_qposadr[jid]))
+    return dofs, qadrs
+
+
+def set_standing_pose(model, data):
+    data.qpos[:] = 0.0
+    data.qvel[:] = 0.0
+    data.ctrl[:] = 0.0
+
+    data.qpos[0:3] = [0.0, 0.0, 0.32]
+    data.qpos[3:7] = [1.0, 0.0, 0.0, 0.0]
+
+    for act_id in range(model.nu):
+        jid = int(model.actuator_trnid[act_id, 0])
+        qadr = int(model.jnt_qposadr[jid])
+        data.qpos[qadr] = STANDING_Q_PER_LEG[act_id % 3]
+
+    mujoco.mj_forward(model, data)
+
+    site_ids = {}
+    for leg in LEG_ORDER:
+        sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)
+        if sid < 0:
+            raise RuntimeError(f"找不到 site: {leg}")
+        site_ids[leg] = sid
+
+    min_foot_z = min(float(data.site_xpos[site_ids[leg]][2]) for leg in LEG_ORDER)
+    data.qpos[2] += 0.02 - min_foot_z
+
+    mujoco.mj_forward(model, data)
+    return site_ids
+
+
+def quat_to_roll_pitch(q):
+    w, x, y, z = q
+    roll = np.arctan2(
+        2.0 * (w * x + y * z),
+        1.0 - 2.0 * (x * x + y * y),
+    )
+    pitch = np.arcsin(np.clip(2.0 * (w * y - z * x), -1.0, 1.0))
+    return float(roll), float(pitch)
+
+
+def compute_qp_actuator_torque(model, data, site_ids, forces, dofs):
+    tau_full = np.zeros(model.nv)
+
+    for leg in LEG_ORDER:
+        jacp = np.zeros((3, model.nv))
+        jacr = np.zeros((3, model.nv))
+        mujoco.mj_jacSite(model, data, jacp, jacr, site_ids[leg])
+
+        # 已确认符号约定：actuator_tau = - J^T f_qp
+        tau_full += jacp.T @ (-forces[leg])
+
+    return tau_full[dofs]
+
+
+def main():
+    model = mujoco.MjModel.from_xml_path(SCENE)
+    data = mujoco.MjData(model)
+
+    if model.nu != 12:
+        raise RuntimeError(f"期望 nu=12，实际 nu={model.nu}")
+
+    forces = read_forces()
+    site_ids = set_standing_pose(model, data)
+    dofs, qadrs = actuator_dofs(model)
+
+    q_des = data.qpos.copy()
+
+    rows = []
+    saturation_steps = 0
+
+    initial_z = float(data.qpos[2])
+    min_z = initial_z
+    max_z = initial_z
+    max_abs_roll = 0.0
+    max_abs_pitch = 0.0
+    max_tau_abs = 0.0
+    max_tau_pd_abs = 0.0
+    max_tau_qp_abs = 0.0
+
+    for step in range(SIM_STEPS):
+        tau_pd = np.zeros(model.nu)
+
+        for act_id in range(model.nu):
+            qadr = qadrs[act_id]
+            dadr = dofs[act_id]
+            tau_pd[act_id] = (
+                KP * (q_des[qadr] - data.qpos[qadr])
+                - KD * data.qvel[dadr]
+            )
+
+        tau_qp = compute_qp_actuator_torque(model, data, site_ids, forces, dofs)
+        tau_total_raw = tau_pd + tau_qp
+        tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)
+
+        saturated = bool(np.any(np.abs(tau_total_raw) > TORQUE_LIMIT))
+        saturation_steps += int(saturated)
+
+        data.ctrl[:] = tau_total
+        mujoco.mj_step(model, data)
+
+        roll, pitch = quat_to_roll_pitch(data.qpos[3:7])
+        base_z = float(data.qpos[2])
+
+        min_z = min(min_z, base_z)
+        max_z = max(max_z, base_z)
+        max_abs_roll = max(max_abs_roll, abs(roll))
+        max_abs_pitch = max(max_abs_pitch, abs(pitch))
+        max_tau_abs = max(max_tau_abs, float(np.max(np.abs(tau_total))))
+        max_tau_pd_abs = max(max_tau_pd_abs, float(np.max(np.abs(tau_pd))))
+        max_tau_qp_abs = max(max_tau_qp_abs, float(np.max(np.abs(tau_qp))))
+
+        rows.append({
+            "step": step,
+            "time": f"{data.time:.9f}",
+            "base_z": f"{base_z:.12f}",
+            "roll": f"{roll:.12f}",
+            "pitch": f"{pitch:.12f}",
+            "tau_pd_max_abs": f"{float(np.max(np.abs(tau_pd))):.12f}",
+            "tau_qp_max_abs": f"{float(np.max(np.abs(tau_qp))):.12f}",
+            "tau_total_max_abs": f"{float(np.max(np.abs(tau_total))):.12f}",
+            "saturated": str(saturated),
+        })
+
+    final_z = float(data.qpos[2])
+    pass_test = (
+        min_z > 0.22
+        and max_abs_roll < 0.15
+        and max_abs_pitch < 0.15
+        and saturation_steps == 0
+    )
+
+    summary = {
+        "sim_steps": SIM_STEPS,
+        "kp": KP,
+        "kd": KD,
+        "torque_limit": TORQUE_LIMIT,
+        "initial_z": f"{initial_z:.12f}",
+        "final_z": f"{final_z:.12f}",
+        "min_z": f"{min_z:.12f}",
+        "max_z": f"{max_z:.12f}",
+        "delta_z": f"{final_z - initial_z:.12f}",
+        "max_abs_roll": f"{max_abs_roll:.12f}",
+        "max_abs_pitch": f"{max_abs_pitch:.12f}",
+        "max_tau_pd_abs": f"{max_tau_pd_abs:.12f}",
+        "max_tau_qp_abs": f"{max_tau_qp_abs:.12f}",
+        "max_tau_total_abs": f"{max_tau_abs:.12f}",
+        "saturation_steps": saturation_steps,
+        "pass": str(pass_test),
+        "sign_convention": "tau_qp_actuator = - J^T f_qp",
+    }
+
+    Path(LOG_CSV).parent.mkdir(parents=True, exist_ok=True)
+
+    with open(LOG_CSV, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        writer.writeheader()
+        writer.writerows(rows)
+
+    with open(SUMMARY_CSV, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=list(summary.keys()))
+        writer.writeheader()
+        writer.writerow(summary)
+
+    print("Stage 6 QP torque support test")
+    for k, v in summary.items():
+        print(f"{k}={v}")
+
+    print(f"saved_log={LOG_CSV}")
+    print(f"saved_summary={SUMMARY_CSV}")
+
+    if not pass_test:
+        raise SystemExit(2)
+
+
+if __name__ == "__main__":
+    main()

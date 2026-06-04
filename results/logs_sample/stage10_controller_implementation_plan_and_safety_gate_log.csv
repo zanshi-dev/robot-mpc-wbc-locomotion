@@ -1,0 +1,16 @@
+check,value,expected,pass,detail
+stage8_freeze_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage08_freeze_integrity_check_summary.csv
+stage8_freeze_pass,True,True,True,
+stage8_control_law_changed,False,False,True,
+stage9_freeze_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_0_6_interface_mirror_freeze_summary.csv
+stage9_freeze_pass,True,True,True,
+stage9_interface_mirror_frozen,True,True,True,
+stage9_control_law_changed,False,False,True,
+stage9_torque_published,False,False,True,
+cpp_mirror_source_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_interface/src/interface_mirror_node.cpp
+cpp_mirror_source_has_no_create_publisher,False,False,True,
+cpp_mirror_source_has_no_publish_call,False,False,True,
+cpp_mirror_observes_torque_topic_only,True,True,True,
+torque_enable_ready,False,False,True,
+stage10_control_law_changed,False,False,True,
+stage10_torque_publisher_enabled,False,False,True,

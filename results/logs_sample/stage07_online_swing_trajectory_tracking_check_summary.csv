@@ -1,0 +1,2 @@
+input_csv,total_steps,max_foot_error_norm,max_swing_foot_error_norm,max_stance_foot_error_norm,max_abs_dq_step,max_q_delta_from_standing,qp_fail_steps,foot_error_tol,max_dq_step_tol,max_q_delta_tol,foot_error_pass,swing_error_pass,dq_step_pass,q_delta_pass,qp_pass,pass
+results/logs_sample/stage07_online_swing_trajectory_memory_proto.csv,1200,0.000900142979,0.000373110134,0.000900142979,0.003211667495,0.183211559405,0,0.006,0.016,0.36,True,True,True,True,True,True

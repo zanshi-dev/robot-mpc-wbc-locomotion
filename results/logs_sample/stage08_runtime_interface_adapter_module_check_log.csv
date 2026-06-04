@@ -1,0 +1,23 @@
+check,value,expected,pass,detail
+module_import,True,True,True,common.go1_runtime_interface
+mjcf_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/assets/go1/scene.xml
+urdf_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/assets/go1/urdf/go1.urdf
+mujoco_nq_contract,19,19,True,
+mujoco_nv_contract,18,18,True,
+mujoco_nu_contract,12,12,True,
+pinocchio_nq_contract,19,19,True,
+pinocchio_nv_contract,18,18,True,
+mujoco_actuator_order_from_module,"['FR_hip', 'FR_thigh', 'FR_calf', 'FL_hip', 'FL_thigh', 'FL_calf', 'RR_hip', 'RR_thigh', 'RR_calf', 'RL_hip', 'RL_thigh', 'RL_calf']","['FR_hip', 'FR_thigh', 'FR_calf', 'FL_hip', 'FL_thigh', 'FL_calf', 'RR_hip', 'RR_thigh', 'RR_calf', 'RL_hip', 'RL_thigh', 'RL_calf']",True,"actuator_names=['FR_hip', 'FR_thigh', 'FR_calf', 'FL_hip', 'FL_thigh', 'FL_calf', 'RR_hip', 'RR_thigh', 'RR_calf', 'RL_hip', 'RL_thigh', 'RL_calf']"
+pinocchio_joint_order_from_module,"['FL_hip', 'FL_thigh', 'FL_calf', 'FR_hip', 'FR_thigh', 'FR_calf', 'RL_hip', 'RL_thigh', 'RL_calf', 'RR_hip', 'RR_thigh', 'RR_calf']","['FL_hip', 'FL_thigh', 'FL_calf', 'FR_hip', 'FR_thigh', 'FR_calf', 'RL_hip', 'RL_thigh', 'RL_calf', 'RR_hip', 'RR_thigh', 'RR_calf']",True,"pin_joint_names=['universe', 'root_joint', 'FL_hip_joint', 'FL_thigh_joint', 'FL_calf_joint', 'FR_hip_joint', 'FR_thigh_joint', 'FR_calf_joint', 'RL_hip_joint', 'RL_thigh_joint', 'RL_calf_joint', 'RR_hip_joint', 'RR_thigh_joint', 'RR_calf_joint']"
+foot_name_contract_from_module_FR,"{'mujoco_site_id': 2, 'mujoco_geom_id': 20, 'pin_frame_id': 26}","{'mujoco_site_or_geom': 'FR', 'pin_frame': 'FR_foot'}",True,
+foot_name_contract_from_module_FL,"{'mujoco_site_id': 3, 'mujoco_geom_id': 31, 'pin_frame_id': 12}","{'mujoco_site_or_geom': 'FL', 'pin_frame': 'FL_foot'}",True,
+foot_name_contract_from_module_RR,"{'mujoco_site_id': 4, 'mujoco_geom_id': 43, 'pin_frame_id': 54}","{'mujoco_site_or_geom': 'RR', 'pin_frame': 'RR_foot'}",True,
+foot_name_contract_from_module_RL,"{'mujoco_site_id': 5, 'mujoco_geom_id': 55, 'pin_frame_id': 40}","{'mujoco_site_or_geom': 'RL', 'pin_frame': 'RL_foot'}",True,
+qpos_roundtrip_module_max_abs,0.0,<=1e-12,True,
+qvel_roundtrip_module_max_abs,0.0,<=1e-12,True,
+torque_roundtrip_module_max_abs,0.0,<=1e-12,True,
+qpos_direct_roundtrip_allclose,True,True,True,
+qvel_direct_roundtrip_allclose,True,True,True,
+tau_direct_roundtrip_allclose,True,True,True,
+quaternion_contract_from_module,"{'mj_qw_qx_qy_qz': [0.9996376969903635, 0.009996376969903636, -0.019992753939807272, 0.014994565454855453], 'pin_qx_qy_qz_qw': [0.009996376969903636, -0.019992753939807272, 0.014994565454855453, 0.9996376969903635]}","{'pin[3:6]': 'mj[4:7]', 'pin[6]': 'mj[3]'}",True,
+sample_tau_within_contract_limit,5.0,<=23.7,True,

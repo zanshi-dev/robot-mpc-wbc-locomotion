@@ -1,0 +1,13 @@
+item,value,implemented_in_stage1216,allowed_in_future_streaming_stage,guard,description
+stage12_scope,continuous_torque_streaming_design_only,False,True,Stage 12.16 must not edit C++ source and must not add publish calls,Only records the future continuous torque streaming protocol.
+future_continuous_streaming_flags,enable_continuous_torque_streaming=false; confirm_continuous_torque_streaming=false by default,False,True,continuous streaming requires a separate two-flag confirmation,Do not reuse one-shot enable as continuous streaming authorization.
+future_rate_limit,initial continuous dry-run rate <= 10 Hz; later rates require separate stage,False,True,no high-rate streaming in first continuous design implementation,Future continuous mode must be rate-limited.
+future_duration_limit,initial continuous dry-run duration <= 3 seconds,False,True,unbounded streaming forbidden,Future test must be finite-duration.
+future_payload_contract,"Float64MultiArray length=12; all finite; zero/safe torque first; Go1 order FR,FL,RR,RL hip,thigh,calf",False,True,invalid payload aborts streaming before publish,Future continuous payload contract.
+future_safety_chain,watchdogFallbackZeroTorque then clampTorqueCommand before every publish,False,True,no raw unclamped torque may be streamed,Future safety processing on every cycle.
+future_watchdog,inputs must remain fresh; stale inputs force zero/safe output or stop streaming,False,True,watchdog violation must fail closed,Future runtime watchdog policy.
+future_start_stop_protocol,start only after two flags true; stop by reverting confirm then enable; timer cancelled on stop,False,True,streaming timer must not survive flag revert,Future lifecycle rule.
+future_runtime_evidence,topic echo message count equals bounded duration/rate; payload length=12; finite; zero/safe; no messages after stop,False,True,missing runtime evidence aborts future streaming stage,Evidence required for future continuous dry-run.
+future_no_hardware_rule,simulation/ROS topic dry-run only; no hardware deployment,False,True,hardware interface remains out of scope,Future streaming test stays off hardware.
+future_no_control_law_change_rule,"do not modify estimator, MPC, WBC, gait, or baseline control computation",False,True,future diff limited to streaming output path and guards,"Continuous streaming is output plumbing, not controller completion."
+future_abort_conditions,unexpected publish count; timer not cancellable; param set failure; invalid payload; unexpected message count; controller exits,False,True,future streaming script must fail closed,Abort policy for future continuous streaming stage.

@@ -1,0 +1,10 @@
+/go1/base_state
+/go1/foot_contacts
+/go1/imu
+/go1/joint_states
+/go1/joint_torque_cmd
+/go1/sim_time
+/parameter_events
+/rosout
+
+STDERR:

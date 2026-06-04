@@ -1,0 +1,7 @@
+enable_torque_publisher:
+Boolean value is: False
+
+
+confirm_torque_publisher_enable:
+Boolean value is: False
+

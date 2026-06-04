@@ -1,0 +1,7 @@
+topic,expected_type,observed_type,present,type_match,publisher_count,subscription_count,pubsub_ok,echo_once_returncode,echo_once_nonempty,echo_file
+/go1/joint_states,sensor_msgs/msg/JointState,sensor_msgs/msg/JointState,True,True,1,1,True,0,True,results/logs_sample/stage10_cpp_state_cache_echo_go1_joint_states.txt
+/go1/base_state,std_msgs/msg/Float64MultiArray,std_msgs/msg/Float64MultiArray,True,True,1,1,True,0,True,results/logs_sample/stage10_cpp_state_cache_echo_go1_base_state.txt
+/go1/imu,sensor_msgs/msg/Imu,sensor_msgs/msg/Imu,True,True,1,1,True,0,True,results/logs_sample/stage10_cpp_state_cache_echo_go1_imu.txt
+/go1/foot_contacts,std_msgs/msg/Int32MultiArray,std_msgs/msg/Int32MultiArray,True,True,1,1,True,0,True,results/logs_sample/stage10_cpp_state_cache_echo_go1_foot_contacts.txt
+/go1/sim_time,std_msgs/msg/Float64,std_msgs/msg/Float64,True,True,1,1,True,0,True,results/logs_sample/stage10_cpp_state_cache_echo_go1_sim_time.txt
+/go1/joint_torque_cmd,std_msgs/msg/Float64MultiArray,std_msgs/msg/Float64MultiArray,True,True,0,1,True,,,

@@ -1,0 +1,16 @@
+check,value,expected,pass,detail
+stage104_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage10_python_frozen_baseline_ab_regression_summary.csv
+stage104_pass,True,True,True,
+stage104_torque_enable_ready,False,False,True,
+stage104_torque_publisher_enabled,False,False,True,
+stage104_control_law_changed,False,False,True,
+cpp_controller_source_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp
+cpp_source_has_no_create_publisher,False,False,True,
+cpp_source_has_no_publish_call,False,False,True,
+cpp_source_does_not_reference_torque_topic,False,False,True,
+zero_header_declares_12,True,True,True,
+manual_enable_flag_design_exists,True,True,True,
+clamp_watchdog_design_exists,True,True,True,
+clamp_watchdog_implemented,False,False,True,
+torque_publisher_implemented,False,False,True,
+torque_enable_ready_after_stage105,False,False,True,

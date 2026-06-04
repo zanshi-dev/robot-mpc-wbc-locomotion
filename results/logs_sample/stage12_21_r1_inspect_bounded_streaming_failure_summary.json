@@ -1,0 +1,36 @@
+{
+  "stage": "12.21-R1",
+  "name": "inspect_bounded_streaming_rerun_failure",
+  "timestamp": "2026-06-03T17:27:23",
+  "pass": true,
+  "inspection_only": true,
+  "original_stage1221_pass": false,
+  "node_seen": true,
+  "four_flag_param_set_success": true,
+  "param_success_count": 14,
+  "final_flags_false": true,
+  "manual_enable_active_seen_in_node_log": true,
+  "base_flags_active_seen_in_node_log": true,
+  "stream_echo_line_count": 0,
+  "stream_echo_has_data_marker": false,
+  "stream_message_count": 0,
+  "stream_payload_lengths": [],
+  "all_stream_payloads_length_12": false,
+  "all_stream_payload_values_finite": false,
+  "all_stream_payload_values_zero_safe": false,
+  "after_stop_message_count": 0,
+  "diagnosis": [
+    "no stream payload captured despite successful four-flag activation; likely DDS/echo timing race or timer already missed by echo"
+  ],
+  "recommended_repair": "Stage 12.21-R2 rerun bounded streaming with subscriber warmup/readiness and longer capture window; no source change",
+  "logs": {
+    "stage1221_summary": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_21_freeze_and_regression_check_summary.json",
+    "stage20d_r1_summary": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_r1_reparse_existing_evidence_summary.json",
+    "stream_echo": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_stream_echo.log",
+    "after_stop_echo": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_after_stop_echo.log",
+    "param_set": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_param_set.log",
+    "param_final": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_param_final.log",
+    "node_log": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_node.log",
+    "node_list": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage12_20d_node_list.log"
+  }
+}

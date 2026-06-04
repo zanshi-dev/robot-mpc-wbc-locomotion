@@ -1,0 +1,26 @@
+metric,value
+stage,Stage 9.1
+test_name,ros2_topic_schema_snapshot
+stage90_pass,True
+bridge_package_found,True
+expected_topic_count,6
+topic_found_count,6
+topic_type_inferred_count,6
+topic_schema_available_count,6
+all_expected_topics_found,True
+all_topic_types_inferred,True
+all_topic_schemas_available,True
+control_law_changed,False
+stage9_scope,topic_schema_snapshot_only
+baseline_type,mixed_online_control_baseline
+pure_wbc_locomotion_completed,False
+ros2_cpp_realtime_controller_completed,False
+ekf_completed,False
+full_3d_centroidal_mpc_completed,False
+num_checks,24
+num_failed_checks,0
+pass,True
+log_csv,results/logs_sample/stage09_ros2_topic_schema_snapshot_log.csv
+schema_map_csv,results/logs_sample/stage09_ros2_topic_schema_snapshot_map.csv
+schema_dir,results/logs_sample/stage09_topic_schemas
+summary_csv,results/logs_sample/stage09_ros2_topic_schema_snapshot_summary.csv

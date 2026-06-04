@@ -1,0 +1,33 @@
+check,value,expected,pass,detail
+Stage 9.0_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_ros2_cpp_interface_contract_inventory_summary.csv
+Stage 9.0_pass,True,True,True,
+Stage 9.1_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_ros2_topic_schema_snapshot_summary.csv
+Stage 9.1_pass,True,True,True,
+Stage 9.2_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_python_baseline_ros2_field_mapping_summary.csv
+Stage 9.2_pass,True,True,True,
+Stage 9.3_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_ros2_cpp_interface_mirror_skeleton_check_summary.csv
+Stage 9.3_pass,True,True,True,
+Stage 9.4_summary_exists,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage09_ros2_runtime_mirror_smoke_test_summary.csv
+Stage 9.4_pass,True,True,True,
+required_file_exists_docs/STAGE09_ROS2_CPP_INTERFACE_CONTRACT_INVENTORY.md,True,True,True,docs/STAGE09_ROS2_CPP_INTERFACE_CONTRACT_INVENTORY.md
+required_file_exists_docs/STAGE09_ROS2_TOPIC_SCHEMA_SNAPSHOT.md,True,True,True,docs/STAGE09_ROS2_TOPIC_SCHEMA_SNAPSHOT.md
+required_file_exists_docs/STAGE09_PYTHON_BASELINE_ROS2_FIELD_MAPPING.md,True,True,True,docs/STAGE09_PYTHON_BASELINE_ROS2_FIELD_MAPPING.md
+required_file_exists_docs/STAGE09_ROS2_CPP_INTERFACE_MIRROR_SKELETON.md,True,True,True,docs/STAGE09_ROS2_CPP_INTERFACE_MIRROR_SKELETON.md
+required_file_exists_docs/STAGE09_ROS2_RUNTIME_MIRROR_SMOKE_TEST.md,True,True,True,docs/STAGE09_ROS2_RUNTIME_MIRROR_SMOKE_TEST.md
+required_file_exists_ros2_ws/src/robot_mpc_wbc_cpp_interface/package.xml,True,True,True,ros2_ws/src/robot_mpc_wbc_cpp_interface/package.xml
+required_file_exists_ros2_ws/src/robot_mpc_wbc_cpp_interface/CMakeLists.txt,True,True,True,ros2_ws/src/robot_mpc_wbc_cpp_interface/CMakeLists.txt
+required_file_exists_ros2_ws/src/robot_mpc_wbc_cpp_interface/src/interface_mirror_node.cpp,True,True,True,ros2_ws/src/robot_mpc_wbc_cpp_interface/src/interface_mirror_node.cpp
+required_file_exists_ros2_ws/src/robot_mpc_wbc_cpp_interface/launch/interface_mirror.launch.py,True,True,True,ros2_ws/src/robot_mpc_wbc_cpp_interface/launch/interface_mirror.launch.py
+required_file_exists_results/logs_sample/stage09_ros2_cpp_interface_topic_contract_map.csv,True,True,True,results/logs_sample/stage09_ros2_cpp_interface_topic_contract_map.csv
+required_file_exists_results/logs_sample/stage09_ros2_topic_schema_snapshot_map.csv,True,True,True,results/logs_sample/stage09_ros2_topic_schema_snapshot_map.csv
+required_file_exists_results/logs_sample/stage09_python_baseline_ros2_field_mapping.csv,True,True,True,results/logs_sample/stage09_python_baseline_ros2_field_mapping.csv
+required_file_exists_results/logs_sample/stage09_ros2_runtime_mirror_topic_observations.csv,True,True,True,results/logs_sample/stage09_ros2_runtime_mirror_topic_observations.csv
+stage90_all_expected_topics_found,True,True,True,
+stage91_all_topic_schemas_available,True,True,True,
+stage92_all_types_match,True,True,True,
+stage93_no_torque_publisher,False,False,True,
+stage93_no_publish_call,False,False,True,
+stage94_torque_publisher_zero,0,0,True,
+control_law_changed_any,False,False,True,
+ros2_cpp_realtime_controller_completed_any,False,False,True,
+pure_wbc_locomotion_completed_any,False,False,True,

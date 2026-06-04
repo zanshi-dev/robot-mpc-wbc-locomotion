@@ -1,0 +1,26 @@
+{
+  "stage": "13.4A",
+  "name": "report_ready_plots_and_table_export",
+  "timestamp": "2026-06-04T10:22:42",
+  "pass": true,
+  "fail_reasons": [],
+  "simulation_only_project": true,
+  "hardware_deployment_scope": "out_of_scope_by_user_constraint",
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "baseline_type": "mixed_online_control_baseline",
+  "input_metrics_csv": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage13_3_report_ready_metrics_table.csv",
+  "figures": {
+    "min_z": "/home/zanshi/robot-mpc-wbc-locomotion/docs/figures/stage13_4a_min_z.png",
+    "max_abs_roll": "/home/zanshi/robot-mpc-wbc-locomotion/docs/figures/stage13_4a_max_abs_roll.png",
+    "max_abs_pitch": "/home/zanshi/robot-mpc-wbc-locomotion/docs/figures/stage13_4a_max_abs_pitch.png",
+    "max_joint_error": "/home/zanshi/robot-mpc-wbc-locomotion/docs/figures/stage13_4a_max_joint_error.png",
+    "max_tau_total_abs": "/home/zanshi/robot-mpc-wbc-locomotion/docs/figures/stage13_4a_max_tau_total_abs.png",
+    "total_steps": "/home/zanshi/robot-mpc-wbc-locomotion/docs/figures/stage13_4a_total_steps.png"
+  },
+  "table_markdown": "/home/zanshi/robot-mpc-wbc-locomotion/docs/REPORT_READY_METRICS_TABLE.md",
+  "plot_index": "/home/zanshi/robot-mpc-wbc-locomotion/docs/REPORT_READY_FIGURES.md",
+  "next_stage": "Stage 14 simulation-only improvement planning or stop at report-ready package"
+}

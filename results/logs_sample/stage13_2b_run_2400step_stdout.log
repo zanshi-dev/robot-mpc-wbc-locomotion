@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py", line 358, in <module>
+    main()
+  File "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py", line 89, in main
+    contact_rows = wbc.read_contact_wbc_rows()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py", line 156, in read_contact_wbc_rows
+    with open(CONTACT_WBC_CSV, "r", newline="") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'results/logs_sample/stage13_2_2400step_contact_schedule_wbc_qp.csv'

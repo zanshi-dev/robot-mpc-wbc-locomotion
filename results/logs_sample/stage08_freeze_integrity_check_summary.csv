@@ -1,0 +1,19 @@
+metric,value
+stage,Stage 8.10
+test_name,freeze_integrity_check
+recommended_entrypoint,scripts/stage08_adapter_backed_stage07_recommended_test.py
+freeze_file_count,13
+missing_file_count,0
+all_files_exist,True
+recommended_entrypoint_returncode,0
+adapter_preflight_stdout_pass,True
+control_law_changed,False
+baseline_type,mixed_online_control_baseline
+pure_wbc_locomotion_completed,False
+ros2_cpp_realtime_controller_completed,False
+ekf_completed,False
+full_3d_centroidal_mpc_completed,False
+hash_log,results/logs_sample/stage08_freeze_integrity_hashes.csv
+stdout,results/logs_sample/stage08_freeze_integrity_recommended_entrypoint_stdout.txt
+stderr,results/logs_sample/stage08_freeze_integrity_recommended_entrypoint_stderr.txt
+pass,True

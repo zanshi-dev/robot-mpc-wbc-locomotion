@@ -1,0 +1,9 @@
+gate,name,required_before_torque_publish,current_status,evidence
+G0,Stage 8 frozen Python baseline valid,True,True,results/logs_sample/stage08_freeze_integrity_check_summary.csv
+G1,Stage 9 interface mirror frozen,True,True,results/logs_sample/stage09_0_6_interface_mirror_freeze_summary.csv
+G2,C++ source has no torque publisher,True,True,ros2_ws/src/robot_mpc_wbc_cpp_interface/src/interface_mirror_node.cpp
+G3,C++ source has no publish call,True,True,ros2_ws/src/robot_mpc_wbc_cpp_interface/src/interface_mirror_node.cpp
+G4,Explicit manual enable flag design exists,True,False,not implemented in Stage 10.0
+G5,Torque command clamp and watchdog implemented,True,False,not implemented in Stage 10.0
+G6,Zero torque dry-run regression completed,True,False,future Stage 10.3
+G7,Python frozen baseline A/B regression still passes,True,False,must be rerun before enabling publisher

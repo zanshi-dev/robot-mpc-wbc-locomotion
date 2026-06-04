@@ -1,0 +1,10 @@
+metric,value
+stage,Stage 8.7
+test_name,recommended_runtime_safe_entrypoint_promotion
+recommended_entrypoint,scripts/stage08_adapter_backed_stage07_recommended_test.py
+recommended_entrypoint_returncode,0
+adapter_preflight_stdout_pass,True
+stdout,results/logs_sample/stage08_recommended_runtime_safe_entrypoint_stdout.txt
+stderr,results/logs_sample/stage08_recommended_runtime_safe_entrypoint_stderr.txt
+doc,docs/STAGE08_RECOMMENDED_RUNTIME_SAFE_ENTRYPOINT.md
+pass,True

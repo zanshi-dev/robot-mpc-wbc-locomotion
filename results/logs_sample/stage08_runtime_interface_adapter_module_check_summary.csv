@@ -1,0 +1,17 @@
+metric,value
+stage,Stage 8.1
+test_name,runtime_interface_adapter_module_check
+module,scripts/common/go1_runtime_interface.py
+mujoco_nq,19
+mujoco_nv,18
+mujoco_nu,12
+pinocchio_nq,19
+pinocchio_nv,18
+qpos_roundtrip_max_abs,0.0
+qvel_roundtrip_max_abs,0.0
+torque_roundtrip_max_abs,0.0
+num_checks,22
+num_failed_checks,0
+pass,True
+log_csv,results/logs_sample/stage08_runtime_interface_adapter_module_check_log.csv
+summary_csv,results/logs_sample/stage08_runtime_interface_adapter_module_check_summary.csv

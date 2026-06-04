@@ -1,0 +1,407 @@
+{
+  "stage": "13.2A-R1",
+  "name": "runner_structure_inspection_for_2400step_derivation",
+  "timestamp": "2026-06-04T10:02:04",
+  "pass": true,
+  "fail_reasons": [],
+  "inspection_only": true,
+  "source_changed": false,
+  "simulation_only_project": true,
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "stage13_2a_pass": false,
+  "stage13_2a_fail_reasons": [
+    "could not locate direct 1200-step assignment to patch",
+    "derived runner does not contain 2400 after patch"
+  ],
+  "stage13_1b_pass": true,
+  "recommended_runner": {
+    "path": "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py",
+    "exists": true,
+    "sha256": "d04462aca40eff00667cdbeab96aa61f95bc4d7465bc9ce3e029cee7a1212ef1",
+    "line_count": 354,
+    "literal_1200_count": 0,
+    "literal_2400_count": 0,
+    "step_related_count": 8,
+    "csv_related_count": 10,
+    "subprocess_related_count": 0,
+    "step_related_lines": [
+      {
+        "line": 55,
+        "text": "                \"step\": int(row[\"step\"]),"
+      },
+      {
+        "line": 123,
+        "text": "    total_steps = min(wbc.TOTAL_STEPS, len(target_rows))"
+      },
+      {
+        "line": 127,
+        "text": "    for step in range(total_steps):"
+      },
+      {
+        "line": 128,
+        "text": "        sched = wbc.scheduler_mode(step)"
+      },
+      {
+        "line": 130,
+        "text": "        target = target_rows[step]"
+      },
+      {
+        "line": 134,
+        "text": "                f\"mode mismatch at step={step}: scheduler={mode}, target={target['mode']}\""
+      },
+      {
+        "line": 234,
+        "text": "            \"step\": step,"
+      },
+      {
+        "line": 287,
+        "text": "        \"total_steps\": total_steps,"
+      }
+    ],
+    "literal_1200_lines": [],
+    "literal_2400_lines": [],
+    "csv_related_lines": [
+      {
+        "line": 12,
+        "text": "SWING_TARGET_CSV = \"results/logs_sample/stage07_online_swing_trajectory_tracking_check.csv\""
+      },
+      {
+        "line": 14,
+        "text": "LOG_CSV = \"results/logs_sample/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test_log.csv\""
+      },
+      {
+        "line": 15,
+        "text": "SUMMARY_CSV = \"results/logs_sample/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test_summary.csv\""
+      },
+      {
+        "line": 48,
+        "text": "        for row in csv.DictReader(f):"
+      },
+      {
+        "line": 333,
+        "text": "        writer = csv.DictWriter(f, fieldnames=list(log_rows[0].keys()))"
+      },
+      {
+        "line": 334,
+        "text": "        writer.writeheader()"
+      },
+      {
+        "line": 335,
+        "text": "        writer.writerows(log_rows)"
+      },
+      {
+        "line": 338,
+        "text": "        writer = csv.DictWriter(f, fieldnames=list(summary.keys()))"
+      },
+      {
+        "line": 339,
+        "text": "        writer.writeheader()"
+      },
+      {
+        "line": 340,
+        "text": "        writer.writerow(summary)"
+      }
+    ],
+    "subprocess_related_lines": [],
+    "output_related_lines": [
+      {
+        "line": 12,
+        "text": "SWING_TARGET_CSV = \"results/logs_sample/stage07_online_swing_trajectory_tracking_check.csv\""
+      },
+      {
+        "line": 14,
+        "text": "LOG_CSV = \"results/logs_sample/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test_log.csv\""
+      },
+      {
+        "line": 15,
+        "text": "SUMMARY_CSV = \"results/logs_sample/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test_summary.csv\""
+      },
+      {
+        "line": 125,
+        "text": "    log_rows = []"
+      },
+      {
+        "line": 233,
+        "text": "        log_rows.append({"
+      },
+      {
+        "line": 284,
+        "text": "    summary = {"
+      },
+      {
+        "line": 330,
+        "text": "    Path(LOG_CSV).parent.mkdir(parents=True, exist_ok=True)"
+      },
+      {
+        "line": 332,
+        "text": "    with open(LOG_CSV, \"w\", newline=\"\") as f:"
+      },
+      {
+        "line": 333,
+        "text": "        writer = csv.DictWriter(f, fieldnames=list(log_rows[0].keys()))"
+      },
+      {
+        "line": 335,
+        "text": "        writer.writerows(log_rows)"
+      },
+      {
+        "line": 337,
+        "text": "    with open(SUMMARY_CSV, \"w\", newline=\"\") as f:"
+      },
+      {
+        "line": 338,
+        "text": "        writer = csv.DictWriter(f, fieldnames=list(summary.keys()))"
+      },
+      {
+        "line": 340,
+        "text": "        writer.writerow(summary)"
+      },
+      {
+        "line": 343,
+        "text": "    for k, v in summary.items():"
+      },
+      {
+        "line": 346,
+        "text": "    print(f\"saved_log={LOG_CSV}\")"
+      },
+      {
+        "line": 347,
+        "text": "    print(f\"saved_summary={SUMMARY_CSV}\")"
+      }
+    ],
+    "import_related_lines": [
+      {
+        "line": 2,
+        "text": "from common.go1_runtime_interface import MJ_LEG_ORDER"
+      },
+      {
+        "line": 3,
+        "text": "import csv"
+      },
+      {
+        "line": 4,
+        "text": "import importlib.util"
+      },
+      {
+        "line": 5,
+        "text": "from pathlib import Path"
+      },
+      {
+        "line": 7,
+        "text": "import mujoco"
+      },
+      {
+        "line": 8,
+        "text": "import numpy as np"
+      }
+    ]
+  },
+  "wbc_runner": {
+    "path": "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage07_online_full_wbc_scheduler_recommended_run.py",
+    "exists": true,
+    "sha256": "248bb046d5c8e07ffa05487d95c79c80e8e1e6c719e8eba9ed03e3a1fcdb41b8",
+    "line_count": 651,
+    "literal_1200_count": 1,
+    "literal_2400_count": 0,
+    "step_related_count": 12,
+    "csv_related_count": 10,
+    "subprocess_related_count": 0,
+    "step_related_lines": [
+      {
+        "line": 34,
+        "text": "TOTAL_STEPS = 1200"
+      },
+      {
+        "line": 65,
+        "text": "def scheduler_mode(step):"
+      },
+      {
+        "line": 66,
+        "text": "    phase_step = step % PERIOD_STEPS"
+      },
+      {
+        "line": 67,
+        "text": "    cycle_i = step // PERIOD_STEPS"
+      },
+      {
+        "line": 94,
+        "text": "    for act_id in range(model.nu):"
+      },
+      {
+        "line": 110,
+        "text": "    for act_id in range(model.nu):"
+      },
+      {
+        "line": 217,
+        "text": "    fz_each = total_weight / float(len(stance_legs))"
+      },
+      {
+        "line": 304,
+        "text": "    swing_acc_ref_stack = np.tile(SWING_ACC_REF, len(swing_legs))"
+      },
+      {
+        "line": 469,
+        "text": "    for global_step in range(TOTAL_STEPS):"
+      },
+      {
+        "line": 538,
+        "text": "            \"step\": global_step,"
+      },
+      {
+        "line": 564,
+        "text": "    global_step = TOTAL_STEPS"
+      },
+      {
+        "line": 586,
+        "text": "        \"total_steps\": global_step,"
+      }
+    ],
+    "literal_1200_lines": [
+      {
+        "line": 34,
+        "text": "TOTAL_STEPS = 1200"
+      }
+    ],
+    "literal_2400_lines": [],
+    "csv_related_lines": [
+      {
+        "line": 13,
+        "text": "CONTACT_WBC_CSV = \"results/logs_sample/stage07_contact_schedule_wbc_qp.csv\""
+      },
+      {
+        "line": 15,
+        "text": "LOG_CSV = \"results/logs_sample/stage07_online_full_wbc_scheduler_recommended_run_log.csv\""
+      },
+      {
+        "line": 16,
+        "text": "SUMMARY_CSV = \"results/logs_sample/stage07_online_full_wbc_scheduler_recommended_run_summary.csv\""
+      },
+      {
+        "line": 153,
+        "text": "        rows = list(csv.DictReader(f))"
+      },
+      {
+        "line": 630,
+        "text": "        writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))"
+      },
+      {
+        "line": 631,
+        "text": "        writer.writeheader()"
+      },
+      {
+        "line": 632,
+        "text": "        writer.writerows(rows)"
+      },
+      {
+        "line": 635,
+        "text": "        writer = csv.DictWriter(f, fieldnames=list(summary.keys()))"
+      },
+      {
+        "line": 636,
+        "text": "        writer.writeheader()"
+      },
+      {
+        "line": 637,
+        "text": "        writer.writerow(summary)"
+      }
+    ],
+    "subprocess_related_lines": [],
+    "output_related_lines": [
+      {
+        "line": 13,
+        "text": "CONTACT_WBC_CSV = \"results/logs_sample/stage07_contact_schedule_wbc_qp.csv\""
+      },
+      {
+        "line": 15,
+        "text": "LOG_CSV = \"results/logs_sample/stage07_online_full_wbc_scheduler_recommended_run_log.csv\""
+      },
+      {
+        "line": 16,
+        "text": "SUMMARY_CSV = \"results/logs_sample/stage07_online_full_wbc_scheduler_recommended_run_summary.csv\""
+      },
+      {
+        "line": 584,
+        "text": "    summary = {"
+      },
+      {
+        "line": 627,
+        "text": "    Path(LOG_CSV).parent.mkdir(parents=True, exist_ok=True)"
+      },
+      {
+        "line": 629,
+        "text": "    with open(LOG_CSV, \"w\", newline=\"\") as f:"
+      },
+      {
+        "line": 634,
+        "text": "    with open(SUMMARY_CSV, \"w\", newline=\"\") as f:"
+      },
+      {
+        "line": 635,
+        "text": "        writer = csv.DictWriter(f, fieldnames=list(summary.keys()))"
+      },
+      {
+        "line": 637,
+        "text": "        writer.writerow(summary)"
+      },
+      {
+        "line": 640,
+        "text": "    for k, v in summary.items():"
+      },
+      {
+        "line": 643,
+        "text": "    print(f\"saved_log={LOG_CSV}\")"
+      },
+      {
+        "line": 644,
+        "text": "    print(f\"saved_summary={SUMMARY_CSV}\")"
+      }
+    ],
+    "import_related_lines": [
+      {
+        "line": 2,
+        "text": "from common.go1_runtime_interface import MJ_LEG_ORDER"
+      },
+      {
+        "line": 3,
+        "text": "import csv"
+      },
+      {
+        "line": 4,
+        "text": "from pathlib import Path"
+      },
+      {
+        "line": 6,
+        "text": "import mujoco"
+      },
+      {
+        "line": 7,
+        "text": "import numpy as np"
+      },
+      {
+        "line": 8,
+        "text": "import osqp"
+      },
+      {
+        "line": 9,
+        "text": "import scipy.sparse as sp"
+      }
+    ]
+  },
+  "swing_target_csv": {
+    "exists": true,
+    "path": "/home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage07_online_swing_trajectory_tracking_check.csv",
+    "sha256": "a7fc8dec80fe62179359c6025112537b5997026f5761a43af8203f81c791f47d",
+    "line_count": 1201,
+    "header": "step,mode,phase_in_mode,swing_progress,stance_legs,swing_legs,osqp_status,max_foot_error_norm,max_swing_foot_error_norm,max_stance_foot_error_norm,max_abs_dq_step,max_q_delta_from_standing,FR_foot_error_norm,FL_foot_error_norm,RR_foot_error_norm,RL_foot_error_norm,FR_q_hip,FR_q_thigh,FR_q_calf,FL_q_hip,FL_q_thigh,FL_q_calf,RR_q_hip,RR_q_thigh,RR_q_calf,RL_q_hip,RL_q_thigh,RL_q_calf",
+    "first_data_line": "0,trot_FR_RL,0.000000000000,0.000000000000,\"FR,RL\",\"FL,RR\",solved,0.000000000000,0.000000000000,0.000000000000,0.000000000000,0.000000000000,0.000000000000,0.000000000000,0.000000000000,0.000000000000,0.000000000000,0.900000000000,-1.800000000000,-0.000000000000,0.900000000000,-1.800000000000,0.000000000000,0.900000000000,-1.800000000000,-0.000000000000,0.900000000000,-1.800000000000",
+    "last_data_line": "1199,trot_FL_RR,0.995000000000,0.995000000000,\"FL,RR\",\"FR,RL\",solved,0.000001262522,0.000001262522,0.000000138471,0.002342429159,0.179742966587,0.000001262522,0.000000138471,0.000000138471,0.000001262522,-0.000000425353,0.721176829691,-1.779483899026,0.000000180039,0.720257033413,-1.777145206713,-0.000000180039,0.720257033413,-1.777145206713,0.000000425353,0.721176829691,-1.779483899026"
+  },
+  "diagnosis": [
+    "1200-step horizon likely lives in WBC runner, not recommended wrapper",
+    "swing target CSV is available and may control or verify rollout length"
+  ],
+  "recommended_next_stage": "Stage 13.2A-R2 create 2400-step runner using inspected horizon source; no original runner modification"
+}

@@ -1,0 +1,4 @@
+[INFO] [1780471248.075764835] [go1_disabled_controller_node]: Go1 disabled C++ controller skeleton started with manual enable parameters disabled by default. No torque publisher is created.
+[INFO] [1780471249.075804520] [go1_disabled_controller_node]: disabled controller skeleton: state_ready=1 inputs_fresh=1 internal_safe_tau_size=12 internal_safe_tau_max_abs=0.000000 clamp_applied=0 enable_torque_publisher=0 confirm_torque_publisher_enable=0 manual_enable_active=0 torque_publisher_enabled=0 uses_safety_utilities=1
+[INFO] [1780471254.075848218] [go1_disabled_controller_node]: disabled controller skeleton: state_ready=1 inputs_fresh=1 internal_safe_tau_size=12 internal_safe_tau_max_abs=0.000000 clamp_applied=0 enable_torque_publisher=0 confirm_torque_publisher_enable=0 manual_enable_active=0 torque_publisher_enabled=0 uses_safety_utilities=1
+[INFO] [1780471254.833850618] [rclcpp]: signal_handler(SIGINT/SIGTERM)

@@ -1,0 +1,245 @@
+file,line,pattern,severity,match,meaning
+scripts/stage00_inspect_go1_model.py,62,direct_frame_or_foot_name_contract,low,"bid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, name)",Possible direct foot name/frame contract use.
+scripts/stage00_torque_control_demo.py,16,direct_frame_or_foot_name_contract,low,"body_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, requested_name)",Possible direct foot name/frame contract use.
+scripts/stage00_torque_control_demo.py,23,direct_frame_or_foot_name_contract,low,"body_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, name)",Possible direct foot name/frame contract use.
+scripts/stage02_check_pinocchio_jacobian.py,12,direct_frame_or_foot_name_contract,low,"""FR"": ""FR_foot"",",Possible direct foot name/frame contract use.
+scripts/stage02_check_pinocchio_jacobian.py,13,direct_frame_or_foot_name_contract,low,"""FL"": ""FL_foot"",",Possible direct foot name/frame contract use.
+scripts/stage02_check_pinocchio_jacobian.py,14,direct_frame_or_foot_name_contract,low,"""RR"": ""RR_foot"",",Possible direct foot name/frame contract use.
+scripts/stage02_check_pinocchio_jacobian.py,15,direct_frame_or_foot_name_contract,low,"""RL"": ""RL_foot"",",Possible direct foot name/frame contract use.
+scripts/stage02_check_pinocchio_jacobian.py,24,mujoco_free_joint_qw_index,high,"pin_q[3:7] = np.array([mj_qpos[4], mj_qpos[5], mj_qpos[6], mj_qpos[3]])",Likely MuJoCo quaternion scalar qw index.
+scripts/stage02_check_pinocchio_jacobian.py,63,direct_frame_or_foot_name_contract,low,fid = model.getFrameId(frame_name),Possible direct foot name/frame contract use.
+scripts/stage02_compare_foot_velocity.py,12,direct_frame_or_foot_name_contract,low,"""FR"": (""FR"", ""FR_foot""),",Possible direct foot name/frame contract use.
+scripts/stage02_compare_foot_velocity.py,13,direct_frame_or_foot_name_contract,low,"""FL"": (""FL"", ""FL_foot""),",Possible direct foot name/frame contract use.
+scripts/stage02_compare_foot_velocity.py,14,direct_frame_or_foot_name_contract,low,"""RR"": (""RR"", ""RR_foot""),",Possible direct foot name/frame contract use.
+scripts/stage02_compare_foot_velocity.py,15,direct_frame_or_foot_name_contract,low,"""RL"": (""RL"", ""RL_foot""),",Possible direct foot name/frame contract use.
+scripts/stage02_compare_foot_velocity.py,31,mujoco_free_joint_qw_index,high,"mj_qpos[3],",Likely MuJoCo quaternion scalar qw index.
+scripts/stage02_compare_foot_velocity.py,106,direct_frame_or_foot_name_contract,low,"geom_id = mujoco.mj_name2id(mj_model, mujoco.mjtObj.mjOBJ_GEOM, mj_geom_name)",Possible direct foot name/frame contract use.
+scripts/stage02_compare_foot_velocity.py,110,direct_frame_or_foot_name_contract,low,frame_id = pin_model.getFrameId(pin_frame_name),Possible direct foot name/frame contract use.
+scripts/stage02_compare_full_foot_velocity.py,12,direct_frame_or_foot_name_contract,low,"""FR"": (""FR"", ""FR_foot""),",Possible direct foot name/frame contract use.
+scripts/stage02_compare_full_foot_velocity.py,13,direct_frame_or_foot_name_contract,low,"""FL"": (""FL"", ""FL_foot""),",Possible direct foot name/frame contract use.
+scripts/stage02_compare_full_foot_velocity.py,14,direct_frame_or_foot_name_contract,low,"""RR"": (""RR"", ""RR_foot""),",Possible direct foot name/frame contract use.
+scripts/stage02_compare_full_foot_velocity.py,15,direct_frame_or_foot_name_contract,low,"""RL"": (""RL"", ""RL_foot""),",Possible direct foot name/frame contract use.
+scripts/stage02_compare_full_foot_velocity.py,28,mujoco_free_joint_qw_index,high,"mj_qpos[3],",Likely MuJoCo quaternion scalar qw index.
+scripts/stage02_compare_full_foot_velocity.py,91,direct_frame_or_foot_name_contract,low,"geom_id = mujoco.mj_name2id(mj_model, mujoco.mjtObj.mjOBJ_GEOM, mj_geom_name)",Possible direct foot name/frame contract use.
+scripts/stage02_compare_full_foot_velocity.py,92,direct_frame_or_foot_name_contract,low,frame_id = pin_model.getFrameId(pin_frame_name),Possible direct foot name/frame contract use.
+scripts/stage02_compare_joint_order.py,70,direct_frame_or_foot_name_contract,low,"for frame_name in [""FR_foot"", ""FL_foot"", ""RR_foot"", ""RL_foot""]:",Possible direct foot name/frame contract use.
+scripts/stage02_compare_joint_order.py,71,direct_frame_or_foot_name_contract,low,fid = pin_model.getFrameId(frame_name),Possible direct foot name/frame contract use.
+scripts/stage02_compare_mujoco_pinocchio_fk.py,12,direct_frame_or_foot_name_contract,low,"""FR"": ""FR_foot"",",Possible direct foot name/frame contract use.
+scripts/stage02_compare_mujoco_pinocchio_fk.py,13,direct_frame_or_foot_name_contract,low,"""FL"": ""FL_foot"",",Possible direct foot name/frame contract use.
+scripts/stage02_compare_mujoco_pinocchio_fk.py,14,direct_frame_or_foot_name_contract,low,"""RR"": ""RR_foot"",",Possible direct foot name/frame contract use.
+scripts/stage02_compare_mujoco_pinocchio_fk.py,15,direct_frame_or_foot_name_contract,low,"""RL"": ""RL_foot"",",Possible direct foot name/frame contract use.
+scripts/stage02_compare_mujoco_pinocchio_fk.py,39,mujoco_free_joint_qw_index,high,"mj_qpos[3],",Likely MuJoCo quaternion scalar qw index.
+scripts/stage02_compare_mujoco_pinocchio_fk.py,64,direct_frame_or_foot_name_contract,low,"geom_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, geom_name)",Possible direct foot name/frame contract use.
+scripts/stage02_compare_mujoco_pinocchio_fk.py,93,mujoco_leg_order_literal,high,"for leg in [""FR"", ""FL"", ""RR"", ""RL""]:",Hard-coded MuJoCo leg order.
+scripts/stage02_compare_mujoco_pinocchio_fk.py,99,direct_frame_or_foot_name_contract,low,frame_id = pin_model.getFrameId(pin_frame),Possible direct foot name/frame contract use.
+scripts/stage02_compare_mujoco_pinocchio_jacobian.py,12,direct_frame_or_foot_name_contract,low,"""FR"": (""FR"", ""FR_foot""),",Possible direct foot name/frame contract use.
+scripts/stage02_compare_mujoco_pinocchio_jacobian.py,13,direct_frame_or_foot_name_contract,low,"""FL"": (""FL"", ""FL_foot""),",Possible direct foot name/frame contract use.
+scripts/stage02_compare_mujoco_pinocchio_jacobian.py,14,direct_frame_or_foot_name_contract,low,"""RR"": (""RR"", ""RR_foot""),",Possible direct foot name/frame contract use.
+scripts/stage02_compare_mujoco_pinocchio_jacobian.py,15,direct_frame_or_foot_name_contract,low,"""RL"": (""RL"", ""RL_foot""),",Possible direct foot name/frame contract use.
+scripts/stage02_compare_mujoco_pinocchio_jacobian.py,31,mujoco_free_joint_qw_index,high,"mj_qpos[3],",Likely MuJoCo quaternion scalar qw index.
+scripts/stage02_compare_mujoco_pinocchio_jacobian.py,92,direct_frame_or_foot_name_contract,low,"geom_id = mujoco.mj_name2id(mj_model, mujoco.mjtObj.mjOBJ_GEOM, mj_geom_name)",Possible direct foot name/frame contract use.
+scripts/stage02_compare_mujoco_pinocchio_jacobian.py,96,direct_frame_or_foot_name_contract,low,frame_id = pin_model.getFrameId(pin_frame_name),Possible direct foot name/frame contract use.
+scripts/stage02_inspect_pinocchio_model.py,49,mujoco_leg_order_literal,high,"for leg in [""FR"", ""FL"", ""RR"", ""RL""]:",Hard-coded MuJoCo leg order.
+scripts/stage02_validate_pinocchio_fk.py,12,direct_frame_or_foot_name_contract,low,"""FR"": ""FR_foot"",",Possible direct foot name/frame contract use.
+scripts/stage02_validate_pinocchio_fk.py,13,direct_frame_or_foot_name_contract,low,"""FL"": ""FL_foot"",",Possible direct foot name/frame contract use.
+scripts/stage02_validate_pinocchio_fk.py,14,direct_frame_or_foot_name_contract,low,"""RR"": ""RR_foot"",",Possible direct foot name/frame contract use.
+scripts/stage02_validate_pinocchio_fk.py,15,direct_frame_or_foot_name_contract,low,"""RL"": ""RL_foot"",",Possible direct foot name/frame contract use.
+scripts/stage02_validate_pinocchio_fk.py,33,mujoco_free_joint_qw_index,high,"mj_qpos[3],",Likely MuJoCo quaternion scalar qw index.
+scripts/stage02_validate_pinocchio_fk.py,98,direct_frame_or_foot_name_contract,low,fid = pin_model.getFrameId(frame_name),Possible direct foot name/frame contract use.
+scripts/stage03_standing_pd_demo.py,9,mujoco_leg_order_literal,high,"FOOT_GEOMS = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage03_standing_pd_demo.py,50,direct_frame_or_foot_name_contract,low,"gid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, geom_name)",Possible direct foot name/frame contract use.
+scripts/stage03_standing_pd_demo.py,86,direct_frame_or_foot_name_contract,low,"trunk_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, ""trunk"")",Possible direct foot name/frame contract use.
+scripts/stage04_gait_swing_foothold_demo.py,8,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage04_open_loop_trot_pd_demo.py,9,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage04_open_loop_trot_pd_demo.py,102,direct_frame_or_foot_name_contract,low,"gid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, geom_name)",Possible direct foot name/frame contract use.
+scripts/stage04_open_loop_trot_pd_demo.py,134,direct_frame_or_foot_name_contract,low,"trunk_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, ""trunk"")",Possible direct foot name/frame contract use.
+scripts/stage05_centroidal_z_mpc.py,11,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage05_centroidal_z_mpc.py,59,direct_frame_or_foot_name_contract,low,"gid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, geom_name)",Possible direct foot name/frame contract use.
+scripts/stage05_contact_schedule_force_qp.py,11,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage05_contact_schedule_force_qp.py,45,direct_frame_or_foot_name_contract,low,"gid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, geom_name)",Possible direct foot name/frame contract use.
+scripts/stage05_contact_schedule_force_qp.py,253,direct_frame_or_foot_name_contract,low,"gid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, leg)",Possible direct foot name/frame contract use.
+scripts/stage05_horizon_force_qp.py,11,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage05_horizon_force_qp.py,68,direct_frame_or_foot_name_contract,low,"gid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, geom_name)",Possible direct foot name/frame contract use.
+scripts/stage05_horizon_force_qp.py,288,direct_frame_or_foot_name_contract,low,"gid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, leg)",Possible direct foot name/frame contract use.
+scripts/stage05_standing_contact_force_qp.py,11,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage05_standing_contact_force_qp.py,41,direct_frame_or_foot_name_contract,low,"gid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, geom_name)",Possible direct foot name/frame contract use.
+scripts/stage05_standing_contact_force_qp.py,195,direct_frame_or_foot_name_contract,low,"gid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, leg)",Possible direct foot name/frame contract use.
+scripts/stage06_force_sign_sanity_check.py,10,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage06_force_sign_sanity_check.py,46,direct_frame_or_foot_name_contract,low,"site_ids = [mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg) for leg in LEG_ORDER]",Possible direct foot name/frame contract use.
+scripts/stage06_jacobian_transpose_torque.py,9,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage06_jacobian_transpose_torque.py,20,direct_frame_or_foot_name_contract,low,"""FR"": ""FR_foot"",",Possible direct foot name/frame contract use.
+scripts/stage06_jacobian_transpose_torque.py,21,direct_frame_or_foot_name_contract,low,"""FL"": ""FL_foot"",",Possible direct foot name/frame contract use.
+scripts/stage06_jacobian_transpose_torque.py,22,direct_frame_or_foot_name_contract,low,"""RR"": ""RR_foot"",",Possible direct foot name/frame contract use.
+scripts/stage06_jacobian_transpose_torque.py,23,direct_frame_or_foot_name_contract,low,"""RL"": ""RL_foot"",",Possible direct foot name/frame contract use.
+scripts/stage06_jacobian_transpose_torque.py,59,direct_frame_or_foot_name_contract,low,"gid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, geom_name)",Possible direct foot name/frame contract use.
+scripts/stage06_jacobian_transpose_torque.py,85,mujoco_free_joint_qw_index,high,"mj_qpos[3],",Likely MuJoCo quaternion scalar qw index.
+scripts/stage06_jacobian_transpose_torque.py,115,direct_frame_or_foot_name_contract,low,geom_id = mujoco.mj_name2id(,Possible direct foot name/frame contract use.
+scripts/stage06_jacobian_transpose_torque.py,144,manual_tau_reorder,medium,tau_pin_act = np.zeros(12),Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,147,direct_frame_or_foot_name_contract,low,frame_id = pin_model.getFrameId(PIN_FOOT_FRAMES[leg]),Possible direct foot name/frame contract use.
+scripts/stage06_jacobian_transpose_torque.py,167,manual_tau_reorder,medium,tau_pin_act[act_start:act_stop] += j_leg.T @ f_leg,Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,169,manual_tau_reorder,medium,return pin_tau_to_mujoco_order(tau_pin_act),Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,214,manual_tau_reorder,medium,tau_mj = compute_mujoco_jt_force_torque(,Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,220,manual_tau_reorder,medium,tau_pin = compute_pinocchio_jt_force_torque(,Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,227,manual_tau_reorder,medium,diff = tau_mj - tau_pin,Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,246,manual_tau_reorder,medium,print(tau_mj),Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,249,manual_tau_reorder,medium,"print(""tau_pinocchio_reordered_to_mujoco_order [FR, FL, RR, RL]:"")",Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,250,manual_tau_reorder,medium,print(tau_pin),Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,253,manual_tau_reorder,medium,"print(""diff = tau_mujoco - tau_pinocchio:"")",Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,262,manual_tau_reorder,medium,"f""tau={tau_mj[s]}, """,Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,263,manual_tau_reorder,medium,"f""norm={np.linalg.norm(tau_mj[s]):.9f}, """,Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,264,manual_tau_reorder,medium,"f""max_abs={np.max(np.abs(tau_mj[s])):.9f}""",Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,268,manual_tau_reorder,medium,"print(f""tau_shape = {tau_mj.shape}"")",Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,269,manual_tau_reorder,medium,"print(f""tau_norm = {np.linalg.norm(tau_mj):.9f}"")",Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,270,manual_tau_reorder,medium,"print(f""tau_max_abs = {np.max(np.abs(tau_mj)):.9f}"")",Possible manual torque or joint order mapping site.
+scripts/stage06_jacobian_transpose_torque.py,274,manual_tau_reorder,medium,"if tau_mj.shape == (12,) and np.linalg.norm(diff) < 1e-8:",Possible manual torque or joint order mapping site.
+scripts/stage06_qp_force_to_torque.py,13,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage06_qp_force_to_torque.py,50,direct_frame_or_foot_name_contract,low,"exact_id = mujoco.mj_name2id(model, obj_type, leg)",Possible direct foot name/frame contract use.
+scripts/stage06_qp_torque_support_test.py,14,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage06_qp_torque_support_test.py,69,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_contact_mode_sequence_ramp_test.py,14,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_contact_mode_sequence_ramp_test.py,89,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_contact_mode_torque_ramp_check.py,11,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_contact_mode_transition_check.py,11,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_contact_schedule_wbc_qp.py,16,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_contact_schedule_wbc_qp.py,94,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_contact_schedule_wbc_scale_sweep.py,16,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_contact_schedule_wbc_scale_sweep.py,65,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_contact_schedule_wbc_scaled_support_test.py,14,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_contact_schedule_wbc_scaled_support_test.py,70,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_contact_schedule_wbc_support_test.py,14,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_contact_schedule_wbc_support_test.py,64,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_full_wbc_base_accel_task_qp.py,15,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_full_wbc_base_accel_task_qp.py,20,mujoco_leg_order_literal,high,"""all_stance"": [""FR"", ""FL"", ""RR"", ""RL""],",Hard-coded MuJoCo leg order.
+scripts/stage07_full_wbc_base_accel_task_qp.py,75,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_full_wbc_base_vertical_accel_task_qp.py,15,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_full_wbc_base_vertical_accel_task_qp.py,20,mujoco_leg_order_literal,high,"""all_stance"": [""FR"", ""FL"", ""RR"", ""RL""],",Hard-coded MuJoCo leg order.
+scripts/stage07_full_wbc_base_vertical_accel_task_qp.py,75,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_full_wbc_dynamics_qp.py,15,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_full_wbc_dynamics_qp.py,20,mujoco_leg_order_literal,high,"""all_stance"": [""FR"", ""FL"", ""RR"", ""RL""],",Hard-coded MuJoCo leg order.
+scripts/stage07_full_wbc_dynamics_qp.py,69,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_full_wbc_stance_constraint_qp.py,15,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_full_wbc_stance_constraint_qp.py,20,mujoco_leg_order_literal,high,"""all_stance"": [""FR"", ""FL"", ""RR"", ""RL""],",Hard-coded MuJoCo leg order.
+scripts/stage07_full_wbc_stance_constraint_qp.py,71,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_full_wbc_swing_accel_task_qp.py,15,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_full_wbc_swing_accel_task_qp.py,83,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_full_wbc_torque_ramp_check.py,11,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_full_wbc_torque_reconstruction_check.py,15,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_full_wbc_torque_reconstruction_check.py,79,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_full_wbc_torque_sequence_support_test.py,14,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_full_wbc_torque_sequence_support_test.py,85,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_minimal_wbc_torque_qp.py,13,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_online_full_wbc_plus_swing_joint_tracking_proto.py,16,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_online_full_wbc_scheduler_recommended_run.py,119,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_online_full_wbc_step_loop_proto.py,17,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_online_full_wbc_step_loop_proto.py,94,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_online_full_wbc_with_scheduler_proto.py,17,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_online_full_wbc_with_scheduler_proto.py,118,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_online_stance_pd_wbc_plus_swing_pd_sweep.py,15,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_online_stance_wbc_plus_swing_pd_sweep.py,15,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_online_swing_joint_target_tracking_support_test.py,16,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_online_swing_joint_target_tracking_support_test.py,59,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_online_swing_joint_tracking_recommended_test.py,16,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_online_swing_joint_tracking_recommended_test.py,60,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_online_swing_trajectory_memory_proto.py,14,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_online_swing_trajectory_memory_proto.py,85,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_online_swing_trajectory_proto.py,14,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_online_swing_trajectory_proto.py,85,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_online_swing_trajectory_tracking_check.py,16,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_online_swing_trajectory_tracking_check.py,62,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_swing_foot_tracking_qp.py,14,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_swing_foot_tracking_qp.py,61,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_swing_joint_target_sequence.py,9,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_swing_joint_target_tracking_recommended_test.py,18,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_swing_joint_target_tracking_recommended_test.py,101,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_swing_joint_target_tracking_recommended_test_flrr.py,18,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_swing_joint_target_tracking_recommended_test_flrr.py,101,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_swing_joint_target_tracking_test.py,16,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_swing_joint_target_tracking_test.py,92,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_swing_joint_target_tracking_with_wbc_test.py,18,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_swing_joint_target_tracking_with_wbc_test.py,107,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_swing_tracking_mode_sequence_test.py,16,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_swing_tracking_mode_sequence_test.py,104,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_swing_tracking_stability_sweep.py,16,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_swing_tracking_stability_sweep.py,114,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_swing_trajectory_qp.py,14,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_swing_trajectory_qp.py,62,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_swing_trajectory_qp_k9.py,14,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_swing_trajectory_qp_k9.py,62,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_wbc_base_wrench_qp.py,16,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_wbc_base_wrench_qp.py,87,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_wbc_base_wrench_support_test.py,14,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_wbc_base_wrench_support_test.py,63,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_wbc_posture_regularized_qp.py,16,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_wbc_posture_regularized_qp.py,88,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_wbc_posture_regularized_support_test.py,15,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_wbc_posture_regularized_support_test.py,64,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage07_wbc_torque_support_test.py,14,mujoco_leg_order_literal,high,"LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage07_wbc_torque_support_test.py,63,direct_frame_or_foot_name_contract,low,"sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage08_adapter_backed_stage07_baseline_ab_test.py,129,manual_tau_reorder,medium,"tau_mj = np.linspace(-5.0, 5.0, CONTRACT.mj_nu)",Possible manual torque or joint order mapping site.
+scripts/stage08_adapter_backed_stage07_baseline_ab_test.py,130,manual_tau_reorder,medium,"return roundtrip_errors(q_mj, v_mj, tau_mj)",Possible manual torque or joint order mapping site.
+scripts/stage08_adapter_backed_stage07_baseline_ab_test.py,160,manual_tau_reorder,medium,"tau_mj = np.linspace(-5.0, 5.0, CONTRACT.mj_nu)",Possible manual torque or joint order mapping site.
+scripts/stage08_adapter_backed_stage07_baseline_ab_test.py,162,manual_tau_reorder,medium,"errors = roundtrip_errors(q_mj, v_mj, tau_mj)",Possible manual torque or joint order mapping site.
+scripts/stage08_adapter_backed_stage07_recommended_test.py,27,manual_tau_reorder,medium,"tau_mj = np.linspace(-5.0, 5.0, CONTRACT.mj_nu)",Possible manual torque or joint order mapping site.
+scripts/stage08_adapter_backed_stage07_recommended_test.py,29,manual_tau_reorder,medium,"errors = roundtrip_errors(q_mj, v_mj, tau_mj)",Possible manual torque or joint order mapping site.
+scripts/stage08_adapter_zero_control_regression_guard.py,101,manual_tau_reorder,medium,"tau_mj = np.linspace(-5.0, 5.0, CONTRACT.mj_nu)",Possible manual torque or joint order mapping site.
+scripts/stage08_adapter_zero_control_regression_guard.py,103,manual_tau_reorder,medium,"adapter_errors = roundtrip_errors(q_mj, v_mj, tau_mj)",Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_adapter_module_check.py,48,direct_frame_or_foot_name_contract,low,"def mj_name2id(model, obj_type, name: str) -> int:",Possible direct foot name/frame contract use.
+scripts/stage08_runtime_interface_adapter_module_check.py,50,direct_frame_or_foot_name_contract,low,"return mujoco.mj_name2id(model, obj_type, name)",Possible direct foot name/frame contract use.
+scripts/stage08_runtime_interface_adapter_module_check.py,95,manual_tau_reorder,medium,"""mujoco_actuator_order_from_module"",",Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_adapter_module_check.py,110,manual_tau_reorder,medium,"""pinocchio_joint_order_from_module"",",Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_adapter_module_check.py,118,direct_frame_or_foot_name_contract,low,"site_id = mj_name2id(mj_model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage08_runtime_interface_adapter_module_check.py,119,direct_frame_or_foot_name_contract,low,"geom_id = mj_name2id(mj_model, mujoco.mjtObj.mjOBJ_GEOM, leg)",Possible direct foot name/frame contract use.
+scripts/stage08_runtime_interface_adapter_module_check.py,122,direct_frame_or_foot_name_contract,low,frame_id = pin_model.getFrameId(frame_name),Possible direct foot name/frame contract use.
+scripts/stage08_runtime_interface_adapter_module_check.py,141,manual_tau_reorder,medium,"tau_mj = np.linspace(-5.0, 5.0, CONTRACT.mj_nu)",Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_adapter_module_check.py,149,manual_tau_reorder,medium,tau_pin = mujoco_tau_to_pinocchio(tau_mj),Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_adapter_module_check.py,150,manual_tau_reorder,medium,tau_rt = pinocchio_tau_to_mujoco(tau_pin),Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_adapter_module_check.py,152,manual_tau_reorder,medium,"errors = roundtrip_errors(q_mj, v_mj, tau_mj)",Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_adapter_module_check.py,160,manual_tau_reorder,medium,"add_check(rows, ""tau_direct_roundtrip_allclose"", bool(np.allclose(tau_rt, tau_mj, atol=1e-12)), True, np.allclose(tau_rt, tau_mj, atol=1e-12))",Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_adapter_module_check.py,162,mujoco_free_joint_quat_slice,high,"quat_pass = np.allclose(q_pin[3:6], q_mj[4:7], atol=1e-15) and np.isclose(q_pin[6], q_mj[3], atol=1e-15)","Likely MuJoCo quaternion vector slice qx,qy,qz."
+scripts/stage08_runtime_interface_adapter_module_check.py,162,mujoco_free_joint_qw_index,high,"quat_pass = np.allclose(q_pin[3:6], q_mj[4:7], atol=1e-15) and np.isclose(q_pin[6], q_mj[3], atol=1e-15)",Likely MuJoCo quaternion scalar qw index.
+scripts/stage08_runtime_interface_adapter_module_check.py,162,pinocchio_free_flyer_quat_slice,high,"quat_pass = np.allclose(q_pin[3:6], q_mj[4:7], atol=1e-15) and np.isclose(q_pin[6], q_mj[3], atol=1e-15)","Likely Pinocchio quaternion vector slice qx,qy,qz."
+scripts/stage08_runtime_interface_adapter_module_check.py,162,pinocchio_free_flyer_qw_index,high,"quat_pass = np.allclose(q_pin[3:6], q_mj[4:7], atol=1e-15) and np.isclose(q_pin[6], q_mj[3], atol=1e-15)",Likely Pinocchio quaternion scalar qw index.
+scripts/stage08_runtime_interface_adapter_module_check.py,171,manual_tau_reorder,medium,max_tau_abs = float(np.max(np.abs(tau_mj))),Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,36,mujoco_leg_order_literal,high,"MJ_LEG_ORDER = [""FR"", ""FL"", ""RR"", ""RL""]",Hard-coded MuJoCo leg order.
+scripts/stage08_runtime_interface_contract_check.py,37,pinocchio_leg_order_literal,high,"PIN_LEG_ORDER = [""FL"", ""FR"", ""RL"", ""RR""]",Hard-coded Pinocchio leg order.
+scripts/stage08_runtime_interface_contract_check.py,43,manual_qpos_actuated_offset,medium,"MJ_Q_IDX = {label: 7 + i for i, label in enumerate(MJ_LABELS)}",Possible manual qpos actuated index offset.
+scripts/stage08_runtime_interface_contract_check.py,44,manual_qpos_actuated_offset,medium,"PIN_Q_IDX = {label: 7 + i for i, label in enumerate(PIN_LABELS)}",Possible manual qpos actuated index offset.
+scripts/stage08_runtime_interface_contract_check.py,46,manual_qvel_actuated_offset,medium,"MJ_V_IDX = {label: 6 + i for i, label in enumerate(MJ_LABELS)}",Possible manual qvel actuated index offset.
+scripts/stage08_runtime_interface_contract_check.py,47,manual_qvel_actuated_offset,medium,"PIN_V_IDX = {label: 6 + i for i, label in enumerate(PIN_LABELS)}",Possible manual qvel actuated index offset.
+scripts/stage08_runtime_interface_contract_check.py,61,mujoco_free_joint_quat_slice,high,q_pin[3:6] = q_mj[4:7],"Likely MuJoCo quaternion vector slice qx,qy,qz."
+scripts/stage08_runtime_interface_contract_check.py,61,pinocchio_free_flyer_quat_slice,high,q_pin[3:6] = q_mj[4:7],"Likely Pinocchio quaternion vector slice qx,qy,qz."
+scripts/stage08_runtime_interface_contract_check.py,62,mujoco_free_joint_qw_index,high,q_pin[6] = q_mj[3],Likely MuJoCo quaternion scalar qw index.
+scripts/stage08_runtime_interface_contract_check.py,62,pinocchio_free_flyer_qw_index,high,q_pin[6] = q_mj[3],Likely Pinocchio quaternion scalar qw index.
+scripts/stage08_runtime_interface_contract_check.py,76,mujoco_free_joint_qw_index,high,q_mj[3] = q_pin[6],Likely MuJoCo quaternion scalar qw index.
+scripts/stage08_runtime_interface_contract_check.py,76,pinocchio_free_flyer_qw_index,high,q_mj[3] = q_pin[6],Likely Pinocchio quaternion scalar qw index.
+scripts/stage08_runtime_interface_contract_check.py,77,mujoco_free_joint_quat_slice,high,q_mj[4:7] = q_pin[3:6],"Likely MuJoCo quaternion vector slice qx,qy,qz."
+scripts/stage08_runtime_interface_contract_check.py,77,pinocchio_free_flyer_quat_slice,high,q_mj[4:7] = q_pin[3:6],"Likely Pinocchio quaternion vector slice qx,qy,qz."
+scripts/stage08_runtime_interface_contract_check.py,109,manual_tau_reorder,medium,def mj_tau_to_pin(tau_mj: np.ndarray) -> np.ndarray:,Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,110,manual_tau_reorder,medium,"tau_mj = np.asarray(tau_mj, dtype=float)",Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,111,manual_tau_reorder,medium,tau_pin = np.zeros(12),Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,114,manual_tau_reorder,medium,tau_pin[PIN_TAU_IDX[label]] = tau_mj[MJ_TAU_IDX[label]],Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,116,manual_tau_reorder,medium,return tau_pin,Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,119,manual_tau_reorder,medium,def pin_tau_to_mj(tau_pin: np.ndarray) -> np.ndarray:,Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,120,manual_tau_reorder,medium,"tau_pin = np.asarray(tau_pin, dtype=float)",Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,121,manual_tau_reorder,medium,tau_mj = np.zeros(12),Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,124,manual_tau_reorder,medium,tau_mj[MJ_TAU_IDX[label]] = tau_pin[PIN_TAU_IDX[label]],Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,126,manual_tau_reorder,medium,return tau_mj,Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,132,mujoco_leg_order_literal,high,"for leg in [""FR"", ""FL"", ""RR"", ""RL""]:",Hard-coded MuJoCo leg order.
+scripts/stage08_runtime_interface_contract_check.py,139,direct_frame_or_foot_name_contract,low,"def mj_name2id(model, obj_type, name: str) -> int:",Possible direct foot name/frame contract use.
+scripts/stage08_runtime_interface_contract_check.py,141,direct_frame_or_foot_name_contract,low,"return mujoco.mj_name2id(model, obj_type, name)",Possible direct foot name/frame contract use.
+scripts/stage08_runtime_interface_contract_check.py,184,manual_tau_reorder,medium,"""mujoco_actuator_order"",",Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,200,manual_tau_reorder,medium,"""pinocchio_actuated_joint_order"",",Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,207,mujoco_leg_order_literal,high,"for leg in [""FR"", ""FL"", ""RR"", ""RL""]:",Hard-coded MuJoCo leg order.
+scripts/stage08_runtime_interface_contract_check.py,208,direct_frame_or_foot_name_contract,low,"site_id = mj_name2id(mj_model, mujoco.mjtObj.mjOBJ_SITE, leg)",Possible direct foot name/frame contract use.
+scripts/stage08_runtime_interface_contract_check.py,209,direct_frame_or_foot_name_contract,low,"geom_id = mj_name2id(mj_model, mujoco.mjtObj.mjOBJ_GEOM, leg)",Possible direct foot name/frame contract use.
+scripts/stage08_runtime_interface_contract_check.py,213,direct_frame_or_foot_name_contract,low,frame_id = pin_model.getFrameId(frame_name),Possible direct foot name/frame contract use.
+scripts/stage08_runtime_interface_contract_check.py,243,manual_tau_reorder,medium,"tau_mj = np.linspace(-5.0, 5.0, 12)",Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,253,manual_tau_reorder,medium,tau_pin = mj_tau_to_pin(tau_mj),Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,254,manual_tau_reorder,medium,tau_mj_roundtrip = pin_tau_to_mj(tau_pin),Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,255,manual_tau_reorder,medium,tau_roundtrip_max_abs = float(np.max(np.abs(tau_mj_roundtrip - tau_mj))),Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,266,mujoco_free_joint_quat_slice,high,"np.allclose(q_pin[3:6], q_mj[4:7], atol=1e-15)","Likely MuJoCo quaternion vector slice qx,qy,qz."
+scripts/stage08_runtime_interface_contract_check.py,266,pinocchio_free_flyer_quat_slice,high,"np.allclose(q_pin[3:6], q_mj[4:7], atol=1e-15)","Likely Pinocchio quaternion vector slice qx,qy,qz."
+scripts/stage08_runtime_interface_contract_check.py,267,mujoco_free_joint_qw_index,high,"and np.isclose(q_pin[6], q_mj[3], atol=1e-15)",Likely MuJoCo quaternion scalar qw index.
+scripts/stage08_runtime_interface_contract_check.py,267,pinocchio_free_flyer_qw_index,high,"and np.isclose(q_pin[6], q_mj[3], atol=1e-15)",Likely Pinocchio quaternion scalar qw index.
+scripts/stage08_runtime_interface_contract_check.py,278,manual_tau_reorder,medium,"float(np.max(np.abs(tau_mj))),",Possible manual torque or joint order mapping site.
+scripts/stage08_runtime_interface_contract_check.py,280,manual_tau_reorder,medium,"float(np.max(np.abs(tau_mj))) <= TORQUE_LIMIT,",Possible manual torque or joint order mapping site.

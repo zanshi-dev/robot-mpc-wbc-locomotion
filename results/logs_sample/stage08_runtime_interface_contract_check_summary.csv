@@ -1,0 +1,18 @@
+metric,value
+stage,Stage 8.0
+test_name,runtime_interface_contract_check
+mjcf_path,assets/go1/scene.xml
+urdf_path,assets/go1/urdf/go1.urdf
+mujoco_nq,19
+mujoco_nv,18
+mujoco_nu,12
+pinocchio_nq,19
+pinocchio_nv,18
+qpos_roundtrip_max_abs,0.0
+qvel_roundtrip_max_abs,0.0
+torque_roundtrip_max_abs,0.0
+num_checks,18
+num_failed_checks,0
+pass,True
+log_csv,results/logs_sample/stage08_runtime_interface_contract_check_log.csv
+summary_csv,results/logs_sample/stage08_runtime_interface_contract_check_summary.csv

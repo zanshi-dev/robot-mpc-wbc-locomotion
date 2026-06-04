@@ -1,0 +1,11 @@
+item,value,implemented_in_stage129,allowed_in_future_publish_stage,guard,description
+stage12_scope,publish_call_design_only,False,True,Stage 12.9 must not edit C++ source,Only records the future publish-call protocol.
+future_publish_call_site,active_torque_cmd_publisher_->publish(safe_torque_msg),False,True,Must appear only in a later explicit publish-call implementation stage,Future publish call target.
+future_publish_preconditions,manual flags true && active publisher exists && state_ready && inputs_fresh,False,True,"If any precondition is false, no publish is allowed",Runtime gating before any torque command publication.
+future_payload_contract,"Float64MultiArray length=12; all finite; Go1 actuator order FR,FL,RR,RL hip,thigh,calf",False,True,Invalid payload must abort or fall back to zero,Future torque command payload contract.
+future_safety_filter,watchdogFallbackZeroTorque before clampTorqueCommand,False,True,No raw unclamped torque may be published,Future safety processing chain.
+future_first_publish_policy,zero/safe torque only; one-shot or bounded dry-run before continuous publishing,False,True,Continuous publishing requires later stage,First publish stage must remain bounded.
+future_no_control_law_change_rule,publish-call implementation must not alter current mixed online control baseline,False,True,source diff must be limited to publish-gated output path,Future publish path must not claim pure WBC or realtime controller completion.
+future_runtime_observation,before/after topic echo; message count; payload length; finite check; revert flags after test,False,True,Missing runtime evidence aborts publish stage,Future evidence required for any publish-call implementation.
+future_revert_procedure,set confirm_torque_publisher_enable false; set enable_torque_publisher false; stop controller,False,True,Revert must run in finally block,Fail-closed cleanup for future publish test.
+future_abort_conditions,source hash unexpected; publish call appears outside allowed block; params fail; controller exits; payload invalid; message count unexpected,False,True,Future publish script must fail closed,Abort policy for later publish stage.

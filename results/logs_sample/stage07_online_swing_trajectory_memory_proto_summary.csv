@@ -1,0 +1,2 @@
+dt,total_steps,period_steps,half_period_steps,stride_x,clearance_z,transition_count,swing_start_count,expected_swing_start_count,min_target_z,max_target_z,max_step_delta_norm,max_step_delta_z,FR_swing_samples,FL_swing_samples,RR_swing_samples,RL_swing_samples,FR_stance_samples,FL_stance_samples,RR_stance_samples,RL_stance_samples,z_pass,smooth_pass,balance_pass,transition_pass,swing_start_pass,pass
+0.002,1200,400,200,0.015,0.025,5,12,12,0.020000000000,0.045000000000,0.000392684534,0.000392682933,600,600,600,600,600,600,600,600,True,True,True,True,True,True

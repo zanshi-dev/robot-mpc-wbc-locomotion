@@ -1,0 +1,11 @@
+item,value,implemented_in_stage120,required_before_any_source_change,description
+stage12_scope,active_publisher_construction_planning_only,False,True,Stage 12.0 only plans future active publisher construction. It must not edit controller source.
+future_active_publisher_topic,/go1/joint_torque_cmd,False,True,Future topic name. It remains absent from controller source in Stage 12.0.
+future_active_publisher_msg_type,std_msgs/msg/Float64MultiArray,False,True,Future message type for 12-element torque payload.
+future_payload_contract,"length=12; finite; MuJoCo actuator order FR,FL,RR,RL hip,thigh,calf",False,True,Any future publisher construction must preserve this payload contract.
+future_construction_gate,separate stage only; no publish call in same stage,False,True,Publisher construction and publish call must remain separated across stages.
+future_manual_gate,enable_torque_publisher && confirm_torque_publisher_enable,False,True,Both manual flags must be true before any later active publishing path is considered.
+future_state_gate,state_ready && inputs_fresh,False,True,Fresh validated state is required before publish permission.
+future_safety_filter,watchdogFallbackZeroTorque then clampTorqueCommand,False,True,Future torque command must pass watchdog and clamp utilities.
+future_runtime_observation,publisher_count observed before and after construction stage,False,True,Runtime topic info must be recorded before any publishing stage.
+future_abort_conditions,hash mismatch; source guard failure; parameter default violation; publisher count unexpected,False,True,Any violation stops Stage 12 before active publisher implementation.

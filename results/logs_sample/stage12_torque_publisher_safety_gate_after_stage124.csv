@@ -1,0 +1,24 @@
+gate,name,required_before_torque_publish,current_status,evidence
+G0,Stage 8 frozen Python baseline valid,True,True,results/logs_sample/stage08_freeze_integrity_check_summary.csv
+G1,Stage 9 interface mirror frozen,True,True,results/logs_sample/stage09_0_6_interface_mirror_freeze_summary.csv
+G2,C++ controller source has no ROS torque publisher construction,True,False,Stage 12.4 intentionally constructs publisher object but still forbids publish call
+G3,C++ controller source has no publish call,True,True,ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp
+G4,Explicit manual enable flag design exists,True,True,docs/STAGE10_TORQUE_PUBLISHER_ENABLE_GATE_DESIGN.md
+G5,Torque clamp and watchdog utility implemented,True,True,ros2_ws/src/robot_mpc_wbc_cpp_controller/include/robot_mpc_wbc_cpp_controller/torque_safety.hpp
+G6,Zero torque dry-run regression completed,True,True,results/logs_sample/stage10_zero_torque_dry_run_internal_validation_summary.csv
+G7,Python frozen baseline A/B regression still passes,True,True,results/logs_sample/stage08_adapter_backed_stage07_baseline_ab_test_summary.csv
+G8,Manual enable flags active at runtime,True,False,parameters remain default false in Stage 12.4
+G9,Active ROS publisher path exists,True,True,results/logs_sample/stage12_publisher_construction_without_publish_topic_observations.csv
+G10,Disabled controller uses clamp/watchdog internally,True,True,ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp
+G11,Manual enable parameters exist and default false,True,True,results/logs_sample/stage12_publisher_construction_without_publish_param_stdout.txt
+G12,Publisher path skeleton plan exists,True,True,results/logs_sample/stage11_publisher_path_skeleton_plan.csv
+G13,Publisher-path source guard passed before implementation,True,True,results/logs_sample/stage11_publisher_path_source_guard_log.csv
+G14,Disabled publisher-path skeleton design exists,True,True,results/logs_sample/stage11_disabled_publisher_path_skeleton_design.csv
+G15,Disabled publisher-path skeleton preflight passed,True,True,results/logs_sample/stage11_disabled_publisher_path_skeleton_preflight.csv
+G16,Dormant publisher-path source skeleton exists,True,True,ros2_ws/src/robot_mpc_wbc_cpp_controller/src/disabled_controller_node.cpp
+G17,Runtime guard hardened for dormant publisher skeleton,True,True,results/logs_sample/stage11_runtime_guard_hardening_topic_observations.csv
+G18,Stage 11 full freeze integrity check passed,True,True,results/logs_sample/stage11_full_freeze_integrity_check_log.csv
+G19,Active publisher construction planning exists,True,True,results/logs_sample/stage12_active_publisher_construction_plan.csv
+G20,Pre-construction source and runtime guard passed,True,True,results/logs_sample/stage12_pre_construction_source_runtime_guard_log.csv
+G21,Publisher construction source patch design exists,True,True,results/logs_sample/stage12_publisher_construction_source_patch_design.csv
+G22,Publisher construction implemented without publish call,True,True,results/logs_sample/stage12_publisher_construction_source_patch_without_publish_log.csv

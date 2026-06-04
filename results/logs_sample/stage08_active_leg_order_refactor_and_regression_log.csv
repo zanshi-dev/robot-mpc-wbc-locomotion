@@ -1,0 +1,17 @@
+check,value,expected,pass,detail
+target_exists_stage07_online_full_wbc_scheduler_recommended_run.py,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage07_online_full_wbc_scheduler_recommended_run.py
+target_exists_stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py,True,True,True,/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py
+patched_stage07_online_full_wbc_scheduler_recommended_run.py,"{'changed': True, 'replacement_count': 1, 'import_added': True}",LEG_ORDER = list(MJ_LEG_ORDER),True,results/logs_sample/stage08_6_backup_stage07_online_full_wbc_scheduler_recommended_run.py.txt
+patched_stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py,"{'changed': True, 'replacement_count': 1, 'import_added': True}",LEG_ORDER = list(MJ_LEG_ORDER),True,results/logs_sample/stage08_6_backup_stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py.txt
+py_compile_stage07_online_full_wbc_scheduler_recommended_run.py,0,0,True,
+py_compile_stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py,0,0,True,
+rerun_stage83_ab_returncode,0,0,True,
+rerun_stage83_ab_pass,True,True,True,
+rerun_original_pass,True,True,True,
+rerun_adapter_pass,True,True,True,
+rerun_original_pass_margin,True,True,True,
+rerun_adapter_pass_margin,True,True,True,
+rerun_stage84_audit_returncode,0,0,True,
+rerun_stage85_triage_returncode,0,0,True,
+rerun_stage85_triage_pass,True,True,True,
+active_high_severity_findings_after_refactor,0,0,True,

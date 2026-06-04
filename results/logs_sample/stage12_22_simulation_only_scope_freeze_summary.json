@@ -1,0 +1,35 @@
+{
+  "stage": "12.22",
+  "name": "simulation_only_project_scope_freeze_and_documentation_update",
+  "timestamp": "2026-06-04T09:49:04",
+  "pass": true,
+  "fail_reasons": [],
+  "simulation_only_project": true,
+  "hardware_available": false,
+  "hardware_deployment_scope": "out_of_scope_by_user_constraint",
+  "hardware_deployment_completed": false,
+  "real_robot_torque_execution_scope": "out_of_scope",
+  "actuator_hardware_enablement_scope": "out_of_scope",
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "baseline_type": "mixed_online_control_baseline",
+  "allowed_future_work": [
+    "MuJoCo closed-loop locomotion regression",
+    "ROS2 topic dry-run validation",
+    "simulation-only safety-gated controller evidence",
+    "documentation/report/paper-ready experiment packaging",
+    "Python-to-C++ interface consistency checks without hardware deployment"
+  ],
+  "disallowed_future_work": [
+    "hardware deployment",
+    "actuator hardware enablement",
+    "real robot torque execution",
+    "claiming torque_enable_ready=True",
+    "claiming realtime hardware controller completion"
+  ],
+  "source_hash": "b2d7371786b58300ca68be5542372d5cf8aa2814678b9f451e09bdb8061aa138",
+  "publish_call_count": 1,
+  "previous_stage": "Stage 12.21-R3",
+  "next_stage": "Stage 13 simulation-only MuJoCo locomotion regression and documentation consolidation"
+}

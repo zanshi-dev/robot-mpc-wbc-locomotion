@@ -1,0 +1,2 @@
+dt,total_steps,period_steps,half_period_steps,num_cycles,trot_FR_RL_steps,trot_FL_RR_steps,transition_count,expected_transitions,duration_pass,transition_pass,pass
+0.002,1200,400,200,3,600,600,5,5,True,True,True

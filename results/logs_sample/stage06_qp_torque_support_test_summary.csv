@@ -1,0 +1,2 @@
+sim_steps,kp,kd,torque_limit,initial_z,final_z,min_z,max_z,delta_z,max_abs_roll,max_abs_pitch,max_tau_pd_abs,max_tau_qp_abs,max_tau_total_abs,saturation_steps,pass,sign_convention
+1000,80.0,2.0,23.7,0.284805846483,0.289618537988,0.284805846483,0.305958635013,0.004812691505,0.066226209316,0.033555433733,13.776436903041,5.336923217750,8.832121424115,0,True,tau_qp_actuator = - J^T f_qp
