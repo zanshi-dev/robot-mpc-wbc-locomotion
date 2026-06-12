@@ -1,0 +1,410 @@
+# Stage 14.5D-R2 derived simulation-only A/B runner skeleton.
+# Source-derived from the frozen mixed baseline runner.
+# Default control mode remains baseline.
+# The MPC-assisted candidate mode is explicitly gated and intentionally not implemented in R2.
+# No hardware deployment, no actuator enablement, no ROS torque publisher.
+
+# Stage 13.2 derived 2400-step simulation-only mixed baseline runner.
+# Original Stage 7 recommended runner is not modified.
+# Control law is unchanged; WBC horizon and target CSV are derived for 2400-step robustness regression.
+
+#!/usr/bin/env python3
+from common.go1_runtime_interface import MJ_LEG_ORDER
+import csv
+import importlib.util
+from pathlib import Path
+import argparse
+
+import mujoco
+import numpy as np
+
+
+WBC_SCRIPT = "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py"
+SWING_TARGET_CSV = "results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv"
+
+LOG_CSV = "results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_log.csv"
+SUMMARY_CSV = "results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_summary.csv"
+
+LEG_ORDER = list(MJ_LEG_ORDER)
+JOINTS = ["hip", "thigh", "calf"]
+
+STANCE_KP = 60.0
+STANCE_KD = 2.0
+SWING_KP = 80.0
+SWING_KD = 2.0
+
+STANCE_WBC_SCALE = 0.2
+SWING_PD_SCALE = 1.0
+SWING_TARGET_SCALE = 0.35
+
+TORQUE_LIMIT = 23.7
+
+CONTROL_MODE_BASELINE = "baseline"
+CONTROL_MODE_MPC_ASSISTED_CANDIDATE = "mpc_assisted_candidate"
+CONTROL_MODE_CHOICES = [CONTROL_MODE_BASELINE, CONTROL_MODE_MPC_ASSISTED_CANDIDATE]
+DEFAULT_CONTROL_MODE = CONTROL_MODE_BASELINE
+MPC_ASSISTED_CANDIDATE_DEFAULT_SCALE = 0.0
+
+MIN_Z_LIMIT = 0.22
+MAX_ROLL_LIMIT = 0.20
+MAX_PITCH_LIMIT = 0.20
+MAX_SWING_JOINT_ERROR_LIMIT = 0.08
+
+
+def load_wbc():
+    spec = importlib.util.spec_from_file_location("wbc_recommended", WBC_SCRIPT)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def read_swing_targets():
+    rows = []
+
+    with open(SWING_TARGET_CSV, "r", newline="") as f:
+        for row in csv.DictReader(f):
+            q_des = []
+            for leg in LEG_ORDER:
+                for joint in JOINTS:
+                    q_des.append(float(row[f"{leg}_q_{joint}"]))
+
+            rows.append({
+                "step": int(row["step"]),
+                "mode": row["mode"],
+                "phase_in_mode": row["phase_in_mode"],
+                "swing_progress": row["swing_progress"],
+                "stance_legs": row["stance_legs"],
+                "swing_legs": row["swing_legs"],
+                "q_des": np.array(q_des, dtype=float),
+            })
+
+    if not rows:
+        raise RuntimeError(f"empty target csv: {SWING_TARGET_CSV}")
+
+    return rows
+
+
+def leg_indices(legs):
+    out = []
+    for leg_i, leg in enumerate(LEG_ORDER):
+        if leg in legs:
+            out.extend([3 * leg_i + 0, 3 * leg_i + 1, 3 * leg_i + 2])
+    return out
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Stage 14.5D-R2 simulation-only A/B runner skeleton")
+    parser.add_argument(
+        "--control-mode",
+        choices=CONTROL_MODE_CHOICES,
+        default=DEFAULT_CONTROL_MODE,
+        help="Explicit simulation-only control mode. Default is baseline.",
+    )
+    parser.add_argument(
+        "--allow-mpc-assisted-candidate",
+        action="store_true",
+        help="Explicit gate for future MPC-assisted candidate mode. R2 still does not implement candidate torque injection.",
+    )
+    parser.add_argument(
+        "--mpc-assisted-candidate-scale",
+        type=float,
+        default=MPC_ASSISTED_CANDIDATE_DEFAULT_SCALE,
+        help="Future candidate scaling placeholder. Default 0.0 in R2.",
+    )
+    args = parser.parse_args()
+
+    if args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE:
+        if not args.allow_mpc_assisted_candidate:
+            raise RuntimeError("mpc_assisted_candidate requires --allow-mpc-assisted-candidate")
+        raise NotImplementedError("Stage 14.5D-R2 only derives the explicit switch skeleton; MPC-assisted torque injection is not implemented yet")
+
+    if args.mpc_assisted_candidate_scale != 0.0:
+        raise RuntimeError("Stage 14.5D-R2 baseline mode requires --mpc-assisted-candidate-scale 0.0")
+
+    wbc = load_wbc()
+    target_rows = read_swing_targets()
+
+    model = mujoco.MjModel.from_xml_path(wbc.SCENE)
+    data = mujoco.MjData(model)
+
+    contact_rows = wbc.read_contact_wbc_rows()
+    dofs, qadrs = wbc.actuator_indices(model)
+    site_ids = wbc.set_standing_pose(model, data)
+
+    q_standing = wbc.current_actuated_q(data, qadrs)
+
+    initial_z = float(data.qpos[2])
+    min_z = initial_z
+    max_z = initial_z
+    max_abs_roll = 0.0
+    max_abs_pitch = 0.0
+
+    max_joint_error = 0.0
+    max_swing_joint_error = 0.0
+    max_stance_joint_error = 0.0
+
+    max_tau_stance_pd_abs = 0.0
+    max_tau_stance_wbc_abs = 0.0
+    max_tau_swing_pd_abs = 0.0
+    max_tau_total_raw_abs = 0.0
+    max_tau_total_abs = 0.0
+
+    max_cmd_step_jump_norm = 0.0
+    max_cmd_step_jump_abs = 0.0
+
+    max_dyn_res_norm = 0.0
+    max_stance_acc_res_norm = 0.0
+    max_swing_acc_error_norm = 0.0
+
+    qp_fail_steps = 0
+    saturation_steps = 0
+    transition_count = 0
+
+    tau_wbc_cmd = np.zeros(model.nu)
+    tau_prev_total = np.zeros(model.nu)
+    prev_mode = None
+
+    mode_counts = {m: 0 for m in wbc.CONTACT_MODES}
+    total_steps = min(wbc.TOTAL_STEPS, len(target_rows))
+
+    log_rows = []
+
+    for step in range(total_steps):
+        sched = wbc.scheduler_mode(step)
+        mode = sched["mode"]
+        target = target_rows[step]
+
+        if target["mode"] != mode:
+            raise RuntimeError(
+                f"mode mismatch at step={step}: scheduler={mode}, target={target['mode']}"
+            )
+
+        is_transition = prev_mode is not None and mode != prev_mode
+        if is_transition:
+            transition_count += 1
+        prev_mode = mode
+        mode_counts[mode] += 1
+
+        stance_legs = target["stance_legs"].split(",") if target["stance_legs"] else []
+        swing_legs = target["swing_legs"].split(",") if target["swing_legs"] else []
+
+        stance_inds = leg_indices(stance_legs)
+        swing_inds = leg_indices(swing_legs)
+
+        stance_mask = np.zeros(model.nu)
+        swing_mask = np.zeros(model.nu)
+        stance_mask[stance_inds] = 1.0
+        swing_mask[swing_inds] = 1.0
+
+        tau_wbc, metrics = wbc.solve_online_full_wbc(
+            model=model,
+            data=data,
+            site_ids=site_ids,
+            dofs=dofs,
+            mode=mode,
+            contact_row=contact_rows[mode],
+        )
+
+        if tau_wbc is None:
+            qp_fail_steps += 1
+            tau_wbc = tau_wbc_cmd.copy()
+
+        tau_wbc_cmd = (1.0 - wbc.RAMP_ALPHA) * tau_wbc_cmd + wbc.RAMP_ALPHA * tau_wbc
+        tau_stance_wbc = STANCE_WBC_SCALE * stance_mask * tau_wbc_cmd
+
+        q_des_full = target["q_des"]
+        q_des_swing = q_standing + SWING_TARGET_SCALE * (q_des_full - q_standing)
+
+        q_now = wbc.current_actuated_q(data, qadrs)
+        qd_now = wbc.current_actuated_qd(data, dofs)
+
+        q_des = q_standing.copy()
+        q_des[swing_inds] = q_des_swing[swing_inds]
+
+        q_err = q_des - q_now
+
+        tau_stance_pd = stance_mask * (STANCE_KP * (q_standing - q_now) - STANCE_KD * qd_now)
+        tau_swing_pd = SWING_PD_SCALE * swing_mask * (SWING_KP * q_err - SWING_KD * qd_now)
+
+        tau_total_raw = tau_stance_pd + tau_stance_wbc + tau_swing_pd
+        tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)
+
+        saturated = bool(np.any(np.abs(tau_total_raw) > TORQUE_LIMIT))
+        saturation_steps += int(saturated)
+
+        tau_jump = tau_total - tau_prev_total
+        max_cmd_step_jump_norm = max(max_cmd_step_jump_norm, float(np.linalg.norm(tau_jump)))
+        max_cmd_step_jump_abs = max(max_cmd_step_jump_abs, float(np.max(np.abs(tau_jump))))
+        tau_prev_total = tau_total.copy()
+
+        data.ctrl[:] = tau_total
+        mujoco.mj_step(model, data)
+
+        base_z = float(data.qpos[2])
+        roll, pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+
+        min_z = min(min_z, base_z)
+        max_z = max(max_z, base_z)
+        max_abs_roll = max(max_abs_roll, abs(roll))
+        max_abs_pitch = max(max_abs_pitch, abs(pitch))
+
+        step_joint_error = float(np.max(np.abs(q_err)))
+        step_swing_joint_error = float(np.max(np.abs(q_err[swing_inds]))) if swing_inds else 0.0
+        step_stance_joint_error = float(np.max(np.abs(q_err[stance_inds]))) if stance_inds else 0.0
+
+        max_joint_error = max(max_joint_error, step_joint_error)
+        max_swing_joint_error = max(max_swing_joint_error, step_swing_joint_error)
+        max_stance_joint_error = max(max_stance_joint_error, step_stance_joint_error)
+
+        tau_stance_pd_abs = float(np.max(np.abs(tau_stance_pd)))
+        tau_stance_wbc_abs = float(np.max(np.abs(tau_stance_wbc)))
+        tau_swing_pd_abs = float(np.max(np.abs(tau_swing_pd)))
+        tau_total_raw_abs = float(np.max(np.abs(tau_total_raw)))
+        tau_total_abs = float(np.max(np.abs(tau_total)))
+
+        max_tau_stance_pd_abs = max(max_tau_stance_pd_abs, tau_stance_pd_abs)
+        max_tau_stance_wbc_abs = max(max_tau_stance_wbc_abs, tau_stance_wbc_abs)
+        max_tau_swing_pd_abs = max(max_tau_swing_pd_abs, tau_swing_pd_abs)
+        max_tau_total_raw_abs = max(max_tau_total_raw_abs, tau_total_raw_abs)
+        max_tau_total_abs = max(max_tau_total_abs, tau_total_abs)
+
+        if np.isfinite(metrics["dyn_res_norm"]):
+            max_dyn_res_norm = max(max_dyn_res_norm, metrics["dyn_res_norm"])
+        if np.isfinite(metrics["stance_acc_res_norm"]):
+            max_stance_acc_res_norm = max(max_stance_acc_res_norm, metrics["stance_acc_res_norm"])
+        if np.isfinite(metrics["swing_acc_error_norm"]):
+            max_swing_acc_error_norm = max(max_swing_acc_error_norm, metrics["swing_acc_error_norm"])
+
+        log_rows.append({
+            "step": step,
+            "mode": mode,
+            "cycle_i": sched["cycle_i"],
+            "phase": f"{sched['phase']:.12f}",
+            "phase_step": sched["phase_step"],
+            "mode_step": sched["mode_step"],
+            "phase_in_mode": f"{sched['phase_in_mode']:.12f}",
+            "swing_progress": target["swing_progress"],
+            "stance_legs": target["stance_legs"],
+            "swing_legs": target["swing_legs"],
+            "is_transition": str(is_transition),
+            "base_z": f"{base_z:.12f}",
+            "roll": f"{roll:.12f}",
+            "pitch": f"{pitch:.12f}",
+            "osqp_status": metrics["osqp_status"],
+            "dyn_res_norm": f"{metrics['dyn_res_norm']:.12e}",
+            "stance_acc_res_norm": f"{metrics['stance_acc_res_norm']:.12e}",
+            "swing_acc_error_norm": f"{metrics['swing_acc_error_norm']:.12e}",
+            "joint_error": f"{step_joint_error:.12f}",
+            "swing_joint_error": f"{step_swing_joint_error:.12f}",
+            "stance_joint_error": f"{step_stance_joint_error:.12f}",
+            "tau_stance_pd_abs": f"{tau_stance_pd_abs:.12f}",
+            "tau_stance_wbc_abs": f"{tau_stance_wbc_abs:.12f}",
+            "tau_swing_pd_abs": f"{tau_swing_pd_abs:.12f}",
+            "tau_total_raw_abs": f"{tau_total_raw_abs:.12f}",
+            "tau_total_abs": f"{tau_total_abs:.12f}",
+            "tau_step_jump_norm": f"{float(np.linalg.norm(tau_jump)):.12f}",
+            "tau_step_jump_abs": f"{float(np.max(np.abs(tau_jump))):.12f}",
+            "saturated": str(saturated),
+        })
+
+    final_z = float(data.qpos[2])
+    final_roll, final_pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+
+    pass_test = (
+        qp_fail_steps == 0
+        and saturation_steps == 0
+        and min_z > MIN_Z_LIMIT
+        and max_abs_roll < MAX_ROLL_LIMIT
+        and max_abs_pitch < MAX_PITCH_LIMIT
+        and max_swing_joint_error < MAX_SWING_JOINT_ERROR_LIMIT
+    )
+
+    pass_margin = (
+        pass_test
+        and min_z - MIN_Z_LIMIT > 0.02
+        and MAX_ROLL_LIMIT - max_abs_roll > 0.01
+        and MAX_PITCH_LIMIT - max_abs_pitch > 0.01
+    )
+
+    summary = {
+        "stage": "14.5D-R2",
+        "control_mode": args.control_mode,
+        "simulation_only_project": True,
+        "hardware_deployment_completed": False,
+        "torque_enable_ready": False,
+        "torque_publisher_enabled": False,
+        "control_law_changed": False,
+        "mixed_baseline_modified": False,
+        "mpc_assisted_candidate_switch_present": True,
+        "mpc_assisted_candidate_executed": False,
+        "mpc_assisted_candidate_scale": args.mpc_assisted_candidate_scale,
+        "wbc_script": WBC_SCRIPT,
+        "swing_target_csv": SWING_TARGET_CSV,
+        "total_steps": total_steps,
+        "transition_count": transition_count,
+        "trot_FR_RL_steps": mode_counts["trot_FR_RL"],
+        "trot_FL_RR_steps": mode_counts["trot_FL_RR"],
+        "stance_kp": STANCE_KP,
+        "stance_kd": STANCE_KD,
+        "swing_kp": SWING_KP,
+        "swing_kd": SWING_KD,
+        "stance_wbc_scale": STANCE_WBC_SCALE,
+        "swing_pd_scale": SWING_PD_SCALE,
+        "swing_target_scale": SWING_TARGET_SCALE,
+        "torque_limit": TORQUE_LIMIT,
+        "initial_z": f"{initial_z:.12f}",
+        "final_z": f"{final_z:.12f}",
+        "min_z": f"{min_z:.12f}",
+        "max_z": f"{max_z:.12f}",
+        "delta_z": f"{final_z - initial_z:.12f}",
+        "final_roll": f"{final_roll:.12f}",
+        "final_pitch": f"{final_pitch:.12f}",
+        "max_abs_roll": f"{max_abs_roll:.12f}",
+        "roll_margin_to_0p20": f"{MAX_ROLL_LIMIT - max_abs_roll:.12f}",
+        "max_abs_pitch": f"{max_abs_pitch:.12f}",
+        "pitch_margin_to_0p20": f"{MAX_PITCH_LIMIT - max_abs_pitch:.12f}",
+        "z_margin_to_0p22": f"{min_z - MIN_Z_LIMIT:.12f}",
+        "max_joint_error": f"{max_joint_error:.12f}",
+        "max_swing_joint_error": f"{max_swing_joint_error:.12f}",
+        "max_stance_joint_error": f"{max_stance_joint_error:.12f}",
+        "max_tau_stance_pd_abs": f"{max_tau_stance_pd_abs:.12f}",
+        "max_tau_stance_wbc_abs": f"{max_tau_stance_wbc_abs:.12f}",
+        "max_tau_swing_pd_abs": f"{max_tau_swing_pd_abs:.12f}",
+        "max_tau_total_raw_abs": f"{max_tau_total_raw_abs:.12f}",
+        "max_tau_total_abs": f"{max_tau_total_abs:.12f}",
+        "max_cmd_step_jump_norm": f"{max_cmd_step_jump_norm:.12f}",
+        "max_cmd_step_jump_abs": f"{max_cmd_step_jump_abs:.12f}",
+        "max_dyn_res_norm": f"{max_dyn_res_norm:.12e}",
+        "max_stance_acc_res_norm": f"{max_stance_acc_res_norm:.12e}",
+        "max_swing_acc_error_norm": f"{max_swing_acc_error_norm:.12e}",
+        "qp_fail_steps": qp_fail_steps,
+        "saturation_steps": saturation_steps,
+        "pass": str(pass_test),
+        "pass_margin": str(pass_margin),
+    }
+
+    Path(LOG_CSV).parent.mkdir(parents=True, exist_ok=True)
+
+    with open(LOG_CSV, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=list(log_rows[0].keys()))
+        writer.writeheader()
+        writer.writerows(log_rows)
+
+    with open(SUMMARY_CSV, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=list(summary.keys()))
+        writer.writeheader()
+        writer.writerow(summary)
+
+    print("Stage 13.2 2400-step simulation-only mixed baseline regression")
+    for k, v in summary.items():
+        print(f"{k}={v}")
+
+    print(f"saved_log={LOG_CSV}")
+    print(f"saved_summary={SUMMARY_CSV}")
+
+    if not pass_test:
+        raise SystemExit(2)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,7 @@
+Inserted argparse import.
+Inserted Stage 14.5D-R2 safety header.
+Replaced output path anchor: LOG_CSV = "results/logs_sample/stage13_2_2400step_mixed_baseline_log.csv" -> LOG_CSV = "results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_log.csv"
+Replaced output path anchor: SUMMARY_CSV = "results/logs_sample/stage13_2_2400step_mixed_baseline_summary.csv" -> SUMMARY_CSV = "results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_summary.csv"
+Inserted explicit control-mode constants after TORQUE_LIMIT.
+Inserted argparse control-mode gate at main entry.
+Inserted Stage 14.5D-R2 safety fields into derived runner summary.
