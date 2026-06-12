@@ -112,12 +112,12 @@ Stage 14.4 当前只属于第三层的 standalone demo。它尚未与第一层 m
 
 - 硬件侧已经准备完成
 - 力矩使能流程已经完成
-- 真实机器人力矩执行已有完成证据
+- 存在真实机器人力矩执行证据
 - 执行器使能已经完成
-- 实时硬件控制器已有完成证据
+- 存在实时硬件控制器完成证据
 - full 3D centroidal MPC 已经和 WBC 完整集成
 - MPC 已经接入 MuJoCo closed-loop locomotion baseline
-- MPC 已经输出真实 joint torque
+- MPC 输出真实 joint torque
 - ROS torque publisher 已经启用
 
 这些内容均不属于当前阶段证据。
