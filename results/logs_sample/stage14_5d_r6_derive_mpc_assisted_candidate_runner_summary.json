@@ -1,0 +1,78 @@
+{
+  "stage": "14.5D-R6",
+  "timestamp_utc": "2026-06-12T02:31:16.518937+00:00",
+  "pass": true,
+  "failed_checks": [],
+  "simulation_only_project": true,
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "real_robot_torque_commanded": false,
+  "ros_publisher_used": false,
+  "baseline_source_modified": false,
+  "r2_runner_source_modified": false,
+  "r6_runner_generated": true,
+  "mujoco_closed_loop_baseline_mode_executed": false,
+  "mujoco_closed_loop_candidate_mode_executed": false,
+  "mujoco_closed_loop_ab_executed": false,
+  "mujoco_sim_data_ctrl_used": false,
+  "mpc_assisted_candidate_implemented": true,
+  "mpc_assisted_candidate_executed": false,
+  "stage14_5d_r5_pass": true,
+  "source_runner": "scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py",
+  "baseline_runner": "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py",
+  "r6_runner": "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py",
+  "r2_runner_sha256": "80010ecda1cd59c2da0d8740e5c927f4474ffbaf4176ae911cdd5e02bfa588f1",
+  "r6_runner_sha256": "5ce4b306dc52d4d6ef89675b68366eac11c00f13f5f9cf1f1181760a31238a1e",
+  "compile_error": "",
+  "missing_required_tokens": [],
+  "forbidden_token_hits": [],
+  "source_diff_checks": {
+    "scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py": {
+      "local_diff_empty": true,
+      "diff_len": 0
+    },
+    "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py": {
+      "local_diff_empty": true,
+      "diff_len": 0
+    }
+  },
+  "patch_notes": [
+    "Inserted Stage 14.5D-R6 safety header.",
+    "Replaced output path anchor: LOG_CSV = \"results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_log.csv\" -> LOG_CSV_TEMPLATE = \"results/logs_sample/stage14_5d_r6_closed_loop_ab_{control_mode}_log.csv\"",
+    "Replaced output path anchor: SUMMARY_CSV = \"results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_summary.csv\" -> SUMMARY_CSV_TEMPLATE = \"results/logs_sample/stage14_5d_r6_closed_loop_ab_{control_mode}_summary.csv\"",
+    "Converted LOG_CSV/SUMMARY_CSV runtime references to mode-specific variables.",
+    "Inserted candidate CSV, scale bound, and step policy constants.",
+    "Inserted candidate CSV reader and candidate torque vector helpers.",
+    "Inserted candidate CSV and candidate step-policy CLI arguments.",
+    "Replaced R2 NotImplemented gate with bounded simulation-only candidate loader gate.",
+    "Inserted candidate torque metric accumulators.",
+    "Inserted candidate torque injection after baseline raw torque composition and before clipping.",
+    "Inserted candidate abs calculations and candidate fields into per-step log rows.",
+    "Updated runtime summary stage and candidate execution flags.",
+    "Inserted candidate source and safety fields into summary.",
+    "Inserted candidate torque metrics into summary."
+  ],
+  "git": {
+    "branch": "main",
+    "head": "9a14e9f",
+    "status_porcelain": "?? docs/stage14_5d_r6_derive_mpc_assisted_candidate_runner.md\n?? results/logs_sample/stage14_5d_r6_derive_mpc_assisted_candidate_runner_patch_notes.txt\n?? results/logs_sample/stage14_5d_r6_derive_mpc_assisted_candidate_runner_summary.json\n?? scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py\n?? scripts/stage14_5d_r6_derive_mpc_assisted_candidate_runner.py",
+    "dirty_non_stage14_5d_r6": []
+  },
+  "generated_files": [
+    "scripts/stage14_5d_r6_derive_mpc_assisted_candidate_runner.py",
+    "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py",
+    "docs/stage14_5d_r6_derive_mpc_assisted_candidate_runner.md",
+    "results/logs_sample/stage14_5d_r6_derive_mpc_assisted_candidate_runner_summary.json",
+    "results/logs_sample/stage14_5d_r6_derive_mpc_assisted_candidate_runner_patch_notes.txt"
+  ],
+  "notes": [
+    "Derivation step only.",
+    "R6 generates a new simulation-only candidate-capable runner.",
+    "R6 does not execute MuJoCo.",
+    "R6 does not execute A/B comparison.",
+    "R6 does not modify the frozen baseline runner.",
+    "R6 does not modify the R2 skeleton runner.",
+    "No real robot torque command is sent."
+  ]
+}

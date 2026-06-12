@@ -1,0 +1,14 @@
+Inserted Stage 14.5D-R6 safety header.
+Replaced output path anchor: LOG_CSV = "results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_log.csv" -> LOG_CSV_TEMPLATE = "results/logs_sample/stage14_5d_r6_closed_loop_ab_{control_mode}_log.csv"
+Replaced output path anchor: SUMMARY_CSV = "results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_summary.csv" -> SUMMARY_CSV_TEMPLATE = "results/logs_sample/stage14_5d_r6_closed_loop_ab_{control_mode}_summary.csv"
+Converted LOG_CSV/SUMMARY_CSV runtime references to mode-specific variables.
+Inserted candidate CSV, scale bound, and step policy constants.
+Inserted candidate CSV reader and candidate torque vector helpers.
+Inserted candidate CSV and candidate step-policy CLI arguments.
+Replaced R2 NotImplemented gate with bounded simulation-only candidate loader gate.
+Inserted candidate torque metric accumulators.
+Inserted candidate torque injection after baseline raw torque composition and before clipping.
+Inserted candidate abs calculations and candidate fields into per-step log rows.
+Updated runtime summary stage and candidate execution flags.
+Inserted candidate source and safety fields into summary.
+Inserted candidate torque metrics into summary.
