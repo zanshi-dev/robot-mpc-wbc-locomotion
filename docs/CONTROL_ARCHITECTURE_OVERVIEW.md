@@ -51,3 +51,15 @@
 项目尝试过 direct full WBC torque 与 swing PD torque 直接叠加，也尝试过 stance-only WBC + swing-only PD。结果说明直接 torque sum 会导致 roll、pitch 或 joint error 变大，stance-only WBC feedforward 也无法替代 posture feedback。根本原因是初期 full WBC 同时承担 base stabilization、contact switching、swing tracking 和 torque generation，任务耦合过强；一旦 contact mode 切换、swing target 不连续或支撑裕度不足，闭环稳定性会明显下降。
 
 因此 mixed baseline 不是退步，而是当前阶段的合理控制架构选择。它把最可靠的反馈稳定机制保留下来，同时把 WBC 作为可解释、可逐步增强的动力学 feedforward 模块。
+
+<!-- STAGE14_4E_MPC_ENTRY_BEGIN -->
+
+## Stage 14.4：MPC 规划层补充
+
+Stage 14.4 新增的是 standalone simplified 3D base velocity tracking receding-horizon MPC demo。它使用简化质心动力学，把四足三维接触力作为优化变量，在有限时域内同时考虑速度跟踪、高度保持、摆动腿力为零、支撑腿竖直力上下界、摩擦金字塔和总竖直力上界。
+
+该阶段的关键点是 receding-horizon：每一步从当前状态重新求解 QP，只取第一帧接触力 `u0`，然后进入下一步重解。Stage 14.4A 给出实现与 rollout 日志，Stage 14.4B 给出独立验证，Stage 14.4C 给出边界说明，Stage 14.4D0 给出 Stage 14.4 文档中文边界审计。
+
+该 MPC 当前只属于 planning-layer / contact-force MPC standalone demo。它不是 WBC，不直接输出 joint torque，不接 ROS torque publisher，不接 MuJoCo torque，不改变 frozen mixed baseline 控制律。项目边界保持为 simulation-only。
+
+<!-- STAGE14_4E_MPC_ENTRY_END -->

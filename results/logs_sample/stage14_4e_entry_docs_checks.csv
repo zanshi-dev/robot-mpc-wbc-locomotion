@@ -1,0 +1,55 @@
+file,check_type,item,pass
+README.md,required_phrase,standalone simplified 3D base velocity tracking receding-horizon MPC demo,True
+README.md,required_phrase,planning-layer,True
+README.md,required_phrase,contact-force MPC,True
+README.md,required_phrase,不是 WBC,True
+README.md,required_phrase,不直接输出 joint torque,True
+README.md,required_phrase,不接 ROS torque publisher,True
+README.md,required_phrase,不接 MuJoCo torque,True
+README.md,required_phrase,不改变 frozen mixed baseline 控制律,True
+README.md,required_phrase,simulation-only,True
+README.md,prohibited_positive_claim,项目已完成硬件部署,True
+README.md,prohibited_positive_claim,硬件部署已经完成,True
+README.md,prohibited_positive_claim,执行器使能已经完成并可用,True
+README.md,prohibited_positive_claim,真实机器人力矩执行已有完成证据,True
+README.md,prohibited_positive_claim,实时硬件控制器已有完成证据,True
+README.md,prohibited_positive_claim,MPC 已经接入真实机器人,True
+README.md,prohibited_positive_claim,ROS torque publisher 已经启用并用于控制,True
+README.md,prohibited_positive_claim,MPC 已经输出真实 joint torque,True
+README.md,prohibited_positive_claim,MPC-WBC integrated controller 已完成,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,required_phrase,standalone simplified 3D base velocity tracking receding-horizon MPC demo,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,required_phrase,planning-layer,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,required_phrase,contact-force MPC,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,required_phrase,不是 WBC,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,required_phrase,不直接输出 joint torque,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,required_phrase,不接 ROS torque publisher,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,required_phrase,不接 MuJoCo torque,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,required_phrase,不改变 frozen mixed baseline 控制律,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,required_phrase,simulation-only,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,prohibited_positive_claim,项目已完成硬件部署,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,prohibited_positive_claim,硬件部署已经完成,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,prohibited_positive_claim,执行器使能已经完成并可用,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,prohibited_positive_claim,真实机器人力矩执行已有完成证据,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,prohibited_positive_claim,实时硬件控制器已有完成证据,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,prohibited_positive_claim,MPC 已经接入真实机器人,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,prohibited_positive_claim,ROS torque publisher 已经启用并用于控制,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,prohibited_positive_claim,MPC 已经输出真实 joint torque,True
+docs/ONE_PAGE_TECHNICAL_REPORT.md,prohibited_positive_claim,MPC-WBC integrated controller 已完成,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,required_phrase,standalone simplified 3D base velocity tracking receding-horizon MPC demo,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,required_phrase,planning-layer,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,required_phrase,contact-force MPC,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,required_phrase,不是 WBC,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,required_phrase,不直接输出 joint torque,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,required_phrase,不接 ROS torque publisher,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,required_phrase,不接 MuJoCo torque,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,required_phrase,不改变 frozen mixed baseline 控制律,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,required_phrase,simulation-only,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,prohibited_positive_claim,项目已完成硬件部署,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,prohibited_positive_claim,硬件部署已经完成,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,prohibited_positive_claim,执行器使能已经完成并可用,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,prohibited_positive_claim,真实机器人力矩执行已有完成证据,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,prohibited_positive_claim,实时硬件控制器已有完成证据,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,prohibited_positive_claim,MPC 已经接入真实机器人,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,prohibited_positive_claim,ROS torque publisher 已经启用并用于控制,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,prohibited_positive_claim,MPC 已经输出真实 joint torque,True
+docs/CONTROL_ARCHITECTURE_OVERVIEW.md,prohibited_positive_claim,MPC-WBC integrated controller 已完成,True

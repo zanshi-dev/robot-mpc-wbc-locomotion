@@ -1,0 +1,22 @@
+{
+  "check_csv": "results/logs_sample/stage14_4e_entry_docs_checks.csv",
+  "control_law_changed": false,
+  "description": "validate Stage 14.4 MPC entry documentation update",
+  "failed_checks": [],
+  "hardware_deployment_completed": false,
+  "input_update_summary": "results/logs_sample/stage14_4e_entry_docs_update_summary.json",
+  "mixed_baseline_modified": false,
+  "mujoco_torque_used": false,
+  "pass": true,
+  "ros_publisher_used": false,
+  "simulation_only_project": true,
+  "stage": "14.4E",
+  "summary_json": "results/logs_sample/stage14_4e_entry_docs_validation_summary.json",
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "updated_files": [
+    "README.md",
+    "docs/ONE_PAGE_TECHNICAL_REPORT.md",
+    "docs/CONTROL_ARCHITECTURE_OVERVIEW.md"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "control_law_changed": false,
+  "description": "update README and project entry docs with Stage 14.4 MPC summary",
+  "failed_checks": [],
+  "hardware_deployment_completed": false,
+  "input_summaries": [
+    "results/logs_sample/stage14_4_base_velocity_tracking_mpc_summary.json",
+    "results/logs_sample/stage14_4b_base_velocity_tracking_mpc_validation_summary.json",
+    "results/logs_sample/stage14_4c_mpc_scope_explanation_summary.json",
+    "results/logs_sample/stage14_4d_document_language_audit_summary.json"
+  ],
+  "missing_target_files": [],
+  "mixed_baseline_modified": false,
+  "mujoco_torque_used": false,
+  "pass": true,
+  "ros_publisher_used": false,
+  "simulation_only_project": true,
+  "stage": "14.4E",
+  "summary_json": "results/logs_sample/stage14_4e_entry_docs_update_summary.json",
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "updated_files": [
+    "README.md",
+    "docs/ONE_PAGE_TECHNICAL_REPORT.md",
+    "docs/CONTROL_ARCHITECTURE_OVERVIEW.md"
+  ]
+}

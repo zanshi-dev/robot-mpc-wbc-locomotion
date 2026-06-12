@@ -37,3 +37,15 @@
 ## 后续计划
 
 后续最有价值的工作不是继续堆 Stage，而是补充干净可测试的 C++ 算法模块，例如 gait scheduler、swing trajectory generator、torque safety filter 和 controller interface unit tests。算法侧可以继续推进 swing target 纳入 WBC QP、base velocity tracking、contact feedback、EKF 和更完整的 centroidal MPC，但仍应先在 simulation-only 中验证。
+
+<!-- STAGE14_4E_MPC_ENTRY_BEGIN -->
+
+## Stage 14.4：MPC 规划层补充
+
+Stage 14.4 新增的是 standalone simplified 3D base velocity tracking receding-horizon MPC demo。它使用简化质心动力学，把四足三维接触力作为优化变量，在有限时域内同时考虑速度跟踪、高度保持、摆动腿力为零、支撑腿竖直力上下界、摩擦金字塔和总竖直力上界。
+
+该阶段的关键点是 receding-horizon：每一步从当前状态重新求解 QP，只取第一帧接触力 `u0`，然后进入下一步重解。Stage 14.4A 给出实现与 rollout 日志，Stage 14.4B 给出独立验证，Stage 14.4C 给出边界说明，Stage 14.4D0 给出 Stage 14.4 文档中文边界审计。
+
+该 MPC 当前只属于 planning-layer / contact-force MPC standalone demo。它不是 WBC，不直接输出 joint torque，不接 ROS torque publisher，不接 MuJoCo torque，不改变 frozen mixed baseline 控制律。项目边界保持为 simulation-only。
+
+<!-- STAGE14_4E_MPC_ENTRY_END -->
