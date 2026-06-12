@@ -1,0 +1,171 @@
+{
+  "stage": "14.5D-R8",
+  "timestamp_utc": "2026-06-12T02:37:01.797875+00:00",
+  "pass": true,
+  "failed_checks": [],
+  "simulation_only_project": true,
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "real_robot_torque_commanded": false,
+  "ros_publisher_used": false,
+  "baseline_source_modified": false,
+  "r2_runner_source_modified": false,
+  "r6_runner_source_modified": false,
+  "mujoco_closed_loop_baseline_mode_evidence_available": true,
+  "mujoco_closed_loop_candidate_mode_evidence_available": true,
+  "mujoco_closed_loop_ab_packaged_from_existing_runs": true,
+  "mujoco_closed_loop_ab_rerun_executed": false,
+  "mujoco_sim_data_ctrl_used_in_prior_runs": true,
+  "mpc_assisted_candidate_implemented": true,
+  "mpc_assisted_candidate_executed_in_prior_run": true,
+  "stage14_5d_r3_pass": true,
+  "stage14_5d_r7_pass": true,
+  "baseline_summary_csv": "results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_summary.csv",
+  "baseline_log_csv": "results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_log.csv",
+  "candidate_summary_csv": "results/logs_sample/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_summary.csv",
+  "candidate_log_csv": "results/logs_sample/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_log.csv",
+  "baseline_log_rows": 2400,
+  "candidate_log_rows": 2400,
+  "baseline_control_mode": "baseline",
+  "candidate_control_mode": "mpc_assisted_candidate",
+  "candidate_specific": {
+    "candidate_scale": 0.05,
+    "candidate_row_count": 100,
+    "max_tau_candidate_abs": 19.4425094473,
+    "max_tau_candidate_scaled_abs": 0.972125472365,
+    "candidate_available_in_run": true
+  },
+  "metric_comparison": {
+    "initial_z": {
+      "baseline": 0.284805846483,
+      "candidate": 0.284805846483,
+      "candidate_minus_baseline": 0.0
+    },
+    "final_z": {
+      "baseline": 0.286030728906,
+      "candidate": 0.284820475299,
+      "candidate_minus_baseline": -0.0012102536070000003
+    },
+    "min_z": {
+      "baseline": 0.274552192756,
+      "candidate": 0.276975761939,
+      "candidate_minus_baseline": 0.002423569182999963
+    },
+    "max_z": {
+      "baseline": 0.293169864411,
+      "candidate": 0.291199007237,
+      "candidate_minus_baseline": -0.001970857174000029
+    },
+    "delta_z": {
+      "baseline": 0.001224882422,
+      "candidate": 1.4628816e-05,
+      "candidate_minus_baseline": -0.001210253606
+    },
+    "max_abs_roll": {
+      "baseline": 0.056707402709,
+      "candidate": 0.102952660101,
+      "candidate_minus_baseline": 0.046245257392
+    },
+    "max_abs_pitch": {
+      "baseline": 0.04832948253,
+      "candidate": 0.053162351948,
+      "candidate_minus_baseline": 0.004832869417999999
+    },
+    "max_joint_error": {
+      "baseline": 0.077233662573,
+      "candidate": 0.0880410083,
+      "candidate_minus_baseline": 0.010807345726999998
+    },
+    "max_swing_joint_error": {
+      "baseline": 0.051395902876,
+      "candidate": 0.060720115471,
+      "candidate_minus_baseline": 0.009324212594999999
+    },
+    "max_stance_joint_error": {
+      "baseline": 0.077233662573,
+      "candidate": 0.0880410083,
+      "candidate_minus_baseline": 0.010807345726999998
+    },
+    "max_tau_total_abs": {
+      "baseline": 9.659563043535,
+      "candidate": 10.019186119959,
+      "candidate_minus_baseline": 0.3596230764240005
+    },
+    "max_tau_total_raw_abs": {
+      "baseline": 9.659563043535,
+      "candidate": 10.019186119959,
+      "candidate_minus_baseline": 0.3596230764240005
+    },
+    "max_cmd_step_jump_norm": {
+      "baseline": 25.788963931985,
+      "candidate": 26.026006701577,
+      "candidate_minus_baseline": 0.23704276959200143
+    },
+    "max_cmd_step_jump_abs": {
+      "baseline": 11.568156828496,
+      "candidate": 11.392386430769,
+      "candidate_minus_baseline": -0.17577039772700154
+    },
+    "max_dyn_res_norm": {
+      "baseline": 7.732488454756e-08,
+      "candidate": 8.374174656233e-08,
+      "candidate_minus_baseline": 6.416862014769991e-09
+    },
+    "max_stance_acc_res_norm": {
+      "baseline": 3.52089100597e-09,
+      "candidate": 3.77002957988e-09,
+      "candidate_minus_baseline": 2.491385739099999e-10
+    },
+    "max_swing_acc_error_norm": {
+      "baseline": 0.2545718566371,
+      "candidate": 0.3586990349247,
+      "candidate_minus_baseline": 0.10412717828759999
+    },
+    "qp_fail_steps": {
+      "baseline": 0,
+      "candidate": 0,
+      "candidate_minus_baseline": 0
+    },
+    "saturation_steps": {
+      "baseline": 0,
+      "candidate": 0,
+      "candidate_minus_baseline": 0
+    }
+  },
+  "stability_checks": {
+    "baseline_qp_fail_steps_zero": true,
+    "candidate_qp_fail_steps_zero": true,
+    "baseline_saturation_steps_zero": true,
+    "candidate_saturation_steps_zero": true,
+    "baseline_min_z_gt_0p22": true,
+    "candidate_min_z_gt_0p22": true,
+    "baseline_roll_lt_0p20": true,
+    "candidate_roll_lt_0p20": true,
+    "baseline_pitch_lt_0p20": true,
+    "candidate_pitch_lt_0p20": true,
+    "baseline_tau_abs_le_23p7": true,
+    "candidate_tau_abs_le_23p7": true
+  },
+  "comparison_table_csv": "results/logs_sample/stage14_5d_r8_closed_loop_ab_comparison_table.csv",
+  "git": {
+    "branch": "main",
+    "head": "20ca04d",
+    "status_porcelain": "?? docs/stage14_5d_r8_closed_loop_ab_packaging.md\n?? results/logs_sample/stage14_5d_r8_closed_loop_ab_comparison_summary.json\n?? results/logs_sample/stage14_5d_r8_closed_loop_ab_comparison_table.csv\n?? scripts/stage14_5d_r8_closed_loop_ab_packaging.py",
+    "dirty_non_stage14_5d_r8": []
+  },
+  "generated_files": [
+    "scripts/stage14_5d_r8_closed_loop_ab_packaging.py",
+    "docs/stage14_5d_r8_closed_loop_ab_packaging.md",
+    "results/logs_sample/stage14_5d_r8_closed_loop_ab_comparison_summary.json",
+    "results/logs_sample/stage14_5d_r8_closed_loop_ab_comparison_table.csv"
+  ],
+  "notes": [
+    "Packaging/comparison step only.",
+    "No MuJoCo rerun is executed in R8.",
+    "A/B comparison is packaged from existing R3 baseline and R7 candidate closed-loop simulation runs.",
+    "No real robot torque command is sent.",
+    "No ROS torque publisher is used.",
+    "Frozen baseline source is not modified."
+  ]
+}
