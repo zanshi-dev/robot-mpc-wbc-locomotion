@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py", line 410, in <module>
+    main()
+  File "/home/zanshi/robot-mpc-wbc-locomotion/scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py", line 118, in main
+    raise RuntimeError("mpc_assisted_candidate requires --allow-mpc-assisted-candidate")
+RuntimeError: mpc_assisted_candidate requires --allow-mpc-assisted-candidate

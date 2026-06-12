@@ -1,0 +1,74 @@
+{
+  "stage": "14.5D-R4",
+  "timestamp_utc": "2026-06-12T02:20:28.243315+00:00",
+  "pass": true,
+  "failed_checks": [],
+  "simulation_only_project": true,
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "real_robot_torque_commanded": false,
+  "ros_publisher_used": false,
+  "baseline_source_modified": false,
+  "derived_runner_source_modified": false,
+  "mujoco_closed_loop_baseline_mode_executed": false,
+  "mujoco_closed_loop_ab_executed": false,
+  "mujoco_sim_data_ctrl_used": false,
+  "mpc_assisted_candidate_executed": false,
+  "mpc_assisted_candidate_safely_rejected": true,
+  "stage14_5d_r3_pass": true,
+  "derived_runner": "scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py",
+  "negative_tests": {
+    "candidate_without_allow": {
+      "cmd": [
+        "/usr/bin/python3",
+        "scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py",
+        "--control-mode",
+        "mpc_assisted_candidate"
+      ],
+      "returncode": 1,
+      "expected_nonzero": true,
+      "expected_message": "requires --allow-mpc-assisted-candidate",
+      "stdout_path": "results/logs_sample/stage14_5d_r4_candidate_no_allow_stdout.txt",
+      "stderr_path": "results/logs_sample/stage14_5d_r4_candidate_no_allow_stderr.txt"
+    },
+    "candidate_with_allow": {
+      "cmd": [
+        "/usr/bin/python3",
+        "scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py",
+        "--control-mode",
+        "mpc_assisted_candidate",
+        "--allow-mpc-assisted-candidate"
+      ],
+      "returncode": 1,
+      "expected_nonzero": true,
+      "expected_message": "NotImplementedError: Stage 14.5D-R2 only derives the explicit switch skeleton",
+      "stdout_path": "results/logs_sample/stage14_5d_r4_candidate_with_allow_stdout.txt",
+      "stderr_path": "results/logs_sample/stage14_5d_r4_candidate_with_allow_stderr.txt"
+    }
+  },
+  "forbidden_success_token_hits": [],
+  "git": {
+    "branch": "main",
+    "head": "941ac43",
+    "status_porcelain": "?? results/logs_sample/stage14_5d_r4_candidate_no_allow_stderr.txt\n?? results/logs_sample/stage14_5d_r4_candidate_no_allow_stdout.txt\n?? results/logs_sample/stage14_5d_r4_candidate_with_allow_stderr.txt\n?? results/logs_sample/stage14_5d_r4_candidate_with_allow_stdout.txt\n?? scripts/stage14_5d_r4_mpc_assisted_candidate_gated_negative_test.py",
+    "dirty_non_stage14_5d_r4": []
+  },
+  "generated_files": [
+    "scripts/stage14_5d_r4_mpc_assisted_candidate_gated_negative_test.py",
+    "docs/stage14_5d_r4_mpc_assisted_candidate_gated_negative_test.md",
+    "results/logs_sample/stage14_5d_r4_mpc_assisted_candidate_gated_negative_test_summary.json",
+    "results/logs_sample/stage14_5d_r4_candidate_no_allow_stdout.txt",
+    "results/logs_sample/stage14_5d_r4_candidate_no_allow_stderr.txt",
+    "results/logs_sample/stage14_5d_r4_candidate_with_allow_stdout.txt",
+    "results/logs_sample/stage14_5d_r4_candidate_with_allow_stderr.txt"
+  ],
+  "notes": [
+    "Negative gate test only.",
+    "The MPC-assisted candidate path must fail safely before rollout.",
+    "No MuJoCo rollout is executed.",
+    "No A/B comparison is executed.",
+    "No MPC-assisted torque candidate is injected.",
+    "No real robot torque command is sent."
+  ]
+}
