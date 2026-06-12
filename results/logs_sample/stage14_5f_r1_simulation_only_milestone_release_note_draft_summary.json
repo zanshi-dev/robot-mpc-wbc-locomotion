@@ -1,0 +1,133 @@
+{
+  "stage": "14.5F-R1",
+  "timestamp_utc": "2026-06-12T03:10:08.555901+00:00",
+  "pass": true,
+  "failed_checks": [],
+  "source_inputs": {
+    "f0_summary": "results/logs_sample/stage14_5f_r0_regression_index_release_note_preflight_summary.json",
+    "f0_index": "results/logs_sample/stage14_5f_r0_release_evidence_index.csv",
+    "f0_manifest": "results/logs_sample/stage14_5f_r0_release_evidence_manifest.json",
+    "d9_summary": "results/logs_sample/stage14_5d_r9_final_simulation_only_evidence_freeze_summary.json",
+    "e3_summary": "results/logs_sample/stage14_5e_r3_final_robustness_evidence_freeze_summary.json"
+  },
+  "stage14_5_release_note_draft_generated": true,
+  "summary_count": 17,
+  "doc_count": 17,
+  "key_csv_count": 10,
+  "indexed_artifact_count": 47,
+  "validated_candidate_scale_max_simulation_only": 0.1,
+  "key_metrics_json": "results/logs_sample/stage14_5f_r1_release_note_key_metrics.json",
+  "release_note_draft_md": "docs/stage14_5f_r1_simulation_only_milestone_release_note_draft.md",
+  "simulation_only_project": true,
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "real_robot_torque_commanded": false,
+  "ros_publisher_used": false,
+  "release_note_draft_only": true,
+  "mujoco_rollout_executed_in_f1": false,
+  "mujoco_sim_data_ctrl_used_in_f1": false,
+  "runner_modified_in_f1": false,
+  "boundary": {
+    "simulation_only_project": true,
+    "hardware_deployment_completed": false,
+    "torque_enable_ready": false,
+    "torque_publisher_enabled": false,
+    "real_robot_torque_commanded": false,
+    "ros_publisher_used": false,
+    "release_note_draft_only": true,
+    "mujoco_rollout_executed_in_f1": false,
+    "mujoco_sim_data_ctrl_used_in_f1": false,
+    "runner_modified_in_f1": false
+  },
+  "key_metrics": {
+    "stage14_5a_to_f0_summary_count": 17,
+    "stage14_5a_to_f0_doc_count": 17,
+    "stage14_5a_to_f0_key_csv_count": 10,
+    "stage14_5a_to_f0_indexed_artifact_count": 47,
+    "baseline_2400_step_metrics": {
+      "control_mode": "baseline",
+      "total_steps": 2400,
+      "pass": true,
+      "min_z": 0.274552192756,
+      "max_abs_roll": 0.056707402709,
+      "max_abs_pitch": 0.04832948253,
+      "max_tau_total_abs": 9.659563043535,
+      "qp_fail_steps": 0,
+      "saturation_steps": 0
+    },
+    "candidate_scale_0p05_2400_step_metrics": {
+      "control_mode": "mpc_assisted_candidate",
+      "total_steps": 2400,
+      "pass": true,
+      "candidate_scale": 0.05,
+      "candidate_row_count": 100,
+      "candidate_available_in_run": true,
+      "min_z": 0.276975761939,
+      "max_abs_roll": 0.102952660101,
+      "max_abs_pitch": 0.053162351948,
+      "max_tau_total_abs": 10.019186119959,
+      "max_tau_candidate_abs": 19.4425094473,
+      "max_tau_candidate_scaled_abs": 0.972125472365,
+      "qp_fail_steps": 0,
+      "saturation_steps": 0
+    },
+    "candidate_robustness_envelope_metrics": {
+      "validated_candidate_scale_max_simulation_only": 0.1,
+      "planned_scales": [
+        0.0,
+        0.02,
+        0.05,
+        0.1
+      ],
+      "scale_zero_policy": "baseline_reference_existing_r3_r2_evidence_no_candidate_runner_zero_scale",
+      "scale_count": 4,
+      "candidate_run_count": 3,
+      "baseline_reference_count": 1,
+      "all_scale_entries_pass": true,
+      "all_entries_pass_limits": true,
+      "min_z_min_over_entries": 0.273040429683,
+      "max_abs_roll_max_over_entries": 0.102952660101,
+      "max_abs_pitch_max_over_entries": 0.077452968358,
+      "max_tau_total_abs_max_over_entries": 10.59512016256,
+      "max_tau_candidate_scaled_abs_max_over_candidate_runs": 1.94425094473,
+      "total_qp_fail_steps": 0,
+      "total_saturation_steps": 0
+    },
+    "validated_candidate_scale_max_simulation_only": 0.1,
+    "release_index_csv": "results/logs_sample/stage14_5f_r0_release_evidence_index.csv",
+    "release_manifest_json": "results/logs_sample/stage14_5f_r0_release_evidence_manifest.json"
+  },
+  "safe_conclusion_text": "Stage 14.5 completed simulation-only MPC/WBC candidate evidence packaging and robustness indexing up to candidate scale 0.10.",
+  "forbidden_claims": [
+    "hardware ready",
+    "torque enable ready",
+    "real robot torque execution",
+    "MPC directly outputs joint torque"
+  ],
+  "git": {
+    "branch": "main",
+    "head": "b467667",
+    "status_porcelain": "?? docs/stage14_5f_r1_simulation_only_milestone_release_note_draft.md\n?? results/logs_sample/stage14_5f_r1_release_note_key_metrics.json\n?? scripts/stage14_5f_r1_simulation_only_milestone_release_note_draft.py",
+    "dirty_paths": [
+      "docs/stage14_5f_r1_simulation_only_milestone_release_note_draft.md",
+      "results/logs_sample/stage14_5f_r1_release_note_key_metrics.json",
+      "scripts/stage14_5f_r1_simulation_only_milestone_release_note_draft.py"
+    ],
+    "dirty_non_stage14_5f_r1": []
+  },
+  "generated_files": [
+    "scripts/stage14_5f_r1_simulation_only_milestone_release_note_draft.py",
+    "docs/stage14_5f_r1_simulation_only_milestone_release_note_draft.md",
+    "results/logs_sample/stage14_5f_r1_simulation_only_milestone_release_note_draft_summary.json",
+    "results/logs_sample/stage14_5f_r1_release_note_key_metrics.json"
+  ],
+  "notes": [
+    "Release note draft only.",
+    "No MuJoCo rollout is executed in F-R1.",
+    "No source runner is modified.",
+    "No real robot torque command is sent.",
+    "No ROS torque publisher is used.",
+    "No hardware readiness or torque-enable readiness is claimed."
+  ]
+}
