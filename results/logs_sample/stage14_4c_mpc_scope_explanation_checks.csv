@@ -1,0 +1,31 @@
+check_type,item,pass
+required_phrase,Stage 14.4 是一个独立的、简化的 3D base velocity tracking receding-horizon MPC demo,True
+required_phrase,不是 WBC,True
+required_phrase,不直接输出 joint torque,True
+required_phrase,不接 ROS torque publisher,True
+required_phrase,不接 MuJoCo torque,True
+required_phrase,不改变 mixed baseline 控制律,True
+required_phrase,Stage 5,True
+required_phrase,z-MPC prototype,True
+required_phrase,Stage 7,True
+required_phrase,WBC feedforward,True
+required_phrase,Stage 14.4A,True
+required_phrase,Stage 14.4B,True
+required_phrase,receding-horizon,True
+required_phrase,只应用 u0,True
+required_phrase,simulation_only_project=true,True
+required_phrase,hardware_deployment_completed=false,True
+required_phrase,torque_enable_ready=false,True
+required_phrase,torque_publisher_enabled=false,True
+required_phrase,control_law_changed=false,True
+required_phrase,mixed_baseline_modified=false,True
+required_phrase,mujoco_torque_used=false,True
+required_phrase,ros_publisher_used=false,True
+prohibited_positive_claim_scan,项目已完成硬件部署,True
+prohibited_positive_claim_scan,硬件部署已经完成,True
+prohibited_positive_claim_scan,执行器使能已经完成并可用,True
+prohibited_positive_claim_scan,真实机器人力矩执行已经完成,True
+prohibited_positive_claim_scan,实时硬件控制器已经完成,True
+prohibited_positive_claim_scan,MPC 已经接入真实机器人,True
+prohibited_positive_claim_scan,ROS torque publisher 已经启用并用于控制,True
+language,Chinese character ratio >= 0.35,True

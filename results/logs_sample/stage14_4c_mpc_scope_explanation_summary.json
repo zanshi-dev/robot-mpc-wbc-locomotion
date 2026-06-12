@@ -1,0 +1,22 @@
+{
+  "check_csv": "results/logs_sample/stage14_4c_mpc_scope_explanation_checks.csv",
+  "chinese_character_ratio": 0.39465666744785566,
+  "control_law_changed": false,
+  "description": "Chinese explanation document for MPC scope and relationship to Stage 5 z-MPC and Stage 7 WBC feedforward",
+  "document": "docs/stage14_4c_mpc_scope_explanation.md",
+  "failed_checks": [],
+  "hardware_deployment_completed": false,
+  "input_stage14_4a_summary": "results/logs_sample/stage14_4_base_velocity_tracking_mpc_summary.json",
+  "input_stage14_4b_summary": "results/logs_sample/stage14_4b_base_velocity_tracking_mpc_validation_summary.json",
+  "mixed_baseline_modified": false,
+  "mujoco_torque_used": false,
+  "pass": true,
+  "prohibited_positive_claim_count": 7,
+  "required_phrase_count": 22,
+  "ros_publisher_used": false,
+  "simulation_only_project": true,
+  "stage": "14.4C",
+  "summary_json": "results/logs_sample/stage14_4c_mpc_scope_explanation_summary.json",
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false
+}
