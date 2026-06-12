@@ -1,0 +1,48 @@
+stage,artifact_role,artifact_type,path,exists,pass,row_count,notes
+14.5A,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5a_mpc_wbc_integration_preflight_summary.json,True,True,,required pass-bearing summary
+14.5B,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidate_summary.json,True,True,,required pass-bearing summary
+14.5C,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5c_mpc_force_reference_offline_qp_summary.json,True,True,,required pass-bearing summary
+14.5D-R0,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5d_r0_closed_loop_ab_anchor_inspection_summary.json,True,True,,required pass-bearing summary
+14.5D-R1,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5d_r1_baseline_runner_structure_inspection_summary.json,True,True,,required pass-bearing summary
+14.5D-R2,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5d_r2_closed_loop_ab_runner_skeleton_summary.json,True,True,,required pass-bearing summary
+14.5D-R3,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5d_r3_baseline_mode_derived_runner_dry_run_summary.json,True,True,,required pass-bearing summary
+14.5D-R4,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5d_r4_mpc_assisted_candidate_gated_negative_test_summary.json,True,True,,required pass-bearing summary
+14.5D-R5,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5d_r5_mpc_candidate_injection_design_inspection_summary.json,True,True,,required pass-bearing summary
+14.5D-R6,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5d_r6_derive_mpc_assisted_candidate_runner_summary.json,True,True,,required pass-bearing summary
+14.5D-R7,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5d_r7_candidate_mode_guarded_dry_run_summary.json,True,True,,required pass-bearing summary
+14.5D-R8,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5d_r8_closed_loop_ab_comparison_summary.json,True,True,,required pass-bearing summary
+14.5D-R9,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5d_r9_final_simulation_only_evidence_freeze_summary.json,True,True,,required pass-bearing summary
+14.5E-R0,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5e_r0_candidate_robustness_envelope_preflight_summary.json,True,True,,required pass-bearing summary
+14.5E-R1,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_summary.json,True,True,,required pass-bearing summary
+14.5E-R2,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5e_r2_candidate_robustness_sweep_analysis_summary.json,True,True,,required pass-bearing summary
+14.5E-R3,stage_summary,summary_or_manifest_json,results/logs_sample/stage14_5e_r3_final_robustness_evidence_freeze_summary.json,True,True,,required pass-bearing summary
+14.5A,stage_doc,doc,docs/stage14_5a_mpc_wbc_integration_preflight.md,True,,,stage documentation
+14.5B,stage_doc,doc,docs/stage14_5b_offline_mpc_force_to_torque_candidate_check.md,True,,,stage documentation
+14.5C,stage_doc,doc,docs/stage14_5c_mpc_force_reference_offline_qp_check.md,True,,,stage documentation
+14.5D-R0,stage_doc,doc,docs/stage14_5d_r0_closed_loop_ab_anchor_inspection.md,True,,,stage documentation
+14.5D-R1,stage_doc,doc,docs/stage14_5d_r1_baseline_runner_structure_inspection.md,True,,,stage documentation
+14.5D-R2,stage_doc,doc,docs/stage14_5d_r2_closed_loop_ab_runner_skeleton.md,True,,,stage documentation
+14.5D-R3,stage_doc,doc,docs/stage14_5d_r3_baseline_mode_derived_runner_dry_run.md,True,,,stage documentation
+14.5D-R4,stage_doc,doc,docs/stage14_5d_r4_mpc_assisted_candidate_gated_negative_test.md,True,,,stage documentation
+14.5D-R5,stage_doc,doc,docs/stage14_5d_r5_mpc_candidate_injection_design_inspection.md,True,,,stage documentation
+14.5D-R6,stage_doc,doc,docs/stage14_5d_r6_derive_mpc_assisted_candidate_runner.md,True,,,stage documentation
+14.5D-R7,stage_doc,doc,docs/stage14_5d_r7_candidate_mode_guarded_dry_run.md,True,,,stage documentation
+14.5D-R8,stage_doc,doc,docs/stage14_5d_r8_closed_loop_ab_packaging.md,True,,,stage documentation
+14.5D-R9,stage_doc,doc,docs/stage14_5d_r9_final_simulation_only_evidence_freeze.md,True,,,stage documentation
+14.5E-R0,stage_doc,doc,docs/stage14_5e_r0_candidate_robustness_envelope_preflight.md,True,,,stage documentation
+14.5E-R1,stage_doc,doc,docs/stage14_5e_r1_candidate_robustness_scale_sweep_runner.md,True,,,stage documentation
+14.5E-R2,stage_doc,doc,docs/stage14_5e_r2_candidate_robustness_sweep_analysis_packaging.md,True,,,stage documentation
+14.5E-R3,stage_doc,doc,docs/stage14_5e_r3_final_robustness_evidence_freeze.md,True,,,stage documentation
+14.5B,key_csv_evidence,table_or_log_csv,results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidates.csv,True,,100,key CSV evidence for release index
+14.5C,key_csv_evidence,table_or_log_csv,results/logs_sample/stage14_5c_mpc_force_reference_offline_qp_check.csv,True,,100,key CSV evidence for release index
+14.5D-R3,key_csv_evidence,table_or_log_csv,results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_log.csv,True,,2400,key CSV evidence for release index
+14.5D-R3,key_csv_evidence,table_or_log_csv,results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_summary.csv,True,,1,key CSV evidence for release index
+14.5D-R7,key_csv_evidence,table_or_log_csv,results/logs_sample/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_log.csv,True,,2400,key CSV evidence for release index
+14.5D-R7,key_csv_evidence,table_or_log_csv,results/logs_sample/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_summary.csv,True,,1,key CSV evidence for release index
+14.5D-R8,key_csv_evidence,table_or_log_csv,results/logs_sample/stage14_5d_r8_closed_loop_ab_comparison_table.csv,True,,19,key CSV evidence for release index
+14.5E-R0,key_csv_evidence,table_or_log_csv,results/logs_sample/stage14_5e_r0_candidate_robustness_scale_plan.csv,True,,4,key CSV evidence for release index
+14.5E-R1,key_csv_evidence,table_or_log_csv,results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_table.csv,True,,4,key CSV evidence for release index
+14.5E-R2,key_csv_evidence,table_or_log_csv,results/logs_sample/stage14_5e_r2_candidate_robustness_sweep_analysis_table.csv,True,,4,key CSV evidence for release index
+runner,source_runner,runner_or_script,scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py,True,,,must remain unmodified in F-R0
+runner,source_runner,runner_or_script,scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py,True,,,must remain unmodified in F-R0
+runner,source_runner,runner_or_script,scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py,True,,,must remain unmodified in F-R0

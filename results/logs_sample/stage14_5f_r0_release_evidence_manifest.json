@@ -1,0 +1,257 @@
+{
+  "stage": "14.5F-R0",
+  "summary_items": [
+    {
+      "stage": "14.5A",
+      "path": "results/logs_sample/stage14_5a_mpc_wbc_integration_preflight_summary.json"
+    },
+    {
+      "stage": "14.5B",
+      "path": "results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidate_summary.json"
+    },
+    {
+      "stage": "14.5C",
+      "path": "results/logs_sample/stage14_5c_mpc_force_reference_offline_qp_summary.json"
+    },
+    {
+      "stage": "14.5D-R0",
+      "path": "results/logs_sample/stage14_5d_r0_closed_loop_ab_anchor_inspection_summary.json"
+    },
+    {
+      "stage": "14.5D-R1",
+      "path": "results/logs_sample/stage14_5d_r1_baseline_runner_structure_inspection_summary.json"
+    },
+    {
+      "stage": "14.5D-R2",
+      "path": "results/logs_sample/stage14_5d_r2_closed_loop_ab_runner_skeleton_summary.json"
+    },
+    {
+      "stage": "14.5D-R3",
+      "path": "results/logs_sample/stage14_5d_r3_baseline_mode_derived_runner_dry_run_summary.json"
+    },
+    {
+      "stage": "14.5D-R4",
+      "path": "results/logs_sample/stage14_5d_r4_mpc_assisted_candidate_gated_negative_test_summary.json"
+    },
+    {
+      "stage": "14.5D-R5",
+      "path": "results/logs_sample/stage14_5d_r5_mpc_candidate_injection_design_inspection_summary.json"
+    },
+    {
+      "stage": "14.5D-R6",
+      "path": "results/logs_sample/stage14_5d_r6_derive_mpc_assisted_candidate_runner_summary.json"
+    },
+    {
+      "stage": "14.5D-R7",
+      "path": "results/logs_sample/stage14_5d_r7_candidate_mode_guarded_dry_run_summary.json"
+    },
+    {
+      "stage": "14.5D-R8",
+      "path": "results/logs_sample/stage14_5d_r8_closed_loop_ab_comparison_summary.json"
+    },
+    {
+      "stage": "14.5D-R9",
+      "path": "results/logs_sample/stage14_5d_r9_final_simulation_only_evidence_freeze_summary.json"
+    },
+    {
+      "stage": "14.5E-R0",
+      "path": "results/logs_sample/stage14_5e_r0_candidate_robustness_envelope_preflight_summary.json"
+    },
+    {
+      "stage": "14.5E-R1",
+      "path": "results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_summary.json"
+    },
+    {
+      "stage": "14.5E-R2",
+      "path": "results/logs_sample/stage14_5e_r2_candidate_robustness_sweep_analysis_summary.json"
+    },
+    {
+      "stage": "14.5E-R3",
+      "path": "results/logs_sample/stage14_5e_r3_final_robustness_evidence_freeze_summary.json"
+    }
+  ],
+  "doc_items": [
+    {
+      "stage": "14.5A",
+      "path": "docs/stage14_5a_mpc_wbc_integration_preflight.md"
+    },
+    {
+      "stage": "14.5B",
+      "path": "docs/stage14_5b_offline_mpc_force_to_torque_candidate_check.md"
+    },
+    {
+      "stage": "14.5C",
+      "path": "docs/stage14_5c_mpc_force_reference_offline_qp_check.md"
+    },
+    {
+      "stage": "14.5D-R0",
+      "path": "docs/stage14_5d_r0_closed_loop_ab_anchor_inspection.md"
+    },
+    {
+      "stage": "14.5D-R1",
+      "path": "docs/stage14_5d_r1_baseline_runner_structure_inspection.md"
+    },
+    {
+      "stage": "14.5D-R2",
+      "path": "docs/stage14_5d_r2_closed_loop_ab_runner_skeleton.md"
+    },
+    {
+      "stage": "14.5D-R3",
+      "path": "docs/stage14_5d_r3_baseline_mode_derived_runner_dry_run.md"
+    },
+    {
+      "stage": "14.5D-R4",
+      "path": "docs/stage14_5d_r4_mpc_assisted_candidate_gated_negative_test.md"
+    },
+    {
+      "stage": "14.5D-R5",
+      "path": "docs/stage14_5d_r5_mpc_candidate_injection_design_inspection.md"
+    },
+    {
+      "stage": "14.5D-R6",
+      "path": "docs/stage14_5d_r6_derive_mpc_assisted_candidate_runner.md"
+    },
+    {
+      "stage": "14.5D-R7",
+      "path": "docs/stage14_5d_r7_candidate_mode_guarded_dry_run.md"
+    },
+    {
+      "stage": "14.5D-R8",
+      "path": "docs/stage14_5d_r8_closed_loop_ab_packaging.md"
+    },
+    {
+      "stage": "14.5D-R9",
+      "path": "docs/stage14_5d_r9_final_simulation_only_evidence_freeze.md"
+    },
+    {
+      "stage": "14.5E-R0",
+      "path": "docs/stage14_5e_r0_candidate_robustness_envelope_preflight.md"
+    },
+    {
+      "stage": "14.5E-R1",
+      "path": "docs/stage14_5e_r1_candidate_robustness_scale_sweep_runner.md"
+    },
+    {
+      "stage": "14.5E-R2",
+      "path": "docs/stage14_5e_r2_candidate_robustness_sweep_analysis_packaging.md"
+    },
+    {
+      "stage": "14.5E-R3",
+      "path": "docs/stage14_5e_r3_final_robustness_evidence_freeze.md"
+    }
+  ],
+  "key_csv_items": [
+    {
+      "stage": "14.5B",
+      "path": "results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidates.csv"
+    },
+    {
+      "stage": "14.5C",
+      "path": "results/logs_sample/stage14_5c_mpc_force_reference_offline_qp_check.csv"
+    },
+    {
+      "stage": "14.5D-R3",
+      "path": "results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_log.csv"
+    },
+    {
+      "stage": "14.5D-R3",
+      "path": "results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_summary.csv"
+    },
+    {
+      "stage": "14.5D-R7",
+      "path": "results/logs_sample/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "stage": "14.5D-R7",
+      "path": "results/logs_sample/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "stage": "14.5D-R8",
+      "path": "results/logs_sample/stage14_5d_r8_closed_loop_ab_comparison_table.csv"
+    },
+    {
+      "stage": "14.5E-R0",
+      "path": "results/logs_sample/stage14_5e_r0_candidate_robustness_scale_plan.csv"
+    },
+    {
+      "stage": "14.5E-R1",
+      "path": "results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_table.csv"
+    },
+    {
+      "stage": "14.5E-R2",
+      "path": "results/logs_sample/stage14_5e_r2_candidate_robustness_sweep_analysis_table.csv"
+    }
+  ],
+  "runner_items": [
+    "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py",
+    "scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py",
+    "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py"
+  ],
+  "release_evidence_index_csv": "results/logs_sample/stage14_5f_r0_release_evidence_index.csv",
+  "frozen_metrics": {
+    "stage14_5d_complete": true,
+    "stage14_5e_complete": true,
+    "validated_candidate_scale_max_simulation_only": 0.1,
+    "robustness_freeze_metrics": {
+      "validated_candidate_scale_max_simulation_only": 0.1,
+      "planned_scales": [
+        0.0,
+        0.02,
+        0.05,
+        0.1
+      ],
+      "scale_zero_policy": "baseline_reference_existing_r3_r2_evidence_no_candidate_runner_zero_scale",
+      "scale_count": 4,
+      "candidate_run_count": 3,
+      "baseline_reference_count": 1,
+      "all_scale_entries_pass": true,
+      "all_entries_pass_limits": true,
+      "min_z_min_over_entries": 0.273040429683,
+      "max_abs_roll_max_over_entries": 0.102952660101,
+      "max_abs_pitch_max_over_entries": 0.077452968358,
+      "max_tau_total_abs_max_over_entries": 10.59512016256,
+      "max_tau_candidate_scaled_abs_max_over_candidate_runs": 1.94425094473,
+      "total_qp_fail_steps": 0,
+      "total_saturation_steps": 0
+    },
+    "d9_baseline_metrics": {
+      "control_mode": "baseline",
+      "total_steps": 2400,
+      "pass": true,
+      "min_z": 0.274552192756,
+      "max_abs_roll": 0.056707402709,
+      "max_abs_pitch": 0.04832948253,
+      "max_tau_total_abs": 9.659563043535,
+      "qp_fail_steps": 0,
+      "saturation_steps": 0
+    },
+    "d9_candidate_metrics": {
+      "control_mode": "mpc_assisted_candidate",
+      "total_steps": 2400,
+      "pass": true,
+      "candidate_scale": 0.05,
+      "candidate_row_count": 100,
+      "candidate_available_in_run": true,
+      "min_z": 0.276975761939,
+      "max_abs_roll": 0.102952660101,
+      "max_abs_pitch": 0.053162351948,
+      "max_tau_total_abs": 10.019186119959,
+      "max_tau_candidate_abs": 19.4425094473,
+      "max_tau_candidate_scaled_abs": 0.972125472365,
+      "qp_fail_steps": 0,
+      "saturation_steps": 0
+    }
+  },
+  "boundary": {
+    "simulation_only_project": true,
+    "hardware_deployment_completed": false,
+    "torque_enable_ready": false,
+    "torque_publisher_enabled": false,
+    "real_robot_torque_commanded": false,
+    "ros_publisher_used": false,
+    "release_index_preflight_only": true,
+    "mujoco_rollout_executed_in_f0": false,
+    "mujoco_sim_data_ctrl_used_in_f0": false,
+    "runner_modified_in_f0": false
+  }
+}
