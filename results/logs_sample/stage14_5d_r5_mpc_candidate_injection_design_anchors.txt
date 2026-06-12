@@ -1,0 +1,237 @@
+Stage 14.5D-R5 MPC candidate injection source design inspection
+timestamp_utc: 2026-06-12T02:22:43.000339+00:00
+
+derived_runner: scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py
+
+== derived runner anchors ==
+
+[candidate_gate] count=6
+40: TORQUE_LIMIT = 23.7
+41: 
+42: CONTROL_MODE_BASELINE = "baseline"
+43: CONTROL_MODE_MPC_ASSISTED_CANDIDATE = "mpc_assisted_candidate"
+44: CONTROL_MODE_CHOICES = [CONTROL_MODE_BASELINE, CONTROL_MODE_MPC_ASSISTED_CANDIDATE]
+45: DEFAULT_CONTROL_MODE = CONTROL_MODE_BASELINE
+46: MPC_ASSISTED_CANDIDATE_DEFAULT_SCALE = 0.0
+
+41: 
+42: CONTROL_MODE_BASELINE = "baseline"
+43: CONTROL_MODE_MPC_ASSISTED_CANDIDATE = "mpc_assisted_candidate"
+44: CONTROL_MODE_CHOICES = [CONTROL_MODE_BASELINE, CONTROL_MODE_MPC_ASSISTED_CANDIDATE]
+45: DEFAULT_CONTROL_MODE = CONTROL_MODE_BASELINE
+46: MPC_ASSISTED_CANDIDATE_DEFAULT_SCALE = 0.0
+47: 
+
+101:         help="Explicit simulation-only control mode. Default is baseline.",
+102:     )
+103:     parser.add_argument(
+104:         "--allow-mpc-assisted-candidate",
+105:         action="store_true",
+106:         help="Explicit gate for future MPC-assisted candidate mode. R2 still does not implement candidate torque injection.",
+107:     )
+
+113:     )
+114:     args = parser.parse_args()
+115: 
+116:     if args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE:
+117:         if not args.allow_mpc_assisted_candidate:
+118:             raise RuntimeError("mpc_assisted_candidate requires --allow-mpc-assisted-candidate")
+119:         raise NotImplementedError("Stage 14.5D-R2 only derives the explicit switch skeleton; MPC-assisted torque injection is not implemented yet")
+
+115: 
+116:     if args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE:
+117:         if not args.allow_mpc_assisted_candidate:
+118:             raise RuntimeError("mpc_assisted_candidate requires --allow-mpc-assisted-candidate")
+119:         raise NotImplementedError("Stage 14.5D-R2 only derives the explicit switch skeleton; MPC-assisted torque injection is not implemented yet")
+120: 
+121:     if args.mpc_assisted_candidate_scale != 0.0:
+
+116:     if args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE:
+117:         if not args.allow_mpc_assisted_candidate:
+118:             raise RuntimeError("mpc_assisted_candidate requires --allow-mpc-assisted-candidate")
+119:         raise NotImplementedError("Stage 14.5D-R2 only derives the explicit switch skeleton; MPC-assisted torque injection is not implemented yet")
+120: 
+121:     if args.mpc_assisted_candidate_scale != 0.0:
+122:         raise RuntimeError("Stage 14.5D-R2 baseline mode requires --mpc-assisted-candidate-scale 0.0")
+
+
+[argparse_entry] count=5
+93: 
+94: 
+95: def main():
+96:     parser = argparse.ArgumentParser(description="Stage 14.5D-R2 simulation-only A/B runner skeleton")
+97:     parser.add_argument(
+98:         "--control-mode",
+99:         choices=CONTROL_MODE_CHOICES,
+
+94: 
+95: def main():
+96:     parser = argparse.ArgumentParser(description="Stage 14.5D-R2 simulation-only A/B runner skeleton")
+97:     parser.add_argument(
+98:         "--control-mode",
+99:         choices=CONTROL_MODE_CHOICES,
+100:         default=DEFAULT_CONTROL_MODE,
+
+100:         default=DEFAULT_CONTROL_MODE,
+101:         help="Explicit simulation-only control mode. Default is baseline.",
+102:     )
+103:     parser.add_argument(
+104:         "--allow-mpc-assisted-candidate",
+105:         action="store_true",
+106:         help="Explicit gate for future MPC-assisted candidate mode. R2 still does not implement candidate torque injection.",
+
+105:         action="store_true",
+106:         help="Explicit gate for future MPC-assisted candidate mode. R2 still does not implement candidate torque injection.",
+107:     )
+108:     parser.add_argument(
+109:         "--mpc-assisted-candidate-scale",
+110:         type=float,
+111:         default=MPC_ASSISTED_CANDIDATE_DEFAULT_SCALE,
+
+111:         default=MPC_ASSISTED_CANDIDATE_DEFAULT_SCALE,
+112:         help="Future candidate scaling placeholder. Default 0.0 in R2.",
+113:     )
+114:     args = parser.parse_args()
+115: 
+116:     if args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE:
+117:         if not args.allow_mpc_assisted_candidate:
+
+
+[simulation_loop] count=1
+169: 
+170:     log_rows = []
+171: 
+172:     for step in range(total_steps):
+173:         sched = wbc.scheduler_mode(step)
+174:         mode = sched["mode"]
+175:         target = target_rows[step]
+
+
+[torque_composition] count=1
+226:         tau_stance_pd = stance_mask * (STANCE_KP * (q_standing - q_now) - STANCE_KD * qd_now)
+227:         tau_swing_pd = SWING_PD_SCALE * swing_mask * (SWING_KP * q_err - SWING_KD * qd_now)
+228: 
+229:         tau_total_raw = tau_stance_pd + tau_stance_wbc + tau_swing_pd
+230:         tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)
+231: 
+232:         saturated = bool(np.any(np.abs(tau_total_raw) > TORQUE_LIMIT))
+
+
+[torque_clip] count=1
+227:         tau_swing_pd = SWING_PD_SCALE * swing_mask * (SWING_KP * q_err - SWING_KD * qd_now)
+228: 
+229:         tau_total_raw = tau_stance_pd + tau_stance_wbc + tau_swing_pd
+230:         tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)
+231: 
+232:         saturated = bool(np.any(np.abs(tau_total_raw) > TORQUE_LIMIT))
+233:         saturation_steps += int(saturated)
+
+
+[mujoco_ctrl_write] count=1
+237:         max_cmd_step_jump_abs = max(max_cmd_step_jump_abs, float(np.max(np.abs(tau_jump))))
+238:         tau_prev_total = tau_total.copy()
+239: 
+240:         data.ctrl[:] = tau_total
+241:         mujoco.mj_step(model, data)
+242: 
+243:         base_z = float(data.qpos[2])
+
+
+[mujoco_step] count=1
+238:         tau_prev_total = tau_total.copy()
+239: 
+240:         data.ctrl[:] = tau_total
+241:         mujoco.mj_step(model, data)
+242: 
+243:         base_z = float(data.qpos[2])
+244:         roll, pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+
+
+[summary_fields] count=5
+113:     )
+114:     args = parser.parse_args()
+115: 
+116:     if args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE:
+117:         if not args.allow_mpc_assisted_candidate:
+118:             raise RuntimeError("mpc_assisted_candidate requires --allow-mpc-assisted-candidate")
+119:         raise NotImplementedError("Stage 14.5D-R2 only derives the explicit switch skeleton; MPC-assisted torque injection is not implemented yet")
+
+326:         and MAX_PITCH_LIMIT - max_abs_pitch > 0.01
+327:     )
+328: 
+329:     summary = {
+330:         "stage": "14.5D-R2",
+331:         "control_mode": args.control_mode,
+332:         "simulation_only_project": True,
+
+328: 
+329:     summary = {
+330:         "stage": "14.5D-R2",
+331:         "control_mode": args.control_mode,
+332:         "simulation_only_project": True,
+333:         "hardware_deployment_completed": False,
+334:         "torque_enable_ready": False,
+
+335:         "torque_publisher_enabled": False,
+336:         "control_law_changed": False,
+337:         "mixed_baseline_modified": False,
+338:         "mpc_assisted_candidate_switch_present": True,
+339:         "mpc_assisted_candidate_executed": False,
+340:         "mpc_assisted_candidate_scale": args.mpc_assisted_candidate_scale,
+341:         "wbc_script": WBC_SCRIPT,
+
+336:         "control_law_changed": False,
+337:         "mixed_baseline_modified": False,
+338:         "mpc_assisted_candidate_switch_present": True,
+339:         "mpc_assisted_candidate_executed": False,
+340:         "mpc_assisted_candidate_scale": args.mpc_assisted_candidate_scale,
+341:         "wbc_script": WBC_SCRIPT,
+342:         "swing_target_csv": SWING_TARGET_CSV,
+
+
+== candidate csv ==
+path: results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidates.csv
+exists: True
+row_count: 100
+columns: ['step', 'FR_fx', 'FR_fy', 'FR_fz', 'FL_fx', 'FL_fy', 'FL_fz', 'RR_fx', 'RR_fy', 'RR_fz', 'RL_fx', 'RL_fy', 'RL_fz', 'FR_hip_tau_candidate', 'FR_thigh_tau_candidate', 'FR_calf_tau_candidate', 'FL_hip_tau_candidate', 'FL_thigh_tau_candidate', 'FL_calf_tau_candidate', 'RR_hip_tau_candidate', 'RR_thigh_tau_candidate', 'RR_calf_tau_candidate', 'RL_hip_tau_candidate', 'RL_thigh_tau_candidate', 'RL_calf_tau_candidate', 'force_total_norm', 'tau_abs_max', 'torque_limit_violation']
+tau_or_torque_columns: ['FR_hip_tau_candidate', 'FR_thigh_tau_candidate', 'FR_calf_tau_candidate', 'FL_hip_tau_candidate', 'FL_thigh_tau_candidate', 'FL_calf_tau_candidate', 'RR_hip_tau_candidate', 'RR_thigh_tau_candidate', 'RR_calf_tau_candidate', 'RL_hip_tau_candidate', 'RL_thigh_tau_candidate', 'RL_calf_tau_candidate', 'tau_abs_max', 'torque_limit_violation']
+step_columns: ['step']
+contact_columns: []
+
+== qp csv ==
+path: results/logs_sample/stage14_5c_mpc_force_reference_offline_qp_check.csv
+exists: True
+row_count: 100
+columns: ['step', 'source_step', 'contact_mode', 'qp_status', 'tracking_error_inf', 'tau_abs_max', 'max_friction_violation', 'max_swing_force_norm', 'FR_f_ref_x', 'FR_f_qp_x', 'FR_f_ref_y', 'FR_f_qp_y', 'FR_f_ref_z', 'FR_f_qp_z', 'FL_f_ref_x', 'FL_f_qp_x', 'FL_f_ref_y', 'FL_f_qp_y', 'FL_f_ref_z', 'FL_f_qp_z', 'RR_f_ref_x', 'RR_f_qp_x', 'RR_f_ref_y', 'RR_f_qp_y', 'RR_f_ref_z', 'RR_f_qp_z', 'RL_f_ref_x', 'RL_f_qp_x', 'RL_f_ref_y', 'RL_f_qp_y', 'RL_f_ref_z', 'RL_f_qp_z', 'FR_stance', 'FL_stance', 'RR_stance', 'RL_stance']
+
+== baseline-mode log csv ==
+path: results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_log.csv
+exists: True
+row_count: 2400
+missing_required_columns: []
+
+== recommended future injection design ==
+{
+  "future_step": "R6_or_later",
+  "candidate_source_csv": "results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidates.csv",
+  "candidate_source_summary": "results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidate_summary.json",
+  "qp_reference_summary": "results/logs_sample/stage14_5c_mpc_force_reference_offline_qp_summary.json",
+  "baseline_mode_log_csv": "results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_log.csv",
+  "derived_runner": "scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py",
+  "recommended_injection_location": "after tau_total_raw baseline composition and before torque clipping",
+  "recommended_anchor_before": "tau_total_raw = tau_stance_pd + tau_stance_wbc + tau_swing_pd",
+  "recommended_anchor_after": "tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)",
+  "future_candidate_rule": [
+    "Keep default control_mode=baseline.",
+    "Require --control-mode mpc_assisted_candidate and --allow-mpc-assisted-candidate.",
+    "Read offline torque candidate table by step index.",
+    "Apply candidate only inside MuJoCo simulation.",
+    "Use explicit scale and keep candidate scale bounded.",
+    "Clip final tau_total to TORQUE_LIMIT.",
+    "Log tau_baseline_raw, tau_candidate, tau_candidate_scaled, tau_total_raw, tau_total.",
+    "Preserve baseline runner source unchanged.",
+    "Do not create or use ROS torque publisher.",
+    "Do not claim real robot torque readiness."
+  ],
+  "not_implemented_in_r5": true
+}
