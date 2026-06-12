@@ -1,0 +1,892 @@
+Stage 14.5D-R1 baseline runner structure snippets
+timestamp_utc: 2026-06-12T02:10:46.695000+00:00
+runner: scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py
+
+[main_or_entry] count=2
+80: 
+81: 
+82: def main():
+83:     wbc = load_wbc()
+84:     target_rows = read_swing_targets()
+
+355: 
+356: 
+357: if __name__ == "__main__":
+358:     main()
+
+
+[mujoco_model_data] count=4
+9: from pathlib import Path
+10: 
+11: import mujoco
+12: import numpy as np
+13: 
+
+84:     target_rows = read_swing_targets()
+85: 
+86:     model = mujoco.MjModel.from_xml_path(wbc.SCENE)
+87:     data = mujoco.MjData(model)
+88: 
+
+85: 
+86:     model = mujoco.MjModel.from_xml_path(wbc.SCENE)
+87:     data = mujoco.MjData(model)
+88: 
+89:     contact_rows = wbc.read_contact_wbc_rows()
+
+198: 
+199:         data.ctrl[:] = tau_total
+200:         mujoco.mj_step(model, data)
+201: 
+202:         base_z = float(data.qpos[2])
+
+
+[simulation_loop] count=4
+1: # Stage 13.2 derived 2400-step simulation-only mixed baseline runner.
+2: # Original Stage 7 recommended runner is not modified.
+3: # Control law is unchanged; WBC horizon and target CSV are derived for 2400-step robustness regression.
+4: 
+5: #!/usr/bin/env python3
+
+125: 
+126:     mode_counts = {m: 0 for m in wbc.CONTACT_MODES}
+127:     total_steps = min(wbc.TOTAL_STEPS, len(target_rows))
+128: 
+129:     log_rows = []
+
+129:     log_rows = []
+130: 
+131:     for step in range(total_steps):
+132:         sched = wbc.scheduler_mode(step)
+133:         mode = sched["mode"]
+
+289:         "wbc_script": WBC_SCRIPT,
+290:         "swing_target_csv": SWING_TARGET_CSV,
+291:         "total_steps": total_steps,
+292:         "transition_count": transition_count,
+293:         "trot_FR_RL_steps": mode_counts["trot_FR_RL"],
+
+
+[torque_write] count=46
+31: SWING_TARGET_SCALE = 0.35
+32: 
+33: TORQUE_LIMIT = 23.7
+34: 
+35: MIN_Z_LIMIT = 0.22
+
+103:     max_stance_joint_error = 0.0
+104: 
+105:     max_tau_stance_pd_abs = 0.0
+106:     max_tau_stance_wbc_abs = 0.0
+107:     max_tau_swing_pd_abs = 0.0
+
+104: 
+105:     max_tau_stance_pd_abs = 0.0
+106:     max_tau_stance_wbc_abs = 0.0
+107:     max_tau_swing_pd_abs = 0.0
+108:     max_tau_total_raw_abs = 0.0
+
+105:     max_tau_stance_pd_abs = 0.0
+106:     max_tau_stance_wbc_abs = 0.0
+107:     max_tau_swing_pd_abs = 0.0
+108:     max_tau_total_raw_abs = 0.0
+109:     max_tau_total_abs = 0.0
+
+106:     max_tau_stance_wbc_abs = 0.0
+107:     max_tau_swing_pd_abs = 0.0
+108:     max_tau_total_raw_abs = 0.0
+109:     max_tau_total_abs = 0.0
+110: 
+
+107:     max_tau_swing_pd_abs = 0.0
+108:     max_tau_total_raw_abs = 0.0
+109:     max_tau_total_abs = 0.0
+110: 
+111:     max_cmd_step_jump_norm = 0.0
+
+120:     transition_count = 0
+121: 
+122:     tau_wbc_cmd = np.zeros(model.nu)
+123:     tau_prev_total = np.zeros(model.nu)
+124:     prev_mode = None
+
+121: 
+122:     tau_wbc_cmd = np.zeros(model.nu)
+123:     tau_prev_total = np.zeros(model.nu)
+124:     prev_mode = None
+125: 
+
+156:         swing_mask[swing_inds] = 1.0
+157: 
+158:         tau_wbc, metrics = wbc.solve_online_full_wbc(
+159:             model=model,
+160:             data=data,
+
+165:         )
+166: 
+167:         if tau_wbc is None:
+168:             qp_fail_steps += 1
+169:             tau_wbc = tau_wbc_cmd.copy()
+
+167:         if tau_wbc is None:
+168:             qp_fail_steps += 1
+169:             tau_wbc = tau_wbc_cmd.copy()
+170: 
+171:         tau_wbc_cmd = (1.0 - wbc.RAMP_ALPHA) * tau_wbc_cmd + wbc.RAMP_ALPHA * tau_wbc
+
+169:             tau_wbc = tau_wbc_cmd.copy()
+170: 
+171:         tau_wbc_cmd = (1.0 - wbc.RAMP_ALPHA) * tau_wbc_cmd + wbc.RAMP_ALPHA * tau_wbc
+172:         tau_stance_wbc = STANCE_WBC_SCALE * stance_mask * tau_wbc_cmd
+173: 
+
+170: 
+171:         tau_wbc_cmd = (1.0 - wbc.RAMP_ALPHA) * tau_wbc_cmd + wbc.RAMP_ALPHA * tau_wbc
+172:         tau_stance_wbc = STANCE_WBC_SCALE * stance_mask * tau_wbc_cmd
+173: 
+174:         q_des_full = target["q_des"]
+
+183:         q_err = q_des - q_now
+184: 
+185:         tau_stance_pd = stance_mask * (STANCE_KP * (q_standing - q_now) - STANCE_KD * qd_now)
+186:         tau_swing_pd = SWING_PD_SCALE * swing_mask * (SWING_KP * q_err - SWING_KD * qd_now)
+187: 
+
+184: 
+185:         tau_stance_pd = stance_mask * (STANCE_KP * (q_standing - q_now) - STANCE_KD * qd_now)
+186:         tau_swing_pd = SWING_PD_SCALE * swing_mask * (SWING_KP * q_err - SWING_KD * qd_now)
+187: 
+188:         tau_total_raw = tau_stance_pd + tau_stance_wbc + tau_swing_pd
+
+186:         tau_swing_pd = SWING_PD_SCALE * swing_mask * (SWING_KP * q_err - SWING_KD * qd_now)
+187: 
+188:         tau_total_raw = tau_stance_pd + tau_stance_wbc + tau_swing_pd
+189:         tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)
+190: 
+
+187: 
+188:         tau_total_raw = tau_stance_pd + tau_stance_wbc + tau_swing_pd
+189:         tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)
+190: 
+191:         saturated = bool(np.any(np.abs(tau_total_raw) > TORQUE_LIMIT))
+
+189:         tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)
+190: 
+191:         saturated = bool(np.any(np.abs(tau_total_raw) > TORQUE_LIMIT))
+192:         saturation_steps += int(saturated)
+193: 
+
+192:         saturation_steps += int(saturated)
+193: 
+194:         tau_jump = tau_total - tau_prev_total
+195:         max_cmd_step_jump_norm = max(max_cmd_step_jump_norm, float(np.linalg.norm(tau_jump)))
+196:         max_cmd_step_jump_abs = max(max_cmd_step_jump_abs, float(np.max(np.abs(tau_jump))))
+
+193: 
+194:         tau_jump = tau_total - tau_prev_total
+195:         max_cmd_step_jump_norm = max(max_cmd_step_jump_norm, float(np.linalg.norm(tau_jump)))
+196:         max_cmd_step_jump_abs = max(max_cmd_step_jump_abs, float(np.max(np.abs(tau_jump))))
+197:         tau_prev_total = tau_total.copy()
+
+194:         tau_jump = tau_total - tau_prev_total
+195:         max_cmd_step_jump_norm = max(max_cmd_step_jump_norm, float(np.linalg.norm(tau_jump)))
+196:         max_cmd_step_jump_abs = max(max_cmd_step_jump_abs, float(np.max(np.abs(tau_jump))))
+197:         tau_prev_total = tau_total.copy()
+198: 
+
+195:         max_cmd_step_jump_norm = max(max_cmd_step_jump_norm, float(np.linalg.norm(tau_jump)))
+196:         max_cmd_step_jump_abs = max(max_cmd_step_jump_abs, float(np.max(np.abs(tau_jump))))
+197:         tau_prev_total = tau_total.copy()
+198: 
+199:         data.ctrl[:] = tau_total
+
+197:         tau_prev_total = tau_total.copy()
+198: 
+199:         data.ctrl[:] = tau_total
+200:         mujoco.mj_step(model, data)
+201: 
+
+216:         max_stance_joint_error = max(max_stance_joint_error, step_stance_joint_error)
+217: 
+218:         tau_stance_pd_abs = float(np.max(np.abs(tau_stance_pd)))
+219:         tau_stance_wbc_abs = float(np.max(np.abs(tau_stance_wbc)))
+220:         tau_swing_pd_abs = float(np.max(np.abs(tau_swing_pd)))
+
+217: 
+218:         tau_stance_pd_abs = float(np.max(np.abs(tau_stance_pd)))
+219:         tau_stance_wbc_abs = float(np.max(np.abs(tau_stance_wbc)))
+220:         tau_swing_pd_abs = float(np.max(np.abs(tau_swing_pd)))
+221:         tau_total_raw_abs = float(np.max(np.abs(tau_total_raw)))
+
+218:         tau_stance_pd_abs = float(np.max(np.abs(tau_stance_pd)))
+219:         tau_stance_wbc_abs = float(np.max(np.abs(tau_stance_wbc)))
+220:         tau_swing_pd_abs = float(np.max(np.abs(tau_swing_pd)))
+221:         tau_total_raw_abs = float(np.max(np.abs(tau_total_raw)))
+222:         tau_total_abs = float(np.max(np.abs(tau_total)))
+
+219:         tau_stance_wbc_abs = float(np.max(np.abs(tau_stance_wbc)))
+220:         tau_swing_pd_abs = float(np.max(np.abs(tau_swing_pd)))
+221:         tau_total_raw_abs = float(np.max(np.abs(tau_total_raw)))
+222:         tau_total_abs = float(np.max(np.abs(tau_total)))
+223: 
+
+220:         tau_swing_pd_abs = float(np.max(np.abs(tau_swing_pd)))
+221:         tau_total_raw_abs = float(np.max(np.abs(tau_total_raw)))
+222:         tau_total_abs = float(np.max(np.abs(tau_total)))
+223: 
+224:         max_tau_stance_pd_abs = max(max_tau_stance_pd_abs, tau_stance_pd_abs)
+
+222:         tau_total_abs = float(np.max(np.abs(tau_total)))
+223: 
+224:         max_tau_stance_pd_abs = max(max_tau_stance_pd_abs, tau_stance_pd_abs)
+225:         max_tau_stance_wbc_abs = max(max_tau_stance_wbc_abs, tau_stance_wbc_abs)
+226:         max_tau_swing_pd_abs = max(max_tau_swing_pd_abs, tau_swing_pd_abs)
+
+223: 
+224:         max_tau_stance_pd_abs = max(max_tau_stance_pd_abs, tau_stance_pd_abs)
+225:         max_tau_stance_wbc_abs = max(max_tau_stance_wbc_abs, tau_stance_wbc_abs)
+226:         max_tau_swing_pd_abs = max(max_tau_swing_pd_abs, tau_swing_pd_abs)
+227:         max_tau_total_raw_abs = max(max_tau_total_raw_abs, tau_total_raw_abs)
+
+224:         max_tau_stance_pd_abs = max(max_tau_stance_pd_abs, tau_stance_pd_abs)
+225:         max_tau_stance_wbc_abs = max(max_tau_stance_wbc_abs, tau_stance_wbc_abs)
+226:         max_tau_swing_pd_abs = max(max_tau_swing_pd_abs, tau_swing_pd_abs)
+227:         max_tau_total_raw_abs = max(max_tau_total_raw_abs, tau_total_raw_abs)
+228:         max_tau_total_abs = max(max_tau_total_abs, tau_total_abs)
+
+225:         max_tau_stance_wbc_abs = max(max_tau_stance_wbc_abs, tau_stance_wbc_abs)
+226:         max_tau_swing_pd_abs = max(max_tau_swing_pd_abs, tau_swing_pd_abs)
+227:         max_tau_total_raw_abs = max(max_tau_total_raw_abs, tau_total_raw_abs)
+228:         max_tau_total_abs = max(max_tau_total_abs, tau_total_abs)
+229: 
+
+226:         max_tau_swing_pd_abs = max(max_tau_swing_pd_abs, tau_swing_pd_abs)
+227:         max_tau_total_raw_abs = max(max_tau_total_raw_abs, tau_total_raw_abs)
+228:         max_tau_total_abs = max(max_tau_total_abs, tau_total_abs)
+229: 
+230:         if np.isfinite(metrics["dyn_res_norm"]):
+
+257:             "swing_joint_error": f"{step_swing_joint_error:.12f}",
+258:             "stance_joint_error": f"{step_stance_joint_error:.12f}",
+259:             "tau_stance_pd_abs": f"{tau_stance_pd_abs:.12f}",
+260:             "tau_stance_wbc_abs": f"{tau_stance_wbc_abs:.12f}",
+261:             "tau_swing_pd_abs": f"{tau_swing_pd_abs:.12f}",
+
+258:             "stance_joint_error": f"{step_stance_joint_error:.12f}",
+259:             "tau_stance_pd_abs": f"{tau_stance_pd_abs:.12f}",
+260:             "tau_stance_wbc_abs": f"{tau_stance_wbc_abs:.12f}",
+261:             "tau_swing_pd_abs": f"{tau_swing_pd_abs:.12f}",
+262:             "tau_total_raw_abs": f"{tau_total_raw_abs:.12f}",
+
+259:             "tau_stance_pd_abs": f"{tau_stance_pd_abs:.12f}",
+260:             "tau_stance_wbc_abs": f"{tau_stance_wbc_abs:.12f}",
+261:             "tau_swing_pd_abs": f"{tau_swing_pd_abs:.12f}",
+262:             "tau_total_raw_abs": f"{tau_total_raw_abs:.12f}",
+263:             "tau_total_abs": f"{tau_total_abs:.12f}",
+
+260:             "tau_stance_wbc_abs": f"{tau_stance_wbc_abs:.12f}",
+261:             "tau_swing_pd_abs": f"{tau_swing_pd_abs:.12f}",
+262:             "tau_total_raw_abs": f"{tau_total_raw_abs:.12f}",
+263:             "tau_total_abs": f"{tau_total_abs:.12f}",
+264:             "tau_step_jump_norm": f"{float(np.linalg.norm(tau_jump)):.12f}",
+
+261:             "tau_swing_pd_abs": f"{tau_swing_pd_abs:.12f}",
+262:             "tau_total_raw_abs": f"{tau_total_raw_abs:.12f}",
+263:             "tau_total_abs": f"{tau_total_abs:.12f}",
+264:             "tau_step_jump_norm": f"{float(np.linalg.norm(tau_jump)):.12f}",
+265:             "tau_step_jump_abs": f"{float(np.max(np.abs(tau_jump))):.12f}",
+
+262:             "tau_total_raw_abs": f"{tau_total_raw_abs:.12f}",
+263:             "tau_total_abs": f"{tau_total_abs:.12f}",
+264:             "tau_step_jump_norm": f"{float(np.linalg.norm(tau_jump)):.12f}",
+265:             "tau_step_jump_abs": f"{float(np.max(np.abs(tau_jump))):.12f}",
+266:             "saturated": str(saturated),
+
+263:             "tau_total_abs": f"{tau_total_abs:.12f}",
+264:             "tau_step_jump_norm": f"{float(np.linalg.norm(tau_jump)):.12f}",
+265:             "tau_step_jump_abs": f"{float(np.max(np.abs(tau_jump))):.12f}",
+266:             "saturated": str(saturated),
+267:         })
+
+
+[baseline_control_terms] count=100
+1: # Stage 13.2 derived 2400-step simulation-only mixed baseline runner.
+2: # Original Stage 7 recommended runner is not modified.
+3: # Control law is unchanged; WBC horizon and target CSV are derived for 2400-step robustness regression.
+4: 
+5: #!/usr/bin/env python3
+
+13: 
+14: 
+15: WBC_SCRIPT = "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py"
+16: SWING_TARGET_CSV = "results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv"
+17: 
+
+14: 
+15: WBC_SCRIPT = "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py"
+16: SWING_TARGET_CSV = "results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv"
+17: 
+18: LOG_CSV = "results/logs_sample/stage13_2_2400step_mixed_baseline_log.csv"
+
+22: JOINTS = ["hip", "thigh", "calf"]
+23: 
+24: STANCE_KP = 60.0
+25: STANCE_KD = 2.0
+26: SWING_KP = 80.0
+
+23: 
+24: STANCE_KP = 60.0
+25: STANCE_KD = 2.0
+26: SWING_KP = 80.0
+27: SWING_KD = 2.0
+
+24: STANCE_KP = 60.0
+25: STANCE_KD = 2.0
+26: SWING_KP = 80.0
+27: SWING_KD = 2.0
+28: 
+
+25: STANCE_KD = 2.0
+26: SWING_KP = 80.0
+27: SWING_KD = 2.0
+28: 
+29: STANCE_WBC_SCALE = 0.2
+
+27: SWING_KD = 2.0
+28: 
+29: STANCE_WBC_SCALE = 0.2
+30: SWING_PD_SCALE = 1.0
+31: SWING_TARGET_SCALE = 0.35
+
+28: 
+29: STANCE_WBC_SCALE = 0.2
+30: SWING_PD_SCALE = 1.0
+31: SWING_TARGET_SCALE = 0.35
+32: 
+
+29: STANCE_WBC_SCALE = 0.2
+30: SWING_PD_SCALE = 1.0
+31: SWING_TARGET_SCALE = 0.35
+32: 
+33: TORQUE_LIMIT = 23.7
+
+36: MAX_ROLL_LIMIT = 0.20
+37: MAX_PITCH_LIMIT = 0.20
+38: MAX_SWING_JOINT_ERROR_LIMIT = 0.08
+39: 
+40: 
+
+39: 
+40: 
+41: def load_wbc():
+42:     spec = importlib.util.spec_from_file_location("wbc_recommended", WBC_SCRIPT)
+43:     mod = importlib.util.module_from_spec(spec)
+
+40: 
+41: def load_wbc():
+42:     spec = importlib.util.spec_from_file_location("wbc_recommended", WBC_SCRIPT)
+43:     mod = importlib.util.module_from_spec(spec)
+44:     spec.loader.exec_module(mod)
+
+46: 
+47: 
+48: def read_swing_targets():
+49:     rows = []
+50: 
+
+49:     rows = []
+50: 
+51:     with open(SWING_TARGET_CSV, "r", newline="") as f:
+52:         for row in csv.DictReader(f):
+53:             q_des = []
+
+60:                 "mode": row["mode"],
+61:                 "phase_in_mode": row["phase_in_mode"],
+62:                 "swing_progress": row["swing_progress"],
+63:                 "stance_legs": row["stance_legs"],
+64:                 "swing_legs": row["swing_legs"],
+
+61:                 "phase_in_mode": row["phase_in_mode"],
+62:                 "swing_progress": row["swing_progress"],
+63:                 "stance_legs": row["stance_legs"],
+64:                 "swing_legs": row["swing_legs"],
+65:                 "q_des": np.array(q_des, dtype=float),
+
+62:                 "swing_progress": row["swing_progress"],
+63:                 "stance_legs": row["stance_legs"],
+64:                 "swing_legs": row["swing_legs"],
+65:                 "q_des": np.array(q_des, dtype=float),
+66:             })
+
+67: 
+68:     if not rows:
+69:         raise RuntimeError(f"empty target csv: {SWING_TARGET_CSV}")
+70: 
+71:     return rows
+
+81: 
+82: def main():
+83:     wbc = load_wbc()
+84:     target_rows = read_swing_targets()
+85: 
+
+82: def main():
+83:     wbc = load_wbc()
+84:     target_rows = read_swing_targets()
+85: 
+86:     model = mujoco.MjModel.from_xml_path(wbc.SCENE)
+
+84:     target_rows = read_swing_targets()
+85: 
+86:     model = mujoco.MjModel.from_xml_path(wbc.SCENE)
+87:     data = mujoco.MjData(model)
+88: 
+
+87:     data = mujoco.MjData(model)
+88: 
+89:     contact_rows = wbc.read_contact_wbc_rows()
+90:     dofs, qadrs = wbc.actuator_indices(model)
+91:     site_ids = wbc.set_standing_pose(model, data)
+
+88: 
+89:     contact_rows = wbc.read_contact_wbc_rows()
+90:     dofs, qadrs = wbc.actuator_indices(model)
+91:     site_ids = wbc.set_standing_pose(model, data)
+92: 
+
+89:     contact_rows = wbc.read_contact_wbc_rows()
+90:     dofs, qadrs = wbc.actuator_indices(model)
+91:     site_ids = wbc.set_standing_pose(model, data)
+92: 
+93:     q_standing = wbc.current_actuated_q(data, qadrs)
+
+91:     site_ids = wbc.set_standing_pose(model, data)
+92: 
+93:     q_standing = wbc.current_actuated_q(data, qadrs)
+94: 
+95:     initial_z = float(data.qpos[2])
+
+100: 
+101:     max_joint_error = 0.0
+102:     max_swing_joint_error = 0.0
+103:     max_stance_joint_error = 0.0
+104: 
+
+101:     max_joint_error = 0.0
+102:     max_swing_joint_error = 0.0
+103:     max_stance_joint_error = 0.0
+104: 
+105:     max_tau_stance_pd_abs = 0.0
+
+103:     max_stance_joint_error = 0.0
+104: 
+105:     max_tau_stance_pd_abs = 0.0
+106:     max_tau_stance_wbc_abs = 0.0
+107:     max_tau_swing_pd_abs = 0.0
+
+104: 
+105:     max_tau_stance_pd_abs = 0.0
+106:     max_tau_stance_wbc_abs = 0.0
+107:     max_tau_swing_pd_abs = 0.0
+108:     max_tau_total_raw_abs = 0.0
+
+105:     max_tau_stance_pd_abs = 0.0
+106:     max_tau_stance_wbc_abs = 0.0
+107:     max_tau_swing_pd_abs = 0.0
+108:     max_tau_total_raw_abs = 0.0
+109:     max_tau_total_abs = 0.0
+
+113: 
+114:     max_dyn_res_norm = 0.0
+115:     max_stance_acc_res_norm = 0.0
+116:     max_swing_acc_error_norm = 0.0
+117: 
+
+114:     max_dyn_res_norm = 0.0
+115:     max_stance_acc_res_norm = 0.0
+116:     max_swing_acc_error_norm = 0.0
+117: 
+118:     qp_fail_steps = 0
+
+120:     transition_count = 0
+121: 
+122:     tau_wbc_cmd = np.zeros(model.nu)
+123:     tau_prev_total = np.zeros(model.nu)
+124:     prev_mode = None
+
+124:     prev_mode = None
+125: 
+126:     mode_counts = {m: 0 for m in wbc.CONTACT_MODES}
+127:     total_steps = min(wbc.TOTAL_STEPS, len(target_rows))
+128: 
+
+125: 
+126:     mode_counts = {m: 0 for m in wbc.CONTACT_MODES}
+127:     total_steps = min(wbc.TOTAL_STEPS, len(target_rows))
+128: 
+129:     log_rows = []
+
+130: 
+131:     for step in range(total_steps):
+132:         sched = wbc.scheduler_mode(step)
+133:         mode = sched["mode"]
+134:         target = target_rows[step]
+
+145:         mode_counts[mode] += 1
+146: 
+147:         stance_legs = target["stance_legs"].split(",") if target["stance_legs"] else []
+148:         swing_legs = target["swing_legs"].split(",") if target["swing_legs"] else []
+149: 
+
+146: 
+147:         stance_legs = target["stance_legs"].split(",") if target["stance_legs"] else []
+148:         swing_legs = target["swing_legs"].split(",") if target["swing_legs"] else []
+149: 
+150:         stance_inds = leg_indices(stance_legs)
+
+148:         swing_legs = target["swing_legs"].split(",") if target["swing_legs"] else []
+149: 
+150:         stance_inds = leg_indices(stance_legs)
+151:         swing_inds = leg_indices(swing_legs)
+152: 
+
+
+[metrics_summary] count=40
+17: 
+18: LOG_CSV = "results/logs_sample/stage13_2_2400step_mixed_baseline_log.csv"
+19: SUMMARY_CSV = "results/logs_sample/stage13_2_2400step_mixed_baseline_summary.csv"
+20: 
+21: LEG_ORDER = list(MJ_LEG_ORDER)
+
+33: TORQUE_LIMIT = 23.7
+34: 
+35: MIN_Z_LIMIT = 0.22
+36: MAX_ROLL_LIMIT = 0.20
+37: MAX_PITCH_LIMIT = 0.20
+
+94: 
+95:     initial_z = float(data.qpos[2])
+96:     min_z = initial_z
+97:     max_z = initial_z
+98:     max_abs_roll = 0.0
+
+96:     min_z = initial_z
+97:     max_z = initial_z
+98:     max_abs_roll = 0.0
+99:     max_abs_pitch = 0.0
+100: 
+
+97:     max_z = initial_z
+98:     max_abs_roll = 0.0
+99:     max_abs_pitch = 0.0
+100: 
+101:     max_joint_error = 0.0
+
+116:     max_swing_acc_error_norm = 0.0
+117: 
+118:     qp_fail_steps = 0
+119:     saturation_steps = 0
+120:     transition_count = 0
+
+117: 
+118:     qp_fail_steps = 0
+119:     saturation_steps = 0
+120:     transition_count = 0
+121: 
+
+166: 
+167:         if tau_wbc is None:
+168:             qp_fail_steps += 1
+169:             tau_wbc = tau_wbc_cmd.copy()
+170: 
+
+190: 
+191:         saturated = bool(np.any(np.abs(tau_total_raw) > TORQUE_LIMIT))
+192:         saturation_steps += int(saturated)
+193: 
+194:         tau_jump = tau_total - tau_prev_total
+
+203:         roll, pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+204: 
+205:         min_z = min(min_z, base_z)
+206:         max_z = max(max_z, base_z)
+207:         max_abs_roll = max(max_abs_roll, abs(roll))
+
+205:         min_z = min(min_z, base_z)
+206:         max_z = max(max_z, base_z)
+207:         max_abs_roll = max(max_abs_roll, abs(roll))
+208:         max_abs_pitch = max(max_abs_pitch, abs(pitch))
+209: 
+
+206:         max_z = max(max_z, base_z)
+207:         max_abs_roll = max(max_abs_roll, abs(roll))
+208:         max_abs_pitch = max(max_abs_pitch, abs(pitch))
+209: 
+210:         step_joint_error = float(np.max(np.abs(q_err)))
+
+270:     final_roll, final_pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+271: 
+272:     pass_test = (
+273:         qp_fail_steps == 0
+274:         and saturation_steps == 0
+
+271: 
+272:     pass_test = (
+273:         qp_fail_steps == 0
+274:         and saturation_steps == 0
+275:         and min_z > MIN_Z_LIMIT
+
+272:     pass_test = (
+273:         qp_fail_steps == 0
+274:         and saturation_steps == 0
+275:         and min_z > MIN_Z_LIMIT
+276:         and max_abs_roll < MAX_ROLL_LIMIT
+
+273:         qp_fail_steps == 0
+274:         and saturation_steps == 0
+275:         and min_z > MIN_Z_LIMIT
+276:         and max_abs_roll < MAX_ROLL_LIMIT
+277:         and max_abs_pitch < MAX_PITCH_LIMIT
+
+274:         and saturation_steps == 0
+275:         and min_z > MIN_Z_LIMIT
+276:         and max_abs_roll < MAX_ROLL_LIMIT
+277:         and max_abs_pitch < MAX_PITCH_LIMIT
+278:         and max_swing_joint_error < MAX_SWING_JOINT_ERROR_LIMIT
+
+275:         and min_z > MIN_Z_LIMIT
+276:         and max_abs_roll < MAX_ROLL_LIMIT
+277:         and max_abs_pitch < MAX_PITCH_LIMIT
+278:         and max_swing_joint_error < MAX_SWING_JOINT_ERROR_LIMIT
+279:     )
+
+279:     )
+280: 
+281:     pass_margin = (
+282:         pass_test
+283:         and min_z - MIN_Z_LIMIT > 0.02
+
+280: 
+281:     pass_margin = (
+282:         pass_test
+283:         and min_z - MIN_Z_LIMIT > 0.02
+284:         and MAX_ROLL_LIMIT - max_abs_roll > 0.01
+
+281:     pass_margin = (
+282:         pass_test
+283:         and min_z - MIN_Z_LIMIT > 0.02
+284:         and MAX_ROLL_LIMIT - max_abs_roll > 0.01
+285:         and MAX_PITCH_LIMIT - max_abs_pitch > 0.01
+
+282:         pass_test
+283:         and min_z - MIN_Z_LIMIT > 0.02
+284:         and MAX_ROLL_LIMIT - max_abs_roll > 0.01
+285:         and MAX_PITCH_LIMIT - max_abs_pitch > 0.01
+286:     )
+
+283:         and min_z - MIN_Z_LIMIT > 0.02
+284:         and MAX_ROLL_LIMIT - max_abs_roll > 0.01
+285:         and MAX_PITCH_LIMIT - max_abs_pitch > 0.01
+286:     )
+287: 
+
+286:     )
+287: 
+288:     summary = {
+289:         "wbc_script": WBC_SCRIPT,
+290:         "swing_target_csv": SWING_TARGET_CSV,
+
+303:         "initial_z": f"{initial_z:.12f}",
+304:         "final_z": f"{final_z:.12f}",
+305:         "min_z": f"{min_z:.12f}",
+306:         "max_z": f"{max_z:.12f}",
+307:         "delta_z": f"{final_z - initial_z:.12f}",
+
+308:         "final_roll": f"{final_roll:.12f}",
+309:         "final_pitch": f"{final_pitch:.12f}",
+310:         "max_abs_roll": f"{max_abs_roll:.12f}",
+311:         "roll_margin_to_0p20": f"{MAX_ROLL_LIMIT - max_abs_roll:.12f}",
+312:         "max_abs_pitch": f"{max_abs_pitch:.12f}",
+
+309:         "final_pitch": f"{final_pitch:.12f}",
+310:         "max_abs_roll": f"{max_abs_roll:.12f}",
+311:         "roll_margin_to_0p20": f"{MAX_ROLL_LIMIT - max_abs_roll:.12f}",
+312:         "max_abs_pitch": f"{max_abs_pitch:.12f}",
+313:         "pitch_margin_to_0p20": f"{MAX_PITCH_LIMIT - max_abs_pitch:.12f}",
+
+310:         "max_abs_roll": f"{max_abs_roll:.12f}",
+311:         "roll_margin_to_0p20": f"{MAX_ROLL_LIMIT - max_abs_roll:.12f}",
+312:         "max_abs_pitch": f"{max_abs_pitch:.12f}",
+313:         "pitch_margin_to_0p20": f"{MAX_PITCH_LIMIT - max_abs_pitch:.12f}",
+314:         "z_margin_to_0p22": f"{min_z - MIN_Z_LIMIT:.12f}",
+
+311:         "roll_margin_to_0p20": f"{MAX_ROLL_LIMIT - max_abs_roll:.12f}",
+312:         "max_abs_pitch": f"{max_abs_pitch:.12f}",
+313:         "pitch_margin_to_0p20": f"{MAX_PITCH_LIMIT - max_abs_pitch:.12f}",
+314:         "z_margin_to_0p22": f"{min_z - MIN_Z_LIMIT:.12f}",
+315:         "max_joint_error": f"{max_joint_error:.12f}",
+
+312:         "max_abs_pitch": f"{max_abs_pitch:.12f}",
+313:         "pitch_margin_to_0p20": f"{MAX_PITCH_LIMIT - max_abs_pitch:.12f}",
+314:         "z_margin_to_0p22": f"{min_z - MIN_Z_LIMIT:.12f}",
+315:         "max_joint_error": f"{max_joint_error:.12f}",
+316:         "max_swing_joint_error": f"{max_swing_joint_error:.12f}",
+
+326:         "max_stance_acc_res_norm": f"{max_stance_acc_res_norm:.12e}",
+327:         "max_swing_acc_error_norm": f"{max_swing_acc_error_norm:.12e}",
+328:         "qp_fail_steps": qp_fail_steps,
+329:         "saturation_steps": saturation_steps,
+330:         "pass": str(pass_test),
+
+327:         "max_swing_acc_error_norm": f"{max_swing_acc_error_norm:.12e}",
+328:         "qp_fail_steps": qp_fail_steps,
+329:         "saturation_steps": saturation_steps,
+330:         "pass": str(pass_test),
+331:         "pass_margin": str(pass_margin),
+
+328:         "qp_fail_steps": qp_fail_steps,
+329:         "saturation_steps": saturation_steps,
+330:         "pass": str(pass_test),
+331:         "pass_margin": str(pass_margin),
+332:     }
+
+329:         "saturation_steps": saturation_steps,
+330:         "pass": str(pass_test),
+331:         "pass_margin": str(pass_margin),
+332:     }
+333: 
+
+339:         writer.writerows(log_rows)
+340: 
+341:     with open(SUMMARY_CSV, "w", newline="") as f:
+342:         writer = csv.DictWriter(f, fieldnames=list(summary.keys()))
+343:         writer.writeheader()
+
+340: 
+341:     with open(SUMMARY_CSV, "w", newline="") as f:
+342:         writer = csv.DictWriter(f, fieldnames=list(summary.keys()))
+343:         writer.writeheader()
+344:         writer.writerow(summary)
+
+342:         writer = csv.DictWriter(f, fieldnames=list(summary.keys()))
+343:         writer.writeheader()
+344:         writer.writerow(summary)
+345: 
+346:     print("Stage 13.2 2400-step simulation-only mixed baseline regression")
+
+345: 
+346:     print("Stage 13.2 2400-step simulation-only mixed baseline regression")
+347:     for k, v in summary.items():
+348:         print(f"{k}={v}")
+349: 
+
+349: 
+350:     print(f"saved_log={LOG_CSV}")
+351:     print(f"saved_summary={SUMMARY_CSV}")
+352: 
+353:     if not pass_test:
+
+351:     print(f"saved_summary={SUMMARY_CSV}")
+352: 
+353:     if not pass_test:
+354:         raise SystemExit(2)
+355: 
+
+
+[file_outputs] count=16
+1: # Stage 13.2 derived 2400-step simulation-only mixed baseline runner.
+2: # Original Stage 7 recommended runner is not modified.
+3: # Control law is unchanged; WBC horizon and target CSV are derived for 2400-step robustness regression.
+4: 
+5: #!/usr/bin/env python3
+
+5: #!/usr/bin/env python3
+6: from common.go1_runtime_interface import MJ_LEG_ORDER
+7: import csv
+8: import importlib.util
+9: from pathlib import Path
+
+14: 
+15: WBC_SCRIPT = "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py"
+16: SWING_TARGET_CSV = "results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv"
+17: 
+18: LOG_CSV = "results/logs_sample/stage13_2_2400step_mixed_baseline_log.csv"
+
+16: SWING_TARGET_CSV = "results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv"
+17: 
+18: LOG_CSV = "results/logs_sample/stage13_2_2400step_mixed_baseline_log.csv"
+19: SUMMARY_CSV = "results/logs_sample/stage13_2_2400step_mixed_baseline_summary.csv"
+20: 
+
+17: 
+18: LOG_CSV = "results/logs_sample/stage13_2_2400step_mixed_baseline_log.csv"
+19: SUMMARY_CSV = "results/logs_sample/stage13_2_2400step_mixed_baseline_summary.csv"
+20: 
+21: LEG_ORDER = list(MJ_LEG_ORDER)
+
+49:     rows = []
+50: 
+51:     with open(SWING_TARGET_CSV, "r", newline="") as f:
+52:         for row in csv.DictReader(f):
+53:             q_des = []
+
+50: 
+51:     with open(SWING_TARGET_CSV, "r", newline="") as f:
+52:         for row in csv.DictReader(f):
+53:             q_des = []
+54:             for leg in LEG_ORDER:
+
+67: 
+68:     if not rows:
+69:         raise RuntimeError(f"empty target csv: {SWING_TARGET_CSV}")
+70: 
+71:     return rows
+
+288:     summary = {
+289:         "wbc_script": WBC_SCRIPT,
+290:         "swing_target_csv": SWING_TARGET_CSV,
+291:         "total_steps": total_steps,
+292:         "transition_count": transition_count,
+
+332:     }
+333: 
+334:     Path(LOG_CSV).parent.mkdir(parents=True, exist_ok=True)
+335: 
+336:     with open(LOG_CSV, "w", newline="") as f:
+
+334:     Path(LOG_CSV).parent.mkdir(parents=True, exist_ok=True)
+335: 
+336:     with open(LOG_CSV, "w", newline="") as f:
+337:         writer = csv.DictWriter(f, fieldnames=list(log_rows[0].keys()))
+338:         writer.writeheader()
+
+335: 
+336:     with open(LOG_CSV, "w", newline="") as f:
+337:         writer = csv.DictWriter(f, fieldnames=list(log_rows[0].keys()))
+338:         writer.writeheader()
+339:         writer.writerows(log_rows)
+
+339:         writer.writerows(log_rows)
+340: 
+341:     with open(SUMMARY_CSV, "w", newline="") as f:
+342:         writer = csv.DictWriter(f, fieldnames=list(summary.keys()))
+343:         writer.writeheader()
+
+340: 
+341:     with open(SUMMARY_CSV, "w", newline="") as f:
+342:         writer = csv.DictWriter(f, fieldnames=list(summary.keys()))
+343:         writer.writeheader()
+344:         writer.writerow(summary)
+
+348:         print(f"{k}={v}")
+349: 
+350:     print(f"saved_log={LOG_CSV}")
+351:     print(f"saved_summary={SUMMARY_CSV}")
+352: 
+
+349: 
+350:     print(f"saved_log={LOG_CSV}")
+351:     print(f"saved_summary={SUMMARY_CSV}")
+352: 
+353:     if not pass_test:
+

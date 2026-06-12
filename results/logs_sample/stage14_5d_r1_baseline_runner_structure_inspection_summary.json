@@ -1,0 +1,478 @@
+{
+  "stage": "14.5D-R1",
+  "timestamp_utc": "2026-06-12T02:10:46.699012+00:00",
+  "pass": true,
+  "failed_checks": [],
+  "simulation_only_project": true,
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "control_law_changed": false,
+  "mixed_baseline_modified": false,
+  "mujoco_closed_loop_ab_executed": false,
+  "mujoco_torque_used": false,
+  "ros_publisher_used": false,
+  "mpc_assisted_switch_added": false,
+  "stage14_5d_r0_pass": true,
+  "baseline_runner": "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py",
+  "baseline_runner_error": "",
+  "ast_error": "",
+  "line_count": 358,
+  "symbols": {
+    "functions": [
+      {
+        "name": "load_wbc",
+        "lineno": 41,
+        "end_lineno": 45,
+        "arg_count": 0
+      },
+      {
+        "name": "read_swing_targets",
+        "lineno": 48,
+        "end_lineno": 71,
+        "arg_count": 0
+      },
+      {
+        "name": "leg_indices",
+        "lineno": 74,
+        "end_lineno": 79,
+        "arg_count": 1
+      },
+      {
+        "name": "main",
+        "lineno": 82,
+        "end_lineno": 354,
+        "arg_count": 0
+      }
+    ],
+    "classes": [],
+    "imports": [
+      {
+        "lineno": 6,
+        "module": "common.go1_runtime_interface",
+        "names": [
+          "MJ_LEG_ORDER"
+        ]
+      },
+      {
+        "lineno": 7,
+        "names": [
+          "csv"
+        ]
+      },
+      {
+        "lineno": 8,
+        "names": [
+          "importlib.util"
+        ]
+      },
+      {
+        "lineno": 9,
+        "module": "pathlib",
+        "names": [
+          "Path"
+        ]
+      },
+      {
+        "lineno": 11,
+        "names": [
+          "mujoco"
+        ]
+      },
+      {
+        "lineno": 12,
+        "names": [
+          "numpy"
+        ]
+      }
+    ]
+  },
+  "pattern_hit_counts": {
+    "main_or_entry": 2,
+    "mujoco_model_data": 4,
+    "simulation_loop": 4,
+    "torque_write": 46,
+    "baseline_control_terms": 100,
+    "metrics_summary": 40,
+    "file_outputs": 16
+  },
+  "pattern_hits_first20": {
+    "main_or_entry": [
+      {
+        "lineno": 82,
+        "text": "def main():"
+      },
+      {
+        "lineno": 357,
+        "text": "if __name__ == \"__main__\":"
+      }
+    ],
+    "mujoco_model_data": [
+      {
+        "lineno": 11,
+        "text": "import mujoco"
+      },
+      {
+        "lineno": 86,
+        "text": "    model = mujoco.MjModel.from_xml_path(wbc.SCENE)"
+      },
+      {
+        "lineno": 87,
+        "text": "    data = mujoco.MjData(model)"
+      },
+      {
+        "lineno": 200,
+        "text": "        mujoco.mj_step(model, data)"
+      }
+    ],
+    "simulation_loop": [
+      {
+        "lineno": 3,
+        "text": "# Control law is unchanged; WBC horizon and target CSV are derived for 2400-step robustness regression."
+      },
+      {
+        "lineno": 127,
+        "text": "    total_steps = min(wbc.TOTAL_STEPS, len(target_rows))"
+      },
+      {
+        "lineno": 131,
+        "text": "    for step in range(total_steps):"
+      },
+      {
+        "lineno": 291,
+        "text": "        \"total_steps\": total_steps,"
+      }
+    ],
+    "torque_write": [
+      {
+        "lineno": 33,
+        "text": "TORQUE_LIMIT = 23.7"
+      },
+      {
+        "lineno": 105,
+        "text": "    max_tau_stance_pd_abs = 0.0"
+      },
+      {
+        "lineno": 106,
+        "text": "    max_tau_stance_wbc_abs = 0.0"
+      },
+      {
+        "lineno": 107,
+        "text": "    max_tau_swing_pd_abs = 0.0"
+      },
+      {
+        "lineno": 108,
+        "text": "    max_tau_total_raw_abs = 0.0"
+      },
+      {
+        "lineno": 109,
+        "text": "    max_tau_total_abs = 0.0"
+      },
+      {
+        "lineno": 122,
+        "text": "    tau_wbc_cmd = np.zeros(model.nu)"
+      },
+      {
+        "lineno": 123,
+        "text": "    tau_prev_total = np.zeros(model.nu)"
+      },
+      {
+        "lineno": 158,
+        "text": "        tau_wbc, metrics = wbc.solve_online_full_wbc("
+      },
+      {
+        "lineno": 167,
+        "text": "        if tau_wbc is None:"
+      },
+      {
+        "lineno": 169,
+        "text": "            tau_wbc = tau_wbc_cmd.copy()"
+      },
+      {
+        "lineno": 171,
+        "text": "        tau_wbc_cmd = (1.0 - wbc.RAMP_ALPHA) * tau_wbc_cmd + wbc.RAMP_ALPHA * tau_wbc"
+      },
+      {
+        "lineno": 172,
+        "text": "        tau_stance_wbc = STANCE_WBC_SCALE * stance_mask * tau_wbc_cmd"
+      },
+      {
+        "lineno": 185,
+        "text": "        tau_stance_pd = stance_mask * (STANCE_KP * (q_standing - q_now) - STANCE_KD * qd_now)"
+      },
+      {
+        "lineno": 186,
+        "text": "        tau_swing_pd = SWING_PD_SCALE * swing_mask * (SWING_KP * q_err - SWING_KD * qd_now)"
+      },
+      {
+        "lineno": 188,
+        "text": "        tau_total_raw = tau_stance_pd + tau_stance_wbc + tau_swing_pd"
+      },
+      {
+        "lineno": 189,
+        "text": "        tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)"
+      },
+      {
+        "lineno": 191,
+        "text": "        saturated = bool(np.any(np.abs(tau_total_raw) > TORQUE_LIMIT))"
+      },
+      {
+        "lineno": 194,
+        "text": "        tau_jump = tau_total - tau_prev_total"
+      },
+      {
+        "lineno": 195,
+        "text": "        max_cmd_step_jump_norm = max(max_cmd_step_jump_norm, float(np.linalg.norm(tau_jump)))"
+      }
+    ],
+    "baseline_control_terms": [
+      {
+        "lineno": 3,
+        "text": "# Control law is unchanged; WBC horizon and target CSV are derived for 2400-step robustness regression."
+      },
+      {
+        "lineno": 15,
+        "text": "WBC_SCRIPT = \"scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py\""
+      },
+      {
+        "lineno": 16,
+        "text": "SWING_TARGET_CSV = \"results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv\""
+      },
+      {
+        "lineno": 24,
+        "text": "STANCE_KP = 60.0"
+      },
+      {
+        "lineno": 25,
+        "text": "STANCE_KD = 2.0"
+      },
+      {
+        "lineno": 26,
+        "text": "SWING_KP = 80.0"
+      },
+      {
+        "lineno": 27,
+        "text": "SWING_KD = 2.0"
+      },
+      {
+        "lineno": 29,
+        "text": "STANCE_WBC_SCALE = 0.2"
+      },
+      {
+        "lineno": 30,
+        "text": "SWING_PD_SCALE = 1.0"
+      },
+      {
+        "lineno": 31,
+        "text": "SWING_TARGET_SCALE = 0.35"
+      },
+      {
+        "lineno": 38,
+        "text": "MAX_SWING_JOINT_ERROR_LIMIT = 0.08"
+      },
+      {
+        "lineno": 41,
+        "text": "def load_wbc():"
+      },
+      {
+        "lineno": 42,
+        "text": "    spec = importlib.util.spec_from_file_location(\"wbc_recommended\", WBC_SCRIPT)"
+      },
+      {
+        "lineno": 48,
+        "text": "def read_swing_targets():"
+      },
+      {
+        "lineno": 51,
+        "text": "    with open(SWING_TARGET_CSV, \"r\", newline=\"\") as f:"
+      },
+      {
+        "lineno": 62,
+        "text": "                \"swing_progress\": row[\"swing_progress\"],"
+      },
+      {
+        "lineno": 63,
+        "text": "                \"stance_legs\": row[\"stance_legs\"],"
+      },
+      {
+        "lineno": 64,
+        "text": "                \"swing_legs\": row[\"swing_legs\"],"
+      },
+      {
+        "lineno": 69,
+        "text": "        raise RuntimeError(f\"empty target csv: {SWING_TARGET_CSV}\")"
+      },
+      {
+        "lineno": 83,
+        "text": "    wbc = load_wbc()"
+      }
+    ],
+    "metrics_summary": [
+      {
+        "lineno": 19,
+        "text": "SUMMARY_CSV = \"results/logs_sample/stage13_2_2400step_mixed_baseline_summary.csv\""
+      },
+      {
+        "lineno": 35,
+        "text": "MIN_Z_LIMIT = 0.22"
+      },
+      {
+        "lineno": 96,
+        "text": "    min_z = initial_z"
+      },
+      {
+        "lineno": 98,
+        "text": "    max_abs_roll = 0.0"
+      },
+      {
+        "lineno": 99,
+        "text": "    max_abs_pitch = 0.0"
+      },
+      {
+        "lineno": 118,
+        "text": "    qp_fail_steps = 0"
+      },
+      {
+        "lineno": 119,
+        "text": "    saturation_steps = 0"
+      },
+      {
+        "lineno": 168,
+        "text": "            qp_fail_steps += 1"
+      },
+      {
+        "lineno": 192,
+        "text": "        saturation_steps += int(saturated)"
+      },
+      {
+        "lineno": 205,
+        "text": "        min_z = min(min_z, base_z)"
+      },
+      {
+        "lineno": 207,
+        "text": "        max_abs_roll = max(max_abs_roll, abs(roll))"
+      },
+      {
+        "lineno": 208,
+        "text": "        max_abs_pitch = max(max_abs_pitch, abs(pitch))"
+      },
+      {
+        "lineno": 272,
+        "text": "    pass_test = ("
+      },
+      {
+        "lineno": 273,
+        "text": "        qp_fail_steps == 0"
+      },
+      {
+        "lineno": 274,
+        "text": "        and saturation_steps == 0"
+      },
+      {
+        "lineno": 275,
+        "text": "        and min_z > MIN_Z_LIMIT"
+      },
+      {
+        "lineno": 276,
+        "text": "        and max_abs_roll < MAX_ROLL_LIMIT"
+      },
+      {
+        "lineno": 277,
+        "text": "        and max_abs_pitch < MAX_PITCH_LIMIT"
+      },
+      {
+        "lineno": 281,
+        "text": "    pass_margin = ("
+      },
+      {
+        "lineno": 282,
+        "text": "        pass_test"
+      }
+    ],
+    "file_outputs": [
+      {
+        "lineno": 3,
+        "text": "# Control law is unchanged; WBC horizon and target CSV are derived for 2400-step robustness regression."
+      },
+      {
+        "lineno": 7,
+        "text": "import csv"
+      },
+      {
+        "lineno": 16,
+        "text": "SWING_TARGET_CSV = \"results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv\""
+      },
+      {
+        "lineno": 18,
+        "text": "LOG_CSV = \"results/logs_sample/stage13_2_2400step_mixed_baseline_log.csv\""
+      },
+      {
+        "lineno": 19,
+        "text": "SUMMARY_CSV = \"results/logs_sample/stage13_2_2400step_mixed_baseline_summary.csv\""
+      },
+      {
+        "lineno": 51,
+        "text": "    with open(SWING_TARGET_CSV, \"r\", newline=\"\") as f:"
+      },
+      {
+        "lineno": 52,
+        "text": "        for row in csv.DictReader(f):"
+      },
+      {
+        "lineno": 69,
+        "text": "        raise RuntimeError(f\"empty target csv: {SWING_TARGET_CSV}\")"
+      },
+      {
+        "lineno": 290,
+        "text": "        \"swing_target_csv\": SWING_TARGET_CSV,"
+      },
+      {
+        "lineno": 334,
+        "text": "    Path(LOG_CSV).parent.mkdir(parents=True, exist_ok=True)"
+      },
+      {
+        "lineno": 336,
+        "text": "    with open(LOG_CSV, \"w\", newline=\"\") as f:"
+      },
+      {
+        "lineno": 337,
+        "text": "        writer = csv.DictWriter(f, fieldnames=list(log_rows[0].keys()))"
+      },
+      {
+        "lineno": 341,
+        "text": "    with open(SUMMARY_CSV, \"w\", newline=\"\") as f:"
+      },
+      {
+        "lineno": 342,
+        "text": "        writer = csv.DictWriter(f, fieldnames=list(summary.keys()))"
+      },
+      {
+        "lineno": 350,
+        "text": "    print(f\"saved_log={LOG_CSV}\")"
+      },
+      {
+        "lineno": 351,
+        "text": "    print(f\"saved_summary={SUMMARY_CSV}\")"
+      }
+    ]
+  },
+  "git": {
+    "branch": "main",
+    "head": "28833e3",
+    "status_porcelain": "?? results/logs_sample/stage14_5d_r1_baseline_runner_structure_snippets.txt\n?? scripts/stage14_5d_r1_baseline_runner_structure_inspection.py",
+    "dirty_non_stage14_5d_r1": []
+  },
+  "generated_files": [
+    "scripts/stage14_5d_r1_baseline_runner_structure_inspection.py",
+    "docs/stage14_5d_r1_baseline_runner_structure_inspection.md",
+    "results/logs_sample/stage14_5d_r1_baseline_runner_structure_snippets.txt",
+    "results/logs_sample/stage14_5d_r1_baseline_runner_structure_inspection_summary.json"
+  ],
+  "notes": [
+    "Structure inspection only.",
+    "No MuJoCo rollout is executed.",
+    "No MPC-assisted switch is added.",
+    "No baseline source file is modified.",
+    "No ROS torque publisher is used."
+  ]
+}
