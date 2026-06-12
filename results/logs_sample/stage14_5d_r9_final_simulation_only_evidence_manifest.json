@@ -1,0 +1,38 @@
+{
+  "required_summaries": {
+    "stage14_5a": "results/logs_sample/stage14_5a_mpc_wbc_integration_preflight_summary.json",
+    "stage14_5b": "results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidate_summary.json",
+    "stage14_5c": "results/logs_sample/stage14_5c_mpc_force_reference_offline_qp_summary.json",
+    "stage14_5d_r0": "results/logs_sample/stage14_5d_r0_closed_loop_ab_anchor_inspection_summary.json",
+    "stage14_5d_r1": "results/logs_sample/stage14_5d_r1_baseline_runner_structure_inspection_summary.json",
+    "stage14_5d_r2": "results/logs_sample/stage14_5d_r2_closed_loop_ab_runner_skeleton_summary.json",
+    "stage14_5d_r3": "results/logs_sample/stage14_5d_r3_baseline_mode_derived_runner_dry_run_summary.json",
+    "stage14_5d_r4": "results/logs_sample/stage14_5d_r4_mpc_assisted_candidate_gated_negative_test_summary.json",
+    "stage14_5d_r5": "results/logs_sample/stage14_5d_r5_mpc_candidate_injection_design_inspection_summary.json",
+    "stage14_5d_r6": "results/logs_sample/stage14_5d_r6_derive_mpc_assisted_candidate_runner_summary.json",
+    "stage14_5d_r7": "results/logs_sample/stage14_5d_r7_candidate_mode_guarded_dry_run_summary.json",
+    "stage14_5d_r8": "results/logs_sample/stage14_5d_r8_closed_loop_ab_comparison_summary.json"
+  },
+  "baseline_summary_csv": "results/logs_sample/stage14_5d_r2_closed_loop_ab_baseline_skeleton_summary.csv",
+  "candidate_summary_csv": "results/logs_sample/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_summary.csv",
+  "ab_table_csv": "results/logs_sample/stage14_5d_r8_closed_loop_ab_comparison_table.csv",
+  "runners": [
+    "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py",
+    "scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py",
+    "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py"
+  ],
+  "docs": [
+    "docs/stage14_5a_mpc_wbc_integration_preflight.md",
+    "docs/stage14_5b_offline_mpc_force_to_torque_candidate_check.md",
+    "docs/stage14_5c_mpc_force_reference_offline_qp_check.md",
+    "docs/stage14_5d_r0_closed_loop_ab_anchor_inspection.md",
+    "docs/stage14_5d_r1_baseline_runner_structure_inspection.md",
+    "docs/stage14_5d_r2_closed_loop_ab_runner_skeleton.md",
+    "docs/stage14_5d_r3_baseline_mode_derived_runner_dry_run.md",
+    "docs/stage14_5d_r4_mpc_assisted_candidate_gated_negative_test.md",
+    "docs/stage14_5d_r5_mpc_candidate_injection_design_inspection.md",
+    "docs/stage14_5d_r6_derive_mpc_assisted_candidate_runner.md",
+    "docs/stage14_5d_r7_candidate_mode_guarded_dry_run.md",
+    "docs/stage14_5d_r8_closed_loop_ab_packaging.md"
+  ]
+}
