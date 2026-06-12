@@ -241,37 +241,37 @@ Go1 风格四足机器人 locomotion 控制项目。当前项目定位为 **simu
 
 <!-- STAGE14_4E_MPC_ENTRY_BEGIN -->
 
-## Stage 14.4：简化 3D 基座速度跟踪 MPC
+## 已补充：MPC 规划层 demo
 
-项目已新增一个 standalone simplified 3D base velocity tracking receding-horizon MPC demo。该模块属于 planning-layer / contact-force MPC，用于补齐标准意义上的 MPC 证据链。
+项目已补充一个仿真内 standalone simplified 3D base velocity tracking receding-horizon MPC demo，用于展示 planning-layer / contact-force MPC 的接触力优化能力。
 
-该 MPC 的状态为 `x = [px, py, pz, vx, vy, vz]`，输入为四足三维接触力 `u0`。每个 rollout step 都会基于当前状态重新求解有限时域 QP，只应用第一帧接触力，再推进简化质心动力学。
+该模块使用简化质心动力学，状态为 `x = [px, py, pz, vx, vy, vz]`，优化变量为四足三维接触力。每个 rollout step 都会基于当前状态重新求解有限时域 QP，只应用第一帧接触力 `u0`，再推进简化质心状态。
 
-已完成证据链：
+已完成内容：
 
-- Stage 14.4A：standalone Python MPC solver 与简化 rollout。
-- Stage 14.4B：独立验证 rollout CSV、summary JSON、约束指标和 receding-horizon 源码模式。
-- Stage 14.4C：中文说明 Stage 14.4 MPC 与 Stage 5 z-MPC prototype、Stage 7 WBC feedforward 的边界关系。
-- Stage 14.4D0：Stage 14.4 相关文档中文边界审计。
+- standalone Python MPC solver
+- 100-step receding-horizon rollout
+- rollout CSV 和 summary JSON 记录
+- OSQP 求解状态、摆动腿力、支撑腿力、摩擦约束、速度跟踪和高度误差验证
+- 与早期 z-MPC prototype、WBC feedforward 的边界关系说明
 
 当前边界：
 
-- 该 MPC 不是 WBC。
-- 该 MPC 不直接输出 joint torque。
-- 该 MPC 不接 ROS torque publisher。
-- 该 MPC 不接 MuJoCo torque。
-- 该 MPC 不改变 frozen mixed baseline 控制律。
-- 当前项目仍为 simulation-only。
+- MPC 只属于 planning-layer / contact-force MPC demo
+- 不是 WBC
+- 不直接输出 joint torque
+- 不接 ROS torque publisher
+- 不接 MuJoCo torque
+- 不改变 frozen mixed baseline 控制律
+- 项目范围仍保持 simulation-only
 
-关键文件：
+相关文件：
 
 - `scripts/stage14_4_base_velocity_tracking_mpc_demo.py`
 - `scripts/stage14_4b_validate_base_velocity_mpc_rollout.py`
-- `scripts/stage14_4c_validate_mpc_scope_explanation.py`
-- `scripts/stage14_4d_audit_document_language.py`
 - `docs/stage14_4_base_velocity_tracking_mpc.md`
 - `docs/stage14_4b_base_velocity_tracking_mpc_validation.md`
 - `docs/stage14_4c_mpc_scope_explanation.md`
-- `docs/stage14_4d_document_language_audit.md`
 
 <!-- STAGE14_4E_MPC_ENTRY_END -->
+

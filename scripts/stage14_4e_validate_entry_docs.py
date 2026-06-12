@@ -33,6 +33,9 @@ PROHIBITED_POSITIVE_CLAIMS = [
     "ROS torque publisher 已经启用并用于控制",
     "MPC 已经输出真实 joint torque",
     "MPC-WBC integrated controller 已完成",
+    "Stage 14.4D0",
+    "中文说明",
+    "中文边界审计",
 ]
 
 
