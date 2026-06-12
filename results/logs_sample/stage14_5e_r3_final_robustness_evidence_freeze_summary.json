@@ -1,0 +1,86 @@
+{
+  "stage": "14.5E-R3",
+  "timestamp_utc": "2026-06-12T03:01:03.403679+00:00",
+  "pass": true,
+  "failed_checks": [],
+  "stage_pass_map": {
+    "stage14_5d_r9": true,
+    "stage14_5e_r0": true,
+    "stage14_5e_r1": true,
+    "stage14_5e_r2": true
+  },
+  "simulation_only_project": true,
+  "hardware_deployment_completed": false,
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "real_robot_torque_commanded": false,
+  "ros_publisher_used": false,
+  "frozen_baseline_source_modified": false,
+  "r6_runner_source_modified": false,
+  "analysis_freeze_only": true,
+  "mujoco_rollout_executed_in_r3": false,
+  "mujoco_sim_data_ctrl_used_in_r3": false,
+  "mujoco_closed_loop_ab_executed_in_r3": false,
+  "validated_candidate_scale_max_simulation_only": 0.1,
+  "freeze_metrics": {
+    "validated_candidate_scale_max_simulation_only": 0.1,
+    "planned_scales": [
+      0.0,
+      0.02,
+      0.05,
+      0.1
+    ],
+    "scale_zero_policy": "baseline_reference_existing_r3_r2_evidence_no_candidate_runner_zero_scale",
+    "scale_count": 4,
+    "candidate_run_count": 3,
+    "baseline_reference_count": 1,
+    "all_scale_entries_pass": true,
+    "all_entries_pass_limits": true,
+    "min_z_min_over_entries": 0.273040429683,
+    "max_abs_roll_max_over_entries": 0.102952660101,
+    "max_abs_pitch_max_over_entries": 0.077452968358,
+    "max_tau_total_abs_max_over_entries": 10.59512016256,
+    "max_tau_candidate_scaled_abs_max_over_candidate_runs": 1.94425094473,
+    "total_qp_fail_steps": 0,
+    "total_saturation_steps": 0
+  },
+  "boundary": {
+    "simulation_only_project": true,
+    "hardware_deployment_completed": false,
+    "torque_enable_ready": false,
+    "torque_publisher_enabled": false,
+    "real_robot_torque_commanded": false,
+    "ros_publisher_used": false,
+    "frozen_baseline_source_modified": false,
+    "r6_runner_source_modified": false,
+    "mujoco_rollout_executed_in_r3": false,
+    "mujoco_sim_data_ctrl_used_in_r3": false,
+    "mujoco_closed_loop_ab_executed_in_r3": false,
+    "analysis_freeze_only": true
+  },
+  "evidence_manifest_json": "results/logs_sample/stage14_5e_r3_final_robustness_evidence_manifest.json",
+  "git": {
+    "branch": "main",
+    "head": "53207cd",
+    "status_porcelain": "?? results/logs_sample/stage14_5e_r3_final_robustness_evidence_manifest.json\n?? scripts/stage14_5e_r3_final_robustness_evidence_freeze.py",
+    "dirty_paths": [
+      "results/logs_sample/stage14_5e_r3_final_robustness_evidence_manifest.json",
+      "scripts/stage14_5e_r3_final_robustness_evidence_freeze.py"
+    ],
+    "dirty_non_stage14_5e_r3": []
+  },
+  "generated_files": [
+    "scripts/stage14_5e_r3_final_robustness_evidence_freeze.py",
+    "docs/stage14_5e_r3_final_robustness_evidence_freeze.md",
+    "results/logs_sample/stage14_5e_r3_final_robustness_evidence_freeze_summary.json",
+    "results/logs_sample/stage14_5e_r3_final_robustness_evidence_manifest.json"
+  ],
+  "notes": [
+    "Final Stage 14.5E robustness evidence freeze.",
+    "No MuJoCo rollout is executed in R3.",
+    "Validated scale max is simulation-only and only for the E-R1/E-R2 evidence chain.",
+    "No real robot torque command is sent.",
+    "No ROS torque publisher is used.",
+    "No hardware readiness or torque-enable readiness is claimed."
+  ]
+}

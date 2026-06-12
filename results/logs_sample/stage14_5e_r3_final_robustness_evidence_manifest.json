@@ -1,0 +1,42 @@
+{
+  "stage": "14.5E-R3",
+  "summaries": {
+    "stage14_5d_r9": "results/logs_sample/stage14_5d_r9_final_simulation_only_evidence_freeze_summary.json",
+    "stage14_5e_r0": "results/logs_sample/stage14_5e_r0_candidate_robustness_envelope_preflight_summary.json",
+    "stage14_5e_r1": "results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_summary.json",
+    "stage14_5e_r2": "results/logs_sample/stage14_5e_r2_candidate_robustness_sweep_analysis_summary.json"
+  },
+  "tables": {
+    "stage14_5e_r1_sweep_table": "results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_table.csv",
+    "stage14_5e_r2_analysis_table": "results/logs_sample/stage14_5e_r2_candidate_robustness_sweep_analysis_table.csv"
+  },
+  "runners": [
+    "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py",
+    "scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py",
+    "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py"
+  ],
+  "scale_specific_artifacts": [
+    "results/logs_sample/stage14_5e_r1_scale_0p00_stdout.txt",
+    "results/logs_sample/stage14_5e_r1_scale_0p00_stderr.txt",
+    "results/logs_sample/stage14_5e_r1_scale_0p00_baseline_reference_summary.csv",
+    "results/logs_sample/stage14_5e_r1_scale_0p00_baseline_reference_log.csv",
+    "results/logs_sample/stage14_5e_r1_scale_0p02_stdout.txt",
+    "results/logs_sample/stage14_5e_r1_scale_0p02_stderr.txt",
+    "results/logs_sample/stage14_5e_r1_scale_0p02_candidate_summary.csv",
+    "results/logs_sample/stage14_5e_r1_scale_0p02_candidate_log.csv",
+    "results/logs_sample/stage14_5e_r1_scale_0p05_stdout.txt",
+    "results/logs_sample/stage14_5e_r1_scale_0p05_stderr.txt",
+    "results/logs_sample/stage14_5e_r1_scale_0p05_candidate_summary.csv",
+    "results/logs_sample/stage14_5e_r1_scale_0p05_candidate_log.csv",
+    "results/logs_sample/stage14_5e_r1_scale_0p10_stdout.txt",
+    "results/logs_sample/stage14_5e_r1_scale_0p10_stderr.txt",
+    "results/logs_sample/stage14_5e_r1_scale_0p10_candidate_summary.csv",
+    "results/logs_sample/stage14_5e_r1_scale_0p10_candidate_log.csv"
+  ],
+  "docs": [
+    "docs/stage14_5e_r0_candidate_robustness_envelope_preflight.md",
+    "docs/stage14_5e_r1_candidate_robustness_scale_sweep_runner.md",
+    "docs/stage14_5e_r2_candidate_robustness_sweep_analysis_packaging.md",
+    "docs/stage14_5e_r3_final_robustness_evidence_freeze.md"
+  ]
+}
