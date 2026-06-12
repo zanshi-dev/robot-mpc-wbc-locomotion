@@ -4,6 +4,84 @@ Go1 风格四足机器人 locomotion 控制项目。当前项目定位为 **simu
 
 项目最终 baseline 是 `mixed_online_control_baseline`。它不是 pure full WBC locomotion controller，也不是 realtime hardware controller；它是一个在 MuJoCo 中验证通过、结构清楚、能解释失败路径的 mixed control baseline。
 
+<!-- STAGE14_5_STATUS_START -->
+
+## 当前状态：Stage 14.5 MPC/WBC simulation-only milestone
+
+当前仓库已完成 **Stage 14.5 simulation-only MPC/WBC candidate evidence packaging and robustness indexing**，并已冻结最终证据链。
+
+最新完成节点：
+
+- `Stage 14.5A-C`: MPC/WBC integration preflight、offline MPC force-to-torque candidate、offline force-reference QP check
+- `Stage 14.5D-R0..R9`: closed-loop baseline/candidate simulation-only evidence packaging
+- `Stage 14.5E-R0..R3`: candidate robustness envelope evidence through scale `0.10`
+- `Stage 14.5F-R0..R2`: release evidence index、milestone release-note draft、final simulation-only milestone freeze
+
+最终安全结论：
+
+> Stage 14.5 completed simulation-only MPC/WBC candidate evidence packaging and robustness indexing up to candidate scale 0.10.
+
+边界声明：
+
+- 本项目当前仍是 **simulation-only**
+- `hardware_deployment_completed: false`
+- `torque_enable_ready: false`
+- `torque_publisher_enabled: false`
+- `real_robot_torque_commanded: false`
+- `ros_publisher_used: false`
+- MPC 输出的是 contact-force reference / candidate evidence；joint torque candidate 由 WBC/QP 或 `J^T f` 映射层生成
+- 不声明真实机器人部署完成，不声明 torque-enable ready，不声明 MPC 直接输出 joint torque
+
+### Stage 14.5 关键冻结指标
+
+Baseline 2400-step simulation evidence:
+
+- total_steps: `2400`
+- pass: `true`
+- min_z: `0.274552192756`
+- max_abs_roll: `0.056707402709`
+- max_abs_pitch: `0.048329482530`
+- max_tau_total_abs: `9.659563043535`
+- qp_fail_steps: `0`
+- saturation_steps: `0`
+
+MPC-assisted candidate 2400-step simulation evidence at scale `0.05`:
+
+- total_steps: `2400`
+- pass: `true`
+- min_z: `0.276975761939`
+- max_abs_roll: `0.102952660101`
+- max_abs_pitch: `0.053162351948`
+- max_tau_total_abs: `10.019186119959`
+- max_tau_candidate_scaled_abs: `0.972125472365`
+- qp_fail_steps: `0`
+- saturation_steps: `0`
+
+Robustness envelope:
+
+- planned scales: `0.00 / 0.02 / 0.05 / 0.10`
+- positive candidate scales executed: `0.02 / 0.05 / 0.10`
+- validated_candidate_scale_max_simulation_only: `0.10`
+- min_z_min_over_entries: `0.273040429683`
+- max_abs_roll_max_over_entries: `0.102952660101`
+- max_abs_pitch_max_over_entries: `0.077452968358`
+- max_tau_total_abs_max_over_entries: `10.59512016256`
+- max_tau_candidate_scaled_abs_max_over_candidate_runs: `1.94425094473`
+- total_qp_fail_steps: `0`
+- total_saturation_steps: `0`
+
+### Final freeze artifacts
+
+- `docs/stage14_5f_r2_final_simulation_only_milestone_freeze.md`
+- `results/logs_sample/stage14_5f_r2_final_simulation_only_milestone_freeze_summary.json`
+- `results/logs_sample/stage14_5f_r2_final_simulation_only_milestone_manifest.json`
+- `docs/stage14_5f_r1_simulation_only_milestone_release_note_draft.md`
+- `results/logs_sample/stage14_5f_r0_release_evidence_index.csv`
+
+<!-- STAGE14_5_STATUS_END -->
+
+
+
 ## 1. 项目目标
 
 本项目的目标是围绕四足机器人 locomotion 搭建完整控制架构：
