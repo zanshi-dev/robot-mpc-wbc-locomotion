@@ -1,0 +1,5 @@
+stage,control_mode,scale,candidate_step_policy,candidate_csv,expected_total_steps,execution_status,mujoco_execution_in_r0,real_robot_torque_commanded,ros_publisher_used,acceptance_min_z_gt,acceptance_abs_roll_lt,acceptance_abs_pitch_lt,acceptance_max_tau_total_abs_le,acceptance_qp_fail_steps_eq,acceptance_saturation_steps_eq
+14.5E-R1-planned,mpc_assisted_candidate,0.00,repeat,results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidates.csv,2400,planned_not_executed_in_r0,False,False,False,0.22,0.20,0.20,23.7,0,0
+14.5E-R1-planned,mpc_assisted_candidate,0.02,repeat,results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidates.csv,2400,planned_not_executed_in_r0,False,False,False,0.22,0.20,0.20,23.7,0,0
+14.5E-R1-planned,mpc_assisted_candidate,0.05,repeat,results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidates.csv,2400,planned_not_executed_in_r0,False,False,False,0.22,0.20,0.20,23.7,0,0
+14.5E-R1-planned,mpc_assisted_candidate,0.10,repeat,results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidates.csv,2400,planned_not_executed_in_r0,False,False,False,0.22,0.20,0.20,23.7,0,0
