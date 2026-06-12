@@ -1,0 +1,59 @@
+{
+  "stage": "14.5B",
+  "purpose": "Stage 14.5B force-rollout CSV source selection inventory",
+  "selected": "results/logs_sample/stage14_4_base_velocity_tracking_mpc_rollout.csv",
+  "records": [
+    {
+      "path": "results/logs_sample/stage14_4_base_velocity_tracking_mpc_rollout.csv",
+      "header": [
+        "step",
+        "contact_mode",
+        "px",
+        "py",
+        "pz",
+        "vx",
+        "vy",
+        "vz",
+        "status",
+        "solve_time",
+        "u0_FR_fx",
+        "u0_FR_fy",
+        "u0_FR_fz",
+        "u0_FL_fx",
+        "u0_FL_fy",
+        "u0_FL_fz",
+        "u0_RR_fx",
+        "u0_RR_fy",
+        "u0_RR_fz",
+        "u0_RL_fx",
+        "u0_RL_fy",
+        "u0_RL_fz",
+        "sum_fx",
+        "sum_fy",
+        "sum_fz",
+        "max_swing_force_norm",
+        "min_stance_fz",
+        "max_stance_fz",
+        "max_friction_violation",
+        "total_fz_upper_violation",
+        "force_delta_norm"
+      ],
+      "is_force_rollout_csv": true,
+      "reason": "",
+      "resolved_force_columns": {
+        "FR_fx": "u0_FR_fx",
+        "FR_fy": "u0_FR_fy",
+        "FR_fz": "u0_FR_fz",
+        "FL_fx": "u0_FL_fx",
+        "FL_fy": "u0_FL_fy",
+        "FL_fz": "u0_FL_fz",
+        "RR_fx": "u0_RR_fx",
+        "RR_fy": "u0_RR_fy",
+        "RR_fz": "u0_RR_fz",
+        "RL_fx": "u0_RL_fx",
+        "RL_fy": "u0_RL_fy",
+        "RL_fz": "u0_RL_fz"
+      }
+    }
+  ]
+}
