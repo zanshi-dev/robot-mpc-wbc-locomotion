@@ -1,0 +1,198 @@
+{
+  "stage": "15.10",
+  "validation_pass": true,
+  "mjcf_model_path": "assets/go1/go1.xml",
+  "policy_summaries": [
+    {
+      "policy": "zero_ctrl",
+      "steps": 200,
+      "nonzero_ctrl_steps": 0,
+      "nonfinite_steps": 0,
+      "saturation_steps": 0,
+      "max_abs_ctrl": 0.0,
+      "max_abs_tau12": 0.0,
+      "max_abs_qvel": 17.897079466425232,
+      "min_base_z": -0.5076201852387432,
+      "max_ncon": 0,
+      "ctrl_l2_accum": 0.0
+    },
+    {
+      "policy": "deterministic_waveform",
+      "steps": 200,
+      "nonzero_ctrl_steps": 200,
+      "nonfinite_steps": 0,
+      "saturation_steps": 0,
+      "max_abs_ctrl": 0.07999932557603687,
+      "max_abs_tau12": 17.999848254608295,
+      "max_abs_qvel": 17.917751879290048,
+      "min_base_z": -0.5076994554681616,
+      "max_ncon": 0,
+      "ctrl_l2_accum": 4.614320987654336
+    },
+    {
+      "policy": "jtf_candidate",
+      "steps": 200,
+      "nonzero_ctrl_steps": 200,
+      "nonfinite_steps": 0,
+      "saturation_steps": 0,
+      "max_abs_ctrl": 0.07999999999999999,
+      "max_abs_tau12": 9.556731969930048,
+      "max_abs_qvel": 17.903033812783196,
+      "min_base_z": -0.5080596429463767,
+      "max_ncon": 0,
+      "ctrl_l2_accum": 2.2891890257475396
+    }
+  ],
+  "checks": [
+    {
+      "check": "mujoco_imported",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "check": "mujoco_model_loaded",
+      "passed": true,
+      "details": "model=assets/go1/go1.xml"
+    },
+    {
+      "check": "actuator_count_12",
+      "passed": true,
+      "details": "mapped_actuator_count=12"
+    },
+    {
+      "check": "all_expected_policies",
+      "passed": true,
+      "details": "policies=['deterministic_waveform', 'jtf_candidate', 'zero_ctrl']"
+    },
+    {
+      "check": "zero_ctrl_present",
+      "passed": true,
+      "details": "zero_ctrl baseline exists"
+    },
+    {
+      "check": "deterministic_present",
+      "passed": true,
+      "details": "deterministic waveform comparison exists"
+    },
+    {
+      "check": "jtf_present",
+      "passed": true,
+      "details": "J^T f candidate comparison exists"
+    },
+    {
+      "check": "jtf_candidate_steps",
+      "passed": true,
+      "details": "steps=200"
+    },
+    {
+      "check": "jtf_candidate_finite",
+      "passed": true,
+      "details": "nonfinite=0"
+    },
+    {
+      "check": "jtf_candidate_no_saturation",
+      "passed": true,
+      "details": "saturation=0"
+    },
+    {
+      "check": "jtf_candidate_ctrl_within_target",
+      "passed": true,
+      "details": "max_ctrl=0.07999999999999999"
+    },
+    {
+      "check": "zero_ctrl_steps",
+      "passed": true,
+      "details": "steps=200"
+    },
+    {
+      "check": "zero_ctrl_finite",
+      "passed": true,
+      "details": "nonfinite=0"
+    },
+    {
+      "check": "zero_ctrl_no_saturation",
+      "passed": true,
+      "details": "saturation=0"
+    },
+    {
+      "check": "zero_ctrl_ctrl_within_target",
+      "passed": true,
+      "details": "max_ctrl=0.0"
+    },
+    {
+      "check": "deterministic_waveform_steps",
+      "passed": true,
+      "details": "steps=200"
+    },
+    {
+      "check": "deterministic_waveform_finite",
+      "passed": true,
+      "details": "nonfinite=0"
+    },
+    {
+      "check": "deterministic_waveform_no_saturation",
+      "passed": true,
+      "details": "saturation=0"
+    },
+    {
+      "check": "deterministic_waveform_ctrl_within_target",
+      "passed": true,
+      "details": "max_ctrl=0.07999932557603687"
+    },
+    {
+      "check": "zero_ctrl_zero_command",
+      "passed": true,
+      "details": "nonzero=0"
+    },
+    {
+      "check": "deterministic_nonzero_command",
+      "passed": true,
+      "details": "nonzero=200"
+    },
+    {
+      "check": "jtf_nonzero_command",
+      "passed": true,
+      "details": "nonzero=200"
+    },
+    {
+      "check": "jtf_candidate_used",
+      "passed": true,
+      "details": "J^T f candidate used"
+    },
+    {
+      "check": "comparison_only",
+      "passed": true,
+      "details": "short_horizon_safety_and_compatibility_only"
+    },
+    {
+      "check": "not_stable_locomotion_claim",
+      "passed": true,
+      "details": "stable locomotion not claimed"
+    },
+    {
+      "check": "baseline_unchanged",
+      "passed": true,
+      "details": "frozen mixed baseline unchanged"
+    },
+    {
+      "check": "no_ros_publisher",
+      "passed": true,
+      "details": "no ROS torque publisher"
+    },
+    {
+      "check": "no_hardware_claim",
+      "passed": true,
+      "details": "no hardware claim"
+    },
+    {
+      "check": "no_torque_enable_claim",
+      "passed": true,
+      "details": "no torque-enable claim"
+    },
+    {
+      "check": "short_horizon_only",
+      "passed": true,
+      "details": "short-horizon only"
+    }
+  ]
+}

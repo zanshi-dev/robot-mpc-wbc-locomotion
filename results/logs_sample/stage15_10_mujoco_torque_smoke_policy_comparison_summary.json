@@ -1,0 +1,75 @@
+{
+  "stage": "15.10",
+  "name": "mujoco_torque_smoke_policy_comparison",
+  "mujoco_imported": true,
+  "mujoco_import_error": "",
+  "mujoco_model_loaded": true,
+  "mjcf_model_path": "assets/go1/go1.xml",
+  "policies": [
+    "zero_ctrl",
+    "deterministic_waveform",
+    "jtf_candidate"
+  ],
+  "steps_per_policy": 200,
+  "target_max_ctrl": 0.08,
+  "audit_ctrl_limit": 0.25,
+  "mapped_actuator_count": 12,
+  "policy_summaries": [
+    {
+      "policy": "zero_ctrl",
+      "steps": 200,
+      "nonzero_ctrl_steps": 0,
+      "nonfinite_steps": 0,
+      "saturation_steps": 0,
+      "max_abs_ctrl": 0.0,
+      "max_abs_tau12": 0.0,
+      "max_abs_qvel": 17.897079466425232,
+      "min_base_z": -0.5076201852387432,
+      "max_ncon": 0,
+      "ctrl_l2_accum": 0.0
+    },
+    {
+      "policy": "deterministic_waveform",
+      "steps": 200,
+      "nonzero_ctrl_steps": 200,
+      "nonfinite_steps": 0,
+      "saturation_steps": 0,
+      "max_abs_ctrl": 0.07999932557603687,
+      "max_abs_tau12": 17.999848254608295,
+      "max_abs_qvel": 17.917751879290048,
+      "min_base_z": -0.5076994554681616,
+      "max_ncon": 0,
+      "ctrl_l2_accum": 4.614320987654336
+    },
+    {
+      "policy": "jtf_candidate",
+      "steps": 200,
+      "nonzero_ctrl_steps": 200,
+      "nonfinite_steps": 0,
+      "saturation_steps": 0,
+      "max_abs_ctrl": 0.07999999999999999,
+      "max_abs_tau12": 9.556731969930048,
+      "max_abs_qvel": 17.903033812783196,
+      "min_base_z": -0.5080596429463767,
+      "max_ncon": 0,
+      "ctrl_l2_accum": 2.2891890257475396
+    }
+  ],
+  "jtf_candidate_used": true,
+  "deterministic_waveform_used_for_comparison": true,
+  "zero_ctrl_baseline_used": true,
+  "stable_locomotion_claimed": false,
+  "comparison_type": "short_horizon_safety_and_compatibility_only",
+  "boundary": {
+    "ros_publisher_used": false,
+    "frozen_mixed_baseline_modified": false,
+    "torque_enable_ready_claimed": false,
+    "hardware_deployment_claimed": false,
+    "stable_locomotion_claimed": false,
+    "short_horizon_only": true
+  },
+  "notes": [
+    "This comparison reports safety/compatibility metrics only.",
+    "It must not be interpreted as a stable locomotion benchmark."
+  ]
+}

@@ -1,0 +1,48 @@
+[Stage 15.10] MuJoCo torque-smoke policy comparison validation
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+python: /usr/bin/python3
+timestamp_utc: 2026-06-18T02:34:44Z
+
+[1/2] Run MuJoCo torque-smoke policy comparison
+stage15_10_comparison_completed: true
+mjcf_model_path: assets/go1/go1.xml
+policies: ['zero_ctrl', 'deterministic_waveform', 'jtf_candidate']
+mapped_actuator_count: 12
+policy=zero_ctrl max_abs_ctrl=0.0 nonfinite=0 saturation=0
+policy=deterministic_waveform max_abs_ctrl=0.07999932557603687 nonfinite=0 saturation=0
+policy=jtf_candidate max_abs_ctrl=0.07999999999999999 nonfinite=0 saturation=0
+output_json: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_10_mujoco_torque_smoke_policy_comparison_summary.json
+output_csv: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_10_mujoco_torque_smoke_policy_comparison.csv
+
+[2/2] Validate comparison outputs
+PASS: mujoco_imported -- 
+PASS: mujoco_model_loaded -- model=assets/go1/go1.xml
+PASS: actuator_count_12 -- mapped_actuator_count=12
+PASS: all_expected_policies -- policies=['deterministic_waveform', 'jtf_candidate', 'zero_ctrl']
+PASS: zero_ctrl_present -- zero_ctrl baseline exists
+PASS: deterministic_present -- deterministic waveform comparison exists
+PASS: jtf_present -- J^T f candidate comparison exists
+PASS: jtf_candidate_steps -- steps=200
+PASS: jtf_candidate_finite -- nonfinite=0
+PASS: jtf_candidate_no_saturation -- saturation=0
+PASS: jtf_candidate_ctrl_within_target -- max_ctrl=0.07999999999999999
+PASS: zero_ctrl_steps -- steps=200
+PASS: zero_ctrl_finite -- nonfinite=0
+PASS: zero_ctrl_no_saturation -- saturation=0
+PASS: zero_ctrl_ctrl_within_target -- max_ctrl=0.0
+PASS: deterministic_waveform_steps -- steps=200
+PASS: deterministic_waveform_finite -- nonfinite=0
+PASS: deterministic_waveform_no_saturation -- saturation=0
+PASS: deterministic_waveform_ctrl_within_target -- max_ctrl=0.07999932557603687
+PASS: zero_ctrl_zero_command -- nonzero=0
+PASS: deterministic_nonzero_command -- nonzero=200
+PASS: jtf_nonzero_command -- nonzero=200
+PASS: jtf_candidate_used -- J^T f candidate used
+PASS: comparison_only -- short_horizon_safety_and_compatibility_only
+PASS: not_stable_locomotion_claim -- stable locomotion not claimed
+PASS: baseline_unchanged -- frozen mixed baseline unchanged
+PASS: no_ros_publisher -- no ROS torque publisher
+PASS: no_hardware_claim -- no hardware claim
+PASS: no_torque_enable_claim -- no torque-enable claim
+PASS: short_horizon_only -- short-horizon only
+stage15_10_result: pass

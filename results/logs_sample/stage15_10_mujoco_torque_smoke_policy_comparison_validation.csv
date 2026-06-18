@@ -1,0 +1,31 @@
+check,passed,details
+mujoco_imported,True,
+mujoco_model_loaded,True,model=assets/go1/go1.xml
+actuator_count_12,True,mapped_actuator_count=12
+all_expected_policies,True,"policies=['deterministic_waveform', 'jtf_candidate', 'zero_ctrl']"
+zero_ctrl_present,True,zero_ctrl baseline exists
+deterministic_present,True,deterministic waveform comparison exists
+jtf_present,True,J^T f candidate comparison exists
+jtf_candidate_steps,True,steps=200
+jtf_candidate_finite,True,nonfinite=0
+jtf_candidate_no_saturation,True,saturation=0
+jtf_candidate_ctrl_within_target,True,max_ctrl=0.07999999999999999
+zero_ctrl_steps,True,steps=200
+zero_ctrl_finite,True,nonfinite=0
+zero_ctrl_no_saturation,True,saturation=0
+zero_ctrl_ctrl_within_target,True,max_ctrl=0.0
+deterministic_waveform_steps,True,steps=200
+deterministic_waveform_finite,True,nonfinite=0
+deterministic_waveform_no_saturation,True,saturation=0
+deterministic_waveform_ctrl_within_target,True,max_ctrl=0.07999932557603687
+zero_ctrl_zero_command,True,nonzero=0
+deterministic_nonzero_command,True,nonzero=200
+jtf_nonzero_command,True,nonzero=200
+jtf_candidate_used,True,J^T f candidate used
+comparison_only,True,short_horizon_safety_and_compatibility_only
+not_stable_locomotion_claim,True,stable locomotion not claimed
+baseline_unchanged,True,frozen mixed baseline unchanged
+no_ros_publisher,True,no ROS torque publisher
+no_hardware_claim,True,no hardware claim
+no_torque_enable_claim,True,no torque-enable claim
+short_horizon_only,True,short-horizon only
