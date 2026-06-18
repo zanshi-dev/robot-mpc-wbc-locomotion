@@ -1,0 +1,85 @@
+{
+  "stage": "15.6",
+  "name": "real_model_jacobian_candidate_rollout",
+  "pinocchio_imported": true,
+  "pinocchio_import_error": "",
+  "pinocchio_model_loaded": true,
+  "selected_model_path": "assets/go1/urdf/go1.urdf",
+  "selected_model_type": "urdf",
+  "model_source": "urdf_pinocchio",
+  "real_model_candidate_used": true,
+  "real_geometry_loaded": true,
+  "selected_model_metadata_used": true,
+  "nq": 12,
+  "nv": 12,
+  "controlled_joint_count": 12,
+  "foot_frame_count": 4,
+  "joint_map": {
+    "FR": {
+      "hip": "FR_hip_joint",
+      "thigh": "FR_thigh_joint",
+      "calf": "FR_calf_joint"
+    },
+    "FL": {
+      "hip": "FL_hip_joint",
+      "thigh": "FL_thigh_joint",
+      "calf": "FL_calf_joint"
+    },
+    "RR": {
+      "hip": "RR_hip_joint",
+      "thigh": "RR_thigh_joint",
+      "calf": "RR_calf_joint"
+    },
+    "RL": {
+      "hip": "RL_hip_joint",
+      "thigh": "RL_thigh_joint",
+      "calf": "RL_calf_joint"
+    }
+  },
+  "foot_map": {
+    "FR": "FR_foot",
+    "FL": "FL_foot",
+    "RR": "RR_foot",
+    "RL": "RL_foot"
+  },
+  "total_steps": 2400,
+  "jacobian_norm_min": 0.485973651481376,
+  "jacobian_norm_max": 0.5203131094778148,
+  "max_tau_candidate_abs": 9.83979372430523,
+  "nonfinite_tau_steps": 0,
+  "swing_force_max": 0.0,
+  "alpha_values": [
+    0.0,
+    0.02,
+    0.05,
+    0.1,
+    0.2
+  ],
+  "alpha_max_tau_abs": {
+    "0.00": 0.0,
+    "0.02": 0.19679587448610458,
+    "0.05": 0.4919896862152615,
+    "0.10": 0.983979372430523,
+    "0.20": 1.967958744861046
+  },
+  "alpha_saturation_steps": {
+    "0.00": 0,
+    "0.02": 0,
+    "0.05": 0,
+    "0.10": 0,
+    "0.20": 0
+  },
+  "torque_limit_for_audit": 18.0,
+  "boundary": {
+    "mujoco_torque_used": false,
+    "ros_publisher_used": false,
+    "frozen_mixed_baseline_modified": false,
+    "torque_enable_ready_claimed": false,
+    "hardware_deployment_claimed": false,
+    "dry_run_only": true
+  },
+  "notes": [
+    "URDF models are loaded directly with Pinocchio when available.",
+    "If the selected model is MJCF/Xacro or cannot be loaded as URDF, the script builds a Pinocchio audit model from Stage 15.5 real joint/frame names without claiming full real geometry."
+  ]
+}

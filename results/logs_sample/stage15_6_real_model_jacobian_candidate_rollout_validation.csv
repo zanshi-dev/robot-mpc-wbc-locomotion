@@ -1,0 +1,19 @@
+check,passed,details
+pinocchio_imported,True,
+pinocchio_model_loaded,True,model_source=urdf_pinocchio
+real_model_candidate_used,True,selected_model=assets/go1/urdf/go1.urdf
+selected_model_nonempty,True,selected_model=assets/go1/urdf/go1.urdf
+controlled_joint_count_at_least_12,True,controlled_joint_count=12
+foot_frame_count_at_least_4,True,foot_frame_count=4
+total_steps_2400,True,total_steps=2400
+jacobian_norm_positive,True,jacobian_norm_min=0.485973651481376
+tau_candidate_finite,True,nonfinite_tau_steps=0
+swing_force_zero,True,swing_force_max=0.0
+alpha_0_10_no_saturation,True,alpha_0.10_saturation_steps=0
+alpha_0_20_no_saturation,True,alpha_0.20_saturation_steps=0
+no_mujoco_torque,True,MuJoCo torque must remain disabled
+no_ros_publisher,True,ROS torque publisher must remain disabled
+baseline_unchanged,True,frozen mixed baseline must remain unchanged
+dry_run_only,True,stage must remain dry-run only
+no_hardware_claim,True,no hardware claim
+no_torque_enable_claim,True,no torque-enable claim

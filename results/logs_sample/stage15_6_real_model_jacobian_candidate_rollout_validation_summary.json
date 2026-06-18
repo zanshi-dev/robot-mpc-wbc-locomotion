@@ -1,0 +1,99 @@
+{
+  "stage": "15.6",
+  "validation_pass": true,
+  "selected_model_path": "assets/go1/urdf/go1.urdf",
+  "model_source": "urdf_pinocchio",
+  "real_geometry_loaded": true,
+  "checks": [
+    {
+      "check": "pinocchio_imported",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "check": "pinocchio_model_loaded",
+      "passed": true,
+      "details": "model_source=urdf_pinocchio"
+    },
+    {
+      "check": "real_model_candidate_used",
+      "passed": true,
+      "details": "selected_model=assets/go1/urdf/go1.urdf"
+    },
+    {
+      "check": "selected_model_nonempty",
+      "passed": true,
+      "details": "selected_model=assets/go1/urdf/go1.urdf"
+    },
+    {
+      "check": "controlled_joint_count_at_least_12",
+      "passed": true,
+      "details": "controlled_joint_count=12"
+    },
+    {
+      "check": "foot_frame_count_at_least_4",
+      "passed": true,
+      "details": "foot_frame_count=4"
+    },
+    {
+      "check": "total_steps_2400",
+      "passed": true,
+      "details": "total_steps=2400"
+    },
+    {
+      "check": "jacobian_norm_positive",
+      "passed": true,
+      "details": "jacobian_norm_min=0.485973651481376"
+    },
+    {
+      "check": "tau_candidate_finite",
+      "passed": true,
+      "details": "nonfinite_tau_steps=0"
+    },
+    {
+      "check": "swing_force_zero",
+      "passed": true,
+      "details": "swing_force_max=0.0"
+    },
+    {
+      "check": "alpha_0_10_no_saturation",
+      "passed": true,
+      "details": "alpha_0.10_saturation_steps=0"
+    },
+    {
+      "check": "alpha_0_20_no_saturation",
+      "passed": true,
+      "details": "alpha_0.20_saturation_steps=0"
+    },
+    {
+      "check": "no_mujoco_torque",
+      "passed": true,
+      "details": "MuJoCo torque must remain disabled"
+    },
+    {
+      "check": "no_ros_publisher",
+      "passed": true,
+      "details": "ROS torque publisher must remain disabled"
+    },
+    {
+      "check": "baseline_unchanged",
+      "passed": true,
+      "details": "frozen mixed baseline must remain unchanged"
+    },
+    {
+      "check": "dry_run_only",
+      "passed": true,
+      "details": "stage must remain dry-run only"
+    },
+    {
+      "check": "no_hardware_claim",
+      "passed": true,
+      "details": "no hardware claim"
+    },
+    {
+      "check": "no_torque_enable_claim",
+      "passed": true,
+      "details": "no torque-enable claim"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+[Stage 15.6] Real-model Pinocchio Jacobian candidate rollout validation
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+python: /usr/bin/python3
+timestamp_utc: 2026-06-18T02:27:21Z
+
+[1/2] Run real-model Jacobian candidate rollout
+stage15_6_rollout_completed: true
+selected_model_path: assets/go1/urdf/go1.urdf
+model_source: urdf_pinocchio
+real_geometry_loaded: True
+controlled_joint_count: 12
+foot_frame_count: 4
+jacobian_norm_min: 0.485973651481376
+max_tau_candidate_abs: 9.83979372430523
+output_json: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_6_real_model_jacobian_candidate_rollout_summary.json
+output_csv: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_6_real_model_jacobian_candidate_rollout.csv
+
+[2/2] Validate rollout outputs
+PASS: pinocchio_imported -- 
+PASS: pinocchio_model_loaded -- model_source=urdf_pinocchio
+PASS: real_model_candidate_used -- selected_model=assets/go1/urdf/go1.urdf
+PASS: selected_model_nonempty -- selected_model=assets/go1/urdf/go1.urdf
+PASS: controlled_joint_count_at_least_12 -- controlled_joint_count=12
+PASS: foot_frame_count_at_least_4 -- foot_frame_count=4
+PASS: total_steps_2400 -- total_steps=2400
+PASS: jacobian_norm_positive -- jacobian_norm_min=0.485973651481376
+PASS: tau_candidate_finite -- nonfinite_tau_steps=0
+PASS: swing_force_zero -- swing_force_max=0.0
+PASS: alpha_0_10_no_saturation -- alpha_0.10_saturation_steps=0
+PASS: alpha_0_20_no_saturation -- alpha_0.20_saturation_steps=0
+PASS: no_mujoco_torque -- MuJoCo torque must remain disabled
+PASS: no_ros_publisher -- ROS torque publisher must remain disabled
+PASS: baseline_unchanged -- frozen mixed baseline must remain unchanged
+PASS: dry_run_only -- stage must remain dry-run only
+PASS: no_hardware_claim -- no hardware claim
+PASS: no_torque_enable_claim -- no torque-enable claim
+stage15_6_result: pass
