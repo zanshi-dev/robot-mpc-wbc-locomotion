@@ -1,0 +1,41 @@
+[Stage 15.9] MuJoCo J^T f candidate injection validation
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+python: /usr/bin/python3
+timestamp_utc: 2026-06-18T02:33:05Z
+
+[1/2] Run bounded MuJoCo J^T f candidate injection
+stage15_9_injection_completed: true
+mjcf_model_path: assets/go1/go1.xml
+mapped_actuator_count: 12
+pinocchio_model_source: urdf_pinocchio
+real_geometry_loaded: True
+alphas: [0.0, 0.00025, 0.0005, 0.001]
+total_nonzero_ctrl_steps_positive_alpha: 600
+total_nonfinite_steps: 0
+total_saturation_steps: 0
+max_abs_ctrl: 0.009556731969930048
+max_abs_tau12: 9.556731969930048
+output_json: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_9_mujoco_jtf_candidate_injection_summary.json
+output_csv: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_9_mujoco_jtf_candidate_injection.csv
+
+[2/2] Validate injection outputs
+PASS: mujoco_imported -- 
+PASS: mujoco_model_loaded -- model=assets/go1/go1.xml
+PASS: stage15_6_jtf_candidate_used -- J^T f candidate must be used
+PASS: deterministic_waveform_not_used -- Stage 15.8 waveform must not be used
+PASS: actuator_count_12 -- mapped_actuator_count=12
+PASS: positive_alpha_nonzero_ctrl -- nonzero=600
+PASS: finite_dynamics -- nonfinite=0
+PASS: no_ctrl_saturation -- saturation=0
+PASS: ctrl_within_audit_limit -- max_abs_ctrl=0.009556731969930048
+PASS: jtf_tau_nonzero -- max_abs_tau12=9.556731969930048
+PASS: jacobian_norm_positive -- jacobian_norm_min=0.48818649280932475
+PASS: pinocchio_joint_names_resolved -- missing=0
+PASS: mj_step_called -- short-horizon mj_step must be used
+PASS: not_stable_locomotion_claim -- stable locomotion must not be claimed
+PASS: short_horizon_only -- short-horizon only
+PASS: baseline_unchanged -- frozen mixed baseline unchanged
+PASS: no_ros_publisher -- no ROS torque publisher
+PASS: no_hardware_claim -- no hardware claim
+PASS: no_torque_enable_claim -- no torque-enable claim
+stage15_9_result: pass

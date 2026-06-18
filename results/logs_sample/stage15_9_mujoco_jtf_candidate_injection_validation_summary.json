@@ -1,0 +1,107 @@
+{
+  "stage": "15.9",
+  "validation_pass": true,
+  "mjcf_model_path": "assets/go1/go1.xml",
+  "mapped_actuator_count": 12,
+  "pinocchio_model_source": "urdf_pinocchio",
+  "real_geometry_loaded": true,
+  "max_abs_ctrl": 0.009556731969930048,
+  "max_abs_tau12": 9.556731969930048,
+  "checks": [
+    {
+      "check": "mujoco_imported",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "check": "mujoco_model_loaded",
+      "passed": true,
+      "details": "model=assets/go1/go1.xml"
+    },
+    {
+      "check": "stage15_6_jtf_candidate_used",
+      "passed": true,
+      "details": "J^T f candidate must be used"
+    },
+    {
+      "check": "deterministic_waveform_not_used",
+      "passed": true,
+      "details": "Stage 15.8 waveform must not be used"
+    },
+    {
+      "check": "actuator_count_12",
+      "passed": true,
+      "details": "mapped_actuator_count=12"
+    },
+    {
+      "check": "positive_alpha_nonzero_ctrl",
+      "passed": true,
+      "details": "nonzero=600"
+    },
+    {
+      "check": "finite_dynamics",
+      "passed": true,
+      "details": "nonfinite=0"
+    },
+    {
+      "check": "no_ctrl_saturation",
+      "passed": true,
+      "details": "saturation=0"
+    },
+    {
+      "check": "ctrl_within_audit_limit",
+      "passed": true,
+      "details": "max_abs_ctrl=0.009556731969930048"
+    },
+    {
+      "check": "jtf_tau_nonzero",
+      "passed": true,
+      "details": "max_abs_tau12=9.556731969930048"
+    },
+    {
+      "check": "jacobian_norm_positive",
+      "passed": true,
+      "details": "jacobian_norm_min=0.48818649280932475"
+    },
+    {
+      "check": "pinocchio_joint_names_resolved",
+      "passed": true,
+      "details": "missing=0"
+    },
+    {
+      "check": "mj_step_called",
+      "passed": true,
+      "details": "short-horizon mj_step must be used"
+    },
+    {
+      "check": "not_stable_locomotion_claim",
+      "passed": true,
+      "details": "stable locomotion must not be claimed"
+    },
+    {
+      "check": "short_horizon_only",
+      "passed": true,
+      "details": "short-horizon only"
+    },
+    {
+      "check": "baseline_unchanged",
+      "passed": true,
+      "details": "frozen mixed baseline unchanged"
+    },
+    {
+      "check": "no_ros_publisher",
+      "passed": true,
+      "details": "no ROS torque publisher"
+    },
+    {
+      "check": "no_hardware_claim",
+      "passed": true,
+      "details": "no hardware claim"
+    },
+    {
+      "check": "no_torque_enable_claim",
+      "passed": true,
+      "details": "no torque-enable claim"
+    }
+  ]
+}

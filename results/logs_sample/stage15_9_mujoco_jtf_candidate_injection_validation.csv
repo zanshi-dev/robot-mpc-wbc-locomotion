@@ -1,0 +1,20 @@
+check,passed,details
+mujoco_imported,True,
+mujoco_model_loaded,True,model=assets/go1/go1.xml
+stage15_6_jtf_candidate_used,True,J^T f candidate must be used
+deterministic_waveform_not_used,True,Stage 15.8 waveform must not be used
+actuator_count_12,True,mapped_actuator_count=12
+positive_alpha_nonzero_ctrl,True,nonzero=600
+finite_dynamics,True,nonfinite=0
+no_ctrl_saturation,True,saturation=0
+ctrl_within_audit_limit,True,max_abs_ctrl=0.009556731969930048
+jtf_tau_nonzero,True,max_abs_tau12=9.556731969930048
+jacobian_norm_positive,True,jacobian_norm_min=0.48818649280932475
+pinocchio_joint_names_resolved,True,missing=0
+mj_step_called,True,short-horizon mj_step must be used
+not_stable_locomotion_claim,True,stable locomotion must not be claimed
+short_horizon_only,True,short-horizon only
+baseline_unchanged,True,frozen mixed baseline unchanged
+no_ros_publisher,True,no ROS torque publisher
+no_hardware_claim,True,no hardware claim
+no_torque_enable_claim,True,no torque-enable claim
