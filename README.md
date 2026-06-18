@@ -1,5 +1,62 @@
 # robot-mpc-wbc-locomotion
 
+<!-- STAGE15_README_ENTRY_BEGIN -->
+
+## 项目边界与复现入口
+
+本仓库是一个 Go1 风格四足机器人的 simulation-only MPC/WBC 运动控制原型。
+
+当前项目边界：
+
+- MPC 作为 planning layer，用于生成 contact force reference 或 contact force candidate。
+- MPC 不直接输出最终 joint torque。
+- WBC/QP 或 J^T f 映射层负责把 contact force reference / candidate 转换为 joint torque candidate。
+- 当前冻结稳定基线为 mixed_online_control_baseline。
+- 当前稳定控制结构为：stance posture PD + scaled stance WBC feedforward + memory-based swing target PD + torque safety filter。
+
+本仓库不声明：
+
+- 已完成真实机器人部署。
+- 已完成 actuator enablement。
+- 已完成真实机器人 joint torque 执行。
+- torque_enable_ready=True。
+- 已完成 realtime hardware controller。
+
+当前证据支持：
+
+- MuJoCo / Pinocchio simulation-only locomotion baseline。
+- MPC contact-force planning demo。
+- WBC/QP 与 J^T f torque-candidate 验证。
+- ROS2/C++ disabled-controller dry-run 证据。
+- C++ gait scheduler / swing trajectory / torque safety filter 模块测试。
+- report-ready 结果日志与 MuJoCo offscreen-rendered demo video 证据。
+
+### 核心复现入口
+
+从仓库根目录运行：
+
+    bash scripts/stage15_3_reproduce_core_results.sh
+
+该脚本复现当前 report-ready 证据链：
+
+    repo hygiene audit
+    -> base velocity tracking MPC demo
+    -> MPC rollout validation
+    -> ROS2/C++ controller validation
+    -> summary log
+
+期望最终标志：
+
+    stage15_3_result: pass
+
+关键日志：
+
+    results/logs_sample/stage15_3_reproduce_core_results.log
+    results/logs_sample/stage15_3_reproduce_core_results_summary.txt
+
+<!-- STAGE15_README_ENTRY_END -->
+
+
 Go1 风格四足机器人运动控制仿真项目。项目聚焦 **MuJoCo 仿真、Pinocchio 运动学/动力学、MPC/WBC 候选力矩、ROS2/C++ 工程化测试和结果证据归档**。
 
 本仓库当前定位为：**仅限仿真验证的四足机器人控制链路工程项目**。项目不声明真实机器人部署，不声明已具备力矩使能条件，也不声明完整 MPC-WBC 闭环稳定行走已经完成。

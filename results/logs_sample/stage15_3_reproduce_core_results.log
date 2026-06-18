@@ -3,19 +3,25 @@
 repo_root: /home/zanshi/robot-mpc-wbc-locomotion
 log_file: results/logs_sample/stage15_3_reproduce_core_results.log
 summary_file: results/logs_sample/stage15_3_reproduce_core_results_summary.txt
-timestamp: 2026-06-18T11:11:56+08:00
-git_head: 2962976
+timestamp: 2026-06-18T11:17:36+08:00
+git_head: 03e2094
 git_branch: main
 python: Python 3.12.3
 stage15_3_reproduce_core_results
 repo_root: /home/zanshi/robot-mpc-wbc-locomotion
-git_head: 2962976
+git_head: 03e2094
 git_branch: main
 
 ========== Git working tree ==========
-?? results/logs_sample/stage15_3_reproduce_core_results.log
-?? results/logs_sample/stage15_3_reproduce_core_results_summary.txt
-?? scripts/stage15_3_reproduce_core_results.sh
+ M README.md
+ M results/logs_sample/stage14_4_base_velocity_tracking_mpc_rollout.csv
+ M results/logs_sample/stage14_4_base_velocity_tracking_mpc_summary.json
+ M results/logs_sample/stage14_4b_base_velocity_tracking_mpc_validation_summary.json
+ M results/logs_sample/stage15_1_ros2_cpp_controller_test.log
+ M results/logs_sample/stage15_2_repo_hygiene_audit.log
+ M results/logs_sample/stage15_3_reproduce_core_results.log
+ M results/logs_sample/stage15_3_reproduce_core_results_summary.txt
+?? scripts/stage15_4_patch_readme_entry.py
 
 ========== Stage 15.2 repo hygiene audit ==========
 command: bash scripts/stage15_2_repo_hygiene_audit.sh
@@ -30,11 +36,16 @@ current_branch: main
 origin_url: git@github.com:zanshi-dev/robot-mpc-wbc-locomotion.git
 [PASS] origin remote matches expected GitHub SSH URL
 [WARN] working tree has uncommitted changes
+ M README.md
+ M results/logs_sample/stage14_4_base_velocity_tracking_mpc_rollout.csv
+ M results/logs_sample/stage14_4_base_velocity_tracking_mpc_summary.json
+ M results/logs_sample/stage14_4b_base_velocity_tracking_mpc_validation_summary.json
+ M results/logs_sample/stage15_1_ros2_cpp_controller_test.log
  M results/logs_sample/stage15_2_repo_hygiene_audit.log
-?? results/logs_sample/stage15_3_reproduce_core_results.log
-?? results/logs_sample/stage15_3_reproduce_core_results_summary.txt
-?? scripts/stage15_3_reproduce_core_results.sh
-local_head: 2962976
+ M results/logs_sample/stage15_3_reproduce_core_results.log
+ M results/logs_sample/stage15_3_reproduce_core_results_summary.txt
+?? scripts/stage15_4_patch_readme_entry.py
+local_head: 03e2094
 origin_main: 2690b18
 [WARN] local HEAD differs from origin/main
 
@@ -142,12 +153,12 @@ command: /usr/bin/python3 scripts/stage14_4_base_velocity_tracking_mpc_demo.py
   "max_abs_z_error": 0.019999999999999962,
   "max_force_delta_norm": 130.19350284972353,
   "max_friction_violation": 0.0,
-  "max_solve_time_s": 0.017032339999999997,
+  "max_solve_time_s": 0.017182602,
   "max_stance_fz": 78.94140647967987,
   "max_swing_force_norm": 1.8869763896238494e-09,
   "max_total_fz_violation": 0.0,
   "mean_abs_vx_error_last_20": 5.0427800823982235e-12,
-  "mean_solve_time_s": 0.013865940459999998,
+  "mean_solve_time_s": 0.01364589334,
   "min_stance_fz": 45.62719635166584,
   "mixed_baseline_modified": false,
   "mujoco_torque_used": false,
@@ -187,7 +198,7 @@ command: /usr/bin/python3 scripts/stage14_4b_validate_base_velocity_mpc_rollout.
   "max_abs_z_error": 0.019999999999999962,
   "max_force_delta_norm": 130.19350284972353,
   "max_friction_violation": 0.0,
-  "max_solve_time_s": 0.017032339999999997,
+  "max_solve_time_s": 0.017182602,
   "max_stance_fz": 78.94140647967987,
   "max_swing_force_norm": 1.8869763896238494e-09,
   "max_total_fz_violation": 0.0,
@@ -218,13 +229,13 @@ command: bash scripts/stage15_1_validate_ros2_cpp_controller.sh
 [Stage 15.1] ROS2/C++ control algorithm package validation
 repo_root: /home/zanshi/robot-mpc-wbc-locomotion
 ros_setup: /opt/ros/jazzy/setup.bash
-timestamp_utc: 2026-06-18T03:11:58Z
+timestamp_utc: 2026-06-18T03:17:38Z
 
 [1/3] colcon build
 Starting >>> robot_mpc_wbc_cpp_controller
 Finished <<< robot_mpc_wbc_cpp_controller [0.11s]
 
-Summary: 1 package finished [0.20s]
+Summary: 1 package finished [0.21s]
 
 [2/3] colcon test
 Starting >>> robot_mpc_wbc_cpp_controller
@@ -233,7 +244,7 @@ Parse Config file:/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/build/robot_mpc_
    Site: zanshi-Legion-Y7000P-IAX10
    Build name: (empty)
  Add coverage exclude regular expressions.
-Create new tag: 20260618-0311 - Experimental
+Create new tag: 20260618-0317 - Experimental
 UpdateCTestConfiguration  from :/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/build/robot_mpc_wbc_cpp_controller/CTestConfiguration.ini
 Parse Config file:/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/build/robot_mpc_wbc_cpp_controller/CTestConfiguration.ini
 Test project /home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/build/robot_mpc_wbc_cpp_controller
@@ -275,7 +286,7 @@ test 1
 1: -- run_test.py: return code 0
 1: -- run_test.py: inject classname prefix into gtest result file '/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/build/robot_mpc_wbc_cpp_controller/test_results/robot_mpc_wbc_cpp_controller/test_control_algorithms.gtest.xml'
 1: -- run_test.py: verify result file '/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/build/robot_mpc_wbc_cpp_controller/test_results/robot_mpc_wbc_cpp_controller/test_control_algorithms.gtest.xml'
-1/2 Test #1: test_control_algorithms ..........   Passed    0.04 sec
+1/2 Test #1: test_control_algorithms ..........   Passed    0.05 sec
 test 2
     Start 2: test_contact_force_qp
 
@@ -304,7 +315,7 @@ test 2
 2: -- run_test.py: return code 0
 2: -- run_test.py: inject classname prefix into gtest result file '/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/build/robot_mpc_wbc_cpp_controller/test_results/robot_mpc_wbc_cpp_controller/test_contact_force_qp.gtest.xml'
 2: -- run_test.py: verify result file '/home/zanshi/robot-mpc-wbc-locomotion/ros2_ws/build/robot_mpc_wbc_cpp_controller/test_results/robot_mpc_wbc_cpp_controller/test_contact_force_qp.gtest.xml'
-2/2 Test #2: test_contact_force_qp ............   Passed    0.04 sec
+2/2 Test #2: test_contact_force_qp ............   Passed    0.05 sec
 
 100% tests passed, 0 tests failed out of 2
 
@@ -359,7 +370,7 @@ results/logs_sample/stage15_3_reproduce_core_results_summary.txt
 ========== Final summary ==========
 stage15_3_reproduce_core_results
 repo_root: /home/zanshi/robot-mpc-wbc-locomotion
-git_head: 2962976
+git_head: 03e2094
 git_branch: main
 [PASS] Stage 15.2 repo hygiene audit
 [PASS] Stage 14.4 base velocity tracking MPC demo
