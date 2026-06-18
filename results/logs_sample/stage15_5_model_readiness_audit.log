@@ -1,0 +1,28 @@
+[Stage 15.5] Model readiness audit validation
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+python: /usr/bin/python3
+timestamp_utc: 2026-06-18T02:24:16Z
+
+[1/2] Run model readiness audit
+stage15_5_audit_completed: true
+model_file_count: 4
+selected_model: assets/go1/urdf/go1.urdf
+ready_for_real_model_jacobian_stage: True
+audit_json: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_5_model_readiness_audit.json
+inventory_csv: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_5_model_readiness_audit_inventory.csv
+
+[2/2] Validate audit outputs
+PASS: audit_completed -- audit script finished
+PASS: model_file_count_positive -- model_file_count=4
+PASS: selected_model_exists -- selected_model=assets/go1/urdf/go1.urdf
+PASS: controlled_joint_count_at_least_12 -- controlled_joint_count=12
+PASS: foot_candidates_at_least_4 -- foot_candidate_count=4
+PASS: inferred_joint_order_nonempty -- mapped_joint_count=10
+PASS: inferred_foot_mapping_nonempty -- mapped_foot_count=4
+PASS: audit_only_boundary -- audit_only must remain true
+PASS: no_mujoco_torque -- MuJoCo torque must not be used
+PASS: no_ros_publisher -- ROS torque publisher must not be used
+PASS: baseline_not_modified -- frozen mixed baseline must remain untouched
+PASS: no_hardware_claim -- no hardware deployment claim
+PASS: no_torque_enable_claim -- no torque-enable claim
+stage15_5_result: pass

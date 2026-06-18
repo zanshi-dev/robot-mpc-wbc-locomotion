@@ -1,0 +1,5 @@
+path,model_type,parse_status,score,joint_count,actuator_joint_count,controlled_joint_count,foot_candidate_count,mapped_joint_count,mapped_foot_count
+assets/go1/urdf/go1.urdf,urdf,parsed,77.000,45,0,12,4,10,4
+assets/go1/go1.xml,mujoco_mjcf,parsed,70.000,12,12,12,0,10,4
+assets/go1/scene.xml,mujoco_mjcf,parsed,23.000,0,0,0,0,0,0
+assets/stage00_minimal_leg.xml,mujoco_mjcf,parsed,14.000,2,2,2,1,0,0

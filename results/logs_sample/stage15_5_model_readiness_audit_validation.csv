@@ -1,0 +1,14 @@
+check,passed,details
+audit_completed,True,audit script finished
+model_file_count_positive,True,model_file_count=4
+selected_model_exists,True,selected_model=assets/go1/urdf/go1.urdf
+controlled_joint_count_at_least_12,True,controlled_joint_count=12
+foot_candidates_at_least_4,True,foot_candidate_count=4
+inferred_joint_order_nonempty,True,mapped_joint_count=10
+inferred_foot_mapping_nonempty,True,mapped_foot_count=4
+audit_only_boundary,True,audit_only must remain true
+no_mujoco_torque,True,MuJoCo torque must not be used
+no_ros_publisher,True,ROS torque publisher must not be used
+baseline_not_modified,True,frozen mixed baseline must remain untouched
+no_hardware_claim,True,no hardware deployment claim
+no_torque_enable_claim,True,no torque-enable claim

@@ -1,0 +1,544 @@
+{
+  "stage": "15.5",
+  "name": "model_readiness_audit",
+  "audit_completed": true,
+  "repo_root": "/home/zanshi/robot-mpc-wbc-locomotion",
+  "model_file_count": 4,
+  "candidate_models": [
+    {
+      "path": "assets/go1/urdf/go1.urdf",
+      "suffix": ".urdf",
+      "model_type": "urdf",
+      "parse_status": "parsed",
+      "parse_error": "",
+      "joint_names": [
+        "floating_base",
+        "imu_joint",
+        "FR_hip_joint",
+        "FR_hip_rotor_joint",
+        "FR_thigh_joint",
+        "FR_thigh_rotor_joint",
+        "FR_calf_joint",
+        "FR_calf_rotor_joint",
+        "FR_foot_fixed",
+        "FL_hip_joint",
+        "FL_hip_rotor_joint",
+        "FL_thigh_joint",
+        "FL_thigh_rotor_joint",
+        "FL_calf_joint",
+        "FL_calf_rotor_joint",
+        "FL_foot_fixed",
+        "RR_hip_joint",
+        "RR_hip_rotor_joint",
+        "RR_thigh_joint",
+        "RR_thigh_rotor_joint",
+        "RR_calf_joint",
+        "RR_calf_rotor_joint",
+        "RR_foot_fixed",
+        "RL_hip_joint",
+        "RL_hip_rotor_joint",
+        "RL_thigh_joint",
+        "RL_thigh_rotor_joint",
+        "RL_calf_joint",
+        "RL_calf_rotor_joint",
+        "RL_foot_fixed",
+        "camera_joint_face",
+        "camera_optical_joint_face",
+        "camera_joint_chin",
+        "camera_optical_joint_chin",
+        "camera_joint_left",
+        "camera_optical_joint_left",
+        "camera_joint_right",
+        "camera_optical_joint_right",
+        "camera_joint_rearDown",
+        "camera_optical_joint_rearDown",
+        "camera_laserscan_joint_left",
+        "camera_laserscan_joint_right",
+        "ultraSound_joint_left",
+        "ultraSound_joint_right",
+        "ultraSound_joint_face"
+      ],
+      "actuator_joint_names": [],
+      "controlled_joint_names": [
+        "FR_hip_joint",
+        "FR_thigh_joint",
+        "FR_calf_joint",
+        "FL_hip_joint",
+        "FL_thigh_joint",
+        "FL_calf_joint",
+        "RR_hip_joint",
+        "RR_thigh_joint",
+        "RR_calf_joint",
+        "RL_hip_joint",
+        "RL_thigh_joint",
+        "RL_calf_joint"
+      ],
+      "body_names": [],
+      "site_names": [],
+      "link_names": [
+        "base",
+        "trunk",
+        "imu_link",
+        "FR_hip",
+        "FR_hip_rotor",
+        "FR_thigh",
+        "FR_thigh_rotor",
+        "FR_calf",
+        "FR_calf_rotor",
+        "FR_foot",
+        "FL_hip",
+        "FL_hip_rotor",
+        "FL_thigh",
+        "FL_thigh_rotor",
+        "FL_calf",
+        "FL_calf_rotor",
+        "FL_foot",
+        "RR_hip",
+        "RR_hip_rotor",
+        "RR_thigh",
+        "RR_thigh_rotor",
+        "RR_calf",
+        "RR_calf_rotor",
+        "RR_foot",
+        "RL_hip",
+        "RL_hip_rotor",
+        "RL_thigh",
+        "RL_thigh_rotor",
+        "RL_calf",
+        "RL_calf_rotor",
+        "RL_foot",
+        "camera_face",
+        "camera_optical_face",
+        "camera_chin",
+        "camera_optical_chin",
+        "camera_left",
+        "camera_optical_left",
+        "camera_right",
+        "camera_optical_right",
+        "camera_rearDown",
+        "camera_optical_rearDown",
+        "camera_laserscan_link_left",
+        "camera_laserscan_link_right",
+        "ultraSound_left",
+        "ultraSound_right",
+        "ultraSound_face"
+      ],
+      "foot_frame_candidates": [
+        "FR_foot",
+        "FL_foot",
+        "RR_foot",
+        "RL_foot"
+      ],
+      "inferred_joint_order": {
+        "FR": {
+          "hip": "FR_hip_joint",
+          "thigh": "FR_thigh_joint",
+          "calf": "FR_calf_joint"
+        },
+        "FL": {
+          "hip": "FL_hip_joint",
+          "thigh": "FL_thigh_joint",
+          "calf": "FL_calf_joint"
+        },
+        "RR": {
+          "hip": "RR_hip_joint",
+          "thigh": "RR_thigh_joint",
+          "calf": null
+        },
+        "RL": {
+          "hip": "RL_hip_joint",
+          "thigh": "RL_thigh_joint",
+          "calf": null
+        }
+      },
+      "inferred_foot_frames": {
+        "FR": "FR_foot",
+        "FL": "FL_foot",
+        "RR": "RR_foot",
+        "RL": "RL_foot"
+      },
+      "score": 77.0
+    },
+    {
+      "path": "assets/go1/go1.xml",
+      "suffix": ".xml",
+      "model_type": "mujoco_mjcf",
+      "parse_status": "parsed",
+      "parse_error": "",
+      "joint_names": [
+        "FR_hip_joint",
+        "FR_thigh_joint",
+        "FR_calf_joint",
+        "FL_hip_joint",
+        "FL_thigh_joint",
+        "FL_calf_joint",
+        "RR_hip_joint",
+        "RR_thigh_joint",
+        "RR_calf_joint",
+        "RL_hip_joint",
+        "RL_thigh_joint",
+        "RL_calf_joint"
+      ],
+      "actuator_joint_names": [
+        "FR_hip_joint",
+        "FR_thigh_joint",
+        "FR_calf_joint",
+        "FL_hip_joint",
+        "FL_thigh_joint",
+        "FL_calf_joint",
+        "RR_hip_joint",
+        "RR_thigh_joint",
+        "RR_calf_joint",
+        "RL_hip_joint",
+        "RL_thigh_joint",
+        "RL_calf_joint"
+      ],
+      "controlled_joint_names": [
+        "FR_hip_joint",
+        "FR_thigh_joint",
+        "FR_calf_joint",
+        "FL_hip_joint",
+        "FL_thigh_joint",
+        "FL_calf_joint",
+        "RR_hip_joint",
+        "RR_thigh_joint",
+        "RR_calf_joint",
+        "RL_hip_joint",
+        "RL_thigh_joint",
+        "RL_calf_joint"
+      ],
+      "body_names": [
+        "trunk",
+        "FR_hip",
+        "FR_thigh",
+        "FR_calf",
+        "FL_hip",
+        "FL_thigh",
+        "FL_calf",
+        "RR_hip",
+        "RR_thigh",
+        "RR_calf",
+        "RL_hip",
+        "RL_thigh",
+        "RL_calf"
+      ],
+      "site_names": [
+        "head",
+        "imu",
+        "FR",
+        "FL",
+        "RR",
+        "RL"
+      ],
+      "link_names": [],
+      "foot_frame_candidates": [],
+      "inferred_joint_order": {
+        "FR": {
+          "hip": "FR_hip_joint",
+          "thigh": "FR_thigh_joint",
+          "calf": "FR_calf_joint"
+        },
+        "FL": {
+          "hip": "FL_hip_joint",
+          "thigh": "FL_thigh_joint",
+          "calf": "FL_calf_joint"
+        },
+        "RR": {
+          "hip": "RR_hip_joint",
+          "thigh": "RR_thigh_joint",
+          "calf": null
+        },
+        "RL": {
+          "hip": "RL_hip_joint",
+          "thigh": "RL_thigh_joint",
+          "calf": null
+        }
+      },
+      "inferred_foot_frames": {
+        "FR": "FR",
+        "FL": "FL",
+        "RR": "RR",
+        "RL": "RL"
+      },
+      "score": 70.0
+    },
+    {
+      "path": "assets/go1/scene.xml",
+      "suffix": ".xml",
+      "model_type": "mujoco_mjcf",
+      "parse_status": "parsed",
+      "parse_error": "",
+      "joint_names": [],
+      "actuator_joint_names": [],
+      "controlled_joint_names": [],
+      "body_names": [],
+      "site_names": [],
+      "link_names": [],
+      "foot_frame_candidates": [],
+      "inferred_joint_order": {
+        "FR": {
+          "hip": null,
+          "thigh": null,
+          "calf": null
+        },
+        "FL": {
+          "hip": null,
+          "thigh": null,
+          "calf": null
+        },
+        "RR": {
+          "hip": null,
+          "thigh": null,
+          "calf": null
+        },
+        "RL": {
+          "hip": null,
+          "thigh": null,
+          "calf": null
+        }
+      },
+      "inferred_foot_frames": {
+        "FR": null,
+        "FL": null,
+        "RR": null,
+        "RL": null
+      },
+      "score": 23.0
+    },
+    {
+      "path": "assets/stage00_minimal_leg.xml",
+      "suffix": ".xml",
+      "model_type": "mujoco_mjcf",
+      "parse_status": "parsed",
+      "parse_error": "",
+      "joint_names": [
+        "hip_joint",
+        "knee_joint"
+      ],
+      "actuator_joint_names": [
+        "hip_joint",
+        "knee_joint"
+      ],
+      "controlled_joint_names": [
+        "hip_joint",
+        "knee_joint"
+      ],
+      "body_names": [
+        "base",
+        "upper_leg",
+        "lower_leg",
+        "foot"
+      ],
+      "site_names": [],
+      "link_names": [],
+      "foot_frame_candidates": [
+        "foot"
+      ],
+      "inferred_joint_order": {
+        "FR": {
+          "hip": null,
+          "thigh": null,
+          "calf": null
+        },
+        "FL": {
+          "hip": null,
+          "thigh": null,
+          "calf": null
+        },
+        "RR": {
+          "hip": null,
+          "thigh": null,
+          "calf": null
+        },
+        "RL": {
+          "hip": null,
+          "thigh": null,
+          "calf": null
+        }
+      },
+      "inferred_foot_frames": {
+        "FR": null,
+        "FL": null,
+        "RR": null,
+        "RL": null
+      },
+      "score": 14.0
+    }
+  ],
+  "selected_model": {
+    "path": "assets/go1/urdf/go1.urdf",
+    "suffix": ".urdf",
+    "model_type": "urdf",
+    "parse_status": "parsed",
+    "parse_error": "",
+    "joint_names": [
+      "floating_base",
+      "imu_joint",
+      "FR_hip_joint",
+      "FR_hip_rotor_joint",
+      "FR_thigh_joint",
+      "FR_thigh_rotor_joint",
+      "FR_calf_joint",
+      "FR_calf_rotor_joint",
+      "FR_foot_fixed",
+      "FL_hip_joint",
+      "FL_hip_rotor_joint",
+      "FL_thigh_joint",
+      "FL_thigh_rotor_joint",
+      "FL_calf_joint",
+      "FL_calf_rotor_joint",
+      "FL_foot_fixed",
+      "RR_hip_joint",
+      "RR_hip_rotor_joint",
+      "RR_thigh_joint",
+      "RR_thigh_rotor_joint",
+      "RR_calf_joint",
+      "RR_calf_rotor_joint",
+      "RR_foot_fixed",
+      "RL_hip_joint",
+      "RL_hip_rotor_joint",
+      "RL_thigh_joint",
+      "RL_thigh_rotor_joint",
+      "RL_calf_joint",
+      "RL_calf_rotor_joint",
+      "RL_foot_fixed",
+      "camera_joint_face",
+      "camera_optical_joint_face",
+      "camera_joint_chin",
+      "camera_optical_joint_chin",
+      "camera_joint_left",
+      "camera_optical_joint_left",
+      "camera_joint_right",
+      "camera_optical_joint_right",
+      "camera_joint_rearDown",
+      "camera_optical_joint_rearDown",
+      "camera_laserscan_joint_left",
+      "camera_laserscan_joint_right",
+      "ultraSound_joint_left",
+      "ultraSound_joint_right",
+      "ultraSound_joint_face"
+    ],
+    "actuator_joint_names": [],
+    "controlled_joint_names": [
+      "FR_hip_joint",
+      "FR_thigh_joint",
+      "FR_calf_joint",
+      "FL_hip_joint",
+      "FL_thigh_joint",
+      "FL_calf_joint",
+      "RR_hip_joint",
+      "RR_thigh_joint",
+      "RR_calf_joint",
+      "RL_hip_joint",
+      "RL_thigh_joint",
+      "RL_calf_joint"
+    ],
+    "body_names": [],
+    "site_names": [],
+    "link_names": [
+      "base",
+      "trunk",
+      "imu_link",
+      "FR_hip",
+      "FR_hip_rotor",
+      "FR_thigh",
+      "FR_thigh_rotor",
+      "FR_calf",
+      "FR_calf_rotor",
+      "FR_foot",
+      "FL_hip",
+      "FL_hip_rotor",
+      "FL_thigh",
+      "FL_thigh_rotor",
+      "FL_calf",
+      "FL_calf_rotor",
+      "FL_foot",
+      "RR_hip",
+      "RR_hip_rotor",
+      "RR_thigh",
+      "RR_thigh_rotor",
+      "RR_calf",
+      "RR_calf_rotor",
+      "RR_foot",
+      "RL_hip",
+      "RL_hip_rotor",
+      "RL_thigh",
+      "RL_thigh_rotor",
+      "RL_calf",
+      "RL_calf_rotor",
+      "RL_foot",
+      "camera_face",
+      "camera_optical_face",
+      "camera_chin",
+      "camera_optical_chin",
+      "camera_left",
+      "camera_optical_left",
+      "camera_right",
+      "camera_optical_right",
+      "camera_rearDown",
+      "camera_optical_rearDown",
+      "camera_laserscan_link_left",
+      "camera_laserscan_link_right",
+      "ultraSound_left",
+      "ultraSound_right",
+      "ultraSound_face"
+    ],
+    "foot_frame_candidates": [
+      "FR_foot",
+      "FL_foot",
+      "RR_foot",
+      "RL_foot"
+    ],
+    "inferred_joint_order": {
+      "FR": {
+        "hip": "FR_hip_joint",
+        "thigh": "FR_thigh_joint",
+        "calf": "FR_calf_joint"
+      },
+      "FL": {
+        "hip": "FL_hip_joint",
+        "thigh": "FL_thigh_joint",
+        "calf": "FL_calf_joint"
+      },
+      "RR": {
+        "hip": "RR_hip_joint",
+        "thigh": "RR_thigh_joint",
+        "calf": null
+      },
+      "RL": {
+        "hip": "RL_hip_joint",
+        "thigh": "RL_thigh_joint",
+        "calf": null
+      }
+    },
+    "inferred_foot_frames": {
+      "FR": "FR_foot",
+      "FL": "FL_foot",
+      "RR": "RR_foot",
+      "RL": "RL_foot"
+    },
+    "score": 77.0
+  },
+  "readiness": {
+    "has_model_candidate": true,
+    "has_12_controlled_joints": true,
+    "has_4_foot_frame_candidates": true,
+    "has_full_inferred_joint_order": false,
+    "has_full_inferred_foot_mapping": true,
+    "ready_for_real_model_jacobian_stage": true
+  },
+  "boundary": {
+    "mujoco_torque_used": false,
+    "ros_publisher_used": false,
+    "frozen_mixed_baseline_modified": false,
+    "torque_enable_ready_claimed": false,
+    "hardware_deployment_claimed": false,
+    "pinocchio_jacobian_executed": false,
+    "audit_only": true
+  },
+  "notes": [
+    "This stage audits model resources only.",
+    "It does not execute MuJoCo torque or ROS torque publishing.",
+    "The next stage should replace the Stage 15.4 synthetic Jacobian map with the selected real model if readiness is sufficient."
+  ]
+}

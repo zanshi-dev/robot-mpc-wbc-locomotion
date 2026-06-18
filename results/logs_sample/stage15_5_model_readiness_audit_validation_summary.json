@@ -1,0 +1,78 @@
+{
+  "stage": "15.5",
+  "validation_pass": true,
+  "selected_model": "assets/go1/urdf/go1.urdf",
+  "model_type": "urdf",
+  "controlled_joint_count": 12,
+  "foot_candidate_count": 4,
+  "mapped_joint_count": 10,
+  "mapped_foot_count": 4,
+  "ready_for_real_model_jacobian_stage": true,
+  "checks": [
+    {
+      "check": "audit_completed",
+      "passed": true,
+      "details": "audit script finished"
+    },
+    {
+      "check": "model_file_count_positive",
+      "passed": true,
+      "details": "model_file_count=4"
+    },
+    {
+      "check": "selected_model_exists",
+      "passed": true,
+      "details": "selected_model=assets/go1/urdf/go1.urdf"
+    },
+    {
+      "check": "controlled_joint_count_at_least_12",
+      "passed": true,
+      "details": "controlled_joint_count=12"
+    },
+    {
+      "check": "foot_candidates_at_least_4",
+      "passed": true,
+      "details": "foot_candidate_count=4"
+    },
+    {
+      "check": "inferred_joint_order_nonempty",
+      "passed": true,
+      "details": "mapped_joint_count=10"
+    },
+    {
+      "check": "inferred_foot_mapping_nonempty",
+      "passed": true,
+      "details": "mapped_foot_count=4"
+    },
+    {
+      "check": "audit_only_boundary",
+      "passed": true,
+      "details": "audit_only must remain true"
+    },
+    {
+      "check": "no_mujoco_torque",
+      "passed": true,
+      "details": "MuJoCo torque must not be used"
+    },
+    {
+      "check": "no_ros_publisher",
+      "passed": true,
+      "details": "ROS torque publisher must not be used"
+    },
+    {
+      "check": "baseline_not_modified",
+      "passed": true,
+      "details": "frozen mixed baseline must remain untouched"
+    },
+    {
+      "check": "no_hardware_claim",
+      "passed": true,
+      "details": "no hardware deployment claim"
+    },
+    {
+      "check": "no_torque_enable_claim",
+      "passed": true,
+      "details": "no torque-enable claim"
+    }
+  ]
+}
