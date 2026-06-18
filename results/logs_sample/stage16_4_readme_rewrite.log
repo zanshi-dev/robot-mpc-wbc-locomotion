@@ -1,0 +1,23 @@
+[Stage 16.4] README rewrite validation
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+python: /usr/bin/python3
+timestamp_utc: 2026-06-18T02:59:16Z
+
+PASS: readme_exists -- /home/zanshi/robot-mpc-wbc-locomotion/README.md
+PASS: project_title -- title present
+PASS: chinese_primary_positioning -- Chinese positioning
+PASS: standard_terms_mpc_wbc_qp_pd -- standard control terms
+PASS: standard_tools -- standard tool terms
+PASS: first_appearance_examples -- Chinese + English + abbreviation examples
+PASS: artifact_index_link -- artifact index link
+PASS: stage15_summary_link -- Stage 15 summary link
+PASS: ros2_cpp_evidence -- ROS2/C++ evidence
+PASS: pinocchio_jtf_evidence -- Pinocchio JTF evidence
+PASS: mujoco_smoke_evidence -- MuJoCo smoke test evidence
+PASS: no_stage16_3_public_material -- 16.3 personal material not linked
+PASS: no_hardware_claim -- hardware boundary
+PASS: no_torque_enable_claim -- torque-enable boundary
+PASS: no_stable_locomotion_claim -- stable locomotion boundary
+PASS: no_full_mpc_wbc_claim -- full MPC-WBC boundary
+PASS: no_old_mixed_phrases -- old mixed phrases removed
+stage16_4_result: pass

@@ -1,0 +1,91 @@
+{
+  "stage": "16.4",
+  "validation_pass": true,
+  "checks": [
+    {
+      "check": "readme_exists",
+      "passed": true,
+      "details": "/home/zanshi/robot-mpc-wbc-locomotion/README.md"
+    },
+    {
+      "check": "project_title",
+      "passed": true,
+      "details": "title present"
+    },
+    {
+      "check": "chinese_primary_positioning",
+      "passed": true,
+      "details": "Chinese positioning"
+    },
+    {
+      "check": "standard_terms_mpc_wbc_qp_pd",
+      "passed": true,
+      "details": "standard control terms"
+    },
+    {
+      "check": "standard_tools",
+      "passed": true,
+      "details": "standard tool terms"
+    },
+    {
+      "check": "first_appearance_examples",
+      "passed": true,
+      "details": "Chinese + English + abbreviation examples"
+    },
+    {
+      "check": "artifact_index_link",
+      "passed": true,
+      "details": "artifact index link"
+    },
+    {
+      "check": "stage15_summary_link",
+      "passed": true,
+      "details": "Stage 15 summary link"
+    },
+    {
+      "check": "ros2_cpp_evidence",
+      "passed": true,
+      "details": "ROS2/C++ evidence"
+    },
+    {
+      "check": "pinocchio_jtf_evidence",
+      "passed": true,
+      "details": "Pinocchio JTF evidence"
+    },
+    {
+      "check": "mujoco_smoke_evidence",
+      "passed": true,
+      "details": "MuJoCo smoke test evidence"
+    },
+    {
+      "check": "no_stage16_3_public_material",
+      "passed": true,
+      "details": "16.3 personal material not linked"
+    },
+    {
+      "check": "no_hardware_claim",
+      "passed": true,
+      "details": "hardware boundary"
+    },
+    {
+      "check": "no_torque_enable_claim",
+      "passed": true,
+      "details": "torque-enable boundary"
+    },
+    {
+      "check": "no_stable_locomotion_claim",
+      "passed": true,
+      "details": "stable locomotion boundary"
+    },
+    {
+      "check": "no_full_mpc_wbc_claim",
+      "passed": true,
+      "details": "full MPC-WBC boundary"
+    },
+    {
+      "check": "no_old_mixed_phrases",
+      "passed": true,
+      "details": "old mixed phrases removed"
+    }
+  ]
+}

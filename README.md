@@ -1,364 +1,377 @@
 # robot-mpc-wbc-locomotion
 
-这是一个 Go1 风格四足机器人运动控制项目。项目当前只面向仿真验证，重点是把四足机器人运动控制中容易出错的部分逐步拆开、验证清楚，再组合成一条稳定、可复现的控制链路。
+Go1 风格四足机器人运动控制仿真项目。项目聚焦 **MuJoCo 仿真、Pinocchio 运动学/动力学、MPC/WBC 候选力矩、ROS2/C++ 工程化测试和结果证据归档**。
 
-项目最初以 `mixed_online_control_baseline` 作为稳定基线：站立腿姿态 PD 提供基础稳定性，缩放后的 WBC 前馈提供动力学补偿，摆动腿 PD 负责轨迹跟踪。在此基础上，项目进一步加入了 MPC 接触力规划，并完成了 MPC 与 WBC/QP 候选链路的仿真验证。
+本仓库当前定位为：**仅限仿真验证的四足机器人控制链路工程项目**。项目不声明真实机器人部署，不声明已具备力矩使能条件，也不声明完整 MPC-WBC 闭环稳定行走已经完成。
 
-当前 MPC 升级的定位是：MPC 负责生成接触力参考或接触力候选，WBC/QP 或 `J^T f` 映射层再把接触力候选转换为关节力矩候选。所有结果仍然限定在 MuJoCo 和离线仿真证据范围内。
+---
 
-本仓库不声明真实机器人部署完成，不声明 torque-enable ready，也不发布真实机器人关节力矩命令。
+## 1. 项目定位
 
-## 1. 项目目标
+本项目用于学习和展示四足机器人运动控制系统的核心链路：
 
-本项目围绕四足机器人运动控制搭建完整控制架构：
+```text
+MuJoCo 仿真状态
+-> 状态映射
+-> Pinocchio 运动学/动力学计算
+-> 步态调度与接触规划
+-> PD / WBC / QP / MPC 候选控制链路
+-> 接触力到关节力矩候选映射
+-> 力矩安全限幅
+-> MuJoCo 仿真验证与结果归档
+```
 
-- MuJoCo 仿真环境
-- Pinocchio 运动学与动力学模型
-- MuJoCo 与 Pinocchio 状态映射
-- 步态调度器
-- 接触规划器
-- 摆腿轨迹生成器
-- MPC 接触力规划
-- 接触力 QP / WBC QP
-- 接触力到关节力矩候选的映射
-- 站立腿姿态 PD 与摆动腿 PD 跟踪
-- 力矩安全限幅
-- ROS2/C++ 零输出干运行证据
-- MuJoCo 离屏渲染演示视频
+当前最稳定的控制基线仍然是 `mixed_online_control_baseline`：
 
-项目采用阶段化路线，不直接跳到真实硬件控制器。四足机器人系统高度耦合，状态映射、接触模式、接触力方向、雅可比矩阵、QP 约束、控制增益和力矩发布路径中任一环节出错，都可能表现为机器人倒下或力矩异常。因此项目先把每个模块拆开验证，再组合成可回归的仿真基线。
+```text
+站立腿姿态 PD
++ 缩放后的站立腿 WBC 前馈
++ 基于记忆目标的摆动腿 PD
+```
 
-## 2. 控制架构
+Stage 15/16 新增内容主要是工程证据链：C++ 测试、接触力约束、Pinocchio `J^T f` 候选力矩、MuJoCo joint/actuator 兼容性审计、bounded torque smoke test、公开文档同步和 artifact index。
 
-系统闭环可以概括为：
+---
 
-    MuJoCo 仿真状态
-    -> 状态读取与 MuJoCo-Pinocchio 映射
-    -> 步态调度
-    -> 接触规划
-    -> MPC 接触力参考规划
-    -> 站立腿 / 摆动腿分流
-    -> 接触力 QP / WBC QP
-    -> 摆腿轨迹生成
-    -> 接触力到关节力矩候选映射
-    -> 力矩混合
-    -> 站立腿姿态 PD + 缩放后的 WBC 前馈 + 摆动腿 PD
-    -> 力矩安全限幅
-    -> MuJoCo 仿真步进
+## 2. 当前可以声明的内容
 
-更详细的架构说明见：
+当前仓库支持以下说法：
 
-- `docs/CONTROL_ARCHITECTURE_OVERVIEW.md`
-- `docs/interview/INTERVIEW_3MIN_SYSTEM_EXPLANATION.md`
+- 已完成 MuJoCo 四足机器人仿真链路的基础验证；
+- 已完成 Pinocchio 运动学/动力学相关候选链路；
+- 已完成步态调度、接触规划、摆腿轨迹和力矩安全限幅等控制模块；
+- 已完成 ROS2/C++ 控制算法模块的 `colcon build/test` 工程化验证；
+- 已完成 C++ contact force QP demo，用于验证接触模式、支撑腿法向力、摆动腿零接触力和摩擦约束；
+- 已完成 contact force 到 torque candidate 的 dry-run 和 alpha sweep；
+- 已完成 Pinocchio foot Jacobian 下的 `J^T f` torque candidate 验证；
+- 已完成 MuJoCo joint/actuator compatibility audit；
+- 已完成 bounded MuJoCo torque smoke test 和 short-horizon policy comparison；
+- 已完成 Stage 15 总结报告、公开文档同步和 artifact index。
 
-## 3. WBC/QP 设计
-
-项目中的浮动基 WBC/QP 原型主要使用三类变量：
-
-- `qdd`：广义加速度
-- `contact force`：足端接触力
-- `tau`：12 维关节力矩候选
-
-目标项包括：
-
-- 机身任务
-- 摆动足任务
-- 正则化项
-
-约束包括：
-
-- 浮动基动力学约束
-- 站立接触约束
-- 非接触腿接触力约束
-- 摩擦锥 / 摩擦金字塔约束
-- 关节力矩上限
-
-项目没有把 full WBC 直接包装成最终控制器。实验中，直接叠加 full WBC 力矩与摆腿 PD 力矩会导致姿态和关节误差变差；只使用 stance-only WBC 加 swing-only PD 也不能完全替代姿态反馈。因此最终采用混合结构：站立腿姿态 PD 提供基础稳定性，缩放后的 WBC 前馈提供动力学补偿，摆动腿 PD 负责轨迹跟踪。
-
-详细解释见：
-
-- `docs/WBC_QP_EXPLAINED.md`
-
-## 4. Baseline 与 MPC 升级
-
-最终稳定基线：
-
-    mixed_online_control_baseline
-
-控制结构：
-
-    站立腿姿态 PD
-    + 缩放后的站立腿 WBC 前馈
-    + 基于记忆目标的摆动腿 PD
-
-该基线的特点是：
-
-- 站立腿保留姿态 PD，保证基础稳定
-- WBC 力矩只以较小比例作用于站立腿，作为前馈补偿
-- 摆动腿使用基于记忆的摆腿目标和 PD 跟踪
-- 站立腿力矩与摆动腿力矩不错误混合
-- 通过 1200-step 和 2400-step 仿真回归
-
-在这个基线之外，项目加入了 MPC 接触力规划。MPC 不直接输出关节力矩，而是生成接触力参考或接触力候选；随后由 WBC/QP 或 `J^T f` 映射层生成关节力矩候选。
-
-MPC 辅助候选链路只用于仿真验证，不修改冻结版 mixed baseline，不接 ROS 力矩发布器，也不发送真实机器人力矩命令。
-
-## 5. 关键结果
-
-1200-step mixed baseline 回归：
-
-- total_steps: 1200
-- transition_count: 5
-- qp_fail_steps: 0
-- saturation_steps: 0
-- min_z: 0.278419161322
-- max_abs_roll: 0.056707402709
-- max_abs_pitch: 0.048329482530
-- max_joint_error: 0.077233662573
-- max_tau_total_abs: 9.659563043535
-- pass: true
-
-2400-step mixed baseline 鲁棒性回归：
-
-- total_steps: 2400
-- transition_count: 11
-- trot_FR_RL_steps: 1200
-- trot_FL_RR_steps: 1200
-- qp_fail_steps: 0
-- saturation_steps: 0
-- min_z: 0.274552192756
-- max_abs_roll: 0.056707402709
-- max_abs_pitch: 0.048329482530
-- max_joint_error: 0.077233662573
-- max_tau_total_abs: 9.659563043535
-- pass: true
-
-
-MPC 辅助候选链路 2400-step 仿真：
-
-- candidate_scale: 0.05
-- total_steps: 2400
-- qp_fail_steps: 0
-- saturation_steps: 0
-- min_z: 0.276975761939
-- max_abs_roll: 0.102952660101
-- max_abs_pitch: 0.053162351948
-- max_tau_total_abs: 10.019186119959
-- max_tau_candidate_scaled_abs: 0.972125472365
-- pass: true
-
-MPC 辅助候选链路鲁棒性包络：
-
-- 已验证候选比例: 0.00 / 0.02 / 0.05 / 0.10
-- 正比例候选仿真: 0.02 / 0.05 / 0.10
-- validated_candidate_scale_max_simulation_only: 0.10
-- min_z_min_over_entries: 0.273040429683
-- max_abs_roll_max_over_entries: 0.102952660101
-- max_abs_pitch_max_over_entries: 0.077452968358
-- max_tau_total_abs_max_over_entries: 10.59512016256
-- max_tau_candidate_scaled_abs_max_over_candidate_runs: 1.94425094473
-- total_qp_fail_steps: 0
-- total_saturation_steps: 0
-
-报告级结果见：
-
-- `docs/ONE_PAGE_TECHNICAL_REPORT.md`
-- `docs/REPORT_READY_RESULTS.md`
-- `docs/FINAL_PACKAGE_WITH_DEMO_VIDEO_MANIFEST.md`
-
-## 6. Demo video
-
-演示视频不是 GUI 录屏，而是通过以下方式生成：
-
-    MuJoCo 离屏渲染
-    + 控制策略 rollout
-    + 原始 RGB 管线写入 ffmpeg
-
-视频文件：
-
-    demo_videos/stage13_5a_r2_mujoco_offscreen_2400step_mixed_baseline_demo_720p.mp4
-
-视频证据：
-
-- resolution: 1280x720
-- fps: 30
-- duration: 20.000000 s
-- frames: 600
-- rollout_total_steps: 2400
-- rollout_pass: true
-- sha256: c9fb4241bd9a64f805f2e66ccf487fd683dfaadb1d23d17e8fa46a51073114d1
-
-视频证据清单：
-
-- `docs/DEMO_VIDEO_MANIFEST.md`
-
-重新生成视频：
-
-    /usr/bin/python3 scripts/stage13_5a_r2_mujoco_offscreen_rollout_video_fixed_ffmpeg.py
-
-冻结视频证据：
-
-    /usr/bin/python3 scripts/stage13_5b_demo_video_evidence_freeze.py
-
-## 7. C++ control algorithm modules
-
-项目补充了干净、可编译、可测试的 C++ 控制算法模块：
-
-- 步态调度器
-- 摆腿轨迹生成器
-- torque safety filter
-
-路径：
-
-    ros2_ws/src/robot_mpc_wbc_cpp_controller/include/robot_mpc_wbc_cpp_controller/control/
-    ros2_ws/src/robot_mpc_wbc_cpp_controller/src/control/
-    ros2_ws/src/robot_mpc_wbc_cpp_controller/test/test_control_algorithms.cpp
-
-这些模块不发布 torque、不接入硬件，只用于展示控制算法的 C++ 工程化表达。它们比一次性迁移完整控制器更清楚，也更适合作为后续 ROS2/C++ realtime controller 的基础模块。
-
-独立编译测试：
-
-    g++ -std=c++17 -Wall -Wextra -Werror \
-      -I ros2_ws/src/robot_mpc_wbc_cpp_controller/include \
-      ros2_ws/src/robot_mpc_wbc_cpp_controller/src/control/gait_scheduler.cpp \
-      ros2_ws/src/robot_mpc_wbc_cpp_controller/src/control/swing_trajectory.cpp \
-      ros2_ws/src/robot_mpc_wbc_cpp_controller/src/control/torque_safety_filter.cpp \
-      ros2_ws/src/robot_mpc_wbc_cpp_controller/test/test_control_algorithms.cpp \
-      -o /tmp/test_control_algorithms
-
-    /tmp/test_control_algorithms
-
-说明文档：
-
-- `docs/CPP_CONTROL_ALGORITHMS.md`
-
-## 8. simulation-only 边界
-
-当前项目不声明：
-
-- MPC 直接输出关节力矩
-
-- hardware deployment completed
-- actuator enablement completed
-- real robot torque execution completed
-- torque_enable_ready=True
-- realtime hardware controller completed
-
-当前证据只支持：
-
-- simulation-only locomotion baseline
-- MuJoCo/Pinocchio control prototype
-- ROS2/C++ zero-safe dry-run publisher evidence
-- report-ready result package
-- MuJoCo 离屏渲染演示视频
-
-## 9. 推荐阅读顺序
-
-面试或快速审阅时，建议按下面顺序看：
-
-1. `README.md`
-2. `docs/ONE_PAGE_TECHNICAL_REPORT.md`
-3. `docs/CONTROL_ARCHITECTURE_OVERVIEW.md`
-4. `docs/WBC_QP_EXPLAINED.md`
-5. `docs/interview/INTERVIEW_3MIN_SYSTEM_EXPLANATION.md`
-6. `docs/CPP_CONTROL_ALGORITHMS.md`
-7. `docs/FINAL_PACKAGE_WITH_DEMO_VIDEO_MANIFEST.md`
-
-## 10. 后续计划
-
-后续优先方向不是继续堆更多日志，而是继续增强系统可解释性和工程化质量：
-
-- 将 C++ gait scheduler / swing trajectory / torque safety filter 接入 ROS2 package 的 CMake 测试体系
-- 补 contact force QP 的 C++ demo
-- 把 swing target 更系统地纳入 WBC QP
-- 加入 base velocity tracking
-- 加入 touchdown/liftoff feedback
-- 后续再考虑 EKF 和更完整的 centroidal MPC
-
-所有后续工作仍应先保持 simulation-only。
-
-<!-- STAGE14_4E_MPC_ENTRY_BEGIN -->
-
-## 已补充：MPC 规划层 demo
-
-项目已补充一个仿真内 standalone simplified 3D base velocity tracking receding-horizon MPC demo，用于展示 planning-layer / contact-force MPC 的接触力优化能力。
-
-该模块使用简化质心动力学，状态为 `x = [px, py, pz, vx, vy, vz]`，优化变量为四足三维接触力。每个 rollout step 都会基于当前状态重新求解有限时域 QP，只应用第一帧接触力 `u0`，再推进简化质心状态。
-
-已完成内容：
-
-- standalone Python MPC solver
-- 100-step receding-horizon rollout
-- rollout CSV 和 summary JSON 记录
-- OSQP 求解状态、摆动腿力、支撑腿力、摩擦约束、速度跟踪和高度误差验证
-- 与早期 z-MPC prototype、WBC feedforward 的边界关系说明
-
-当前边界：
-
-- MPC 只属于 planning-layer / contact-force MPC demo
-- 不是 WBC
-- 不直接输出 joint torque
-- 不接 ROS torque publisher
-- 不接 MuJoCo torque
-- 不改变 frozen mixed baseline 控制律
-- 项目范围仍保持 simulation-only
-
-相关文件：
-
-- `scripts/stage14_4_base_velocity_tracking_mpc_demo.py`
-- `scripts/stage14_4b_validate_base_velocity_mpc_rollout.py`
-- `docs/stage14_4_base_velocity_tracking_mpc.md`
-- `docs/stage14_4b_base_velocity_tracking_mpc_validation.md`
-- `docs/stage14_4c_mpc_scope_explanation.md`
-
-<!-- STAGE14_4E_MPC_ENTRY_END -->
-
-<!-- STAGE16_1_PUBLIC_DOCS_SYNC_START -->
-## Stage 15 工程化升级证据
-
-Stage 15 的目标不是直接宣称稳定行走或真实机器人部署，而是把控制链路中的工程证据逐层补齐。当前已完成的证据包括：
-
-| 阶段 | 结果 | 边界 |
-|---|---|---|
-| Stage 15.1 | ROS2/C++ control algorithms 接入 CMake/GTest，支持 `colcon build/test` | 不发布 torque，不接硬件 |
-| Stage 15.2 | C++ contact force QP demo，验证接触模式、法向力和摩擦约束 | 不引入 OSQP C++ 依赖，不执行机器人 torque |
-| Stage 15.3 | contact force 到 nominal torque candidate 的 dry-run 和 alpha sweep | 不使用真实 Pinocchio Jacobian，不接 MuJoCo torque |
-| Stage 15.4 | Pinocchio Jacobian 下的 `J^T f` torque candidate dry-run | 不接 MuJoCo torque，不接 ROS torque |
-| Stage 15.5 | 模型资源 readiness audit，审计 MJCF/URDF/Xacro、关节名和足端 frame 候选 | 只做模型审计 |
-| Stage 15.6 | real-model metadata / URDF 路径下的 Pinocchio Jacobian candidate rollout | 若使用 MJCF fallback，不声明完整真实几何模型 |
-| Stage 15.7 | MuJoCo joint/actuator compatibility audit | 只调用 `mj_forward`，不执行 torque |
-| Stage 15.8 | bounded MuJoCo torque smoke test | 短时域、低幅值，只验证 actuator command path |
-| Stage 15.9 | Stage 15.6 `J^T f` torque candidate 低 alpha 注入 MuJoCo smoke test | 不声明稳定行走或 MPC-WBC 闭环成功 |
-| Stage 15.10 | zero ctrl / deterministic waveform / `J^T f` candidate 的短时域 safety comparison | 只比较安全和兼容性指标 |
-| Stage 15.11 | Stage 15 总结报告 | 整理证据与边界，不新增控制功能 |
-
-可声明内容：
-
-- ROS2/C++ 控制算法模块已具备构建和单元测试证据；
-- 接触力约束、候选力矩、Pinocchio Jacobian、MuJoCo joint/actuator 映射已经形成分阶段验证链路；
-- MuJoCo 中已经完成 bounded actuator command smoke test 和 short-horizon comparison；
-- 所有 Stage 15 结果均有日志或 JSON/CSV 结果归档到 `results/logs_sample/`。
-
-不能声明内容：
-
-- 不声明稳定行走；
-- 不声明完整 MPC-WBC closed-loop locomotion controller；
-- 不声明真实机器人部署；
-- 不声明 ROS torque publisher 可直接用于硬件；
-- 不声明 `torque_enable_ready=True`；
-- 不声明实时硬件控制器完成。
-
-完整 Stage 15 总结见：`docs/STAGE15_UPGRADE_SUMMARY.md`。
-<!-- STAGE16_1_PUBLIC_DOCS_SYNC_END -->
-
-<!-- STAGE16_2_ARTIFACT_INDEX_START -->
-## Evidence artifact index
-
-Stage 15/16 scripts, validation logs, JSON/CSV results and documentation are indexed in:
+完整证据索引见：
 
 ```text
 docs/ARTIFACT_INDEX.md
 ```
 
-Use this index when reviewing the repository or preparing for interview deep dives.
-<!-- STAGE16_2_ARTIFACT_INDEX_END -->
+---
+
+## 3. 当前不能声明的内容
+
+当前仓库不支持以下说法：
+
+- 不声明真实机器人部署；
+- 不声明已具备力矩使能条件；
+- 不声明 `torque_enable_ready=True`；
+- 不声明 ROS torque publisher 可以直接用于真实硬件；
+- 不声明实时硬件控制器已经完成；
+- 不声明完整 MPC-WBC closed-loop locomotion controller 已经完成；
+- 不声明 Stage 15 的 bounded torque smoke test 证明了稳定行走；
+- 不声明 MPC/WBC 已通过完整 locomotion 对照实验证明优于 baseline。
+
+更准确的表述是：
+
+> 项目完成了仅限仿真验证的四足机器人运动控制链路工程化升级，包括 ROS2/C++ 测试、contact force QP、Pinocchio `J^T f` 候选力矩、MuJoCo actuator compatibility、bounded torque smoke test、结果归档和公开文档同步。
+
+---
+
+## 4. 技术栈
+
+| 模块 | 说明 |
+|---|---|
+| MuJoCo | 机器人仿真环境和 actuator command smoke test |
+| Pinocchio | 运动学、Jacobian 和 `J^T f` 候选力矩计算 |
+| OSQP | Python 侧 QP 求解与 MPC/QP 原型验证 |
+| NumPy / SciPy sparse | 数值计算与稀疏矩阵处理 |
+| ROS2 Jazzy | ROS2/C++ package、节点结构和构建测试 |
+| C++17 | 控制算法模块、GTest、contact force QP demo |
+| Python | 仿真脚本、验证脚本、日志生成和文档同步 |
+
+---
+
+## 5. 控制链路概览
+
+### 5.1 基础控制链路
+
+```text
+MuJoCo 当前状态
+-> 状态读取与 MuJoCo-Pinocchio 映射
+-> 步态调度器
+-> 接触规划器
+-> 摆腿轨迹生成器
+-> PD / WBC / QP 候选控制
+-> 关节力矩候选
+-> 力矩安全限幅
+-> MuJoCo 推进下一步仿真
+```
+
+### 5.2 mixed baseline
+
+当前稳定基线是：
+
+```text
+站立腿姿态 PD
++ 小比例站立腿 WBC 前馈
++ 基于记忆目标的摆动腿 PD
+```
+
+该基线的作用：
+
+- 站立腿姿态 PD 提供基础稳定性；
+- WBC 前馈提供小比例动力学补偿；
+- 摆动腿 PD 跟踪记忆摆腿目标；
+- 力矩安全限幅避免候选力矩越界；
+- 后续 MPC/WBC 候选链路都以该基线作为参照，不直接替代它。
+
+### 5.3 Stage 15 候选力矩链路
+
+Stage 15 新增的候选力矩链路可以概括为：
+
+```text
+contact force candidate
+-> Pinocchio foot Jacobian
+-> J^T f torque candidate
+-> MuJoCo joint/actuator mapping
+-> bounded low-alpha actuator command
+-> short-horizon smoke test
+```
+
+这条链路证明候选力矩路径可以被审计和短时域测试，但不等价于完整稳定 locomotion controller。
+
+---
+
+## 6. Stage 15/16 升级摘要
+
+| 阶段 | 内容 | 当前状态 |
+|---|---|---|
+| Stage 15.1 | ROS2/C++ control algorithms 接入 CMake/GTest | 完成 |
+| Stage 15.2 | C++ contact force QP demo | 完成 |
+| Stage 15.3 | contact force -> nominal torque candidate dry-run | 完成 |
+| Stage 15.4 | Pinocchio Jacobian candidate rollout | 完成 |
+| Stage 15.5 | model readiness audit | 完成 |
+| Stage 15.6 | real-model / model-metadata Jacobian candidate rollout | 完成 |
+| Stage 15.7 | MuJoCo candidate compatibility audit | 完成 |
+| Stage 15.8 | bounded MuJoCo torque smoke test | 完成 |
+| Stage 15.9 | `J^T f` candidate low-alpha MuJoCo injection | 完成 |
+| Stage 15.10 | short-horizon policy comparison | 完成 |
+| Stage 15.11 | Stage 15 summary report | 完成 |
+| Stage 16.1 | public docs sync | 完成 |
+| Stage 16.2 | artifact index | 完成 |
+
+
+---
+
+## 7. 关键目录
+
+```text
+robot-mpc-wbc-locomotion/
+├── assets/                         # MuJoCo / robot model assets
+├── docs/                           # 技术文档与阶段报告
+├── results/logs_sample/            # 验证日志、JSON、CSV 结果
+├── ros2_ws/                        # ROS2 工作区
+│   └── src/robot_mpc_wbc_cpp_controller/
+├── scripts/                        # Python / shell 验证脚本
+├── README.md
+├── PROJECT_STATUS.md
+└── requirements.txt
+```
+
+重点文件：
+
+```text
+docs/ARTIFACT_INDEX.md
+docs/STAGE15_UPGRADE_SUMMARY.md
+docs/ONE_PAGE_TECHNICAL_REPORT.md
+results/logs_sample/
+```
+
+---
+
+## 8. ROS2/C++ 控制算法模块
+
+ROS2/C++ package：
+
+```text
+ros2_ws/src/robot_mpc_wbc_cpp_controller/
+```
+
+已纳入 CMake/GTest 的模块包括：
+
+- gait scheduler；
+- swing trajectory；
+- torque safety filter；
+- contact force QP demo。
+
+验证命令：
+
+```bash
+bash scripts/stage15_1_validate_ros2_cpp_controller.sh
+bash scripts/stage15_2_validate_contact_force_qp.sh
+```
+
+验证目标：
+
+```text
+colcon build pass
+colcon test pass
+GTest pass
+validation log archived
+```
+
+---
+
+## 9. MuJoCo / Pinocchio 候选链路
+
+Stage 15 中，项目逐步验证了：
+
+```text
+contact force candidate
+-> Pinocchio foot Jacobian
+-> J^T f torque candidate
+-> MuJoCo joint/actuator compatibility
+-> bounded MuJoCo actuator command smoke test
+```
+
+相关验证脚本：
+
+```text
+scripts/stage15_4_validate_pinocchio_jacobian_candidate_rollout.sh
+scripts/stage15_5_validate_model_readiness_audit.sh
+scripts/stage15_6_validate_real_model_jacobian_candidate_rollout.sh
+scripts/stage15_7_validate_mujoco_candidate_compatibility_audit.sh
+scripts/stage15_8_validate_mujoco_torque_smoke_test.sh
+scripts/stage15_9_validate_mujoco_jtf_candidate_injection.sh
+scripts/stage15_10_validate_mujoco_torque_smoke_policy_comparison.sh
+```
+
+这些脚本只支持短时域、低幅值、工程验证性质的结论，不支持稳定行走结论。
+
+---
+
+## 10. 结果与日志
+
+所有阶段性结果归档在：
+
+```text
+results/logs_sample/
+```
+
+主要结果类型：
+
+- `.log`：终端验证日志；
+- `.json`：机器可读 summary / validation summary；
+- `.csv`：rollout 或 validation 表格结果。
+
+证据索引：
+
+```bash
+bash scripts/stage16_2_validate_artifact_index.sh
+```
+
+通过标志：
+
+```text
+stage16_2_result: pass
+```
+
+---
+
+## 11. 推荐审阅顺序
+
+建议按以下顺序查看项目：
+
+1. `README.md`
+2. `docs/ONE_PAGE_TECHNICAL_REPORT.md`
+3. `docs/STAGE15_UPGRADE_SUMMARY.md`
+4. `docs/ARTIFACT_INDEX.md`
+5. `docs/CONTROL_ARCHITECTURE_OVERVIEW.md`
+6. `docs/WBC_QP_EXPLAINED.md`
+7. `results/logs_sample/`
+8. `ros2_ws/src/robot_mpc_wbc_cpp_controller/`
+9. `scripts/`
+
+---
+
+## 12. 复现与验证
+
+### 12.1 ROS2/C++ 测试
+
+```bash
+bash scripts/stage15_1_validate_ros2_cpp_controller.sh
+bash scripts/stage15_2_validate_contact_force_qp.sh
+```
+
+### 12.2 Pinocchio / MuJoCo 候选链路验证
+
+```bash
+bash scripts/stage15_6_validate_real_model_jacobian_candidate_rollout.sh
+bash scripts/stage15_7_validate_mujoco_candidate_compatibility_audit.sh
+bash scripts/stage15_8_validate_mujoco_torque_smoke_test.sh
+bash scripts/stage15_9_validate_mujoco_jtf_candidate_injection.sh
+bash scripts/stage15_10_validate_mujoco_torque_smoke_policy_comparison.sh
+```
+
+### 12.3 文档和证据索引验证
+
+```bash
+bash scripts/stage15_11_validate_stage15_summary_report.sh
+bash scripts/stage16_1_validate_public_docs_sync.sh
+bash scripts/stage16_2_validate_artifact_index.sh
+```
+
+---
+
+## 13. 面试表述建议
+
+推荐表述：
+
+> 这个项目是一个仅限仿真验证的四足机器人运动控制链路工程项目。我主要完成了 MuJoCo/Pinocchio 控制链路、ROS2/C++ 控制算法测试、contact force QP、Pinocchio `J^T f` torque candidate、MuJoCo actuator compatibility audit 和 bounded torque smoke test。当前结果证明的是控制链路和工程验证能力，不声明真实机器人部署，也不声明完整 MPC-WBC 闭环稳定行走已经完成。
+
+不推荐表述：
+
+> 我已经完成了真实机器人部署。  
+> MPC-WBC 已经完整闭环稳定行走。  
+> ROS torque publisher 可以直接用于硬件。  
+> `torque_enable_ready=True`。
+
+---
+
+## 14. 术语规范
+
+本仓库采用以下写法：
+
+- 正文以中文技术叙述为主；
+- 标准英文缩写保留，例如 MPC、WBC、QP、PD、EKF、ROS2；
+- 工具和库名保留英文，例如 MuJoCo、Pinocchio、OSQP、CMake、GTest；
+- 代码标识符、路径、脚本名、类名和函数名不翻译；
+- 首次出现的重要术语使用“中文名 + 英文全称 + 缩写”；
+- 避免在同一句话内无必要混用中英文。
+
+示例：
+
+```text
+模型预测控制（Model Predictive Control, MPC）用于生成接触力候选。
+全身控制（Whole-Body Control, WBC）和二次规划（Quadratic Programming, QP）用于构造候选力矩或约束优化问题。
+比例-微分控制（Proportional-Derivative Control, PD）用于基础姿态和摆腿跟踪。
+```
+
+---
+
+## 15. 项目当前结论
+
+当前项目已经完成本轮面向实习面试的升级。
+
+准确结论：
+
+```text
+完成了 simulation-only 四足机器人控制链路的工程化升级：
+ROS2/C++ 测试、contact force QP、Pinocchio J^T f candidate、MuJoCo actuator compatibility、bounded torque smoke test、结果归档、公开文档同步和 artifact index。
+```
+
+边界结论：
+
+```text
+尚未完成真实机器人部署；
+尚未完成完整 MPC-WBC closed-loop 稳定行走；
+尚未声明 torque_enable_ready=True。
+```

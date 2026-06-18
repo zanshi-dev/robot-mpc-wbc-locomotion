@@ -1,0 +1,18 @@
+check,passed,details
+readme_exists,True,/home/zanshi/robot-mpc-wbc-locomotion/README.md
+project_title,True,title present
+chinese_primary_positioning,True,Chinese positioning
+standard_terms_mpc_wbc_qp_pd,True,standard control terms
+standard_tools,True,standard tool terms
+first_appearance_examples,True,Chinese + English + abbreviation examples
+artifact_index_link,True,artifact index link
+stage15_summary_link,True,Stage 15 summary link
+ros2_cpp_evidence,True,ROS2/C++ evidence
+pinocchio_jtf_evidence,True,Pinocchio JTF evidence
+mujoco_smoke_evidence,True,MuJoCo smoke test evidence
+no_stage16_3_public_material,True,16.3 personal material not linked
+no_hardware_claim,True,hardware boundary
+no_torque_enable_claim,True,torque-enable boundary
+no_stable_locomotion_claim,True,stable locomotion boundary
+no_full_mpc_wbc_claim,True,full MPC-WBC boundary
+no_old_mixed_phrases,True,old mixed phrases removed
