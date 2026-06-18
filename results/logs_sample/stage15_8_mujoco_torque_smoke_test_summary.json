@@ -1,0 +1,165 @@
+{
+  "stage": "15.8",
+  "name": "mujoco_torque_smoke_test",
+  "mujoco_imported": true,
+  "mujoco_import_error": "",
+  "mujoco_model_loaded": true,
+  "mjcf_model_path": "assets/go1/go1.xml",
+  "nq": 19,
+  "nv": 18,
+  "nu": 12,
+  "mapped_actuator_count": 12,
+  "actuator_map": [
+    {
+      "candidate_order": 0,
+      "actuator_id": 0,
+      "actuator_name": "FR_hip",
+      "joint_name": "FR_hip_joint"
+    },
+    {
+      "candidate_order": 1,
+      "actuator_id": 1,
+      "actuator_name": "FR_thigh",
+      "joint_name": "FR_thigh_joint"
+    },
+    {
+      "candidate_order": 2,
+      "actuator_id": 2,
+      "actuator_name": "FR_calf",
+      "joint_name": "FR_calf_joint"
+    },
+    {
+      "candidate_order": 3,
+      "actuator_id": 3,
+      "actuator_name": "FL_hip",
+      "joint_name": "FL_hip_joint"
+    },
+    {
+      "candidate_order": 4,
+      "actuator_id": 4,
+      "actuator_name": "FL_thigh",
+      "joint_name": "FL_thigh_joint"
+    },
+    {
+      "candidate_order": 5,
+      "actuator_id": 5,
+      "actuator_name": "FL_calf",
+      "joint_name": "FL_calf_joint"
+    },
+    {
+      "candidate_order": 6,
+      "actuator_id": 6,
+      "actuator_name": "RR_hip",
+      "joint_name": "RR_hip_joint"
+    },
+    {
+      "candidate_order": 7,
+      "actuator_id": 7,
+      "actuator_name": "RR_thigh",
+      "joint_name": "RR_thigh_joint"
+    },
+    {
+      "candidate_order": 8,
+      "actuator_id": 8,
+      "actuator_name": "RR_calf",
+      "joint_name": "RR_calf_joint"
+    },
+    {
+      "candidate_order": 9,
+      "actuator_id": 9,
+      "actuator_name": "RL_hip",
+      "joint_name": "RL_hip_joint"
+    },
+    {
+      "candidate_order": 10,
+      "actuator_id": 10,
+      "actuator_name": "RL_thigh",
+      "joint_name": "RL_thigh_joint"
+    },
+    {
+      "candidate_order": 11,
+      "actuator_id": 11,
+      "actuator_name": "RL_calf",
+      "joint_name": "RL_calf_joint"
+    }
+  ],
+  "alphas": [
+    0.0,
+    0.001,
+    0.002,
+    0.005
+  ],
+  "steps_per_alpha": 200,
+  "mj_step_called": true,
+  "mujoco_actuator_command_used": true,
+  "torque_path_smoke_test_only": true,
+  "stable_locomotion_claimed": false,
+  "total_nonzero_ctrl_steps_positive_alpha": 600,
+  "total_nonfinite_steps": 0,
+  "total_saturation_steps": 0,
+  "audit_ctrl_limit": 0.25,
+  "alpha_summaries": [
+    {
+      "alpha": 0.0,
+      "steps": 200,
+      "nonzero_ctrl_steps": 0,
+      "nonfinite_steps": 0,
+      "saturation_steps": 0,
+      "max_abs_ctrl": 0.0,
+      "max_abs_qvel": 17.897079466425232,
+      "min_base_z": -0.5076201852387432,
+      "max_base_z": 0.27083216851478153,
+      "max_ncon": 0
+    },
+    {
+      "alpha": 0.001,
+      "steps": 200,
+      "nonzero_ctrl_steps": 200,
+      "nonfinite_steps": 0,
+      "saturation_steps": 0,
+      "max_abs_ctrl": 0.017999848254608295,
+      "max_abs_qvel": 17.900507947411285,
+      "min_base_z": -0.5076282214246907,
+      "max_base_z": 0.27083112329810977,
+      "max_ncon": 0
+    },
+    {
+      "alpha": 0.002,
+      "steps": 200,
+      "nonzero_ctrl_steps": 200,
+      "nonfinite_steps": 0,
+      "saturation_steps": 0,
+      "max_abs_ctrl": 0.03599969650921659,
+      "max_abs_qvel": 17.904590512570827,
+      "min_base_z": -0.5076438976339859,
+      "max_base_z": 0.27082938944153306,
+      "max_ncon": 0
+    },
+    {
+      "alpha": 0.005,
+      "steps": 200,
+      "nonzero_ctrl_steps": 200,
+      "nonfinite_steps": 0,
+      "saturation_steps": 0,
+      "max_abs_ctrl": 0.08999924127304147,
+      "max_abs_qvel": 17.92130128475677,
+      "min_base_z": -0.507717283587722,
+      "max_base_z": 0.27082474005623397,
+      "max_ncon": 0
+    }
+  ],
+  "boundary": {
+    "mujoco_torque_smoke_test_used": true,
+    "ros_publisher_used": false,
+    "frozen_mixed_baseline_modified": false,
+    "torque_enable_ready_claimed": false,
+    "hardware_deployment_claimed": false,
+    "stable_locomotion_claimed": false,
+    "short_horizon_only": true
+  },
+  "notes": [
+    "This is a short-horizon MuJoCo actuator-command smoke test, not a locomotion controller validation.",
+    "The command is alpha-scaled and clipped to a conservative audit limit.",
+    "No ROS torque publisher or hardware path is used."
+  ]
+}

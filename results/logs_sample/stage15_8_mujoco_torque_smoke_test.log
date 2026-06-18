@@ -1,0 +1,35 @@
+[Stage 15.8] Bounded MuJoCo torque-path smoke test validation
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+python: /usr/bin/python3
+timestamp_utc: 2026-06-18T02:31:22Z
+
+[1/2] Run bounded MuJoCo torque smoke test
+stage15_8_smoke_test_completed: true
+mjcf_model_path: assets/go1/go1.xml
+mapped_actuator_count: 12
+alphas: [0.0, 0.001, 0.002, 0.005]
+total_nonzero_ctrl_steps_positive_alpha: 600
+total_nonfinite_steps: 0
+total_saturation_steps: 0
+output_json: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_8_mujoco_torque_smoke_test_summary.json
+output_csv: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_8_mujoco_torque_smoke_test.csv
+
+[2/2] Validate smoke test outputs
+PASS: mujoco_imported -- 
+PASS: mujoco_model_loaded -- model=assets/go1/go1.xml
+PASS: actuator_count_12 -- mapped_actuator_count=12
+PASS: mj_step_called -- this stage intentionally calls mj_step
+PASS: actuator_command_used -- bounded actuator command path used
+PASS: short_horizon_steps -- steps_per_alpha=200
+PASS: positive_alpha_nonzero_ctrl -- nonzero_positive_alpha=600
+PASS: finite_dynamics -- total_nonfinite_steps=0
+PASS: no_ctrl_saturation -- total_saturation_steps=0
+PASS: ctrl_within_audit_limit -- max_ctrl=0.08999924127304147
+PASS: not_stable_locomotion_claim -- stable locomotion must not be claimed
+PASS: smoke_test_only -- must remain smoke-test only
+PASS: no_ros_publisher -- no ROS torque publisher
+PASS: baseline_unchanged -- frozen mixed baseline unchanged
+PASS: no_hardware_claim -- no hardware claim
+PASS: no_torque_enable_claim -- no torque-enable claim
+PASS: short_horizon_only -- short-horizon only
+stage15_8_result: pass

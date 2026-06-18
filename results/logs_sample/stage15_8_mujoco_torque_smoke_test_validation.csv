@@ -1,0 +1,18 @@
+check,passed,details
+mujoco_imported,True,
+mujoco_model_loaded,True,model=assets/go1/go1.xml
+actuator_count_12,True,mapped_actuator_count=12
+mj_step_called,True,this stage intentionally calls mj_step
+actuator_command_used,True,bounded actuator command path used
+short_horizon_steps,True,steps_per_alpha=200
+positive_alpha_nonzero_ctrl,True,nonzero_positive_alpha=600
+finite_dynamics,True,total_nonfinite_steps=0
+no_ctrl_saturation,True,total_saturation_steps=0
+ctrl_within_audit_limit,True,max_ctrl=0.08999924127304147
+not_stable_locomotion_claim,True,stable locomotion must not be claimed
+smoke_test_only,True,must remain smoke-test only
+no_ros_publisher,True,no ROS torque publisher
+baseline_unchanged,True,frozen mixed baseline unchanged
+no_hardware_claim,True,no hardware claim
+no_torque_enable_claim,True,no torque-enable claim
+short_horizon_only,True,short-horizon only
