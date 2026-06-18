@@ -1,0 +1,78 @@
+{
+  "stage": "15.11",
+  "validation_pass": true,
+  "completed_stage_count": 10,
+  "total_stage_count": 10,
+  "checks": [
+    {
+      "check": "stage_count_10",
+      "passed": true,
+      "details": "total=10"
+    },
+    {
+      "check": "completed_count_10",
+      "passed": true,
+      "details": "completed=10"
+    },
+    {
+      "check": "all_stage15_completed",
+      "passed": true,
+      "details": "True"
+    },
+    {
+      "check": "all_stage_rows_completed",
+      "passed": true,
+      "details": "each stage row completed"
+    },
+    {
+      "check": "markdown_exists",
+      "passed": true,
+      "details": "/home/zanshi/robot-mpc-wbc-locomotion/docs/STAGE15_UPGRADE_SUMMARY.md"
+    },
+    {
+      "check": "markdown_has_claim_section",
+      "passed": true,
+      "details": "claim section"
+    },
+    {
+      "check": "markdown_has_nonclaim_section",
+      "passed": true,
+      "details": "non-claim section"
+    },
+    {
+      "check": "markdown_mentions_simulation_only",
+      "passed": true,
+      "details": "simulation-only boundary"
+    },
+    {
+      "check": "no_hardware_claim",
+      "passed": true,
+      "details": "hardware_deployment_claimed false"
+    },
+    {
+      "check": "no_torque_enable_claim",
+      "passed": true,
+      "details": "torque_enable_ready_claimed false"
+    },
+    {
+      "check": "no_stable_locomotion_claim",
+      "passed": true,
+      "details": "stable_locomotion_from_stage15_claimed false"
+    },
+    {
+      "check": "no_full_mpc_wbc_claim",
+      "passed": true,
+      "details": "full_mpc_wbc_closed_loop_claimed false"
+    },
+    {
+      "check": "claimable_items_present",
+      "passed": true,
+      "details": "count=6"
+    },
+    {
+      "check": "non_claimable_items_present",
+      "passed": true,
+      "details": "count=6"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+check,passed,details
+stage_count_10,True,total=10
+completed_count_10,True,completed=10
+all_stage15_completed,True,True
+all_stage_rows_completed,True,each stage row completed
+markdown_exists,True,/home/zanshi/robot-mpc-wbc-locomotion/docs/STAGE15_UPGRADE_SUMMARY.md
+markdown_has_claim_section,True,claim section
+markdown_has_nonclaim_section,True,non-claim section
+markdown_mentions_simulation_only,True,simulation-only boundary
+no_hardware_claim,True,hardware_deployment_claimed false
+no_torque_enable_claim,True,torque_enable_ready_claimed false
+no_stable_locomotion_claim,True,stable_locomotion_from_stage15_claimed false
+no_full_mpc_wbc_claim,True,full_mpc_wbc_closed_loop_claimed false
+claimable_items_present,True,count=6
+non_claimable_items_present,True,count=6

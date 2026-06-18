@@ -1,0 +1,29 @@
+[Stage 15.11] Stage 15 summary report validation
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+python: /usr/bin/python3
+timestamp_utc: 2026-06-18T02:36:18Z
+
+[1/2] Generate Stage 15 summary report
+stage15_11_report_completed: true
+completed_stage_count: 10 / 10
+all_stage15_1_to_15_10_completed: True
+output_json: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_11_stage15_summary_report.json
+output_csv: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_11_stage15_summary_report.csv
+output_md: /home/zanshi/robot-mpc-wbc-locomotion/docs/STAGE15_UPGRADE_SUMMARY.md
+
+[2/2] Validate Stage 15 summary report
+PASS: stage_count_10 -- total=10
+PASS: completed_count_10 -- completed=10
+PASS: all_stage15_completed -- True
+PASS: all_stage_rows_completed -- each stage row completed
+PASS: markdown_exists -- /home/zanshi/robot-mpc-wbc-locomotion/docs/STAGE15_UPGRADE_SUMMARY.md
+PASS: markdown_has_claim_section -- claim section
+PASS: markdown_has_nonclaim_section -- non-claim section
+PASS: markdown_mentions_simulation_only -- simulation-only boundary
+PASS: no_hardware_claim -- hardware_deployment_claimed false
+PASS: no_torque_enable_claim -- torque_enable_ready_claimed false
+PASS: no_stable_locomotion_claim -- stable_locomotion_from_stage15_claimed false
+PASS: no_full_mpc_wbc_claim -- full_mpc_wbc_closed_loop_claimed false
+PASS: claimable_items_present -- count=6
+PASS: non_claimable_items_present -- count=6
+stage15_11_result: pass

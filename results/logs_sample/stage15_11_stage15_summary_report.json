@@ -1,0 +1,205 @@
+{
+  "stage": "15.11",
+  "name": "stage15_summary_report",
+  "completed_stage_count": 10,
+  "total_stage_count": 10,
+  "all_stage15_1_to_15_10_completed": true,
+  "stages": [
+    {
+      "stage": "15.1",
+      "title": "ROS2/C++ control algorithm engineering tests",
+      "completed": true,
+      "claim": "C++ gait scheduler, swing trajectory and torque safety filter are built and tested through ROS2/CMake/GTest.",
+      "boundary": "No torque publishing or hardware execution.",
+      "pass_marker_found": true,
+      "pass_marker_files": [
+        "stage15_1_ros2_cpp_controller_test.log"
+      ],
+      "validation_summary_found": false,
+      "validation_pass": null,
+      "validation_summary_file": "",
+      "validation_summary_excerpt": {}
+    },
+    {
+      "stage": "15.2",
+      "title": "C++ contact force QP demo",
+      "completed": true,
+      "claim": "A C++ contact-force constraint demo validates stance/swing force allocation, normal force and friction constraints.",
+      "boundary": "No OSQP C++ dependency and no closed-loop robot torque execution.",
+      "pass_marker_found": true,
+      "pass_marker_files": [
+        "stage15_2_contact_force_qp_cpp_test.log"
+      ],
+      "validation_summary_found": false,
+      "validation_pass": null,
+      "validation_summary_file": "",
+      "validation_summary_excerpt": {}
+    },
+    {
+      "stage": "15.3",
+      "title": "contact force to nominal torque candidate rollout",
+      "completed": true,
+      "claim": "Contact force candidates are mapped to 12D torque-candidate statistics through a nominal mapping and alpha sweep.",
+      "boundary": "No real Pinocchio Jacobian, no MuJoCo torque and no ROS torque publisher.",
+      "pass_marker_found": true,
+      "pass_marker_files": [
+        "stage15_3_contact_force_candidate_rollout.log"
+      ],
+      "validation_summary_found": false,
+      "validation_pass": null,
+      "validation_summary_file": "",
+      "validation_summary_excerpt": {}
+    },
+    {
+      "stage": "15.4",
+      "title": "Pinocchio Jacobian candidate rollout",
+      "completed": true,
+      "claim": "Pinocchio foot Jacobian based J^T f candidate rollout is available in an offline dry-run path.",
+      "boundary": "Synthetic/audit kinematic model may be used; no MuJoCo torque execution.",
+      "pass_marker_found": true,
+      "pass_marker_files": [
+        "stage15_4_pinocchio_jacobian_candidate_rollout.log"
+      ],
+      "validation_summary_found": false,
+      "validation_pass": null,
+      "validation_summary_file": "",
+      "validation_summary_excerpt": {}
+    },
+    {
+      "stage": "15.5",
+      "title": "model readiness audit",
+      "completed": true,
+      "claim": "MJCF/URDF/Xacro resources are audited for controlled joints, foot frames and mapping readiness.",
+      "boundary": "Audit only; no Jacobian execution or torque execution.",
+      "pass_marker_found": true,
+      "pass_marker_files": [
+        "stage15_5_model_readiness_audit.log"
+      ],
+      "validation_summary_found": true,
+      "validation_pass": true,
+      "validation_summary_file": "stage15_5_model_readiness_audit_validation_summary.json",
+      "validation_summary_excerpt": {
+        "stage": "15.5"
+      }
+    },
+    {
+      "stage": "15.6",
+      "title": "real-model Jacobian candidate rollout",
+      "completed": true,
+      "claim": "Stage 15.5 model metadata or loadable URDF is connected to Pinocchio J^T f candidate generation.",
+      "boundary": "If MJCF fallback is used, real geometry is not claimed; no MuJoCo torque execution.",
+      "pass_marker_found": true,
+      "pass_marker_files": [
+        "stage15_6_real_model_jacobian_candidate_rollout.log"
+      ],
+      "validation_summary_found": true,
+      "validation_pass": true,
+      "validation_summary_file": "stage15_6_real_model_jacobian_candidate_rollout_validation_summary.json",
+      "validation_summary_excerpt": {
+        "stage": "15.6",
+        "selected_model_path": "assets/go1/urdf/go1.urdf",
+        "model_source": "urdf_pinocchio",
+        "real_geometry_loaded": true
+      }
+    },
+    {
+      "stage": "15.7",
+      "title": "MuJoCo candidate compatibility audit",
+      "completed": true,
+      "claim": "MuJoCo model, joint names, actuators and candidate order are checked through kinematic mj_forward.",
+      "boundary": "No mj_step and no nonzero data.ctrl.",
+      "pass_marker_found": true,
+      "pass_marker_files": [
+        "stage15_7_mujoco_candidate_compatibility_audit.log"
+      ],
+      "validation_summary_found": true,
+      "validation_pass": true,
+      "validation_summary_file": "stage15_7_mujoco_candidate_compatibility_audit_validation_summary.json",
+      "validation_summary_excerpt": {
+        "stage": "15.7",
+        "mjcf_model_path": "assets/go1/go1.xml",
+        "mapped_actuator_count": 12
+      }
+    },
+    {
+      "stage": "15.8",
+      "title": "bounded MuJoCo torque smoke test",
+      "completed": true,
+      "claim": "A low-amplitude actuator command path is tested with mj_step under strict clipping.",
+      "boundary": "Smoke test only; not stable locomotion and not MPC-WBC closed-loop validation.",
+      "pass_marker_found": true,
+      "pass_marker_files": [
+        "stage15_8_mujoco_torque_smoke_test.log"
+      ],
+      "validation_summary_found": true,
+      "validation_pass": true,
+      "validation_summary_file": "stage15_8_mujoco_torque_smoke_test_validation_summary.json",
+      "validation_summary_excerpt": {
+        "stage": "15.8",
+        "mjcf_model_path": "assets/go1/go1.xml",
+        "mapped_actuator_count": 12
+      }
+    },
+    {
+      "stage": "15.9",
+      "title": "MuJoCo J^T f candidate injection",
+      "completed": true,
+      "claim": "The Stage 15.6 J^T f candidate is injected into MuJoCo with low alpha for short-horizon safety testing.",
+      "boundary": "Short-horizon only; no stable locomotion claim and no hardware claim.",
+      "pass_marker_found": true,
+      "pass_marker_files": [
+        "stage15_9_mujoco_jtf_candidate_injection.log"
+      ],
+      "validation_summary_found": true,
+      "validation_pass": true,
+      "validation_summary_file": "stage15_9_mujoco_jtf_candidate_injection_validation_summary.json",
+      "validation_summary_excerpt": {
+        "stage": "15.9",
+        "mjcf_model_path": "assets/go1/go1.xml",
+        "mapped_actuator_count": 12,
+        "real_geometry_loaded": true
+      }
+    },
+    {
+      "stage": "15.10",
+      "title": "MuJoCo torque-smoke policy comparison",
+      "completed": true,
+      "claim": "Zero ctrl, deterministic smoke waveform and J^T f candidate are compared under identical short-horizon safety metrics.",
+      "boundary": "Safety/compatibility comparison only; not a walking-performance benchmark.",
+      "pass_marker_found": true,
+      "pass_marker_files": [
+        "stage15_10_mujoco_torque_smoke_policy_comparison.log"
+      ],
+      "validation_summary_found": true,
+      "validation_pass": true,
+      "validation_summary_file": "stage15_10_mujoco_torque_smoke_policy_comparison_validation_summary.json",
+      "validation_summary_excerpt": {
+        "stage": "15.10",
+        "mjcf_model_path": "assets/go1/go1.xml"
+      }
+    }
+  ],
+  "claimable_items": [
+    "ROS2/C++ control algorithm modules are buildable and testable through colcon/GTest.",
+    "A C++ contact-force QP demo validates contact-mode and friction/normal-force constraints.",
+    "Contact-force to torque-candidate dry-runs exist with alpha sweep evidence.",
+    "Pinocchio Jacobian based J^T f candidate generation has an offline validation path.",
+    "Model readiness and MuJoCo joint/actuator compatibility are audited with archived reports.",
+    "Bounded MuJoCo actuator-command smoke tests and policy comparisons have been run in short horizon."
+  ],
+  "non_claimable_items": [
+    "Stable locomotion from the new J^T f candidate path.",
+    "Full MPC-WBC closed-loop locomotion controller.",
+    "Real robot deployment.",
+    "ROS torque publisher readiness for hardware.",
+    "torque_enable_ready=True.",
+    "Realtime hardware controller completion."
+  ],
+  "boundary": {
+    "simulation_only": true,
+    "hardware_deployment_claimed": false,
+    "torque_enable_ready_claimed": false,
+    "stable_locomotion_from_stage15_claimed": false,
+    "full_mpc_wbc_closed_loop_claimed": false
+  }
+}
