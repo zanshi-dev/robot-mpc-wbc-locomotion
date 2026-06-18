@@ -1,0 +1,109 @@
+{
+  "stage": "15.7",
+  "validation_pass": true,
+  "mjcf_model_path": "assets/go1/go1.xml",
+  "mapped_joint_count": 12,
+  "mapped_actuator_count": 12,
+  "checks": [
+    {
+      "check": "mujoco_imported",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "check": "mujoco_model_loaded",
+      "passed": true,
+      "details": "model=assets/go1/go1.xml"
+    },
+    {
+      "check": "mujoco_dimensions_positive",
+      "passed": true,
+      "details": "nq=19, nv=18, nu=12"
+    },
+    {
+      "check": "mapped_joint_count_12",
+      "passed": true,
+      "details": "mapped_joint_count=12"
+    },
+    {
+      "check": "mapped_actuator_count_nonzero",
+      "passed": true,
+      "details": "mapped_actuator_count=12"
+    },
+    {
+      "check": "kinematic_forward_steps_2400",
+      "passed": true,
+      "details": "steps=2400"
+    },
+    {
+      "check": "mj_forward_called",
+      "passed": true,
+      "details": "mj_forward should be used for kinematic compatibility"
+    },
+    {
+      "check": "mj_step_not_called",
+      "passed": true,
+      "details": "mj_step must not be called in this stage"
+    },
+    {
+      "check": "qpos_finite",
+      "passed": true,
+      "details": "qpos finite over audit"
+    },
+    {
+      "check": "qvel_finite",
+      "passed": true,
+      "details": "qvel finite over audit"
+    },
+    {
+      "check": "zero_ctrl",
+      "passed": true,
+      "details": "nonzero_ctrl_steps=0"
+    },
+    {
+      "check": "alpha_0_10_compatible",
+      "passed": true,
+      "details": "alpha_0.10=0.983979372430523"
+    },
+    {
+      "check": "alpha_0_20_compatible",
+      "passed": true,
+      "details": "alpha_0.20=1.967958744861046"
+    },
+    {
+      "check": "no_mujoco_torque",
+      "passed": true,
+      "details": "no MuJoCo torque"
+    },
+    {
+      "check": "no_mujoco_dynamics_step",
+      "passed": true,
+      "details": "no MuJoCo dynamics step"
+    },
+    {
+      "check": "no_ros_publisher",
+      "passed": true,
+      "details": "no ROS torque publisher"
+    },
+    {
+      "check": "baseline_unchanged",
+      "passed": true,
+      "details": "frozen mixed baseline unchanged"
+    },
+    {
+      "check": "dry_run_only",
+      "passed": true,
+      "details": "dry-run only"
+    },
+    {
+      "check": "no_hardware_claim",
+      "passed": true,
+      "details": "no hardware claim"
+    },
+    {
+      "check": "no_torque_enable_claim",
+      "passed": true,
+      "details": "no torque-enable claim"
+    }
+  ]
+}

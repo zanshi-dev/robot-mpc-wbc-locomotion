@@ -1,0 +1,272 @@
+{
+  "stage": "15.7",
+  "name": "mujoco_candidate_compatibility_audit",
+  "mujoco_imported": true,
+  "mujoco_import_error": "",
+  "mujoco_model_loaded": true,
+  "mjcf_model_path": "assets/go1/go1.xml",
+  "nq": 19,
+  "nv": 18,
+  "nu": 12,
+  "njnt": 13,
+  "candidate_joint_names": [
+    "FR_hip_joint",
+    "FR_thigh_joint",
+    "FR_calf_joint",
+    "FL_hip_joint",
+    "FL_thigh_joint",
+    "FL_calf_joint",
+    "RR_hip_joint",
+    "RR_thigh_joint",
+    "RR_calf_joint",
+    "RL_hip_joint",
+    "RL_thigh_joint",
+    "RL_calf_joint"
+  ],
+  "matched_joints": [
+    {
+      "candidate_order": 0,
+      "candidate_joint_name": "FR_hip_joint",
+      "matched": true,
+      "mujoco_joint_id": 1,
+      "mujoco_joint_name": "FR_hip_joint",
+      "qposadr": 7,
+      "dofadr": 6
+    },
+    {
+      "candidate_order": 1,
+      "candidate_joint_name": "FR_thigh_joint",
+      "matched": true,
+      "mujoco_joint_id": 2,
+      "mujoco_joint_name": "FR_thigh_joint",
+      "qposadr": 8,
+      "dofadr": 7
+    },
+    {
+      "candidate_order": 2,
+      "candidate_joint_name": "FR_calf_joint",
+      "matched": true,
+      "mujoco_joint_id": 3,
+      "mujoco_joint_name": "FR_calf_joint",
+      "qposadr": 9,
+      "dofadr": 8
+    },
+    {
+      "candidate_order": 3,
+      "candidate_joint_name": "FL_hip_joint",
+      "matched": true,
+      "mujoco_joint_id": 4,
+      "mujoco_joint_name": "FL_hip_joint",
+      "qposadr": 10,
+      "dofadr": 9
+    },
+    {
+      "candidate_order": 4,
+      "candidate_joint_name": "FL_thigh_joint",
+      "matched": true,
+      "mujoco_joint_id": 5,
+      "mujoco_joint_name": "FL_thigh_joint",
+      "qposadr": 11,
+      "dofadr": 10
+    },
+    {
+      "candidate_order": 5,
+      "candidate_joint_name": "FL_calf_joint",
+      "matched": true,
+      "mujoco_joint_id": 6,
+      "mujoco_joint_name": "FL_calf_joint",
+      "qposadr": 12,
+      "dofadr": 11
+    },
+    {
+      "candidate_order": 6,
+      "candidate_joint_name": "RR_hip_joint",
+      "matched": true,
+      "mujoco_joint_id": 7,
+      "mujoco_joint_name": "RR_hip_joint",
+      "qposadr": 13,
+      "dofadr": 12
+    },
+    {
+      "candidate_order": 7,
+      "candidate_joint_name": "RR_thigh_joint",
+      "matched": true,
+      "mujoco_joint_id": 8,
+      "mujoco_joint_name": "RR_thigh_joint",
+      "qposadr": 14,
+      "dofadr": 13
+    },
+    {
+      "candidate_order": 8,
+      "candidate_joint_name": "RR_calf_joint",
+      "matched": true,
+      "mujoco_joint_id": 9,
+      "mujoco_joint_name": "RR_calf_joint",
+      "qposadr": 15,
+      "dofadr": 14
+    },
+    {
+      "candidate_order": 9,
+      "candidate_joint_name": "RL_hip_joint",
+      "matched": true,
+      "mujoco_joint_id": 10,
+      "mujoco_joint_name": "RL_hip_joint",
+      "qposadr": 16,
+      "dofadr": 15
+    },
+    {
+      "candidate_order": 10,
+      "candidate_joint_name": "RL_thigh_joint",
+      "matched": true,
+      "mujoco_joint_id": 11,
+      "mujoco_joint_name": "RL_thigh_joint",
+      "qposadr": 17,
+      "dofadr": 16
+    },
+    {
+      "candidate_order": 11,
+      "candidate_joint_name": "RL_calf_joint",
+      "matched": true,
+      "mujoco_joint_id": 12,
+      "mujoco_joint_name": "RL_calf_joint",
+      "qposadr": 18,
+      "dofadr": 17
+    }
+  ],
+  "matched_actuators": [
+    {
+      "candidate_order": 0,
+      "candidate_joint_name": "FR_hip_joint",
+      "matched_joint_name": "FR_hip_joint",
+      "matched": true,
+      "actuator_id": 0,
+      "actuator_name": "FR_hip"
+    },
+    {
+      "candidate_order": 1,
+      "candidate_joint_name": "FR_thigh_joint",
+      "matched_joint_name": "FR_thigh_joint",
+      "matched": true,
+      "actuator_id": 1,
+      "actuator_name": "FR_thigh"
+    },
+    {
+      "candidate_order": 2,
+      "candidate_joint_name": "FR_calf_joint",
+      "matched_joint_name": "FR_calf_joint",
+      "matched": true,
+      "actuator_id": 2,
+      "actuator_name": "FR_calf"
+    },
+    {
+      "candidate_order": 3,
+      "candidate_joint_name": "FL_hip_joint",
+      "matched_joint_name": "FL_hip_joint",
+      "matched": true,
+      "actuator_id": 3,
+      "actuator_name": "FL_hip"
+    },
+    {
+      "candidate_order": 4,
+      "candidate_joint_name": "FL_thigh_joint",
+      "matched_joint_name": "FL_thigh_joint",
+      "matched": true,
+      "actuator_id": 4,
+      "actuator_name": "FL_thigh"
+    },
+    {
+      "candidate_order": 5,
+      "candidate_joint_name": "FL_calf_joint",
+      "matched_joint_name": "FL_calf_joint",
+      "matched": true,
+      "actuator_id": 5,
+      "actuator_name": "FL_calf"
+    },
+    {
+      "candidate_order": 6,
+      "candidate_joint_name": "RR_hip_joint",
+      "matched_joint_name": "RR_hip_joint",
+      "matched": true,
+      "actuator_id": 6,
+      "actuator_name": "RR_hip"
+    },
+    {
+      "candidate_order": 7,
+      "candidate_joint_name": "RR_thigh_joint",
+      "matched_joint_name": "RR_thigh_joint",
+      "matched": true,
+      "actuator_id": 7,
+      "actuator_name": "RR_thigh"
+    },
+    {
+      "candidate_order": 8,
+      "candidate_joint_name": "RR_calf_joint",
+      "matched_joint_name": "RR_calf_joint",
+      "matched": true,
+      "actuator_id": 8,
+      "actuator_name": "RR_calf"
+    },
+    {
+      "candidate_order": 9,
+      "candidate_joint_name": "RL_hip_joint",
+      "matched_joint_name": "RL_hip_joint",
+      "matched": true,
+      "actuator_id": 9,
+      "actuator_name": "RL_hip"
+    },
+    {
+      "candidate_order": 10,
+      "candidate_joint_name": "RL_thigh_joint",
+      "matched_joint_name": "RL_thigh_joint",
+      "matched": true,
+      "actuator_id": 10,
+      "actuator_name": "RL_thigh"
+    },
+    {
+      "candidate_order": 11,
+      "candidate_joint_name": "RL_calf_joint",
+      "matched_joint_name": "RL_calf_joint",
+      "matched": true,
+      "actuator_id": 11,
+      "actuator_name": "RL_calf"
+    }
+  ],
+  "mapped_joint_count": 12,
+  "mapped_actuator_count": 12,
+  "kinematic_forward_steps": 2400,
+  "mj_forward_called": true,
+  "mj_step_called": false,
+  "qpos_finite": true,
+  "qvel_finite": true,
+  "base_z_min": 0.32,
+  "base_z_max": 0.32,
+  "nonzero_ctrl_steps": 0,
+  "torque_candidate_compatibility": {
+    "candidate_joint_count": 12,
+    "stage15_6_max_tau_candidate_abs": 9.83979372430523,
+    "stage15_6_alpha_max_tau_abs": {
+      "0.00": 0.0,
+      "0.02": 0.19679587448610458,
+      "0.05": 0.4919896862152615,
+      "0.10": 0.983979372430523,
+      "0.20": 1.967958744861046
+    },
+    "torque_limit_for_audit": 18.0,
+    "alpha_0_10_within_limit": true,
+    "alpha_0_20_within_limit": true
+  },
+  "boundary": {
+    "mujoco_torque_used": false,
+    "mujoco_dynamics_step_used": false,
+    "ros_publisher_used": false,
+    "frozen_mixed_baseline_modified": false,
+    "torque_enable_ready_claimed": false,
+    "hardware_deployment_claimed": false,
+    "dry_run_only": true
+  },
+  "notes": [
+    "This stage loads the MuJoCo model and calls mj_forward for kinematic compatibility only.",
+    "It does not call mj_step and does not apply candidate torque to MuJoCo.",
+    "The purpose is joint/actuator/order compatibility before a future torque-in-the-loop simulation stage."
+  ]
+}

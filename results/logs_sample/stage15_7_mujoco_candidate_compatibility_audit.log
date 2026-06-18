@@ -1,0 +1,38 @@
+[Stage 15.7] MuJoCo candidate compatibility audit validation
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+python: /usr/bin/python3
+timestamp_utc: 2026-06-18T02:29:25Z
+
+[1/2] Run MuJoCo compatibility audit
+stage15_7_audit_completed: true
+mjcf_model_path: assets/go1/go1.xml
+mujoco_nq_nv_nu: 19 / 18 / 12
+mapped_joint_count: 12
+mapped_actuator_count: 12
+mj_step_called: False
+nonzero_ctrl_steps: 0
+output_json: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_7_mujoco_candidate_compatibility_audit_summary.json
+output_csv: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage15_7_mujoco_candidate_compatibility_audit.csv
+
+[2/2] Validate audit outputs
+PASS: mujoco_imported -- 
+PASS: mujoco_model_loaded -- model=assets/go1/go1.xml
+PASS: mujoco_dimensions_positive -- nq=19, nv=18, nu=12
+PASS: mapped_joint_count_12 -- mapped_joint_count=12
+PASS: mapped_actuator_count_nonzero -- mapped_actuator_count=12
+PASS: kinematic_forward_steps_2400 -- steps=2400
+PASS: mj_forward_called -- mj_forward should be used for kinematic compatibility
+PASS: mj_step_not_called -- mj_step must not be called in this stage
+PASS: qpos_finite -- qpos finite over audit
+PASS: qvel_finite -- qvel finite over audit
+PASS: zero_ctrl -- nonzero_ctrl_steps=0
+PASS: alpha_0_10_compatible -- alpha_0.10=0.983979372430523
+PASS: alpha_0_20_compatible -- alpha_0.20=1.967958744861046
+PASS: no_mujoco_torque -- no MuJoCo torque
+PASS: no_mujoco_dynamics_step -- no MuJoCo dynamics step
+PASS: no_ros_publisher -- no ROS torque publisher
+PASS: baseline_unchanged -- frozen mixed baseline unchanged
+PASS: dry_run_only -- dry-run only
+PASS: no_hardware_claim -- no hardware claim
+PASS: no_torque_enable_claim -- no torque-enable claim
+stage15_7_result: pass

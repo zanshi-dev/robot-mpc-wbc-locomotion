@@ -1,0 +1,21 @@
+check,passed,details
+mujoco_imported,True,
+mujoco_model_loaded,True,model=assets/go1/go1.xml
+mujoco_dimensions_positive,True,"nq=19, nv=18, nu=12"
+mapped_joint_count_12,True,mapped_joint_count=12
+mapped_actuator_count_nonzero,True,mapped_actuator_count=12
+kinematic_forward_steps_2400,True,steps=2400
+mj_forward_called,True,mj_forward should be used for kinematic compatibility
+mj_step_not_called,True,mj_step must not be called in this stage
+qpos_finite,True,qpos finite over audit
+qvel_finite,True,qvel finite over audit
+zero_ctrl,True,nonzero_ctrl_steps=0
+alpha_0_10_compatible,True,alpha_0.10=0.983979372430523
+alpha_0_20_compatible,True,alpha_0.20=1.967958744861046
+no_mujoco_torque,True,no MuJoCo torque
+no_mujoco_dynamics_step,True,no MuJoCo dynamics step
+no_ros_publisher,True,no ROS torque publisher
+baseline_unchanged,True,frozen mixed baseline unchanged
+dry_run_only,True,dry-run only
+no_hardware_claim,True,no hardware claim
+no_torque_enable_claim,True,no torque-enable claim
