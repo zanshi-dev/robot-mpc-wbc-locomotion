@@ -1,0 +1,133 @@
+[Stage 15.3] Contact-force-to-torque candidate rollout validation
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+python: /usr/bin/python3
+timestamp_utc: 2026-06-18T02:16:42Z
+
+[1/2] Generate rollout
+{
+  "alpha_results": {
+    "0p0": {
+      "alpha": 0.0,
+      "max_tau_scaled_abs": 0.0,
+      "max_tau_scaled_delta_abs": 0.0,
+      "pass": true,
+      "torque_limit": 23.7
+    },
+    "0p02": {
+      "alpha": 0.02,
+      "max_tau_scaled_abs": 0.22655216519999996,
+      "max_tau_scaled_delta_abs": 0.22655216519999996,
+      "pass": true,
+      "torque_limit": 23.7
+    },
+    "0p05": {
+      "alpha": 0.05,
+      "max_tau_scaled_abs": 0.566380413,
+      "max_tau_scaled_delta_abs": 0.566380413,
+      "pass": true,
+      "torque_limit": 23.7
+    },
+    "0p1": {
+      "alpha": 0.1,
+      "max_tau_scaled_abs": 1.132760826,
+      "max_tau_scaled_delta_abs": 1.132760826,
+      "pass": true,
+      "torque_limit": 23.7
+    },
+    "0p2": {
+      "alpha": 0.2,
+      "max_tau_scaled_abs": 2.265521652,
+      "max_tau_scaled_delta_abs": 2.265521652,
+      "pass": true,
+      "torque_limit": 23.7
+    }
+  },
+  "config": {
+    "ax_limit": 1.5,
+    "az_limit": 2.0,
+    "dt": 0.02,
+    "fz_max": 120.0,
+    "fz_min": 5.0,
+    "gait_half_period_steps": 200,
+    "gravity": 9.81,
+    "mass": 12.7434,
+    "mu": 0.6,
+    "target_vx": 0.3,
+    "target_z": 0.3,
+    "torque_limit": 23.7,
+    "total_steps": 2400,
+    "vx_kp": 2.0,
+    "z_kd": 4.0,
+    "z_kp": 20.0
+  },
+  "contact_modes": [
+    "FL_RR",
+    "FR_RL"
+  ],
+  "description": "simulation-only contact-force-to-torque candidate rollout",
+  "failed_checks": [],
+  "final_vx": 0.2999999999999993,
+  "final_vx_error_abs": 6.661338147750939e-16,
+  "final_z": 0.30000000000000004,
+  "final_z_error_abs": 5.551115123125783e-17,
+  "frozen_mixed_baseline_modified": false,
+  "hardware_deployment_completed": false,
+  "max_abs_z_error": 0.019999999999999962,
+  "max_friction_violation": 0.0,
+  "max_normal_force_violation": 0.0,
+  "max_stance_fz": 65.05505699999999,
+  "max_swing_force_norm": 0.0,
+  "max_tau_candidate_abs": 11.327608259999998,
+  "max_tau_candidate_delta_abs": 11.327608259999998,
+  "min_stance_fz": 61.56320878322811,
+  "mixed_baseline_modified": false,
+  "mujoco_torque_used": false,
+  "nominal_jacobian_transpose_candidate_map_used": true,
+  "pass": true,
+  "pinocchio_jacobian_used": false,
+  "real_robot_torque_execution_completed": false,
+  "rollout_csv": "results/logs_sample/stage15_3_contact_force_candidate_rollout.csv",
+  "ros_publisher_used": false,
+  "simulation_only_project": true,
+  "stage": "15.3",
+  "summary_json": "results/logs_sample/stage15_3_contact_force_candidate_rollout_summary.json",
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "total_steps": 2400,
+  "validated_candidate_scale_max_simulation_only": 0.2
+}
+
+[2/2] Validate rollout
+{
+  "description": "independent validation for Stage 15.3 contact-force-to-torque candidate rollout",
+  "failed_checks": [],
+  "final_vx_error_abs": 6.661338147750939e-16,
+  "final_z_error_abs": 5.551115123125783e-17,
+  "frozen_mixed_baseline_modified": false,
+  "hardware_deployment_completed": false,
+  "input_rollout_csv": "results/logs_sample/stage15_3_contact_force_candidate_rollout.csv",
+  "input_summary_json": "results/logs_sample/stage15_3_contact_force_candidate_rollout_summary.json",
+  "max_abs_z_error": 0.019999999999999962,
+  "max_friction_violation": 0.0,
+  "max_normal_force_violation": 0.0,
+  "max_swing_force_norm": 0.0,
+  "max_tau_scaled_abs": 2.265521652,
+  "missing_columns": [],
+  "mixed_baseline_modified": false,
+  "mujoco_torque_used": false,
+  "pass": true,
+  "pinocchio_jacobian_used": false,
+  "real_robot_torque_execution_completed": false,
+  "ros_publisher_used": false,
+  "rows": 2400,
+  "simulation_only_project": true,
+  "source_missing_contract_snippets": [],
+  "stage": "15.3_validation",
+  "torque_enable_ready": false,
+  "torque_publisher_enabled": false,
+  "validated_candidate_scale_max_simulation_only": 0.2,
+  "validation_csv": "results/logs_sample/stage15_3_contact_force_candidate_rollout_validation.csv",
+  "validation_summary_json": "results/logs_sample/stage15_3_contact_force_candidate_rollout_validation_summary.json"
+}
+
+stage15_3_result: pass
