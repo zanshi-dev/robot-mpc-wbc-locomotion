@@ -1,0 +1,79 @@
+
+========== Stage 15.2 Repo Hygiene Audit ==========
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+log_file: results/logs_sample/stage15_2_repo_hygiene_audit.log
+
+========== Git status ==========
+current_branch: main
+[PASS] current branch is main
+origin_url: git@github.com:zanshi-dev/robot-mpc-wbc-locomotion.git
+[PASS] origin remote matches expected GitHub SSH URL
+[WARN] working tree has uncommitted changes
+D  PROJECT_STATUS.md.save
+D  README.md.bak_stage14_2
+?? results/logs_sample/stage15_2_repo_hygiene_audit.log
+?? scripts/stage15_2_repo_hygiene_audit.sh
+local_head: 2690b18
+origin_main: 2690b18
+[PASS] local HEAD matches origin/main
+
+========== Root file hygiene ==========
+[PASS] no root-level backup/temp files found
+
+========== Required top-level structure ==========
+[PASS] exists: README.md
+[PASS] exists: PROJECT_STATUS.md
+[PASS] exists: docs
+[PASS] exists: scripts
+[PASS] exists: results/logs_sample
+[PASS] exists: ros2_ws
+[PASS] exists: ros2_ws/src
+[PASS] exists: ros2_ws/src/robot_mpc_wbc_cpp_controller
+[PASS] exists: ros2_ws/src/robot_mpc_wbc_bridge
+
+========== Key documentation files ==========
+[PASS] doc exists: docs/ONE_PAGE_TECHNICAL_REPORT.md
+[PASS] doc exists: docs/REPORT_READY_RESULTS.md
+[PASS] doc exists: docs/CONTROL_ARCHITECTURE_OVERVIEW.md
+[PASS] doc exists: docs/WBC_QP_EXPLAINED.md
+[PASS] doc exists: docs/CPP_CONTROL_ALGORITHMS.md
+[PASS] doc exists: docs/FINAL_PACKAGE_WITH_DEMO_VIDEO_MANIFEST.md
+
+========== Core scripts ==========
+[PASS] script exists: scripts/stage14_4_base_velocity_tracking_mpc_demo.py
+[PASS] script exists: scripts/stage14_4b_validate_base_velocity_mpc_rollout.py
+
+========== ROS2 package files ==========
+[PASS] bridge package.xml exists
+[PASS] bridge appears to be an ament_python/Python ROS2 package; CMakeLists.txt not required
+[PASS] C++ controller package.xml exists
+[PASS] C++ controller CMakeLists.txt exists
+
+========== C++ controller module structure ==========
+[PASS] C++ path exists: ros2_ws/src/robot_mpc_wbc_cpp_controller/include
+[PASS] C++ path exists: ros2_ws/src/robot_mpc_wbc_cpp_controller/src
+[PASS] C++ path exists: ros2_ws/src/robot_mpc_wbc_cpp_controller/test
+[PASS] C++ test file exists: ros2_ws/src/robot_mpc_wbc_cpp_controller/test/test_control_algorithms.cpp
+
+========== CMake test integration check ==========
+[PASS] C++ CMakeLists appears to contain test integration
+
+========== ROS topic / executable naming check ==========
+[PASS] ROS torque topic /go1/joint_torque_cmd found in ros2_ws/src
+[PASS] disabled controller executable/name found
+[PASS] mujoco_bridge_node found
+
+========== Python import smoke check ==========
+python_bin: /usr/bin/python3
+[PASS] import numpy
+[PASS] import scipy
+[PASS] import scipy.sparse
+[PASS] import osqp
+[PASS] import mujoco
+[PASS] import pinocchio
+[PASS] Python dependency smoke check passed
+
+========== Summary ==========
+warn_count: 1
+fail_count: 0
+stage15_2_result: pass
