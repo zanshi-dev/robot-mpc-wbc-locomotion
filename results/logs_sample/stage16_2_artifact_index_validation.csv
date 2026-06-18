@@ -1,0 +1,14 @@
+check,passed,details
+artifact_count_positive,True,count=100
+required_stage_coverage,True,missing=[]
+artifact_index_exists,True,/home/zanshi/robot-mpc-wbc-locomotion/docs/ARTIFACT_INDEX.md
+artifact_index_has_stage_coverage,True,Stage Coverage section
+artifact_index_has_details,True,Detailed Artifacts section
+readme_link_marker,True,README marker block
+readme_links_artifact_index,True,README artifact index link
+all_indexed_paths_exist,True,missing=[]
+all_paths_relative,True,absolute_paths=[]
+has_scripts,True,"categories=['doc', 'log', 'result', 'script']"
+has_docs,True,"categories=['doc', 'log', 'result', 'script']"
+has_results,True,"categories=['doc', 'log', 'result', 'script']"
+has_logs,True,"categories=['doc', 'log', 'result', 'script']"

@@ -350,3 +350,15 @@ Stage 15 的目标不是直接宣称稳定行走或真实机器人部署，而�
 
 完整 Stage 15 总结见：`docs/STAGE15_UPGRADE_SUMMARY.md`。
 <!-- STAGE16_1_PUBLIC_DOCS_SYNC_END -->
+
+<!-- STAGE16_2_ARTIFACT_INDEX_START -->
+## Evidence artifact index
+
+Stage 15/16 scripts, validation logs, JSON/CSV results and documentation are indexed in:
+
+```text
+docs/ARTIFACT_INDEX.md
+```
+
+Use this index when reviewing the repository or preparing for interview deep dives.
+<!-- STAGE16_2_ARTIFACT_INDEX_END -->

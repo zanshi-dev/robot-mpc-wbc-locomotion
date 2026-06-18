@@ -1,0 +1,27 @@
+[Stage 16.2] Artifact index validation
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+python: /usr/bin/python3
+timestamp_utc: 2026-06-18T02:39:33Z
+
+[1/2] Generate artifact index
+stage16_2_index_completed: true
+artifact_count: 100
+stage_count: 13
+stages: ['15.1', '15.2', '15.3', '15.4', '15.5', '15.6', '15.7', '15.8', '15.9', '15.10', '15.11', '16.1', '16.2']
+markdown: docs/ARTIFACT_INDEX.md
+
+[2/2] Validate artifact index
+PASS: artifact_count_positive -- count=100
+PASS: required_stage_coverage -- missing=[]
+PASS: artifact_index_exists -- /home/zanshi/robot-mpc-wbc-locomotion/docs/ARTIFACT_INDEX.md
+PASS: artifact_index_has_stage_coverage -- Stage Coverage section
+PASS: artifact_index_has_details -- Detailed Artifacts section
+PASS: readme_link_marker -- README marker block
+PASS: readme_links_artifact_index -- README artifact index link
+PASS: all_indexed_paths_exist -- missing=[]
+PASS: all_paths_relative -- absolute_paths=[]
+PASS: has_scripts -- categories=['doc', 'log', 'result', 'script']
+PASS: has_docs -- categories=['doc', 'log', 'result', 'script']
+PASS: has_results -- categories=['doc', 'log', 'result', 'script']
+PASS: has_logs -- categories=['doc', 'log', 'result', 'script']
+stage16_2_result: pass

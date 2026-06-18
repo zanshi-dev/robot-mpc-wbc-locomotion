@@ -1,0 +1,101 @@
+stage,category,path,description,exists,size_bytes
+15.10,doc,docs/STAGE15_10_MUJOCO_TORQUE_SMOKE_POLICY_COMPARISON.md,stage documentation,True,1981
+15.11,doc,docs/STAGE15_11_STAGE15_SUMMARY_REPORT.md,stage documentation,True,1349
+15.1,doc,docs/STAGE15_1_ROS2_CPP_TESTING.md,stage documentation,True,2847
+15.2,doc,docs/STAGE15_2_CONTACT_FORCE_QP_CPP.md,stage documentation,True,3101
+15.3,doc,docs/STAGE15_3_CONTACT_FORCE_CANDIDATE_ROLLOUT.md,stage documentation,True,3394
+15.4,doc,docs/STAGE15_4_PINOCCHIO_JACOBIAN_CANDIDATE_ROLLOUT.md,stage documentation,True,3112
+15.5,doc,docs/STAGE15_5_MODEL_READINESS_AUDIT.md,stage documentation,True,2113
+15.6,doc,docs/STAGE15_6_REAL_MODEL_JACOBIAN_CANDIDATE_ROLLOUT.md,stage documentation,True,2796
+15.7,doc,docs/STAGE15_7_MUJOCO_CANDIDATE_COMPATIBILITY_AUDIT.md,stage documentation,True,2281
+15.8,doc,docs/STAGE15_8_MUJOCO_TORQUE_SMOKE_TEST.md,stage documentation,True,2261
+15.9,doc,docs/STAGE15_9_MUJOCO_JTF_CANDIDATE_INJECTION.md,stage documentation,True,2297
+15.11,doc,docs/STAGE15_UPGRADE_SUMMARY.md,stage documentation,True,3848
+16.1,doc,docs/STAGE16_1_PUBLIC_DOCS_SYNC.md,stage documentation,True,279
+15.10,result,results/logs_sample/stage15_10_mujoco_torque_smoke_policy_comparison.csv,tabular validation or rollout result,True,5946
+15.10,log,results/logs_sample/stage15_10_mujoco_torque_smoke_policy_comparison.log,captured terminal validation log,True,2525
+15.10,result,results/logs_sample/stage15_10_mujoco_torque_smoke_policy_comparison_summary.json,machine-readable summary,True,2181
+15.10,result,results/logs_sample/stage15_10_mujoco_torque_smoke_policy_comparison_validation.csv,tabular validation or rollout result,True,1529
+15.10,result,results/logs_sample/stage15_10_mujoco_torque_smoke_policy_comparison_validation_summary.json,machine-readable summary,True,4742
+15.11,result,results/logs_sample/stage15_11_stage15_summary_report.csv,tabular validation or rollout result,True,3303
+15.11,result,results/logs_sample/stage15_11_stage15_summary_report.json,machine-readable report,True,8340
+15.11,log,results/logs_sample/stage15_11_stage15_summary_report.log,captured terminal validation log,True,1469
+15.11,result,results/logs_sample/stage15_11_stage15_summary_report_validation.csv,tabular validation or rollout result,True,783
+15.11,result,results/logs_sample/stage15_11_stage15_summary_report_validation_summary.json,machine-readable summary,True,1810
+15.1,log,results/logs_sample/stage15_1_ros2_cpp_controller_test.log,captured terminal validation log,True,4596
+15.2,log,results/logs_sample/stage15_2_contact_force_qp_cpp_test.log,captured terminal validation log,True,7475
+15.3,result,results/logs_sample/stage15_3_contact_force_candidate_rollout.csv,tabular validation or rollout result,True,1379112
+15.3,log,results/logs_sample/stage15_3_contact_force_candidate_rollout.log,captured terminal validation log,True,4239
+15.3,result,results/logs_sample/stage15_3_contact_force_candidate_rollout_summary.json,machine-readable summary,True,2620
+15.3,result,results/logs_sample/stage15_3_contact_force_candidate_rollout_validation.csv,tabular validation or rollout result,True,54139
+15.3,result,results/logs_sample/stage15_3_contact_force_candidate_rollout_validation_summary.json,machine-readable summary,True,1369
+15.4,result,results/logs_sample/stage15_4_pinocchio_jacobian_candidate_rollout.csv,tabular validation or rollout result,True,1445180
+15.4,log,results/logs_sample/stage15_4_pinocchio_jacobian_candidate_rollout.log,captured terminal validation log,True,4771
+15.4,result,results/logs_sample/stage15_4_pinocchio_jacobian_candidate_rollout_summary.json,machine-readable summary,True,3082
+15.4,result,results/logs_sample/stage15_4_pinocchio_jacobian_candidate_rollout_validation.csv,tabular validation or rollout result,True,54139
+15.4,result,results/logs_sample/stage15_4_pinocchio_jacobian_candidate_rollout_validation_summary.json,machine-readable summary,True,1415
+15.5,result,results/logs_sample/stage15_5_model_readiness_audit.json,machine-readable report,True,12972
+15.5,log,results/logs_sample/stage15_5_model_readiness_audit.log,captured terminal validation log,True,1389
+15.5,result,results/logs_sample/stage15_5_model_readiness_audit_inventory.csv,tabular validation or rollout result,True,402
+15.5,result,results/logs_sample/stage15_5_model_readiness_audit_validation.csv,tabular validation or rollout result,True,769
+15.5,result,results/logs_sample/stage15_5_model_readiness_audit_validation_summary.json,machine-readable summary,True,1905
+15.6,result,results/logs_sample/stage15_6_real_model_jacobian_candidate_rollout.csv,tabular validation or rollout result,True,18058
+15.6,log,results/logs_sample/stage15_6_real_model_jacobian_candidate_rollout.log,captured terminal validation log,True,1854
+15.6,result,results/logs_sample/stage15_6_real_model_jacobian_candidate_rollout_summary.json,machine-readable summary,True,2161
+15.6,result,results/logs_sample/stage15_6_real_model_jacobian_candidate_rollout_validation.csv,tabular validation or rollout result,True,1022
+15.6,result,results/logs_sample/stage15_6_real_model_jacobian_candidate_rollout_validation_summary.json,machine-readable summary,True,2375
+15.7,result,results/logs_sample/stage15_7_mujoco_candidate_compatibility_audit.csv,tabular validation or rollout result,True,3060
+15.7,log,results/logs_sample/stage15_7_mujoco_candidate_compatibility_audit.log,captured terminal validation log,True,1750
+15.7,result,results/logs_sample/stage15_7_mujoco_candidate_compatibility_audit_summary.json,machine-readable summary,True,7114
+15.7,result,results/logs_sample/stage15_7_mujoco_candidate_compatibility_audit_validation.csv,tabular validation or rollout result,True,1009
+15.7,result,results/logs_sample/stage15_7_mujoco_candidate_compatibility_audit_validation_summary.json,machine-readable summary,True,2473
+15.8,result,results/logs_sample/stage15_8_mujoco_torque_smoke_test.csv,tabular validation or rollout result,True,6024
+15.8,log,results/logs_sample/stage15_8_mujoco_torque_smoke_test.log,captured terminal validation log,True,1655
+15.8,result,results/logs_sample/stage15_8_mujoco_torque_smoke_test_summary.json,machine-readable summary,True,4162
+15.8,result,results/logs_sample/stage15_8_mujoco_torque_smoke_test_validation.csv,tabular validation or rollout result,True,894
+15.8,result,results/logs_sample/stage15_8_mujoco_torque_smoke_test_validation_summary.json,machine-readable summary,True,2169
+15.9,result,results/logs_sample/stage15_9_mujoco_jtf_candidate_injection.csv,tabular validation or rollout result,True,10866
+15.9,log,results/logs_sample/stage15_9_mujoco_jtf_candidate_injection.log,captured terminal validation log,True,1921
+15.9,result,results/logs_sample/stage15_9_mujoco_jtf_candidate_injection_summary.json,machine-readable summary,True,5103
+15.9,result,results/logs_sample/stage15_9_mujoco_jtf_candidate_injection_validation.csv,tabular validation or rollout result,True,1004
+15.9,result,results/logs_sample/stage15_9_mujoco_jtf_candidate_injection_validation_summary.json,machine-readable summary,True,2532
+16.1,log,results/logs_sample/stage16_1_public_docs_sync.log,captured terminal validation log,True,1330
+16.1,result,results/logs_sample/stage16_1_public_docs_sync_summary.json,machine-readable summary,True,492
+16.1,result,results/logs_sample/stage16_1_public_docs_sync_validation.csv,tabular validation or rollout result,True,810
+16.1,result,results/logs_sample/stage16_1_public_docs_sync_validation_summary.json,machine-readable summary,True,1994
+16.2,log,results/logs_sample/stage16_2_artifact_index.log,captured terminal validation log,True,180
+15.10,script,scripts/stage15_10_compare_mujoco_torque_smoke_policies.py,Python generator or experiment script,True,13568
+15.10,script,scripts/stage15_10_validate_mujoco_torque_smoke_policy_comparison.py,Python validator,True,4840
+15.10,script,scripts/stage15_10_validate_mujoco_torque_smoke_policy_comparison.sh,validation or apply shell entrypoint,True,1917
+15.11,script,scripts/stage15_11_stage15_summary_report.py,Python generator or experiment script,True,12924
+15.11,script,scripts/stage15_11_validate_stage15_summary_report.py,Python validator,True,3809
+15.11,script,scripts/stage15_11_validate_stage15_summary_report.sh,validation or apply shell entrypoint,True,1312
+15.1,script,scripts/stage15_1_validate_ros2_cpp_controller.sh,validation or apply shell entrypoint,True,1267
+15.2,script,scripts/stage15_2_validate_contact_force_qp.sh,validation or apply shell entrypoint,True,1127
+15.3,script,scripts/stage15_3_contact_force_candidate_rollout.py,Python generator or experiment script,True,12737
+15.3,script,scripts/stage15_3_validate_contact_force_candidate_rollout.py,Python validator,True,9183
+15.3,script,scripts/stage15_3_validate_contact_force_candidate_rollout.sh,validation or apply shell entrypoint,True,780
+15.4,script,scripts/stage15_4_pinocchio_jacobian_candidate_rollout.py,Python generator or experiment script,True,16635
+15.4,script,scripts/stage15_4_validate_pinocchio_jacobian_candidate_rollout.py,Python validator,True,9573
+15.4,script,scripts/stage15_4_validate_pinocchio_jacobian_candidate_rollout.sh,validation or apply shell entrypoint,True,819
+15.5,script,scripts/stage15_5_model_readiness_audit.py,Python generator or experiment script,True,17850
+15.5,script,scripts/stage15_5_validate_model_readiness_audit.py,Python validator,True,4239
+15.5,script,scripts/stage15_5_validate_model_readiness_audit.sh,validation or apply shell entrypoint,True,1170
+15.6,script,scripts/stage15_6_real_model_jacobian_candidate_rollout.py,Python generator or experiment script,True,18541
+15.6,script,scripts/stage15_6_validate_real_model_jacobian_candidate_rollout.py,Python validator,True,4210
+15.6,script,scripts/stage15_6_validate_real_model_jacobian_candidate_rollout.sh,validation or apply shell entrypoint,True,1659
+15.7,script,scripts/stage15_7_mujoco_candidate_compatibility_audit.py,Python generator or experiment script,True,13708
+15.7,script,scripts/stage15_7_validate_mujoco_candidate_compatibility_audit.py,Python validator,True,4332
+15.7,script,scripts/stage15_7_validate_mujoco_candidate_compatibility_audit.sh,validation or apply shell entrypoint,True,1970
+15.8,script,scripts/stage15_8_mujoco_torque_smoke_test.py,Python generator or experiment script,True,11801
+15.8,script,scripts/stage15_8_validate_mujoco_torque_smoke_test.py,Python validator,True,4082
+15.8,script,scripts/stage15_8_validate_mujoco_torque_smoke_test.sh,validation or apply shell entrypoint,True,1573
+15.9,script,scripts/stage15_9_mujoco_jtf_candidate_injection.py,Python generator or experiment script,True,17301
+15.9,script,scripts/stage15_9_validate_mujoco_jtf_candidate_injection.py,Python validator,True,4486
+15.9,script,scripts/stage15_9_validate_mujoco_jtf_candidate_injection.sh,validation or apply shell entrypoint,True,1863
+16.1,script,scripts/stage16_1_sync_public_docs.py,Python generator or experiment script,True,7511
+16.1,script,scripts/stage16_1_validate_public_docs_sync.py,Python validator,True,4122
+16.1,script,scripts/stage16_1_validate_public_docs_sync.sh,validation or apply shell entrypoint,True,1071
+16.2,script,scripts/stage16_2_generate_artifact_index.py,Python generator or experiment script,True,8338
+16.2,script,scripts/stage16_2_validate_artifact_index.py,Python validator,True,3936
+16.2,script,scripts/stage16_2_validate_artifact_index.sh,validation or apply shell entrypoint,True,1042

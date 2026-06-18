@@ -1,0 +1,829 @@
+{
+  "stage": "16.2",
+  "name": "artifact_index",
+  "artifact_count": 100,
+  "stages": [
+    "15.1",
+    "15.2",
+    "15.3",
+    "15.4",
+    "15.5",
+    "15.6",
+    "15.7",
+    "15.8",
+    "15.9",
+    "15.10",
+    "15.11",
+    "16.1",
+    "16.2"
+  ],
+  "stage_count": 13,
+  "outputs": {
+    "markdown": "docs/ARTIFACT_INDEX.md",
+    "csv": "results/logs_sample/stage16_2_artifact_index.csv",
+    "json": "results/logs_sample/stage16_2_artifact_index_summary.json",
+    "stage_doc": "docs/STAGE16_2_ARTIFACT_INDEX.md"
+  },
+  "rows": [
+    {
+      "stage": "15.10",
+      "category": "doc",
+      "path": "docs/STAGE15_10_MUJOCO_TORQUE_SMOKE_POLICY_COMPARISON.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 1981
+    },
+    {
+      "stage": "15.11",
+      "category": "doc",
+      "path": "docs/STAGE15_11_STAGE15_SUMMARY_REPORT.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 1349
+    },
+    {
+      "stage": "15.1",
+      "category": "doc",
+      "path": "docs/STAGE15_1_ROS2_CPP_TESTING.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 2847
+    },
+    {
+      "stage": "15.2",
+      "category": "doc",
+      "path": "docs/STAGE15_2_CONTACT_FORCE_QP_CPP.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 3101
+    },
+    {
+      "stage": "15.3",
+      "category": "doc",
+      "path": "docs/STAGE15_3_CONTACT_FORCE_CANDIDATE_ROLLOUT.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 3394
+    },
+    {
+      "stage": "15.4",
+      "category": "doc",
+      "path": "docs/STAGE15_4_PINOCCHIO_JACOBIAN_CANDIDATE_ROLLOUT.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 3112
+    },
+    {
+      "stage": "15.5",
+      "category": "doc",
+      "path": "docs/STAGE15_5_MODEL_READINESS_AUDIT.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 2113
+    },
+    {
+      "stage": "15.6",
+      "category": "doc",
+      "path": "docs/STAGE15_6_REAL_MODEL_JACOBIAN_CANDIDATE_ROLLOUT.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 2796
+    },
+    {
+      "stage": "15.7",
+      "category": "doc",
+      "path": "docs/STAGE15_7_MUJOCO_CANDIDATE_COMPATIBILITY_AUDIT.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 2281
+    },
+    {
+      "stage": "15.8",
+      "category": "doc",
+      "path": "docs/STAGE15_8_MUJOCO_TORQUE_SMOKE_TEST.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 2261
+    },
+    {
+      "stage": "15.9",
+      "category": "doc",
+      "path": "docs/STAGE15_9_MUJOCO_JTF_CANDIDATE_INJECTION.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 2297
+    },
+    {
+      "stage": "15.11",
+      "category": "doc",
+      "path": "docs/STAGE15_UPGRADE_SUMMARY.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 3848
+    },
+    {
+      "stage": "16.1",
+      "category": "doc",
+      "path": "docs/STAGE16_1_PUBLIC_DOCS_SYNC.md",
+      "description": "stage documentation",
+      "exists": true,
+      "size_bytes": 279
+    },
+    {
+      "stage": "15.10",
+      "category": "result",
+      "path": "results/logs_sample/stage15_10_mujoco_torque_smoke_policy_comparison.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 5946
+    },
+    {
+      "stage": "15.10",
+      "category": "log",
+      "path": "results/logs_sample/stage15_10_mujoco_torque_smoke_policy_comparison.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 2525
+    },
+    {
+      "stage": "15.10",
+      "category": "result",
+      "path": "results/logs_sample/stage15_10_mujoco_torque_smoke_policy_comparison_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 2181
+    },
+    {
+      "stage": "15.10",
+      "category": "result",
+      "path": "results/logs_sample/stage15_10_mujoco_torque_smoke_policy_comparison_validation.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 1529
+    },
+    {
+      "stage": "15.10",
+      "category": "result",
+      "path": "results/logs_sample/stage15_10_mujoco_torque_smoke_policy_comparison_validation_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 4742
+    },
+    {
+      "stage": "15.11",
+      "category": "result",
+      "path": "results/logs_sample/stage15_11_stage15_summary_report.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 3303
+    },
+    {
+      "stage": "15.11",
+      "category": "result",
+      "path": "results/logs_sample/stage15_11_stage15_summary_report.json",
+      "description": "machine-readable report",
+      "exists": true,
+      "size_bytes": 8340
+    },
+    {
+      "stage": "15.11",
+      "category": "log",
+      "path": "results/logs_sample/stage15_11_stage15_summary_report.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 1469
+    },
+    {
+      "stage": "15.11",
+      "category": "result",
+      "path": "results/logs_sample/stage15_11_stage15_summary_report_validation.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 783
+    },
+    {
+      "stage": "15.11",
+      "category": "result",
+      "path": "results/logs_sample/stage15_11_stage15_summary_report_validation_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 1810
+    },
+    {
+      "stage": "15.1",
+      "category": "log",
+      "path": "results/logs_sample/stage15_1_ros2_cpp_controller_test.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 4596
+    },
+    {
+      "stage": "15.2",
+      "category": "log",
+      "path": "results/logs_sample/stage15_2_contact_force_qp_cpp_test.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 7475
+    },
+    {
+      "stage": "15.3",
+      "category": "result",
+      "path": "results/logs_sample/stage15_3_contact_force_candidate_rollout.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 1379112
+    },
+    {
+      "stage": "15.3",
+      "category": "log",
+      "path": "results/logs_sample/stage15_3_contact_force_candidate_rollout.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 4239
+    },
+    {
+      "stage": "15.3",
+      "category": "result",
+      "path": "results/logs_sample/stage15_3_contact_force_candidate_rollout_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 2620
+    },
+    {
+      "stage": "15.3",
+      "category": "result",
+      "path": "results/logs_sample/stage15_3_contact_force_candidate_rollout_validation.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 54139
+    },
+    {
+      "stage": "15.3",
+      "category": "result",
+      "path": "results/logs_sample/stage15_3_contact_force_candidate_rollout_validation_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 1369
+    },
+    {
+      "stage": "15.4",
+      "category": "result",
+      "path": "results/logs_sample/stage15_4_pinocchio_jacobian_candidate_rollout.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 1445180
+    },
+    {
+      "stage": "15.4",
+      "category": "log",
+      "path": "results/logs_sample/stage15_4_pinocchio_jacobian_candidate_rollout.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 4771
+    },
+    {
+      "stage": "15.4",
+      "category": "result",
+      "path": "results/logs_sample/stage15_4_pinocchio_jacobian_candidate_rollout_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 3082
+    },
+    {
+      "stage": "15.4",
+      "category": "result",
+      "path": "results/logs_sample/stage15_4_pinocchio_jacobian_candidate_rollout_validation.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 54139
+    },
+    {
+      "stage": "15.4",
+      "category": "result",
+      "path": "results/logs_sample/stage15_4_pinocchio_jacobian_candidate_rollout_validation_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 1415
+    },
+    {
+      "stage": "15.5",
+      "category": "result",
+      "path": "results/logs_sample/stage15_5_model_readiness_audit.json",
+      "description": "machine-readable report",
+      "exists": true,
+      "size_bytes": 12972
+    },
+    {
+      "stage": "15.5",
+      "category": "log",
+      "path": "results/logs_sample/stage15_5_model_readiness_audit.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 1389
+    },
+    {
+      "stage": "15.5",
+      "category": "result",
+      "path": "results/logs_sample/stage15_5_model_readiness_audit_inventory.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 402
+    },
+    {
+      "stage": "15.5",
+      "category": "result",
+      "path": "results/logs_sample/stage15_5_model_readiness_audit_validation.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 769
+    },
+    {
+      "stage": "15.5",
+      "category": "result",
+      "path": "results/logs_sample/stage15_5_model_readiness_audit_validation_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 1905
+    },
+    {
+      "stage": "15.6",
+      "category": "result",
+      "path": "results/logs_sample/stage15_6_real_model_jacobian_candidate_rollout.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 18058
+    },
+    {
+      "stage": "15.6",
+      "category": "log",
+      "path": "results/logs_sample/stage15_6_real_model_jacobian_candidate_rollout.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 1854
+    },
+    {
+      "stage": "15.6",
+      "category": "result",
+      "path": "results/logs_sample/stage15_6_real_model_jacobian_candidate_rollout_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 2161
+    },
+    {
+      "stage": "15.6",
+      "category": "result",
+      "path": "results/logs_sample/stage15_6_real_model_jacobian_candidate_rollout_validation.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 1022
+    },
+    {
+      "stage": "15.6",
+      "category": "result",
+      "path": "results/logs_sample/stage15_6_real_model_jacobian_candidate_rollout_validation_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 2375
+    },
+    {
+      "stage": "15.7",
+      "category": "result",
+      "path": "results/logs_sample/stage15_7_mujoco_candidate_compatibility_audit.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 3060
+    },
+    {
+      "stage": "15.7",
+      "category": "log",
+      "path": "results/logs_sample/stage15_7_mujoco_candidate_compatibility_audit.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 1750
+    },
+    {
+      "stage": "15.7",
+      "category": "result",
+      "path": "results/logs_sample/stage15_7_mujoco_candidate_compatibility_audit_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 7114
+    },
+    {
+      "stage": "15.7",
+      "category": "result",
+      "path": "results/logs_sample/stage15_7_mujoco_candidate_compatibility_audit_validation.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 1009
+    },
+    {
+      "stage": "15.7",
+      "category": "result",
+      "path": "results/logs_sample/stage15_7_mujoco_candidate_compatibility_audit_validation_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 2473
+    },
+    {
+      "stage": "15.8",
+      "category": "result",
+      "path": "results/logs_sample/stage15_8_mujoco_torque_smoke_test.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 6024
+    },
+    {
+      "stage": "15.8",
+      "category": "log",
+      "path": "results/logs_sample/stage15_8_mujoco_torque_smoke_test.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 1655
+    },
+    {
+      "stage": "15.8",
+      "category": "result",
+      "path": "results/logs_sample/stage15_8_mujoco_torque_smoke_test_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 4162
+    },
+    {
+      "stage": "15.8",
+      "category": "result",
+      "path": "results/logs_sample/stage15_8_mujoco_torque_smoke_test_validation.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 894
+    },
+    {
+      "stage": "15.8",
+      "category": "result",
+      "path": "results/logs_sample/stage15_8_mujoco_torque_smoke_test_validation_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 2169
+    },
+    {
+      "stage": "15.9",
+      "category": "result",
+      "path": "results/logs_sample/stage15_9_mujoco_jtf_candidate_injection.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 10866
+    },
+    {
+      "stage": "15.9",
+      "category": "log",
+      "path": "results/logs_sample/stage15_9_mujoco_jtf_candidate_injection.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 1921
+    },
+    {
+      "stage": "15.9",
+      "category": "result",
+      "path": "results/logs_sample/stage15_9_mujoco_jtf_candidate_injection_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 5103
+    },
+    {
+      "stage": "15.9",
+      "category": "result",
+      "path": "results/logs_sample/stage15_9_mujoco_jtf_candidate_injection_validation.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 1004
+    },
+    {
+      "stage": "15.9",
+      "category": "result",
+      "path": "results/logs_sample/stage15_9_mujoco_jtf_candidate_injection_validation_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 2532
+    },
+    {
+      "stage": "16.1",
+      "category": "log",
+      "path": "results/logs_sample/stage16_1_public_docs_sync.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 1330
+    },
+    {
+      "stage": "16.1",
+      "category": "result",
+      "path": "results/logs_sample/stage16_1_public_docs_sync_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 492
+    },
+    {
+      "stage": "16.1",
+      "category": "result",
+      "path": "results/logs_sample/stage16_1_public_docs_sync_validation.csv",
+      "description": "tabular validation or rollout result",
+      "exists": true,
+      "size_bytes": 810
+    },
+    {
+      "stage": "16.1",
+      "category": "result",
+      "path": "results/logs_sample/stage16_1_public_docs_sync_validation_summary.json",
+      "description": "machine-readable summary",
+      "exists": true,
+      "size_bytes": 1994
+    },
+    {
+      "stage": "16.2",
+      "category": "log",
+      "path": "results/logs_sample/stage16_2_artifact_index.log",
+      "description": "captured terminal validation log",
+      "exists": true,
+      "size_bytes": 180
+    },
+    {
+      "stage": "15.10",
+      "category": "script",
+      "path": "scripts/stage15_10_compare_mujoco_torque_smoke_policies.py",
+      "description": "Python generator or experiment script",
+      "exists": true,
+      "size_bytes": 13568
+    },
+    {
+      "stage": "15.10",
+      "category": "script",
+      "path": "scripts/stage15_10_validate_mujoco_torque_smoke_policy_comparison.py",
+      "description": "Python validator",
+      "exists": true,
+      "size_bytes": 4840
+    },
+    {
+      "stage": "15.10",
+      "category": "script",
+      "path": "scripts/stage15_10_validate_mujoco_torque_smoke_policy_comparison.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 1917
+    },
+    {
+      "stage": "15.11",
+      "category": "script",
+      "path": "scripts/stage15_11_stage15_summary_report.py",
+      "description": "Python generator or experiment script",
+      "exists": true,
+      "size_bytes": 12924
+    },
+    {
+      "stage": "15.11",
+      "category": "script",
+      "path": "scripts/stage15_11_validate_stage15_summary_report.py",
+      "description": "Python validator",
+      "exists": true,
+      "size_bytes": 3809
+    },
+    {
+      "stage": "15.11",
+      "category": "script",
+      "path": "scripts/stage15_11_validate_stage15_summary_report.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 1312
+    },
+    {
+      "stage": "15.1",
+      "category": "script",
+      "path": "scripts/stage15_1_validate_ros2_cpp_controller.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 1267
+    },
+    {
+      "stage": "15.2",
+      "category": "script",
+      "path": "scripts/stage15_2_validate_contact_force_qp.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 1127
+    },
+    {
+      "stage": "15.3",
+      "category": "script",
+      "path": "scripts/stage15_3_contact_force_candidate_rollout.py",
+      "description": "Python generator or experiment script",
+      "exists": true,
+      "size_bytes": 12737
+    },
+    {
+      "stage": "15.3",
+      "category": "script",
+      "path": "scripts/stage15_3_validate_contact_force_candidate_rollout.py",
+      "description": "Python validator",
+      "exists": true,
+      "size_bytes": 9183
+    },
+    {
+      "stage": "15.3",
+      "category": "script",
+      "path": "scripts/stage15_3_validate_contact_force_candidate_rollout.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 780
+    },
+    {
+      "stage": "15.4",
+      "category": "script",
+      "path": "scripts/stage15_4_pinocchio_jacobian_candidate_rollout.py",
+      "description": "Python generator or experiment script",
+      "exists": true,
+      "size_bytes": 16635
+    },
+    {
+      "stage": "15.4",
+      "category": "script",
+      "path": "scripts/stage15_4_validate_pinocchio_jacobian_candidate_rollout.py",
+      "description": "Python validator",
+      "exists": true,
+      "size_bytes": 9573
+    },
+    {
+      "stage": "15.4",
+      "category": "script",
+      "path": "scripts/stage15_4_validate_pinocchio_jacobian_candidate_rollout.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 819
+    },
+    {
+      "stage": "15.5",
+      "category": "script",
+      "path": "scripts/stage15_5_model_readiness_audit.py",
+      "description": "Python generator or experiment script",
+      "exists": true,
+      "size_bytes": 17850
+    },
+    {
+      "stage": "15.5",
+      "category": "script",
+      "path": "scripts/stage15_5_validate_model_readiness_audit.py",
+      "description": "Python validator",
+      "exists": true,
+      "size_bytes": 4239
+    },
+    {
+      "stage": "15.5",
+      "category": "script",
+      "path": "scripts/stage15_5_validate_model_readiness_audit.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 1170
+    },
+    {
+      "stage": "15.6",
+      "category": "script",
+      "path": "scripts/stage15_6_real_model_jacobian_candidate_rollout.py",
+      "description": "Python generator or experiment script",
+      "exists": true,
+      "size_bytes": 18541
+    },
+    {
+      "stage": "15.6",
+      "category": "script",
+      "path": "scripts/stage15_6_validate_real_model_jacobian_candidate_rollout.py",
+      "description": "Python validator",
+      "exists": true,
+      "size_bytes": 4210
+    },
+    {
+      "stage": "15.6",
+      "category": "script",
+      "path": "scripts/stage15_6_validate_real_model_jacobian_candidate_rollout.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 1659
+    },
+    {
+      "stage": "15.7",
+      "category": "script",
+      "path": "scripts/stage15_7_mujoco_candidate_compatibility_audit.py",
+      "description": "Python generator or experiment script",
+      "exists": true,
+      "size_bytes": 13708
+    },
+    {
+      "stage": "15.7",
+      "category": "script",
+      "path": "scripts/stage15_7_validate_mujoco_candidate_compatibility_audit.py",
+      "description": "Python validator",
+      "exists": true,
+      "size_bytes": 4332
+    },
+    {
+      "stage": "15.7",
+      "category": "script",
+      "path": "scripts/stage15_7_validate_mujoco_candidate_compatibility_audit.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 1970
+    },
+    {
+      "stage": "15.8",
+      "category": "script",
+      "path": "scripts/stage15_8_mujoco_torque_smoke_test.py",
+      "description": "Python generator or experiment script",
+      "exists": true,
+      "size_bytes": 11801
+    },
+    {
+      "stage": "15.8",
+      "category": "script",
+      "path": "scripts/stage15_8_validate_mujoco_torque_smoke_test.py",
+      "description": "Python validator",
+      "exists": true,
+      "size_bytes": 4082
+    },
+    {
+      "stage": "15.8",
+      "category": "script",
+      "path": "scripts/stage15_8_validate_mujoco_torque_smoke_test.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 1573
+    },
+    {
+      "stage": "15.9",
+      "category": "script",
+      "path": "scripts/stage15_9_mujoco_jtf_candidate_injection.py",
+      "description": "Python generator or experiment script",
+      "exists": true,
+      "size_bytes": 17301
+    },
+    {
+      "stage": "15.9",
+      "category": "script",
+      "path": "scripts/stage15_9_validate_mujoco_jtf_candidate_injection.py",
+      "description": "Python validator",
+      "exists": true,
+      "size_bytes": 4486
+    },
+    {
+      "stage": "15.9",
+      "category": "script",
+      "path": "scripts/stage15_9_validate_mujoco_jtf_candidate_injection.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 1863
+    },
+    {
+      "stage": "16.1",
+      "category": "script",
+      "path": "scripts/stage16_1_sync_public_docs.py",
+      "description": "Python generator or experiment script",
+      "exists": true,
+      "size_bytes": 7511
+    },
+    {
+      "stage": "16.1",
+      "category": "script",
+      "path": "scripts/stage16_1_validate_public_docs_sync.py",
+      "description": "Python validator",
+      "exists": true,
+      "size_bytes": 4122
+    },
+    {
+      "stage": "16.1",
+      "category": "script",
+      "path": "scripts/stage16_1_validate_public_docs_sync.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 1071
+    },
+    {
+      "stage": "16.2",
+      "category": "script",
+      "path": "scripts/stage16_2_generate_artifact_index.py",
+      "description": "Python generator or experiment script",
+      "exists": true,
+      "size_bytes": 8338
+    },
+    {
+      "stage": "16.2",
+      "category": "script",
+      "path": "scripts/stage16_2_validate_artifact_index.py",
+      "description": "Python validator",
+      "exists": true,
+      "size_bytes": 3936
+    },
+    {
+      "stage": "16.2",
+      "category": "script",
+      "path": "scripts/stage16_2_validate_artifact_index.sh",
+      "description": "validation or apply shell entrypoint",
+      "exists": true,
+      "size_bytes": 1042
+    }
+  ]
+}
