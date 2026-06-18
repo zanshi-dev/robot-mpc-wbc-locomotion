@@ -1,0 +1,9 @@
+stage15_3_reproduce_core_results
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+git_head: 2962976
+git_branch: main
+[PASS] Stage 15.2 repo hygiene audit
+[PASS] Stage 14.4 base velocity tracking MPC demo
+[PASS] Stage 14.4b validate base velocity MPC rollout
+[PASS] Stage 15.1 ROS2 C++ controller validation
+stage15_3_result: pass
