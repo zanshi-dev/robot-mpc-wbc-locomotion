@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>robot_mpc_wbc_cpp_controller</name>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <description>
     Disabled-by-default C++ controller skeleton and control algorithm test package.
     This package does not claim real robot torque execution or hardware torque enablement.

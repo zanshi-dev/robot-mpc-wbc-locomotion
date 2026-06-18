@@ -17,6 +17,7 @@ add_library(control_algorithms STATIC
   src/control/gait_scheduler.cpp
   src/control/swing_trajectory.cpp
   src/control/torque_safety_filter.cpp
+  src/control/contact_force_qp.cpp
 )
 
 target_compile_features(control_algorithms PUBLIC cxx_std_17)
@@ -138,6 +139,24 @@ if(BUILD_TESTING)
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     )
   endif()
+
+  ament_add_gtest(test_contact_force_qp
+    test/test_contact_force_qp.cpp
+  )
+
+  if(TARGET test_contact_force_qp)
+    target_link_libraries(test_contact_force_qp
+      control_algorithms
+    )
+
+    target_compile_features(test_contact_force_qp PRIVATE cxx_std_17)
+
+    target_include_directories(test_contact_force_qp
+      PRIVATE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    )
+  endif()
+
 endif()
 
 ament_package()
