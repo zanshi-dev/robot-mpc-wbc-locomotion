@@ -1,0 +1,87 @@
+{
+  "stage": "16.1",
+  "validation_pass": true,
+  "files_checked": [
+    "README.md",
+    "docs/ONE_PAGE_TECHNICAL_REPORT.md",
+    "PROJECT_STATUS.md",
+    "docs/STAGE16_1_PUBLIC_DOCS_SYNC.md"
+  ],
+  "checks": [
+    {
+      "check": "readme_marker",
+      "passed": true,
+      "details": "README marker block"
+    },
+    {
+      "check": "one_page_marker",
+      "passed": true,
+      "details": "one-page marker block"
+    },
+    {
+      "check": "status_marker",
+      "passed": true,
+      "details": "PROJECT_STATUS marker block"
+    },
+    {
+      "check": "stage_doc_exists",
+      "passed": true,
+      "details": "docs/STAGE16_1_PUBLIC_DOCS_SYNC.md"
+    },
+    {
+      "check": "stage15_summary_referenced",
+      "passed": true,
+      "details": "Stage 15 summary referenced"
+    },
+    {
+      "check": "ros2_cpp_evidence",
+      "passed": true,
+      "details": "ROS2/C++ and GTest evidence"
+    },
+    {
+      "check": "pinocchio_jtf_evidence",
+      "passed": true,
+      "details": "Pinocchio J^T f evidence"
+    },
+    {
+      "check": "mujoco_smoke_evidence",
+      "passed": true,
+      "details": "MuJoCo smoke-test evidence"
+    },
+    {
+      "check": "no_stable_locomotion_claim",
+      "passed": true,
+      "details": "stable walking explicitly not claimed"
+    },
+    {
+      "check": "no_hardware_claim",
+      "passed": true,
+      "details": "hardware explicitly not claimed"
+    },
+    {
+      "check": "no_torque_enable_claim_text",
+      "passed": true,
+      "details": "torque-enable explicitly not claimed"
+    },
+    {
+      "check": "boundary_no_stable",
+      "passed": true,
+      "details": "summary boundary"
+    },
+    {
+      "check": "boundary_no_mpc_wbc",
+      "passed": true,
+      "details": "summary boundary"
+    },
+    {
+      "check": "boundary_no_hardware",
+      "passed": true,
+      "details": "summary boundary"
+    },
+    {
+      "check": "boundary_no_torque_enable",
+      "passed": true,
+      "details": "summary boundary"
+    }
+  ]
+}

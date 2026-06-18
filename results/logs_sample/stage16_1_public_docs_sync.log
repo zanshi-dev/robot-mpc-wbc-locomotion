@@ -1,0 +1,30 @@
+[Stage 16.1] Public docs sync validation
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+python: /usr/bin/python3
+timestamp_utc: 2026-06-18T02:37:52Z
+
+[1/2] Sync public docs
+stage16_1_sync_completed: true
+synced: README.md
+synced: docs/ONE_PAGE_TECHNICAL_REPORT.md
+synced: PROJECT_STATUS.md
+synced: docs/STAGE16_1_PUBLIC_DOCS_SYNC.md
+output_json: /home/zanshi/robot-mpc-wbc-locomotion/results/logs_sample/stage16_1_public_docs_sync_summary.json
+
+[2/2] Validate public docs
+PASS: readme_marker -- README marker block
+PASS: one_page_marker -- one-page marker block
+PASS: status_marker -- PROJECT_STATUS marker block
+PASS: stage_doc_exists -- docs/STAGE16_1_PUBLIC_DOCS_SYNC.md
+PASS: stage15_summary_referenced -- Stage 15 summary referenced
+PASS: ros2_cpp_evidence -- ROS2/C++ and GTest evidence
+PASS: pinocchio_jtf_evidence -- Pinocchio J^T f evidence
+PASS: mujoco_smoke_evidence -- MuJoCo smoke-test evidence
+PASS: no_stable_locomotion_claim -- stable walking explicitly not claimed
+PASS: no_hardware_claim -- hardware explicitly not claimed
+PASS: no_torque_enable_claim_text -- torque-enable explicitly not claimed
+PASS: boundary_no_stable -- summary boundary
+PASS: boundary_no_mpc_wbc -- summary boundary
+PASS: boundary_no_hardware -- summary boundary
+PASS: boundary_no_torque_enable -- summary boundary
+stage16_1_result: pass

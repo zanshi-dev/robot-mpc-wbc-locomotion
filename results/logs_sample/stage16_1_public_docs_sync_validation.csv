@@ -1,0 +1,16 @@
+check,passed,details
+readme_marker,True,README marker block
+one_page_marker,True,one-page marker block
+status_marker,True,PROJECT_STATUS marker block
+stage_doc_exists,True,docs/STAGE16_1_PUBLIC_DOCS_SYNC.md
+stage15_summary_referenced,True,Stage 15 summary referenced
+ros2_cpp_evidence,True,ROS2/C++ and GTest evidence
+pinocchio_jtf_evidence,True,Pinocchio J^T f evidence
+mujoco_smoke_evidence,True,MuJoCo smoke-test evidence
+no_stable_locomotion_claim,True,stable walking explicitly not claimed
+no_hardware_claim,True,hardware explicitly not claimed
+no_torque_enable_claim_text,True,torque-enable explicitly not claimed
+boundary_no_stable,True,summary boundary
+boundary_no_mpc_wbc,True,summary boundary
+boundary_no_hardware,True,summary boundary
+boundary_no_torque_enable,True,summary boundary

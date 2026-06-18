@@ -5187,3 +5187,18 @@ Stage 12.19 不实现连续 streaming，不改变控制律，不部署硬件。
 - control_law_changed: `False`
 - next_stage: `Stop, or Stage 14 simulation-only improvement planning`
 
+<!-- STAGE16_1_PUBLIC_DOCS_SYNC_START -->
+## Stage 16.1 Public Documentation Sync
+
+Public-facing docs have been synced with Stage 15 evidence.
+
+Current accurate status:
+
+- Stage 15.1 - 15.11 completed and archived.
+- ROS2/C++ control modules are buildable and testable.
+- Contact-force QP, Pinocchio `J^T f` candidate generation, MuJoCo compatibility audit and bounded torque smoke tests have report artifacts.
+- The project remains simulation-only.
+- Stable locomotion from the Stage 15 candidate path is not claimed.
+- Full MPC-WBC closed-loop locomotion is not claimed.
+- Hardware deployment and `torque_enable_ready=True` are not claimed.
+<!-- STAGE16_1_PUBLIC_DOCS_SYNC_END -->

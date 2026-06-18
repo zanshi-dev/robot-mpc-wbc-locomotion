@@ -1,0 +1,19 @@
+{
+  "stage": "16.1",
+  "name": "public_docs_sync",
+  "files_synced": [
+    "README.md",
+    "docs/ONE_PAGE_TECHNICAL_REPORT.md",
+    "PROJECT_STATUS.md",
+    "docs/STAGE16_1_PUBLIC_DOCS_SYNC.md"
+  ],
+  "readme_marker_present": true,
+  "one_page_marker_present": true,
+  "status_marker_present": true,
+  "boundary": {
+    "stable_locomotion_claimed": false,
+    "full_mpc_wbc_closed_loop_claimed": false,
+    "hardware_deployment_claimed": false,
+    "torque_enable_ready_claimed": false
+  }
+}

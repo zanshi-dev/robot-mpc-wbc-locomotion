@@ -313,3 +313,40 @@ MPC 辅助候选链路鲁棒性包络：
 
 <!-- STAGE14_4E_MPC_ENTRY_END -->
 
+<!-- STAGE16_1_PUBLIC_DOCS_SYNC_START -->
+## Stage 15 工程化升级证据
+
+Stage 15 的目标不是直接宣称稳定行走或真实机器人部署，而是把控制链路中的工程证据逐层补齐。当前已完成的证据包括：
+
+| 阶段 | 结果 | 边界 |
+|---|---|---|
+| Stage 15.1 | ROS2/C++ control algorithms 接入 CMake/GTest，支持 `colcon build/test` | 不发布 torque，不接硬件 |
+| Stage 15.2 | C++ contact force QP demo，验证接触模式、法向力和摩擦约束 | 不引入 OSQP C++ 依赖，不执行机器人 torque |
+| Stage 15.3 | contact force 到 nominal torque candidate 的 dry-run 和 alpha sweep | 不使用真实 Pinocchio Jacobian，不接 MuJoCo torque |
+| Stage 15.4 | Pinocchio Jacobian 下的 `J^T f` torque candidate dry-run | 不接 MuJoCo torque，不接 ROS torque |
+| Stage 15.5 | 模型资源 readiness audit，审计 MJCF/URDF/Xacro、关节名和足端 frame 候选 | 只做模型审计 |
+| Stage 15.6 | real-model metadata / URDF 路径下的 Pinocchio Jacobian candidate rollout | 若使用 MJCF fallback，不声明完整真实几何模型 |
+| Stage 15.7 | MuJoCo joint/actuator compatibility audit | 只调用 `mj_forward`，不执行 torque |
+| Stage 15.8 | bounded MuJoCo torque smoke test | 短时域、低幅值，只验证 actuator command path |
+| Stage 15.9 | Stage 15.6 `J^T f` torque candidate 低 alpha 注入 MuJoCo smoke test | 不声明稳定行走或 MPC-WBC 闭环成功 |
+| Stage 15.10 | zero ctrl / deterministic waveform / `J^T f` candidate 的短时域 safety comparison | 只比较安全和兼容性指标 |
+| Stage 15.11 | Stage 15 总结报告 | 整理证据与边界，不新增控制功能 |
+
+可声明内容：
+
+- ROS2/C++ 控制算法模块已具备构建和单元测试证据；
+- 接触力约束、候选力矩、Pinocchio Jacobian、MuJoCo joint/actuator 映射已经形成分阶段验证链路；
+- MuJoCo 中已经完成 bounded actuator command smoke test 和 short-horizon comparison；
+- 所有 Stage 15 结果均有日志或 JSON/CSV 结果归档到 `results/logs_sample/`。
+
+不能声明内容：
+
+- 不声明稳定行走；
+- 不声明完整 MPC-WBC closed-loop locomotion controller；
+- 不声明真实机器人部署；
+- 不声明 ROS torque publisher 可直接用于硬件；
+- 不声明 `torque_enable_ready=True`；
+- 不声明实时硬件控制器完成。
+
+完整 Stage 15 总结见：`docs/STAGE15_UPGRADE_SUMMARY.md`。
+<!-- STAGE16_1_PUBLIC_DOCS_SYNC_END -->

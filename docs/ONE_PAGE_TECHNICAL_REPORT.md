@@ -50,3 +50,12 @@ Stage 14.4 新增的是 standalone simplified 3D base velocity tracking receding
 
 <!-- STAGE14_4E_MPC_ENTRY_END -->
 
+<!-- STAGE16_1_PUBLIC_DOCS_SYNC_START -->
+## Stage 15 工程化证据摘要
+
+Stage 15 将项目从纯 Python/MuJoCo 控制演示推进到可审计的工程证据链：ROS2/C++ 单元测试、C++ contact force QP demo、Pinocchio `J^T f` torque candidate、模型资源 readiness audit、MuJoCo joint/actuator compatibility audit，以及 bounded MuJoCo torque smoke test。
+
+当前 Stage 15 证据只能支持 simulation-only 和 short-horizon smoke-test 结论。项目不声明稳定行走、不声明真实机器人部署、不声明 `torque_enable_ready=True`，也不声明完整 MPC-WBC closed-loop controller 已完成。
+
+报告级总结见：`docs/STAGE15_UPGRADE_SUMMARY.md`。
+<!-- STAGE16_1_PUBLIC_DOCS_SYNC_END -->
