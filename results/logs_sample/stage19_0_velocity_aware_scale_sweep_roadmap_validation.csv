@@ -1,0 +1,22 @@
+check,status,detail
+roadmap_exists,PASS,docs/STAGE19_VELOCITY_AWARE_SCALE_SWEEP_ROADMAP.md
+contains::Stage 19,PASS,Stage 19
+contains::velocity,PASS,velocity
+contains::scale sweep,PASS,scale sweep
+contains::target_vx,PASS,target_vx
+contains::mean_vx,PASS,mean_vx
+contains::mean_abs_velocity_error,PASS,mean_abs_velocity_error
+contains::forward_displacement,PASS,forward_displacement
+contains::min_z,PASS,min_z
+contains::max_abs_roll,PASS,max_abs_roll
+contains::max_abs_pitch,PASS,max_abs_pitch
+contains::qp_fail_steps,PASS,qp_fail_steps
+contains::saturation_steps,PASS,saturation_steps
+contains::0.005,PASS,0.005
+contains::0.010,PASS,0.010
+contains::0.020,PASS,0.020
+contains::0.050,PASS,0.050
+contains::simulation-only,PASS,simulation-only
+contains::不声明,PASS,不声明
+contains::candidate 已改善速度跟踪,PASS,candidate 已改善速度跟踪
+contains::Stage 19.4,PASS,Stage 19.4

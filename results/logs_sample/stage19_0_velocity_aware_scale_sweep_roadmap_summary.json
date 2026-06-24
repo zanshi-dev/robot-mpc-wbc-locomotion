@@ -1,0 +1,133 @@
+{
+  "stage": "19.0",
+  "name": "velocity-aware candidate scale sweep roadmap",
+  "result": "pass",
+  "failure_count": 0,
+  "roadmap": "docs/STAGE19_VELOCITY_AWARE_SCALE_SWEEP_ROADMAP.md",
+  "generated_files": [
+    "results/logs_sample/stage19_0_velocity_aware_scale_sweep_roadmap_validation.csv",
+    "results/logs_sample/stage19_0_velocity_aware_scale_sweep_roadmap_summary.json"
+  ],
+  "planned_scales": [
+    0.0,
+    0.005,
+    0.01,
+    0.02,
+    0.05
+  ],
+  "claim_boundary": [
+    "roadmap only",
+    "no new rollout generated yet",
+    "no candidate velocity improvement claim",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim"
+  ],
+  "checks": [
+    {
+      "check": "roadmap_exists",
+      "status": "PASS",
+      "detail": "docs/STAGE19_VELOCITY_AWARE_SCALE_SWEEP_ROADMAP.md"
+    },
+    {
+      "check": "contains::Stage 19",
+      "status": "PASS",
+      "detail": "Stage 19"
+    },
+    {
+      "check": "contains::velocity",
+      "status": "PASS",
+      "detail": "velocity"
+    },
+    {
+      "check": "contains::scale sweep",
+      "status": "PASS",
+      "detail": "scale sweep"
+    },
+    {
+      "check": "contains::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "contains::mean_vx",
+      "status": "PASS",
+      "detail": "mean_vx"
+    },
+    {
+      "check": "contains::mean_abs_velocity_error",
+      "status": "PASS",
+      "detail": "mean_abs_velocity_error"
+    },
+    {
+      "check": "contains::forward_displacement",
+      "status": "PASS",
+      "detail": "forward_displacement"
+    },
+    {
+      "check": "contains::min_z",
+      "status": "PASS",
+      "detail": "min_z"
+    },
+    {
+      "check": "contains::max_abs_roll",
+      "status": "PASS",
+      "detail": "max_abs_roll"
+    },
+    {
+      "check": "contains::max_abs_pitch",
+      "status": "PASS",
+      "detail": "max_abs_pitch"
+    },
+    {
+      "check": "contains::qp_fail_steps",
+      "status": "PASS",
+      "detail": "qp_fail_steps"
+    },
+    {
+      "check": "contains::saturation_steps",
+      "status": "PASS",
+      "detail": "saturation_steps"
+    },
+    {
+      "check": "contains::0.005",
+      "status": "PASS",
+      "detail": "0.005"
+    },
+    {
+      "check": "contains::0.010",
+      "status": "PASS",
+      "detail": "0.010"
+    },
+    {
+      "check": "contains::0.020",
+      "status": "PASS",
+      "detail": "0.020"
+    },
+    {
+      "check": "contains::0.050",
+      "status": "PASS",
+      "detail": "0.050"
+    },
+    {
+      "check": "contains::simulation-only",
+      "status": "PASS",
+      "detail": "simulation-only"
+    },
+    {
+      "check": "contains::不声明",
+      "status": "PASS",
+      "detail": "不声明"
+    },
+    {
+      "check": "contains::candidate 已改善速度跟踪",
+      "status": "PASS",
+      "detail": "candidate 已改善速度跟踪"
+    },
+    {
+      "check": "contains::Stage 19.4",
+      "status": "PASS",
+      "detail": "Stage 19.4"
+    }
+  ]
+}
