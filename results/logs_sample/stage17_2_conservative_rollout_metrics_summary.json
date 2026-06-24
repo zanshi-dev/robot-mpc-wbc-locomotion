@@ -1,0 +1,60 @@
+{
+  "stage": "17.2",
+  "name": "conservative rollout metrics table",
+  "result": "pass",
+  "source_csv": "results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_table.csv",
+  "stage17_1_summary": "results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json",
+  "generated_files": [
+    "results/logs_sample/stage17_2_conservative_rollout_metrics_table.csv",
+    "results/logs_sample/stage17_2_conservative_rollout_metrics_table.md",
+    "results/logs_sample/stage17_2_conservative_rollout_metrics_summary.json",
+    "docs/STAGE17_2_CONSERVATIVE_ROLLOUT_METRICS_TABLE.md"
+  ],
+  "row_count": 4,
+  "seen_scales": [
+    "0.00",
+    "0.02",
+    "0.05",
+    "0.10"
+  ],
+  "expected_scales": [
+    "0.00",
+    "0.02",
+    "0.05",
+    "0.10"
+  ],
+  "conservative_scale": "0.02",
+  "claim_boundary": [
+    "simulation-only metrics packaging",
+    "no velocity tracking metric in this evidence table",
+    "no hardware torque execution claim",
+    "no comprehensive MPC/WBC superiority claim"
+  ],
+  "checks": [
+    {
+      "check": "source_csv_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_table.csv"
+    },
+    {
+      "check": "stage17_1_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json"
+    },
+    {
+      "check": "expected_scales_present",
+      "status": "PASS",
+      "detail": "seen=['0.00', '0.02', '0.05', '0.10']"
+    },
+    {
+      "check": "all_rows_pass",
+      "status": "PASS",
+      "detail": "pass_rows=4, total_rows=4"
+    },
+    {
+      "check": "conservative_0p02_row_present",
+      "status": "PASS",
+      "detail": "scale=0.02"
+    }
+  ]
+}
