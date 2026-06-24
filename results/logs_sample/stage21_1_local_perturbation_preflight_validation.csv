@@ -1,0 +1,32 @@
+check,status,detail
+stage21_0_summary_pass,PASS,result=pass
+stage20_3_summary_pass,PASS,result=pass
+stage20_3_recommendation_stable,PASS,recommendation_stable=True
+source_runner_exists,PASS,scripts/stage20_2_replay_reproducibility_runner.py
+source_runner_contains::--run-id,PASS,--run-id
+source_runner_contains::--scale-tag,PASS,--scale-tag
+source_runner_contains::--target-vx,PASS,--target-vx
+source_runner_contains::LOG_CSV_TEMPLATE,PASS,LOG_CSV_TEMPLATE
+source_runner_contains::SUMMARY_CSV_TEMPLATE,PASS,SUMMARY_CSV_TEMPLATE
+source_runner_contains::data.qpos,PASS,data.qpos
+source_runner_contains::base_x,PASS,base_x
+source_runner_contains::base_y,PASS,base_y
+source_runner_contains::base_vx_fd,PASS,base_vx_fd
+source_runner_contains::mean_vx,PASS,mean_vx
+source_runner_contains::mean_abs_velocity_error,PASS,mean_abs_velocity_error
+source_runner_contains::forward_displacement,PASS,forward_displacement
+source_runner_contains::candidate_scale,PASS,candidate_scale
+source_runner_contains::max_tau_candidate_scaled_abs,PASS,max_tau_candidate_scaled_abs
+source_runner_contains::mujoco,PASS,mujoco
+has_base_x_qpos_anchor,PASS,qpos[0] base_x anchor
+has_base_y_qpos_anchor,PASS,qpos[1] base_y anchor
+has_quaternion_or_base_orientation_context,PASS,qpos[3:7] / quat / yaw context
+planned_perturbation_count_7,PASS,count=7
+planned_scale_anchor_count_3,PASS,count=3
+planned_rollout_count_21,PASS,count=21
+planned_logs_unique,PASS,unique log outputs
+planned_summaries_unique,PASS,unique summary outputs
+planned_includes_nominal,PASS,nominal
+planned_includes_x_y_yaw_perturbations,PASS,x/y/yaw perturbations
+planned_includes_recommended_0p010,PASS,0p010
+planned_includes_regression_anchor_0p020,PASS,0p020
