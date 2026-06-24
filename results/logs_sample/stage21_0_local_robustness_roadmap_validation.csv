@@ -1,0 +1,30 @@
+check,status,detail
+roadmap_exists,PASS,docs/STAGE21_RECOMMENDED_SCALE_LOCAL_ROBUSTNESS_ROADMAP.md
+contains::Stage 21,PASS,Stage 21
+contains::local robustness,PASS,local robustness
+contains::local perturbation,PASS,local perturbation
+contains::scale=0.010,PASS,scale=0.010
+contains::scale=0.020,PASS,scale=0.020
+contains::scale=0.000,PASS,scale=0.000
+contains::nominal,PASS,nominal
+contains::x_plus,PASS,x_plus
+contains::x_minus,PASS,x_minus
+contains::y_plus,PASS,y_plus
+contains::y_minus,PASS,y_minus
+contains::yaw_plus,PASS,yaw_plus
+contains::yaw_minus,PASS,yaw_minus
+contains::target_vx,PASS,target_vx
+contains::mean_abs_velocity_error,PASS,mean_abs_velocity_error
+contains::forward_displacement,PASS,forward_displacement
+contains::min_z,PASS,min_z
+contains::max_abs_roll,PASS,max_abs_roll
+contains::max_abs_pitch,PASS,max_abs_pitch
+contains::qp_fail_steps,PASS,qp_fail_steps
+contains::saturation_steps,PASS,saturation_steps
+contains::local_robustness_pass,PASS,local_robustness_pass
+contains::recommendation_robust,PASS,recommendation_robust
+contains::不新增控制器,PASS,不新增控制器
+contains::不做真实机器人部署,PASS,不做真实机器人部署
+contains::不做多 target_vx 泛化声明,PASS,不做多 target_vx 泛化声明
+contains::不声明,PASS,不声明
+contains::Stage 21.4,PASS,Stage 21.4
