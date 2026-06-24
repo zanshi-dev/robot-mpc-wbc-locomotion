@@ -1,0 +1,172 @@
+{
+  "stage": "17.1",
+  "name": "conservative closed-loop rollout evidence validation",
+  "result": "pass",
+  "failure_count": 0,
+  "source_basis": "Stage 14.5e scale=0.02 conservative MPC-assisted candidate rollout evidence",
+  "source_files": [
+    "results/logs_sample/stage14_5e_r1_scale_0p02_candidate_log.csv",
+    "results/logs_sample/stage14_5e_r1_scale_0p02_candidate_summary.csv",
+    "results/logs_sample/stage14_5e_r1_scale_0p00_baseline_reference_summary.csv",
+    "results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_table.csv",
+    "results/logs_sample/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_summary.csv"
+  ],
+  "generated_files": [
+    "results/logs_sample/stage17_1_conservative_closed_loop_rollout_validation.csv",
+    "results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json",
+    "results/logs_sample/stage17_1_conservative_closed_loop_rollout_validation.log"
+  ],
+  "candidate_metrics": {
+    "total_steps": 2400.0,
+    "candidate_scale": 0.02,
+    "min_z": 0.273040429683,
+    "max_abs_roll": 0.090249676148,
+    "max_abs_pitch": 0.064958727791,
+    "max_tau_total_abs": 9.91188550792,
+    "max_tau_candidate_scaled_abs": 0.388850188946,
+    "torque_limit": 23.7,
+    "qp_fail_steps": 0.0,
+    "saturation_steps": 0.0
+  },
+  "baseline_reference_metrics": {
+    "min_z": 0.274552192756,
+    "max_abs_roll": 0.056707402709,
+    "max_abs_pitch": 0.04832948253
+  },
+  "claim_boundary": [
+    "simulation-only evidence",
+    "conservative low-scale candidate validation",
+    "stability and torque-injection evidence only",
+    "no velocity tracking metric in this Stage 14.5e evidence file",
+    "not a real robot controller",
+    "not a high-performance MPC-WBC locomotion claim",
+    "not proof that MPC/WBC comprehensively outperforms baseline"
+  ],
+  "checks": [
+    {
+      "check": "source_exists::stage14_5e_r1_scale_0p02_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage14_5e_r1_scale_0p02_candidate_log.csv"
+    },
+    {
+      "check": "source_exists::stage14_5e_r1_scale_0p02_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage14_5e_r1_scale_0p02_candidate_summary.csv"
+    },
+    {
+      "check": "source_exists::stage14_5e_r1_scale_0p00_baseline_reference_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage14_5e_r1_scale_0p00_baseline_reference_summary.csv"
+    },
+    {
+      "check": "source_exists::stage14_5e_r1_candidate_robustness_scale_sweep_table.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_table.csv"
+    },
+    {
+      "check": "source_exists::stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "candidate_log_has_rows",
+      "status": "PASS",
+      "detail": "rows=2400"
+    },
+    {
+      "check": "candidate_summary_has_one_row",
+      "status": "PASS",
+      "detail": "rows=1"
+    },
+    {
+      "check": "baseline_summary_has_one_row",
+      "status": "PASS",
+      "detail": "rows=1"
+    },
+    {
+      "check": "sweep_table_has_four_rows",
+      "status": "PASS",
+      "detail": "rows=4"
+    },
+    {
+      "check": "control_mode_is_candidate",
+      "status": "PASS",
+      "detail": "control_mode=mpc_assisted_candidate"
+    },
+    {
+      "check": "simulation_only_project",
+      "status": "PASS",
+      "detail": "simulation_only_project=True"
+    },
+    {
+      "check": "no_hardware_torque_commanded",
+      "status": "PASS",
+      "detail": "real_robot_torque_commanded=False"
+    },
+    {
+      "check": "no_ros_publisher_used",
+      "status": "PASS",
+      "detail": "ros_publisher_used=False"
+    },
+    {
+      "check": "candidate_executed",
+      "status": "PASS",
+      "detail": "mpc_assisted_candidate_executed=True"
+    },
+    {
+      "check": "candidate_scale_is_conservative_0p02",
+      "status": "PASS",
+      "detail": "scale=0.02"
+    },
+    {
+      "check": "total_steps_2400",
+      "status": "PASS",
+      "detail": "total_steps=2400.0"
+    },
+    {
+      "check": "height_margin_min_z_above_0p22",
+      "status": "PASS",
+      "detail": "min_z=0.273040429683"
+    },
+    {
+      "check": "roll_bounded_under_0p20",
+      "status": "PASS",
+      "detail": "max_abs_roll=0.090249676148"
+    },
+    {
+      "check": "pitch_bounded_under_0p20",
+      "status": "PASS",
+      "detail": "max_abs_pitch=0.064958727791"
+    },
+    {
+      "check": "qp_fail_steps_zero",
+      "status": "PASS",
+      "detail": "qp_fail_steps=0.0"
+    },
+    {
+      "check": "saturation_steps_zero",
+      "status": "PASS",
+      "detail": "saturation_steps=0.0"
+    },
+    {
+      "check": "candidate_summary_pass_true",
+      "status": "PASS",
+      "detail": "pass=True"
+    },
+    {
+      "check": "torque_metric_available",
+      "status": "PASS",
+      "detail": "max_tau_total_abs=9.91188550792"
+    },
+    {
+      "check": "candidate_scaled_torque_available",
+      "status": "PASS",
+      "detail": "max_tau_candidate_scaled_abs=0.388850188946"
+    },
+    {
+      "check": "torque_limit_available",
+      "status": "PASS",
+      "detail": "torque_limit=23.7"
+    }
+  ]
+}
