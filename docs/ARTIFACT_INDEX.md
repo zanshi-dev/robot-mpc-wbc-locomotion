@@ -186,3 +186,24 @@ This index maps Stage 15/16 evidence to scripts, documents, logs and machine-rea
 | script | `scripts/stage16_2_generate_artifact_index.py` | Python generator or experiment script |
 | script | `scripts/stage16_2_validate_artifact_index.py` | Python validator |
 | script | `scripts/stage16_2_validate_artifact_index.sh` | validation or apply shell entrypoint |
+
+<!-- STAGE17_ENTRY_DOCS_SYNC_START -->
+## Stage 17 Artifacts
+
+All Stage 17 artifacts listed below are simulation-only evidence artifacts.
+
+| Stage | Artifact | Purpose |
+|---|---|---|
+| 17.0 | `docs/STAGE17_CLOSED_LOOP_ROADMAP.md` | Closed-loop rollout roadmap and claim boundary |
+| 17.0 | `results/logs_sample/stage17_0_closed_loop_roadmap_validation_summary.json` | Stage 17.0 validation summary |
+| 17.1 | `scripts/stage17_1_validate_conservative_closed_loop_rollout.py` | Conservative rollout evidence validator |
+| 17.1 | `docs/STAGE17_1_CONSERVATIVE_CLOSED_LOOP_ROLLOUT.md` | Stage 17.1 evidence explanation |
+| 17.1 | `results/logs_sample/stage17_1_conservative_closed_loop_rollout_validation.csv` | Stage 17.1 validation checks |
+| 17.1 | `results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json` | Stage 17.1 validation summary |
+| 17.2 | `scripts/stage17_2_generate_conservative_rollout_metrics_table.py` | Metrics table generator |
+| 17.2 | `docs/STAGE17_2_CONSERVATIVE_ROLLOUT_METRICS_TABLE.md` | Human-readable metrics table and claim boundary |
+| 17.2 | `results/logs_sample/stage17_2_conservative_rollout_metrics_table.csv` | Machine-readable Stage 17.2 metrics table |
+| 17.2 | `results/logs_sample/stage17_2_conservative_rollout_metrics_table.md` | Markdown metrics table |
+| 17.2 | `results/logs_sample/stage17_2_conservative_rollout_metrics_summary.json` | Stage 17.2 summary |
+<!-- STAGE17_ENTRY_DOCS_SYNC_END -->
+

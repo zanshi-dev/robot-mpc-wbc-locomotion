@@ -432,3 +432,33 @@ ROS2/C++ 测试、contact force QP、Pinocchio J^T f candidate、MuJoCo actuator
 尚未完成完整 MPC-WBC closed-loop 稳定行走；
 尚未声明 torque_enable_ready=True。
 ```
+
+<!-- STAGE17_ENTRY_DOCS_SYNC_START -->
+## Stage 17 — Conservative MPC/WBC Closed-Loop Rollout Evidence
+
+Stage 17 packages the existing simulation-only MPC/WBC candidate path into conservative closed-loop rollout evidence.
+
+Current evidence chain:
+
+- **Stage 17.0**: closed-loop rollout roadmap and claim boundaries. See `docs/STAGE17_CLOSED_LOOP_ROADMAP.md`.
+- **Stage 17.1**: conservative `scale=0.02` MPC/WBC candidate injection validation. See `docs/STAGE17_1_CONSERVATIVE_CLOSED_LOOP_ROLLOUT.md`.
+- **Stage 17.2**: readable rollout metrics table for `scale=0.00 / 0.02 / 0.05 / 0.10`. See `docs/STAGE17_2_CONSERVATIVE_ROLLOUT_METRICS_TABLE.md`.
+
+Current Stage 17 status:
+
+```text
+Stage 17.0 result: pass
+Stage 17.1 result: pass
+Stage 17.2 result: pass
+```
+
+Claim boundary:
+
+- Simulation-only evidence.
+- Conservative low-scale candidate injection.
+- No real robot torque command.
+- No hardware torque enablement claim.
+- No velocity tracking metric in the Stage 14.5e evidence table.
+- No claim that MPC/WBC comprehensively outperforms the baseline.
+<!-- STAGE17_ENTRY_DOCS_SYNC_END -->
+

@@ -1,0 +1,143 @@
+{
+  "stage": "17.3",
+  "name": "entry docs sync",
+  "result": "pass",
+  "failure_count": 0,
+  "updated_files": [
+    "README.md",
+    "PROJECT_STATUS.md",
+    "docs/ARTIFACT_INDEX.md",
+    "docs/STAGE17_3_ENTRY_DOCS_SYNC.md"
+  ],
+  "source_summaries": [
+    "results/logs_sample/stage17_0_closed_loop_roadmap_validation_summary.json",
+    "results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json",
+    "results/logs_sample/stage17_2_conservative_rollout_metrics_summary.json"
+  ],
+  "validation_csv": "results/logs_sample/stage17_3_entry_docs_sync_validation.csv",
+  "claim_boundary": [
+    "simulation-only conservative closed-loop rollout evidence",
+    "no real robot torque execution",
+    "no hardware torque enablement",
+    "no high-performance locomotion claim",
+    "no comprehensive MPC/WBC superiority claim",
+    "no velocity tracking metric in Stage 14.5e evidence table"
+  ],
+  "checks": [
+    {
+      "check": "required_exists::STAGE17_CLOSED_LOOP_ROADMAP.md",
+      "status": "PASS",
+      "detail": "docs/STAGE17_CLOSED_LOOP_ROADMAP.md"
+    },
+    {
+      "check": "required_exists::STAGE17_1_CONSERVATIVE_CLOSED_LOOP_ROLLOUT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE17_1_CONSERVATIVE_CLOSED_LOOP_ROLLOUT.md"
+    },
+    {
+      "check": "required_exists::STAGE17_2_CONSERVATIVE_ROLLOUT_METRICS_TABLE.md",
+      "status": "PASS",
+      "detail": "docs/STAGE17_2_CONSERVATIVE_ROLLOUT_METRICS_TABLE.md"
+    },
+    {
+      "check": "required_exists::stage17_0_closed_loop_roadmap_validation_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_0_closed_loop_roadmap_validation_summary.json"
+    },
+    {
+      "check": "required_exists::stage17_1_conservative_closed_loop_rollout_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json"
+    },
+    {
+      "check": "required_exists::stage17_2_conservative_rollout_metrics_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_2_conservative_rollout_metrics_summary.json"
+    },
+    {
+      "check": "required_exists::stage17_2_conservative_rollout_metrics_table.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_2_conservative_rollout_metrics_table.csv"
+    },
+    {
+      "check": "required_exists::stage17_2_conservative_rollout_metrics_table.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_2_conservative_rollout_metrics_table.md"
+    },
+    {
+      "check": "marker_start::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "marker_end::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "mentions_simulation_only::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "mentions_stage17::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "marker_start::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "marker_end::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "mentions_simulation_only::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "mentions_stage17::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "marker_start::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "marker_end::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "mentions_simulation_only::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "mentions_stage17::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "stage17_3_doc_exists",
+      "status": "PASS",
+      "detail": "docs/STAGE17_3_ENTRY_DOCS_SYNC.md"
+    },
+    {
+      "check": "mentions_simulation_only::STAGE17_3_ENTRY_DOCS_SYNC.md",
+      "status": "PASS",
+      "detail": "docs/STAGE17_3_ENTRY_DOCS_SYNC.md"
+    },
+    {
+      "check": "mentions_stage17::STAGE17_3_ENTRY_DOCS_SYNC.md",
+      "status": "PASS",
+      "detail": "docs/STAGE17_3_ENTRY_DOCS_SYNC.md"
+    }
+  ]
+}

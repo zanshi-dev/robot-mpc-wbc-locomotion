@@ -5202,3 +5202,28 @@ Current accurate status:
 - Full MPC-WBC closed-loop locomotion is not claimed.
 - Hardware deployment and `torque_enable_ready=True` are not claimed.
 <!-- STAGE16_1_PUBLIC_DOCS_SYNC_END -->
+
+<!-- STAGE17_ENTRY_DOCS_SYNC_START -->
+## Stage 17 Status: Conservative Closed-Loop Rollout Evidence
+
+Status: completed through Stage 17.2.
+
+| Stage | Result | Evidence |
+|---|---:|---|
+| 17.0 | pass | `docs/STAGE17_CLOSED_LOOP_ROADMAP.md` |
+| 17.1 | pass | `docs/STAGE17_1_CONSERVATIVE_CLOSED_LOOP_ROLLOUT.md` |
+| 17.2 | pass | `docs/STAGE17_2_CONSERVATIVE_ROLLOUT_METRICS_TABLE.md` |
+
+Stage 17 currently supports this statement:
+
+> The project has simulation-only conservative closed-loop rollout evidence for low-scale MPC/WBC candidate injection. The evidence validates that candidate injection did not break height, attitude, QP failure, or torque saturation boundaries in the recorded sweep.
+
+Stage 17 does not support these statements:
+
+- Full hardware MPC-WBC controller completed.
+- Real robot torque execution completed.
+- High-performance locomotion controller completed.
+- MPC/WBC fully outperforms the baseline.
+- Velocity tracking performance has been evaluated in the Stage 14.5e evidence table.
+<!-- STAGE17_ENTRY_DOCS_SYNC_END -->
+
