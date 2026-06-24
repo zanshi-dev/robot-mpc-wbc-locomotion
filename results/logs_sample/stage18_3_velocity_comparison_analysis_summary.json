@@ -1,0 +1,92 @@
+{
+  "stage": "18.3",
+  "name": "velocity comparison analysis",
+  "result": "pass",
+  "failure_count": 0,
+  "source": "results/logs_sample/stage18_2_velocity_tracking_rollout_comparison.csv",
+  "generated_files": [
+    "results/logs_sample/stage18_3_velocity_comparison_analysis.csv",
+    "results/logs_sample/stage18_3_velocity_comparison_analysis.md",
+    "results/logs_sample/stage18_3_velocity_comparison_analysis_validation.csv",
+    "results/logs_sample/stage18_3_velocity_comparison_analysis_summary.json",
+    "docs/STAGE18_3_VELOCITY_COMPARISON_ANALYSIS.md"
+  ],
+  "conclusion": "The Stage 18.2 candidate injection case remains stable but does not improve velocity tracking. At target_vx=0.2 m/s, the baseline has higher mean_vx, lower mean_abs_velocity_error, and larger forward displacement.",
+  "claim_boundary": [
+    "simulation-only velocity evidence",
+    "finite-difference velocity from qpos[0]",
+    "candidate remains stable but is not better on velocity tracking",
+    "no real robot torque execution",
+    "no comprehensive MPC/WBC superiority claim"
+  ],
+  "analysis_rows": [
+    {
+      "metric": "mean_vx",
+      "baseline": "0.131362",
+      "candidate": "0.066640",
+      "candidate_minus_baseline": "-0.064722",
+      "interpretation": "candidate slower than baseline"
+    },
+    {
+      "metric": "mean_abs_velocity_error",
+      "baseline": "0.078494",
+      "candidate": "0.147469",
+      "candidate_minus_baseline": "0.068975",
+      "interpretation": "candidate worse velocity tracking"
+    },
+    {
+      "metric": "forward_displacement",
+      "baseline": "0.630505",
+      "candidate": "0.319838",
+      "candidate_minus_baseline": "-0.310667",
+      "interpretation": "candidate lower displacement"
+    }
+  ],
+  "checks": [
+    {
+      "check": "stage18_2_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_rollout_summary.json"
+    },
+    {
+      "check": "comparison_csv_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_rollout_comparison.csv"
+    },
+    {
+      "check": "has_baseline_row",
+      "status": "PASS",
+      "detail": "baseline"
+    },
+    {
+      "check": "has_candidate_row",
+      "status": "PASS",
+      "detail": "mpc_assisted_candidate"
+    },
+    {
+      "check": "both_rows_pass_stability_boundary",
+      "status": "PASS",
+      "detail": "baseline=True, candidate=True"
+    },
+    {
+      "check": "candidate_velocity_result_identified",
+      "status": "PASS",
+      "detail": "candidate velocity tracking is not better than baseline in Stage 18.2"
+    },
+    {
+      "check": "candidate_error_higher_than_baseline",
+      "status": "PASS",
+      "detail": "delta_error=0.068975"
+    },
+    {
+      "check": "candidate_mean_vx_lower_than_baseline",
+      "status": "PASS",
+      "detail": "delta_mean_vx=-0.064722"
+    },
+    {
+      "check": "candidate_displacement_lower_than_baseline",
+      "status": "PASS",
+      "detail": "delta_displacement=-0.310667"
+    }
+  ]
+}

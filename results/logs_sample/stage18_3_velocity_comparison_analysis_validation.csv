@@ -1,0 +1,10 @@
+check,status,detail
+stage18_2_summary_exists,PASS,results/logs_sample/stage18_2_velocity_tracking_rollout_summary.json
+comparison_csv_exists,PASS,results/logs_sample/stage18_2_velocity_tracking_rollout_comparison.csv
+has_baseline_row,PASS,baseline
+has_candidate_row,PASS,mpc_assisted_candidate
+both_rows_pass_stability_boundary,PASS,"baseline=True, candidate=True"
+candidate_velocity_result_identified,PASS,candidate velocity tracking is not better than baseline in Stage 18.2
+candidate_error_higher_than_baseline,PASS,delta_error=0.068975
+candidate_mean_vx_lower_than_baseline,PASS,delta_mean_vx=-0.064722
+candidate_displacement_lower_than_baseline,PASS,delta_displacement=-0.310667
