@@ -5253,3 +5253,26 @@ Stage 17 does not support these statements:
   * MPC/WBC 全面优于 baseline。
 <!-- STAGE18_ENTRY_DOCS_SYNC_END -->
 
+<!-- STAGE19_ENTRY_DOCS_SYNC_START -->
+## Stage 19 状态：velocity-aware candidate scale sweep
+
+当前状态：已完成 Stage 19.0–19.3，并在 Stage 19.4 中进行证据冻结。
+
+| 阶段 | 结果 | 证据 |
+|---|---:|---|
+| 19.0 | pass | `docs/STAGE19_VELOCITY_AWARE_SCALE_SWEEP_ROADMAP.md` |
+| 19.1 | pass | `docs/STAGE19_1_VELOCITY_SCALE_SWEEP_PREFLIGHT.md` |
+| 19.2 | pass | `docs/STAGE19_2_VELOCITY_SCALE_SWEEP_ROLLOUT.md` |
+| 19.3 | pass | `docs/STAGE19_3_VELOCITY_STABILITY_TRADEOFF_ANALYSIS.md` |
+
+当前证据支持：
+
+    Stage 19 已完成 simulation-only velocity-aware scale sweep。当前测试中所有 scale 均通过稳定性边界；scale=0.010 是更合理的低尺度 candidate 注入候选；scale=0.020 不适合作为速度跟踪默认注入强度。
+
+当前证据不支持：
+
+  * 完整 MPC-WBC 速度控制器已经完成；
+  * MPC/WBC candidate 已全面优于 baseline；
+  * 真实机器人 torque 执行已经完成；
+  * 硬件 torque enablement 已经完成。
+<!-- STAGE19_ENTRY_DOCS_SYNC_END -->

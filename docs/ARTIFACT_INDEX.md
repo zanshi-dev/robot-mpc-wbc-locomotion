@@ -241,3 +241,35 @@ All Stage 17 artifacts listed below are simulation-only evidence artifacts.
 | 18.4 | `results/logs_sample/stage18_4_velocity_evidence_manifest.json` | Stage 18 冻结证据 manifest |
 <!-- STAGE18_ENTRY_DOCS_SYNC_END -->
 
+<!-- STAGE19_ENTRY_DOCS_SYNC_START -->
+## Stage 19 Artifacts
+
+以下 Stage 19 artifact 均为 simulation-only velocity-aware scale sweep evidence，不对应真实机器人部署。
+
+结论边界：
+
+  * Stage 19 只分析 candidate scale 对速度跟踪和稳定性边界的影响；
+  * 当前测试下 scale=0.010 是更合理的低尺度 candidate 注入候选；
+  * 当前测试下 scale=0.020 不适合作为速度跟踪默认注入强度；
+  * 不声明完整 MPC-WBC 速度控制器完成；
+  * 不声明真实机器人 torque 执行完成。
+
+| 阶段 | Artifact | 作用 |
+|---|---|---|
+| 19.0 | `docs/STAGE19_VELOCITY_AWARE_SCALE_SWEEP_ROADMAP.md` | 速度感知 scale sweep 路线图 |
+| 19.0 | `results/logs_sample/stage19_0_velocity_aware_scale_sweep_roadmap_summary.json` | Stage 19.0 summary |
+| 19.1 | `scripts/stage19_1_velocity_scale_sweep_preflight.py` | scale sweep 预检查脚本 |
+| 19.1 | `docs/STAGE19_1_VELOCITY_SCALE_SWEEP_PREFLIGHT.md` | scale sweep 预检查报告 |
+| 19.2 | `scripts/stage19_2_velocity_scale_sweep_runner.py` | scale-tagged velocity sweep runner |
+| 19.2 | `scripts/stage19_2_run_velocity_scale_sweep.py` | scale sweep 执行脚本 |
+| 19.2 | `scripts/stage19_2_validate_velocity_scale_sweep.py` | scale sweep 验证脚本 |
+| 19.2 | `docs/STAGE19_2_VELOCITY_SCALE_SWEEP_ROLLOUT.md` | scale sweep rollout 报告 |
+| 19.2 | `results/logs_sample/stage19_2_velocity_scale_sweep_table.csv` | 速度感知 scale sweep 数据表 |
+| 19.2 | `results/logs_sample/stage19_2_velocity_scale_sweep_summary.json` | Stage 19.2 summary |
+| 19.3 | `scripts/stage19_3_velocity_stability_tradeoff_analysis.py` | 速度-稳定性综合分析脚本 |
+| 19.3 | `docs/STAGE19_3_VELOCITY_STABILITY_TRADEOFF_ANALYSIS.md` | 速度-稳定性综合分析报告 |
+| 19.3 | `results/logs_sample/stage19_3_velocity_stability_tradeoff_analysis.csv` | 机器可读综合分析表 |
+| 19.3 | `results/logs_sample/stage19_3_velocity_stability_tradeoff_summary.json` | Stage 19.3 summary |
+| 19.4 | `docs/STAGE19_4_SCALE_SWEEP_EVIDENCE_FREEZE.md` | Stage 19 证据冻结报告 |
+| 19.4 | `results/logs_sample/stage19_4_scale_sweep_evidence_manifest.json` | Stage 19 冻结证据 manifest |
+<!-- STAGE19_ENTRY_DOCS_SYNC_END -->

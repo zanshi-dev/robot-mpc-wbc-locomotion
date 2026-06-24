@@ -1,0 +1,312 @@
+{
+  "stage": "19.4",
+  "name": "velocity-aware scale sweep evidence freeze",
+  "result": "pass",
+  "failure_count": 0,
+  "best_candidate_scale": "0.010",
+  "generated_files": [
+    "results/logs_sample/stage19_4_scale_sweep_evidence_freeze_validation.csv",
+    "results/logs_sample/stage19_4_scale_sweep_evidence_hashes.csv",
+    "results/logs_sample/stage19_4_scale_sweep_evidence_manifest.json",
+    "results/logs_sample/stage19_4_scale_sweep_evidence_freeze_summary.json",
+    "docs/STAGE19_4_SCALE_SWEEP_EVIDENCE_FREEZE.md"
+  ],
+  "updated_files": [
+    "README.md",
+    "PROJECT_STATUS.md",
+    "docs/ARTIFACT_INDEX.md"
+  ],
+  "conclusion": "当前 sweep 中所有 scale 均通过稳定性和安全边界；速度误差随 scale 变化呈非单调特征。在已测试 candidate scale 中，scale=0.010 的 mean_abs_velocity_error 最低，相对 baseline 的 delta_error=-0.013229，可作为当前更合理的低尺度 candidate 注入候选。scale=0.020 出现明显速度退化，不建议作为速度跟踪默认注入强度。",
+  "checks": [
+    {
+      "check": "required_exists::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "required_exists::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "required_exists::docs/ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE19_VELOCITY_AWARE_SCALE_SWEEP_ROADMAP.md",
+      "status": "PASS",
+      "detail": "docs/STAGE19_VELOCITY_AWARE_SCALE_SWEEP_ROADMAP.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE19_1_VELOCITY_SCALE_SWEEP_PREFLIGHT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE19_1_VELOCITY_SCALE_SWEEP_PREFLIGHT.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE19_2_VELOCITY_SCALE_SWEEP_ROLLOUT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE19_2_VELOCITY_SCALE_SWEEP_ROLLOUT.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE19_3_VELOCITY_STABILITY_TRADEOFF_ANALYSIS.md",
+      "status": "PASS",
+      "detail": "docs/STAGE19_3_VELOCITY_STABILITY_TRADEOFF_ANALYSIS.md"
+    },
+    {
+      "check": "required_exists::scripts/stage19_0_validate_velocity_aware_scale_sweep_roadmap.py",
+      "status": "PASS",
+      "detail": "scripts/stage19_0_validate_velocity_aware_scale_sweep_roadmap.py"
+    },
+    {
+      "check": "required_exists::scripts/stage19_1_velocity_scale_sweep_preflight.py",
+      "status": "PASS",
+      "detail": "scripts/stage19_1_velocity_scale_sweep_preflight.py"
+    },
+    {
+      "check": "required_exists::scripts/stage19_2_velocity_scale_sweep_runner.py",
+      "status": "PASS",
+      "detail": "scripts/stage19_2_velocity_scale_sweep_runner.py"
+    },
+    {
+      "check": "required_exists::scripts/stage19_2_run_velocity_scale_sweep.py",
+      "status": "PASS",
+      "detail": "scripts/stage19_2_run_velocity_scale_sweep.py"
+    },
+    {
+      "check": "required_exists::scripts/stage19_2_validate_velocity_scale_sweep.py",
+      "status": "PASS",
+      "detail": "scripts/stage19_2_validate_velocity_scale_sweep.py"
+    },
+    {
+      "check": "required_exists::scripts/stage19_3_velocity_stability_tradeoff_analysis.py",
+      "status": "PASS",
+      "detail": "scripts/stage19_3_velocity_stability_tradeoff_analysis.py"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_0_velocity_aware_scale_sweep_roadmap_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_0_velocity_aware_scale_sweep_roadmap_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_0_velocity_aware_scale_sweep_roadmap_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_0_velocity_aware_scale_sweep_roadmap_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_1_velocity_scale_sweep_preflight_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_1_velocity_scale_sweep_preflight_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_1_velocity_scale_sweep_preflight_context.txt",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_1_velocity_scale_sweep_preflight_context.txt"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_1_velocity_scale_sweep_preflight_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_1_velocity_scale_sweep_preflight_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_sweep_execution.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_sweep_execution.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_sweep_execution_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_sweep_execution_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_sweep_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_sweep_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_sweep_table.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_sweep_table.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_sweep_table.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_sweep_table.md"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_sweep_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_sweep_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_0p005_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p005_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_0p005_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p005_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_0p050_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p050_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_2_velocity_scale_0p050_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p050_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_3_velocity_stability_tradeoff_analysis.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_3_velocity_stability_tradeoff_analysis.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_3_velocity_stability_tradeoff_ranking.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_3_velocity_stability_tradeoff_ranking.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_3_velocity_stability_tradeoff_analysis.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_3_velocity_stability_tradeoff_analysis.md"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_3_velocity_stability_tradeoff_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_3_velocity_stability_tradeoff_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage19_3_velocity_stability_tradeoff_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_3_velocity_stability_tradeoff_summary.json"
+    },
+    {
+      "check": "summary_result_pass::19.0",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::19.1",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::19.2",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::19.3",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "entry_has_stage19_marker::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_scale_sweep::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_0p010::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_0p020_not_default::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_has_stage19_marker::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_scale_sweep::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_0p010::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_0p020_not_default::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_has_stage19_marker::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_scale_sweep::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_0p010::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_0p020_not_default::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    }
+  ]
+}

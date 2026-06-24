@@ -499,3 +499,45 @@ Stage 18 用于补齐 Stage 17 的主要边界：此前已有高度、姿态、Q
 > Stage 18 补齐了仅限仿真的速度跟踪证据。在当前 target_vx=0.2 m/s 测试中，baseline 与低尺度 MPC/WBC candidate 注入均通过稳定性和安全边界，但 baseline 的前向速度跟踪更好。
 <!-- STAGE18_ENTRY_DOCS_SYNC_END -->
 
+<!-- STAGE19_ENTRY_DOCS_SYNC_START -->
+## Stage 19：速度感知的 candidate scale sweep
+
+Stage 19 用于进一步分析 Stage 18 中发现的速度跟踪问题。Stage 18 已补齐速度指标，并发现 `scale=0.020` 的低尺度 MPC/WBC candidate 注入虽然通过稳定性边界，但速度跟踪弱于 baseline。Stage 19 在此基础上进行 velocity-aware scale sweep。
+
+当前证据支持：
+
+  * 已完成 `0.000 / 0.005 / 0.010 / 0.020 / 0.050` 五组 scale 的 simulation-only rollout sweep。
+  * 所有测试 scale 均通过高度、姿态、QP failure 和 torque saturation 边界。
+  * candidate scale 对速度跟踪影响呈非单调特征，不是简单的“scale 越大越差”。
+  * 在当前 target_vx=0.2 m/s 测试中，`scale=0.010` 是更合理的低尺度 candidate 注入候选。
+  * `scale=0.020` 虽然稳定，但速度误差明显退化，不适合作为速度跟踪默认注入强度。
+
+阶段结果：
+
+    Stage 19.0 result: pass
+    Stage 19.1 result: pass
+    Stage 19.2 result: pass
+    Stage 19.3 result: pass
+
+关键结论：
+
+    当前 sweep 中所有 scale 均通过稳定性和安全边界；速度误差随 scale 变化呈非单调特征。在已测试 candidate scale 中，scale=0.010 的 mean_abs_velocity_error 最低，相对 baseline 的 delta_error=-0.013229，可作为当前更合理的低尺度 candidate 注入候选。scale=0.020 出现明显速度退化，不建议作为速度跟踪默认注入强度。
+
+当前推荐：
+
+    candidate scale=0.010
+    mean_abs_velocity_error=0.065265
+    delta_error_vs_baseline=-0.013229
+
+当前不能声明：
+
+  * 不声明已完成完整 MPC-WBC 速度控制器；
+  * 不声明 MPC/WBC candidate 已全面优于 baseline；
+  * 不声明真实机器人 torque 执行；
+  * 不声明已具备硬件 torque enablement 条件；
+  * 不声明该结论可直接迁移到真实机器人或复杂地形。
+
+更准确的表述是：
+
+> Stage 19 通过速度感知 scale sweep 发现 candidate scale 对速度跟踪影响并非单调。在当前 target_vx=0.2 m/s 仿真测试中，scale=0.010 是更合理的低尺度 candidate 注入候选，而 scale=0.020 不适合作为速度跟踪默认注入强度。
+<!-- STAGE19_ENTRY_DOCS_SYNC_END -->

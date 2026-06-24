@@ -1,0 +1,260 @@
+{
+  "stage": "19.4",
+  "name": "velocity-aware scale sweep evidence freeze",
+  "result": "pass",
+  "stage_results": {
+    "19.0": "pass",
+    "19.1": "pass",
+    "19.2": "pass",
+    "19.3": "pass"
+  },
+  "artifact_count": 39,
+  "best_candidate_scale": "0.010",
+  "best_candidate_mean_abs_velocity_error": "0.065265",
+  "best_candidate_delta_error_vs_baseline": "-0.013229",
+  "conclusion": "当前 sweep 中所有 scale 均通过稳定性和安全边界；速度误差随 scale 变化呈非单调特征。在已测试 candidate scale 中，scale=0.010 的 mean_abs_velocity_error 最低，相对 baseline 的 delta_error=-0.013229，可作为当前更合理的低尺度 candidate 注入候选。scale=0.020 出现明显速度退化，不建议作为速度跟踪默认注入强度。",
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "ff4b81c0024d3c3d7b7d2fd7ff7d3e487ed82d5b665c3dbf5f8499530842da2e",
+      "size_bytes": 17999,
+      "exists": true
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "sha256": "d7227cac3d0c0a3c0820c10567f300a268b2acec062d32040b64129bba78aed9",
+      "size_bytes": 167971,
+      "exists": true
+    },
+    {
+      "path": "docs/ARTIFACT_INDEX.md",
+      "sha256": "134fbf733f51fea3ff1080a13c36fbd6b6fcd448311cc88f2daf1e7c5ddc7f9f",
+      "size_bytes": 18225,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE19_VELOCITY_AWARE_SCALE_SWEEP_ROADMAP.md",
+      "sha256": "ba8b80300d1d77cdfb70bd8bb3b31cee8799d67fd015f91aa74e41c0645f9b7d",
+      "size_bytes": 3339,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE19_1_VELOCITY_SCALE_SWEEP_PREFLIGHT.md",
+      "sha256": "a1410b9371c70897e8adb67f928bcdaef6295c0cdfc2b1bb2be9b9687b98a94d",
+      "size_bytes": 2110,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE19_2_VELOCITY_SCALE_SWEEP_ROLLOUT.md",
+      "sha256": "682c6e88f40f81fb3023853717db0622b28a7cb76d083cd4e00db8bd410f99b3",
+      "size_bytes": 1935,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE19_3_VELOCITY_STABILITY_TRADEOFF_ANALYSIS.md",
+      "sha256": "186cbde15363c60534ad6876c7ef6bbea9a1b322878e66fe6a972d0204cf83d1",
+      "size_bytes": 3028,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage19_0_validate_velocity_aware_scale_sweep_roadmap.py",
+      "sha256": "4bab9ff8e5babbe30c60a2e7d13d101af7637c813acdc39f94a3f7c0f01028f7",
+      "size_bytes": 3166,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage19_1_velocity_scale_sweep_preflight.py",
+      "sha256": "bca9c7b1efc6e77328bda80a230cb1ec1e56615d4fcfcb7c35fe21a43881159f",
+      "size_bytes": 9141,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage19_2_velocity_scale_sweep_runner.py",
+      "sha256": "eba666710fe5eaaf1e6940e24cc738f60a75511fc0e44108dce318727730118b",
+      "size_bytes": 24654,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage19_2_run_velocity_scale_sweep.py",
+      "sha256": "dd863381d59e88842c5d6fc21adf993e4e13d193627fd11ebbea125b960d1d68",
+      "size_bytes": 3999,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage19_2_validate_velocity_scale_sweep.py",
+      "sha256": "4b61ee1d061b8cee907d3d6478c03a666723712da22072a0db551e32e10b8f85",
+      "size_bytes": 10711,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage19_3_velocity_stability_tradeoff_analysis.py",
+      "sha256": "8a89ab6c82db2b00c440d988ebc5f32cbd045fd5afd52753d21e3c28854e3571",
+      "size_bytes": 14000,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_0_velocity_aware_scale_sweep_roadmap_validation.csv",
+      "sha256": "51ffc2c1fe11cf5b9b53c048b0c72ea391fff299fb271c5a2e0cc8768e15c0b5",
+      "size_bytes": 913,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_0_velocity_aware_scale_sweep_roadmap_summary.json",
+      "sha256": "1ffde2873a20381a22dcf5ac67f2bd5cd4c3fb687304a297841602ab6b2c43d8",
+      "size_bytes": 3045,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_1_velocity_scale_sweep_preflight_validation.csv",
+      "sha256": "9320534f77da86eadb3c9381e560daf3ce094e6cfa4e95b3fca79473c5bcbd75",
+      "size_bytes": 1415,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_1_velocity_scale_sweep_preflight_context.txt",
+      "sha256": "071e0083229681aedb1965371287cb79cbc2b2c7cc8a0d571e79e88f2641c9d8",
+      "size_bytes": 7727,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_1_velocity_scale_sweep_preflight_summary.json",
+      "sha256": "47501e42a74075d811596d4db5614bcebe219ad33e1a145a25077e707690e3d0",
+      "size_bytes": 5770,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_sweep_execution.csv",
+      "sha256": "154713b63db4aa7d21cfb0543b3dfb41e182e4c1b2b94de6526536aa29d24de0",
+      "size_bytes": 3677,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_sweep_execution_summary.json",
+      "sha256": "84732ce6bfb020abd285b5bcb23a40f1e16815abea579b6e2b321ab72d419cf4",
+      "size_bytes": 4923,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_sweep_validation.csv",
+      "sha256": "363304dd58781db3362ea7e72137a5255c6457719aef00ecd614b82f459db5d2",
+      "size_bytes": 9201,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_sweep_table.csv",
+      "sha256": "dd17fe78624767fbee7d37fcd3e9dcb1130c364f68b8a187966b2e5e00b99416",
+      "size_bytes": 1728,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_sweep_table.md",
+      "sha256": "76be074f0fac2d123c70deb6d0dba5c2806d6ad419fbbe2e9742e9dac8234b28",
+      "size_bytes": 667,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_sweep_summary.json",
+      "sha256": "099502905abca8e9ef1c132c0ef45dc08015b0809c349892d07af943894b16c5",
+      "size_bytes": 25674,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_0p000_baseline_log.csv",
+      "sha256": "d54abb6ba15c02d6d7d1454adefd42fa7564b759522f7a185bb264b91f7d2be2",
+      "size_bytes": 1340330,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_0p000_baseline_summary.csv",
+      "sha256": "73602c5056d5c04083be6b937d0354ef10ffa522c76a53e94b13560dcdfeef56",
+      "size_bytes": 2365,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_0p005_mpc_assisted_candidate_log.csv",
+      "sha256": "a8220ae12e3b03b91db6576ef607d1b87ea392d646efce0edabffa0b64ac5d25",
+      "size_bytes": 1376240,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_0p005_mpc_assisted_candidate_summary.csv",
+      "sha256": "c0076aefc768f4018650d932a7d069f5f0315343fc4e327e5598a6d8e74ea4d1",
+      "size_bytes": 2383,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "5075eec7db78abb7721be3c42ad9bfcb0ac5954c294cd963bf3291e6f7d05e8b",
+      "size_bytes": 1375672,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "680a53b1c99186c047cd7e714200d0ef54ad374a5355f020e57d90330afd6550",
+      "size_bytes": 2384,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "7ce42207a95dc0fc1c82cca9b895aeda6c526b518edacc25a289810e0bc0295e",
+      "size_bytes": 1376967,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "a567caad3d9af68315b9dd6c2ded6084e245ce5bdd593882e536ecc421ff4b92",
+      "size_bytes": 2379,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_0p050_mpc_assisted_candidate_log.csv",
+      "sha256": "fe82b3f37bf469dabf0ee72db224b63a098247cb8d461b9a5ead6e70de3ed3fd",
+      "size_bytes": 1375698,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_2_velocity_scale_0p050_mpc_assisted_candidate_summary.csv",
+      "sha256": "85569bb1f8c6baf36106886b3f5545ff401391705a688bec0bb273b648fdcb04",
+      "size_bytes": 2379,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_3_velocity_stability_tradeoff_analysis.csv",
+      "sha256": "448d9e550c5eb1ba31869dc313fcd0e45ac1e51cae2e685c1cf8a0d319925b9e",
+      "size_bytes": 984,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_3_velocity_stability_tradeoff_ranking.csv",
+      "sha256": "44c356b35ea56785c4d4109891b09133971ed699ea262d1387f83b4ca8562d02",
+      "size_bytes": 407,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_3_velocity_stability_tradeoff_analysis.md",
+      "sha256": "80b26f3ffab8aba914610d6cb0325981d51a91e5a26caf1ce4a432ad6a45a581",
+      "size_bytes": 1190,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_3_velocity_stability_tradeoff_validation.csv",
+      "sha256": "be4f30d591ac6412a18b45b7b327da563133201f0551cef5bb0396986c5790da",
+      "size_bytes": 637,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage19_3_velocity_stability_tradeoff_summary.json",
+      "sha256": "742bd96269795a6a2959e7bad2f4f84c1ad62cf9802b6477d65bb522e21b75b9",
+      "size_bytes": 7220,
+      "exists": true
+    }
+  ],
+  "claim_boundary": [
+    "simulation-only velocity-aware scale sweep",
+    "scale=0.010 is a tested candidate scale recommendation, not a full controller claim",
+    "scale=0.020 is not recommended as default velocity-tracking injection strength",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no comprehensive MPC/WBC superiority claim"
+  ]
+}
