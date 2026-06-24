@@ -1,0 +1,1005 @@
+{
+  "stage": "19.2",
+  "name": "velocity-aware candidate scale sweep rollout",
+  "result": "pass",
+  "failure_count": 0,
+  "target_vx": 0.2,
+  "planned_scales": [
+    0.0,
+    0.005,
+    0.01,
+    0.02,
+    0.05
+  ],
+  "stable_pass_count": 5,
+  "case_count": 5,
+  "table_rows": [
+    {
+      "scale": "0.000",
+      "scale_tag": "0p000",
+      "control_mode": "baseline",
+      "target_vx": "0.200000",
+      "mean_vx": "0.131362",
+      "mean_abs_velocity_error": "0.078494",
+      "max_abs_velocity_error": "0.244199",
+      "forward_displacement": "0.630505",
+      "min_z": "0.274552",
+      "max_abs_roll": "0.056707",
+      "max_abs_pitch": "0.048329",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "max_tau_total_abs": "9.659563",
+      "max_tau_candidate_scaled_abs": "0.000000",
+      "pass": "True",
+      "log_csv": "results/logs_sample/stage19_2_velocity_scale_0p000_baseline_log.csv",
+      "summary_csv": "results/logs_sample/stage19_2_velocity_scale_0p000_baseline_summary.csv"
+    },
+    {
+      "scale": "0.005",
+      "scale_tag": "0p005",
+      "control_mode": "mpc_assisted_candidate",
+      "target_vx": "0.200000",
+      "mean_vx": "0.172518",
+      "mean_abs_velocity_error": "0.085663",
+      "max_abs_velocity_error": "0.273850",
+      "forward_displacement": "0.828054",
+      "min_z": "0.273834",
+      "max_abs_roll": "0.109772",
+      "max_abs_pitch": "0.064034",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "max_tau_total_abs": "11.291256",
+      "max_tau_candidate_scaled_abs": "0.097213",
+      "pass": "True",
+      "log_csv": "results/logs_sample/stage19_2_velocity_scale_0p005_mpc_assisted_candidate_log.csv",
+      "summary_csv": "results/logs_sample/stage19_2_velocity_scale_0p005_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "scale": "0.010",
+      "scale_tag": "0p010",
+      "control_mode": "mpc_assisted_candidate",
+      "target_vx": "0.200000",
+      "mean_vx": "0.171348",
+      "mean_abs_velocity_error": "0.065265",
+      "max_abs_velocity_error": "0.252698",
+      "forward_displacement": "0.822437",
+      "min_z": "0.274952",
+      "max_abs_roll": "0.073652",
+      "max_abs_pitch": "0.084148",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "max_tau_total_abs": "10.029040",
+      "max_tau_candidate_scaled_abs": "0.194425",
+      "pass": "True",
+      "log_csv": "results/logs_sample/stage19_2_velocity_scale_0p010_mpc_assisted_candidate_log.csv",
+      "summary_csv": "results/logs_sample/stage19_2_velocity_scale_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "scale": "0.020",
+      "scale_tag": "0p020",
+      "control_mode": "mpc_assisted_candidate",
+      "target_vx": "0.200000",
+      "mean_vx": "0.066640",
+      "mean_abs_velocity_error": "0.147469",
+      "max_abs_velocity_error": "0.454335",
+      "forward_displacement": "0.319838",
+      "min_z": "0.273040",
+      "max_abs_roll": "0.090250",
+      "max_abs_pitch": "0.064959",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "max_tau_total_abs": "9.911886",
+      "max_tau_candidate_scaled_abs": "0.388850",
+      "pass": "True",
+      "log_csv": "results/logs_sample/stage19_2_velocity_scale_0p020_mpc_assisted_candidate_log.csv",
+      "summary_csv": "results/logs_sample/stage19_2_velocity_scale_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "scale": "0.050",
+      "scale_tag": "0p050",
+      "control_mode": "mpc_assisted_candidate",
+      "target_vx": "0.200000",
+      "mean_vx": "0.144905",
+      "mean_abs_velocity_error": "0.089988",
+      "max_abs_velocity_error": "0.303432",
+      "forward_displacement": "0.695506",
+      "min_z": "0.276976",
+      "max_abs_roll": "0.102953",
+      "max_abs_pitch": "0.053162",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "max_tau_total_abs": "10.019186",
+      "max_tau_candidate_scaled_abs": "0.972125",
+      "pass": "True",
+      "log_csv": "results/logs_sample/stage19_2_velocity_scale_0p050_mpc_assisted_candidate_log.csv",
+      "summary_csv": "results/logs_sample/stage19_2_velocity_scale_0p050_mpc_assisted_candidate_summary.csv"
+    }
+  ],
+  "generated_files": [
+    "results/logs_sample/stage19_2_velocity_scale_sweep_validation.csv",
+    "results/logs_sample/stage19_2_velocity_scale_sweep_table.csv",
+    "results/logs_sample/stage19_2_velocity_scale_sweep_table.md",
+    "results/logs_sample/stage19_2_velocity_scale_sweep_summary.json",
+    "docs/STAGE19_2_VELOCITY_SCALE_SWEEP_ROLLOUT.md"
+  ],
+  "claim_boundary": [
+    "simulation-only velocity-aware scale sweep",
+    "finite-difference velocity from qpos[0]",
+    "no candidate velocity improvement claim in Stage 19.2",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim"
+  ],
+  "checks": [
+    {
+      "check": "runner_exists",
+      "status": "PASS",
+      "detail": "scripts/stage19_2_velocity_scale_sweep_runner.py"
+    },
+    {
+      "check": "executor_exists",
+      "status": "PASS",
+      "detail": "scripts/stage19_2_run_velocity_scale_sweep.py"
+    },
+    {
+      "check": "execution_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_sweep_execution_summary.json"
+    },
+    {
+      "check": "0p000_log_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p000_baseline_log.csv"
+    },
+    {
+      "check": "0p000_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "0p000_log_rows_2400",
+      "status": "PASS",
+      "detail": "rows=2400"
+    },
+    {
+      "check": "0p000_summary_one_row",
+      "status": "PASS",
+      "detail": "rows=1"
+    },
+    {
+      "check": "0p000_log_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "0p000_log_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "0p000_log_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "0p000_log_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "0p000_log_has::velocity_error",
+      "status": "PASS",
+      "detail": "velocity_error"
+    },
+    {
+      "check": "0p000_log_has::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "0p000_log_has::roll",
+      "status": "PASS",
+      "detail": "roll"
+    },
+    {
+      "check": "0p000_log_has::pitch",
+      "status": "PASS",
+      "detail": "pitch"
+    },
+    {
+      "check": "0p000_log_has::candidate_scale",
+      "status": "PASS",
+      "detail": "candidate_scale"
+    },
+    {
+      "check": "0p000_log_has::tau_total_abs",
+      "status": "PASS",
+      "detail": "tau_total_abs"
+    },
+    {
+      "check": "0p000_log_has::tau_candidate_scaled_abs",
+      "status": "PASS",
+      "detail": "tau_candidate_scaled_abs"
+    },
+    {
+      "check": "0p000_log_has::saturated",
+      "status": "PASS",
+      "detail": "saturated"
+    },
+    {
+      "check": "0p000_summary_has::stage",
+      "status": "PASS",
+      "detail": "stage"
+    },
+    {
+      "check": "0p000_summary_has::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "0p000_summary_has::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "0p000_summary_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "0p000_summary_has::mean_vx",
+      "status": "PASS",
+      "detail": "mean_vx"
+    },
+    {
+      "check": "0p000_summary_has::mean_abs_velocity_error",
+      "status": "PASS",
+      "detail": "mean_abs_velocity_error"
+    },
+    {
+      "check": "0p000_summary_has::max_abs_velocity_error",
+      "status": "PASS",
+      "detail": "max_abs_velocity_error"
+    },
+    {
+      "check": "0p000_summary_has::forward_displacement",
+      "status": "PASS",
+      "detail": "forward_displacement"
+    },
+    {
+      "check": "0p000_summary_has::min_z",
+      "status": "PASS",
+      "detail": "min_z"
+    },
+    {
+      "check": "0p000_summary_has::max_abs_roll",
+      "status": "PASS",
+      "detail": "max_abs_roll"
+    },
+    {
+      "check": "0p000_summary_has::max_abs_pitch",
+      "status": "PASS",
+      "detail": "max_abs_pitch"
+    },
+    {
+      "check": "0p000_summary_has::qp_fail_steps",
+      "status": "PASS",
+      "detail": "qp_fail_steps"
+    },
+    {
+      "check": "0p000_summary_has::saturation_steps",
+      "status": "PASS",
+      "detail": "saturation_steps"
+    },
+    {
+      "check": "0p000_summary_has::max_tau_total_abs",
+      "status": "PASS",
+      "detail": "max_tau_total_abs"
+    },
+    {
+      "check": "0p000_summary_has::max_tau_candidate_scaled_abs",
+      "status": "PASS",
+      "detail": "max_tau_candidate_scaled_abs"
+    },
+    {
+      "check": "0p000_summary_has::pass",
+      "status": "PASS",
+      "detail": "pass"
+    },
+    {
+      "check": "0p000_target_vx_0p2",
+      "status": "PASS",
+      "detail": "target_vx=0.2"
+    },
+    {
+      "check": "0p000_scale_matches_plan",
+      "status": "PASS",
+      "detail": "recorded_scale=0.0, planned=0.0"
+    },
+    {
+      "check": "0p005_log_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p005_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "0p005_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p005_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "0p005_log_rows_2400",
+      "status": "PASS",
+      "detail": "rows=2400"
+    },
+    {
+      "check": "0p005_summary_one_row",
+      "status": "PASS",
+      "detail": "rows=1"
+    },
+    {
+      "check": "0p005_log_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "0p005_log_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "0p005_log_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "0p005_log_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "0p005_log_has::velocity_error",
+      "status": "PASS",
+      "detail": "velocity_error"
+    },
+    {
+      "check": "0p005_log_has::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "0p005_log_has::roll",
+      "status": "PASS",
+      "detail": "roll"
+    },
+    {
+      "check": "0p005_log_has::pitch",
+      "status": "PASS",
+      "detail": "pitch"
+    },
+    {
+      "check": "0p005_log_has::candidate_scale",
+      "status": "PASS",
+      "detail": "candidate_scale"
+    },
+    {
+      "check": "0p005_log_has::tau_total_abs",
+      "status": "PASS",
+      "detail": "tau_total_abs"
+    },
+    {
+      "check": "0p005_log_has::tau_candidate_scaled_abs",
+      "status": "PASS",
+      "detail": "tau_candidate_scaled_abs"
+    },
+    {
+      "check": "0p005_log_has::saturated",
+      "status": "PASS",
+      "detail": "saturated"
+    },
+    {
+      "check": "0p005_summary_has::stage",
+      "status": "PASS",
+      "detail": "stage"
+    },
+    {
+      "check": "0p005_summary_has::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "0p005_summary_has::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "0p005_summary_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "0p005_summary_has::mean_vx",
+      "status": "PASS",
+      "detail": "mean_vx"
+    },
+    {
+      "check": "0p005_summary_has::mean_abs_velocity_error",
+      "status": "PASS",
+      "detail": "mean_abs_velocity_error"
+    },
+    {
+      "check": "0p005_summary_has::max_abs_velocity_error",
+      "status": "PASS",
+      "detail": "max_abs_velocity_error"
+    },
+    {
+      "check": "0p005_summary_has::forward_displacement",
+      "status": "PASS",
+      "detail": "forward_displacement"
+    },
+    {
+      "check": "0p005_summary_has::min_z",
+      "status": "PASS",
+      "detail": "min_z"
+    },
+    {
+      "check": "0p005_summary_has::max_abs_roll",
+      "status": "PASS",
+      "detail": "max_abs_roll"
+    },
+    {
+      "check": "0p005_summary_has::max_abs_pitch",
+      "status": "PASS",
+      "detail": "max_abs_pitch"
+    },
+    {
+      "check": "0p005_summary_has::qp_fail_steps",
+      "status": "PASS",
+      "detail": "qp_fail_steps"
+    },
+    {
+      "check": "0p005_summary_has::saturation_steps",
+      "status": "PASS",
+      "detail": "saturation_steps"
+    },
+    {
+      "check": "0p005_summary_has::max_tau_total_abs",
+      "status": "PASS",
+      "detail": "max_tau_total_abs"
+    },
+    {
+      "check": "0p005_summary_has::max_tau_candidate_scaled_abs",
+      "status": "PASS",
+      "detail": "max_tau_candidate_scaled_abs"
+    },
+    {
+      "check": "0p005_summary_has::pass",
+      "status": "PASS",
+      "detail": "pass"
+    },
+    {
+      "check": "0p005_target_vx_0p2",
+      "status": "PASS",
+      "detail": "target_vx=0.2"
+    },
+    {
+      "check": "0p005_scale_matches_plan",
+      "status": "PASS",
+      "detail": "recorded_scale=0.005, planned=0.005"
+    },
+    {
+      "check": "0p010_log_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "0p010_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "0p010_log_rows_2400",
+      "status": "PASS",
+      "detail": "rows=2400"
+    },
+    {
+      "check": "0p010_summary_one_row",
+      "status": "PASS",
+      "detail": "rows=1"
+    },
+    {
+      "check": "0p010_log_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "0p010_log_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "0p010_log_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "0p010_log_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "0p010_log_has::velocity_error",
+      "status": "PASS",
+      "detail": "velocity_error"
+    },
+    {
+      "check": "0p010_log_has::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "0p010_log_has::roll",
+      "status": "PASS",
+      "detail": "roll"
+    },
+    {
+      "check": "0p010_log_has::pitch",
+      "status": "PASS",
+      "detail": "pitch"
+    },
+    {
+      "check": "0p010_log_has::candidate_scale",
+      "status": "PASS",
+      "detail": "candidate_scale"
+    },
+    {
+      "check": "0p010_log_has::tau_total_abs",
+      "status": "PASS",
+      "detail": "tau_total_abs"
+    },
+    {
+      "check": "0p010_log_has::tau_candidate_scaled_abs",
+      "status": "PASS",
+      "detail": "tau_candidate_scaled_abs"
+    },
+    {
+      "check": "0p010_log_has::saturated",
+      "status": "PASS",
+      "detail": "saturated"
+    },
+    {
+      "check": "0p010_summary_has::stage",
+      "status": "PASS",
+      "detail": "stage"
+    },
+    {
+      "check": "0p010_summary_has::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "0p010_summary_has::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "0p010_summary_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "0p010_summary_has::mean_vx",
+      "status": "PASS",
+      "detail": "mean_vx"
+    },
+    {
+      "check": "0p010_summary_has::mean_abs_velocity_error",
+      "status": "PASS",
+      "detail": "mean_abs_velocity_error"
+    },
+    {
+      "check": "0p010_summary_has::max_abs_velocity_error",
+      "status": "PASS",
+      "detail": "max_abs_velocity_error"
+    },
+    {
+      "check": "0p010_summary_has::forward_displacement",
+      "status": "PASS",
+      "detail": "forward_displacement"
+    },
+    {
+      "check": "0p010_summary_has::min_z",
+      "status": "PASS",
+      "detail": "min_z"
+    },
+    {
+      "check": "0p010_summary_has::max_abs_roll",
+      "status": "PASS",
+      "detail": "max_abs_roll"
+    },
+    {
+      "check": "0p010_summary_has::max_abs_pitch",
+      "status": "PASS",
+      "detail": "max_abs_pitch"
+    },
+    {
+      "check": "0p010_summary_has::qp_fail_steps",
+      "status": "PASS",
+      "detail": "qp_fail_steps"
+    },
+    {
+      "check": "0p010_summary_has::saturation_steps",
+      "status": "PASS",
+      "detail": "saturation_steps"
+    },
+    {
+      "check": "0p010_summary_has::max_tau_total_abs",
+      "status": "PASS",
+      "detail": "max_tau_total_abs"
+    },
+    {
+      "check": "0p010_summary_has::max_tau_candidate_scaled_abs",
+      "status": "PASS",
+      "detail": "max_tau_candidate_scaled_abs"
+    },
+    {
+      "check": "0p010_summary_has::pass",
+      "status": "PASS",
+      "detail": "pass"
+    },
+    {
+      "check": "0p010_target_vx_0p2",
+      "status": "PASS",
+      "detail": "target_vx=0.2"
+    },
+    {
+      "check": "0p010_scale_matches_plan",
+      "status": "PASS",
+      "detail": "recorded_scale=0.01, planned=0.01"
+    },
+    {
+      "check": "0p020_log_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "0p020_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "0p020_log_rows_2400",
+      "status": "PASS",
+      "detail": "rows=2400"
+    },
+    {
+      "check": "0p020_summary_one_row",
+      "status": "PASS",
+      "detail": "rows=1"
+    },
+    {
+      "check": "0p020_log_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "0p020_log_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "0p020_log_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "0p020_log_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "0p020_log_has::velocity_error",
+      "status": "PASS",
+      "detail": "velocity_error"
+    },
+    {
+      "check": "0p020_log_has::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "0p020_log_has::roll",
+      "status": "PASS",
+      "detail": "roll"
+    },
+    {
+      "check": "0p020_log_has::pitch",
+      "status": "PASS",
+      "detail": "pitch"
+    },
+    {
+      "check": "0p020_log_has::candidate_scale",
+      "status": "PASS",
+      "detail": "candidate_scale"
+    },
+    {
+      "check": "0p020_log_has::tau_total_abs",
+      "status": "PASS",
+      "detail": "tau_total_abs"
+    },
+    {
+      "check": "0p020_log_has::tau_candidate_scaled_abs",
+      "status": "PASS",
+      "detail": "tau_candidate_scaled_abs"
+    },
+    {
+      "check": "0p020_log_has::saturated",
+      "status": "PASS",
+      "detail": "saturated"
+    },
+    {
+      "check": "0p020_summary_has::stage",
+      "status": "PASS",
+      "detail": "stage"
+    },
+    {
+      "check": "0p020_summary_has::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "0p020_summary_has::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "0p020_summary_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "0p020_summary_has::mean_vx",
+      "status": "PASS",
+      "detail": "mean_vx"
+    },
+    {
+      "check": "0p020_summary_has::mean_abs_velocity_error",
+      "status": "PASS",
+      "detail": "mean_abs_velocity_error"
+    },
+    {
+      "check": "0p020_summary_has::max_abs_velocity_error",
+      "status": "PASS",
+      "detail": "max_abs_velocity_error"
+    },
+    {
+      "check": "0p020_summary_has::forward_displacement",
+      "status": "PASS",
+      "detail": "forward_displacement"
+    },
+    {
+      "check": "0p020_summary_has::min_z",
+      "status": "PASS",
+      "detail": "min_z"
+    },
+    {
+      "check": "0p020_summary_has::max_abs_roll",
+      "status": "PASS",
+      "detail": "max_abs_roll"
+    },
+    {
+      "check": "0p020_summary_has::max_abs_pitch",
+      "status": "PASS",
+      "detail": "max_abs_pitch"
+    },
+    {
+      "check": "0p020_summary_has::qp_fail_steps",
+      "status": "PASS",
+      "detail": "qp_fail_steps"
+    },
+    {
+      "check": "0p020_summary_has::saturation_steps",
+      "status": "PASS",
+      "detail": "saturation_steps"
+    },
+    {
+      "check": "0p020_summary_has::max_tau_total_abs",
+      "status": "PASS",
+      "detail": "max_tau_total_abs"
+    },
+    {
+      "check": "0p020_summary_has::max_tau_candidate_scaled_abs",
+      "status": "PASS",
+      "detail": "max_tau_candidate_scaled_abs"
+    },
+    {
+      "check": "0p020_summary_has::pass",
+      "status": "PASS",
+      "detail": "pass"
+    },
+    {
+      "check": "0p020_target_vx_0p2",
+      "status": "PASS",
+      "detail": "target_vx=0.2"
+    },
+    {
+      "check": "0p020_scale_matches_plan",
+      "status": "PASS",
+      "detail": "recorded_scale=0.02, planned=0.02"
+    },
+    {
+      "check": "0p050_log_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p050_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "0p050_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_0p050_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "0p050_log_rows_2400",
+      "status": "PASS",
+      "detail": "rows=2400"
+    },
+    {
+      "check": "0p050_summary_one_row",
+      "status": "PASS",
+      "detail": "rows=1"
+    },
+    {
+      "check": "0p050_log_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "0p050_log_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "0p050_log_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "0p050_log_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "0p050_log_has::velocity_error",
+      "status": "PASS",
+      "detail": "velocity_error"
+    },
+    {
+      "check": "0p050_log_has::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "0p050_log_has::roll",
+      "status": "PASS",
+      "detail": "roll"
+    },
+    {
+      "check": "0p050_log_has::pitch",
+      "status": "PASS",
+      "detail": "pitch"
+    },
+    {
+      "check": "0p050_log_has::candidate_scale",
+      "status": "PASS",
+      "detail": "candidate_scale"
+    },
+    {
+      "check": "0p050_log_has::tau_total_abs",
+      "status": "PASS",
+      "detail": "tau_total_abs"
+    },
+    {
+      "check": "0p050_log_has::tau_candidate_scaled_abs",
+      "status": "PASS",
+      "detail": "tau_candidate_scaled_abs"
+    },
+    {
+      "check": "0p050_log_has::saturated",
+      "status": "PASS",
+      "detail": "saturated"
+    },
+    {
+      "check": "0p050_summary_has::stage",
+      "status": "PASS",
+      "detail": "stage"
+    },
+    {
+      "check": "0p050_summary_has::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "0p050_summary_has::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "0p050_summary_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "0p050_summary_has::mean_vx",
+      "status": "PASS",
+      "detail": "mean_vx"
+    },
+    {
+      "check": "0p050_summary_has::mean_abs_velocity_error",
+      "status": "PASS",
+      "detail": "mean_abs_velocity_error"
+    },
+    {
+      "check": "0p050_summary_has::max_abs_velocity_error",
+      "status": "PASS",
+      "detail": "max_abs_velocity_error"
+    },
+    {
+      "check": "0p050_summary_has::forward_displacement",
+      "status": "PASS",
+      "detail": "forward_displacement"
+    },
+    {
+      "check": "0p050_summary_has::min_z",
+      "status": "PASS",
+      "detail": "min_z"
+    },
+    {
+      "check": "0p050_summary_has::max_abs_roll",
+      "status": "PASS",
+      "detail": "max_abs_roll"
+    },
+    {
+      "check": "0p050_summary_has::max_abs_pitch",
+      "status": "PASS",
+      "detail": "max_abs_pitch"
+    },
+    {
+      "check": "0p050_summary_has::qp_fail_steps",
+      "status": "PASS",
+      "detail": "qp_fail_steps"
+    },
+    {
+      "check": "0p050_summary_has::saturation_steps",
+      "status": "PASS",
+      "detail": "saturation_steps"
+    },
+    {
+      "check": "0p050_summary_has::max_tau_total_abs",
+      "status": "PASS",
+      "detail": "max_tau_total_abs"
+    },
+    {
+      "check": "0p050_summary_has::max_tau_candidate_scaled_abs",
+      "status": "PASS",
+      "detail": "max_tau_candidate_scaled_abs"
+    },
+    {
+      "check": "0p050_summary_has::pass",
+      "status": "PASS",
+      "detail": "pass"
+    },
+    {
+      "check": "0p050_target_vx_0p2",
+      "status": "PASS",
+      "detail": "target_vx=0.2"
+    },
+    {
+      "check": "0p050_scale_matches_plan",
+      "status": "PASS",
+      "detail": "recorded_scale=0.05, planned=0.05"
+    },
+    {
+      "check": "all_planned_tags_present",
+      "status": "PASS",
+      "detail": "actual=['0p000', '0p005', '0p010', '0p020', '0p050']"
+    }
+  ]
+}
