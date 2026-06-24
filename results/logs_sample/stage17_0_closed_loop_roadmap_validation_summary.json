@@ -1,0 +1,6 @@
+{
+  "stage": "17.0",
+  "result": "pass",
+  "roadmap": "docs/STAGE17_CLOSED_LOOP_ROADMAP.md",
+  "log": "results/logs_sample/stage17_0_closed_loop_roadmap_validation.log"
+}

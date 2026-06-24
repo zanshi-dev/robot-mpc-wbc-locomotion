@@ -1,0 +1,15 @@
+[Stage 17.0] Closed-loop roadmap validation
+repo_root: /home/zanshi/robot-mpc-wbc-locomotion
+timestamp_utc: 2026-06-24T07:28:38Z
+
+PASS: stage17_roadmap_exists -- /home/zanshi/robot-mpc-wbc-locomotion/docs/STAGE17_CLOSED_LOOP_ROADMAP.md
+PASS: closed_loop_goal -- pattern 'torque-level closed-loop rollout'
+PASS: mpc_force_reference -- pattern 'MPC contact force reference'
+PASS: wbc_jtf_candidate -- pattern 'WBC / J^T f torque candidate'
+PASS: torque_safety_filter -- pattern 'torque safety filter'
+PASS: boundary_statement -- pattern '不声明'
+PASS: metrics_plan -- pattern 'rollout metrics'
+PASS: stage17_1_plan -- pattern 'Stage 17.1'
+PASS: stage17_4_plan -- pattern 'Stage 17.4'
+
+stage17_0_result: pass
