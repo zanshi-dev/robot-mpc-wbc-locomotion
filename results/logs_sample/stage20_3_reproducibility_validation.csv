@@ -1,0 +1,30 @@
+check,status,detail
+source_table_exists,PASS,results/logs_sample/stage20_2_replay_reproducibility_table.csv
+stage20_2_summary_exists,PASS,results/logs_sample/stage20_2_replay_reproducibility_summary.json
+stage20_2_summary_pass,PASS,result=pass
+replay_row_count_9,PASS,rows=9
+0p000_has_three_runs,PASS,count=3
+0p010_has_three_runs,PASS,count=3
+0p020_has_three_runs,PASS,count=3
+run_00_has_all_scales,PASS,"scales=['0p000', '0p010', '0p020']"
+run_01_has_all_scales,PASS,"scales=['0p000', '0p010', '0p020']"
+run_02_has_all_scales,PASS,"scales=['0p000', '0p010', '0p020']"
+all_cases_pass_stability,PASS,all pass=True
+all_qp_fail_zero,PASS,all qp_fail_steps=0
+all_saturation_zero,PASS,all saturation_steps=0
+0p000_mean_vx_range_zero,PASS,range=0.000000000000e+00
+0p000_mean_abs_velocity_error_range_zero,PASS,range=0.000000000000e+00
+0p000_forward_displacement_range_zero,PASS,range=0.000000000000e+00
+0p010_mean_vx_range_zero,PASS,range=0.000000000000e+00
+0p010_mean_abs_velocity_error_range_zero,PASS,range=0.000000000000e+00
+0p010_forward_displacement_range_zero,PASS,range=0.000000000000e+00
+0p020_mean_vx_range_zero,PASS,range=0.000000000000e+00
+0p020_mean_abs_velocity_error_range_zero,PASS,range=0.000000000000e+00
+0p020_forward_displacement_range_zero,PASS,range=0.000000000000e+00
+recommended_error_lower_than_baseline_all_runs,PASS,True
+recommended_error_lower_than_0p020_all_runs,PASS,True
+recommended_displacement_higher_than_baseline_all_runs,PASS,True
+recommended_displacement_higher_than_0p020_all_runs,PASS,True
+regression_0p020_error_higher_than_baseline_all_runs,PASS,True
+reproducibility_pass,PASS,True
+recommendation_stable,PASS,True

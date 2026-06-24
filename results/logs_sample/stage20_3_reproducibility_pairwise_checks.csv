@@ -1,0 +1,4 @@
+run_id,recommended_error,baseline_error,regression_0p020_error,recommended_minus_baseline_error,recommended_minus_0p020_error,regression_0p020_minus_baseline_error,recommended_displacement,baseline_displacement,regression_0p020_displacement,recommended_minus_baseline_displacement,recommended_minus_0p020_displacement,recommended_error_lower_than_baseline,recommended_error_lower_than_0p020,recommended_displacement_higher_than_baseline,recommended_displacement_higher_than_0p020,regression_0p020_error_higher_than_baseline
+run_00,0.065265,0.078494,0.147469,-0.013229,-0.082204,0.068975,0.822437,0.630505,0.319838,0.191932,0.502599,True,True,True,True,True
+run_01,0.065265,0.078494,0.147469,-0.013229,-0.082204,0.068975,0.822437,0.630505,0.319838,0.191932,0.502599,True,True,True,True,True
+run_02,0.065265,0.078494,0.147469,-0.013229,-0.082204,0.068975,0.822437,0.630505,0.319838,0.191932,0.502599,True,True,True,True,True
