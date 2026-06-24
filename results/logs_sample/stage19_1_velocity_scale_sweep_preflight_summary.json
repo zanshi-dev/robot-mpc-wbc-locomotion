@@ -1,0 +1,188 @@
+{
+  "stage": "19.1",
+  "name": "velocity-aware scale sweep preflight",
+  "result": "pass",
+  "failure_count": 0,
+  "source_runner": "scripts/stage18_2_velocity_tracking_rollout_runner.py",
+  "planned_scales": [
+    0.0,
+    0.005,
+    0.01,
+    0.02,
+    0.05
+  ],
+  "planned_scale_tags": [
+    "0p000",
+    "0p005",
+    "0p010",
+    "0p020",
+    "0p050"
+  ],
+  "output_plan": [
+    {
+      "scale": "0.000",
+      "scale_tag": "0p000",
+      "control_mode": "baseline",
+      "log_csv": "results/logs_sample/stage19_2_velocity_scale_0p000_baseline_log.csv",
+      "summary_csv": "results/logs_sample/stage19_2_velocity_scale_0p000_baseline_summary.csv"
+    },
+    {
+      "scale": "0.005",
+      "scale_tag": "0p005",
+      "control_mode": "mpc_assisted_candidate",
+      "log_csv": "results/logs_sample/stage19_2_velocity_scale_0p005_mpc_assisted_candidate_log.csv",
+      "summary_csv": "results/logs_sample/stage19_2_velocity_scale_0p005_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "scale": "0.010",
+      "scale_tag": "0p010",
+      "control_mode": "mpc_assisted_candidate",
+      "log_csv": "results/logs_sample/stage19_2_velocity_scale_0p010_mpc_assisted_candidate_log.csv",
+      "summary_csv": "results/logs_sample/stage19_2_velocity_scale_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "scale": "0.020",
+      "scale_tag": "0p020",
+      "control_mode": "mpc_assisted_candidate",
+      "log_csv": "results/logs_sample/stage19_2_velocity_scale_0p020_mpc_assisted_candidate_log.csv",
+      "summary_csv": "results/logs_sample/stage19_2_velocity_scale_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "scale": "0.050",
+      "scale_tag": "0p050",
+      "control_mode": "mpc_assisted_candidate",
+      "log_csv": "results/logs_sample/stage19_2_velocity_scale_0p050_mpc_assisted_candidate_log.csv",
+      "summary_csv": "results/logs_sample/stage19_2_velocity_scale_0p050_mpc_assisted_candidate_summary.csv"
+    }
+  ],
+  "key_findings": [
+    "Stage 18.2 runner already records target_vx, base_vx_fd, mean_vx, mean_abs_velocity_error and forward_displacement.",
+    "Stage 18.2 runner output names are based on control_mode and would overwrite files if reused directly for multiple candidate scales.",
+    "Stage 19.2 should derive a scale-sweep runner with scale-tagged output filenames."
+  ],
+  "generated_files": [
+    "results/logs_sample/stage19_1_velocity_scale_sweep_preflight_validation.csv",
+    "results/logs_sample/stage19_1_velocity_scale_sweep_preflight_context.txt",
+    "results/logs_sample/stage19_1_velocity_scale_sweep_preflight_summary.json",
+    "docs/STAGE19_1_VELOCITY_SCALE_SWEEP_PREFLIGHT.md"
+  ],
+  "claim_boundary": [
+    "preflight only",
+    "no new rollout generated yet",
+    "no candidate velocity improvement claim",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim"
+  ],
+  "checks": [
+    {
+      "check": "stage19_0_summary_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage18_2_summary_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "runner_exists",
+      "status": "PASS",
+      "detail": "scripts/stage18_2_velocity_tracking_rollout_runner.py"
+    },
+    {
+      "check": "candidate_csv_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidates.csv"
+    },
+    {
+      "check": "runner_contains::--target-vx",
+      "status": "PASS",
+      "detail": "--target-vx"
+    },
+    {
+      "check": "runner_contains::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "runner_contains::mean_vx",
+      "status": "PASS",
+      "detail": "mean_vx"
+    },
+    {
+      "check": "runner_contains::mean_abs_velocity_error",
+      "status": "PASS",
+      "detail": "mean_abs_velocity_error"
+    },
+    {
+      "check": "runner_contains::forward_displacement",
+      "status": "PASS",
+      "detail": "forward_displacement"
+    },
+    {
+      "check": "runner_contains::CONTROL_MODE_BASELINE",
+      "status": "PASS",
+      "detail": "CONTROL_MODE_BASELINE"
+    },
+    {
+      "check": "runner_contains::CONTROL_MODE_MPC_ASSISTED_CANDIDATE",
+      "status": "PASS",
+      "detail": "CONTROL_MODE_MPC_ASSISTED_CANDIDATE"
+    },
+    {
+      "check": "runner_contains::mpc_assisted_candidate_scale",
+      "status": "PASS",
+      "detail": "mpc_assisted_candidate_scale"
+    },
+    {
+      "check": "runner_contains::candidate_scale",
+      "status": "PASS",
+      "detail": "candidate_scale"
+    },
+    {
+      "check": "runner_contains::LOG_CSV_TEMPLATE",
+      "status": "PASS",
+      "detail": "LOG_CSV_TEMPLATE"
+    },
+    {
+      "check": "runner_contains::SUMMARY_CSV_TEMPLATE",
+      "status": "PASS",
+      "detail": "SUMMARY_CSV_TEMPLATE"
+    },
+    {
+      "check": "runner_output_uses_control_mode",
+      "status": "PASS",
+      "detail": "expected Stage 18.2 behavior"
+    },
+    {
+      "check": "runner_output_lacks_scale_tag",
+      "status": "PASS",
+      "detail": "expected overwrite risk for direct sweep reuse"
+    },
+    {
+      "check": "planned_log_outputs_unique",
+      "status": "PASS",
+      "detail": "count=5"
+    },
+    {
+      "check": "planned_summary_outputs_unique",
+      "status": "PASS",
+      "detail": "count=5"
+    },
+    {
+      "check": "planned_scales_include_stage18_scale",
+      "status": "PASS",
+      "detail": "scale=0.020"
+    },
+    {
+      "check": "planned_scales_include_smaller_than_0p02",
+      "status": "PASS",
+      "detail": "[0.0, 0.005, 0.01, 0.02, 0.05]"
+    },
+    {
+      "check": "planned_scales_include_larger_than_0p02",
+      "status": "PASS",
+      "detail": "[0.0, 0.005, 0.01, 0.02, 0.05]"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+check,status,detail
+stage19_0_summary_pass,PASS,result=pass
+stage18_2_summary_pass,PASS,result=pass
+runner_exists,PASS,scripts/stage18_2_velocity_tracking_rollout_runner.py
+candidate_csv_exists,PASS,results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidates.csv
+runner_contains::--target-vx,PASS,--target-vx
+runner_contains::base_vx_fd,PASS,base_vx_fd
+runner_contains::mean_vx,PASS,mean_vx
+runner_contains::mean_abs_velocity_error,PASS,mean_abs_velocity_error
+runner_contains::forward_displacement,PASS,forward_displacement
+runner_contains::CONTROL_MODE_BASELINE,PASS,CONTROL_MODE_BASELINE
+runner_contains::CONTROL_MODE_MPC_ASSISTED_CANDIDATE,PASS,CONTROL_MODE_MPC_ASSISTED_CANDIDATE
+runner_contains::mpc_assisted_candidate_scale,PASS,mpc_assisted_candidate_scale
+runner_contains::candidate_scale,PASS,candidate_scale
+runner_contains::LOG_CSV_TEMPLATE,PASS,LOG_CSV_TEMPLATE
+runner_contains::SUMMARY_CSV_TEMPLATE,PASS,SUMMARY_CSV_TEMPLATE
+runner_output_uses_control_mode,PASS,expected Stage 18.2 behavior
+runner_output_lacks_scale_tag,PASS,expected overwrite risk for direct sweep reuse
+planned_log_outputs_unique,PASS,count=5
+planned_summary_outputs_unique,PASS,count=5
+planned_scales_include_stage18_scale,PASS,scale=0.020
+planned_scales_include_smaller_than_0p02,PASS,"[0.0, 0.005, 0.01, 0.02, 0.05]"
+planned_scales_include_larger_than_0p02,PASS,"[0.0, 0.005, 0.01, 0.02, 0.05]"

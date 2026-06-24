@@ -1,0 +1,165 @@
+# Stage 19.1 velocity scale sweep preflight context
+
+runner: scripts/stage18_2_velocity_tracking_rollout_runner.py
+
+28: WBC_SCRIPT = "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py"
+29: SWING_TARGET_CSV = "results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv"
+30: 
+31: LOG_CSV_TEMPLATE = "results/logs_sample/stage18_2_velocity_tracking_{control_mode}_log.csv"
+32: SUMMARY_CSV_TEMPLATE = "results/logs_sample/stage18_2_velocity_tracking_{control_mode}_summary.csv"
+33: 
+34: LEG_ORDER = list(MJ_LEG_ORDER)
+
+35: JOINTS = ["hip", "thigh", "calf"]
+
+195:         help="Step mapping policy when simulation steps exceed offline candidate rows.",
+196:     )
+197:     parser.add_argument(
+198:         "--target-vx",
+199:         type=float,
+200:         default=0.2,
+201:         help="Target forward velocity used only for Stage 18 velocity evidence metrics.",
+
+209:     if args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE:
+210:         if not args.allow_mpc_assisted_candidate:
+211:             raise RuntimeError("mpc_assisted_candidate requires --allow-mpc-assisted-candidate")
+212:         if args.mpc_assisted_candidate_scale <= 0.0:
+213:             raise RuntimeError("mpc_assisted_candidate requires --mpc-assisted-candidate-scale > 0.0")
+214:         if args.mpc_assisted_candidate_scale > MPC_ASSISTED_CANDIDATE_SCALE_MAX:
+215:             raise RuntimeError(f"mpc_assisted_candidate scale exceeds bound: {MPC_ASSISTED_CANDIDATE_SCALE_MAX}")
+
+216:         candidate_rows, candidate_lookup, candidate_step_values = read_mpc_tau_candidates(Path(args.candidate_csv))
+217:     else:
+
+218:         if args.mpc_assisted_candidate_scale != 0.0:
+219:             raise RuntimeError("baseline mode requires --mpc-assisted-candidate-scale 0.0")
+220: 
+221:     log_csv = LOG_CSV_TEMPLATE.format(control_mode=args.control_mode)
+
+222:     summary_csv = SUMMARY_CSV_TEMPLATE.format(control_mode=args.control_mode)
+223: 
+224:     wbc = load_wbc()
+
+225:     target_rows = read_swing_targets()
+
+240:     dt = float(model.opt.timestep)
+241:     prev_base_x = initial_x
+242:     prev_base_y = initial_y
+243:     base_vx_fd_values = []
+244:     abs_velocity_error_values = []
+245:     min_z = initial_z
+246:     max_z = initial_z
+
+257:     max_tau_total_raw_abs = 0.0
+258:     max_tau_baseline_raw_abs = 0.0
+259:     max_tau_candidate_abs = 0.0
+260:     max_tau_candidate_scaled_abs = 0.0
+261:     max_tau_total_abs = 0.0
+262: 
+263:     max_cmd_step_jump_norm = 0.0
+
+354:             candidate_source_step = candidate_row["source_step"]
+355:             candidate_available = True
+356: 
+357:         tau_candidate_scaled = args.mpc_assisted_candidate_scale * tau_candidate
+358:         tau_total_raw = tau_baseline_raw + tau_candidate_scaled
+359:         tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)
+360: 
+
+361:         max_tau_baseline_raw_abs = max(max_tau_baseline_raw_abs, float(np.max(np.abs(tau_baseline_raw))))
+
+362:         max_tau_candidate_abs = max(max_tau_candidate_abs, float(np.max(np.abs(tau_candidate))))
+363:         max_tau_candidate_scaled_abs = max(max_tau_candidate_scaled_abs, float(np.max(np.abs(tau_candidate_scaled))))
+364: 
+365:         saturated = bool(np.any(np.abs(tau_total_raw) > TORQUE_LIMIT))
+366:         saturation_steps += int(saturated)
+
+377:         base_y = float(data.qpos[1])
+378:         base_z = float(data.qpos[2])
+379:         if step == 0:
+380:             base_vx_fd = 0.0
+381:             base_vy_fd = 0.0
+382:         else:
+383:             base_vx_fd = (base_x - prev_base_x) / dt
+
+384:             base_vy_fd = (base_y - prev_base_y) / dt
+385:         base_vx_qvel = float(data.qvel[0]) if data.qvel.shape[0] > 0 else float("nan")
+386:         velocity_error = base_vx_fd - target_vx
+
+387:         base_vx_fd_values.append(base_vx_fd)
+388:         abs_velocity_error_values.append(abs(velocity_error))
+389:         prev_base_x = base_x
+
+390:         prev_base_y = base_y
+
+408:         tau_swing_pd_abs = float(np.max(np.abs(tau_swing_pd)))
+409:         tau_baseline_raw_abs = float(np.max(np.abs(tau_baseline_raw)))
+410:         tau_candidate_abs = float(np.max(np.abs(tau_candidate)))
+411:         tau_candidate_scaled_abs = float(np.max(np.abs(tau_candidate_scaled)))
+412:         tau_total_raw_abs = float(np.max(np.abs(tau_total_raw)))
+413:         tau_total_abs = float(np.max(np.abs(tau_total)))
+414: 
+
+440:             "time_s": f"{(step + 1) * dt:.12f}",
+441:             "base_x": f"{base_x:.12f}",
+442:             "base_y": f"{base_y:.12f}",
+443:             "base_vx_fd": f"{base_vx_fd:.12f}",
+444:             "base_vy_fd": f"{base_vy_fd:.12f}",
+445:             "base_vx_qvel": f"{base_vx_qvel:.12f}",
+446:             "target_vx": f"{target_vx:.12f}",
+
+461:             "control_mode": args.control_mode,
+462:             "candidate_available": str(candidate_available),
+463:             "candidate_source_step": str(candidate_source_step),
+464:             "candidate_scale": f"{args.mpc_assisted_candidate_scale:.12f}",
+465:             "tau_baseline_raw_abs": f"{tau_baseline_raw_abs:.12f}",
+466:             "tau_candidate_abs": f"{tau_candidate_abs:.12f}",
+467:             "tau_candidate_scaled_abs": f"{tau_candidate_scaled_abs:.12f}",
+
+468:             "tau_total_raw_abs": f"{tau_total_raw_abs:.12f}",
+469:             "tau_total_abs": f"{tau_total_abs:.12f}",
+470:             "tau_step_jump_norm": f"{float(np.linalg.norm(tau_jump)):.12f}",
+
+477:     final_z = float(data.qpos[2])
+478:     forward_displacement = final_x - initial_x
+479:     lateral_displacement = final_y - initial_y
+480:     mean_vx = float(np.mean(base_vx_fd_values)) if base_vx_fd_values else 0.0
+481:     mean_abs_velocity_error = float(np.mean(abs_velocity_error_values)) if abs_velocity_error_values else 0.0
+482:     max_abs_velocity_error = float(np.max(abs_velocity_error_values)) if abs_velocity_error_values else 0.0
+483:     final_roll, final_pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+
+498:         and MAX_PITCH_LIMIT - max_abs_pitch > 0.01
+499:     )
+500: 
+501:     summary = {
+502:         "stage": "18.2",
+503:         "source_stage": "14.5D-R6",
+504:         "velocity_metric_source": "finite_difference_from_qpos0",
+
+509:         "initial_y": f"{initial_y:.12f}",
+510:         "final_y": f"{final_y:.12f}",
+511:         "lateral_displacement": f"{lateral_displacement:.12f}",
+512:         "mean_vx": f"{mean_vx:.12f}",
+513:         "mean_abs_velocity_error": f"{mean_abs_velocity_error:.12f}",
+514:         "max_abs_velocity_error": f"{max_abs_velocity_error:.12f}",
+515:         "control_mode": args.control_mode,
+
+521:         "mixed_baseline_modified": False,
+522:         "mpc_assisted_candidate_switch_present": True,
+523:         "mpc_assisted_candidate_executed": args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE,
+524:         "mpc_assisted_candidate_scale": args.mpc_assisted_candidate_scale,
+525:         "mpc_assisted_candidate_scale_max": MPC_ASSISTED_CANDIDATE_SCALE_MAX,
+526:         "candidate_csv": args.candidate_csv,
+527:         "candidate_step_policy": args.candidate_step_policy,
+
+528:         "candidate_row_count": len(candidate_rows),
+
+563:         "max_tau_swing_pd_abs": f"{max_tau_swing_pd_abs:.12f}",
+564:         "max_tau_baseline_raw_abs": f"{max_tau_baseline_raw_abs:.12f}",
+565:         "max_tau_candidate_abs": f"{max_tau_candidate_abs:.12f}",
+566:         "max_tau_candidate_scaled_abs": f"{max_tau_candidate_scaled_abs:.12f}",
+567:         "max_tau_total_raw_abs": f"{max_tau_total_raw_abs:.12f}",
+568:         "max_tau_total_abs": f"{max_tau_total_abs:.12f}",
+569:         "max_cmd_step_jump_norm": f"{max_cmd_step_jump_norm:.12f}",
+
+584:         writer.writeheader()
