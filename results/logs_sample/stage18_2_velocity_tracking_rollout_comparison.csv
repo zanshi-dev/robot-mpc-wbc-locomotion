@@ -1,0 +1,3 @@
+control_mode,target_vx,mean_vx,mean_abs_velocity_error,forward_displacement,min_z,max_abs_roll,max_abs_pitch,qp_fail_steps,saturation_steps,pass
+baseline,0.200000,0.131362,0.078494,0.630505,0.274552,0.056707,0.048329,0,0,True
+mpc_assisted_candidate,0.200000,0.066640,0.147469,0.319838,0.273040,0.090250,0.064959,0,0,True

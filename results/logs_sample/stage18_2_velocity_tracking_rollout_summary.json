@@ -1,0 +1,397 @@
+{
+  "stage": "18.2",
+  "name": "velocity tracking rollout",
+  "result": "pass",
+  "failure_count": 0,
+  "source_runner": "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py",
+  "derived_runner": "scripts/stage18_2_velocity_tracking_rollout_runner.py",
+  "target_vx": 0.2,
+  "comparison_rows": [
+    {
+      "control_mode": "baseline",
+      "target_vx": "0.200000",
+      "mean_vx": "0.131362",
+      "mean_abs_velocity_error": "0.078494",
+      "forward_displacement": "0.630505",
+      "min_z": "0.274552",
+      "max_abs_roll": "0.056707",
+      "max_abs_pitch": "0.048329",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "pass": "True"
+    },
+    {
+      "control_mode": "mpc_assisted_candidate",
+      "target_vx": "0.200000",
+      "mean_vx": "0.066640",
+      "mean_abs_velocity_error": "0.147469",
+      "forward_displacement": "0.319838",
+      "min_z": "0.273040",
+      "max_abs_roll": "0.090250",
+      "max_abs_pitch": "0.064959",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "pass": "True"
+    }
+  ],
+  "generated_files": [
+    "results/logs_sample/stage18_2_velocity_tracking_rollout_validation.csv",
+    "results/logs_sample/stage18_2_velocity_tracking_rollout_comparison.csv",
+    "results/logs_sample/stage18_2_velocity_tracking_rollout_summary.json",
+    "docs/STAGE18_2_VELOCITY_TRACKING_ROLLOUT.md"
+  ],
+  "claim_boundary": [
+    "simulation-only velocity evidence",
+    "finite-difference base velocity from qpos[0]",
+    "no real robot torque execution",
+    "no hardware torque enablement",
+    "no claim that MPC/WBC comprehensively outperforms baseline"
+  ],
+  "checks": [
+    {
+      "check": "exists::stage18_2_velocity_tracking_rollout_runner.py",
+      "status": "PASS",
+      "detail": "scripts/stage18_2_velocity_tracking_rollout_runner.py"
+    },
+    {
+      "check": "exists::stage18_2_velocity_tracking_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_baseline_log.csv"
+    },
+    {
+      "check": "exists::stage18_2_velocity_tracking_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_baseline_summary.csv"
+    },
+    {
+      "check": "exists::stage18_2_velocity_tracking_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "exists::stage18_2_velocity_tracking_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "baseline_log_rows_2400",
+      "status": "PASS",
+      "detail": "rows=2400"
+    },
+    {
+      "check": "candidate_log_rows_2400",
+      "status": "PASS",
+      "detail": "rows=2400"
+    },
+    {
+      "check": "baseline_summary_one_row",
+      "status": "PASS",
+      "detail": "rows=1"
+    },
+    {
+      "check": "candidate_summary_one_row",
+      "status": "PASS",
+      "detail": "rows=1"
+    },
+    {
+      "check": "baseline_log_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "candidate_log_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "baseline_log_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "candidate_log_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "baseline_log_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "candidate_log_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "baseline_log_has::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "candidate_log_has::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "baseline_log_has::base_vx_qvel",
+      "status": "PASS",
+      "detail": "base_vx_qvel"
+    },
+    {
+      "check": "candidate_log_has::base_vx_qvel",
+      "status": "PASS",
+      "detail": "base_vx_qvel"
+    },
+    {
+      "check": "baseline_log_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "candidate_log_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "baseline_log_has::velocity_error",
+      "status": "PASS",
+      "detail": "velocity_error"
+    },
+    {
+      "check": "candidate_log_has::velocity_error",
+      "status": "PASS",
+      "detail": "velocity_error"
+    },
+    {
+      "check": "baseline_log_has::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "candidate_log_has::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "baseline_log_has::roll",
+      "status": "PASS",
+      "detail": "roll"
+    },
+    {
+      "check": "candidate_log_has::roll",
+      "status": "PASS",
+      "detail": "roll"
+    },
+    {
+      "check": "baseline_log_has::pitch",
+      "status": "PASS",
+      "detail": "pitch"
+    },
+    {
+      "check": "candidate_log_has::pitch",
+      "status": "PASS",
+      "detail": "pitch"
+    },
+    {
+      "check": "baseline_summary_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "candidate_summary_has::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "baseline_summary_has::initial_x",
+      "status": "PASS",
+      "detail": "initial_x"
+    },
+    {
+      "check": "candidate_summary_has::initial_x",
+      "status": "PASS",
+      "detail": "initial_x"
+    },
+    {
+      "check": "baseline_summary_has::final_x",
+      "status": "PASS",
+      "detail": "final_x"
+    },
+    {
+      "check": "candidate_summary_has::final_x",
+      "status": "PASS",
+      "detail": "final_x"
+    },
+    {
+      "check": "baseline_summary_has::forward_displacement",
+      "status": "PASS",
+      "detail": "forward_displacement"
+    },
+    {
+      "check": "candidate_summary_has::forward_displacement",
+      "status": "PASS",
+      "detail": "forward_displacement"
+    },
+    {
+      "check": "baseline_summary_has::mean_vx",
+      "status": "PASS",
+      "detail": "mean_vx"
+    },
+    {
+      "check": "candidate_summary_has::mean_vx",
+      "status": "PASS",
+      "detail": "mean_vx"
+    },
+    {
+      "check": "baseline_summary_has::mean_abs_velocity_error",
+      "status": "PASS",
+      "detail": "mean_abs_velocity_error"
+    },
+    {
+      "check": "candidate_summary_has::mean_abs_velocity_error",
+      "status": "PASS",
+      "detail": "mean_abs_velocity_error"
+    },
+    {
+      "check": "baseline_summary_has::max_abs_velocity_error",
+      "status": "PASS",
+      "detail": "max_abs_velocity_error"
+    },
+    {
+      "check": "candidate_summary_has::max_abs_velocity_error",
+      "status": "PASS",
+      "detail": "max_abs_velocity_error"
+    },
+    {
+      "check": "baseline_summary_has::min_z",
+      "status": "PASS",
+      "detail": "min_z"
+    },
+    {
+      "check": "candidate_summary_has::min_z",
+      "status": "PASS",
+      "detail": "min_z"
+    },
+    {
+      "check": "baseline_summary_has::max_abs_roll",
+      "status": "PASS",
+      "detail": "max_abs_roll"
+    },
+    {
+      "check": "candidate_summary_has::max_abs_roll",
+      "status": "PASS",
+      "detail": "max_abs_roll"
+    },
+    {
+      "check": "baseline_summary_has::max_abs_pitch",
+      "status": "PASS",
+      "detail": "max_abs_pitch"
+    },
+    {
+      "check": "candidate_summary_has::max_abs_pitch",
+      "status": "PASS",
+      "detail": "max_abs_pitch"
+    },
+    {
+      "check": "baseline_summary_has::qp_fail_steps",
+      "status": "PASS",
+      "detail": "qp_fail_steps"
+    },
+    {
+      "check": "candidate_summary_has::qp_fail_steps",
+      "status": "PASS",
+      "detail": "qp_fail_steps"
+    },
+    {
+      "check": "baseline_summary_has::saturation_steps",
+      "status": "PASS",
+      "detail": "saturation_steps"
+    },
+    {
+      "check": "candidate_summary_has::saturation_steps",
+      "status": "PASS",
+      "detail": "saturation_steps"
+    },
+    {
+      "check": "baseline_summary_has::pass",
+      "status": "PASS",
+      "detail": "pass"
+    },
+    {
+      "check": "candidate_summary_has::pass",
+      "status": "PASS",
+      "detail": "pass"
+    },
+    {
+      "check": "baseline_summary_pass_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "baseline_min_z_above_0p22",
+      "status": "PASS",
+      "detail": "min_z=0.274552192756"
+    },
+    {
+      "check": "baseline_roll_under_0p20",
+      "status": "PASS",
+      "detail": "max_abs_roll=0.056707402709"
+    },
+    {
+      "check": "baseline_pitch_under_0p20",
+      "status": "PASS",
+      "detail": "max_abs_pitch=0.04832948253"
+    },
+    {
+      "check": "baseline_qp_fail_zero",
+      "status": "PASS",
+      "detail": "qp_fail_steps=0.0"
+    },
+    {
+      "check": "baseline_saturation_zero",
+      "status": "PASS",
+      "detail": "saturation_steps=0.0"
+    },
+    {
+      "check": "baseline_target_vx_recorded",
+      "status": "PASS",
+      "detail": "target_vx=0.2"
+    },
+    {
+      "check": "mpc_assisted_candidate_summary_pass_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "mpc_assisted_candidate_min_z_above_0p22",
+      "status": "PASS",
+      "detail": "min_z=0.273040429683"
+    },
+    {
+      "check": "mpc_assisted_candidate_roll_under_0p20",
+      "status": "PASS",
+      "detail": "max_abs_roll=0.090249676148"
+    },
+    {
+      "check": "mpc_assisted_candidate_pitch_under_0p20",
+      "status": "PASS",
+      "detail": "max_abs_pitch=0.064958727791"
+    },
+    {
+      "check": "mpc_assisted_candidate_qp_fail_zero",
+      "status": "PASS",
+      "detail": "qp_fail_steps=0.0"
+    },
+    {
+      "check": "mpc_assisted_candidate_saturation_zero",
+      "status": "PASS",
+      "detail": "saturation_steps=0.0"
+    },
+    {
+      "check": "mpc_assisted_candidate_target_vx_recorded",
+      "status": "PASS",
+      "detail": "target_vx=0.2"
+    }
+  ]
+}
