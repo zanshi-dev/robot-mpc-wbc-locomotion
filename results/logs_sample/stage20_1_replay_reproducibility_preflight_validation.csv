@@ -1,0 +1,24 @@
+check,status,detail
+stage20_0_summary_pass,PASS,result=pass
+stage19_3_summary_pass,PASS,result=pass
+stage19_3_best_scale_0p010,PASS,best=0.010
+source_runner_exists,PASS,scripts/stage19_2_velocity_scale_sweep_runner.py
+source_runner_contains::--scale-tag,PASS,--scale-tag
+source_runner_contains::--target-vx,PASS,--target-vx
+source_runner_contains::LOG_CSV_TEMPLATE,PASS,LOG_CSV_TEMPLATE
+source_runner_contains::SUMMARY_CSV_TEMPLATE,PASS,SUMMARY_CSV_TEMPLATE
+source_runner_contains::base_vx_fd,PASS,base_vx_fd
+source_runner_contains::mean_vx,PASS,mean_vx
+source_runner_contains::mean_abs_velocity_error,PASS,mean_abs_velocity_error
+source_runner_contains::forward_displacement,PASS,forward_displacement
+source_runner_contains::candidate_scale,PASS,candidate_scale
+source_runner_contains::max_tau_candidate_scaled_abs,PASS,max_tau_candidate_scaled_abs
+source_runner_contains::CONTROL_MODE_BASELINE,PASS,CONTROL_MODE_BASELINE
+source_runner_contains::CONTROL_MODE_MPC_ASSISTED_CANDIDATE,PASS,CONTROL_MODE_MPC_ASSISTED_CANDIDATE
+source_output_is_stage19_namespace,PASS,Stage 20.2 should derive a replay-specific output template
+planned_case_count_9,PASS,count=9
+planned_log_outputs_unique,PASS,count=9
+planned_summary_outputs_unique,PASS,count=9
+planned_includes_baseline_0p000,PASS,0p000
+planned_includes_recommended_0p010,PASS,0p010
+planned_includes_regression_anchor_0p020,PASS,0p020
