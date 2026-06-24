@@ -1,0 +1,6 @@
+rank,scale,mean_abs_velocity_error,mean_vx,forward_displacement,pass,recommendation
+1,0.010,0.065265,0.171348,0.822437,True,recommended_candidate
+2,0.000,0.078494,0.131362,0.630505,True,baseline_reference
+3,0.005,0.085663,0.172518,0.828054,True,stable_but_not_best
+4,0.050,0.089988,0.144905,0.695506,True,stable_but_not_best
+5,0.020,0.147469,0.066640,0.319838,True,not_recommended_velocity_regression

@@ -1,0 +1,219 @@
+{
+  "stage": "19.3",
+  "name": "velocity-stability tradeoff analysis",
+  "result": "pass",
+  "failure_count": 0,
+  "source": "results/logs_sample/stage19_2_velocity_scale_sweep_table.csv",
+  "best_candidate_scale": "0.010",
+  "best_candidate_mean_abs_velocity_error": "0.065265",
+  "best_candidate_delta_error_vs_baseline": "-0.013229",
+  "non_monotonic_candidate_error": true,
+  "conclusion": "当前 sweep 中所有 scale 均通过稳定性和安全边界；速度误差随 scale 变化呈非单调特征。在已测试 candidate scale 中，scale=0.010 的 mean_abs_velocity_error 最低，相对 baseline 的 delta_error=-0.013229，可作为当前更合理的低尺度 candidate 注入候选。scale=0.020 出现明显速度退化，不建议作为速度跟踪默认注入强度。",
+  "generated_files": [
+    "results/logs_sample/stage19_3_velocity_stability_tradeoff_analysis.csv",
+    "results/logs_sample/stage19_3_velocity_stability_tradeoff_ranking.csv",
+    "results/logs_sample/stage19_3_velocity_stability_tradeoff_analysis.md",
+    "results/logs_sample/stage19_3_velocity_stability_tradeoff_validation.csv",
+    "results/logs_sample/stage19_3_velocity_stability_tradeoff_summary.json",
+    "docs/STAGE19_3_VELOCITY_STABILITY_TRADEOFF_ANALYSIS.md"
+  ],
+  "claim_boundary": [
+    "simulation-only velocity-stability tradeoff analysis",
+    "scale=0.010 is a tested candidate scale recommendation, not a full controller claim",
+    "scale=0.020 is not recommended as default velocity-tracking injection strength",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no comprehensive MPC/WBC superiority claim"
+  ],
+  "analysis_rows": [
+    {
+      "scale": "0.000",
+      "scale_tag": "0p000",
+      "control_mode": "baseline",
+      "pass": "True",
+      "mean_vx": "0.131362",
+      "mean_abs_velocity_error": "0.078494",
+      "forward_displacement": "0.630505",
+      "delta_error_vs_baseline": "0.000000",
+      "delta_mean_vx_vs_baseline": "0.000000",
+      "delta_displacement_vs_baseline": "0.000000",
+      "min_z": "0.274552",
+      "max_abs_roll": "0.056707",
+      "max_abs_pitch": "0.048329",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "recommendation": "baseline_reference"
+    },
+    {
+      "scale": "0.005",
+      "scale_tag": "0p005",
+      "control_mode": "mpc_assisted_candidate",
+      "pass": "True",
+      "mean_vx": "0.172518",
+      "mean_abs_velocity_error": "0.085663",
+      "forward_displacement": "0.828054",
+      "delta_error_vs_baseline": "0.007169",
+      "delta_mean_vx_vs_baseline": "0.041156",
+      "delta_displacement_vs_baseline": "0.197549",
+      "min_z": "0.273834",
+      "max_abs_roll": "0.109772",
+      "max_abs_pitch": "0.064034",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "recommendation": "stable_but_not_best"
+    },
+    {
+      "scale": "0.010",
+      "scale_tag": "0p010",
+      "control_mode": "mpc_assisted_candidate",
+      "pass": "True",
+      "mean_vx": "0.171348",
+      "mean_abs_velocity_error": "0.065265",
+      "forward_displacement": "0.822437",
+      "delta_error_vs_baseline": "-0.013229",
+      "delta_mean_vx_vs_baseline": "0.039986",
+      "delta_displacement_vs_baseline": "0.191932",
+      "min_z": "0.274952",
+      "max_abs_roll": "0.073652",
+      "max_abs_pitch": "0.084148",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "recommendation": "recommended_candidate"
+    },
+    {
+      "scale": "0.020",
+      "scale_tag": "0p020",
+      "control_mode": "mpc_assisted_candidate",
+      "pass": "True",
+      "mean_vx": "0.066640",
+      "mean_abs_velocity_error": "0.147469",
+      "forward_displacement": "0.319838",
+      "delta_error_vs_baseline": "0.068975",
+      "delta_mean_vx_vs_baseline": "-0.064722",
+      "delta_displacement_vs_baseline": "-0.310667",
+      "min_z": "0.273040",
+      "max_abs_roll": "0.090250",
+      "max_abs_pitch": "0.064959",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "recommendation": "not_recommended_velocity_regression"
+    },
+    {
+      "scale": "0.050",
+      "scale_tag": "0p050",
+      "control_mode": "mpc_assisted_candidate",
+      "pass": "True",
+      "mean_vx": "0.144905",
+      "mean_abs_velocity_error": "0.089988",
+      "forward_displacement": "0.695506",
+      "delta_error_vs_baseline": "0.011494",
+      "delta_mean_vx_vs_baseline": "0.013543",
+      "delta_displacement_vs_baseline": "0.065001",
+      "min_z": "0.276976",
+      "max_abs_roll": "0.102953",
+      "max_abs_pitch": "0.053162",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "recommendation": "stable_but_not_best"
+    }
+  ],
+  "ranking_rows": [
+    {
+      "rank": "1",
+      "scale": "0.010",
+      "mean_abs_velocity_error": "0.065265",
+      "mean_vx": "0.171348",
+      "forward_displacement": "0.822437",
+      "pass": "True",
+      "recommendation": "recommended_candidate"
+    },
+    {
+      "rank": "2",
+      "scale": "0.000",
+      "mean_abs_velocity_error": "0.078494",
+      "mean_vx": "0.131362",
+      "forward_displacement": "0.630505",
+      "pass": "True",
+      "recommendation": "baseline_reference"
+    },
+    {
+      "rank": "3",
+      "scale": "0.005",
+      "mean_abs_velocity_error": "0.085663",
+      "mean_vx": "0.172518",
+      "forward_displacement": "0.828054",
+      "pass": "True",
+      "recommendation": "stable_but_not_best"
+    },
+    {
+      "rank": "4",
+      "scale": "0.050",
+      "mean_abs_velocity_error": "0.089988",
+      "mean_vx": "0.144905",
+      "forward_displacement": "0.695506",
+      "pass": "True",
+      "recommendation": "stable_but_not_best"
+    },
+    {
+      "rank": "5",
+      "scale": "0.020",
+      "mean_abs_velocity_error": "0.147469",
+      "mean_vx": "0.066640",
+      "forward_displacement": "0.319838",
+      "pass": "True",
+      "recommendation": "not_recommended_velocity_regression"
+    }
+  ],
+  "checks": [
+    {
+      "check": "source_table_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_sweep_table.csv"
+    },
+    {
+      "check": "stage19_2_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage19_2_velocity_scale_sweep_summary.json"
+    },
+    {
+      "check": "expected_scale_count",
+      "status": "PASS",
+      "detail": "rows=5"
+    },
+    {
+      "check": "expected_scales_present",
+      "status": "PASS",
+      "detail": "scales=['0.000', '0.005', '0.010', '0.020', '0.050']"
+    },
+    {
+      "check": "all_cases_stability_pass",
+      "status": "PASS",
+      "detail": "all pass=True"
+    },
+    {
+      "check": "best_candidate_exists",
+      "status": "PASS",
+      "detail": "0.010"
+    },
+    {
+      "check": "best_candidate_is_0p010",
+      "status": "PASS",
+      "detail": "0.010"
+    },
+    {
+      "check": "best_candidate_error_below_baseline",
+      "status": "PASS",
+      "detail": "-0.013229"
+    },
+    {
+      "check": "scale_0p020_is_velocity_regression",
+      "status": "PASS",
+      "detail": "0p020_error=0.147469"
+    },
+    {
+      "check": "candidate_error_non_monotonic",
+      "status": "PASS",
+      "detail": "errors=[0.085663, 0.065265, 0.147469, 0.089988]"
+    }
+  ]
+}

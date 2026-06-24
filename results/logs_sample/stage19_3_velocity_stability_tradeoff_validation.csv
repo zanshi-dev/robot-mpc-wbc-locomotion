@@ -1,0 +1,11 @@
+check,status,detail
+source_table_exists,PASS,results/logs_sample/stage19_2_velocity_scale_sweep_table.csv
+stage19_2_summary_exists,PASS,results/logs_sample/stage19_2_velocity_scale_sweep_summary.json
+expected_scale_count,PASS,rows=5
+expected_scales_present,PASS,"scales=['0.000', '0.005', '0.010', '0.020', '0.050']"
+all_cases_stability_pass,PASS,all pass=True
+best_candidate_exists,PASS,0.010
+best_candidate_is_0p010,PASS,0.010
+best_candidate_error_below_baseline,PASS,-0.013229
+scale_0p020_is_velocity_regression,PASS,0p020_error=0.147469
+candidate_error_non_monotonic,PASS,"errors=[0.085663, 0.065265, 0.147469, 0.089988]"
