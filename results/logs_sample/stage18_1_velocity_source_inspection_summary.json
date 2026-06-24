@@ -1,0 +1,92 @@
+{
+  "stage": "18.1",
+  "name": "velocity source inspection",
+  "result": "pass",
+  "failure_count": 0,
+  "recommended_source": "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py",
+  "qpos_sources": [
+    "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py",
+    "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py",
+    "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py"
+  ],
+  "mj_step_sources": [
+    "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py",
+    "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py",
+    "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py"
+  ],
+  "csv_logging_sources": [
+    "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py",
+    "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py",
+    "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py",
+    "scripts/stage14_5e_r1_candidate_robustness_scale_sweep_runner.py"
+  ],
+  "candidate_sources": [
+    "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py",
+    "scripts/stage14_5e_r1_candidate_robustness_scale_sweep_runner.py"
+  ],
+  "generated_files": [
+    "results/logs_sample/stage18_1_velocity_source_inspection.csv",
+    "results/logs_sample/stage18_1_velocity_existing_csv_headers.csv",
+    "results/logs_sample/stage18_1_velocity_source_anchor_report.txt",
+    "results/logs_sample/stage18_1_velocity_source_inspection_validation.csv",
+    "results/logs_sample/stage18_1_velocity_source_inspection_summary.json",
+    "docs/STAGE18_1_VELOCITY_SOURCE_INSPECTION.md"
+  ],
+  "stage18_gap": [
+    "existing Stage 14.5e candidate log has base_z / roll / pitch / torque fields",
+    "existing Stage 14.5e candidate log does not include base_x / base_vx / mean_vx",
+    "Stage 18.2 should derive a runner that adds base position and velocity metrics"
+  ],
+  "checks": [
+    {
+      "check": "stage18_0_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_0_velocity_tracking_roadmap_summary.json"
+    },
+    {
+      "check": "runner_sources_exist",
+      "status": "PASS",
+      "detail": "count=4"
+    },
+    {
+      "check": "qpos_sources_found",
+      "status": "PASS",
+      "detail": "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py,scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py,scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py"
+    },
+    {
+      "check": "mj_step_sources_found",
+      "status": "PASS",
+      "detail": "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py,scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py,scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py"
+    },
+    {
+      "check": "csv_logging_sources_found",
+      "status": "PASS",
+      "detail": "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py,scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py,scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py,scripts/stage14_5e_r1_candidate_robustness_scale_sweep_runner.py"
+    },
+    {
+      "check": "candidate_sources_found",
+      "status": "PASS",
+      "detail": "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py,scripts/stage14_5e_r1_candidate_robustness_scale_sweep_runner.py"
+    },
+    {
+      "check": "recommended_source_found",
+      "status": "PASS",
+      "detail": "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py"
+    },
+    {
+      "check": "stage14_5e_candidate_log_has_base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "stage14_5e_candidate_log_lacks_base_vx",
+      "status": "PASS",
+      "detail": "expected Stage 18 gap"
+    },
+    {
+      "check": "stage14_5e_candidate_log_lacks_mean_vx",
+      "status": "PASS",
+      "detail": "expected Stage 18 gap"
+    }
+  ]
+}

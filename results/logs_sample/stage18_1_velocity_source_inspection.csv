@@ -1,0 +1,5 @@
+script,exists,has_qpos,has_qvel,has_mj_step,has_data_ctrl,has_csv_logging,has_summary,has_candidate_mode,has_base_z,has_roll_pitch
+scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py,True,True,False,True,True,True,True,False,True,True
+scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py,True,True,True,True,True,True,True,False,True,True
+scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py,True,True,False,True,True,True,True,True,True,True
+scripts/stage14_5e_r1_candidate_robustness_scale_sweep_runner.py,True,False,False,False,False,True,True,True,False,True
