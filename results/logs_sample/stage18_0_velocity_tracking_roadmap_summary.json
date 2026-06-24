@@ -1,0 +1,80 @@
+{
+  "stage": "18.0",
+  "name": "velocity tracking roadmap validation",
+  "result": "pass",
+  "failure_count": 0,
+  "roadmap": "docs/STAGE18_VELOCITY_TRACKING_ROADMAP.md",
+  "generated_files": [
+    "results/logs_sample/stage18_0_velocity_tracking_roadmap_validation.csv",
+    "results/logs_sample/stage18_0_velocity_tracking_roadmap_summary.json"
+  ],
+  "claim_boundary": [
+    "roadmap only",
+    "no velocity tracking runner implemented yet",
+    "no real robot control claim",
+    "no hardware torque enablement claim",
+    "no comprehensive MPC/WBC superiority claim"
+  ],
+  "checks": [
+    {
+      "check": "roadmap_exists",
+      "status": "PASS",
+      "detail": "docs/STAGE18_VELOCITY_TRACKING_ROADMAP.md"
+    },
+    {
+      "check": "contains::velocity tracking evidence",
+      "status": "PASS",
+      "detail": "velocity tracking evidence"
+    },
+    {
+      "check": "contains::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "contains::base_vx",
+      "status": "PASS",
+      "detail": "base_vx"
+    },
+    {
+      "check": "contains::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "contains::mean_vx",
+      "status": "PASS",
+      "detail": "mean_vx"
+    },
+    {
+      "check": "contains::mean_abs_velocity_error",
+      "status": "PASS",
+      "detail": "mean_abs_velocity_error"
+    },
+    {
+      "check": "contains::baseline vs candidate",
+      "status": "PASS",
+      "detail": "baseline vs candidate"
+    },
+    {
+      "check": "contains::simulation-only",
+      "status": "PASS",
+      "detail": "simulation-only"
+    },
+    {
+      "check": "contains::finite difference",
+      "status": "PASS",
+      "detail": "finite difference"
+    },
+    {
+      "check": "contains::Stage 18.1",
+      "status": "PASS",
+      "detail": "Stage 18.1"
+    },
+    {
+      "check": "contains::Stage 18.4",
+      "status": "PASS",
+      "detail": "Stage 18.4"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+check,status,detail
+roadmap_exists,PASS,docs/STAGE18_VELOCITY_TRACKING_ROADMAP.md
+contains::velocity tracking evidence,PASS,velocity tracking evidence
+contains::base_x,PASS,base_x
+contains::base_vx,PASS,base_vx
+contains::target_vx,PASS,target_vx
+contains::mean_vx,PASS,mean_vx
+contains::mean_abs_velocity_error,PASS,mean_abs_velocity_error
+contains::baseline vs candidate,PASS,baseline vs candidate
+contains::simulation-only,PASS,simulation-only
+contains::finite difference,PASS,finite difference
+contains::Stage 18.1,PASS,Stage 18.1
+contains::Stage 18.4,PASS,Stage 18.4
