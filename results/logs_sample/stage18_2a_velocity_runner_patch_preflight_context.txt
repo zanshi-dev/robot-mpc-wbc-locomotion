@@ -1,0 +1,362 @@
+# Stage 18.2a source context
+
+source: scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py
+
+27: 
+28: WBC_SCRIPT = "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py"
+29: SWING_TARGET_CSV = "results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv"
+30: 
+31: LOG_CSV_TEMPLATE = "results/logs_sample/stage14_5d_r6_closed_loop_ab_{control_mode}_log.csv"
+32: SUMMARY_CSV_TEMPLATE = "results/logs_sample/stage14_5d_r6_closed_loop_ab_{control_mode}_summary.csv"
+33: 
+34: LEG_ORDER = list(MJ_LEG_ORDER)
+35: JOINTS = ["hip", "thigh", "calf"]
+36: 
+37: STANCE_KP = 60.0
+
+44: SWING_TARGET_SCALE = 0.35
+45: 
+46: TORQUE_LIMIT = 23.7
+47: 
+48: CONTROL_MODE_BASELINE = "baseline"
+49: CONTROL_MODE_MPC_ASSISTED_CANDIDATE = "mpc_assisted_candidate"
+50: CONTROL_MODE_CHOICES = [CONTROL_MODE_BASELINE, CONTROL_MODE_MPC_ASSISTED_CANDIDATE]
+51: DEFAULT_CONTROL_MODE = CONTROL_MODE_BASELINE
+52: MPC_ASSISTED_CANDIDATE_DEFAULT_SCALE = 0.0
+53: MPC_ASSISTED_CANDIDATE_SCALE_MAX = 0.25
+54: MPC_ASSISTED_CANDIDATE_CSV_DEFAULT = "results/logs_sample/stage14_5b_offline_mpc_force_to_torque_candidates.csv"
+
+109:         for joint in MPC_CANDIDATE_JOINT_ORDER:
+110:             required_columns.append(f"{leg}_{joint}_tau_candidate")
+111: 
+112:     with open(path, "r", newline="") as f:
+113:         reader = csv.DictReader(f)
+114:         columns = set(reader.fieldnames or [])
+115:         missing = sorted(set(required_columns) - columns)
+116:         if missing:
+117:             raise RuntimeError(f"MPC candidate CSV missing required columns: {missing}")
+118: 
+119:         for row in reader:
+
+199:     candidate_rows = []
+200:     candidate_lookup = {}
+201:     candidate_step_values = []
+202: 
+203:     if args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE:
+204:         if not args.allow_mpc_assisted_candidate:
+205:             raise RuntimeError("mpc_assisted_candidate requires --allow-mpc-assisted-candidate")
+206:         if args.mpc_assisted_candidate_scale <= 0.0:
+207:             raise RuntimeError("mpc_assisted_candidate requires --mpc-assisted-candidate-scale > 0.0")
+208:         if args.mpc_assisted_candidate_scale > MPC_ASSISTED_CANDIDATE_SCALE_MAX:
+209:             raise RuntimeError(f"mpc_assisted_candidate scale exceeds bound: {MPC_ASSISTED_CANDIDATE_SCALE_MAX}")
+
+210:         candidate_rows, candidate_lookup, candidate_step_values = read_mpc_tau_candidates(Path(args.candidate_csv))
+
+211:     else:
+
+212:         if args.mpc_assisted_candidate_scale != 0.0:
+
+213:             raise RuntimeError("baseline mode requires --mpc-assisted-candidate-scale 0.0")
+
+214: 
+
+215:     log_csv = LOG_CSV_TEMPLATE.format(control_mode=args.control_mode)
+216:     summary_csv = SUMMARY_CSV_TEMPLATE.format(control_mode=args.control_mode)
+217: 
+
+218:     wbc = load_wbc()
+219:     target_rows = read_swing_targets()
+220: 
+221:     model = mujoco.MjModel.from_xml_path(wbc.SCENE)
+
+225:     dofs, qadrs = wbc.actuator_indices(model)
+226:     site_ids = wbc.set_standing_pose(model, data)
+227: 
+228:     q_standing = wbc.current_actuated_q(data, qadrs)
+229: 
+230:     initial_z = float(data.qpos[2])
+231:     min_z = initial_z
+232:     max_z = initial_z
+233:     max_abs_roll = 0.0
+234:     max_abs_pitch = 0.0
+235: 
+
+236:     max_joint_error = 0.0
+237:     max_swing_joint_error = 0.0
+238:     max_stance_joint_error = 0.0
+
+239: 
+
+240:     max_tau_stance_pd_abs = 0.0
+241:     max_tau_stance_wbc_abs = 0.0
+242:     max_tau_swing_pd_abs = 0.0
+243:     max_tau_total_raw_abs = 0.0
+244:     max_tau_baseline_raw_abs = 0.0
+245:     max_tau_candidate_abs = 0.0
+246:     max_tau_candidate_scaled_abs = 0.0
+247:     max_tau_total_abs = 0.0
+248: 
+
+249:     max_cmd_step_jump_norm = 0.0
+250:     max_cmd_step_jump_abs = 0.0
+251: 
+
+252:     max_dyn_res_norm = 0.0
+
+260:     tau_wbc_cmd = np.zeros(model.nu)
+261:     tau_prev_total = np.zeros(model.nu)
+262:     prev_mode = None
+263: 
+264:     mode_counts = {m: 0 for m in wbc.CONTACT_MODES}
+265:     total_steps = min(wbc.TOTAL_STEPS, len(target_rows))
+266: 
+267:     log_rows = []
+268: 
+269:     for step in range(total_steps):
+270:         sched = wbc.scheduler_mode(step)
+
+271:         mode = sched["mode"]
+272:         target = target_rows[step]
+273: 
+274:         if target["mode"] != mode:
+
+338:             )
+339:             tau_candidate = candidate_tau_vector(candidate_row, model.nu)
+340:             candidate_source_step = candidate_row["source_step"]
+341:             candidate_available = True
+342: 
+343:         tau_candidate_scaled = args.mpc_assisted_candidate_scale * tau_candidate
+344:         tau_total_raw = tau_baseline_raw + tau_candidate_scaled
+345:         tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)
+346: 
+347:         max_tau_baseline_raw_abs = max(max_tau_baseline_raw_abs, float(np.max(np.abs(tau_baseline_raw))))
+348:         max_tau_candidate_abs = max(max_tau_candidate_abs, float(np.max(np.abs(tau_candidate))))
+
+349:         max_tau_candidate_scaled_abs = max(max_tau_candidate_scaled_abs, float(np.max(np.abs(tau_candidate_scaled))))
+
+350: 
+
+351:         saturated = bool(np.any(np.abs(tau_total_raw) > TORQUE_LIMIT))
+352:         saturation_steps += int(saturated)
+353: 
+354:         tau_jump = tau_total - tau_prev_total
+
+355:         max_cmd_step_jump_norm = max(max_cmd_step_jump_norm, float(np.linalg.norm(tau_jump)))
+356:         max_cmd_step_jump_abs = max(max_cmd_step_jump_abs, float(np.max(np.abs(tau_jump))))
+
+357:         tau_prev_total = tau_total.copy()
+
+358: 
+359:         data.ctrl[:] = tau_total
+
+360:         mujoco.mj_step(model, data)
+361: 
+362:         base_z = float(data.qpos[2])
+
+363:         roll, pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+364: 
+
+365:         min_z = min(min_z, base_z)
+
+366:         max_z = max(max_z, base_z)
+367:         max_abs_roll = max(max_abs_roll, abs(roll))
+
+368:         max_abs_pitch = max(max_abs_pitch, abs(pitch))
+
+369: 
+370:         step_joint_error = float(np.max(np.abs(q_err)))
+
+371:         step_swing_joint_error = float(np.max(np.abs(q_err[swing_inds]))) if swing_inds else 0.0
+
+372:         step_stance_joint_error = float(np.max(np.abs(q_err[stance_inds]))) if stance_inds else 0.0
+
+373: 
+
+378:         tau_stance_pd_abs = float(np.max(np.abs(tau_stance_pd)))
+379:         tau_stance_wbc_abs = float(np.max(np.abs(tau_stance_wbc)))
+380:         tau_swing_pd_abs = float(np.max(np.abs(tau_swing_pd)))
+381:         tau_baseline_raw_abs = float(np.max(np.abs(tau_baseline_raw)))
+382:         tau_candidate_abs = float(np.max(np.abs(tau_candidate)))
+383:         tau_candidate_scaled_abs = float(np.max(np.abs(tau_candidate_scaled)))
+384:         tau_total_raw_abs = float(np.max(np.abs(tau_total_raw)))
+385:         tau_total_abs = float(np.max(np.abs(tau_total)))
+386: 
+387:         max_tau_stance_pd_abs = max(max_tau_stance_pd_abs, tau_stance_pd_abs)
+388:         max_tau_stance_wbc_abs = max(max_tau_stance_wbc_abs, tau_stance_wbc_abs)
+
+389:         max_tau_swing_pd_abs = max(max_tau_swing_pd_abs, tau_swing_pd_abs)
+
+390:         max_tau_total_raw_abs = max(max_tau_total_raw_abs, tau_total_raw_abs)
+
+391:         max_tau_total_abs = max(max_tau_total_abs, tau_total_abs)
+392: 
+393:         if np.isfinite(metrics["dyn_res_norm"]):
+394:             max_dyn_res_norm = max(max_dyn_res_norm, metrics["dyn_res_norm"])
+395:         if np.isfinite(metrics["stance_acc_res_norm"]):
+
+396:             max_stance_acc_res_norm = max(max_stance_acc_res_norm, metrics["stance_acc_res_norm"])
+
+407:             "phase_in_mode": f"{sched['phase_in_mode']:.12f}",
+408:             "swing_progress": target["swing_progress"],
+409:             "stance_legs": target["stance_legs"],
+410:             "swing_legs": target["swing_legs"],
+411:             "is_transition": str(is_transition),
+412:             "base_z": f"{base_z:.12f}",
+413:             "roll": f"{roll:.12f}",
+414:             "pitch": f"{pitch:.12f}",
+415:             "osqp_status": metrics["osqp_status"],
+416:             "dyn_res_norm": f"{metrics['dyn_res_norm']:.12e}",
+417:             "stance_acc_res_norm": f"{metrics['stance_acc_res_norm']:.12e}",
+
+418:             "swing_acc_error_norm": f"{metrics['swing_acc_error_norm']:.12e}",
+
+419:             "joint_error": f"{step_joint_error:.12f}",
+
+423:             "tau_stance_wbc_abs": f"{tau_stance_wbc_abs:.12f}",
+424:             "tau_swing_pd_abs": f"{tau_swing_pd_abs:.12f}",
+425:             "control_mode": args.control_mode,
+426:             "candidate_available": str(candidate_available),
+427:             "candidate_source_step": str(candidate_source_step),
+428:             "candidate_scale": f"{args.mpc_assisted_candidate_scale:.12f}",
+429:             "tau_baseline_raw_abs": f"{tau_baseline_raw_abs:.12f}",
+430:             "tau_candidate_abs": f"{tau_candidate_abs:.12f}",
+431:             "tau_candidate_scaled_abs": f"{tau_candidate_scaled_abs:.12f}",
+432:             "tau_total_raw_abs": f"{tau_total_raw_abs:.12f}",
+433:             "tau_total_abs": f"{tau_total_abs:.12f}",
+
+434:             "tau_step_jump_norm": f"{float(np.linalg.norm(tau_jump)):.12f}",
+435:             "tau_step_jump_abs": f"{float(np.max(np.abs(tau_jump))):.12f}",
+436:             "saturated": str(saturated),
+
+437:         })
+
+438: 
+
+439:     final_z = float(data.qpos[2])
+440:     final_roll, final_pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+441: 
+
+442:     pass_test = (
+443:         qp_fail_steps == 0
+444:         and saturation_steps == 0
+
+445:         and min_z > MIN_Z_LIMIT
+
+446:         and max_abs_roll < MAX_ROLL_LIMIT
+447:         and max_abs_pitch < MAX_PITCH_LIMIT
+448:         and max_swing_joint_error < MAX_SWING_JOINT_ERROR_LIMIT
+449:     )
+450: 
+451:     pass_margin = (
+
+452:         pass_test
+
+453:         and min_z - MIN_Z_LIMIT > 0.02
+454:         and MAX_ROLL_LIMIT - max_abs_roll > 0.01
+455:         and MAX_PITCH_LIMIT - max_abs_pitch > 0.01
+456:     )
+457: 
+458:     summary = {
+459:         "stage": "14.5D-R6",
+
+460:         "control_mode": args.control_mode,
+
+461:         "simulation_only_project": True,
+462:         "hardware_deployment_completed": False,
+463:         "torque_enable_ready": False,
+
+464:         "torque_publisher_enabled": False,
+465:         "control_law_changed": args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE,
+466:         "mixed_baseline_modified": False,
+467:         "mpc_assisted_candidate_switch_present": True,
+468:         "mpc_assisted_candidate_executed": args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE,
+469:         "mpc_assisted_candidate_scale": args.mpc_assisted_candidate_scale,
+470:         "mpc_assisted_candidate_scale_max": MPC_ASSISTED_CANDIDATE_SCALE_MAX,
+471:         "candidate_csv": args.candidate_csv,
+472:         "candidate_step_policy": args.candidate_step_policy,
+
+473:         "candidate_row_count": len(candidate_rows),
+
+474:         "candidate_available_in_run": args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE,
+
+475:         "real_robot_torque_commanded": False,
+
+476:         "ros_publisher_used": False,
+477:         "wbc_script": WBC_SCRIPT,
+478:         "swing_target_csv": SWING_TARGET_CSV,
+479:         "total_steps": total_steps,
+480:         "transition_count": transition_count,
+481:         "trot_FR_RL_steps": mode_counts["trot_FR_RL"],
+482:         "trot_FL_RR_steps": mode_counts["trot_FL_RR"],
+483:         "stance_kp": STANCE_KP,
+484:         "stance_kd": STANCE_KD,
+
+491:         "initial_z": f"{initial_z:.12f}",
+492:         "final_z": f"{final_z:.12f}",
+493:         "min_z": f"{min_z:.12f}",
+494:         "max_z": f"{max_z:.12f}",
+495:         "delta_z": f"{final_z - initial_z:.12f}",
+496:         "final_roll": f"{final_roll:.12f}",
+497:         "final_pitch": f"{final_pitch:.12f}",
+498:         "max_abs_roll": f"{max_abs_roll:.12f}",
+499:         "roll_margin_to_0p20": f"{MAX_ROLL_LIMIT - max_abs_roll:.12f}",
+500:         "max_abs_pitch": f"{max_abs_pitch:.12f}",
+501:         "pitch_margin_to_0p20": f"{MAX_PITCH_LIMIT - max_abs_pitch:.12f}",
+
+502:         "z_margin_to_0p22": f"{min_z - MIN_Z_LIMIT:.12f}",
+
+503:         "max_joint_error": f"{max_joint_error:.12f}",
+
+504:         "max_swing_joint_error": f"{max_swing_joint_error:.12f}",
+
+505:         "max_stance_joint_error": f"{max_stance_joint_error:.12f}",
+
+506:         "max_tau_stance_pd_abs": f"{max_tau_stance_pd_abs:.12f}",
+
+507:         "max_tau_stance_wbc_abs": f"{max_tau_stance_wbc_abs:.12f}",
+508:         "max_tau_swing_pd_abs": f"{max_tau_swing_pd_abs:.12f}",
+509:         "max_tau_baseline_raw_abs": f"{max_tau_baseline_raw_abs:.12f}",
+510:         "max_tau_candidate_abs": f"{max_tau_candidate_abs:.12f}",
+511:         "max_tau_candidate_scaled_abs": f"{max_tau_candidate_scaled_abs:.12f}",
+512:         "max_tau_total_raw_abs": f"{max_tau_total_raw_abs:.12f}",
+513:         "max_tau_total_abs": f"{max_tau_total_abs:.12f}",
+514:         "max_cmd_step_jump_norm": f"{max_cmd_step_jump_norm:.12f}",
+515:         "max_cmd_step_jump_abs": f"{max_cmd_step_jump_abs:.12f}",
+516:         "max_dyn_res_norm": f"{max_dyn_res_norm:.12e}",
+
+517:         "max_stance_acc_res_norm": f"{max_stance_acc_res_norm:.12e}",
+
+518:         "max_swing_acc_error_norm": f"{max_swing_acc_error_norm:.12e}",
+
+523:     }
+524: 
+525:     Path(log_csv).parent.mkdir(parents=True, exist_ok=True)
+526: 
+527:     with open(log_csv, "w", newline="") as f:
+528:         writer = csv.DictWriter(f, fieldnames=list(log_rows[0].keys()))
+529:         writer.writeheader()
+530:         writer.writerows(log_rows)
+531: 
+532:     with open(summary_csv, "w", newline="") as f:
+533:         writer = csv.DictWriter(f, fieldnames=list(summary.keys()))
+
+534:         writer.writeheader()
+535:         writer.writerow(summary)
+
+536: 
+537:     print("Stage 13.2 2400-step simulation-only mixed baseline regression")
+
+538:     for k, v in summary.items():
+
+539:         print(f"{k}={v}")
+540: 
+
+541:     print(f"saved_log={log_csv}")
+542:     print(f"saved_summary={summary_csv}")
+543: 
+
+544:     if not pass_test:
+545:         raise SystemExit(2)
+546: 
+547: 
+

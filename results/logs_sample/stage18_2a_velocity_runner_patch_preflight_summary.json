@@ -1,0 +1,82 @@
+{
+  "stage": "18.2a",
+  "name": "velocity runner patch preflight",
+  "result": "pass",
+  "failure_count": 0,
+  "source": "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py",
+  "generated_files": [
+    "results/logs_sample/stage18_2a_velocity_runner_patch_preflight_context.txt",
+    "results/logs_sample/stage18_2a_velocity_runner_patch_preflight_validation.csv",
+    "results/logs_sample/stage18_2a_velocity_runner_patch_preflight_summary.json",
+    "docs/STAGE18_2A_VELOCITY_RUNNER_PATCH_PREFLIGHT.md"
+  ],
+  "patch_target": [
+    "add base_x / base_y to per-step log",
+    "add base_vx_fd from finite difference",
+    "optionally add base_vx_qvel if qvel semantics are safe",
+    "add target_vx and velocity_error",
+    "add mean_vx / mean_abs_velocity_error / final_x / forward_displacement to summary"
+  ],
+  "checks": [
+    {
+      "check": "source_exists",
+      "status": "PASS",
+      "detail": "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py"
+    },
+    {
+      "check": "source_has_qpos",
+      "status": "PASS",
+      "detail": "qpos"
+    },
+    {
+      "check": "source_has_mj_step",
+      "status": "PASS",
+      "detail": "mj_step"
+    },
+    {
+      "check": "source_has_data_ctrl",
+      "status": "PASS",
+      "detail": "data.ctrl"
+    },
+    {
+      "check": "source_has_base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "source_has_roll_pitch",
+      "status": "PASS",
+      "detail": "roll,pitch"
+    },
+    {
+      "check": "source_has_candidate_scale",
+      "status": "PASS",
+      "detail": "candidate_scale"
+    },
+    {
+      "check": "source_has_summary",
+      "status": "PASS",
+      "detail": "summary"
+    },
+    {
+      "check": "source_has_csv_logging",
+      "status": "PASS",
+      "detail": "csv logging"
+    },
+    {
+      "check": "source_lacks_base_x",
+      "status": "PASS",
+      "detail": "expected Stage 18 patch target"
+    },
+    {
+      "check": "source_lacks_base_vx",
+      "status": "PASS",
+      "detail": "expected Stage 18 patch target"
+    },
+    {
+      "check": "source_lacks_mean_vx",
+      "status": "PASS",
+      "detail": "expected Stage 18 patch target"
+    }
+  ]
+}

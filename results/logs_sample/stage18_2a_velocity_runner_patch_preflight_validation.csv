@@ -1,0 +1,13 @@
+check,status,detail
+source_exists,PASS,scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py
+source_has_qpos,PASS,qpos
+source_has_mj_step,PASS,mj_step
+source_has_data_ctrl,PASS,data.ctrl
+source_has_base_z,PASS,base_z
+source_has_roll_pitch,PASS,"roll,pitch"
+source_has_candidate_scale,PASS,candidate_scale
+source_has_summary,PASS,summary
+source_has_csv_logging,PASS,csv logging
+source_lacks_base_x,PASS,expected Stage 18 patch target
+source_lacks_base_vx,PASS,expected Stage 18 patch target
+source_lacks_mean_vx,PASS,expected Stage 18 patch target
