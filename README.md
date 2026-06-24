@@ -462,3 +462,40 @@ Claim boundary:
 - No claim that MPC/WBC comprehensively outperforms the baseline.
 <!-- STAGE17_ENTRY_DOCS_SYNC_END -->
 
+<!-- STAGE18_ENTRY_DOCS_SYNC_START -->
+## Stage 18：速度跟踪证据补齐
+
+Stage 18 用于补齐 Stage 17 的主要边界：此前已有高度、姿态、QP failure 和 torque saturation 证据，但缺少速度跟踪指标。
+
+当前证据支持：
+
+  * 已在 simulation-only rollout 中新增 `base_x`、`base_y`、`base_vx_fd`、`target_vx`、`velocity_error`、`mean_vx`、`mean_abs_velocity_error` 和 `forward_displacement` 等速度相关指标。
+  * 已完成 baseline 与低尺度 MPC/WBC candidate 注入工况的速度指标对照。
+  * 已确认两组工况均通过高度、姿态、QP failure 和 torque saturation 安全边界。
+  * 已明确当前低尺度 MPC/WBC candidate 不改善速度跟踪，baseline 速度跟踪优于 candidate。
+
+阶段结果：
+
+    Stage 18.0 result: pass
+    Stage 18.1 result: pass
+    Stage 18.2a result: pass
+    Stage 18.2 result: pass
+    Stage 18.3 result: pass
+
+关键结论：
+
+    Stage 18.2 的低尺度 MPC/WBC candidate 注入工况保持稳定，但不改善速度跟踪。在 target_vx=0.2 m/s 的当前测试中，baseline 的 mean_vx 更高、mean_abs_velocity_error 更低、forward_displacement 更大。
+
+当前不能声明：
+
+  * 不声明低尺度 MPC/WBC candidate 改善了速度跟踪；
+  * 不声明已完成完整 MPC-WBC 速度控制器；
+  * 不声明真实机器人 torque 执行；
+  * 不声明已具备硬件 torque enablement 条件；
+  * 不声明 MPC/WBC 已全面优于 baseline。
+
+更准确的表述是：
+
+> Stage 18 补齐了仅限仿真的速度跟踪证据。在当前 target_vx=0.2 m/s 测试中，baseline 与低尺度 MPC/WBC candidate 注入均通过稳定性和安全边界，但 baseline 的前向速度跟踪更好。
+<!-- STAGE18_ENTRY_DOCS_SYNC_END -->
+

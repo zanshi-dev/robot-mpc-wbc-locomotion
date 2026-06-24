@@ -207,3 +207,37 @@ All Stage 17 artifacts listed below are simulation-only evidence artifacts.
 | 17.2 | `results/logs_sample/stage17_2_conservative_rollout_metrics_summary.json` | Stage 17.2 summary |
 <!-- STAGE17_ENTRY_DOCS_SYNC_END -->
 
+<!-- STAGE18_ENTRY_DOCS_SYNC_START -->
+## Stage 18 Artifacts
+
+以下 Stage 18 artifact 均为 simulation-only velocity evidence，不对应真实机器人部署。
+
+结论边界：
+
+  * Stage 18 只补齐速度指标与对照证据；
+  * 当前低尺度 MPC/WBC candidate 不改善速度跟踪；
+  * 当前测试中 baseline 速度跟踪优于 candidate；
+  * 不声明完整 MPC-WBC 速度控制器完成；
+  * 不声明真实机器人 torque 执行完成。
+
+| 阶段 | Artifact | 作用 |
+|---|---|---|
+| 18.0 | `docs/STAGE18_VELOCITY_TRACKING_ROADMAP.md` | 速度跟踪证据路线图与边界 |
+| 18.0 | `results/logs_sample/stage18_0_velocity_tracking_roadmap_summary.json` | Stage 18.0 summary |
+| 18.1 | `scripts/stage18_1_velocity_source_inspection.py` | 速度指标源脚本检查 |
+| 18.1 | `docs/STAGE18_1_VELOCITY_SOURCE_INSPECTION.md` | source inspection 报告 |
+| 18.2a | `scripts/stage18_2a_velocity_runner_patch_preflight.py` | runner patch 预检查 |
+| 18.2a | `docs/STAGE18_2A_VELOCITY_RUNNER_PATCH_PREFLIGHT.md` | patch preflight 报告 |
+| 18.2 | `scripts/stage18_2_velocity_tracking_rollout_runner.py` | 派生速度跟踪 rollout runner |
+| 18.2 | `scripts/stage18_2_validate_velocity_tracking_rollout.py` | 速度 rollout 验证脚本 |
+| 18.2 | `docs/STAGE18_2_VELOCITY_TRACKING_ROLLOUT.md` | 速度 rollout 报告 |
+| 18.2 | `results/logs_sample/stage18_2_velocity_tracking_rollout_comparison.csv` | baseline / candidate 速度对照表 |
+| 18.2 | `results/logs_sample/stage18_2_velocity_tracking_rollout_summary.json` | Stage 18.2 summary |
+| 18.3 | `scripts/stage18_3_velocity_comparison_analysis.py` | 速度对照分析脚本 |
+| 18.3 | `docs/STAGE18_3_VELOCITY_COMPARISON_ANALYSIS.md` | 速度对照分析报告 |
+| 18.3 | `results/logs_sample/stage18_3_velocity_comparison_analysis.csv` | 机器可读速度对照分析 |
+| 18.3 | `results/logs_sample/stage18_3_velocity_comparison_analysis_summary.json` | Stage 18.3 summary |
+| 18.4 | `docs/STAGE18_4_VELOCITY_EVIDENCE_FREEZE.md` | Stage 18 速度证据冻结报告 |
+| 18.4 | `results/logs_sample/stage18_4_velocity_evidence_manifest.json` | Stage 18 冻结证据 manifest |
+<!-- STAGE18_ENTRY_DOCS_SYNC_END -->
+

@@ -5227,3 +5227,29 @@ Stage 17 does not support these statements:
 - Velocity tracking performance has been evaluated in the Stage 14.5e evidence table.
 <!-- STAGE17_ENTRY_DOCS_SYNC_END -->
 
+<!-- STAGE18_ENTRY_DOCS_SYNC_START -->
+## Stage 18 状态：速度跟踪证据补齐
+
+当前状态：已完成 Stage 18.0–18.3，并在 Stage 18.4 中进行证据冻结。
+
+| 阶段 | 结果 | 证据 |
+|---|---:|---|
+| 18.0 | pass | `docs/STAGE18_VELOCITY_TRACKING_ROADMAP.md` |
+| 18.1 | pass | `docs/STAGE18_1_VELOCITY_SOURCE_INSPECTION.md` |
+| 18.2a | pass | `docs/STAGE18_2A_VELOCITY_RUNNER_PATCH_PREFLIGHT.md` |
+| 18.2 | pass | `docs/STAGE18_2_VELOCITY_TRACKING_ROLLOUT.md` |
+| 18.3 | pass | `docs/STAGE18_3_VELOCITY_COMPARISON_ANALYSIS.md` |
+
+当前证据支持：
+
+    Stage 18 已补齐 simulation-only velocity evidence。在当前 target_vx=0.2 m/s 测试中，baseline 与低尺度 MPC/WBC candidate 注入均通过稳定性和安全边界，但 baseline 的速度跟踪更好。
+
+当前证据不支持：
+
+  * 低尺度 MPC/WBC candidate 改善速度跟踪；
+  * 完整 MPC-WBC 速度控制器已经完成；
+  * 真实机器人 torque 执行已经完成；
+  * 硬件 torque enablement 已经完成；
+  * MPC/WBC 全面优于 baseline。
+<!-- STAGE18_ENTRY_DOCS_SYNC_END -->
+

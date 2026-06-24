@@ -1,0 +1,286 @@
+{
+  "stage": "18.4",
+  "name": "velocity evidence freeze",
+  "result": "pass",
+  "stage_results": {
+    "18.0": "pass",
+    "18.1": "pass",
+    "18.2a": "pass",
+    "18.2": "pass",
+    "18.3": "pass"
+  },
+  "artifact_count": 35,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "9075468e595debf946541c700cd8c88b6e6b04db9af85a2b376d2234cb2c7cc3",
+      "size_bytes": 15751,
+      "exists": true
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "sha256": "5ac726d3eaa894ae8d4562949a8f64f1afc65429e6a4968b72ef676c0658f389",
+      "size_bytes": 166930,
+      "exists": true
+    },
+    {
+      "path": "docs/ARTIFACT_INDEX.md",
+      "sha256": "abb3bba6d62be22737ae7a9a91da0aac9164336f1478d260cd697ade05e1644a",
+      "size_bytes": 15982,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE18_VELOCITY_TRACKING_ROADMAP.md",
+      "sha256": "85adc2825960690ead78a5f6115f5d00217da15d5af29ee3f2b8e7ddedf5dbff",
+      "size_bytes": 3387,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE18_1_VELOCITY_SOURCE_INSPECTION.md",
+      "sha256": "46cde55da77efad97c9e9cf2db64ca7e8992806827db6f029f0028778b4de32c",
+      "size_bytes": 1723,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE18_2A_VELOCITY_RUNNER_PATCH_PREFLIGHT.md",
+      "sha256": "0484ecb9c13b4a1a44635fbcad2c70f9d6602d333bca4de0157ec8e6df84f68d",
+      "size_bytes": 1085,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE18_2_VELOCITY_TRACKING_ROLLOUT.md",
+      "sha256": "5decf0122dbdb0a0328d1ee71c4219794a6a6af1b08898dea6a4ca5bccbe6514",
+      "size_bytes": 817,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE18_3_VELOCITY_COMPARISON_ANALYSIS.md",
+      "sha256": "80888407540cdb3875f1dea7f47d837e6a3054c5e34d4de7c8f3bd315b987291",
+      "size_bytes": 1712,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage18_0_validate_velocity_tracking_roadmap.py",
+      "sha256": "4c429055b716487ffbf30d561e5661ee86b0a59824e628fdcd12201c3546b7f2",
+      "size_bytes": 2696,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage18_1_velocity_source_inspection.py",
+      "sha256": "5b824304f04acf0696976183638498d993b7403683212bb8ebc1d0e51b9e6995",
+      "size_bytes": 12171,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage18_2a_velocity_runner_patch_preflight.py",
+      "sha256": "72fe91beaa4b03ef8720d72483221a8a1a0cee50406485a92ffe8a8723f4a000",
+      "size_bytes": 6379,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage18_2_velocity_tracking_rollout_runner.py",
+      "sha256": "bc941891a8dc42003f41c36a100299ddf4915f18656a27077e5c82b04949d76e",
+      "size_bytes": 24244,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage18_2_validate_velocity_tracking_rollout.py",
+      "sha256": "1d23277565770cba67a268804c84a1b04a33fe4b092d58c4685533a3962c34a8",
+      "size_bytes": 9301,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage18_3_velocity_comparison_analysis.py",
+      "sha256": "2d108ec0a4ed6387cecc75dc9c21f9a5c7f8e4addd184576d71775c19b5031ef",
+      "size_bytes": 8724,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_0_velocity_tracking_roadmap_validation.csv",
+      "sha256": "b9d05ed171b92bcb31b377bcd7f1696211a75c0f1a28f29160d8f99e2df35466",
+      "size_bytes": 584,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_0_velocity_tracking_roadmap_summary.json",
+      "sha256": "96d5ffe8a7d25eaa6af4eb779b64cbc3b058d663239ecbb4b8ffd613bd57b12a",
+      "size_bytes": 1962,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_1_velocity_source_inspection.csv",
+      "sha256": "5675b66d1591684485fad42b93dcb5b4e1ecf6ca20bcd521ac2e30df785514f4",
+      "size_bytes": 611,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_1_velocity_existing_csv_headers.csv",
+      "sha256": "e37ab1697a1edbffbbe4384ab9c1b1e29a36bc3a7552a472e774e406202b677b",
+      "size_bytes": 4453,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_1_velocity_source_anchor_report.txt",
+      "sha256": "fcad2310d353e2830b66b26afa24ba7010cd3a4a72f468250cc8585d27ff238b",
+      "size_bytes": 25871,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_1_velocity_source_inspection_validation.csv",
+      "sha256": "2cc69cc44cd2db885305c56e269d6004f0224e0fcc874af9f3c9ed0f8e16b439",
+      "size_bytes": 1366,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_1_velocity_source_inspection_summary.json",
+      "sha256": "b3ec1e73b21e7b46ca89a08ea0be0b4236477cac4622c110a02950d56a89ae9f",
+      "size_bytes": 3947,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_2a_velocity_runner_patch_preflight_context.txt",
+      "sha256": "64d7c7e9bbdc0e247255f355edba95dfa9d97537c46cc8824969c50c41b94eb9",
+      "size_bytes": 14046,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_2a_velocity_runner_patch_preflight_validation.csv",
+      "sha256": "69b652a666e2540e2f0791f4b6ef6f87cf265cf3d84ea5deef25630c2389cca7",
+      "size_bytes": 576,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_2a_velocity_runner_patch_preflight_summary.json",
+      "sha256": "3a93d03382428ce0b4263151213e6fec8b7a4284b91434a6e547b968ac8e7714",
+      "size_bytes": 2207,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_2_velocity_tracking_baseline_log.csv",
+      "sha256": "d54abb6ba15c02d6d7d1454adefd42fa7564b759522f7a185bb264b91f7d2be2",
+      "size_bytes": 1340330,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_2_velocity_tracking_baseline_summary.csv",
+      "sha256": "5098814fe7b58bcdfe71e464bdfcacbe5cfdebbd76739c1aa08d1ece3525cd3f",
+      "size_bytes": 2349,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_2_velocity_tracking_mpc_assisted_candidate_log.csv",
+      "sha256": "7ce42207a95dc0fc1c82cca9b895aeda6c526b518edacc25a289810e0bc0295e",
+      "size_bytes": 1376967,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_2_velocity_tracking_mpc_assisted_candidate_summary.csv",
+      "sha256": "01f8733576544ecbda7d58eb66ba19b5147e9e41712c53a9ffdfffb861686b6b",
+      "size_bytes": 2363,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_2_velocity_tracking_rollout_validation.csv",
+      "sha256": "fe41d6e76a89262d987026096abaef21805c1709b52d1934d498b321ca61d46b",
+      "size_bytes": 3961,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_2_velocity_tracking_rollout_comparison.csv",
+      "sha256": "3aaee1bb38262954ffb8c4639134355b5a8e8356e3507bacbce6289126392e70",
+      "size_bytes": 324,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_2_velocity_tracking_rollout_summary.json",
+      "sha256": "f8e10e00c38af5b03d735865835a29404a0f8d2b7181a34d86b177077cb84189",
+      "size_bytes": 10223,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_3_velocity_comparison_analysis.csv",
+      "sha256": "ef2948cad15d390eeb3c3e3b863bd18385a541821fdb582f8ee2e37e86d315f1",
+      "size_bytes": 300,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_3_velocity_comparison_analysis.md",
+      "sha256": "bbe2cd9aef749490dde061822f930a8cf7572597f997501f83c298a64c2dd482",
+      "size_bytes": 376,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_3_velocity_comparison_analysis_validation.csv",
+      "sha256": "2dd7652ef299452177d2121197f041997347de632a07379cceb21698f9f8f12d",
+      "size_bytes": 694,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage18_3_velocity_comparison_analysis_summary.json",
+      "sha256": "e07645e8dc3727523862132888d84880b43e40f6bf553323eb8276dc067bfcf1",
+      "size_bytes": 3038,
+      "exists": true
+    }
+  ],
+  "comparison_rows": [
+    {
+      "control_mode": "baseline",
+      "target_vx": "0.200000",
+      "mean_vx": "0.131362",
+      "mean_abs_velocity_error": "0.078494",
+      "forward_displacement": "0.630505",
+      "min_z": "0.274552",
+      "max_abs_roll": "0.056707",
+      "max_abs_pitch": "0.048329",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "pass": "True"
+    },
+    {
+      "control_mode": "mpc_assisted_candidate",
+      "target_vx": "0.200000",
+      "mean_vx": "0.066640",
+      "mean_abs_velocity_error": "0.147469",
+      "forward_displacement": "0.319838",
+      "min_z": "0.273040",
+      "max_abs_roll": "0.090250",
+      "max_abs_pitch": "0.064959",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "pass": "True"
+    }
+  ],
+  "analysis_rows": [
+    {
+      "metric": "mean_vx",
+      "baseline": "0.131362",
+      "candidate": "0.066640",
+      "candidate_minus_baseline": "-0.064722",
+      "interpretation": "candidate slower than baseline"
+    },
+    {
+      "metric": "mean_abs_velocity_error",
+      "baseline": "0.078494",
+      "candidate": "0.147469",
+      "candidate_minus_baseline": "0.068975",
+      "interpretation": "candidate worse velocity tracking"
+    },
+    {
+      "metric": "forward_displacement",
+      "baseline": "0.630505",
+      "candidate": "0.319838",
+      "candidate_minus_baseline": "-0.310667",
+      "interpretation": "candidate lower displacement"
+    }
+  ],
+  "conclusion": "Stage 18.2 的低尺度 MPC/WBC candidate 注入工况保持稳定，但不改善速度跟踪。在 target_vx=0.2 m/s 的当前测试中，baseline 的 mean_vx 更高、mean_abs_velocity_error 更低、forward_displacement 更大。",
+  "claim_boundary": [
+    "simulation-only velocity evidence",
+    "finite-difference velocity from qpos[0]",
+    "candidate remains stable but is not better on velocity tracking",
+    "no real robot torque execution",
+    "no hardware torque enablement",
+    "no full MPC-WBC velocity controller claim",
+    "no comprehensive MPC/WBC superiority claim"
+  ]
+}

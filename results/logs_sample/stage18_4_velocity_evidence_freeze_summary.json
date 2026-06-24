@@ -1,0 +1,281 @@
+{
+  "stage": "18.4",
+  "name": "velocity evidence freeze",
+  "result": "pass",
+  "failure_count": 0,
+  "generated_files": [
+    "results/logs_sample/stage18_4_velocity_evidence_freeze_validation.csv",
+    "results/logs_sample/stage18_4_velocity_evidence_hashes.csv",
+    "results/logs_sample/stage18_4_velocity_evidence_manifest.json",
+    "results/logs_sample/stage18_4_velocity_evidence_freeze_summary.json",
+    "docs/STAGE18_4_VELOCITY_EVIDENCE_FREEZE.md"
+  ],
+  "updated_files": [
+    "README.md",
+    "PROJECT_STATUS.md",
+    "docs/ARTIFACT_INDEX.md"
+  ],
+  "conclusion": "Stage 18.2 的低尺度 MPC/WBC candidate 注入工况保持稳定，但不改善速度跟踪。在 target_vx=0.2 m/s 的当前测试中，baseline 的 mean_vx 更高、mean_abs_velocity_error 更低、forward_displacement 更大。",
+  "checks": [
+    {
+      "check": "required_exists::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "required_exists::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "required_exists::docs/ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE18_VELOCITY_TRACKING_ROADMAP.md",
+      "status": "PASS",
+      "detail": "docs/STAGE18_VELOCITY_TRACKING_ROADMAP.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE18_1_VELOCITY_SOURCE_INSPECTION.md",
+      "status": "PASS",
+      "detail": "docs/STAGE18_1_VELOCITY_SOURCE_INSPECTION.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE18_2A_VELOCITY_RUNNER_PATCH_PREFLIGHT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE18_2A_VELOCITY_RUNNER_PATCH_PREFLIGHT.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE18_2_VELOCITY_TRACKING_ROLLOUT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE18_2_VELOCITY_TRACKING_ROLLOUT.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE18_3_VELOCITY_COMPARISON_ANALYSIS.md",
+      "status": "PASS",
+      "detail": "docs/STAGE18_3_VELOCITY_COMPARISON_ANALYSIS.md"
+    },
+    {
+      "check": "required_exists::scripts/stage18_0_validate_velocity_tracking_roadmap.py",
+      "status": "PASS",
+      "detail": "scripts/stage18_0_validate_velocity_tracking_roadmap.py"
+    },
+    {
+      "check": "required_exists::scripts/stage18_1_velocity_source_inspection.py",
+      "status": "PASS",
+      "detail": "scripts/stage18_1_velocity_source_inspection.py"
+    },
+    {
+      "check": "required_exists::scripts/stage18_2a_velocity_runner_patch_preflight.py",
+      "status": "PASS",
+      "detail": "scripts/stage18_2a_velocity_runner_patch_preflight.py"
+    },
+    {
+      "check": "required_exists::scripts/stage18_2_velocity_tracking_rollout_runner.py",
+      "status": "PASS",
+      "detail": "scripts/stage18_2_velocity_tracking_rollout_runner.py"
+    },
+    {
+      "check": "required_exists::scripts/stage18_2_validate_velocity_tracking_rollout.py",
+      "status": "PASS",
+      "detail": "scripts/stage18_2_validate_velocity_tracking_rollout.py"
+    },
+    {
+      "check": "required_exists::scripts/stage18_3_velocity_comparison_analysis.py",
+      "status": "PASS",
+      "detail": "scripts/stage18_3_velocity_comparison_analysis.py"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_0_velocity_tracking_roadmap_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_0_velocity_tracking_roadmap_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_0_velocity_tracking_roadmap_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_0_velocity_tracking_roadmap_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_1_velocity_source_inspection.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_1_velocity_source_inspection.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_1_velocity_existing_csv_headers.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_1_velocity_existing_csv_headers.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_1_velocity_source_anchor_report.txt",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_1_velocity_source_anchor_report.txt"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_1_velocity_source_inspection_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_1_velocity_source_inspection_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_1_velocity_source_inspection_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_1_velocity_source_inspection_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_2a_velocity_runner_patch_preflight_context.txt",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2a_velocity_runner_patch_preflight_context.txt"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_2a_velocity_runner_patch_preflight_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2a_velocity_runner_patch_preflight_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_2a_velocity_runner_patch_preflight_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2a_velocity_runner_patch_preflight_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_2_velocity_tracking_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_2_velocity_tracking_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_2_velocity_tracking_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_2_velocity_tracking_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_2_velocity_tracking_rollout_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_rollout_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_2_velocity_tracking_rollout_comparison.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_rollout_comparison.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_2_velocity_tracking_rollout_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_2_velocity_tracking_rollout_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_3_velocity_comparison_analysis.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_3_velocity_comparison_analysis.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_3_velocity_comparison_analysis.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_3_velocity_comparison_analysis.md"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_3_velocity_comparison_analysis_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_3_velocity_comparison_analysis_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage18_3_velocity_comparison_analysis_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage18_3_velocity_comparison_analysis_summary.json"
+    },
+    {
+      "check": "summary_result_pass::results/logs_sample/stage18_0_velocity_tracking_roadmap_summary.json",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::results/logs_sample/stage18_1_velocity_source_inspection_summary.json",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::results/logs_sample/stage18_2a_velocity_runner_patch_preflight_summary.json",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::results/logs_sample/stage18_2_velocity_tracking_rollout_summary.json",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::results/logs_sample/stage18_3_velocity_comparison_analysis_summary.json",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "entry_has_stage18_marker::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_velocity::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_candidate_not_better::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_has_stage18_marker::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_velocity::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_candidate_not_better::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_has_stage18_marker::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_velocity::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_candidate_not_better::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    }
+  ]
+}
