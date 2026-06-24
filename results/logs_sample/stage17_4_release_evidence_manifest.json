@@ -1,0 +1,155 @@
+{
+  "stage": "17.4",
+  "name": "release evidence freeze",
+  "result": "pass",
+  "stage_results": {
+    "17.0": "pass",
+    "17.1": "pass",
+    "17.2": "pass",
+    "17.3": "pass"
+  },
+  "artifact_count": 22,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "70b1878a2676d2241ebcbf12485f5bc1213cca32f046f2d43a22fedd6846f4fd",
+      "size_bytes": 13987,
+      "exists": true
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "sha256": "aa136d637025fa43f3fd10dcf16fb363b031d1b423fa7ad36a3aefdbf571f625",
+      "size_bytes": 165838,
+      "exists": true
+    },
+    {
+      "path": "docs/ARTIFACT_INDEX.md",
+      "sha256": "c719d8bcfc88b5c00cd99ad8fc2876ae1e6320d04de475a256191ac24261be24",
+      "size_bytes": 13777,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE17_CLOSED_LOOP_ROADMAP.md",
+      "sha256": "a982affab0808a339364338fbabde7378233f4479ba1a883a7192445cc95aa6d",
+      "size_bytes": 2996,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE17_1_CONSERVATIVE_CLOSED_LOOP_ROLLOUT.md",
+      "sha256": "5890d4de74d344236f84140fbff5cb01871c24129c255402f55d15b94ac135a2",
+      "size_bytes": 2823,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE17_2_CONSERVATIVE_ROLLOUT_METRICS_TABLE.md",
+      "sha256": "6b576cfa2adfb1f152128c298e188ebf913610eb26c869b5ce2ffeaa17cd626f",
+      "size_bytes": 2377,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE17_3_ENTRY_DOCS_SYNC.md",
+      "sha256": "a04c2e93c86a52e008127f36dcaa84f07b567a91b94928fe6d40b079c65a0d39",
+      "size_bytes": 1082,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage17_0_validate_closed_loop_roadmap.sh",
+      "sha256": "f266b1ad3e99b25ab1f7bece5542416ffdb11347b0a4de0f8b3ce0f21091fb18",
+      "size_bytes": 2241,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage17_1_validate_conservative_closed_loop_rollout.py",
+      "sha256": "cf3681da01c230d1996bd38523cb5822dbf005defec6b092fb57e74a7b43422d",
+      "size_bytes": 9605,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage17_2_generate_conservative_rollout_metrics_table.py",
+      "sha256": "42f625feac9f61134fa6d8b744582597d0f95024154d96c5e44e3b8b48538cc7",
+      "size_bytes": 8448,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage17_3_sync_entry_docs.py",
+      "sha256": "d0d9ac3ee9046ae4f66322a7ae17723f64259cd34c32229f580b8f996dc2e691",
+      "size_bytes": 10682,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage17_0_closed_loop_roadmap_validation_summary.json",
+      "sha256": "b720a9105c3472b4fbc6f1ba18f83cda858ae0f2c1f02cf3d290057dba31d0de",
+      "size_bytes": 171,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json",
+      "sha256": "f1144e73d14f604882a78fca61ae7cf9400262b13e9cd4e8a7dd29493d414cec",
+      "size_bytes": 5325,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage17_2_conservative_rollout_metrics_summary.json",
+      "sha256": "7307a30c874a4c36a7de1d3408b2eb941c2a696c36bb25e05811cbb9736faf42",
+      "size_bytes": 1739,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage17_3_entry_docs_sync_summary.json",
+      "sha256": "a17b28a081de900733f71e3ae26df83222703f4c68cb5e61d374fb7464800203",
+      "size_bytes": 4449,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage17_1_conservative_closed_loop_rollout_validation.csv",
+      "sha256": "f62d00aa95a608ff46adfb1d05d89c56928600fa069f0134dd65b6bb19929876",
+      "size_bytes": 1835,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage17_2_conservative_rollout_metrics_table.csv",
+      "sha256": "1abcb24075af91846a3218761d0bc1a2caf9da7972d8454e06559141d595b50c",
+      "size_bytes": 1273,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage17_2_conservative_rollout_metrics_table.md",
+      "sha256": "82460edc84cb5b1588969bb92fb472d0af16dc633dc7a904c819f89f793e61c3",
+      "size_bytes": 885,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage17_3_entry_docs_sync_validation.csv",
+      "sha256": "3bf6fe6f4cbdd0b7d5b78aa90539a1cd2da2c8baa067434afd7ac3c2a378b30a",
+      "size_bytes": 2001,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_table.csv",
+      "sha256": "f5ab6af9f64038a920601dce84daaed1faec17194974c58d9e4d0e81d7d22913",
+      "size_bytes": 1511,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage14_5e_r1_scale_0p02_candidate_log.csv",
+      "sha256": "526229352907783150f098d662f5a7946f3f3bba1ceb3534e0df86bc7913c766",
+      "size_bytes": 1084725,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage14_5e_r1_scale_0p02_candidate_summary.csv",
+      "sha256": "19e8dc5ebf507b0b9eda23c0d4bf56dc5ad768a73b57fb63756c38e13f3ee4fe",
+      "size_bytes": 2000,
+      "exists": true
+    }
+  ],
+  "claim_boundary": [
+    "simulation-only conservative closed-loop rollout evidence",
+    "low-scale MPC/WBC candidate injection evidence",
+    "no real robot torque execution",
+    "no hardware torque enablement",
+    "no high-performance locomotion controller claim",
+    "no comprehensive MPC/WBC superiority claim",
+    "no velocity tracking metric in Stage 14.5e evidence table"
+  ]
+}

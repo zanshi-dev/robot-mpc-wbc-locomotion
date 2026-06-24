@@ -1,0 +1,197 @@
+{
+  "stage": "17.4",
+  "name": "release evidence freeze",
+  "result": "pass",
+  "failure_count": 0,
+  "generated_files": [
+    "results/logs_sample/stage17_4_release_evidence_freeze_validation.csv",
+    "results/logs_sample/stage17_4_release_evidence_freeze_hashes.csv",
+    "results/logs_sample/stage17_4_release_evidence_manifest.json",
+    "results/logs_sample/stage17_4_release_evidence_freeze_summary.json",
+    "docs/STAGE17_4_RELEASE_EVIDENCE_FREEZE.md"
+  ],
+  "stage_results": {
+    "17.0": "pass",
+    "17.1": "pass",
+    "17.2": "pass",
+    "17.3": "pass"
+  },
+  "artifact_count": 22,
+  "checks": [
+    {
+      "check": "required_exists::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "required_exists::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "required_exists::docs/ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE17_CLOSED_LOOP_ROADMAP.md",
+      "status": "PASS",
+      "detail": "docs/STAGE17_CLOSED_LOOP_ROADMAP.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE17_1_CONSERVATIVE_CLOSED_LOOP_ROLLOUT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE17_1_CONSERVATIVE_CLOSED_LOOP_ROLLOUT.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE17_2_CONSERVATIVE_ROLLOUT_METRICS_TABLE.md",
+      "status": "PASS",
+      "detail": "docs/STAGE17_2_CONSERVATIVE_ROLLOUT_METRICS_TABLE.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE17_3_ENTRY_DOCS_SYNC.md",
+      "status": "PASS",
+      "detail": "docs/STAGE17_3_ENTRY_DOCS_SYNC.md"
+    },
+    {
+      "check": "required_exists::scripts/stage17_0_validate_closed_loop_roadmap.sh",
+      "status": "PASS",
+      "detail": "scripts/stage17_0_validate_closed_loop_roadmap.sh"
+    },
+    {
+      "check": "required_exists::scripts/stage17_1_validate_conservative_closed_loop_rollout.py",
+      "status": "PASS",
+      "detail": "scripts/stage17_1_validate_conservative_closed_loop_rollout.py"
+    },
+    {
+      "check": "required_exists::scripts/stage17_2_generate_conservative_rollout_metrics_table.py",
+      "status": "PASS",
+      "detail": "scripts/stage17_2_generate_conservative_rollout_metrics_table.py"
+    },
+    {
+      "check": "required_exists::scripts/stage17_3_sync_entry_docs.py",
+      "status": "PASS",
+      "detail": "scripts/stage17_3_sync_entry_docs.py"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage17_0_closed_loop_roadmap_validation_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_0_closed_loop_roadmap_validation_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage17_2_conservative_rollout_metrics_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_2_conservative_rollout_metrics_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage17_3_entry_docs_sync_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_3_entry_docs_sync_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage17_1_conservative_closed_loop_rollout_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_1_conservative_closed_loop_rollout_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage17_2_conservative_rollout_metrics_table.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_2_conservative_rollout_metrics_table.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage17_2_conservative_rollout_metrics_table.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_2_conservative_rollout_metrics_table.md"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage17_3_entry_docs_sync_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage17_3_entry_docs_sync_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_table.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage14_5e_r1_candidate_robustness_scale_sweep_table.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage14_5e_r1_scale_0p02_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage14_5e_r1_scale_0p02_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage14_5e_r1_scale_0p02_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage14_5e_r1_scale_0p02_candidate_summary.csv"
+    },
+    {
+      "check": "summary_result_pass::results/logs_sample/stage17_0_closed_loop_roadmap_validation_summary.json",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::results/logs_sample/stage17_2_conservative_rollout_metrics_summary.json",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::results/logs_sample/stage17_3_entry_docs_sync_summary.json",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "entry_mentions_stage17::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_has_sync_marker::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_stage17::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_has_sync_marker::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_stage17::docs/ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::docs/ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_has_sync_marker::docs/ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    }
+  ]
+}
