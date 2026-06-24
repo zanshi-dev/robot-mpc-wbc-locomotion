@@ -5276,3 +5276,31 @@ Stage 17 does not support these statements:
   * 真实机器人 torque 执行已经完成；
   * 硬件 torque enablement 已经完成。
 <!-- STAGE19_ENTRY_DOCS_SYNC_END -->
+
+<!-- STAGE20_ENTRY_DOCS_SYNC_START -->
+## Stage 20 状态：recommended scale reproducibility audit
+
+当前状态：已完成 Stage 20.0–20.3，并在 Stage 20.4 中进行证据冻结。
+
+| 阶段 | 结果 | 证据 |
+|---|---:|---|
+| 20.0 | pass | `docs/STAGE20_RECOMMENDED_SCALE_REPRODUCIBILITY_ROADMAP.md` |
+| 20.1 | pass | `docs/STAGE20_1_REPLAY_REPRODUCIBILITY_PREFLIGHT.md` |
+| 20.2 | pass | `docs/STAGE20_2_REPLAY_REPRODUCIBILITY_ROLLOUT.md` |
+| 20.3 | pass | `docs/STAGE20_3_REPRODUCIBILITY_ANALYSIS.md` |
+
+当前证据支持：
+
+    Stage 20 已完成 simulation-only replay reproducibility audit。
+    在当前固定仿真设置下，baseline、scale=0.010 和 scale=0.020 的三次 replay 结果完全一致；
+    scale=0.010 相对 baseline 和 scale=0.020 的速度误差优势关系稳定复现。
+
+当前证据不支持：
+
+  * 完整 MPC-WBC 速度控制器已经完成；
+  * scale=0.010 可以直接用于真实机器人；
+  * scale=0.010 对所有速度、地形和扰动都最优；
+  * MPC/WBC candidate 已全面优于 baseline；
+  * 真实机器人 torque 执行已经完成；
+  * 硬件 torque enablement 已经完成。
+<!-- STAGE20_ENTRY_DOCS_SYNC_END -->

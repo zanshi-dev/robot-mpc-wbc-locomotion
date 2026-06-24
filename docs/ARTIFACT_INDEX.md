@@ -273,3 +273,38 @@ All Stage 17 artifacts listed below are simulation-only evidence artifacts.
 | 19.4 | `docs/STAGE19_4_SCALE_SWEEP_EVIDENCE_FREEZE.md` | Stage 19 证据冻结报告 |
 | 19.4 | `results/logs_sample/stage19_4_scale_sweep_evidence_manifest.json` | Stage 19 冻结证据 manifest |
 <!-- STAGE19_ENTRY_DOCS_SYNC_END -->
+
+<!-- STAGE20_ENTRY_DOCS_SYNC_START -->
+## Stage 20 Artifacts
+
+以下 Stage 20 artifact 均为 simulation-only replay reproducibility evidence，不对应真实机器人部署。
+
+结论边界：
+
+  * Stage 20 只审计 Stage 19 推荐的 `scale=0.010` 在固定仿真设置下是否可复现；
+  * 当前测试下 `scale=0.010` 可作为 simulation-only recommended candidate scale；
+  * 当前测试下 `scale=0.020` 作为 regression anchor，速度误差退化关系稳定复现；
+  * 不声明完整 MPC-WBC 速度控制器完成；
+  * 不声明真实机器人 torque 执行完成；
+  * 不声明硬件 torque enablement 完成。
+
+| 阶段 | Artifact | 作用 |
+|---|---|---|
+| 20.0 | `docs/STAGE20_RECOMMENDED_SCALE_REPRODUCIBILITY_ROADMAP.md` | 推荐 scale 可复现性审计路线图 |
+| 20.0 | `results/logs_sample/stage20_0_recommended_scale_reproducibility_roadmap_summary.json` | Stage 20.0 summary |
+| 20.1 | `scripts/stage20_1_replay_reproducibility_preflight.py` | replay preflight 脚本 |
+| 20.1 | `docs/STAGE20_1_REPLAY_REPRODUCIBILITY_PREFLIGHT.md` | replay preflight 报告 |
+| 20.2 | `scripts/stage20_2_replay_reproducibility_runner.py` | replay-specific runner |
+| 20.2 | `scripts/stage20_2_run_replay_reproducibility.py` | replay 执行脚本 |
+| 20.2 | `scripts/stage20_2_validate_replay_reproducibility.py` | replay 验证脚本 |
+| 20.2 | `docs/STAGE20_2_REPLAY_REPRODUCIBILITY_ROLLOUT.md` | replay rollout 报告 |
+| 20.2 | `results/logs_sample/stage20_2_replay_reproducibility_table.csv` | replay 结果数据表 |
+| 20.2 | `results/logs_sample/stage20_2_replay_reproducibility_summary.json` | Stage 20.2 summary |
+| 20.3 | `scripts/stage20_3_reproducibility_analysis.py` | 可复现性分析脚本 |
+| 20.3 | `docs/STAGE20_3_REPRODUCIBILITY_ANALYSIS.md` | 可复现性分析报告 |
+| 20.3 | `results/logs_sample/stage20_3_reproducibility_per_scale_stats.csv` | 每个 scale 的可复现性统计 |
+| 20.3 | `results/logs_sample/stage20_3_reproducibility_pairwise_checks.csv` | 推荐关系逐 run 检查 |
+| 20.3 | `results/logs_sample/stage20_3_reproducibility_summary.json` | Stage 20.3 summary |
+| 20.4 | `docs/STAGE20_4_REPRODUCIBILITY_EVIDENCE_FREEZE.md` | Stage 20 证据冻结报告 |
+| 20.4 | `results/logs_sample/stage20_4_reproducibility_evidence_manifest.json` | Stage 20 冻结证据 manifest |
+<!-- STAGE20_ENTRY_DOCS_SYNC_END -->

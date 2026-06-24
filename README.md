@@ -541,3 +541,48 @@ Stage 19 用于进一步分析 Stage 18 中发现的速度跟踪问题。Stage 1
 
 > Stage 19 通过速度感知 scale sweep 发现 candidate scale 对速度跟踪影响并非单调。在当前 target_vx=0.2 m/s 仿真测试中，scale=0.010 是更合理的低尺度 candidate 注入候选，而 scale=0.020 不适合作为速度跟踪默认注入强度。
 <!-- STAGE19_ENTRY_DOCS_SYNC_END -->
+
+<!-- STAGE20_ENTRY_DOCS_SYNC_START -->
+## Stage 20：推荐 candidate scale 可复现性审计
+
+Stage 20 用于审计 Stage 19 推荐的 `scale=0.010` 是否在固定仿真设置下可复现。该阶段不新增控制器，不修改 torque 执行链路，也不声明真实机器人部署。
+
+当前证据支持：
+
+  * 已对 `0.000`、`0.010`、`0.020` 三个锚点进行 replay reproducibility audit。
+  * 每个锚点重复运行 3 次，共 9 组 simulation-only replay rollout。
+  * 三个锚点的 replay 指标在重复运行中完全一致，`reproducibility_pass=True`。
+  * `scale=0.010` 的推荐关系稳定复现，`recommendation_stable=True`。
+  * `scale=0.010` 的 mean_abs_velocity_error 低于 baseline 和 `scale=0.020`。
+  * `scale=0.010` 的 forward_displacement 高于 baseline 和 `scale=0.020`。
+
+关键数据：
+
+    baseline scale=0.000, mean_abs_velocity_error=0.078494000000, forward_displacement=0.630505000000
+    recommended scale=0.010, mean_abs_velocity_error=0.065265000000, forward_displacement=0.822437000000
+    regression anchor scale=0.020, mean_abs_velocity_error=0.147469000000, forward_displacement=0.319838000000
+
+阶段结果：
+
+    Stage 20.0 result: pass
+    Stage 20.1 result: pass
+    Stage 20.2 result: pass
+    Stage 20.3 result: pass
+
+关键结论：
+
+    Stage 20.3 replay reproducibility audit 通过。在当前固定 simulation-only 设置下，baseline、scale=0.010 和 scale=0.020 的三次 replay 结果完全一致；scale=0.010 在每次 replay 中均保持低于 baseline 和 scale=0.020 的 mean_abs_velocity_error，且 forward_displacement 均高于 baseline 和 scale=0.020。因此，Stage 19 的 scale=0.010 推荐关系在 Stage 20 replay audit 中稳定复现。
+
+当前不能声明：
+
+  * 不声明完整 MPC-WBC 速度控制器已经完成；
+  * 不声明 `scale=0.010` 可以直接用于真实机器人；
+  * 不声明 `scale=0.010` 对所有速度、地形和扰动都最优；
+  * 不声明 MPC/WBC candidate 已全面优于 baseline；
+  * 不声明真实机器人 torque 执行已经完成；
+  * 不声明硬件 torque enablement 已经完成。
+
+更准确的表述是：
+
+> Stage 20 对 Stage 19 推荐的 scale=0.010 进行了 simulation-only replay reproducibility audit。在当前固定仿真设置下，baseline、scale=0.010 和 scale=0.020 的重复运行结果完全一致；scale=0.010 相对 baseline 和 scale=0.020 的速度误差优势关系稳定复现。因此，scale=0.010 可作为当前仿真证据下的 recommended candidate scale。
+<!-- STAGE20_ENTRY_DOCS_SYNC_END -->

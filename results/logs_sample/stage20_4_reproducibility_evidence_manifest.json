@@ -1,0 +1,316 @@
+{
+  "stage": "20.4",
+  "name": "recommended scale reproducibility evidence freeze",
+  "result": "pass",
+  "stage_results": {
+    "20.0": "pass",
+    "20.1": "pass",
+    "20.2": "pass",
+    "20.3": "pass"
+  },
+  "artifact_count": 48,
+  "recommended_scale": "0.010",
+  "baseline_scale": "0.000",
+  "regression_anchor_scale": "0.020",
+  "reproducibility_pass": true,
+  "recommendation_stable": true,
+  "conclusion": "Stage 20.3 replay reproducibility audit 通过。在当前固定 simulation-only 设置下，baseline、scale=0.010 和 scale=0.020 的三次 replay 结果完全一致；scale=0.010 在每次 replay 中均保持低于 baseline 和 scale=0.020 的 mean_abs_velocity_error，且 forward_displacement 均高于 baseline 和 scale=0.020。因此，Stage 19 的 scale=0.010 推荐关系在 Stage 20 replay audit 中稳定复现。",
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "196eb42370b0ef6f492fe2cc19778dc594860adf987ea749d2ab81561efc6061",
+      "size_bytes": 20582,
+      "exists": true
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "sha256": "80e092824f3c361e1247a24efb54513ea6496881fa6b99c0318274d30c7535af",
+      "size_bytes": 169161,
+      "exists": true
+    },
+    {
+      "path": "docs/ARTIFACT_INDEX.md",
+      "sha256": "0e596b2a29377d5671b5cd8c051a3df7c60119f068ed981827e686f31f033b9b",
+      "size_bytes": 20606,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE20_RECOMMENDED_SCALE_REPRODUCIBILITY_ROADMAP.md",
+      "sha256": "8cd9ddfe31b94af244198e749150a78ca81c9c6c152a816a02a6f6822c2a3375",
+      "size_bytes": 4100,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE20_1_REPLAY_REPRODUCIBILITY_PREFLIGHT.md",
+      "sha256": "16315141ae5e6ddf6bb8041716842897ecc75bc1b2154b4eb4665c3909ef2420",
+      "size_bytes": 3113,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE20_2_REPLAY_REPRODUCIBILITY_ROLLOUT.md",
+      "sha256": "005dd3ef6cf3b240e961dfb943dbff7b27bf114125ce167ef9bf154487d25c23",
+      "size_bytes": 2487,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE20_3_REPRODUCIBILITY_ANALYSIS.md",
+      "sha256": "68180e37fd7cb8348a3ee1d3e7e15e3deb779c2cd1479024155edd89feecfa24",
+      "size_bytes": 3509,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage20_0_validate_recommended_scale_reproducibility_roadmap.py",
+      "sha256": "79e3fe3f69b1f67aa5a60645a90dbebe2533239a7ce48d62619e0e1b38df36ef",
+      "size_bytes": 3368,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage20_1_replay_reproducibility_preflight.py",
+      "sha256": "bd2716313a6621185dd6f28637b93fe3ba75177ff7b20a09eb94439ac8a96be6",
+      "size_bytes": 9808,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage20_2_replay_reproducibility_runner.py",
+      "sha256": "0a9691be158ea2e1d22039b267f1d10ea57dac6a2b3e7a728392c957e70a8ebb",
+      "size_bytes": 24974,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage20_2_run_replay_reproducibility.py",
+      "sha256": "7533abf03da2392e7f3f56a719106a171ad41777b086951e0165712d2dc0751e",
+      "size_bytes": 4171,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage20_2_validate_replay_reproducibility.py",
+      "sha256": "a3c3d30cfe82c0433ebb75727c2dda586938172577e4001d19b55ed4e2e70197",
+      "size_bytes": 11337,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage20_3_reproducibility_analysis.py",
+      "sha256": "dfc289a08f41c03c21ec13006c1729d6be856f941fd9984181a55ba224330c8a",
+      "size_bytes": 16398,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_0_recommended_scale_reproducibility_roadmap_validation.csv",
+      "sha256": "870ff592d0bda4abadaf69a0f2693ee6b2638da624d0f9a5452b8e0424a57706",
+      "size_bytes": 1110,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_0_recommended_scale_reproducibility_roadmap_summary.json",
+      "sha256": "52363cf425df624ac76208f06ae6451f6888c12f8089554e315f93ab446b1f63",
+      "size_bytes": 3391,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_1_replay_reproducibility_preflight_validation.csv",
+      "sha256": "fdcc8f6e9b15b484b2b36ab087d40b769f0690b1cfad51d6d11138eadb940fda",
+      "size_bytes": 1406,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_1_replay_reproducibility_preflight_context.txt",
+      "sha256": "49298c98e76d243c1f7baad99e503e7d83071512da849421e6764762a5368645",
+      "size_bytes": 8304,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_1_replay_reproducibility_output_plan.csv",
+      "sha256": "388d879ff9f3ae1975c7398122dd199ff62200fd581356ddc8f8c74c516af989",
+      "size_bytes": 1812,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_1_replay_reproducibility_preflight_summary.json",
+      "sha256": "f45b2df218a7a9bd1921b6bf49c26a8076cf85dadcbfd2d69a7fa485f7301756",
+      "size_bytes": 7261,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_reproducibility_execution.csv",
+      "sha256": "9c43fea501f6edfb8d1d56bdb21521c4f7ca51685684e60b915f6f4990fca211",
+      "size_bytes": 6551,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_reproducibility_execution_summary.json",
+      "sha256": "5e623184d48fe575f3e3b2080a498a91f0c50cd33fde295b246eea1f8a404405",
+      "size_bytes": 8861,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_reproducibility_validation.csv",
+      "sha256": "9148a8fba4ce83f77d9700f35d84668db7ec87d71a9aae70cb61ca42b6bd22eb",
+      "size_bytes": 19694,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_reproducibility_table.csv",
+      "sha256": "0ff655666ccdc215121e38b2f023d1a9e895d04cd539f176623b4774b54aa09e",
+      "size_bytes": 2908,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_reproducibility_table.md",
+      "sha256": "41612e1636828bb66114432a185bcceb5341ce117d988c07eb9f2a4abb7dcece",
+      "size_bytes": 1127,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_reproducibility_summary.json",
+      "sha256": "e278e4c7de99c3ef2aaab0e0b1923f25f82c5a51a553b2e2c6c54e193e2c46b4",
+      "size_bytes": 50457,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_3_reproducibility_per_scale_stats.csv",
+      "sha256": "8483953ff3b7cd64b190991432128044db2f02dd681a6486e44f5a2efa313fd6",
+      "size_bytes": 2047,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_3_reproducibility_pairwise_checks.csv",
+      "sha256": "1f3f429050bf1adb1c3343379dd0a158710692c2053a56a9cc1de0fa0207dc4f",
+      "size_bytes": 927,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_3_reproducibility_analysis.md",
+      "sha256": "f6d897d5803c3c94d02dbc9b93fae067b149b4a786c2411138c72cb367bed43b",
+      "size_bytes": 1244,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_3_reproducibility_validation.csv",
+      "sha256": "07b381fa596ccea4fdc5d53cde445204f0657b26dd0a071c418976fc6a787bf4",
+      "size_bytes": 1679,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_3_reproducibility_summary.json",
+      "sha256": "a941bdf77842ee0b63a3cba4301dbe744fc20ea24f8f4968403ad32b7093efab",
+      "size_bytes": 12439,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_00_0p000_baseline_log.csv",
+      "sha256": "dd500c410822971181306b5099ab0fc9f7ebddc96bda42bedfdb8e8ffa5cb6ec",
+      "size_bytes": 1371547,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_00_0p000_baseline_summary.csv",
+      "sha256": "5eea52ce31ebaa7c3d1c9023698a93bf19a6e3d10000aa079582187d26408aea",
+      "size_bytes": 2379,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_00_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "de646404312256e49606d9037fa063faf03d97cfe44b0e10f425e4c8b9df0cf3",
+      "size_bytes": 1406889,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_00_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "060d90f60c39b9441440aa9d65ca2823d1b4d7839c56ae1dbdcc8755d4f869ce",
+      "size_bytes": 2398,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_00_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "aedf2cee9ac7af8efdc33bf5482462c37396934c25975e4bf4410663145d7e2e",
+      "size_bytes": 1408184,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_00_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "83144220728b09cec48072e605394d7b1d4e65c137c8bb9c8c0c9f52e806b569",
+      "size_bytes": 2393,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_01_0p000_baseline_log.csv",
+      "sha256": "bc86c55df41c14c9b5c04caca37397623144aee13c7da35db94e3214b86649c3",
+      "size_bytes": 1371547,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_01_0p000_baseline_summary.csv",
+      "sha256": "fc81871ba7f988a4241a2d7378a35baf44cf34c08137bd104c6a4e05dc53c340",
+      "size_bytes": 2379,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_01_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "7148244eddfc7d1756207de0c24044777bc95f9bd318e90fd275213c213c22d9",
+      "size_bytes": 1406889,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_01_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "b8422d1aaea6c2ef7df97fac8c315f93ce8b23b1897ff73543bbc8b6cbac0d99",
+      "size_bytes": 2398,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_01_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "c9fd613f674043780a99577c9eff3ebf2b8630e3d320f77b676ebf11d792514a",
+      "size_bytes": 1408184,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_01_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "f065259364371f39d82371885c9cc716dda5ca7ff8db5616b0ef66fd922c32b0",
+      "size_bytes": 2393,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_02_0p000_baseline_log.csv",
+      "sha256": "4c16215b0bfc9b492b62539a87e8eedd313d609537f19febf1be4324de7397b9",
+      "size_bytes": 1371547,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_02_0p000_baseline_summary.csv",
+      "sha256": "d6e5f1f5affcf2ccd8be8677c042c3ee0789678175e3b024985c60005c3cb73b",
+      "size_bytes": 2379,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_02_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "057a5c5790bc8377ce43946d96032ed3acd127df2c2889a28d1677267d85d042",
+      "size_bytes": 1406889,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_02_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "91a00ed7c380afc05980f06b9bbdf358a1dfacd038fddb431ffff009243b9991",
+      "size_bytes": 2398,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_02_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "af61b65f4cd237bfc206dc811e564ce27b9a7a57d187dcabca9e25669f9e284d",
+      "size_bytes": 1408184,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage20_2_replay_run_02_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "978142b6a415c10d6c2f2950cca832abe9825a967442830b21fc1390388c71d9",
+      "size_bytes": 2393,
+      "exists": true
+    }
+  ],
+  "claim_boundary": [
+    "simulation-only replay reproducibility audit",
+    "scale=0.010 is a current simulation-only recommended candidate scale",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no multi-target-vx or terrain generalization claim"
+  ]
+}

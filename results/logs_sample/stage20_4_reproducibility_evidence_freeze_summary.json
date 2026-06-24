@@ -1,0 +1,384 @@
+{
+  "stage": "20.4",
+  "name": "recommended scale reproducibility evidence freeze",
+  "result": "pass",
+  "failure_count": 0,
+  "recommended_scale": "0.010",
+  "reproducibility_pass": true,
+  "recommendation_stable": true,
+  "generated_files": [
+    "results/logs_sample/stage20_4_reproducibility_evidence_freeze_validation.csv",
+    "results/logs_sample/stage20_4_reproducibility_evidence_hashes.csv",
+    "results/logs_sample/stage20_4_reproducibility_evidence_manifest.json",
+    "results/logs_sample/stage20_4_reproducibility_evidence_freeze_summary.json",
+    "docs/STAGE20_4_REPRODUCIBILITY_EVIDENCE_FREEZE.md"
+  ],
+  "updated_files": [
+    "README.md",
+    "PROJECT_STATUS.md",
+    "docs/ARTIFACT_INDEX.md"
+  ],
+  "conclusion": "Stage 20.3 replay reproducibility audit 通过。在当前固定 simulation-only 设置下，baseline、scale=0.010 和 scale=0.020 的三次 replay 结果完全一致；scale=0.010 在每次 replay 中均保持低于 baseline 和 scale=0.020 的 mean_abs_velocity_error，且 forward_displacement 均高于 baseline 和 scale=0.020。因此，Stage 19 的 scale=0.010 推荐关系在 Stage 20 replay audit 中稳定复现。",
+  "checks": [
+    {
+      "check": "required_exists::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "required_exists::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "required_exists::docs/ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE20_RECOMMENDED_SCALE_REPRODUCIBILITY_ROADMAP.md",
+      "status": "PASS",
+      "detail": "docs/STAGE20_RECOMMENDED_SCALE_REPRODUCIBILITY_ROADMAP.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE20_1_REPLAY_REPRODUCIBILITY_PREFLIGHT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE20_1_REPLAY_REPRODUCIBILITY_PREFLIGHT.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE20_2_REPLAY_REPRODUCIBILITY_ROLLOUT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE20_2_REPLAY_REPRODUCIBILITY_ROLLOUT.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE20_3_REPRODUCIBILITY_ANALYSIS.md",
+      "status": "PASS",
+      "detail": "docs/STAGE20_3_REPRODUCIBILITY_ANALYSIS.md"
+    },
+    {
+      "check": "required_exists::scripts/stage20_0_validate_recommended_scale_reproducibility_roadmap.py",
+      "status": "PASS",
+      "detail": "scripts/stage20_0_validate_recommended_scale_reproducibility_roadmap.py"
+    },
+    {
+      "check": "required_exists::scripts/stage20_1_replay_reproducibility_preflight.py",
+      "status": "PASS",
+      "detail": "scripts/stage20_1_replay_reproducibility_preflight.py"
+    },
+    {
+      "check": "required_exists::scripts/stage20_2_replay_reproducibility_runner.py",
+      "status": "PASS",
+      "detail": "scripts/stage20_2_replay_reproducibility_runner.py"
+    },
+    {
+      "check": "required_exists::scripts/stage20_2_run_replay_reproducibility.py",
+      "status": "PASS",
+      "detail": "scripts/stage20_2_run_replay_reproducibility.py"
+    },
+    {
+      "check": "required_exists::scripts/stage20_2_validate_replay_reproducibility.py",
+      "status": "PASS",
+      "detail": "scripts/stage20_2_validate_replay_reproducibility.py"
+    },
+    {
+      "check": "required_exists::scripts/stage20_3_reproducibility_analysis.py",
+      "status": "PASS",
+      "detail": "scripts/stage20_3_reproducibility_analysis.py"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_0_recommended_scale_reproducibility_roadmap_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_0_recommended_scale_reproducibility_roadmap_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_0_recommended_scale_reproducibility_roadmap_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_0_recommended_scale_reproducibility_roadmap_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_1_replay_reproducibility_preflight_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_1_replay_reproducibility_preflight_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_1_replay_reproducibility_preflight_context.txt",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_1_replay_reproducibility_preflight_context.txt"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_1_replay_reproducibility_output_plan.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_1_replay_reproducibility_output_plan.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_1_replay_reproducibility_preflight_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_1_replay_reproducibility_preflight_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_reproducibility_execution.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_reproducibility_execution.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_reproducibility_execution_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_reproducibility_execution_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_reproducibility_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_reproducibility_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_reproducibility_table.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_reproducibility_table.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_reproducibility_table.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_reproducibility_table.md"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_reproducibility_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_reproducibility_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_3_reproducibility_per_scale_stats.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_3_reproducibility_per_scale_stats.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_3_reproducibility_pairwise_checks.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_3_reproducibility_pairwise_checks.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_3_reproducibility_analysis.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_3_reproducibility_analysis.md"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_3_reproducibility_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_3_reproducibility_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_3_reproducibility_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_3_reproducibility_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_00_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_00_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_00_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_00_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_00_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_00_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_00_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_00_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_00_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_00_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_00_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_00_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_01_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_01_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_01_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_01_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_01_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_01_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_01_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_01_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_01_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_01_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_01_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_01_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_02_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_02_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_02_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_02_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_02_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_02_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_02_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_02_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_02_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_02_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage20_2_replay_run_02_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage20_2_replay_run_02_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "summary_result_pass::20.0",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::20.1",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::20.2",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::20.3",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage20_3_reproducibility_pass_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "stage20_3_recommendation_stable_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "entry_has_stage20_marker::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_reproducibility::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_scale_0p010::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_scale_0p020::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_no_real_robot::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_has_stage20_marker::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_reproducibility::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_scale_0p010::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_scale_0p020::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_no_real_robot::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_has_stage20_marker::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_reproducibility::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_scale_0p010::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_scale_0p020::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_no_real_robot::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    }
+  ]
+}
