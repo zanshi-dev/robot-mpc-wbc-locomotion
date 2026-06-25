@@ -1,0 +1,350 @@
+# Stage 22.1 qvel perturbation preflight context
+
+source_runner: scripts/stage20_2_replay_reproducibility_runner.py
+backup_stage21_runner: scripts/stage21_2_local_perturbation_runner.py
+
+## Source runner context
+
+26: 
+27: 
+28: WBC_SCRIPT = "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py"
+29: SWING_TARGET_CSV = "results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv"
+30: 
+31: LOG_CSV_TEMPLATE = "results/logs_sample/stage20_2_replay_{run_id}_{scale_tag}_{control_mode}_log.csv"
+32: SUMMARY_CSV_TEMPLATE = "results/logs_sample/stage20_2_replay_{run_id}_{scale_tag}_{control_mode}_summary.csv"
+33: 
+34: LEG_ORDER = list(MJ_LEG_ORDER)
+35: JOINTS = ["hip", "thigh", "calf"]
+36: 
+
+37: STANCE_KP = 60.0
+
+193:         choices=MPC_ASSISTED_CANDIDATE_STEP_POLICY_CHOICES,
+194:         default=MPC_ASSISTED_CANDIDATE_STEP_POLICY_REPEAT,
+195:         help="Step mapping policy when simulation steps exceed offline candidate rows.",
+196:     )
+197:     parser.add_argument(
+198:         "--target-vx",
+199:         type=float,
+200:         default=0.2,
+201:         help="Target forward velocity used only for Stage 18 velocity evidence metrics.",
+202:     )
+203:     parser.add_argument(
+
+204:         "--scale-tag",
+205:         type=str,
+206:         default=None,
+207:         help="Scale tag used to make Stage 19 sweep output filenames unique, e.g. 0p005.",
+208:     )
+209:     parser.add_argument(
+
+210:         "--run-id",
+211:         type=str,
+212:         required=True,
+213:         help="Replay run id for Stage 20 reproducibility audit, e.g. run_00.",
+214:     )
+215:     args = parser.parse_args()
+
+217:     candidate_rows = []
+218:     candidate_lookup = {}
+219:     candidate_step_values = []
+220: 
+221:     if args.scale_tag is None:
+222:         args.scale_tag = f"{args.mpc_assisted_candidate_scale:.3f}".replace(".", "p")
+223: 
+224:     if args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE:
+225:         if not args.allow_mpc_assisted_candidate:
+226:             raise RuntimeError("mpc_assisted_candidate requires --allow-mpc-assisted-candidate")
+227:         if args.mpc_assisted_candidate_scale <= 0.0:
+
+228:             raise RuntimeError("mpc_assisted_candidate requires --mpc-assisted-candidate-scale > 0.0")
+229:         if args.mpc_assisted_candidate_scale > MPC_ASSISTED_CANDIDATE_SCALE_MAX:
+230:             raise RuntimeError(f"mpc_assisted_candidate scale exceeds bound: {MPC_ASSISTED_CANDIDATE_SCALE_MAX}")
+231:         candidate_rows, candidate_lookup, candidate_step_values = read_mpc_tau_candidates(Path(args.candidate_csv))
+232:     else:
+
+233:         if args.mpc_assisted_candidate_scale != 0.0:
+234:             raise RuntimeError("baseline mode requires --mpc-assisted-candidate-scale 0.0")
+
+235: 
+236:     log_csv = LOG_CSV_TEMPLATE.format(run_id=args.run_id, scale_tag=args.scale_tag, control_mode=args.control_mode)
+237:     summary_csv = SUMMARY_CSV_TEMPLATE.format(run_id=args.run_id, scale_tag=args.scale_tag, control_mode=args.control_mode)
+238: 
+
+239:     wbc = load_wbc()
+240:     target_rows = read_swing_targets()
+241: 
+
+242:     model = mujoco.MjModel.from_xml_path(wbc.SCENE)
+
+243:     data = mujoco.MjData(model)
+244: 
+245:     contact_rows = wbc.read_contact_wbc_rows()
+246:     dofs, qadrs = wbc.actuator_indices(model)
+247:     site_ids = wbc.set_standing_pose(model, data)
+248: 
+
+249:     q_standing = wbc.current_actuated_q(data, qadrs)
+250: 
+251:     initial_x = float(data.qpos[0])
+252:     initial_y = float(data.qpos[1])
+253:     initial_z = float(data.qpos[2])
+254:     target_vx = float(args.target_vx)
+255:     dt = float(model.opt.timestep)
+256:     prev_base_x = initial_x
+
+257:     prev_base_y = initial_y
+
+258:     base_vx_fd_values = []
+
+259:     abs_velocity_error_values = []
+260:     min_z = initial_z
+261:     max_z = initial_z
+
+262:     max_abs_roll = 0.0
+
+263:     max_abs_pitch = 0.0
+
+270:     max_tau_stance_wbc_abs = 0.0
+271:     max_tau_swing_pd_abs = 0.0
+272:     max_tau_total_raw_abs = 0.0
+273:     max_tau_baseline_raw_abs = 0.0
+274:     max_tau_candidate_abs = 0.0
+275:     max_tau_candidate_scaled_abs = 0.0
+276:     max_tau_total_abs = 0.0
+277: 
+278:     max_cmd_step_jump_norm = 0.0
+279:     max_cmd_step_jump_abs = 0.0
+280: 
+
+367:             )
+368:             tau_candidate = candidate_tau_vector(candidate_row, model.nu)
+369:             candidate_source_step = candidate_row["source_step"]
+370:             candidate_available = True
+371: 
+372:         tau_candidate_scaled = args.mpc_assisted_candidate_scale * tau_candidate
+373:         tau_total_raw = tau_baseline_raw + tau_candidate_scaled
+374:         tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)
+375: 
+376:         max_tau_baseline_raw_abs = max(max_tau_baseline_raw_abs, float(np.max(np.abs(tau_baseline_raw))))
+377:         max_tau_candidate_abs = max(max_tau_candidate_abs, float(np.max(np.abs(tau_candidate))))
+
+378:         max_tau_candidate_scaled_abs = max(max_tau_candidate_scaled_abs, float(np.max(np.abs(tau_candidate_scaled))))
+
+379: 
+380:         saturated = bool(np.any(np.abs(tau_total_raw) > TORQUE_LIMIT))
+381:         saturation_steps += int(saturated)
+382: 
+383:         tau_jump = tau_total - tau_prev_total
+
+384:         max_cmd_step_jump_norm = max(max_cmd_step_jump_norm, float(np.linalg.norm(tau_jump)))
+385:         max_cmd_step_jump_abs = max(max_cmd_step_jump_abs, float(np.max(np.abs(tau_jump))))
+386:         tau_prev_total = tau_total.copy()
+387: 
+388:         data.ctrl[:] = tau_total
+389:         mujoco.mj_step(model, data)
+390: 
+391:         base_x = float(data.qpos[0])
+392:         base_y = float(data.qpos[1])
+393:         base_z = float(data.qpos[2])
+394:         if step == 0:
+
+395:             base_vx_fd = 0.0
+396:             base_vy_fd = 0.0
+
+397:         else:
+
+398:             base_vx_fd = (base_x - prev_base_x) / dt
+
+399:             base_vy_fd = (base_y - prev_base_y) / dt
+400:         base_vx_qvel = float(data.qvel[0]) if data.qvel.shape[0] > 0 else float("nan")
+
+401:         velocity_error = base_vx_fd - target_vx
+402:         base_vx_fd_values.append(base_vx_fd)
+403:         abs_velocity_error_values.append(abs(velocity_error))
+
+404:         prev_base_x = base_x
+
+405:         prev_base_y = base_y
+
+406:         roll, pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+
+407: 
+
+408:         min_z = min(min_z, base_z)
+409:         max_z = max(max_z, base_z)
+
+410:         max_abs_roll = max(max_abs_roll, abs(roll))
+
+411:         max_abs_pitch = max(max_abs_pitch, abs(pitch))
+
+421:         tau_stance_pd_abs = float(np.max(np.abs(tau_stance_pd)))
+422:         tau_stance_wbc_abs = float(np.max(np.abs(tau_stance_wbc)))
+423:         tau_swing_pd_abs = float(np.max(np.abs(tau_swing_pd)))
+424:         tau_baseline_raw_abs = float(np.max(np.abs(tau_baseline_raw)))
+425:         tau_candidate_abs = float(np.max(np.abs(tau_candidate)))
+426:         tau_candidate_scaled_abs = float(np.max(np.abs(tau_candidate_scaled)))
+427:         tau_total_raw_abs = float(np.max(np.abs(tau_total_raw)))
+428:         tau_total_abs = float(np.max(np.abs(tau_total)))
+429: 
+430:         max_tau_stance_pd_abs = max(max_tau_stance_pd_abs, tau_stance_pd_abs)
+431:         max_tau_stance_wbc_abs = max(max_tau_stance_wbc_abs, tau_stance_wbc_abs)
+
+451:             "swing_progress": target["swing_progress"],
+452:             "stance_legs": target["stance_legs"],
+453:             "swing_legs": target["swing_legs"],
+454:             "is_transition": str(is_transition),
+455:             "time_s": f"{(step + 1) * dt:.12f}",
+456:             "base_x": f"{base_x:.12f}",
+457:             "base_y": f"{base_y:.12f}",
+458:             "base_vx_fd": f"{base_vx_fd:.12f}",
+459:             "base_vy_fd": f"{base_vy_fd:.12f}",
+460:             "base_vx_qvel": f"{base_vx_qvel:.12f}",
+461:             "target_vx": f"{target_vx:.12f}",
+
+462:             "velocity_error": f"{velocity_error:.12f}",
+
+463:             "base_z": f"{base_z:.12f}",
+
+476:             "control_mode": args.control_mode,
+477:             "run_id": args.run_id,
+478:             "scale_tag": args.scale_tag,
+479:             "candidate_available": str(candidate_available),
+480:             "candidate_source_step": str(candidate_source_step),
+481:             "candidate_scale": f"{args.mpc_assisted_candidate_scale:.12f}",
+482:             "tau_baseline_raw_abs": f"{tau_baseline_raw_abs:.12f}",
+483:             "tau_candidate_abs": f"{tau_candidate_abs:.12f}",
+484:             "tau_candidate_scaled_abs": f"{tau_candidate_scaled_abs:.12f}",
+485:             "tau_total_raw_abs": f"{tau_total_raw_abs:.12f}",
+486:             "tau_total_abs": f"{tau_total_abs:.12f}",
+
+487:             "tau_step_jump_norm": f"{float(np.linalg.norm(tau_jump)):.12f}",
+488:             "tau_step_jump_abs": f"{float(np.max(np.abs(tau_jump))):.12f}",
+489:             "saturated": str(saturated),
+
+490:         })
+491: 
+492:     final_x = float(data.qpos[0])
+493:     final_y = float(data.qpos[1])
+494:     final_z = float(data.qpos[2])
+495:     forward_displacement = final_x - initial_x
+496:     lateral_displacement = final_y - initial_y
+497:     mean_vx = float(np.mean(base_vx_fd_values)) if base_vx_fd_values else 0.0
+
+498:     mean_abs_velocity_error = float(np.mean(abs_velocity_error_values)) if abs_velocity_error_values else 0.0
+
+499:     max_abs_velocity_error = float(np.max(abs_velocity_error_values)) if abs_velocity_error_values else 0.0
+
+500:     final_roll, final_pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+
+501: 
+502:     pass_test = (
+
+503:         qp_fail_steps == 0
+
+504:         and saturation_steps == 0
+505:         and min_z > MIN_Z_LIMIT
+
+520:         "source_stage": "14.5D-R6",
+521:         "velocity_metric_source": "finite_difference_from_qpos0",
+522:         "target_vx": f"{target_vx:.12f}",
+523:         "initial_x": f"{initial_x:.12f}",
+524:         "final_x": f"{final_x:.12f}",
+525:         "forward_displacement": f"{forward_displacement:.12f}",
+526:         "initial_y": f"{initial_y:.12f}",
+527:         "final_y": f"{final_y:.12f}",
+528:         "lateral_displacement": f"{lateral_displacement:.12f}",
+529:         "mean_vx": f"{mean_vx:.12f}",
+530:         "mean_abs_velocity_error": f"{mean_abs_velocity_error:.12f}",
+
+531:         "max_abs_velocity_error": f"{max_abs_velocity_error:.12f}",
+532:         "control_mode": args.control_mode,
+533:         "simulation_only_project": True,
+534:         "hardware_deployment_completed": False,
+535:         "torque_enable_ready": False,
+
+536:         "torque_publisher_enabled": False,
+537:         "control_law_changed": args.control_mode == CONTROL_MODE_MPC_ASSISTED_CANDIDATE,
+
+## Stage 21 perturbation runner context
+
+29: WBC_SCRIPT = "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py"
+30: SWING_TARGET_CSV = "results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv"
+31: 
+32: LOG_CSV_TEMPLATE = "results/logs_sample/stage21_2_local_perturb_{perturbation_id}_{scale_tag}_{control_mode}_log.csv"
+33: SUMMARY_CSV_TEMPLATE = "results/logs_sample/stage21_2_local_perturb_{perturbation_id}_{scale_tag}_{control_mode}_summary.csv"
+34: 
+35: LEG_ORDER = list(MJ_LEG_ORDER)
+
+36: JOINTS = ["hip", "thigh", "calf"]
+
+183:     return [v / n for v in q]
+184: 
+185: 
+186: def _apply_initial_perturbation(model, data, perturb_x, perturb_y, perturb_yaw):
+187:     if len(data.qpos) >= 2:
+188:         data.qpos[0] += perturb_x
+189:         data.qpos[1] += perturb_y
+
+190: 
+
+191:     if abs(perturb_yaw) > 0.0 and len(data.qpos) >= 7:
+
+192:         current = [float(data.qpos[3]), float(data.qpos[4]), float(data.qpos[5]), float(data.qpos[6])]
+
+193:         half = 0.5 * perturb_yaw
+194:         delta = [math.cos(half), 0.0, 0.0, math.sin(half)]
+
+195:         updated = _quat_normalize(_quat_mul(delta, current))
+
+196:         data.qpos[3:7] = updated
+
+197: 
+198:     mujoco.mj_forward(model, data)
+199: 
+
+200: 
+201: def main():
+
+272:         if args.mpc_assisted_candidate_scale != 0.0:
+273:             raise RuntimeError("baseline mode requires --mpc-assisted-candidate-scale 0.0")
+274: 
+275:     log_csv = LOG_CSV_TEMPLATE.format(perturbation_id=args.perturbation_id, scale_tag=args.scale_tag, control_mode=args.control_mode)
+276:     summary_csv = SUMMARY_CSV_TEMPLATE.format(perturbation_id=args.perturbation_id, scale_tag=args.scale_tag, control_mode=args.control_mode)
+277: 
+278:     wbc = load_wbc()
+
+279:     target_rows = read_swing_targets()
+
+280: 
+281:     model = mujoco.MjModel.from_xml_path(wbc.SCENE)
+282:     data = mujoco.MjData(model)
+283:     _apply_initial_perturbation(
+284:         model,
+285:         data,
+286:         args.perturb_x,
+
+287:         args.perturb_y,
+288:         args.perturb_yaw,
+289:     )
+
+290: 
+
+291:     contact_rows = wbc.read_contact_wbc_rows()
+
+294: 
+295:     q_standing = wbc.current_actuated_q(data, qadrs)
+296: 
+297:     initial_x = float(data.qpos[0])
+298:     initial_y = float(data.qpos[1])
+299:     initial_z = float(data.qpos[2])
+300:     target_vx = float(args.target_vx)
+
+301:     dt = float(model.opt.timestep)
+
+302:     prev_base_x = initial_x
+
+434:         data.ctrl[:] = tau_total
+435:         mujoco.mj_step(model, data)
+436: 
+437:         base_x = float(data.qpos[0])

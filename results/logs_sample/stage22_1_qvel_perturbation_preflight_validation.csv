@@ -1,0 +1,34 @@
+check,status,detail
+stage22_0_summary_pass,PASS,result=pass
+stage21_4_summary_pass,PASS,result=pass
+source_runner_exists,PASS,scripts/stage20_2_replay_reproducibility_runner.py
+backup_stage21_runner_exists,PASS,scripts/stage21_2_local_perturbation_runner.py
+source_runner_contains::--run-id,PASS,--run-id
+source_runner_contains::--scale-tag,PASS,--scale-tag
+source_runner_contains::--target-vx,PASS,--target-vx
+source_runner_contains::LOG_CSV_TEMPLATE,PASS,LOG_CSV_TEMPLATE
+source_runner_contains::SUMMARY_CSV_TEMPLATE,PASS,SUMMARY_CSV_TEMPLATE
+source_runner_contains::data = mujoco.MjData(model),PASS,data = mujoco.MjData(model)
+source_runner_contains::mujoco.mj_step,PASS,mujoco.mj_step
+source_runner_contains::data.qpos,PASS,data.qpos
+source_runner_contains::base_x,PASS,base_x
+source_runner_contains::base_y,PASS,base_y
+source_runner_contains::base_vx_fd,PASS,base_vx_fd
+source_runner_contains::mean_vx,PASS,mean_vx
+source_runner_contains::mean_abs_velocity_error,PASS,mean_abs_velocity_error
+source_runner_contains::forward_displacement,PASS,forward_displacement
+source_runner_contains::candidate_scale,PASS,candidate_scale
+source_runner_contains::max_tau_candidate_scaled_abs,PASS,max_tau_candidate_scaled_abs
+source_runner_contains::mujoco,PASS,mujoco
+source_qvel_reference_optional,PASS,qvel_reference_present=True
+qvel_injection_possible_via_mjdata,PASS,MjData exposes data.qvel
+qvel_injection_before_rollout_possible,PASS,inject qvel after MjData creation and before rollout stepping; Stage 22.2 runner will add mj_forward after qvel modification
+planned_perturbation_count_7,PASS,count=7
+planned_scale_anchor_count_3,PASS,count=3
+planned_rollout_count_21,PASS,count=21
+planned_logs_unique,PASS,unique log outputs
+planned_summaries_unique,PASS,unique summary outputs
+planned_includes_nominal,PASS,nominal
+planned_includes_vx_vy_yawrate_perturbations,PASS,vx/vy/yawrate perturbations
+planned_includes_recommended_0p010,PASS,0p010
+planned_includes_regression_anchor_0p020,PASS,0p020
