@@ -1,0 +1,156 @@
+{
+  "stage": "25.0",
+  "name": "MPC-WBC primary controller closure roadmap",
+  "result": "pass",
+  "failure_count": 0,
+  "roadmap": "docs/STAGE25_MPC_WBC_PRIMARY_CONTROLLER_ROADMAP.md",
+  "stage24_4_summary": "results/logs_sample/stage24_4_short_horizon_metric_evidence_freeze_summary.json",
+  "planned_stages": [
+    "25.0 roadmap",
+    "25.1 source audit",
+    "25.2 primary_mpc_wbc mode implementation",
+    "25.3 primary_mpc_wbc smoke rollout",
+    "25.4 baseline / candidate injection / primary_mpc_wbc comparison",
+    "25.5 evidence freeze"
+  ],
+  "target_control_mode": "primary_mpc_wbc",
+  "claim_boundary": [
+    "roadmap only",
+    "simulation-only MPC-WBC primary controller closure target",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no observable perturbation robustness claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "generated_files": [
+    "results/logs_sample/stage25_0_mpc_wbc_primary_controller_roadmap_validation.csv",
+    "results/logs_sample/stage25_0_mpc_wbc_primary_controller_roadmap_summary.json"
+  ],
+  "checks": [
+    {
+      "check": "roadmap_exists",
+      "status": "PASS",
+      "detail": "docs/STAGE25_MPC_WBC_PRIMARY_CONTROLLER_ROADMAP.md"
+    },
+    {
+      "check": "contains::Stage 25",
+      "status": "PASS",
+      "detail": "Stage 25"
+    },
+    {
+      "check": "contains::MPC-WBC primary controller closure",
+      "status": "PASS",
+      "detail": "MPC-WBC primary controller closure"
+    },
+    {
+      "check": "contains::simulation-only",
+      "status": "PASS",
+      "detail": "simulation-only"
+    },
+    {
+      "check": "contains::primary_mpc_wbc",
+      "status": "PASS",
+      "detail": "primary_mpc_wbc"
+    },
+    {
+      "check": "contains::baseline torque + alpha * MPC/WBC candidate torque",
+      "status": "PASS",
+      "detail": "baseline torque + alpha * MPC/WBC candidate torque"
+    },
+    {
+      "check": "contains::MPC/WBC torque as primary stance controller",
+      "status": "PASS",
+      "detail": "MPC/WBC torque as primary stance controller"
+    },
+    {
+      "check": "contains::swing leg PD",
+      "status": "PASS",
+      "detail": "swing leg PD"
+    },
+    {
+      "check": "contains::torque safety filter",
+      "status": "PASS",
+      "detail": "torque safety filter"
+    },
+    {
+      "check": "contains::MuJoCo simulation step",
+      "status": "PASS",
+      "detail": "MuJoCo simulation step"
+    },
+    {
+      "check": "contains::source audit",
+      "status": "PASS",
+      "detail": "source audit"
+    },
+    {
+      "check": "contains::primary_mpc_wbc mode implementation",
+      "status": "PASS",
+      "detail": "primary_mpc_wbc mode implementation"
+    },
+    {
+      "check": "contains::smoke rollout",
+      "status": "PASS",
+      "detail": "smoke rollout"
+    },
+    {
+      "check": "contains::baseline / candidate injection / primary_mpc_wbc comparison",
+      "status": "PASS",
+      "detail": "baseline / candidate injection / primary_mpc_wbc comparison"
+    },
+    {
+      "check": "contains::不继续追 observable perturbation robustness",
+      "status": "PASS",
+      "detail": "不继续追 observable perturbation robustness"
+    },
+    {
+      "check": "contains::不做真实机器人闭环",
+      "status": "PASS",
+      "detail": "不做真实机器人闭环"
+    },
+    {
+      "check": "contains::不做 hardware torque enablement",
+      "status": "PASS",
+      "detail": "不做 hardware torque enablement"
+    },
+    {
+      "check": "contains::不删除 baseline 模式",
+      "status": "PASS",
+      "detail": "不删除 baseline 模式"
+    },
+    {
+      "check": "contains::不删除 candidate injection 模式",
+      "status": "PASS",
+      "detail": "不删除 candidate injection 模式"
+    },
+    {
+      "check": "contains::Stage 25.5",
+      "status": "PASS",
+      "detail": "Stage 25.5"
+    },
+    {
+      "check": "contains::不支持真实机器人闭环",
+      "status": "PASS",
+      "detail": "不支持真实机器人闭环"
+    },
+    {
+      "check": "contains::不支持工程级 MPC-WBC 控制器完全成熟",
+      "status": "PASS",
+      "detail": "不支持工程级 MPC-WBC 控制器完全成熟"
+    },
+    {
+      "check": "stage24_4_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_4_short_horizon_metric_evidence_freeze_summary.json"
+    },
+    {
+      "check": "stage24_4_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage24_metric_class_expected",
+      "status": "PASS",
+      "detail": "metric_observability_class=pre_step_only_detection_no_post_step_trace_separation"
+    }
+  ]
+}
