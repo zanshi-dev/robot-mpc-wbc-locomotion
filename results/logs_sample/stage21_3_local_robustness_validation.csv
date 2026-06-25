@@ -1,0 +1,26 @@
+check,status,detail
+source_table_exists,PASS,results/logs_sample/stage21_2_local_perturbation_table.csv
+stage21_2_summary_exists,PASS,results/logs_sample/stage21_2_local_perturbation_summary.json
+stage21_2_summary_pass,PASS,result=pass
+row_count_21,PASS,rows=21
+nominal_has_all_scales,PASS,"scales=['0p000', '0p010', '0p020']"
+x_plus_has_all_scales,PASS,"scales=['0p000', '0p010', '0p020']"
+x_minus_has_all_scales,PASS,"scales=['0p000', '0p010', '0p020']"
+y_plus_has_all_scales,PASS,"scales=['0p000', '0p010', '0p020']"
+y_minus_has_all_scales,PASS,"scales=['0p000', '0p010', '0p020']"
+yaw_plus_has_all_scales,PASS,"scales=['0p000', '0p010', '0p020']"
+yaw_minus_has_all_scales,PASS,"scales=['0p000', '0p010', '0p020']"
+0p000_has_all_perturbations,PASS,count=7
+0p010_has_all_perturbations,PASS,count=7
+0p020_has_all_perturbations,PASS,count=7
+all_cases_pass_stability,PASS,all pass=True
+all_qp_fail_zero,PASS,all qp_fail_steps=0
+all_saturation_zero,PASS,all saturation_steps=0
+recommended_pass_all_perturbations,PASS,True
+recommended_error_lower_than_baseline_all_perturbations,PASS,True
+recommended_error_lower_than_0p020_all_perturbations,PASS,True
+recommended_displacement_higher_than_baseline_all_perturbations,PASS,True
+recommended_displacement_higher_than_0p020_all_perturbations,PASS,True
+regression_0p020_error_higher_than_baseline_all_perturbations,PASS,True
+local_robustness_pass,PASS,True
+recommendation_robust,PASS,True
