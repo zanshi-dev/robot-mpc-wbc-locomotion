@@ -1,0 +1,205 @@
+{
+  "stage": "24.4",
+  "name": "short-horizon perturbation-sensitive metric evidence freeze",
+  "result": "pass",
+  "failure_count": 0,
+  "artifact_count": 28,
+  "metric_observability_class": "pre_step_only_detection_no_post_step_trace_separation",
+  "metric_audit_result": "partial_detection",
+  "conclusion": "Stage 24.3 shows that short-horizon perturbation-sensitive metrics detect the injected qvel perturbations only in the pre-step / mj_forward trace segment. The aligned after_mj_step rows are not separated from nominal. This refines the Stage 23 root cause: Stage 22 summary metrics were insensitive because the perturbation signature was visible at injection time but did not persist into the rollout-step trace.",
+  "supported_claim": "Stage 24 supports adding explicit injection-stage or pre-step trace metrics for future perturbation audits. It does not support observable robustness or a scale=0.010 recommendation upgrade.",
+  "any_pre_step_trace_separation_detected": true,
+  "all_pre_step_trace_separation_detected": true,
+  "any_post_step_trace_separation_detected": false,
+  "any_early_window_trace_separation_detected": true,
+  "all_early_window_trace_separation_detected": true,
+  "max_pre_step_qvel_axis_diff_vs_nominal": 0.05,
+  "max_post_step_state_delta": 0.0,
+  "max_early_window_state_delta": 0.05,
+  "mean_early_window_state_delta": 0.0016049382716666666,
+  "stage23_root_cause": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+  "stage23_confidence": "high",
+  "stage22_observable_perturbation_pass": false,
+  "stage22_perturbation_metric_variability_detected": false,
+  "stage22_recommendation_observable_robust": false,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "80903b2a16cfd4ace21f80283c960958984566b33d9815e06735ec7b03475d0a",
+      "size_bytes": 30314,
+      "exists": true
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "sha256": "1d2cd211df9b018947c96dffeaf0f0258f085e9159b583e16f6fc84b05bfd9c4",
+      "size_bytes": 174151,
+      "exists": true
+    },
+    {
+      "path": "docs/ARTIFACT_INDEX.md",
+      "sha256": "06aaf7092e612303c08217f189881c51fe3334b459c013d35d99f4c09404a6ac",
+      "size_bytes": 27867,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE24_SHORT_HORIZON_PERTURBATION_METRIC_ROADMAP.md",
+      "sha256": "a7f92a0a857a05786b33463f498e9b1f1f8ac511d75bafacda41f2169e01a5b6",
+      "size_bytes": 6178,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE24_1_SHORT_HORIZON_METRIC_PREFLIGHT.md",
+      "sha256": "aac2377a37c62a71873604dc2e37ad21c73496f61eabc9cbd7d82f45c94110f3",
+      "size_bytes": 3989,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE24_2_SHORT_HORIZON_PERTURBATION_METRICS.md",
+      "sha256": "971ad8213d6c1718de6bec30ffa1c088c0af1e4094b3bc106f567fbc4d6e94bf",
+      "size_bytes": 4428,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE24_3_SHORT_HORIZON_METRIC_ANALYSIS.md",
+      "sha256": "11d053cd3865c07869343fc2dd5a1a384be9620e634113c5a32fb3b3c81bf1bc",
+      "size_bytes": 4112,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage24_0_validate_short_horizon_metric_roadmap.py",
+      "sha256": "45694863ef2ebce3dfee825d522feaf6f364cbdf40e34189455a10b52e874d20",
+      "size_bytes": 6016,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage24_1_short_horizon_metric_design_preflight.py",
+      "sha256": "78a67e88427026a8387b785a279bdc61eca69e63722c2e45ac856f13c14427c7",
+      "size_bytes": 20705,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage24_2_compute_short_horizon_perturbation_metrics.py",
+      "sha256": "ac68504c5f3f80013009555f5a5ca1b83d5bfd17db81b75821c7ab5b317eaafe",
+      "size_bytes": 21750,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage24_3_analyze_short_horizon_metric_observability.py",
+      "sha256": "356dcb19d4f4220b95c243e6d4bf9cd2e88d22da7f5a17c50ca1e2522a18fd0d",
+      "size_bytes": 20190,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_0_short_horizon_metric_roadmap_validation.csv",
+      "sha256": "3dd619dc7adbe121ddd8e16ddea4a60000a35a24f8285b0595549a77ac7c9f58",
+      "size_bytes": 3151,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_0_short_horizon_metric_roadmap_summary.json",
+      "sha256": "0b5bfeda05d3007e04b6d3c8a8b83d1cc7f75febe9dd6a791d53720f6843f322",
+      "size_bytes": 6910,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_1_short_horizon_metric_preflight_validation.csv",
+      "sha256": "e48c8963421b00268bfcca5dbd82e5c32996e4a3100dbbb01c24b0e781690263",
+      "size_bytes": 14366,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_1_short_horizon_metric_design.csv",
+      "sha256": "8274a5148b90820f37b4ce776ed9517e8cecf4cfe6e5739d51858427b7d06d0a",
+      "size_bytes": 3134,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_1_short_horizon_metric_trace_input_plan.csv",
+      "sha256": "54199218bc54cae86932f7f5de76f6abd55cfcd01916db42d36c42e8ed4fbf22",
+      "size_bytes": 1140,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_1_short_horizon_metric_preflight_summary.json",
+      "sha256": "f941e68164dbab2cdd7709117e7541e1c2820cbde42c5fde8a9ee2e1f7c120db",
+      "size_bytes": 39989,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_per_case.csv",
+      "sha256": "99e17a6913abb89c77d7a3fa1b908e63d9aa2150170bf4f93d641f4ab4a9705b",
+      "size_bytes": 4432,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_aggregate.csv",
+      "sha256": "8a47afb16a66fbc01998d6124003b12e21784cfeaee96882a8f717d5e85cfc4c",
+      "size_bytes": 903,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_validation.csv",
+      "sha256": "71faf04aec7e6d142bc52f10402834a948d34751ab5b44155cc6839ef870866a",
+      "size_bytes": 2783,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics.md",
+      "sha256": "e1c209fde156693473a4f832f4f2d8d92e4dfbef66251eb12f5947b5a4e47b0e",
+      "size_bytes": 2717,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_summary.json",
+      "sha256": "5f528976bf9ecfcaed9dfc8e02b07944bbb081ff9d6fe4e50dfefce80e943eb7",
+      "size_bytes": 21772,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_3_short_horizon_metric_observability_analysis.csv",
+      "sha256": "867ec817ca4b84b49b123e4b5a58f43736796f1a7e0c12bb8d12a9dce825d079",
+      "size_bytes": 2132,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_3_short_horizon_metric_observability_validation.csv",
+      "sha256": "493893641d959d39d37d58bfa9c5a4e85444bbed4c000abcf0a876da867a9f29",
+      "size_bytes": 1495,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_3_short_horizon_metric_observability_analysis.md",
+      "sha256": "5204e29b1ad144f948617b6d1392a8f256a68b82b80cb270bb43bb63f70c93d5",
+      "size_bytes": 1790,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_3_short_horizon_metric_observability_summary.json",
+      "sha256": "4d87c8e66588f1497a4b34dc70c1360f8277baafab4f3124d9bb9c8ba04534b2",
+      "size_bytes": 11294,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage24_4_short_horizon_metric_evidence_freeze_validation.csv",
+      "sha256": "1cee0fc63405d0bb65013672a95357ad9b932a88ac699db6cbe72175a1446ad5",
+      "size_bytes": 6290,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE24_4_SHORT_HORIZON_METRIC_EVIDENCE_FREEZE.md",
+      "sha256": "23ba0f5572e91475da6fdd2b2a8d041cb2a7c9f199c2542f51b2d95452812edd",
+      "size_bytes": 2616,
+      "exists": true
+    }
+  ],
+  "claim_boundary": [
+    "short-horizon metric audit only",
+    "no new rollout generated",
+    "does not upgrade scale=0.010 to observable-perturbation-tested recommended candidate scale",
+    "no observable perturbation robustness claim",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ]
+}

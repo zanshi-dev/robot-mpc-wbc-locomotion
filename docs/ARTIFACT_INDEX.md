@@ -396,3 +396,31 @@ Stage 23 artifact 记录 perturbation observability root-cause audit。
 | 23.4 | `results/logs_sample/stage23_4_perturbation_observability_evidence_manifest.json` | Stage 23 manifest |
 <!-- STAGE23_ENTRY_DOCS_SYNC_END -->
 
+<!-- STAGE24_ENTRY_DOCS_SYNC_START -->
+## Stage 24 Artifacts
+
+Stage 24 artifact 记录 short-horizon perturbation-sensitive metric audit。
+
+结论边界：
+
+  * `metric_observability_class=pre_step_only_detection_no_post_step_trace_separation`
+  * `metric_audit_result=partial_detection`
+  * `any_pre_step_trace_separation_detected=True`
+  * `any_post_step_trace_separation_detected=False`
+  * `any_early_window_trace_separation_detected=True`
+  * 当前不将 `scale=0.010` 升级为 observable-perturbation-tested recommended candidate scale。
+  * Stage 24 只支持短时指标审计，不支持 observable perturbation robustness。
+  * aligned after_mj_step rows 中没有持续 trace separation。
+
+| 阶段 | Artifact | 作用 |
+|---|---|---|
+| 24.0 | `docs/STAGE24_SHORT_HORIZON_PERTURBATION_METRIC_ROADMAP.md` | 短时扰动敏感指标路线图 |
+| 24.1 | `docs/STAGE24_1_SHORT_HORIZON_METRIC_PREFLIGHT.md` | 短时指标设计预检查 |
+| 24.2 | `docs/STAGE24_2_SHORT_HORIZON_PERTURBATION_METRICS.md` | 短时扰动敏感指标计算 |
+| 24.2 | `results/logs_sample/stage24_2_short_horizon_perturbation_metrics_per_case.csv` | per-case 指标表 |
+| 24.2 | `results/logs_sample/stage24_2_short_horizon_perturbation_metrics_aggregate.csv` | aggregate 指标表 |
+| 24.3 | `docs/STAGE24_3_SHORT_HORIZON_METRIC_ANALYSIS.md` | 短时指标可观测性分析 |
+| 24.3 | `results/logs_sample/stage24_3_short_horizon_metric_observability_summary.json` | Stage 24.3 summary |
+| 24.4 | `docs/STAGE24_4_SHORT_HORIZON_METRIC_EVIDENCE_FREEZE.md` | Stage 24 证据冻结报告 |
+| 24.4 | `results/logs_sample/stage24_4_short_horizon_metric_evidence_manifest.json` | Stage 24 manifest |
+<!-- STAGE24_ENTRY_DOCS_SYNC_END -->

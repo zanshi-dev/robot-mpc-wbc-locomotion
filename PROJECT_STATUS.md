@@ -5393,3 +5393,31 @@ Stage 17 does not support these statements:
     不能将 Stage 23 解释为 observable perturbation robustness 验证成功。
 <!-- STAGE23_ENTRY_DOCS_SYNC_END -->
 
+<!-- STAGE24_ENTRY_DOCS_SYNC_START -->
+## Stage 24 状态：short-horizon perturbation-sensitive metric audit
+
+当前状态：已完成 Stage 24.0–24.3，并在 Stage 24.4 冻结证据。
+
+| 阶段 | 结果 | 证据 |
+|---|---:|---|
+| 24.0 | pass | `docs/STAGE24_SHORT_HORIZON_PERTURBATION_METRIC_ROADMAP.md` |
+| 24.1 | pass | `docs/STAGE24_1_SHORT_HORIZON_METRIC_PREFLIGHT.md` |
+| 24.2 | pass | `docs/STAGE24_2_SHORT_HORIZON_PERTURBATION_METRICS.md` |
+| 24.3 | pass | `docs/STAGE24_3_SHORT_HORIZON_METRIC_ANALYSIS.md` |
+
+核心结论：
+
+    metric_observability_class=pre_step_only_detection_no_post_step_trace_separation
+    metric_audit_result=partial_detection
+    any_pre_step_trace_separation_detected=True
+    any_post_step_trace_separation_detected=False
+    any_early_window_trace_separation_detected=True
+
+解释：
+
+    qvel 扰动在 injection / mj_forward 阶段可被检测到；
+    aligned after_mj_step rows 中没有相对 nominal 的持续 trace separation；
+    因此 Stage 22 的长期 summary 指标没有变化是合理的。
+    该结论只支持短时指标审计，不支持 observable perturbation robustness。
+    不能声明 `scale=0.010` 升级为 observable-perturbation-tested recommended candidate scale。
+<!-- STAGE24_ENTRY_DOCS_SYNC_END -->

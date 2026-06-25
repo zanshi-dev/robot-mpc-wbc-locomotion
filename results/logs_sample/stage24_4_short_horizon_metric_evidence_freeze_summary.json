@@ -1,0 +1,363 @@
+{
+  "stage": "24.4",
+  "name": "short-horizon perturbation-sensitive metric evidence freeze",
+  "result": "pass",
+  "failure_count": 0,
+  "metric_observability_class": "pre_step_only_detection_no_post_step_trace_separation",
+  "metric_audit_result": "partial_detection",
+  "any_pre_step_trace_separation_detected": true,
+  "all_pre_step_trace_separation_detected": true,
+  "any_post_step_trace_separation_detected": false,
+  "any_early_window_trace_separation_detected": true,
+  "all_early_window_trace_separation_detected": true,
+  "max_pre_step_qvel_axis_diff_vs_nominal": 0.05,
+  "max_post_step_state_delta": 0.0,
+  "max_early_window_state_delta": 0.05,
+  "mean_early_window_state_delta": 0.0016049382716666666,
+  "generated_files": [
+    "results/logs_sample/stage24_4_short_horizon_metric_evidence_freeze_validation.csv",
+    "results/logs_sample/stage24_4_short_horizon_metric_evidence_hashes.csv",
+    "results/logs_sample/stage24_4_short_horizon_metric_evidence_manifest.json",
+    "results/logs_sample/stage24_4_short_horizon_metric_evidence_freeze_summary.json",
+    "docs/STAGE24_4_SHORT_HORIZON_METRIC_EVIDENCE_FREEZE.md"
+  ],
+  "updated_files": [
+    "README.md",
+    "PROJECT_STATUS.md",
+    "docs/ARTIFACT_INDEX.md"
+  ],
+  "conclusion": "Stage 24.3 shows that short-horizon perturbation-sensitive metrics detect the injected qvel perturbations only in the pre-step / mj_forward trace segment. The aligned after_mj_step rows are not separated from nominal. This refines the Stage 23 root cause: Stage 22 summary metrics were insensitive because the perturbation signature was visible at injection time but did not persist into the rollout-step trace.",
+  "supported_claim": "Stage 24 supports adding explicit injection-stage or pre-step trace metrics for future perturbation audits. It does not support observable robustness or a scale=0.010 recommendation upgrade.",
+  "checks": [
+    {
+      "check": "required_exists::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "required_exists::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "required_exists::docs/ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE24_SHORT_HORIZON_PERTURBATION_METRIC_ROADMAP.md",
+      "status": "PASS",
+      "detail": "docs/STAGE24_SHORT_HORIZON_PERTURBATION_METRIC_ROADMAP.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE24_1_SHORT_HORIZON_METRIC_PREFLIGHT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE24_1_SHORT_HORIZON_METRIC_PREFLIGHT.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE24_2_SHORT_HORIZON_PERTURBATION_METRICS.md",
+      "status": "PASS",
+      "detail": "docs/STAGE24_2_SHORT_HORIZON_PERTURBATION_METRICS.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE24_3_SHORT_HORIZON_METRIC_ANALYSIS.md",
+      "status": "PASS",
+      "detail": "docs/STAGE24_3_SHORT_HORIZON_METRIC_ANALYSIS.md"
+    },
+    {
+      "check": "required_exists::scripts/stage24_0_validate_short_horizon_metric_roadmap.py",
+      "status": "PASS",
+      "detail": "scripts/stage24_0_validate_short_horizon_metric_roadmap.py"
+    },
+    {
+      "check": "required_exists::scripts/stage24_1_short_horizon_metric_design_preflight.py",
+      "status": "PASS",
+      "detail": "scripts/stage24_1_short_horizon_metric_design_preflight.py"
+    },
+    {
+      "check": "required_exists::scripts/stage24_2_compute_short_horizon_perturbation_metrics.py",
+      "status": "PASS",
+      "detail": "scripts/stage24_2_compute_short_horizon_perturbation_metrics.py"
+    },
+    {
+      "check": "required_exists::scripts/stage24_3_analyze_short_horizon_metric_observability.py",
+      "status": "PASS",
+      "detail": "scripts/stage24_3_analyze_short_horizon_metric_observability.py"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_0_short_horizon_metric_roadmap_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_0_short_horizon_metric_roadmap_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_0_short_horizon_metric_roadmap_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_0_short_horizon_metric_roadmap_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_1_short_horizon_metric_preflight_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_1_short_horizon_metric_preflight_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_1_short_horizon_metric_design.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_1_short_horizon_metric_design.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_1_short_horizon_metric_trace_input_plan.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_1_short_horizon_metric_trace_input_plan.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_1_short_horizon_metric_preflight_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_1_short_horizon_metric_preflight_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_2_short_horizon_perturbation_metrics_per_case.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_per_case.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_2_short_horizon_perturbation_metrics_aggregate.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_aggregate.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_2_short_horizon_perturbation_metrics_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_2_short_horizon_perturbation_metrics.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics.md"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_2_short_horizon_perturbation_metrics_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_3_short_horizon_metric_observability_analysis.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_3_short_horizon_metric_observability_analysis.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_3_short_horizon_metric_observability_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_3_short_horizon_metric_observability_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_3_short_horizon_metric_observability_analysis.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_3_short_horizon_metric_observability_analysis.md"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage24_3_short_horizon_metric_observability_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_3_short_horizon_metric_observability_summary.json"
+    },
+    {
+      "check": "summary_result_pass::24.0",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::24.1",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::24.2",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::24.3",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "metric_observability_class_expected",
+      "status": "PASS",
+      "detail": "pre_step_only_detection_no_post_step_trace_separation"
+    },
+    {
+      "check": "metric_audit_result_partial_detection",
+      "status": "PASS",
+      "detail": "partial_detection"
+    },
+    {
+      "check": "any_pre_step_trace_separation_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "all_pre_step_trace_separation_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "any_post_step_trace_separation_false",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "any_early_window_trace_separation_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "all_early_window_trace_separation_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "max_pre_delta_positive",
+      "status": "PASS",
+      "detail": "0.050000000000"
+    },
+    {
+      "check": "max_post_delta_zero",
+      "status": "PASS",
+      "detail": "0.000000000000"
+    },
+    {
+      "check": "max_early_delta_positive",
+      "status": "PASS",
+      "detail": "0.050000000000"
+    },
+    {
+      "check": "stage23_root_cause_expected",
+      "status": "PASS",
+      "detail": "C_summary_metrics_insensitive_to_short_horizon_trace_change"
+    },
+    {
+      "check": "stage23_confidence_high",
+      "status": "PASS",
+      "detail": "high"
+    },
+    {
+      "check": "stage22_observable_false",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "stage22_variability_false",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "stage22_recommendation_observable_false",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "entry_has_stage24_marker::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_metric_class::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_pre_step::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_after_mj_step::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_no_upgrade_scale::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_no_real_robot::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_no_observable_robustness::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_has_stage24_marker::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_metric_class::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_pre_step::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_after_mj_step::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_no_upgrade_scale::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_no_real_robot::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_no_observable_robustness::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_has_stage24_marker::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_metric_class::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_pre_step::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_after_mj_step::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_no_upgrade_scale::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_no_real_robot::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_no_observable_robustness::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    }
+  ]
+}
