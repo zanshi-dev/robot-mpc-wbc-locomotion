@@ -1,0 +1,464 @@
+{
+  "stage": "21.4",
+  "name": "recommended scale local robustness evidence freeze",
+  "result": "pass",
+  "stage_results": {
+    "21.0": "pass",
+    "21.1": "pass",
+    "21.2": "pass",
+    "21.3": "pass"
+  },
+  "artifact_count": 72,
+  "recommended_scale": "0.010",
+  "baseline_scale": "0.000",
+  "regression_anchor_scale": "0.020",
+  "local_robustness_pass": true,
+  "recommendation_robust": true,
+  "perturbation_metric_variability_detected": false,
+  "conclusion": "Stage 21.3 local robustness analysis 通过。在当前 7 个小范围初始状态扰动工况下，scale=0.010 均通过稳定性边界；scale=0.010 在所有扰动工况中均保持低于 baseline 和 scale=0.020 的 mean_abs_velocity_error，且 forward_displacement 均高于 baseline 和 scale=0.020。因此，scale=0.010 可从 fixed-setting recommended candidate scale 扩展为当前仿真证据下的 local-perturbation-tested recommended candidate scale。",
+  "perturbation_note": "当前小范围初始位姿扰动下，记录的 summary 指标未出现可观测变化；因此该结果应解释为当前 runner 与扰动设置下的 local perturbation audit，而不是广义扰动鲁棒性结论。",
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "954ab96434565eec73ebc8e31e3cd628560ac549fdca909e04ea2948e8bd160a",
+      "size_bytes": 23387,
+      "exists": true
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "sha256": "68c42b99da471d6d603fef00911c2c14918a76efb8502a55b17ad5bd35d9f542",
+      "size_bytes": 170644,
+      "exists": true
+    },
+    {
+      "path": "docs/ARTIFACT_INDEX.md",
+      "sha256": "20dccfe9c7de0a4fcd2b8cf9cc871298076e3eb4b134c6c8f59c8e6aa0caa3e3",
+      "size_bytes": 23198,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE21_RECOMMENDED_SCALE_LOCAL_ROBUSTNESS_ROADMAP.md",
+      "sha256": "25f351e0e4d607a809abf4d72cac33c9cc5066d0a7e4babdc5e786d441820fac",
+      "size_bytes": 4968,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE21_1_LOCAL_PERTURBATION_PREFLIGHT.md",
+      "sha256": "3a3f183c87e7fccb9e3036bc2e454e901b045af01347b4a08a2e5406802005c9",
+      "size_bytes": 6539,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE21_2_LOCAL_PERTURBATION_ROLLOUT.md",
+      "sha256": "87bd7d6280c124300462b52bc56875acc1b9a5ec6b46bee32ae153367cea552f",
+      "size_bytes": 3699,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE21_3_LOCAL_ROBUSTNESS_ANALYSIS.md",
+      "sha256": "c00cddb26739eb43e7e8d3b4b75b61a38a30b5f09da129af208a10d03500eabd",
+      "size_bytes": 4265,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage21_0_validate_local_robustness_roadmap.py",
+      "sha256": "57341e8a05d310b85976b79e4a554847712b1a17ecd9f053f7228f633e773d76",
+      "size_bytes": 4207,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage21_1_local_perturbation_preflight.py",
+      "sha256": "cda6260b2b86df31e68491bf2e25f7bc4bcdab654709625e64bf776aa484cde4",
+      "size_bytes": 12538,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage21_2_local_perturbation_runner.py",
+      "sha256": "c5d1afbe35aca8bf46be3da769743f9c2841c4f25ade00a5a2373997c7fcbf63",
+      "size_bytes": 27164,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage21_2_run_local_perturbation_rollouts.py",
+      "sha256": "c86444ff6b7649fc2d694900ceba6868cbf4f905def03248acfe898a35d8fdc8",
+      "size_bytes": 5645,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage21_2_validate_local_perturbation_rollouts.py",
+      "sha256": "2ff78e3fdf3320c36dac8b49add263046bc2335ac40fb3de4db00e81aa3859cb",
+      "size_bytes": 12687,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage21_3_local_robustness_analysis.py",
+      "sha256": "eef62890890d9a9b4133272bb64f46b94e59cced8d88e6b68262170097dabff4",
+      "size_bytes": 17667,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_0_local_robustness_roadmap_validation.csv",
+      "sha256": "d47f65d2b52cb0f0508e6f72670010c580b038938dc444d23c54ab80eb1a6b74",
+      "size_bytes": 1353,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_0_local_robustness_roadmap_summary.json",
+      "sha256": "8fc6517654ebf3c48e1652dd76ce4f7970013fc3ae463a6a3396ebaa6f010b2e",
+      "size_bytes": 4949,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_1_local_perturbation_preflight_validation.csv",
+      "sha256": "3580bfa161156fbcb3588a216a54c36b60292d0a09328b0fe58922ce27007376",
+      "size_bytes": 1731,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_1_local_perturbation_preflight_context.txt",
+      "sha256": "b285ef9d5395ba3bd3b394530a0b650c21ce29ef51c36d15a3463b82545f3416",
+      "size_bytes": 6280,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_1_local_perturbation_output_plan.csv",
+      "sha256": "4c0c3b4ba3f554a8bc2564f8a00958c69da71443b2250b52095b94272ea93376",
+      "size_bytes": 5306,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_1_local_perturbation_preflight_summary.json",
+      "sha256": "17f237e54a34dcb3144fa1738354a5923b4e5857b2badce43fd998c761f64736",
+      "size_bytes": 16988,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturbation_execution.csv",
+      "sha256": "fd141fab280a1685e816691064cc6cd4452799c811a42ff90ebb91d3b264ac30",
+      "size_bytes": 16294,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturbation_execution_summary.json",
+      "sha256": "48991ae6e58fc54d470a8ad71fc4901d8b204e65aaee8ac26aacf85a5a74678f",
+      "size_bytes": 23617,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturbation_validation.csv",
+      "sha256": "cd450533f5c2277f68849de756b733f4bd2766badc65a49fa6e76ffbc4fd8f9b",
+      "size_bytes": 60696,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturbation_table.csv",
+      "sha256": "e18823b8eb8ebf5bff943cf5d4b25bf0d2e28b4f2bbd9084e74c668cbc35aeae",
+      "size_bytes": 7594,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturbation_table.md",
+      "sha256": "5dd0b07102e3242a89331a989eeda40a6dcddaad875541e4d31e71e466873683",
+      "size_bytes": 2360,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturbation_summary.json",
+      "sha256": "abb11da8ebab3354ebbb67a8867399c54778554fc95ac255ca4943133547b600",
+      "size_bytes": 149471,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_3_local_robustness_per_perturbation_checks.csv",
+      "sha256": "4d3cb801bd72a345b8d7f9062f749807896a2159e9e69cf89ad258eff1967ef9",
+      "size_bytes": 1532,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_3_local_robustness_per_scale_stats.csv",
+      "sha256": "3ce3ea7242f8d8fc6ed4e3dc50dcda95109bdc70682f12afe661c84b3dbc9ce0",
+      "size_bytes": 2056,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_3_local_robustness_analysis.md",
+      "sha256": "6cf9ffde2f80e9d77fbd4aa4c5a3b030edf905c1fd9f0b6119f4b3173f198e7d",
+      "size_bytes": 1871,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_3_local_robustness_validation.csv",
+      "sha256": "00ca452b298a473a3b22c923177578c92fbea8fea56b98c2b6582268a01d6f06",
+      "size_bytes": 1456,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_3_local_robustness_summary.json",
+      "sha256": "b61b9213d0b9fea074a9c23c7a9cf9918c8b66129f1e27e8a176a1d17d2f3df3",
+      "size_bytes": 16200,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_nominal_0p000_baseline_log.csv",
+      "sha256": "11d9408b417b1cd3405de5eb1b60669a1aa873404e97b015a5506e6db8649643",
+      "size_bytes": 1434013,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_nominal_0p000_baseline_summary.csv",
+      "sha256": "f98ed215f414ac4c8c9b436f54d03b2f5237abdb5330f3f24afad834d00bc743",
+      "size_bytes": 2471,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_nominal_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "42d12f84a2dd3ee94829cf78a3f81f7eb15bae7517df56dcfad57359c3b47b6d",
+      "size_bytes": 1469355,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_nominal_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "2da0ceb46f0d7450f13e4b59dc1388b8b6b295ce7ebbf7a5b8553beae794294d",
+      "size_bytes": 2490,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_nominal_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "8db824ef4753d289f27daaa1070e76557cdd875127d31765073635bdd3221b94",
+      "size_bytes": 1470650,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_nominal_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "dba4870db6ffb3544a4e0493097447672360b9d45005f0199fa8f84a7243ffbd",
+      "size_bytes": 2485,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_x_plus_0p000_baseline_log.csv",
+      "sha256": "d39b6a525b29f61f8ad8d2e4610fe2256b4d7820ee9820207eaa9e51b7e658ab",
+      "size_bytes": 1436413,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_x_plus_0p000_baseline_summary.csv",
+      "sha256": "cd70ef51ff70a1a2fb790f809f26f1e0ef2427ae6ef8ec64433ae94fa0104baa",
+      "size_bytes": 2472,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_x_plus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "0485ff39bc791d51dec4f0caf0a41d679c749cbbfd27c29a5a67825de7379274",
+      "size_bytes": 1471755,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_x_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "9c0f8c6f78e7acb1f5169206bd6249255450208f8dce3651579574caa3c7074d",
+      "size_bytes": 2491,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_x_plus_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "e59e13c4dc2cd0bc00717c7f99359972ed19de5e90fba6d08098fc43c2fac66e",
+      "size_bytes": 1473050,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_x_plus_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "0e07d7a61926bf801c9ff98f897de9ebb2a48fa35650e73e13ae3b1f503a524e",
+      "size_bytes": 2486,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_x_minus_0p000_baseline_log.csv",
+      "sha256": "adb52cc30b59567aa03d2dc36775e807c815e424473373b4f05be0dfa99df4e4",
+      "size_bytes": 1443613,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_x_minus_0p000_baseline_summary.csv",
+      "sha256": "24fea84a462e9efe9e693a3de67439cb13419c433adcc2f9aedec7ff7a9fc6f3",
+      "size_bytes": 2475,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_x_minus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "53d94cade6ccab5ae36bfad819535ddb5c2ac7b478551a0e3861f26cb7891900",
+      "size_bytes": 1478955,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_x_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "49f6328640ed56c71ba87a79d772c2622afa772cf658ccb8343fa12f8e064640",
+      "size_bytes": 2494,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_x_minus_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "61af76f250207668e6e6b51b9996ca9c3ffa7f827c3a2f77e6f3766df881d684",
+      "size_bytes": 1480250,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_x_minus_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "d93fc7a3ba4308b49ca1524106fc0dd8d4a76e8a1dc05544839355ea5ebc8976",
+      "size_bytes": 2489,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_y_plus_0p000_baseline_log.csv",
+      "sha256": "4c2ee0dda2c745f3dbd8e56571647b9dc5d6ab25ff014e8e01131f8f75233e9d",
+      "size_bytes": 1436413,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_y_plus_0p000_baseline_summary.csv",
+      "sha256": "c0f158c7f83cbd8acc25f7ccb178afd5f783948cac04056d7127addd8db4bc7b",
+      "size_bytes": 2472,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_y_plus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "825cb6fc8e510815e755fc2ae8eeb7ac5145adf0eae689c3e5f00468d396cfdf",
+      "size_bytes": 1471755,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_y_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "b998d85b3327f173bc18d9fcd968e54f0be00f01931d073f570425892c0e7cc3",
+      "size_bytes": 2491,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_y_plus_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "ed659090ad5867e43a65c28de274ed07cb08cc0dbfd1144a042b50a1ddeb284a",
+      "size_bytes": 1473050,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_y_plus_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "2707c4d204165d6dad8e90878b5c85a5d97ed46f84d26b80eeca4f99a8079cf1",
+      "size_bytes": 2486,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_y_minus_0p000_baseline_log.csv",
+      "sha256": "c4077e411b946b33c667dab8f1b253f022cdbab198630af6373dfe4adffc07e1",
+      "size_bytes": 1443613,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_y_minus_0p000_baseline_summary.csv",
+      "sha256": "def2f1ed8cc2f9b02b7bd339625cf6e4e5ddac2d6779a5b3d630e693d0905e28",
+      "size_bytes": 2475,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_y_minus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "60b3be805e67c2bab8c00566cd9565fca96be8131b6ac1b088eddab57d1bde18",
+      "size_bytes": 1478955,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_y_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "e6874d969bbf97b11bb78fb80fe829195027277bae314ebb360b12d212170b91",
+      "size_bytes": 2494,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_y_minus_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "4eedfe92b3f16963efa8ffdfd0e3dec35460cedffd65e53624247a8acb49180b",
+      "size_bytes": 1480250,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_y_minus_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "05d8f7eb74a52e66fe85defc157edc905d437fa579663c69a0146ba4f07523ad",
+      "size_bytes": 2489,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_yaw_plus_0p000_baseline_log.csv",
+      "sha256": "8e16439b7d59b65a96d6b754b01fc2b6108882391b1d675358c0f5f40df7314a",
+      "size_bytes": 1450813,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_yaw_plus_0p000_baseline_summary.csv",
+      "sha256": "3c84748c7f399e3049decaf351cc921b61c69ee6bc754a034a37a496d1112ff9",
+      "size_bytes": 2478,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_yaw_plus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "4dca3b2c0ddc7894f02ce8f788f88e8f35eb6fb853f1f533aeb5a96aa19e1c4d",
+      "size_bytes": 1486155,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_yaw_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "e0a1c247c5b5ba2ea21a31c926d77dabd2beb668713c829acdf2c385dc239dd4",
+      "size_bytes": 2497,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_yaw_plus_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "043534ddc6ec08495c04c5537a7574710903522d571812f7607278069246686b",
+      "size_bytes": 1487450,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_yaw_plus_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "2bfda4fcd19831c86585f96edd604b3c90e00dd9673e62e0e0448a016d98da5f",
+      "size_bytes": 2492,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_yaw_minus_0p000_baseline_log.csv",
+      "sha256": "6d21c866875a8cebba358c73174ea60adc88ea3967a8e8bd02e4c8c58f550308",
+      "size_bytes": 1458013,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_yaw_minus_0p000_baseline_summary.csv",
+      "sha256": "54da1c025061c6175e9bc056b17eb00b09a22d3bd7e7a0c7be2b60cc09541e3b",
+      "size_bytes": 2481,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_yaw_minus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "08f21c2a6c72f3f681a238733acc1f8e09fd40ac883ab1768193359a64386c7f",
+      "size_bytes": 1493355,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_yaw_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "577de3ceb5476626ce9c4ac164423e0e383d93627f8c4e06c5baf9b247913104",
+      "size_bytes": 2500,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_yaw_minus_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "cfc6ecd2f164588ad1ac460b3ba0209f6d36b70986299555a62f148a52ece550",
+      "size_bytes": 1494650,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage21_2_local_perturb_yaw_minus_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "a7a0fcc342694d2ce51266030295fb6843cc3952e8cc14b4d0d950dfb4b0bd58",
+      "size_bytes": 2495,
+      "exists": true
+    }
+  ],
+  "claim_boundary": [
+    "simulation-only local perturbation robustness audit",
+    "small initial base_x/base_y/yaw perturbations only",
+    "scale=0.010 is a current local-perturbation-tested recommended candidate scale",
+    "perturbation_metric_variability_detected is recorded and must be considered in external claims",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ]
+}

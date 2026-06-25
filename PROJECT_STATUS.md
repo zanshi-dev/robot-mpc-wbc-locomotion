@@ -5304,3 +5304,36 @@ Stage 17 does not support these statements:
   * 真实机器人 torque 执行已经完成；
   * 硬件 torque enablement 已经完成。
 <!-- STAGE20_ENTRY_DOCS_SYNC_END -->
+
+<!-- STAGE21_ENTRY_DOCS_SYNC_START -->
+## Stage 21 状态：recommended scale local robustness audit
+
+当前状态：已完成 Stage 21.0–21.3，并在 Stage 21.4 中进行证据冻结。
+
+| 阶段 | 结果 | 证据 |
+|---|---:|---|
+| 21.0 | pass | `docs/STAGE21_RECOMMENDED_SCALE_LOCAL_ROBUSTNESS_ROADMAP.md` |
+| 21.1 | pass | `docs/STAGE21_1_LOCAL_PERTURBATION_PREFLIGHT.md` |
+| 21.2 | pass | `docs/STAGE21_2_LOCAL_PERTURBATION_ROLLOUT.md` |
+| 21.3 | pass | `docs/STAGE21_3_LOCAL_ROBUSTNESS_ANALYSIS.md` |
+
+当前证据支持：
+
+    Stage 21 已完成 simulation-only local perturbation robustness audit。
+    在当前 7 个小范围初始状态扰动工况下，scale=0.010 均通过稳定性边界；
+    scale=0.010 相对 baseline 和 scale=0.020 的速度误差优势关系保持成立。
+
+边界说明：
+
+    perturbation_metric_variability_detected=False
+    当前小范围初始位姿扰动下，记录的 summary 指标未出现可观测变化；因此该结果应解释为当前 runner 与扰动设置下的 local perturbation audit，而不是广义扰动鲁棒性结论。
+
+当前证据不支持：
+
+  * 完整 MPC-WBC 速度控制器已经完成；
+  * scale=0.010 可以直接用于真实机器人；
+  * scale=0.010 对所有速度、地形、扰动和外力冲击都最优；
+  * MPC/WBC candidate 已全面优于 baseline；
+  * 真实机器人 torque 执行已经完成；
+  * 硬件 torque enablement 已经完成。
+<!-- STAGE21_ENTRY_DOCS_SYNC_END -->

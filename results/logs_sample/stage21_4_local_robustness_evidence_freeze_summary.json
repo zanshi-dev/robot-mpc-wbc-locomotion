@@ -1,0 +1,526 @@
+{
+  "stage": "21.4",
+  "name": "recommended scale local robustness evidence freeze",
+  "result": "pass",
+  "failure_count": 0,
+  "recommended_scale": "0.010",
+  "local_robustness_pass": true,
+  "recommendation_robust": true,
+  "perturbation_metric_variability_detected": false,
+  "generated_files": [
+    "results/logs_sample/stage21_4_local_robustness_evidence_freeze_validation.csv",
+    "results/logs_sample/stage21_4_local_robustness_evidence_hashes.csv",
+    "results/logs_sample/stage21_4_local_robustness_evidence_manifest.json",
+    "results/logs_sample/stage21_4_local_robustness_evidence_freeze_summary.json",
+    "docs/STAGE21_4_LOCAL_ROBUSTNESS_EVIDENCE_FREEZE.md"
+  ],
+  "updated_files": [
+    "README.md",
+    "PROJECT_STATUS.md",
+    "docs/ARTIFACT_INDEX.md"
+  ],
+  "conclusion": "Stage 21.3 local robustness analysis 通过。在当前 7 个小范围初始状态扰动工况下，scale=0.010 均通过稳定性边界；scale=0.010 在所有扰动工况中均保持低于 baseline 和 scale=0.020 的 mean_abs_velocity_error，且 forward_displacement 均高于 baseline 和 scale=0.020。因此，scale=0.010 可从 fixed-setting recommended candidate scale 扩展为当前仿真证据下的 local-perturbation-tested recommended candidate scale。",
+  "perturbation_note": "当前小范围初始位姿扰动下，记录的 summary 指标未出现可观测变化；因此该结果应解释为当前 runner 与扰动设置下的 local perturbation audit，而不是广义扰动鲁棒性结论。",
+  "checks": [
+    {
+      "check": "required_exists::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "required_exists::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "required_exists::docs/ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE21_RECOMMENDED_SCALE_LOCAL_ROBUSTNESS_ROADMAP.md",
+      "status": "PASS",
+      "detail": "docs/STAGE21_RECOMMENDED_SCALE_LOCAL_ROBUSTNESS_ROADMAP.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE21_1_LOCAL_PERTURBATION_PREFLIGHT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE21_1_LOCAL_PERTURBATION_PREFLIGHT.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE21_2_LOCAL_PERTURBATION_ROLLOUT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE21_2_LOCAL_PERTURBATION_ROLLOUT.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE21_3_LOCAL_ROBUSTNESS_ANALYSIS.md",
+      "status": "PASS",
+      "detail": "docs/STAGE21_3_LOCAL_ROBUSTNESS_ANALYSIS.md"
+    },
+    {
+      "check": "required_exists::scripts/stage21_0_validate_local_robustness_roadmap.py",
+      "status": "PASS",
+      "detail": "scripts/stage21_0_validate_local_robustness_roadmap.py"
+    },
+    {
+      "check": "required_exists::scripts/stage21_1_local_perturbation_preflight.py",
+      "status": "PASS",
+      "detail": "scripts/stage21_1_local_perturbation_preflight.py"
+    },
+    {
+      "check": "required_exists::scripts/stage21_2_local_perturbation_runner.py",
+      "status": "PASS",
+      "detail": "scripts/stage21_2_local_perturbation_runner.py"
+    },
+    {
+      "check": "required_exists::scripts/stage21_2_run_local_perturbation_rollouts.py",
+      "status": "PASS",
+      "detail": "scripts/stage21_2_run_local_perturbation_rollouts.py"
+    },
+    {
+      "check": "required_exists::scripts/stage21_2_validate_local_perturbation_rollouts.py",
+      "status": "PASS",
+      "detail": "scripts/stage21_2_validate_local_perturbation_rollouts.py"
+    },
+    {
+      "check": "required_exists::scripts/stage21_3_local_robustness_analysis.py",
+      "status": "PASS",
+      "detail": "scripts/stage21_3_local_robustness_analysis.py"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_0_local_robustness_roadmap_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_0_local_robustness_roadmap_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_0_local_robustness_roadmap_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_0_local_robustness_roadmap_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_1_local_perturbation_preflight_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_1_local_perturbation_preflight_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_1_local_perturbation_preflight_context.txt",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_1_local_perturbation_preflight_context.txt"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_1_local_perturbation_output_plan.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_1_local_perturbation_output_plan.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_1_local_perturbation_preflight_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_1_local_perturbation_preflight_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturbation_execution.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturbation_execution.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturbation_execution_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturbation_execution_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturbation_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturbation_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturbation_table.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturbation_table.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturbation_table.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturbation_table.md"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturbation_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturbation_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_3_local_robustness_per_perturbation_checks.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_3_local_robustness_per_perturbation_checks.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_3_local_robustness_per_scale_stats.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_3_local_robustness_per_scale_stats.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_3_local_robustness_analysis.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_3_local_robustness_analysis.md"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_3_local_robustness_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_3_local_robustness_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_3_local_robustness_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_3_local_robustness_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_nominal_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_nominal_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_nominal_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_nominal_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_nominal_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_nominal_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_nominal_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_nominal_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_nominal_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_nominal_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_nominal_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_nominal_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_x_plus_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_x_plus_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_x_plus_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_x_plus_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_x_plus_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_x_plus_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_x_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_x_plus_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_x_plus_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_x_plus_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_x_plus_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_x_plus_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_x_minus_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_x_minus_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_x_minus_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_x_minus_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_x_minus_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_x_minus_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_x_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_x_minus_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_x_minus_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_x_minus_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_x_minus_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_x_minus_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_y_plus_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_y_plus_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_y_plus_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_y_plus_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_y_plus_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_y_plus_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_y_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_y_plus_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_y_plus_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_y_plus_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_y_plus_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_y_plus_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_y_minus_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_y_minus_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_y_minus_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_y_minus_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_y_minus_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_y_minus_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_y_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_y_minus_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_y_minus_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_y_minus_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_y_minus_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_y_minus_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_yaw_plus_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_yaw_plus_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_yaw_plus_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_yaw_plus_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_yaw_plus_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_yaw_plus_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_yaw_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_yaw_plus_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_yaw_plus_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_yaw_plus_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_yaw_plus_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_yaw_plus_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_yaw_minus_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_yaw_minus_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_yaw_minus_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_yaw_minus_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_yaw_minus_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_yaw_minus_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_yaw_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_yaw_minus_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_yaw_minus_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_yaw_minus_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage21_2_local_perturb_yaw_minus_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage21_2_local_perturb_yaw_minus_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "summary_result_pass::21.0",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::21.1",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::21.2",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::21.3",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage21_3_local_robustness_pass_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "stage21_3_recommendation_robust_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "stage21_3_perturbation_metric_variability_recorded",
+      "status": "PASS",
+      "detail": "perturbation_metric_variability_detected=False"
+    },
+    {
+      "check": "entry_has_stage21_marker::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_local_robustness::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_scale_0p010::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_scale_0p020::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_variability_boundary::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_no_real_robot::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_has_stage21_marker::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_local_robustness::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_scale_0p010::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_scale_0p020::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_variability_boundary::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_no_real_robot::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_has_stage21_marker::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_local_robustness::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_simulation_only::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_scale_0p010::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_scale_0p020::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_variability_boundary::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_no_real_robot::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    }
+  ]
+}

@@ -308,3 +308,39 @@ All Stage 17 artifacts listed below are simulation-only evidence artifacts.
 | 20.4 | `docs/STAGE20_4_REPRODUCIBILITY_EVIDENCE_FREEZE.md` | Stage 20 证据冻结报告 |
 | 20.4 | `results/logs_sample/stage20_4_reproducibility_evidence_manifest.json` | Stage 20 冻结证据 manifest |
 <!-- STAGE20_ENTRY_DOCS_SYNC_END -->
+
+<!-- STAGE21_ENTRY_DOCS_SYNC_START -->
+## Stage 21 Artifacts
+
+以下 Stage 21 artifact 均为 simulation-only local perturbation robustness evidence，不对应真实机器人部署。
+
+结论边界：
+
+  * Stage 21 只审计 Stage 20 推荐的 `scale=0.010` 在小范围初始状态扰动下是否保持推荐关系；
+  * 当前测试下 `scale=0.010` 可作为 simulation-only local-perturbation-tested recommended candidate scale；
+  * 当前测试下 `scale=0.020` 作为 regression anchor，速度误差退化关系仍保持；
+  * `perturbation_metric_variability_detected=False`，因此不声明广义扰动鲁棒性；
+  * 不声明完整 MPC-WBC 速度控制器完成；
+  * 不声明真实机器人 torque 执行完成；
+  * 不声明硬件 torque enablement 完成。
+
+| 阶段 | Artifact | 作用 |
+|---|---|---|
+| 21.0 | `docs/STAGE21_RECOMMENDED_SCALE_LOCAL_ROBUSTNESS_ROADMAP.md` | 局部扰动鲁棒性审计路线图 |
+| 21.0 | `results/logs_sample/stage21_0_local_robustness_roadmap_summary.json` | Stage 21.0 summary |
+| 21.1 | `scripts/stage21_1_local_perturbation_preflight.py` | 扰动注入预检查脚本 |
+| 21.1 | `docs/STAGE21_1_LOCAL_PERTURBATION_PREFLIGHT.md` | 扰动注入预检查报告 |
+| 21.2 | `scripts/stage21_2_local_perturbation_runner.py` | local perturbation runner |
+| 21.2 | `scripts/stage21_2_run_local_perturbation_rollouts.py` | 21 组扰动 rollout 执行脚本 |
+| 21.2 | `scripts/stage21_2_validate_local_perturbation_rollouts.py` | 21 组扰动 rollout 验证脚本 |
+| 21.2 | `docs/STAGE21_2_LOCAL_PERTURBATION_ROLLOUT.md` | local perturbation rollout 报告 |
+| 21.2 | `results/logs_sample/stage21_2_local_perturbation_table.csv` | 21 组扰动 rollout 结果表 |
+| 21.2 | `results/logs_sample/stage21_2_local_perturbation_summary.json` | Stage 21.2 summary |
+| 21.3 | `scripts/stage21_3_local_robustness_analysis.py` | 局部扰动鲁棒性分析脚本 |
+| 21.3 | `docs/STAGE21_3_LOCAL_ROBUSTNESS_ANALYSIS.md` | 局部扰动鲁棒性分析报告 |
+| 21.3 | `results/logs_sample/stage21_3_local_robustness_per_perturbation_checks.csv` | 每个扰动工况下的推荐关系检查 |
+| 21.3 | `results/logs_sample/stage21_3_local_robustness_per_scale_stats.csv` | 每个 scale 的扰动统计 |
+| 21.3 | `results/logs_sample/stage21_3_local_robustness_summary.json` | Stage 21.3 summary |
+| 21.4 | `docs/STAGE21_4_LOCAL_ROBUSTNESS_EVIDENCE_FREEZE.md` | Stage 21 证据冻结报告 |
+| 21.4 | `results/logs_sample/stage21_4_local_robustness_evidence_manifest.json` | Stage 21 冻结证据 manifest |
+<!-- STAGE21_ENTRY_DOCS_SYNC_END -->

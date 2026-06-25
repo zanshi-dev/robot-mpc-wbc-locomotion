@@ -586,3 +586,50 @@ Stage 20 用于审计 Stage 19 推荐的 `scale=0.010` 是否在固定仿真设�
 
 > Stage 20 对 Stage 19 推荐的 scale=0.010 进行了 simulation-only replay reproducibility audit。在当前固定仿真设置下，baseline、scale=0.010 和 scale=0.020 的重复运行结果完全一致；scale=0.010 相对 baseline 和 scale=0.020 的速度误差优势关系稳定复现。因此，scale=0.010 可作为当前仿真证据下的 recommended candidate scale。
 <!-- STAGE20_ENTRY_DOCS_SYNC_END -->
+
+<!-- STAGE21_ENTRY_DOCS_SYNC_START -->
+## Stage 21：推荐 candidate scale 局部扰动鲁棒性审计
+
+Stage 21 在 Stage 20 推荐 `scale=0.010` 的基础上，进行了 simulation-only local perturbation robustness audit。
+
+当前证据支持：
+
+  * 已测试 7 个小范围初始状态扰动工况：nominal、x_plus、x_minus、y_plus、y_minus、yaw_plus、yaw_minus。
+  * 每个扰动工况测试 3 个 scale anchor：baseline `scale=0.000`、recommended candidate `scale=0.010`、regression anchor `scale=0.020`。
+  * 共生成 21 组 simulation-only rollout evidence。
+  * `scale=0.010` 在所有扰动工况中均通过稳定性边界。
+  * `scale=0.010` 在所有扰动工况中均保持低于 baseline 和 `scale=0.020` 的 mean_abs_velocity_error。
+  * `scale=0.010` 在所有扰动工况中均保持高于 baseline 和 `scale=0.020` 的 forward_displacement。
+  * `local_robustness_pass=True`。
+  * `recommendation_robust=True`。
+
+重要边界：
+
+  * `perturbation_metric_variability_detected=False`。
+  * 当前小范围初始位姿扰动下，记录的 summary 指标未出现可观测变化；因此该结果应解释为当前 runner 与扰动设置下的 local perturbation audit，而不是广义扰动鲁棒性结论。
+
+阶段结果：
+
+    Stage 21.0 result: pass
+    Stage 21.1 result: pass
+    Stage 21.2 result: pass
+    Stage 21.3 result: pass
+
+关键结论：
+
+    Stage 21.3 local robustness analysis 通过。在当前 7 个小范围初始状态扰动工况下，scale=0.010 均通过稳定性边界；scale=0.010 在所有扰动工况中均保持低于 baseline 和 scale=0.020 的 mean_abs_velocity_error，且 forward_displacement 均高于 baseline 和 scale=0.020。因此，scale=0.010 可从 fixed-setting recommended candidate scale 扩展为当前仿真证据下的 local-perturbation-tested recommended candidate scale。
+
+当前不能声明：
+
+  * 不声明完整 MPC-WBC 速度控制器已经完成；
+  * 不声明 `scale=0.010` 可以直接用于真实机器人；
+  * 不声明 `scale=0.010` 对所有速度、地形、扰动和外力冲击都最优；
+  * 不声明 MPC/WBC candidate 已全面优于 baseline；
+  * 不声明真实机器人 torque 执行已经完成；
+  * 不声明硬件 torque enablement 已经完成；
+  * 不声明复杂地形或外力扰动鲁棒性已经完成。
+
+更准确的表述是：
+
+> Stage 21 对 Stage 20 推荐的 scale=0.010 进行了 simulation-only local perturbation robustness audit。在当前小范围初始状态扰动设置下，scale=0.010 均通过稳定性边界，并在所有扰动工况中保持低于 baseline 和 scale=0.020 的速度误差。因此，scale=0.010 可作为当前仿真证据下的 local-perturbation-tested recommended candidate scale。
+<!-- STAGE21_ENTRY_DOCS_SYNC_END -->
