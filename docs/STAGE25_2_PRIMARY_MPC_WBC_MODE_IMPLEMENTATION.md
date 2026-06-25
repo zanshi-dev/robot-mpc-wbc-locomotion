@@ -88,7 +88,7 @@ Stage 25.2 不支持：
   {
     "patch": "extend_control_mode_choices",
     "status": "APPLIED",
-    "detail": "--control-mode choices include primary_mpc_wbc or no argparse choices restriction is present"
+    "detail": "--control-mode argparse choices include primary_mpc_wbc"
   },
   {
     "patch": "add_allow_primary_flag",

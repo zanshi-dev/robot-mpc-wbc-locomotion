@@ -1,6 +1,6 @@
 patch,status,detail
 add_primary_control_mode_constant,APPLIED,CONTROL_MODE_PRIMARY_MPC_WBC
-extend_control_mode_choices,APPLIED,--control-mode choices include primary_mpc_wbc or no argparse choices restriction is present
+extend_control_mode_choices,APPLIED,--control-mode argparse choices include primary_mpc_wbc
 add_allow_primary_flag,APPLIED,--allow-primary-mpc-wbc
 replace_mode_validation_and_candidate_loading,APPLIED,load candidate rows for primary_mpc_wbc
 candidate_fetch_for_primary,APPLIED,candidate_row_for_step branch

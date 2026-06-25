@@ -325,7 +325,7 @@ def main():
     parser = argparse.ArgumentParser(description="Stage 14.5D-R2 simulation-only A/B runner skeleton")
     parser.add_argument(
         "--control-mode",
-        choices=CONTROL_MODE_CHOICES,
+        choices=[CONTROL_MODE_BASELINE, CONTROL_MODE_MPC_ASSISTED_CANDIDATE, CONTROL_MODE_PRIMARY_MPC_WBC],
         default=DEFAULT_CONTROL_MODE,
         help="Explicit simulation-only control mode. Default is baseline.",
     )

@@ -102,25 +102,41 @@ def main() -> int:
         note("add_primary_control_mode_constant", True, "already present")
 
     # 2. Add / verify control-mode choice if choices are used.
-    # Some historical runners define --control-mode without argparse choices.
-    # In that case, primary_mpc_wbc is accepted by argparse and validated later by explicit mode logic.
-    control_mode_arg_match = re.search(
-        r'parser\.add_argument\([^\n]*--control-mode[\s\S]*?\)\n',
-        text,
-        re.MULTILINE,
-    )
-    extend_choices_ok = True
-    if control_mode_arg_match:
-        control_mode_block = control_mode_arg_match.group(0)
-        if "choices=" in control_mode_block and "CONTROL_MODE_PRIMARY_MPC_WBC" not in control_mode_block:
-            patched_block = control_mode_block.replace(
-                "CONTROL_MODE_MPC_ASSISTED_CANDIDATE",
-                "CONTROL_MODE_MPC_ASSISTED_CANDIDATE, CONTROL_MODE_PRIMARY_MPC_WBC",
-                1,
-            )
-            text = text[:control_mode_arg_match.start()] + patched_block + text[control_mode_arg_match.end():]
-            extend_choices_ok = "CONTROL_MODE_PRIMARY_MPC_WBC" in patched_block
-    note("extend_control_mode_choices", extend_choices_ok, "--control-mode choices include primary_mpc_wbc or no argparse choices restriction is present")
+    # Force the --control-mode argparse choices line to include primary_mpc_wbc.
+    # This line-level patch is more robust than trying to parse choices expressions.
+    def ensure_primary_control_mode_choice(src: str) -> tuple[str, bool, str]:
+        lines = src.splitlines(keepends=True)
+
+        marker_line = -1
+        for i, line in enumerate(lines):
+            if '"--control-mode"' in line or "'--control-mode'" in line:
+                marker_line = i
+                break
+
+        if marker_line < 0:
+            return src, False, "--control-mode parser argument not found"
+
+        choices_line = -1
+        for j in range(marker_line, min(marker_line + 40, len(lines))):
+            if "choices" in lines[j]:
+                choices_line = j
+                break
+
+        if choices_line < 0:
+            return src, True, "--control-mode has no argparse choices restriction"
+
+        indent = lines[choices_line][: len(lines[choices_line]) - len(lines[choices_line].lstrip())]
+        lines[choices_line] = (
+            indent
+            + "choices=[CONTROL_MODE_BASELINE, CONTROL_MODE_MPC_ASSISTED_CANDIDATE, CONTROL_MODE_PRIMARY_MPC_WBC],\n"
+        )
+
+        patched_src = "".join(lines)
+        ok = "choices=[CONTROL_MODE_BASELINE, CONTROL_MODE_MPC_ASSISTED_CANDIDATE, CONTROL_MODE_PRIMARY_MPC_WBC]" in patched_src
+        return patched_src, ok, "--control-mode argparse choices include primary_mpc_wbc"
+
+    text, extend_choices_ok, extend_choices_detail = ensure_primary_control_mode_choice(text)
+    note("extend_control_mode_choices", extend_choices_ok, extend_choices_detail)
 
     # 3. Add allow-primary flag near allow-mpc-assisted flag.
     if "--allow-primary-mpc-wbc" not in text:
