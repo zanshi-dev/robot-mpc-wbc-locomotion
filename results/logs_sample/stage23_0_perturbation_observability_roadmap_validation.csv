@@ -1,0 +1,30 @@
+check,status,detail
+roadmap_exists,PASS,docs/STAGE23_PERTURBATION_OBSERVABILITY_ROOT_CAUSE_ROADMAP.md
+contains::Stage 23,PASS,Stage 23
+contains::扰动可观测性,PASS,扰动可观测性
+contains::根因审计,PASS,根因审计
+contains::Stage 22,PASS,Stage 22
+contains::observable_perturbation_pass=False,PASS,observable_perturbation_pass=False
+contains::perturbation_metric_variability_detected=False,PASS,perturbation_metric_variability_detected=False
+contains::recommendation_observable_robust=False,PASS,recommendation_observable_robust=False
+contains::qvel,PASS,qvel
+contains::data.qvel,PASS,data.qvel
+contains::mujoco.mj_forward,PASS,mujoco.mj_forward
+contains::mujoco.mj_step,PASS,mujoco.mj_step
+contains::qpos,PASS,qpos
+contains::base_vx_fd,PASS,base_vx_fd
+contains::base_vy_fd,PASS,base_vy_fd
+contains::qvel_before_injection,PASS,qvel_before_injection
+contains::qvel_after_injection,PASS,qvel_after_injection
+contains::qvel_after_mj_forward,PASS,qvel_after_mj_forward
+contains::qvel_after_first_step,PASS,qvel_after_first_step
+contains::summary 指标,PASS,summary 指标
+contains::不新增控制器,PASS,不新增控制器
+contains::不做真实机器人部署,PASS,不做真实机器人部署
+contains::不重新声明 observable perturbation robustness,PASS,不重新声明 observable perturbation robustness
+contains::不声明 scale=0.010,PASS,不声明 scale=0.010
+contains::Stage 23.4,PASS,Stage 23.4
+stage22_4_summary_exists,PASS,results/logs_sample/stage22_4_observable_perturbation_evidence_freeze_summary.json
+stage22_4_result_pass,PASS,result=pass
+stage22_4_observable_false,PASS,perturbation_metric_variability_detected=False
+stage22_4_recommendation_observable_false,PASS,recommendation_observable_robust=False

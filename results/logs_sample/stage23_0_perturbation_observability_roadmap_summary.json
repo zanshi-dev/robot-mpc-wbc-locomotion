@@ -1,0 +1,180 @@
+{
+  "stage": "23.0",
+  "name": "perturbation observability root-cause roadmap",
+  "result": "pass",
+  "failure_count": 0,
+  "roadmap": "docs/STAGE23_PERTURBATION_OBSERVABILITY_ROOT_CAUSE_ROADMAP.md",
+  "stage22_4_summary": "results/logs_sample/stage22_4_observable_perturbation_evidence_freeze_summary.json",
+  "planned_stages": [
+    "23.0 roadmap",
+    "23.1 qvel injection trace preflight",
+    "23.2 qvel injection trace diagnostic",
+    "23.3 perturbation observability root-cause analysis",
+    "23.4 evidence freeze"
+  ],
+  "root_cause_hypotheses": [
+    "qvel perturbation was not actually written",
+    "qvel perturbation was written but overwritten or absorbed before rollout metrics",
+    "qvel perturbation caused short-horizon changes but summary metrics were insensitive"
+  ],
+  "claim_boundary": [
+    "roadmap only",
+    "no new rollout generated yet",
+    "no observable perturbation robustness claim",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "generated_files": [
+    "results/logs_sample/stage23_0_perturbation_observability_roadmap_validation.csv",
+    "results/logs_sample/stage23_0_perturbation_observability_roadmap_summary.json"
+  ],
+  "checks": [
+    {
+      "check": "roadmap_exists",
+      "status": "PASS",
+      "detail": "docs/STAGE23_PERTURBATION_OBSERVABILITY_ROOT_CAUSE_ROADMAP.md"
+    },
+    {
+      "check": "contains::Stage 23",
+      "status": "PASS",
+      "detail": "Stage 23"
+    },
+    {
+      "check": "contains::扰动可观测性",
+      "status": "PASS",
+      "detail": "扰动可观测性"
+    },
+    {
+      "check": "contains::根因审计",
+      "status": "PASS",
+      "detail": "根因审计"
+    },
+    {
+      "check": "contains::Stage 22",
+      "status": "PASS",
+      "detail": "Stage 22"
+    },
+    {
+      "check": "contains::observable_perturbation_pass=False",
+      "status": "PASS",
+      "detail": "observable_perturbation_pass=False"
+    },
+    {
+      "check": "contains::perturbation_metric_variability_detected=False",
+      "status": "PASS",
+      "detail": "perturbation_metric_variability_detected=False"
+    },
+    {
+      "check": "contains::recommendation_observable_robust=False",
+      "status": "PASS",
+      "detail": "recommendation_observable_robust=False"
+    },
+    {
+      "check": "contains::qvel",
+      "status": "PASS",
+      "detail": "qvel"
+    },
+    {
+      "check": "contains::data.qvel",
+      "status": "PASS",
+      "detail": "data.qvel"
+    },
+    {
+      "check": "contains::mujoco.mj_forward",
+      "status": "PASS",
+      "detail": "mujoco.mj_forward"
+    },
+    {
+      "check": "contains::mujoco.mj_step",
+      "status": "PASS",
+      "detail": "mujoco.mj_step"
+    },
+    {
+      "check": "contains::qpos",
+      "status": "PASS",
+      "detail": "qpos"
+    },
+    {
+      "check": "contains::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "contains::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "contains::qvel_before_injection",
+      "status": "PASS",
+      "detail": "qvel_before_injection"
+    },
+    {
+      "check": "contains::qvel_after_injection",
+      "status": "PASS",
+      "detail": "qvel_after_injection"
+    },
+    {
+      "check": "contains::qvel_after_mj_forward",
+      "status": "PASS",
+      "detail": "qvel_after_mj_forward"
+    },
+    {
+      "check": "contains::qvel_after_first_step",
+      "status": "PASS",
+      "detail": "qvel_after_first_step"
+    },
+    {
+      "check": "contains::summary 指标",
+      "status": "PASS",
+      "detail": "summary 指标"
+    },
+    {
+      "check": "contains::不新增控制器",
+      "status": "PASS",
+      "detail": "不新增控制器"
+    },
+    {
+      "check": "contains::不做真实机器人部署",
+      "status": "PASS",
+      "detail": "不做真实机器人部署"
+    },
+    {
+      "check": "contains::不重新声明 observable perturbation robustness",
+      "status": "PASS",
+      "detail": "不重新声明 observable perturbation robustness"
+    },
+    {
+      "check": "contains::不声明 scale=0.010",
+      "status": "PASS",
+      "detail": "不声明 scale=0.010"
+    },
+    {
+      "check": "contains::Stage 23.4",
+      "status": "PASS",
+      "detail": "Stage 23.4"
+    },
+    {
+      "check": "stage22_4_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_4_observable_perturbation_evidence_freeze_summary.json"
+    },
+    {
+      "check": "stage22_4_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage22_4_observable_false",
+      "status": "PASS",
+      "detail": "perturbation_metric_variability_detected=False"
+    },
+    {
+      "check": "stage22_4_recommendation_observable_false",
+      "status": "PASS",
+      "detail": "recommendation_observable_robust=False"
+    }
+  ]
+}
