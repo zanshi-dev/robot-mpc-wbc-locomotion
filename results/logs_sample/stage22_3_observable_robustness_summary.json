@@ -1,0 +1,644 @@
+{
+  "stage": "22.3",
+  "name": "observable qvel perturbation robustness analysis",
+  "result": "pass",
+  "failure_count": 0,
+  "source": "results/logs_sample/stage22_2_observable_perturbation_table.csv",
+  "observable_perturbation_pass": false,
+  "perturbation_metric_variability_detected": false,
+  "recommendation_relation_stable": true,
+  "recommendation_observable_robust": false,
+  "recommended_scale": "0.010",
+  "baseline_scale": "0.000",
+  "regression_anchor_scale": "0.020",
+  "recommended_error_lower_than_baseline_count": 7,
+  "recommended_error_lower_than_0p020_count": 7,
+  "perturbation_count": 7,
+  "conclusion": "Stage 22.3 analysis 通过，但 observable perturbation robustness 不成立。当前 qvel 初始速度扰动没有使 summary 指标产生可观测变化；因此 Stage 22 不能声明完成 observable perturbation robustness audit，只能记录为 qvel perturbation injection attempt。",
+  "claim_support": "当前证据不支持将 scale=0.010 升级为 observable-perturbation-tested recommended candidate scale；仍只能沿用 Stage 21 的 local-perturbation-tested recommended candidate scale 表述。",
+  "generated_files": [
+    "results/logs_sample/stage22_3_observable_robustness_per_perturbation_checks.csv",
+    "results/logs_sample/stage22_3_observable_robustness_per_scale_stats.csv",
+    "results/logs_sample/stage22_3_observable_perturbation_variability.csv",
+    "results/logs_sample/stage22_3_observable_robustness_validation.csv",
+    "results/logs_sample/stage22_3_observable_robustness_analysis.md",
+    "results/logs_sample/stage22_3_observable_robustness_summary.json",
+    "docs/STAGE22_3_OBSERVABLE_ROBUSTNESS_ANALYSIS.md"
+  ],
+  "claim_boundary": [
+    "simulation-only qvel initial perturbation analysis",
+    "initial qvel perturbations only",
+    "if perturbation_metric_variability_detected is false, no observable robustness claim is supported",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "per_perturbation_rows": [
+    {
+      "perturbation_id": "nominal",
+      "baseline_error": "0.078494",
+      "recommended_error": "0.065265",
+      "regression_0p020_error": "0.147469",
+      "recommended_minus_baseline_error": "-0.013229",
+      "recommended_minus_0p020_error": "-0.082204",
+      "baseline_displacement": "0.630505",
+      "recommended_displacement": "0.822437",
+      "regression_0p020_displacement": "0.319838",
+      "recommended_minus_baseline_displacement": "0.191932",
+      "recommended_minus_0p020_displacement": "0.502599",
+      "recommended_pass": "True",
+      "recommended_error_lower_than_baseline": "True",
+      "recommended_error_lower_than_0p020": "True",
+      "recommended_displacement_higher_than_baseline": "True",
+      "recommended_displacement_higher_than_0p020": "True"
+    },
+    {
+      "perturbation_id": "vx_plus",
+      "baseline_error": "0.078494",
+      "recommended_error": "0.065265",
+      "regression_0p020_error": "0.147469",
+      "recommended_minus_baseline_error": "-0.013229",
+      "recommended_minus_0p020_error": "-0.082204",
+      "baseline_displacement": "0.630505",
+      "recommended_displacement": "0.822437",
+      "regression_0p020_displacement": "0.319838",
+      "recommended_minus_baseline_displacement": "0.191932",
+      "recommended_minus_0p020_displacement": "0.502599",
+      "recommended_pass": "True",
+      "recommended_error_lower_than_baseline": "True",
+      "recommended_error_lower_than_0p020": "True",
+      "recommended_displacement_higher_than_baseline": "True",
+      "recommended_displacement_higher_than_0p020": "True"
+    },
+    {
+      "perturbation_id": "vx_minus",
+      "baseline_error": "0.078494",
+      "recommended_error": "0.065265",
+      "regression_0p020_error": "0.147469",
+      "recommended_minus_baseline_error": "-0.013229",
+      "recommended_minus_0p020_error": "-0.082204",
+      "baseline_displacement": "0.630505",
+      "recommended_displacement": "0.822437",
+      "regression_0p020_displacement": "0.319838",
+      "recommended_minus_baseline_displacement": "0.191932",
+      "recommended_minus_0p020_displacement": "0.502599",
+      "recommended_pass": "True",
+      "recommended_error_lower_than_baseline": "True",
+      "recommended_error_lower_than_0p020": "True",
+      "recommended_displacement_higher_than_baseline": "True",
+      "recommended_displacement_higher_than_0p020": "True"
+    },
+    {
+      "perturbation_id": "vy_plus",
+      "baseline_error": "0.078494",
+      "recommended_error": "0.065265",
+      "regression_0p020_error": "0.147469",
+      "recommended_minus_baseline_error": "-0.013229",
+      "recommended_minus_0p020_error": "-0.082204",
+      "baseline_displacement": "0.630505",
+      "recommended_displacement": "0.822437",
+      "regression_0p020_displacement": "0.319838",
+      "recommended_minus_baseline_displacement": "0.191932",
+      "recommended_minus_0p020_displacement": "0.502599",
+      "recommended_pass": "True",
+      "recommended_error_lower_than_baseline": "True",
+      "recommended_error_lower_than_0p020": "True",
+      "recommended_displacement_higher_than_baseline": "True",
+      "recommended_displacement_higher_than_0p020": "True"
+    },
+    {
+      "perturbation_id": "vy_minus",
+      "baseline_error": "0.078494",
+      "recommended_error": "0.065265",
+      "regression_0p020_error": "0.147469",
+      "recommended_minus_baseline_error": "-0.013229",
+      "recommended_minus_0p020_error": "-0.082204",
+      "baseline_displacement": "0.630505",
+      "recommended_displacement": "0.822437",
+      "regression_0p020_displacement": "0.319838",
+      "recommended_minus_baseline_displacement": "0.191932",
+      "recommended_minus_0p020_displacement": "0.502599",
+      "recommended_pass": "True",
+      "recommended_error_lower_than_baseline": "True",
+      "recommended_error_lower_than_0p020": "True",
+      "recommended_displacement_higher_than_baseline": "True",
+      "recommended_displacement_higher_than_0p020": "True"
+    },
+    {
+      "perturbation_id": "yawrate_plus",
+      "baseline_error": "0.078494",
+      "recommended_error": "0.065265",
+      "regression_0p020_error": "0.147469",
+      "recommended_minus_baseline_error": "-0.013229",
+      "recommended_minus_0p020_error": "-0.082204",
+      "baseline_displacement": "0.630505",
+      "recommended_displacement": "0.822437",
+      "regression_0p020_displacement": "0.319838",
+      "recommended_minus_baseline_displacement": "0.191932",
+      "recommended_minus_0p020_displacement": "0.502599",
+      "recommended_pass": "True",
+      "recommended_error_lower_than_baseline": "True",
+      "recommended_error_lower_than_0p020": "True",
+      "recommended_displacement_higher_than_baseline": "True",
+      "recommended_displacement_higher_than_0p020": "True"
+    },
+    {
+      "perturbation_id": "yawrate_minus",
+      "baseline_error": "0.078494",
+      "recommended_error": "0.065265",
+      "regression_0p020_error": "0.147469",
+      "recommended_minus_baseline_error": "-0.013229",
+      "recommended_minus_0p020_error": "-0.082204",
+      "baseline_displacement": "0.630505",
+      "recommended_displacement": "0.822437",
+      "regression_0p020_displacement": "0.319838",
+      "recommended_minus_baseline_displacement": "0.191932",
+      "recommended_minus_0p020_displacement": "0.502599",
+      "recommended_pass": "True",
+      "recommended_error_lower_than_baseline": "True",
+      "recommended_error_lower_than_0p020": "True",
+      "recommended_displacement_higher_than_baseline": "True",
+      "recommended_displacement_higher_than_0p020": "True"
+    }
+  ],
+  "per_scale_stats": [
+    {
+      "scale_tag": "0p000",
+      "scale": "0.000",
+      "control_mode": "baseline",
+      "role": "baseline_reference",
+      "perturbation_count": "7",
+      "all_pass": "True",
+      "mean_vx_mean": "0.131362000000",
+      "mean_vx_std": "0.000000000000",
+      "mean_vx_range": "0.000000000000",
+      "mean_abs_velocity_error_mean": "0.078494000000",
+      "mean_abs_velocity_error_std": "0.000000000000",
+      "mean_abs_velocity_error_range": "0.000000000000",
+      "max_abs_velocity_error_mean": "0.244199000000",
+      "max_abs_velocity_error_std": "0.000000000000",
+      "max_abs_velocity_error_range": "0.000000000000",
+      "forward_displacement_mean": "0.630505000000",
+      "forward_displacement_std": "0.000000000000",
+      "forward_displacement_range": "0.000000000000",
+      "min_z_mean": "0.274552000000",
+      "min_z_std": "0.000000000000",
+      "min_z_range": "0.000000000000",
+      "max_abs_roll_mean": "0.056707000000",
+      "max_abs_roll_std": "0.000000000000",
+      "max_abs_roll_range": "0.000000000000",
+      "max_abs_pitch_mean": "0.048329000000",
+      "max_abs_pitch_std": "0.000000000000",
+      "max_abs_pitch_range": "0.000000000000",
+      "max_tau_total_abs_mean": "9.659563000000",
+      "max_tau_total_abs_std": "0.000000000000",
+      "max_tau_total_abs_range": "0.000000000000",
+      "max_tau_candidate_scaled_abs_mean": "0.000000000000",
+      "max_tau_candidate_scaled_abs_std": "0.000000000000",
+      "max_tau_candidate_scaled_abs_range": "0.000000000000"
+    },
+    {
+      "scale_tag": "0p010",
+      "scale": "0.010",
+      "control_mode": "mpc_assisted_candidate",
+      "role": "recommended_candidate",
+      "perturbation_count": "7",
+      "all_pass": "True",
+      "mean_vx_mean": "0.171348000000",
+      "mean_vx_std": "0.000000000000",
+      "mean_vx_range": "0.000000000000",
+      "mean_abs_velocity_error_mean": "0.065265000000",
+      "mean_abs_velocity_error_std": "0.000000000000",
+      "mean_abs_velocity_error_range": "0.000000000000",
+      "max_abs_velocity_error_mean": "0.252698000000",
+      "max_abs_velocity_error_std": "0.000000000000",
+      "max_abs_velocity_error_range": "0.000000000000",
+      "forward_displacement_mean": "0.822437000000",
+      "forward_displacement_std": "0.000000000000",
+      "forward_displacement_range": "0.000000000000",
+      "min_z_mean": "0.274952000000",
+      "min_z_std": "0.000000000000",
+      "min_z_range": "0.000000000000",
+      "max_abs_roll_mean": "0.073652000000",
+      "max_abs_roll_std": "0.000000000000",
+      "max_abs_roll_range": "0.000000000000",
+      "max_abs_pitch_mean": "0.084148000000",
+      "max_abs_pitch_std": "0.000000000000",
+      "max_abs_pitch_range": "0.000000000000",
+      "max_tau_total_abs_mean": "10.029040000000",
+      "max_tau_total_abs_std": "0.000000000000",
+      "max_tau_total_abs_range": "0.000000000000",
+      "max_tau_candidate_scaled_abs_mean": "0.194425000000",
+      "max_tau_candidate_scaled_abs_std": "0.000000000000",
+      "max_tau_candidate_scaled_abs_range": "0.000000000000"
+    },
+    {
+      "scale_tag": "0p020",
+      "scale": "0.020",
+      "control_mode": "mpc_assisted_candidate",
+      "role": "regression_anchor",
+      "perturbation_count": "7",
+      "all_pass": "True",
+      "mean_vx_mean": "0.066640000000",
+      "mean_vx_std": "0.000000000000",
+      "mean_vx_range": "0.000000000000",
+      "mean_abs_velocity_error_mean": "0.147469000000",
+      "mean_abs_velocity_error_std": "0.000000000000",
+      "mean_abs_velocity_error_range": "0.000000000000",
+      "max_abs_velocity_error_mean": "0.454335000000",
+      "max_abs_velocity_error_std": "0.000000000000",
+      "max_abs_velocity_error_range": "0.000000000000",
+      "forward_displacement_mean": "0.319838000000",
+      "forward_displacement_std": "0.000000000000",
+      "forward_displacement_range": "0.000000000000",
+      "min_z_mean": "0.273040000000",
+      "min_z_std": "0.000000000000",
+      "min_z_range": "0.000000000000",
+      "max_abs_roll_mean": "0.090250000000",
+      "max_abs_roll_std": "0.000000000000",
+      "max_abs_roll_range": "0.000000000000",
+      "max_abs_pitch_mean": "0.064959000000",
+      "max_abs_pitch_std": "0.000000000000",
+      "max_abs_pitch_range": "0.000000000000",
+      "max_tau_total_abs_mean": "9.911886000000",
+      "max_tau_total_abs_std": "0.000000000000",
+      "max_tau_total_abs_range": "0.000000000000",
+      "max_tau_candidate_scaled_abs_mean": "0.388850000000",
+      "max_tau_candidate_scaled_abs_std": "0.000000000000",
+      "max_tau_candidate_scaled_abs_range": "0.000000000000"
+    }
+  ],
+  "variability_rows": [
+    {
+      "scale_tag": "0p000",
+      "metric": "mean_vx",
+      "min": "0.131362000000",
+      "max": "0.131362000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p000",
+      "metric": "mean_abs_velocity_error",
+      "min": "0.078494000000",
+      "max": "0.078494000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p000",
+      "metric": "max_abs_velocity_error",
+      "min": "0.244199000000",
+      "max": "0.244199000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p000",
+      "metric": "forward_displacement",
+      "min": "0.630505000000",
+      "max": "0.630505000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p000",
+      "metric": "min_z",
+      "min": "0.274552000000",
+      "max": "0.274552000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p000",
+      "metric": "max_abs_roll",
+      "min": "0.056707000000",
+      "max": "0.056707000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p000",
+      "metric": "max_abs_pitch",
+      "min": "0.048329000000",
+      "max": "0.048329000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p000",
+      "metric": "max_tau_total_abs",
+      "min": "9.659563000000",
+      "max": "9.659563000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p000",
+      "metric": "max_tau_candidate_scaled_abs",
+      "min": "0.000000000000",
+      "max": "0.000000000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p010",
+      "metric": "mean_vx",
+      "min": "0.171348000000",
+      "max": "0.171348000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p010",
+      "metric": "mean_abs_velocity_error",
+      "min": "0.065265000000",
+      "max": "0.065265000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p010",
+      "metric": "max_abs_velocity_error",
+      "min": "0.252698000000",
+      "max": "0.252698000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p010",
+      "metric": "forward_displacement",
+      "min": "0.822437000000",
+      "max": "0.822437000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p010",
+      "metric": "min_z",
+      "min": "0.274952000000",
+      "max": "0.274952000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p010",
+      "metric": "max_abs_roll",
+      "min": "0.073652000000",
+      "max": "0.073652000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p010",
+      "metric": "max_abs_pitch",
+      "min": "0.084148000000",
+      "max": "0.084148000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p010",
+      "metric": "max_tau_total_abs",
+      "min": "10.029040000000",
+      "max": "10.029040000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p010",
+      "metric": "max_tau_candidate_scaled_abs",
+      "min": "0.194425000000",
+      "max": "0.194425000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p020",
+      "metric": "mean_vx",
+      "min": "0.066640000000",
+      "max": "0.066640000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p020",
+      "metric": "mean_abs_velocity_error",
+      "min": "0.147469000000",
+      "max": "0.147469000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p020",
+      "metric": "max_abs_velocity_error",
+      "min": "0.454335000000",
+      "max": "0.454335000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p020",
+      "metric": "forward_displacement",
+      "min": "0.319838000000",
+      "max": "0.319838000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p020",
+      "metric": "min_z",
+      "min": "0.273040000000",
+      "max": "0.273040000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p020",
+      "metric": "max_abs_roll",
+      "min": "0.090250000000",
+      "max": "0.090250000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p020",
+      "metric": "max_abs_pitch",
+      "min": "0.064959000000",
+      "max": "0.064959000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p020",
+      "metric": "max_tau_total_abs",
+      "min": "9.911886000000",
+      "max": "9.911886000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    },
+    {
+      "scale_tag": "0p020",
+      "metric": "max_tau_candidate_scaled_abs",
+      "min": "0.388850000000",
+      "max": "0.388850000000",
+      "range": "0.000000000000",
+      "std": "0.000000000000",
+      "observable_variability": "False"
+    }
+  ],
+  "checks": [
+    {
+      "check": "source_table_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturbation_table.csv"
+    },
+    {
+      "check": "source_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturbation_summary.json"
+    },
+    {
+      "check": "stage22_2_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "row_count_21",
+      "status": "PASS",
+      "detail": "rows=21"
+    },
+    {
+      "check": "nominal_has_all_scales",
+      "status": "PASS",
+      "detail": "scales=['0p000', '0p010', '0p020']"
+    },
+    {
+      "check": "vx_plus_has_all_scales",
+      "status": "PASS",
+      "detail": "scales=['0p000', '0p010', '0p020']"
+    },
+    {
+      "check": "vx_minus_has_all_scales",
+      "status": "PASS",
+      "detail": "scales=['0p000', '0p010', '0p020']"
+    },
+    {
+      "check": "vy_plus_has_all_scales",
+      "status": "PASS",
+      "detail": "scales=['0p000', '0p010', '0p020']"
+    },
+    {
+      "check": "vy_minus_has_all_scales",
+      "status": "PASS",
+      "detail": "scales=['0p000', '0p010', '0p020']"
+    },
+    {
+      "check": "yawrate_plus_has_all_scales",
+      "status": "PASS",
+      "detail": "scales=['0p000', '0p010', '0p020']"
+    },
+    {
+      "check": "yawrate_minus_has_all_scales",
+      "status": "PASS",
+      "detail": "scales=['0p000', '0p010', '0p020']"
+    },
+    {
+      "check": "0p000_has_all_perturbations",
+      "status": "PASS",
+      "detail": "count=7"
+    },
+    {
+      "check": "0p010_has_all_perturbations",
+      "status": "PASS",
+      "detail": "count=7"
+    },
+    {
+      "check": "0p020_has_all_perturbations",
+      "status": "PASS",
+      "detail": "count=7"
+    },
+    {
+      "check": "all_cases_pass_stability",
+      "status": "PASS",
+      "detail": "all pass=True"
+    },
+    {
+      "check": "all_qp_fail_zero",
+      "status": "PASS",
+      "detail": "all qp_fail_steps=0"
+    },
+    {
+      "check": "all_saturation_zero",
+      "status": "PASS",
+      "detail": "all saturation_steps=0"
+    },
+    {
+      "check": "recommended_pass_all_perturbations",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "recommended_error_lower_than_baseline_all_perturbations",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "recommended_error_lower_than_0p020_all_perturbations",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "recommended_displacement_higher_than_baseline_all_perturbations",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "recommended_displacement_higher_than_0p020_all_perturbations",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "analysis_completed",
+      "status": "PASS",
+      "detail": "analysis generated"
+    },
+    {
+      "check": "observable_variability_recorded",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "recommendation_relation_evaluated",
+      "status": "PASS",
+      "detail": "True"
+    }
+  ]
+}

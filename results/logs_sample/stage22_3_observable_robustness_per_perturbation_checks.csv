@@ -1,0 +1,8 @@
+perturbation_id,baseline_error,recommended_error,regression_0p020_error,recommended_minus_baseline_error,recommended_minus_0p020_error,baseline_displacement,recommended_displacement,regression_0p020_displacement,recommended_minus_baseline_displacement,recommended_minus_0p020_displacement,recommended_pass,recommended_error_lower_than_baseline,recommended_error_lower_than_0p020,recommended_displacement_higher_than_baseline,recommended_displacement_higher_than_0p020
+nominal,0.078494,0.065265,0.147469,-0.013229,-0.082204,0.630505,0.822437,0.319838,0.191932,0.502599,True,True,True,True,True
+vx_plus,0.078494,0.065265,0.147469,-0.013229,-0.082204,0.630505,0.822437,0.319838,0.191932,0.502599,True,True,True,True,True
+vx_minus,0.078494,0.065265,0.147469,-0.013229,-0.082204,0.630505,0.822437,0.319838,0.191932,0.502599,True,True,True,True,True
+vy_plus,0.078494,0.065265,0.147469,-0.013229,-0.082204,0.630505,0.822437,0.319838,0.191932,0.502599,True,True,True,True,True
+vy_minus,0.078494,0.065265,0.147469,-0.013229,-0.082204,0.630505,0.822437,0.319838,0.191932,0.502599,True,True,True,True,True
+yawrate_plus,0.078494,0.065265,0.147469,-0.013229,-0.082204,0.630505,0.822437,0.319838,0.191932,0.502599,True,True,True,True,True
+yawrate_minus,0.078494,0.065265,0.147469,-0.013229,-0.082204,0.630505,0.822437,0.319838,0.191932,0.502599,True,True,True,True,True
