@@ -8,6 +8,8 @@
 
 当前项目边界：
 
+- Stage 25 新增 simulation-only primary controller closure 证据：direct primary_mpc_wbc 已进入 MuJoCo torque loop，但 smoke rollout 未通过稳定性边界。
+- 当前通过 smoke boundary 的主控闭环版本为 stabilized_primary_mpc_wbc，即在 primary candidate torque 外加入 ramp、scale、stance posture residual、online WBC residual，并保留 swing PD 与 torque safety filter。
 - MPC 作为 planning layer，用于生成 contact force reference 或 contact force candidate。
 - MPC 不直接输出最终 joint torque。
 - WBC/QP 或 J^T f 映射层负责把 contact force reference / candidate 转换为 joint torque candidate。
@@ -24,6 +26,8 @@
 
 当前证据支持：
 
+- primary_mpc_wbc 与 stabilized_primary_mpc_wbc 两类 simulation-only 主控模式验证。
+- stabilized_primary_mpc_wbc nominal 2400-step smoke rollout 通过证据。
 - MuJoCo / Pinocchio simulation-only locomotion baseline。
 - MPC contact-force planning demo。
 - WBC/QP 与 J^T f torque-candidate 验证。
@@ -59,7 +63,7 @@
 
 Go1 风格四足机器人运动控制仿真项目。项目聚焦 **MuJoCo 仿真、Pinocchio 运动学/动力学、MPC/WBC 候选力矩、ROS2/C++ 工程化测试和结果证据归档**。
 
-本仓库当前定位为：**仅限仿真验证的四足机器人控制链路工程项目**。项目不声明真实机器人部署，不声明已具备力矩使能条件，也不声明完整 MPC-WBC 闭环稳定行走已经完成。
+本仓库当前定位为：仅限仿真验证的四足机器人控制链路工程项目。项目不声明真实机器人部署，不声明已具备力矩使能条件；当前支持的是 stabilized_primary_mpc_wbc 在固定仿真设置下通过 nominal smoke rollout，不声明 direct/full primary MPC-WBC 已经无残差稳定替代 baseline。
 
 ---
 
@@ -117,6 +121,10 @@ docs/ARTIFACT_INDEX.md
 
 当前仓库不支持以下说法：
 
+  * 不声明 direct/full primary_mpc_wbc 已经稳定；
+  * 不声明 full MPC/WBC torque 可以无残差替代 baseline；
+  * 不声明 MPC/WBC 已通过复杂地形、外力扰动或真实机器人实验验证；
+  * 不声明 stabilized_primary_mpc_wbc 已达到工程级成熟控制器；
 - 不声明真实机器人部署；
 - 不声明已具备力矩使能条件；
 - 不声明 `torque_enable_ready=True`；
@@ -378,21 +386,6 @@ bash scripts/stage16_2_validate_artifact_index.sh
 
 ---
 
-## 13. 面试表述建议
-
-推荐表述：
-
-> 这个项目是一个仅限仿真验证的四足机器人运动控制链路工程项目。我主要完成了 MuJoCo/Pinocchio 控制链路、ROS2/C++ 控制算法测试、contact force QP、Pinocchio `J^T f` torque candidate、MuJoCo actuator compatibility audit 和 bounded torque smoke test。当前结果证明的是控制链路和工程验证能力，不声明真实机器人部署，也不声明完整 MPC-WBC 闭环稳定行走已经完成。
-
-不推荐表述：
-
-> 我已经完成了真实机器人部署。  
-> MPC-WBC 已经完整闭环稳定行走。  
-> ROS torque publisher 可以直接用于硬件。  
-> `torque_enable_ready=True`。
-
----
-
 ## 14. 术语规范
 
 本仓库采用以下写法：
@@ -416,7 +409,7 @@ bash scripts/stage16_2_validate_artifact_index.sh
 
 ## 15. 项目当前结论
 
-当前项目已经完成本轮面向实习面试的升级。
+当前项目已经完成本轮工程化升级。
 
 准确结论：
 
@@ -771,3 +764,37 @@ Stage 24.3 metric conclusion:
   * 不能声明真实机器人 torque 执行或硬件 torque enablement 已完成；
   * 不能声明复杂地形或外力冲击鲁棒性已完成。
 <!-- STAGE24_ENTRY_DOCS_SYNC_END -->
+
+## Stage 25：simulation-only stabilized MPC-WBC primary controller closure
+
+Stage 25 将 MPC/WBC torque candidate 从辅助注入链路推进到 simulation-only primary controller 链路。
+
+直接主控模式为：
+
+    primary_mpc_wbc =
+        stance_mask * tau_candidate
+        + swing leg PD
+        + torque safety filter
+
+该模式已经实际进入 MuJoCo torque loop，但 nominal smoke rollout 暴露出姿态超限和力矩饱和问题，因此不作为稳定结论。
+
+稳定化主控模式为：
+
+    stabilized_primary_mpc_wbc =
+        ramped / scaled stance candidate torque
+        + stance posture residual
+        + online WBC residual
+        + swing leg PD
+        + torque safety filter
+
+该模式在 nominal 2400-step simulation-only smoke rollout 中通过 smoke stability boundary，记录结果包括：
+
+    qp_fail_steps = 0
+    saturation_steps = 0
+
+该结论只适用于当前固定仿真设置，不等价于真实机器人闭环，也不等价于复杂地形或外力扰动鲁棒性。
+
+证据冻结文件：
+
+    docs/STAGE25_7_PRIMARY_CONTROLLER_CLOSURE_EVIDENCE_FREEZE.md
+

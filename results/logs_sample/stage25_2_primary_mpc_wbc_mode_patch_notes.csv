@@ -1,0 +1,14 @@
+patch,status,detail
+add_primary_control_mode_constant,APPLIED,CONTROL_MODE_PRIMARY_MPC_WBC
+extend_control_mode_choices,APPLIED,--control-mode argparse choices include primary_mpc_wbc
+add_allow_primary_flag,APPLIED,--allow-primary-mpc-wbc
+replace_mode_validation_and_candidate_loading,APPLIED,load candidate rows for primary_mpc_wbc
+candidate_fetch_for_primary,APPLIED,candidate_row_for_step branch
+add_max_tau_primary_metric,APPLIED,max_tau_primary_mpc_wbc_raw_abs
+replace_torque_composition,APPLIED,primary branch before safety clip
+add_tau_primary_abs_per_step,APPLIED,tau_primary_mpc_wbc_raw_abs
+update_max_tau_primary_metric,APPLIED,max_tau_primary_mpc_wbc_raw_abs update
+add_log_tau_primary_column,APPLIED,log column
+add_primary_summary_flags,APPLIED,primary_mpc_wbc summary flags
+candidate_available_for_primary,APPLIED,candidate_available_in_run
+add_summary_primary_tau_metric,APPLIED,summary metric

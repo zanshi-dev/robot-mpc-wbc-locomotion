@@ -1,0 +1,102 @@
+{
+  "stage": "25.4",
+  "name": "primary_mpc_wbc smoke failure diagnosis",
+  "result": "pass",
+  "failure_count": 0,
+  "failure_class": "posture_limit_violation_with_torque_saturation_no_qp_failure",
+  "primary_mpc_wbc_executed": "True",
+  "smoke_stability_pass": false,
+  "first_roll_exceed_step": 140,
+  "first_pitch_exceed_step": 575,
+  "first_z_exceed_step": null,
+  "first_saturation_step": 200,
+  "max_abs_roll": 0.488712369676,
+  "max_abs_pitch": 0.356235143697,
+  "min_z": 0.2382433978,
+  "qp_fail_steps": 0,
+  "saturation_steps": 555,
+  "max_tau_stance_pd_abs": 71.264532613097,
+  "max_tau_stance_wbc_abs": 4.377325607949,
+  "max_tau_swing_pd_abs": 75.856574627963,
+  "max_tau_candidate_abs": 19.4425094473,
+  "max_tau_primary_mpc_wbc_raw_abs": 75.856574627963,
+  "max_tau_total_abs": 23.7,
+  "dominant_raw_component": "swing_pd_or_posture_residual_dominates_candidate",
+  "recommended_next_stage": "Stage 25.5 implement stabilized primary_mpc_wbc variant with ramp/scale/posture residual/fallback",
+  "generated_files": [
+    "results/logs_sample/stage25_4_primary_mpc_wbc_failure_diagnosis.csv",
+    "results/logs_sample/stage25_4_primary_mpc_wbc_failure_diagnosis_validation.csv",
+    "results/logs_sample/stage25_4_primary_mpc_wbc_failure_diagnosis_summary.json",
+    "docs/STAGE25_4_PRIMARY_MPC_WBC_FAILURE_DIAGNOSIS.md"
+  ],
+  "claim_boundary": [
+    "diagnosis only",
+    "primary_mpc_wbc executed but smoke stability failed",
+    "no stable MPC-WBC primary closure claim",
+    "no real robot torque execution",
+    "no hardware torque enablement",
+    "no terrain or external-force robustness"
+  ],
+  "checks": [
+    {
+      "check": "stage25_3_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_3_primary_mpc_wbc_smoke_summary.json"
+    },
+    {
+      "check": "stage25_3_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage25_3_primary_executed",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "stage25_3_smoke_stability_false",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "runner_summary_csv_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_2_primary_mpc_wbc_rollout_nominal_primary_primary_mpc_wbc_summary.csv"
+    },
+    {
+      "check": "runner_log_csv_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_2_primary_mpc_wbc_rollout_nominal_primary_primary_mpc_wbc_log.csv"
+    },
+    {
+      "check": "runner_log_nonempty",
+      "status": "PASS",
+      "detail": "rows=2400"
+    },
+    {
+      "check": "failure_class_expected",
+      "status": "PASS",
+      "detail": "posture_limit_violation_with_torque_saturation_no_qp_failure"
+    },
+    {
+      "check": "qp_fail_steps_zero",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "saturation_steps_positive",
+      "status": "PASS",
+      "detail": "555"
+    },
+    {
+      "check": "roll_or_pitch_exceeded",
+      "status": "PASS",
+      "detail": "roll=0.488712369676, pitch=0.356235143697"
+    },
+    {
+      "check": "primary_raw_metric_available",
+      "status": "PASS",
+      "detail": "75.856574627963"
+    }
+  ]
+}

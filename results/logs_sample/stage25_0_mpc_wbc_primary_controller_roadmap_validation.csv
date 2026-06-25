@@ -1,0 +1,26 @@
+check,status,detail
+roadmap_exists,PASS,docs/STAGE25_MPC_WBC_PRIMARY_CONTROLLER_ROADMAP.md
+contains::Stage 25,PASS,Stage 25
+contains::MPC-WBC primary controller closure,PASS,MPC-WBC primary controller closure
+contains::simulation-only,PASS,simulation-only
+contains::primary_mpc_wbc,PASS,primary_mpc_wbc
+contains::baseline torque + alpha * MPC/WBC candidate torque,PASS,baseline torque + alpha * MPC/WBC candidate torque
+contains::MPC/WBC torque as primary stance controller,PASS,MPC/WBC torque as primary stance controller
+contains::swing leg PD,PASS,swing leg PD
+contains::torque safety filter,PASS,torque safety filter
+contains::MuJoCo simulation step,PASS,MuJoCo simulation step
+contains::source audit,PASS,source audit
+contains::primary_mpc_wbc mode implementation,PASS,primary_mpc_wbc mode implementation
+contains::smoke rollout,PASS,smoke rollout
+contains::baseline / candidate injection / primary_mpc_wbc comparison,PASS,baseline / candidate injection / primary_mpc_wbc comparison
+contains::不继续追 observable perturbation robustness,PASS,不继续追 observable perturbation robustness
+contains::不做真实机器人闭环,PASS,不做真实机器人闭环
+contains::不做 hardware torque enablement,PASS,不做 hardware torque enablement
+contains::不删除 baseline 模式,PASS,不删除 baseline 模式
+contains::不删除 candidate injection 模式,PASS,不删除 candidate injection 模式
+contains::Stage 25.5,PASS,Stage 25.5
+contains::不支持真实机器人闭环,PASS,不支持真实机器人闭环
+contains::不支持工程级 MPC-WBC 控制器完全成熟,PASS,不支持工程级 MPC-WBC 控制器完全成熟
+stage24_4_summary_exists,PASS,results/logs_sample/stage24_4_short_horizon_metric_evidence_freeze_summary.json
+stage24_4_result_pass,PASS,result=pass
+stage24_metric_class_expected,PASS,metric_observability_class=pre_step_only_detection_no_post_step_trace_separation

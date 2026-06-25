@@ -1,0 +1,178 @@
+{
+  "stage": "25.5",
+  "name": "stabilized_primary_mpc_wbc mode implementation",
+  "result": "pass",
+  "failure_count": 0,
+  "source_runner": "scripts/stage25_2_primary_mpc_wbc_runner.py",
+  "target_runner": "scripts/stage25_5_stabilized_primary_mpc_wbc_runner.py",
+  "target_control_mode": "stabilized_primary_mpc_wbc",
+  "stabilized_primary_mpc_wbc_mode_implemented": true,
+  "rollout_completed": false,
+  "default_parameters": {
+    "stabilized_primary_scale": 0.05,
+    "stabilized_primary_ramp_steps": 600,
+    "stabilized_posture_residual_scale": 1.0,
+    "stabilized_wbc_residual_scale": 1.0
+  },
+  "stage25_4_failure_class": "posture_limit_violation_with_torque_saturation_no_qp_failure",
+  "generated_files": [
+    "scripts/stage25_5_stabilized_primary_mpc_wbc_runner.py",
+    "results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_mode_validation.csv",
+    "results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_mode_patch_notes.csv",
+    "results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_mode_summary.json",
+    "docs/STAGE25_5_STABILIZED_PRIMARY_MPC_WBC_MODE.md"
+  ],
+  "claim_boundary": [
+    "implementation only",
+    "no stabilized rollout yet",
+    "simulation-only",
+    "no stable primary closure claim yet",
+    "no real robot torque execution",
+    "no hardware torque enablement",
+    "no terrain or external-force robustness"
+  ],
+  "patch_notes": [
+    {
+      "patch": "add_stabilized_control_mode_constant",
+      "status": "APPLIED",
+      "detail": "add_stabilized_control_mode_constant"
+    },
+    {
+      "patch": "extend_control_mode_choices_for_stabilized",
+      "status": "APPLIED",
+      "detail": "--control-mode choices include stabilized_primary_mpc_wbc"
+    },
+    {
+      "patch": "add_stabilized_primary_args",
+      "status": "APPLIED",
+      "detail": "add_stabilized_primary_args"
+    },
+    {
+      "patch": "extend_mode_validation_for_stabilized",
+      "status": "APPLIED",
+      "detail": "extend_mode_validation_for_stabilized"
+    },
+    {
+      "patch": "candidate_fetch_for_stabilized",
+      "status": "APPLIED",
+      "detail": "candidate_fetch_for_stabilized"
+    },
+    {
+      "patch": "add_stabilized_max_metric",
+      "status": "APPLIED",
+      "detail": "add_stabilized_max_metric"
+    },
+    {
+      "patch": "replace_torque_composition_for_stabilized",
+      "status": "APPLIED",
+      "detail": "replace_torque_composition_for_stabilized"
+    },
+    {
+      "patch": "update_stabilized_max_metric",
+      "status": "APPLIED",
+      "detail": "update_stabilized_max_metric"
+    },
+    {
+      "patch": "add_stabilized_abs_per_step",
+      "status": "APPLIED",
+      "detail": "add_stabilized_abs_per_step"
+    },
+    {
+      "patch": "add_stabilized_log_columns",
+      "status": "APPLIED",
+      "detail": "add_stabilized_log_columns"
+    },
+    {
+      "patch": "add_stabilized_summary_flags",
+      "status": "APPLIED",
+      "detail": "add_stabilized_summary_flags"
+    },
+    {
+      "patch": "candidate_available_for_stabilized",
+      "status": "APPLIED",
+      "detail": "candidate_available_for_stabilized"
+    },
+    {
+      "patch": "add_stabilized_summary_metric",
+      "status": "APPLIED",
+      "detail": "add_stabilized_summary_metric"
+    }
+  ],
+  "checks": [
+    {
+      "check": "stage25_4_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_4_primary_mpc_wbc_failure_diagnosis_summary.json"
+    },
+    {
+      "check": "stage25_4_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage25_4_failure_class_expected",
+      "status": "PASS",
+      "detail": "posture_limit_violation_with_torque_saturation_no_qp_failure"
+    },
+    {
+      "check": "source_runner_exists",
+      "status": "PASS",
+      "detail": "scripts/stage25_2_primary_mpc_wbc_runner.py"
+    },
+    {
+      "check": "runner_contains::CONTROL_MODE_STABILIZED_PRIMARY_MPC_WBC = \"stabilized_primary_mpc_wbc\"",
+      "status": "PASS",
+      "detail": "CONTROL_MODE_STABILIZED_PRIMARY_MPC_WBC = \"stabilized_primary_mpc_wbc\""
+    },
+    {
+      "check": "runner_contains::--allow-stabilized-primary-mpc-wbc",
+      "status": "PASS",
+      "detail": "--allow-stabilized-primary-mpc-wbc"
+    },
+    {
+      "check": "runner_contains::--stabilized-primary-scale",
+      "status": "PASS",
+      "detail": "--stabilized-primary-scale"
+    },
+    {
+      "check": "runner_contains::tau_stabilized_primary_mpc_wbc_raw",
+      "status": "PASS",
+      "detail": "tau_stabilized_primary_mpc_wbc_raw"
+    },
+    {
+      "check": "runner_contains::if args.control_mode == CONTROL_MODE_STABILIZED_PRIMARY_MPC_WBC:",
+      "status": "PASS",
+      "detail": "if args.control_mode == CONTROL_MODE_STABILIZED_PRIMARY_MPC_WBC:"
+    },
+    {
+      "check": "runner_contains::stabilized_primary_mpc_wbc_executed",
+      "status": "PASS",
+      "detail": "stabilized_primary_mpc_wbc_executed"
+    },
+    {
+      "check": "runner_contains::max_tau_stabilized_primary_mpc_wbc_raw_abs",
+      "status": "PASS",
+      "detail": "max_tau_stabilized_primary_mpc_wbc_raw_abs"
+    },
+    {
+      "check": "runner_contains::tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)",
+      "status": "PASS",
+      "detail": "tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)"
+    },
+    {
+      "check": "runner_contains::data.ctrl[:] = tau_total",
+      "status": "PASS",
+      "detail": "data.ctrl[:] = tau_total"
+    },
+    {
+      "check": "target_runner_py_compile",
+      "status": "PASS",
+      "detail": "py_compile ok"
+    },
+    {
+      "check": "all_patch_notes_applied",
+      "status": "PASS",
+      "detail": "applied=13/13"
+    }
+  ]
+}
