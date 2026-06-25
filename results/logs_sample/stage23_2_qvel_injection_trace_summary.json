@@ -1,0 +1,1353 @@
+{
+  "stage": "23.2",
+  "name": "qvel injection trace diagnostic",
+  "result": "pass",
+  "failure_count": 0,
+  "trace_case_count": 7,
+  "all_nonzero_perturbations_written": true,
+  "all_after_forward_preserved": true,
+  "any_first_step_state_changed": true,
+  "diagnostic_rows": [
+    {
+      "trace_case_id": "nominal_0p010",
+      "perturbation_id": "nominal",
+      "perturbation_type": "none",
+      "axis": "qvel_0",
+      "qpos_axis": "qpos_0",
+      "expected_delta": "0.000000000000",
+      "before_axis": "0.000000000000",
+      "after_injection_axis": "0.000000000000",
+      "after_mj_forward_axis": "0.000000000000",
+      "after_first_step_axis": "-0.016621033634",
+      "written_delta": "0.000000000000",
+      "after_forward_delta": "0.000000000000",
+      "first_step_qvel_delta": "-0.016621033634",
+      "qpos_delta_first_step": "-0.000033242067",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010.csv"
+    },
+    {
+      "trace_case_id": "vx_plus_0p010",
+      "perturbation_id": "vx_plus",
+      "perturbation_type": "base_vx",
+      "axis": "qvel_0",
+      "qpos_axis": "qpos_0",
+      "expected_delta": "0.050000000000",
+      "before_axis": "0.000000000000",
+      "after_injection_axis": "0.050000000000",
+      "after_mj_forward_axis": "0.050000000000",
+      "after_first_step_axis": "-0.016621033634",
+      "written_delta": "0.050000000000",
+      "after_forward_delta": "0.050000000000",
+      "first_step_qvel_delta": "-0.016621033634",
+      "qpos_delta_first_step": "-0.000033242067",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010.csv"
+    },
+    {
+      "trace_case_id": "vx_minus_0p010",
+      "perturbation_id": "vx_minus",
+      "perturbation_type": "base_vx",
+      "axis": "qvel_0",
+      "qpos_axis": "qpos_0",
+      "expected_delta": "-0.050000000000",
+      "before_axis": "0.000000000000",
+      "after_injection_axis": "-0.050000000000",
+      "after_mj_forward_axis": "-0.050000000000",
+      "after_first_step_axis": "-0.016621033634",
+      "written_delta": "-0.050000000000",
+      "after_forward_delta": "-0.050000000000",
+      "first_step_qvel_delta": "-0.016621033634",
+      "qpos_delta_first_step": "-0.000033242067",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010.csv"
+    },
+    {
+      "trace_case_id": "vy_plus_0p010",
+      "perturbation_id": "vy_plus",
+      "perturbation_type": "base_vy",
+      "axis": "qvel_1",
+      "qpos_axis": "qpos_1",
+      "expected_delta": "0.030000000000",
+      "before_axis": "0.000000000000",
+      "after_injection_axis": "0.030000000000",
+      "after_mj_forward_axis": "0.030000000000",
+      "after_first_step_axis": "0.000213879716",
+      "written_delta": "0.030000000000",
+      "after_forward_delta": "0.030000000000",
+      "first_step_qvel_delta": "0.000213879716",
+      "qpos_delta_first_step": "0.000000427759",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010.csv"
+    },
+    {
+      "trace_case_id": "vy_minus_0p010",
+      "perturbation_id": "vy_minus",
+      "perturbation_type": "base_vy",
+      "axis": "qvel_1",
+      "qpos_axis": "qpos_1",
+      "expected_delta": "-0.030000000000",
+      "before_axis": "0.000000000000",
+      "after_injection_axis": "-0.030000000000",
+      "after_mj_forward_axis": "-0.030000000000",
+      "after_first_step_axis": "0.000213879716",
+      "written_delta": "-0.030000000000",
+      "after_forward_delta": "-0.030000000000",
+      "first_step_qvel_delta": "0.000213879716",
+      "qpos_delta_first_step": "0.000000427759",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010.csv"
+    },
+    {
+      "trace_case_id": "yawrate_plus_0p010",
+      "perturbation_id": "yawrate_plus",
+      "perturbation_type": "base_yawrate",
+      "axis": "qvel_5",
+      "qpos_axis": "qpos_3",
+      "expected_delta": "0.050000000000",
+      "before_axis": "0.000000000000",
+      "after_injection_axis": "0.050000000000",
+      "after_mj_forward_axis": "0.050000000000",
+      "after_first_step_axis": "-0.031726322323",
+      "written_delta": "0.050000000000",
+      "after_forward_delta": "0.050000000000",
+      "first_step_qvel_delta": "-0.031726322323",
+      "qpos_delta_first_step": "-0.000000022225",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010.csv"
+    },
+    {
+      "trace_case_id": "yawrate_minus_0p010",
+      "perturbation_id": "yawrate_minus",
+      "perturbation_type": "base_yawrate",
+      "axis": "qvel_5",
+      "qpos_axis": "qpos_3",
+      "expected_delta": "-0.050000000000",
+      "before_axis": "0.000000000000",
+      "after_injection_axis": "-0.050000000000",
+      "after_mj_forward_axis": "-0.050000000000",
+      "after_first_step_axis": "-0.031726322323",
+      "written_delta": "-0.050000000000",
+      "after_forward_delta": "-0.050000000000",
+      "first_step_qvel_delta": "-0.031726322323",
+      "qpos_delta_first_step": "-0.000000022225",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010.csv"
+    }
+  ],
+  "generated_files": [
+    "results/logs_sample/stage23_2_qvel_injection_trace_validation.csv",
+    "results/logs_sample/stage23_2_qvel_injection_trace_diagnostic_table.csv",
+    "results/logs_sample/stage23_2_qvel_injection_trace_diagnostic_table.md",
+    "results/logs_sample/stage23_2_qvel_injection_trace_summary.json",
+    "docs/STAGE23_2_QVEL_INJECTION_TRACE_DIAGNOSTIC.md"
+  ],
+  "claim_boundary": [
+    "diagnostic trace only",
+    "no observable perturbation robustness claim",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "checks": [
+    {
+      "check": "plan_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_1_qvel_injection_trace_plan.csv"
+    },
+    {
+      "check": "execution_csv_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_execution.csv"
+    },
+    {
+      "check": "execution_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_execution_summary.json"
+    },
+    {
+      "check": "execution_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "planned_case_count_7",
+      "status": "PASS",
+      "detail": "count=7"
+    },
+    {
+      "check": "execution_case_count_7",
+      "status": "PASS",
+      "detail": "count=7"
+    },
+    {
+      "check": "nominal_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010.csv"
+    },
+    {
+      "check": "nominal_0p010_case_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010_summary.json"
+    },
+    {
+      "check": "nominal_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "nominal_0p010_trace_has::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "nominal_0p010_trace_has::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "nominal_0p010_trace_has::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "nominal_0p010_trace_has::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "nominal_0p010_trace_has::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "nominal_0p010_trace_has::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "nominal_0p010_trace_has::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "nominal_0p010_trace_has::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "nominal_0p010_trace_has::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "nominal_0p010_trace_has::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "nominal_0p010_trace_has::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "nominal_0p010_trace_has::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "nominal_0p010_trace_has::qpos_size",
+      "status": "PASS",
+      "detail": "qpos_size"
+    },
+    {
+      "check": "nominal_0p010_trace_has::qvel_size",
+      "status": "PASS",
+      "detail": "qvel_size"
+    },
+    {
+      "check": "nominal_0p010_trace_has::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "nominal_0p010_trace_has::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "nominal_0p010_trace_has::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "nominal_0p010_trace_has::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "nominal_0p010_trace_has::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "nominal_0p010_trace_has::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "nominal_0p010_trace_has::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "nominal_0p010_trace_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "nominal_0p010_trace_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "nominal_0p010_trace_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "nominal_0p010_trace_has::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "nominal_0p010_has_before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "nominal_0p010_has_after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "nominal_0p010_has_after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "nominal_0p010_has_after_first_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "vx_plus_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010.csv"
+    },
+    {
+      "check": "vx_plus_0p010_case_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010_summary.json"
+    },
+    {
+      "check": "vx_plus_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::qpos_size",
+      "status": "PASS",
+      "detail": "qpos_size"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::qvel_size",
+      "status": "PASS",
+      "detail": "qvel_size"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "vx_plus_0p010_trace_has::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "vx_plus_0p010_has_before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "vx_plus_0p010_has_after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "vx_plus_0p010_has_after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "vx_plus_0p010_has_after_first_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "vx_minus_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010.csv"
+    },
+    {
+      "check": "vx_minus_0p010_case_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010_summary.json"
+    },
+    {
+      "check": "vx_minus_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::qpos_size",
+      "status": "PASS",
+      "detail": "qpos_size"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::qvel_size",
+      "status": "PASS",
+      "detail": "qvel_size"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "vx_minus_0p010_trace_has::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "vx_minus_0p010_has_before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "vx_minus_0p010_has_after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "vx_minus_0p010_has_after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "vx_minus_0p010_has_after_first_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "vy_plus_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010.csv"
+    },
+    {
+      "check": "vy_plus_0p010_case_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010_summary.json"
+    },
+    {
+      "check": "vy_plus_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::qpos_size",
+      "status": "PASS",
+      "detail": "qpos_size"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::qvel_size",
+      "status": "PASS",
+      "detail": "qvel_size"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "vy_plus_0p010_trace_has::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "vy_plus_0p010_has_before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "vy_plus_0p010_has_after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "vy_plus_0p010_has_after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "vy_plus_0p010_has_after_first_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "vy_minus_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010.csv"
+    },
+    {
+      "check": "vy_minus_0p010_case_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010_summary.json"
+    },
+    {
+      "check": "vy_minus_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::qpos_size",
+      "status": "PASS",
+      "detail": "qpos_size"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::qvel_size",
+      "status": "PASS",
+      "detail": "qvel_size"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "vy_minus_0p010_trace_has::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "vy_minus_0p010_has_before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "vy_minus_0p010_has_after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "vy_minus_0p010_has_after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "vy_minus_0p010_has_after_first_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010.csv"
+    },
+    {
+      "check": "yawrate_plus_0p010_case_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010_summary.json"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::qpos_size",
+      "status": "PASS",
+      "detail": "qpos_size"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::qvel_size",
+      "status": "PASS",
+      "detail": "qvel_size"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_has::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "yawrate_plus_0p010_has_before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "yawrate_plus_0p010_has_after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "yawrate_plus_0p010_has_after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "yawrate_plus_0p010_has_after_first_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010.csv"
+    },
+    {
+      "check": "yawrate_minus_0p010_case_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010_summary.json"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::qpos_size",
+      "status": "PASS",
+      "detail": "qpos_size"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::qvel_size",
+      "status": "PASS",
+      "detail": "qvel_size"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_has::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "yawrate_minus_0p010_has_before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "yawrate_minus_0p010_has_after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "yawrate_minus_0p010_has_after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "yawrate_minus_0p010_has_after_first_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "diagnostic_table_generated",
+      "status": "PASS",
+      "detail": "rows=7"
+    },
+    {
+      "check": "diagnostic_records_injection_written_flag",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "diagnostic_records_after_forward_flag",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "diagnostic_records_first_step_state_change_flag",
+      "status": "PASS",
+      "detail": "True"
+    }
+  ]
+}
