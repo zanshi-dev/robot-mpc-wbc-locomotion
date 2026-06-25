@@ -1,0 +1,14 @@
+check,status,detail
+stage25_0_summary_exists,PASS,results/logs_sample/stage25_0_mpc_wbc_primary_controller_roadmap_summary.json
+stage25_0_result_pass,PASS,result=pass
+stage25_0_target_mode_primary,PASS,target=primary_mpc_wbc
+scan_file_count_positive,PASS,count=324
+core_category_has_hits::mpc_wbc_candidate_torque,PASS,hits=3868
+core_category_has_hits::candidate_scale_or_blending,PASS,hits=2833
+core_category_has_hits::swing_leg_pd,PASS,hits=1367
+core_category_has_hits::safety_filter_or_saturation,PASS,hits=2236
+core_category_has_hits::mujoco_torque_write_or_step,PASS,hits=627
+core_category_has_hits::control_mode_or_runner_args,PASS,hits=3463
+ready_for_stage25_2_source_patch_planning,PASS,True
+candidate_files_generated,PASS,rows=318
+category_summary_generated,PASS,rows=12

@@ -1,0 +1,582 @@
+{
+  "stage": "25.1",
+  "name": "control source audit",
+  "result": "pass",
+  "failure_count": 0,
+  "scanned_source_file_count": 324,
+  "hit_count": 28772,
+  "category_count": 12,
+  "candidate_file_count": 318,
+  "ready_for_stage25_2_source_patch_planning": true,
+  "primary_mpc_wbc_existing_mode_found": false,
+  "core_categories": [
+    "mpc_wbc_candidate_torque",
+    "candidate_scale_or_blending",
+    "swing_leg_pd",
+    "safety_filter_or_saturation",
+    "mujoco_torque_write_or_step",
+    "control_mode_or_runner_args"
+  ],
+  "category_summary": [
+    {
+      "category": "baseline_torque_generation",
+      "hit_count": "2400",
+      "file_count": "260",
+      "top_files": "scripts/stage14_5d_r9_final_simulation_only_evidence_freeze.py; scripts/stage14_5d_r3_baseline_mode_derived_runner_dry_run.py; scripts/stage14_5d_r5_mpc_candidate_injection_design_inspection.py; scripts/stage14_5d_r8_closed_loop_ab_packaging.py; scripts/stage20_3_reproducibility_analysis.py"
+    },
+    {
+      "category": "mpc_wbc_candidate_torque",
+      "hit_count": "3868",
+      "file_count": "272",
+      "top_files": "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py; scripts/stage14_5d_r6_derive_mpc_assisted_candidate_runner.py; scripts/stage14_5d_r7_candidate_mode_guarded_dry_run.py; scripts/stage14_5e_r1_candidate_robustness_scale_sweep_runner.py; scripts/stage18_2_velocity_tracking_rollout_runner.py"
+    },
+    {
+      "category": "candidate_scale_or_blending",
+      "hit_count": "2833",
+      "file_count": "218",
+      "top_files": "scripts/stage14_5e_r1_candidate_robustness_scale_sweep_runner.py; scripts/stage19_4_sync_and_freeze_scale_sweep_evidence.py; scripts/stage23_2_qvel_injection_trace_runner.py; scripts/stage13_2c_final_2400step_robustness_evidence_freeze.py; scripts/stage20_2_replay_reproducibility_runner.py"
+    },
+    {
+      "category": "swing_leg_pd",
+      "hit_count": "1367",
+      "file_count": "83",
+      "top_files": "scripts/stage07_online_stance_pd_wbc_plus_swing_pd_sweep.py; scripts/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py; scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py; scripts/stage13_2a_r2_create_2400step_derived_runner.py; scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py"
+    },
+    {
+      "category": "safety_filter_or_saturation",
+      "hit_count": "2236",
+      "file_count": "192",
+      "top_files": "scripts/stage10_disabled_controller_uses_safety_utilities.py; scripts/stage10_7_8_safety_utility_freeze_summary.py; scripts/stage10_clamp_watchdog_utility_without_publisher.py; scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py; scripts/stage18_2_velocity_tracking_rollout_runner.py"
+    },
+    {
+      "category": "mujoco_torque_write_or_step",
+      "hit_count": "627",
+      "file_count": "113",
+      "top_files": "scripts/stage15_8_mujoco_torque_smoke_test.py; scripts/stage15_10_compare_mujoco_torque_smoke_policies.py; scripts/stage15_9_mujoco_jtf_candidate_injection.py; scripts/stage15_7_mujoco_candidate_compatibility_audit.py; scripts/stage15_5_model_readiness_audit.py"
+    },
+    {
+      "category": "control_mode_or_runner_args",
+      "hit_count": "3463",
+      "file_count": "202",
+      "top_files": "scripts/stage14_5d_r5_mpc_candidate_injection_design_inspection.py; scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py; scripts/stage14_5d_r6_derive_mpc_assisted_candidate_runner.py; scripts/stage14_5d_r7_candidate_mode_guarded_dry_run.py; scripts/stage14_5d_r8_closed_loop_ab_packaging.py"
+    },
+    {
+      "category": "qp_osqp_solve_path",
+      "hit_count": "2119",
+      "file_count": "247",
+      "top_files": "scripts/stage14_5c_mpc_force_reference_offline_qp_check.py; scripts/stage23_2_qvel_injection_trace_runner.py; scripts/stage07_full_wbc_stance_constraint_qp.py; scripts/stage14_4_base_velocity_tracking_mpc_demo.py; ros2_ws/src/robot_mpc_wbc_cpp_controller/test/test_contact_force_qp.cpp"
+    },
+    {
+      "category": "contact_gait_state",
+      "hit_count": "2100",
+      "file_count": "161",
+      "top_files": "scripts/stage07_online_full_wbc_scheduler_recommended_run.py; scripts/stage07_online_full_wbc_with_scheduler_proto.py; scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py; scripts/stage04_gait_swing_foothold_demo.py; scripts/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py"
+    },
+    {
+      "category": "state_reading_mapping",
+      "hit_count": "7237",
+      "file_count": "297",
+      "top_files": "scripts/stage10_cpp_state_cache_runtime_validation.py; scripts/stage18_2_velocity_tracking_rollout_runner.py; scripts/stage18_4_sync_and_freeze_velocity_evidence.py; scripts/stage19_2_velocity_scale_sweep_runner.py; scripts/stage21_2_local_perturbation_runner.py"
+    },
+    {
+      "category": "pinocchio_kinematics_dynamics",
+      "hit_count": "522",
+      "file_count": "52",
+      "top_files": "scripts/stage15_4_pinocchio_jacobian_candidate_rollout.py; scripts/stage15_6_real_model_jacobian_candidate_rollout.py; scripts/stage15_9_mujoco_jtf_candidate_injection.py; scripts/stage08_runtime_interface_adapter_module_check.py; scripts/stage15_4_validate_pinocchio_jacobian_candidate_rollout.py"
+    },
+    {
+      "category": "primary_mpc_wbc_existing_mode",
+      "hit_count": "0",
+      "file_count": "0",
+      "top_files": ""
+    }
+  ],
+  "candidate_files": [
+    {
+      "path": "scripts/stage23_2_qvel_injection_trace_runner.py",
+      "hit_count": "515",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage21_2_local_perturbation_runner.py",
+      "hit_count": "481",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage22_2_observable_perturbation_runner.py",
+      "hit_count": "475",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage19_2_velocity_scale_sweep_runner.py",
+      "hit_count": "474",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage20_2_replay_reproducibility_runner.py",
+      "hit_count": "473",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage18_2_velocity_tracking_rollout_runner.py",
+      "hit_count": "465",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage14_5d_r6_closed_loop_ab_mpc_assisted_candidate_runner.py",
+      "hit_count": "423",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage14_5e_r1_candidate_robustness_scale_sweep_runner.py",
+      "hit_count": "370",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage14_5d_r2_closed_loop_ab_runner_skeleton.py",
+      "hit_count": "312",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage14_5d_r5_mpc_candidate_injection_design_inspection.py",
+      "hit_count": "303",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage14_5d_r9_final_simulation_only_evidence_freeze.py",
+      "hit_count": "303",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage14_5d_r6_derive_mpc_assisted_candidate_runner.py",
+      "hit_count": "290",
+      "category_count": "9",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage14_5e_r2_candidate_robustness_sweep_analysis_packaging.py",
+      "hit_count": "272",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage14_5d_r8_closed_loop_ab_packaging.py",
+      "hit_count": "268",
+      "category_count": "9",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage07_online_stance_pd_wbc_plus_swing_pd_sweep.py",
+      "hit_count": "249",
+      "category_count": "9",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage19_4_sync_and_freeze_scale_sweep_evidence.py",
+      "hit_count": "245",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage13_2_2400step_simulation_only_mixed_baseline_runner.py",
+      "hit_count": "239",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage15_4_pinocchio_jacobian_candidate_rollout.py",
+      "hit_count": "239",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; pinocchio_kinematics_dynamics; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py",
+      "hit_count": "238",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; pinocchio_kinematics_dynamics; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage07_online_full_wbc_scheduler_recommended_run.py",
+      "hit_count": "235",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; pinocchio_kinematics_dynamics; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage07_online_full_wbc_with_scheduler_proto.py",
+      "hit_count": "235",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; pinocchio_kinematics_dynamics; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage07_online_stance_pd_wbc_plus_swing_pd_recommended_test.py",
+      "hit_count": "233",
+      "category_count": "9",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage14_5d_r7_candidate_mode_guarded_dry_run.py",
+      "hit_count": "228",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage07_online_stance_wbc_plus_swing_pd_sweep.py",
+      "hit_count": "226",
+      "category_count": "9",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage14_5b_offline_mpc_force_to_torque_candidate_check.py",
+      "hit_count": "222",
+      "category_count": "9",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; pinocchio_kinematics_dynamics; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage19_3_velocity_stability_tradeoff_analysis.py",
+      "hit_count": "221",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage07_online_full_wbc_step_loop_proto.py",
+      "hit_count": "217",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; pinocchio_kinematics_dynamics; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage15_9_mujoco_jtf_candidate_injection.py",
+      "hit_count": "214",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; pinocchio_kinematics_dynamics; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage15_3_contact_force_candidate_rollout.py",
+      "hit_count": "212",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; pinocchio_kinematics_dynamics; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage20_3_reproducibility_analysis.py",
+      "hit_count": "212",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage21_3_local_robustness_analysis.py",
+      "hit_count": "202",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage22_3_observable_robustness_analysis.py",
+      "hit_count": "196",
+      "category_count": "8",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage17_1_validate_conservative_closed_loop_rollout.py",
+      "hit_count": "195",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage07_online_full_wbc_plus_swing_joint_tracking_proto.py",
+      "hit_count": "192",
+      "category_count": "9",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage07_online_full_wbc_plus_swing_joint_tracking_sweep.py",
+      "hit_count": "190",
+      "category_count": "9",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage07_swing_tracking_stability_sweep.py",
+      "hit_count": "190",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage14_5c_mpc_force_reference_offline_qp_check.py",
+      "hit_count": "190",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; pinocchio_kinematics_dynamics; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage14_5d_r2_derive_closed_loop_ab_runner_skeleton.py",
+      "hit_count": "189",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage14_5e_r0_candidate_robustness_envelope_preflight.py",
+      "hit_count": "183",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage13_2b_r1_derive_contact_schedule_and_rerun_2400step.py",
+      "hit_count": "180",
+      "category_count": "9",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage14_5f_r2_final_simulation_only_milestone_freeze.py",
+      "hit_count": "180",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage14_5d_r3_baseline_mode_derived_runner_dry_run.py",
+      "hit_count": "178",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage18_3_velocity_comparison_analysis.py",
+      "hit_count": "174",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage14_5f_r1_simulation_only_milestone_release_note_draft.py",
+      "hit_count": "172",
+      "category_count": "8",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage15_6_real_model_jacobian_candidate_rollout.py",
+      "hit_count": "172",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; pinocchio_kinematics_dynamics; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage09_python_baseline_ros2_field_mapping.py",
+      "hit_count": "169",
+      "category_count": "9",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; pinocchio_kinematics_dynamics; qp_osqp_solve_path; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage10_0_11_full_no_publisher_controller_freeze.py",
+      "hit_count": "164",
+      "category_count": "7",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage08_adapter_backed_stage07_baseline_ab_test.py",
+      "hit_count": "162",
+      "category_count": "9",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "2"
+    },
+    {
+      "path": "scripts/stage15_7_mujoco_candidate_compatibility_audit.py",
+      "hit_count": "160",
+      "category_count": "10",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; control_mode_or_runner_args; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; pinocchio_kinematics_dynamics; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    },
+    {
+      "path": "scripts/stage07_swing_joint_target_tracking_with_wbc_test.py",
+      "hit_count": "158",
+      "category_count": "9",
+      "categories": "baseline_torque_generation; candidate_scale_or_blending; contact_gait_state; mpc_wbc_candidate_torque; mujoco_torque_write_or_step; qp_osqp_solve_path; safety_filter_or_saturation; state_reading_mapping; swing_leg_pd",
+      "likely_role": "candidate_controller_patch_point",
+      "role_score": "3"
+    }
+  ],
+  "stage25_2_strategy": "Stage 25.2 implementation strategy:\n\n1. Select the highest-confidence runner / controller patch point from stage25_1_control_source_audit_candidate_files.csv.\n2. Add a new control mode named primary_mpc_wbc.\n3. Preserve existing baseline and mpc-assisted candidate injection behavior.\n4. Keep three explicit final torque composition branches:\n   baseline: tau_total = tau_baseline + tau_swing_pd\n   mpc_assisted_candidate: tau_total = tau_baseline + alpha * tau_mpc_wbc_candidate + tau_swing_pd\n   primary_mpc_wbc: tau_total = tau_mpc_wbc_candidate_as_primary_stance + tau_swing_pd\n5. Keep torque safety filter after all torque composition modes.\n6. If QP / WBC solve fails, record the failure and use a safe fallback.\n7. Add smoke rollout evidence before baseline comparison.",
+  "claim_boundary": [
+    "source audit only",
+    "no controller modification yet",
+    "no new rollout generated",
+    "no primary_mpc_wbc closure claim yet",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no observable perturbation robustness claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "generated_files": [
+    "results/logs_sample/stage25_1_control_source_audit_hits.csv",
+    "results/logs_sample/stage25_1_control_source_audit_category_summary.csv",
+    "results/logs_sample/stage25_1_control_source_audit_candidate_files.csv",
+    "results/logs_sample/stage25_1_control_source_audit_validation.csv",
+    "results/logs_sample/stage25_1_control_source_audit_summary.json",
+    "docs/STAGE25_1_CONTROL_SOURCE_AUDIT.md"
+  ],
+  "checks": [
+    {
+      "check": "stage25_0_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_0_mpc_wbc_primary_controller_roadmap_summary.json"
+    },
+    {
+      "check": "stage25_0_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage25_0_target_mode_primary",
+      "status": "PASS",
+      "detail": "target=primary_mpc_wbc"
+    },
+    {
+      "check": "scan_file_count_positive",
+      "status": "PASS",
+      "detail": "count=324"
+    },
+    {
+      "check": "core_category_has_hits::mpc_wbc_candidate_torque",
+      "status": "PASS",
+      "detail": "hits=3868"
+    },
+    {
+      "check": "core_category_has_hits::candidate_scale_or_blending",
+      "status": "PASS",
+      "detail": "hits=2833"
+    },
+    {
+      "check": "core_category_has_hits::swing_leg_pd",
+      "status": "PASS",
+      "detail": "hits=1367"
+    },
+    {
+      "check": "core_category_has_hits::safety_filter_or_saturation",
+      "status": "PASS",
+      "detail": "hits=2236"
+    },
+    {
+      "check": "core_category_has_hits::mujoco_torque_write_or_step",
+      "status": "PASS",
+      "detail": "hits=627"
+    },
+    {
+      "check": "core_category_has_hits::control_mode_or_runner_args",
+      "status": "PASS",
+      "detail": "hits=3463"
+    },
+    {
+      "check": "ready_for_stage25_2_source_patch_planning",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "candidate_files_generated",
+      "status": "PASS",
+      "detail": "rows=318"
+    },
+    {
+      "check": "category_summary_generated",
+      "status": "PASS",
+      "detail": "rows=12"
+    }
+  ]
+}
