@@ -1,0 +1,329 @@
+{
+  "stage": "23.1",
+  "name": "qvel injection trace preflight",
+  "result": "pass",
+  "failure_count": 0,
+  "stage22_negative_evidence_context": {
+    "observable_perturbation_pass": false,
+    "perturbation_metric_variability_detected": false,
+    "recommendation_relation_stable": true,
+    "recommendation_observable_robust": false
+  },
+  "diagnostic_flags": {
+    "contains_mj_resetData": false,
+    "contains_data_qvel_zero_assignment": false,
+    "contains_data_qpos_zero_assignment": false,
+    "contains_new_MjData": true,
+    "contains_state_reset_word": false,
+    "contains_qvel_trace_fields": false
+  },
+  "planned_trace_cases": [
+    {
+      "trace_case_id": "nominal_0p010",
+      "perturbation_id": "nominal",
+      "perturbation_type": "none",
+      "perturb_vx": "0.000000",
+      "perturb_vy": "0.000000",
+      "perturb_yawrate": "0.000000",
+      "scale": "0.010",
+      "scale_tag": "0p010",
+      "control_mode": "mpc_assisted_candidate",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010.csv",
+      "summary_json": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010_summary.json"
+    },
+    {
+      "trace_case_id": "vx_plus_0p010",
+      "perturbation_id": "vx_plus",
+      "perturbation_type": "base_vx",
+      "perturb_vx": "0.050000",
+      "perturb_vy": "0.000000",
+      "perturb_yawrate": "0.000000",
+      "scale": "0.010",
+      "scale_tag": "0p010",
+      "control_mode": "mpc_assisted_candidate",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010.csv",
+      "summary_json": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010_summary.json"
+    },
+    {
+      "trace_case_id": "vx_minus_0p010",
+      "perturbation_id": "vx_minus",
+      "perturbation_type": "base_vx",
+      "perturb_vx": "-0.050000",
+      "perturb_vy": "0.000000",
+      "perturb_yawrate": "0.000000",
+      "scale": "0.010",
+      "scale_tag": "0p010",
+      "control_mode": "mpc_assisted_candidate",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010.csv",
+      "summary_json": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010_summary.json"
+    },
+    {
+      "trace_case_id": "vy_plus_0p010",
+      "perturbation_id": "vy_plus",
+      "perturbation_type": "base_vy",
+      "perturb_vx": "0.000000",
+      "perturb_vy": "0.030000",
+      "perturb_yawrate": "0.000000",
+      "scale": "0.010",
+      "scale_tag": "0p010",
+      "control_mode": "mpc_assisted_candidate",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010.csv",
+      "summary_json": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010_summary.json"
+    },
+    {
+      "trace_case_id": "vy_minus_0p010",
+      "perturbation_id": "vy_minus",
+      "perturbation_type": "base_vy",
+      "perturb_vx": "0.000000",
+      "perturb_vy": "-0.030000",
+      "perturb_yawrate": "0.000000",
+      "scale": "0.010",
+      "scale_tag": "0p010",
+      "control_mode": "mpc_assisted_candidate",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010.csv",
+      "summary_json": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010_summary.json"
+    },
+    {
+      "trace_case_id": "yawrate_plus_0p010",
+      "perturbation_id": "yawrate_plus",
+      "perturbation_type": "base_yawrate",
+      "perturb_vx": "0.000000",
+      "perturb_vy": "0.000000",
+      "perturb_yawrate": "0.050000",
+      "scale": "0.010",
+      "scale_tag": "0p010",
+      "control_mode": "mpc_assisted_candidate",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010.csv",
+      "summary_json": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010_summary.json"
+    },
+    {
+      "trace_case_id": "yawrate_minus_0p010",
+      "perturbation_id": "yawrate_minus",
+      "perturbation_type": "base_yawrate",
+      "perturb_vx": "0.000000",
+      "perturb_vy": "0.000000",
+      "perturb_yawrate": "-0.050000",
+      "scale": "0.010",
+      "scale_tag": "0p010",
+      "control_mode": "mpc_assisted_candidate",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010.csv",
+      "summary_json": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010_summary.json"
+    }
+  ],
+  "stage23_2_trace_requirements": [
+    "record qvel before injection",
+    "record qvel immediately after injection",
+    "record qvel after mujoco.mj_forward",
+    "record qvel/qpos/base_x/base_y/base_vx_fd/base_vy_fd for the first several mj_step calls",
+    "compare nominal against vx/vy/yawrate perturbation cases",
+    "identify whether perturbation was not written, overwritten, or hidden by summary metrics"
+  ],
+  "generated_files": [
+    "results/logs_sample/stage23_1_qvel_injection_trace_preflight_validation.csv",
+    "results/logs_sample/stage23_1_qvel_injection_trace_preflight_context.txt",
+    "results/logs_sample/stage23_1_qvel_injection_trace_plan.csv",
+    "results/logs_sample/stage23_1_qvel_injection_trace_preflight_summary.json",
+    "docs/STAGE23_1_QVEL_INJECTION_TRACE_PREFLIGHT.md"
+  ],
+  "claim_boundary": [
+    "preflight only",
+    "no new diagnostic rollout generated yet",
+    "no observable perturbation robustness claim",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "checks": [
+    {
+      "check": "stage23_0_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_0_perturbation_observability_roadmap_summary.json"
+    },
+    {
+      "check": "stage23_0_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage22_4_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_4_observable_perturbation_evidence_freeze_summary.json"
+    },
+    {
+      "check": "stage22_4_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage22_4_observable_false",
+      "status": "PASS",
+      "detail": "perturbation_metric_variability_detected=False"
+    },
+    {
+      "check": "stage22_4_recommendation_observable_false",
+      "status": "PASS",
+      "detail": "recommendation_observable_robust=False"
+    },
+    {
+      "check": "stage22_runner_exists",
+      "status": "PASS",
+      "detail": "scripts/stage22_2_observable_perturbation_runner.py"
+    },
+    {
+      "check": "stage22_table_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturbation_table.csv"
+    },
+    {
+      "check": "stage22_variability_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_3_observable_perturbation_variability.csv"
+    },
+    {
+      "check": "runner_contains::--perturbation-id",
+      "status": "PASS",
+      "detail": "--perturbation-id"
+    },
+    {
+      "check": "runner_contains::--perturbation-type",
+      "status": "PASS",
+      "detail": "--perturbation-type"
+    },
+    {
+      "check": "runner_contains::--perturb-vx",
+      "status": "PASS",
+      "detail": "--perturb-vx"
+    },
+    {
+      "check": "runner_contains::--perturb-vy",
+      "status": "PASS",
+      "detail": "--perturb-vy"
+    },
+    {
+      "check": "runner_contains::--perturb-yawrate",
+      "status": "PASS",
+      "detail": "--perturb-yawrate"
+    },
+    {
+      "check": "runner_contains::args.perturb_vx",
+      "status": "PASS",
+      "detail": "args.perturb_vx"
+    },
+    {
+      "check": "runner_contains::args.perturb_vy",
+      "status": "PASS",
+      "detail": "args.perturb_vy"
+    },
+    {
+      "check": "runner_contains::args.perturb_yawrate",
+      "status": "PASS",
+      "detail": "args.perturb_yawrate"
+    },
+    {
+      "check": "runner_contains::data.qvel",
+      "status": "PASS",
+      "detail": "data.qvel"
+    },
+    {
+      "check": "runner_contains::data.qvel[0]",
+      "status": "PASS",
+      "detail": "data.qvel[0]"
+    },
+    {
+      "check": "runner_contains::data.qvel[1]",
+      "status": "PASS",
+      "detail": "data.qvel[1]"
+    },
+    {
+      "check": "runner_contains::data.qvel[5]",
+      "status": "PASS",
+      "detail": "data.qvel[5]"
+    },
+    {
+      "check": "runner_contains::mujoco.mj_forward",
+      "status": "PASS",
+      "detail": "mujoco.mj_forward"
+    },
+    {
+      "check": "runner_contains::mujoco.mj_step",
+      "status": "PASS",
+      "detail": "mujoco.mj_step"
+    },
+    {
+      "check": "runner_contains::data.qpos",
+      "status": "PASS",
+      "detail": "data.qpos"
+    },
+    {
+      "check": "runner_contains::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "runner_contains::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "runner_contains::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "runner_contains::mean_vx",
+      "status": "PASS",
+      "detail": "mean_vx"
+    },
+    {
+      "check": "runner_contains::mean_abs_velocity_error",
+      "status": "PASS",
+      "detail": "mean_abs_velocity_error"
+    },
+    {
+      "check": "runner_contains::forward_displacement",
+      "status": "PASS",
+      "detail": "forward_displacement"
+    },
+    {
+      "check": "runner_does_not_need_existing_trace_fields",
+      "status": "PASS",
+      "detail": "contains_qvel_trace_fields=False"
+    },
+    {
+      "check": "planned_trace_case_count_7",
+      "status": "PASS",
+      "detail": "count=7"
+    },
+    {
+      "check": "planned_trace_includes_nominal",
+      "status": "PASS",
+      "detail": "nominal"
+    },
+    {
+      "check": "planned_trace_includes_vx",
+      "status": "PASS",
+      "detail": "vx +/-"
+    },
+    {
+      "check": "planned_trace_includes_vy",
+      "status": "PASS",
+      "detail": "vy +/-"
+    },
+    {
+      "check": "planned_trace_includes_yawrate",
+      "status": "PASS",
+      "detail": "yawrate +/-"
+    },
+    {
+      "check": "planned_trace_scale_0p010_only",
+      "status": "PASS",
+      "detail": "scale=0.010"
+    },
+    {
+      "check": "planned_trace_outputs_unique",
+      "status": "PASS",
+      "detail": "unique trace csv"
+    }
+  ]
+}

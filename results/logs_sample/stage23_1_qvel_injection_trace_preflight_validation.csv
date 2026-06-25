@@ -1,0 +1,39 @@
+check,status,detail
+stage23_0_summary_exists,PASS,results/logs_sample/stage23_0_perturbation_observability_roadmap_summary.json
+stage23_0_result_pass,PASS,result=pass
+stage22_4_summary_exists,PASS,results/logs_sample/stage22_4_observable_perturbation_evidence_freeze_summary.json
+stage22_4_result_pass,PASS,result=pass
+stage22_4_observable_false,PASS,perturbation_metric_variability_detected=False
+stage22_4_recommendation_observable_false,PASS,recommendation_observable_robust=False
+stage22_runner_exists,PASS,scripts/stage22_2_observable_perturbation_runner.py
+stage22_table_exists,PASS,results/logs_sample/stage22_2_observable_perturbation_table.csv
+stage22_variability_exists,PASS,results/logs_sample/stage22_3_observable_perturbation_variability.csv
+runner_contains::--perturbation-id,PASS,--perturbation-id
+runner_contains::--perturbation-type,PASS,--perturbation-type
+runner_contains::--perturb-vx,PASS,--perturb-vx
+runner_contains::--perturb-vy,PASS,--perturb-vy
+runner_contains::--perturb-yawrate,PASS,--perturb-yawrate
+runner_contains::args.perturb_vx,PASS,args.perturb_vx
+runner_contains::args.perturb_vy,PASS,args.perturb_vy
+runner_contains::args.perturb_yawrate,PASS,args.perturb_yawrate
+runner_contains::data.qvel,PASS,data.qvel
+runner_contains::data.qvel[0],PASS,data.qvel[0]
+runner_contains::data.qvel[1],PASS,data.qvel[1]
+runner_contains::data.qvel[5],PASS,data.qvel[5]
+runner_contains::mujoco.mj_forward,PASS,mujoco.mj_forward
+runner_contains::mujoco.mj_step,PASS,mujoco.mj_step
+runner_contains::data.qpos,PASS,data.qpos
+runner_contains::base_x,PASS,base_x
+runner_contains::base_y,PASS,base_y
+runner_contains::base_vx_fd,PASS,base_vx_fd
+runner_contains::mean_vx,PASS,mean_vx
+runner_contains::mean_abs_velocity_error,PASS,mean_abs_velocity_error
+runner_contains::forward_displacement,PASS,forward_displacement
+runner_does_not_need_existing_trace_fields,PASS,contains_qvel_trace_fields=False
+planned_trace_case_count_7,PASS,count=7
+planned_trace_includes_nominal,PASS,nominal
+planned_trace_includes_vx,PASS,vx +/-
+planned_trace_includes_vy,PASS,vy +/-
+planned_trace_includes_yawrate,PASS,yawrate +/-
+planned_trace_scale_0p010_only,PASS,scale=0.010
+planned_trace_outputs_unique,PASS,unique trace csv

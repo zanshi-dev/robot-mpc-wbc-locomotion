@@ -1,0 +1,494 @@
+--- context for 'mujoco.MjData(model)', line 263 ---
+0259:     wbc = load_wbc()
+0260:     target_rows = read_swing_targets()
+0261: 
+0262:     model = mujoco.MjModel.from_xml_path(wbc.SCENE)
+0263:     data = mujoco.MjData(model)
+0264:     _apply_initial_qvelrate_perturbation(
+0265:         model,
+0266:         data,
+0267:         args.perturb_vx,
+
+--- context for 'data.qvel', line 173 ---
+0169: def _apply_initial_qvelrate_perturbation(model, data, perturb_vx, perturb_vy, perturb_yawrate):
+0170:     # MuJoCo free-joint qvel convention is used here as a simulation-only perturbation anchor.
+0171:     # qvel[0], qvel[1] are used as initial translational velocity perturbations.
+0172:     # qvel[5] is used as initial yaw-rate perturbation when available.
+0173:     if len(data.qvel) >= 1:
+0174:         data.qvel[0] += perturb_vx
+0175:     if len(data.qvel) >= 2:
+0176:         data.qvel[1] += perturb_vy
+0177:     if len(data.qvel) >= 6:
+--- context for 'data.qvel', line 174 ---
+0170:     # MuJoCo free-joint qvel convention is used here as a simulation-only perturbation anchor.
+0171:     # qvel[0], qvel[1] are used as initial translational velocity perturbations.
+0172:     # qvel[5] is used as initial yaw-rate perturbation when available.
+0173:     if len(data.qvel) >= 1:
+0174:         data.qvel[0] += perturb_vx
+0175:     if len(data.qvel) >= 2:
+0176:         data.qvel[1] += perturb_vy
+0177:     if len(data.qvel) >= 6:
+0178:         data.qvel[5] += perturb_yawrate
+--- context for 'data.qvel', line 175 ---
+0171:     # qvel[0], qvel[1] are used as initial translational velocity perturbations.
+0172:     # qvel[5] is used as initial yaw-rate perturbation when available.
+0173:     if len(data.qvel) >= 1:
+0174:         data.qvel[0] += perturb_vx
+0175:     if len(data.qvel) >= 2:
+0176:         data.qvel[1] += perturb_vy
+0177:     if len(data.qvel) >= 6:
+0178:         data.qvel[5] += perturb_yawrate
+0179: 
+--- context for 'data.qvel', line 176 ---
+0172:     # qvel[5] is used as initial yaw-rate perturbation when available.
+0173:     if len(data.qvel) >= 1:
+0174:         data.qvel[0] += perturb_vx
+0175:     if len(data.qvel) >= 2:
+0176:         data.qvel[1] += perturb_vy
+0177:     if len(data.qvel) >= 6:
+0178:         data.qvel[5] += perturb_yawrate
+0179: 
+0180:     mujoco.mj_forward(model, data)
+--- context for 'data.qvel', line 177 ---
+0173:     if len(data.qvel) >= 1:
+0174:         data.qvel[0] += perturb_vx
+0175:     if len(data.qvel) >= 2:
+0176:         data.qvel[1] += perturb_vy
+0177:     if len(data.qvel) >= 6:
+0178:         data.qvel[5] += perturb_yawrate
+0179: 
+0180:     mujoco.mj_forward(model, data)
+0181: 
+--- context for 'data.qvel', line 178 ---
+0174:         data.qvel[0] += perturb_vx
+0175:     if len(data.qvel) >= 2:
+0176:         data.qvel[1] += perturb_vy
+0177:     if len(data.qvel) >= 6:
+0178:         data.qvel[5] += perturb_yawrate
+0179: 
+0180:     mujoco.mj_forward(model, data)
+0181: 
+0182: def main():
+--- context for 'data.qvel', line 427 ---
+0423:             base_vy_fd = 0.0
+0424:         else:
+0425:             base_vx_fd = (base_x - prev_base_x) / dt
+0426:             base_vy_fd = (base_y - prev_base_y) / dt
+0427:         base_vx_qvel = float(data.qvel[0]) if data.qvel.shape[0] > 0 else float("nan")
+0428:         velocity_error = base_vx_fd - target_vx
+0429:         base_vx_fd_values.append(base_vx_fd)
+0430:         abs_velocity_error_values.append(abs(velocity_error))
+0431:         prev_base_x = base_x
+
+--- context for 'data.qpos', line 278 ---
+0274:     site_ids = wbc.set_standing_pose(model, data)
+0275: 
+0276:     q_standing = wbc.current_actuated_q(data, qadrs)
+0277: 
+0278:     initial_x = float(data.qpos[0])
+0279:     initial_y = float(data.qpos[1])
+0280:     initial_z = float(data.qpos[2])
+0281:     target_vx = float(args.target_vx)
+0282:     dt = float(model.opt.timestep)
+--- context for 'data.qpos', line 279 ---
+0275: 
+0276:     q_standing = wbc.current_actuated_q(data, qadrs)
+0277: 
+0278:     initial_x = float(data.qpos[0])
+0279:     initial_y = float(data.qpos[1])
+0280:     initial_z = float(data.qpos[2])
+0281:     target_vx = float(args.target_vx)
+0282:     dt = float(model.opt.timestep)
+0283:     prev_base_x = initial_x
+--- context for 'data.qpos', line 280 ---
+0276:     q_standing = wbc.current_actuated_q(data, qadrs)
+0277: 
+0278:     initial_x = float(data.qpos[0])
+0279:     initial_y = float(data.qpos[1])
+0280:     initial_z = float(data.qpos[2])
+0281:     target_vx = float(args.target_vx)
+0282:     dt = float(model.opt.timestep)
+0283:     prev_base_x = initial_x
+0284:     prev_base_y = initial_y
+--- context for 'data.qpos', line 418 ---
+0414: 
+0415:         data.ctrl[:] = tau_total
+0416:         mujoco.mj_step(model, data)
+0417: 
+0418:         base_x = float(data.qpos[0])
+0419:         base_y = float(data.qpos[1])
+0420:         base_z = float(data.qpos[2])
+0421:         if step == 0:
+0422:             base_vx_fd = 0.0
+--- context for 'data.qpos', line 419 ---
+0415:         data.ctrl[:] = tau_total
+0416:         mujoco.mj_step(model, data)
+0417: 
+0418:         base_x = float(data.qpos[0])
+0419:         base_y = float(data.qpos[1])
+0420:         base_z = float(data.qpos[2])
+0421:         if step == 0:
+0422:             base_vx_fd = 0.0
+0423:             base_vy_fd = 0.0
+--- context for 'data.qpos', line 420 ---
+0416:         mujoco.mj_step(model, data)
+0417: 
+0418:         base_x = float(data.qpos[0])
+0419:         base_y = float(data.qpos[1])
+0420:         base_z = float(data.qpos[2])
+0421:         if step == 0:
+0422:             base_vx_fd = 0.0
+0423:             base_vy_fd = 0.0
+0424:         else:
+--- context for 'data.qpos', line 433 ---
+0429:         base_vx_fd_values.append(base_vx_fd)
+0430:         abs_velocity_error_values.append(abs(velocity_error))
+0431:         prev_base_x = base_x
+0432:         prev_base_y = base_y
+0433:         roll, pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+0434: 
+0435:         min_z = min(min_z, base_z)
+0436:         max_z = max(max_z, base_z)
+0437:         max_abs_roll = max(max_abs_roll, abs(roll))
+--- context for 'data.qpos', line 529 ---
+0525:             "tau_step_jump_abs": f"{float(np.max(np.abs(tau_jump))):.12f}",
+0526:             "saturated": str(saturated),
+0527:         })
+0528: 
+0529:     final_x = float(data.qpos[0])
+0530:     final_y = float(data.qpos[1])
+0531:     final_z = float(data.qpos[2])
+0532:     forward_displacement = final_x - initial_x
+0533:     lateral_displacement = final_y - initial_y
+
+--- context for 'mujoco.mj_forward', line 180 ---
+0176:         data.qvel[1] += perturb_vy
+0177:     if len(data.qvel) >= 6:
+0178:         data.qvel[5] += perturb_yawrate
+0179: 
+0180:     mujoco.mj_forward(model, data)
+0181: 
+0182: def main():
+0183:     parser = argparse.ArgumentParser(description="Stage 14.5D-R2 simulation-only A/B runner skeleton")
+0184:     parser.add_argument(
+
+--- context for 'mujoco.mj_step', line 416 ---
+0412:         max_cmd_step_jump_abs = max(max_cmd_step_jump_abs, float(np.max(np.abs(tau_jump))))
+0413:         tau_prev_total = tau_total.copy()
+0414: 
+0415:         data.ctrl[:] = tau_total
+0416:         mujoco.mj_step(model, data)
+0417: 
+0418:         base_x = float(data.qpos[0])
+0419:         base_y = float(data.qpos[1])
+0420:         base_z = float(data.qpos[2])
+
+--- context for 'base_vx_fd', line 285 ---
+0281:     target_vx = float(args.target_vx)
+0282:     dt = float(model.opt.timestep)
+0283:     prev_base_x = initial_x
+0284:     prev_base_y = initial_y
+0285:     base_vx_fd_values = []
+0286:     abs_velocity_error_values = []
+0287:     min_z = initial_z
+0288:     max_z = initial_z
+0289:     max_abs_roll = 0.0
+--- context for 'base_vx_fd', line 422 ---
+0418:         base_x = float(data.qpos[0])
+0419:         base_y = float(data.qpos[1])
+0420:         base_z = float(data.qpos[2])
+0421:         if step == 0:
+0422:             base_vx_fd = 0.0
+0423:             base_vy_fd = 0.0
+0424:         else:
+0425:             base_vx_fd = (base_x - prev_base_x) / dt
+0426:             base_vy_fd = (base_y - prev_base_y) / dt
+--- context for 'base_vx_fd', line 425 ---
+0421:         if step == 0:
+0422:             base_vx_fd = 0.0
+0423:             base_vy_fd = 0.0
+0424:         else:
+0425:             base_vx_fd = (base_x - prev_base_x) / dt
+0426:             base_vy_fd = (base_y - prev_base_y) / dt
+0427:         base_vx_qvel = float(data.qvel[0]) if data.qvel.shape[0] > 0 else float("nan")
+0428:         velocity_error = base_vx_fd - target_vx
+0429:         base_vx_fd_values.append(base_vx_fd)
+--- context for 'base_vx_fd', line 428 ---
+0424:         else:
+0425:             base_vx_fd = (base_x - prev_base_x) / dt
+0426:             base_vy_fd = (base_y - prev_base_y) / dt
+0427:         base_vx_qvel = float(data.qvel[0]) if data.qvel.shape[0] > 0 else float("nan")
+0428:         velocity_error = base_vx_fd - target_vx
+0429:         base_vx_fd_values.append(base_vx_fd)
+0430:         abs_velocity_error_values.append(abs(velocity_error))
+0431:         prev_base_x = base_x
+0432:         prev_base_y = base_y
+--- context for 'base_vx_fd', line 429 ---
+0425:             base_vx_fd = (base_x - prev_base_x) / dt
+0426:             base_vy_fd = (base_y - prev_base_y) / dt
+0427:         base_vx_qvel = float(data.qvel[0]) if data.qvel.shape[0] > 0 else float("nan")
+0428:         velocity_error = base_vx_fd - target_vx
+0429:         base_vx_fd_values.append(base_vx_fd)
+0430:         abs_velocity_error_values.append(abs(velocity_error))
+0431:         prev_base_x = base_x
+0432:         prev_base_y = base_y
+0433:         roll, pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+--- context for 'base_vx_fd', line 485 ---
+0481:             "is_transition": str(is_transition),
+0482:             "time_s": f"{(step + 1) * dt:.12f}",
+0483:             "base_x": f"{base_x:.12f}",
+0484:             "base_y": f"{base_y:.12f}",
+0485:             "base_vx_fd": f"{base_vx_fd:.12f}",
+0486:             "base_vy_fd": f"{base_vy_fd:.12f}",
+0487:             "base_vx_qvel": f"{base_vx_qvel:.12f}",
+0488:             "target_vx": f"{target_vx:.12f}",
+0489:             "velocity_error": f"{velocity_error:.12f}",
+--- context for 'base_vx_fd', line 534 ---
+0530:     final_y = float(data.qpos[1])
+0531:     final_z = float(data.qpos[2])
+0532:     forward_displacement = final_x - initial_x
+0533:     lateral_displacement = final_y - initial_y
+0534:     mean_vx = float(np.mean(base_vx_fd_values)) if base_vx_fd_values else 0.0
+0535:     mean_abs_velocity_error = float(np.mean(abs_velocity_error_values)) if abs_velocity_error_values else 0.0
+0536:     max_abs_velocity_error = float(np.max(abs_velocity_error_values)) if abs_velocity_error_values else 0.0
+0537:     final_roll, final_pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+0538: 
+
+--- context for 'perturb_vx', line 169 ---
+0165:     return out
+0166: 
+0167: 
+0168: 
+0169: def _apply_initial_qvelrate_perturbation(model, data, perturb_vx, perturb_vy, perturb_yawrate):
+0170:     # MuJoCo free-joint qvel convention is used here as a simulation-only perturbation anchor.
+0171:     # qvel[0], qvel[1] are used as initial translational velocity perturbations.
+0172:     # qvel[5] is used as initial yaw-rate perturbation when available.
+0173:     if len(data.qvel) >= 1:
+--- context for 'perturb_vx', line 174 ---
+0170:     # MuJoCo free-joint qvel convention is used here as a simulation-only perturbation anchor.
+0171:     # qvel[0], qvel[1] are used as initial translational velocity perturbations.
+0172:     # qvel[5] is used as initial yaw-rate perturbation when available.
+0173:     if len(data.qvel) >= 1:
+0174:         data.qvel[0] += perturb_vx
+0175:     if len(data.qvel) >= 2:
+0176:         data.qvel[1] += perturb_vy
+0177:     if len(data.qvel) >= 6:
+0178:         data.qvel[5] += perturb_yawrate
+--- context for 'perturb_vx', line 267 ---
+0263:     data = mujoco.MjData(model)
+0264:     _apply_initial_qvelrate_perturbation(
+0265:         model,
+0266:         data,
+0267:         args.perturb_vx,
+0268:         args.perturb_vy,
+0269:         args.perturb_yawrate,
+0270:     )
+0271: 
+--- context for 'perturb_vx', line 508 ---
+0504:             "run_id": args.run_id,
+0505:             "scale_tag": args.scale_tag,
+0506:             "perturbation_id": args.perturbation_id,
+0507:             "perturbation_type": args.perturbation_type,
+0508:             "perturb_vx": args.perturb_vx,
+0509:             "perturb_vy": args.perturb_vy,
+0510:             "perturb_yawrate": args.perturb_yawrate,
+0511:         "perturbation_id": args.perturbation_id,
+0512:         "perturbation_type": args.perturbation_type,
+--- context for 'perturb_vx', line 513 ---
+0509:             "perturb_vy": args.perturb_vy,
+0510:             "perturb_yawrate": args.perturb_yawrate,
+0511:         "perturbation_id": args.perturbation_id,
+0512:         "perturbation_type": args.perturbation_type,
+0513:         "perturb_vx": args.perturb_vx,
+0514:         "perturb_vy": args.perturb_vy,
+0515:         "perturb_yawrate": args.perturb_yawrate,
+0516:             "candidate_available": str(candidate_available),
+0517:             "candidate_source_step": str(candidate_source_step),
+--- context for 'perturb_vx', line 582 ---
+0578:         "mpc_assisted_candidate_scale": args.mpc_assisted_candidate_scale,
+0579:         "scale_tag": args.scale_tag,
+0580:         "perturbation_id": args.perturbation_id,
+0581:         "perturbation_type": args.perturbation_type,
+0582:         "perturb_vx": args.perturb_vx,
+0583:         "perturb_vy": args.perturb_vy,
+0584:         "perturb_yawrate": args.perturb_yawrate,
+0585:         "run_id": args.run_id,
+0586:         "mpc_assisted_candidate_scale_max": MPC_ASSISTED_CANDIDATE_SCALE_MAX,
+
+--- context for 'perturb_yawrate', line 169 ---
+0165:     return out
+0166: 
+0167: 
+0168: 
+0169: def _apply_initial_qvelrate_perturbation(model, data, perturb_vx, perturb_vy, perturb_yawrate):
+0170:     # MuJoCo free-joint qvel convention is used here as a simulation-only perturbation anchor.
+0171:     # qvel[0], qvel[1] are used as initial translational velocity perturbations.
+0172:     # qvel[5] is used as initial yaw-rate perturbation when available.
+0173:     if len(data.qvel) >= 1:
+--- context for 'perturb_yawrate', line 178 ---
+0174:         data.qvel[0] += perturb_vx
+0175:     if len(data.qvel) >= 2:
+0176:         data.qvel[1] += perturb_vy
+0177:     if len(data.qvel) >= 6:
+0178:         data.qvel[5] += perturb_yawrate
+0179: 
+0180:     mujoco.mj_forward(model, data)
+0181: 
+0182: def main():
+--- context for 'perturb_yawrate', line 269 ---
+0265:         model,
+0266:         data,
+0267:         args.perturb_vx,
+0268:         args.perturb_vy,
+0269:         args.perturb_yawrate,
+0270:     )
+0271: 
+0272:     contact_rows = wbc.read_contact_wbc_rows()
+0273:     dofs, qadrs = wbc.actuator_indices(model)
+--- context for 'perturb_yawrate', line 510 ---
+0506:             "perturbation_id": args.perturbation_id,
+0507:             "perturbation_type": args.perturbation_type,
+0508:             "perturb_vx": args.perturb_vx,
+0509:             "perturb_vy": args.perturb_vy,
+0510:             "perturb_yawrate": args.perturb_yawrate,
+0511:         "perturbation_id": args.perturbation_id,
+0512:         "perturbation_type": args.perturbation_type,
+0513:         "perturb_vx": args.perturb_vx,
+0514:         "perturb_vy": args.perturb_vy,
+--- context for 'perturb_yawrate', line 515 ---
+0511:         "perturbation_id": args.perturbation_id,
+0512:         "perturbation_type": args.perturbation_type,
+0513:         "perturb_vx": args.perturb_vx,
+0514:         "perturb_vy": args.perturb_vy,
+0515:         "perturb_yawrate": args.perturb_yawrate,
+0516:             "candidate_available": str(candidate_available),
+0517:             "candidate_source_step": str(candidate_source_step),
+0518:             "candidate_scale": f"{args.mpc_assisted_candidate_scale:.12f}",
+0519:             "tau_baseline_raw_abs": f"{tau_baseline_raw_abs:.12f}",
+--- context for 'perturb_yawrate', line 584 ---
+0580:         "perturbation_id": args.perturbation_id,
+0581:         "perturbation_type": args.perturbation_type,
+0582:         "perturb_vx": args.perturb_vx,
+0583:         "perturb_vy": args.perturb_vy,
+0584:         "perturb_yawrate": args.perturb_yawrate,
+0585:         "run_id": args.run_id,
+0586:         "mpc_assisted_candidate_scale_max": MPC_ASSISTED_CANDIDATE_SCALE_MAX,
+0587:         "candidate_csv": args.candidate_csv,
+0588:         "candidate_step_policy": args.candidate_step_policy,
+
+--- context for 'mean_abs_velocity_error', line 535 ---
+0531:     final_z = float(data.qpos[2])
+0532:     forward_displacement = final_x - initial_x
+0533:     lateral_displacement = final_y - initial_y
+0534:     mean_vx = float(np.mean(base_vx_fd_values)) if base_vx_fd_values else 0.0
+0535:     mean_abs_velocity_error = float(np.mean(abs_velocity_error_values)) if abs_velocity_error_values else 0.0
+0536:     max_abs_velocity_error = float(np.max(abs_velocity_error_values)) if abs_velocity_error_values else 0.0
+0537:     final_roll, final_pitch = wbc.quat_to_roll_pitch(data.qpos[3:7])
+0538: 
+0539:     pass_test = (
+--- context for 'mean_abs_velocity_error', line 567 ---
+0563:         "initial_y": f"{initial_y:.12f}",
+0564:         "final_y": f"{final_y:.12f}",
+0565:         "lateral_displacement": f"{lateral_displacement:.12f}",
+0566:         "mean_vx": f"{mean_vx:.12f}",
+0567:         "mean_abs_velocity_error": f"{mean_abs_velocity_error:.12f}",
+0568:         "max_abs_velocity_error": f"{max_abs_velocity_error:.12f}",
+0569:         "control_mode": args.control_mode,
+0570:         "simulation_only_project": True,
+0571:         "hardware_deployment_completed": False,
+
+--- context for 'summary', line 33 ---
+0029: WBC_SCRIPT = "scripts/stage13_2_2400step_online_full_wbc_scheduler_runner.py"
+0030: SWING_TARGET_CSV = "results/logs_sample/stage13_2_2400step_swing_trajectory_tracking_check.csv"
+0031: 
+0032: LOG_CSV_TEMPLATE = "results/logs_sample/stage22_2_observable_perturb_{perturbation_id}_{scale_tag}_{control_mode}_log.csv"
+0033: SUMMARY_CSV_TEMPLATE = "results/logs_sample/stage22_2_observable_perturb_{perturbation_id}_{scale_tag}_{control_mode}_summary.csv"
+0034: 
+0035: LEG_ORDER = list(MJ_LEG_ORDER)
+0036: JOINTS = ["hip", "thigh", "calf"]
+0037: 
+--- context for 'summary', line 257 ---
+0253:         if args.mpc_assisted_candidate_scale != 0.0:
+0254:             raise RuntimeError("baseline mode requires --mpc-assisted-candidate-scale 0.0")
+0255: 
+0256:     log_csv = LOG_CSV_TEMPLATE.format(perturbation_id=args.perturbation_id, scale_tag=args.scale_tag, control_mode=args.control_mode)
+0257:     summary_csv = SUMMARY_CSV_TEMPLATE.format(perturbation_id=args.perturbation_id, scale_tag=args.scale_tag, control_mode=args.control_mode)
+0258: 
+0259:     wbc = load_wbc()
+0260:     target_rows = read_swing_targets()
+0261: 
+--- context for 'summary', line 555 ---
+0551:         and MAX_ROLL_LIMIT - max_abs_roll > 0.01
+0552:         and MAX_PITCH_LIMIT - max_abs_pitch > 0.01
+0553:     )
+0554: 
+0555:     summary = {
+0556:         "stage": "22.2",
+0557:         "source_stage": "14.5D-R6",
+0558:         "velocity_metric_source": "finite_difference_from_qpos0",
+0559:         "target_vx": f"{target_vx:.12f}",
+--- context for 'summary', line 648 ---
+0644:         writer = csv.DictWriter(f, fieldnames=list(log_rows[0].keys()))
+0645:         writer.writeheader()
+0646:         writer.writerows(log_rows)
+0647: 
+0648:     with open(summary_csv, "w", newline="") as f:
+0649:         writer = csv.DictWriter(f, fieldnames=list(summary.keys()))
+0650:         writer.writeheader()
+0651:         writer.writerow(summary)
+0652: 
+--- context for 'summary', line 649 ---
+0645:         writer.writeheader()
+0646:         writer.writerows(log_rows)
+0647: 
+0648:     with open(summary_csv, "w", newline="") as f:
+0649:         writer = csv.DictWriter(f, fieldnames=list(summary.keys()))
+0650:         writer.writeheader()
+0651:         writer.writerow(summary)
+0652: 
+0653:     print("Stage 13.2 2400-step simulation-only mixed baseline regression")
+--- context for 'summary', line 651 ---
+0647: 
+0648:     with open(summary_csv, "w", newline="") as f:
+0649:         writer = csv.DictWriter(f, fieldnames=list(summary.keys()))
+0650:         writer.writeheader()
+0651:         writer.writerow(summary)
+0652: 
+0653:     print("Stage 13.2 2400-step simulation-only mixed baseline regression")
+0654:     for k, v in summary.items():
+0655:         print(f"{k}={v}")
+--- context for 'summary', line 654 ---
+0650:         writer.writeheader()
+0651:         writer.writerow(summary)
+0652: 
+0653:     print("Stage 13.2 2400-step simulation-only mixed baseline regression")
+0654:     for k, v in summary.items():
+0655:         print(f"{k}={v}")
+0656: 
+0657:     print(f"saved_log={log_csv}")
+0658:     print(f"saved_summary={summary_csv}")
+--- context for 'summary', line 658 ---
+0654:     for k, v in summary.items():
+0655:         print(f"{k}={v}")
+0656: 
+0657:     print(f"saved_log={log_csv}")
+0658:     print(f"saved_summary={summary_csv}")
+0659: 
+0660:     if not pass_test:
+0661:         raise SystemExit(2)
+0662: 
+
+
+--- diagnostic flags ---
+
+contains_mj_resetData: False
+
+contains_data_qvel_zero_assignment: False
+
+contains_data_qpos_zero_assignment: False
+
+contains_new_MjData: True
+
+contains_state_reset_word: False
+
+contains_qvel_trace_fields: False
