@@ -1,0 +1,13 @@
+check,status,detail
+stage25_3_summary_exists,PASS,results/logs_sample/stage25_3_primary_mpc_wbc_smoke_summary.json
+stage25_3_result_pass,PASS,result=pass
+stage25_3_primary_executed,PASS,True
+stage25_3_smoke_stability_false,PASS,False
+runner_summary_csv_exists,PASS,results/logs_sample/stage25_2_primary_mpc_wbc_rollout_nominal_primary_primary_mpc_wbc_summary.csv
+runner_log_csv_exists,PASS,results/logs_sample/stage25_2_primary_mpc_wbc_rollout_nominal_primary_primary_mpc_wbc_log.csv
+runner_log_nonempty,PASS,rows=2400
+failure_class_expected,PASS,posture_limit_violation_with_torque_saturation_no_qp_failure
+qp_fail_steps_zero,PASS,0
+saturation_steps_positive,PASS,555
+roll_or_pitch_exceeded,PASS,"roll=0.488712369676, pitch=0.356235143697"
+primary_raw_metric_available,PASS,75.856574627963
