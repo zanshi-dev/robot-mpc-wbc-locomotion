@@ -344,3 +344,29 @@ All Stage 17 artifacts listed below are simulation-only evidence artifacts.
 | 21.4 | `docs/STAGE21_4_LOCAL_ROBUSTNESS_EVIDENCE_FREEZE.md` | Stage 21 证据冻结报告 |
 | 21.4 | `results/logs_sample/stage21_4_local_robustness_evidence_manifest.json` | Stage 21 冻结证据 manifest |
 <!-- STAGE21_ENTRY_DOCS_SYNC_END -->
+
+<!-- STAGE22_ENTRY_DOCS_SYNC_START -->
+## Stage 22 Artifacts
+
+Stage 22 artifact 记录 qvel observable perturbation attempt。注意：Stage 22 的结果是 negative evidence，不支持 observable perturbation robustness claim。
+
+结论边界：
+
+  * `observable_perturbation_pass=False`
+  * `perturbation_metric_variability_detected=False`
+  * `recommendation_relation_stable=True`
+  * `recommendation_observable_robust=False`
+  * 当前不将 `scale=0.010` 升级为 observable-perturbation-tested recommended candidate scale。
+
+| 阶段 | Artifact | 作用 |
+|---|---|---|
+| 22.0 | `docs/STAGE22_OBSERVABLE_PERTURBATION_ROBUSTNESS_ROADMAP.md` | 可观测扰动审计路线图 |
+| 22.1 | `docs/STAGE22_1_QVEL_PERTURBATION_PREFLIGHT.md` | qvel 扰动注入预检查 |
+| 22.2 | `docs/STAGE22_2_OBSERVABLE_PERTURBATION_ROLLOUT.md` | 21 组 qvel perturbation rollout 报告 |
+| 22.2 | `results/logs_sample/stage22_2_observable_perturbation_table.csv` | 21 组 rollout 汇总表 |
+| 22.3 | `docs/STAGE22_3_OBSERVABLE_ROBUSTNESS_ANALYSIS.md` | 可观测扰动分析报告 |
+| 22.3 | `results/logs_sample/stage22_3_observable_perturbation_variability.csv` | 扰动指标变化检查 |
+| 22.3 | `results/logs_sample/stage22_3_observable_robustness_summary.json` | Stage 22.3 summary |
+| 22.4 | `docs/STAGE22_4_OBSERVABLE_PERTURBATION_EVIDENCE_FREEZE.md` | Stage 22 证据冻结报告 |
+| 22.4 | `results/logs_sample/stage22_4_observable_perturbation_evidence_manifest.json` | Stage 22 证据 manifest |
+<!-- STAGE22_ENTRY_DOCS_SYNC_END -->

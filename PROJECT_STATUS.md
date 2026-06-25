@@ -5337,3 +5337,26 @@ Stage 17 does not support these statements:
   * 真实机器人 torque 执行已经完成；
   * 硬件 torque enablement 已经完成。
 <!-- STAGE21_ENTRY_DOCS_SYNC_END -->
+
+<!-- STAGE22_ENTRY_DOCS_SYNC_START -->
+## Stage 22 状态：qvel observable perturbation attempt
+
+当前状态：已完成 Stage 22.0–22.3，并在 Stage 22.4 冻结证据。
+
+| 阶段 | 结果 | 证据 |
+|---|---:|---|
+| 22.0 | pass | `docs/STAGE22_OBSERVABLE_PERTURBATION_ROBUSTNESS_ROADMAP.md` |
+| 22.1 | pass | `docs/STAGE22_1_QVEL_PERTURBATION_PREFLIGHT.md` |
+| 22.2 | pass | `docs/STAGE22_2_OBSERVABLE_PERTURBATION_ROLLOUT.md` |
+| 22.3 | pass | `docs/STAGE22_3_OBSERVABLE_ROBUSTNESS_ANALYSIS.md` |
+
+结论：
+
+    observable_perturbation_pass=False
+    perturbation_metric_variability_detected=False
+    recommendation_relation_stable=True
+    recommendation_observable_robust=False
+
+    Stage 22 是一次 qvel observable perturbation attempt。
+    由于扰动没有造成 summary 指标可观测变化，不支持 observable perturbation robustness 结论。
+<!-- STAGE22_ENTRY_DOCS_SYNC_END -->

@@ -1,0 +1,466 @@
+{
+  "stage": "22.4",
+  "name": "observable qvel perturbation evidence freeze",
+  "result": "pass",
+  "failure_count": 0,
+  "artifact_count": 73,
+  "recommended_scale": "0.010",
+  "baseline_scale": "0.000",
+  "regression_anchor_scale": "0.020",
+  "observable_perturbation_pass": false,
+  "perturbation_metric_variability_detected": false,
+  "recommendation_relation_stable": true,
+  "recommendation_observable_robust": false,
+  "conclusion": "Stage 22.3 analysis 通过，但 observable perturbation robustness 不成立。当前 qvel 初始速度扰动没有使 summary 指标产生可观测变化；因此 Stage 22 不能声明完成 observable perturbation robustness audit，只能记录为 qvel perturbation injection attempt。",
+  "claim_support": "当前证据不支持将 scale=0.010 升级为 observable-perturbation-tested recommended candidate scale；仍只能沿用 Stage 21 的 local-perturbation-tested recommended candidate scale 表述。",
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "bfccc1fccdd2aaeffac73d3eb4e4ad98a0e5455d4da0d908ef721b105e7010c3",
+      "size_bytes": 25760,
+      "exists": true
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "sha256": "0bd945149d5b61b381e011f0454e885e621314301649fc1c12850001216e8cc9",
+      "size_bytes": 171553,
+      "exists": true
+    },
+    {
+      "path": "docs/ARTIFACT_INDEX.md",
+      "sha256": "02e10d3f60183bbe9d6e925e159add3b7791baa49b1249e9505f7e1d6cdfc51a",
+      "size_bytes": 24736,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE22_OBSERVABLE_PERTURBATION_ROBUSTNESS_ROADMAP.md",
+      "sha256": "f5238f1bb2211c8a38dd9a27840fd3399ecc015d1d30dc0c44c873cc30521ee8",
+      "size_bytes": 5754,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE22_1_QVEL_PERTURBATION_PREFLIGHT.md",
+      "sha256": "4e318a02dcc1178952d8ccffee8ba1d2fe94f81b676c04ccc3f45c8d3a5cadf3",
+      "size_bytes": 7480,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE22_2_OBSERVABLE_PERTURBATION_ROLLOUT.md",
+      "sha256": "a8cc2f907492015478f6da0de17b72b0d1cba1f83b6e65b8a04be62d1e6646bc",
+      "size_bytes": 3850,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE22_3_OBSERVABLE_ROBUSTNESS_ANALYSIS.md",
+      "sha256": "4ce0c9e10fca8458f03a07978969e333ce4cb390e5d9c8611e826ea0653e61f0",
+      "size_bytes": 5807,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage22_0_validate_observable_perturbation_roadmap.py",
+      "sha256": "b9fb6c4cc1edf1383fd530b970da03496610a5c97c3d3db2763335c8c6ce5038",
+      "size_bytes": 4394,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage22_1_qvel_perturbation_preflight.py",
+      "sha256": "6037c9f65d18b69dbd3b7c34bc43be143435743743143e988ab0eaaaae2038f3",
+      "size_bytes": 15225,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage22_2_observable_perturbation_runner.py",
+      "sha256": "57ae354a9402ee5880d326c275cfada32e1788b08d40dc7d0279c665bee990fa",
+      "size_bytes": 26846,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage22_2_run_observable_perturbation_rollouts.py",
+      "sha256": "fa74f7a8eb90acaa0d75a68d6ea2de73913dbe5e849497042fea02447295d919",
+      "size_bytes": 5788,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage22_2_validate_observable_perturbation_rollouts.py",
+      "sha256": "d8bfe88a82db1350ff666d429cf82e0c34d664f289bca55ab89af3b5c3653f28",
+      "size_bytes": 13044,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage22_3_observable_robustness_analysis.py",
+      "sha256": "1af4e7d7cc13c23ecbfec66b6e05a799492f60cb2abdde58b0ebf2097db7462a",
+      "size_bytes": 19280,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_0_observable_perturbation_roadmap_validation.csv",
+      "sha256": "529ba4ba8abde793cfcc8ccd4306d74cbb5e8e72ef9ad526c01d094808b1e16f",
+      "size_bytes": 1551,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_0_observable_perturbation_roadmap_summary.json",
+      "sha256": "24cb42cb90115c74851cae2233cc49e1e226737dcb59a7b80e9a4e77e21304ca",
+      "size_bytes": 5363,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_1_qvel_perturbation_preflight_validation.csv",
+      "sha256": "4a0af4234de892c697c645c5fc5da0841937122515c95159ece00ad80e171499",
+      "size_bytes": 2025,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_1_qvel_perturbation_preflight_context.txt",
+      "sha256": "627d315eeaadab49713312171f62c65dd8f46a0bfc04ee04b379cbc5fda7a615",
+      "size_bytes": 13232,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_1_qvel_perturbation_output_plan.csv",
+      "sha256": "6a03c71471e8c5869e5ab6691c853204d823828e7b9b278b018e3877c80084a9",
+      "size_bytes": 5666,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_1_qvel_perturbation_preflight_summary.json",
+      "sha256": "fff34dbbd9572a87d8190a36ef053d5849631b10a1a89d97036cdc5e698b7b5a",
+      "size_bytes": 18930,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturbation_execution.csv",
+      "sha256": "74a2259c7cf5cedc4e64b3f5ae9a5f0c9addc4b990a7fc3a059e187c31c65b16",
+      "size_bytes": 16652,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturbation_execution_summary.json",
+      "sha256": "d33ed98192b7aa3ada91985f964e950ec13fb05132638c0f753637a74e34bd50",
+      "size_bytes": 24108,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturbation_validation.csv",
+      "sha256": "bfa3cd03214b8a10b3f79c04993eee9ea26cbed24be342449b52f7a3826f4b5c",
+      "size_bytes": 63513,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturbation_table.csv",
+      "sha256": "81b880afa9741caef8ce7ae8693fc5165ab18a5fe839ae08e3db61216f77cc61",
+      "size_bytes": 7954,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturbation_table.md",
+      "sha256": "e1b140028374cd22bbfd4041d20aed75f56f8e0e5659c93da561559257bbb213",
+      "size_bytes": 2396,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturbation_summary.json",
+      "sha256": "951fc94ae5881aca599c07121520e13b38fecfc0c6235825ba7578de5ef419aa",
+      "size_bytes": 152839,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_3_observable_robustness_per_perturbation_checks.csv",
+      "sha256": "6dbd754d00e7bba488eceec3e40b816fe3902005028d345d725daa8d8ae02c1e",
+      "size_bytes": 1364,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_3_observable_robustness_per_scale_stats.csv",
+      "sha256": "3ce3ea7242f8d8fc6ed4e3dc50dcda95109bdc70682f12afe661c84b3dbc9ce0",
+      "size_bytes": 2056,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_3_observable_perturbation_variability.csv",
+      "sha256": "1f99b1343cd4e7cecb6f432bd213f7458ed298947f6cbb58dcc820e030d0aead",
+      "size_bytes": 2500,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_3_observable_robustness_validation.csv",
+      "sha256": "a34600784e0c8bc0a39b5d7798f7513894697017aff29fae4147955023b8d449",
+      "size_bytes": 1468,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_3_observable_robustness_analysis.md",
+      "sha256": "dcc4ae50259f1e8cdabac49bd4232226928467f83ee315024128b2e2abe9de3f",
+      "size_bytes": 3560,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_3_observable_robustness_summary.json",
+      "sha256": "9527d5ce4349783937b7655ab907824d08a1759dd2b04fcaca96fd5e7117ae07",
+      "size_bytes": 22089,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_nominal_0p000_baseline_log.csv",
+      "sha256": "5394197b160153a4a3f30130e4d655365d55af724bf26d40763df6279ab0a451",
+      "size_bytes": 1434019,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_nominal_0p000_baseline_summary.csv",
+      "sha256": "5c1b6aab002cb1550e65f69741a32cf12c3fbf2b36f9425d944c76f54302a258",
+      "size_bytes": 2477,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_nominal_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "cc9900433555ab890d5df0de881dbf152e088c854d9493630a392d150f8f218c",
+      "size_bytes": 1469361,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_nominal_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "7a3bdd63effa1a81c8d5b0ad91ab402c3fce1648bc464d2a91fbba67c9822a6d",
+      "size_bytes": 2496,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_nominal_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "dfbebfa66f288195960d31aace494ce4423254f57575b11424bdb2718cd52d29",
+      "size_bytes": 1470656,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_nominal_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "9b5c146f13efe0c72d7bd30bdfee445f9b10d645df81613067b58b73071bc86a",
+      "size_bytes": 2491,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vx_plus_0p000_baseline_log.csv",
+      "sha256": "dc345262803d6861b7991b7d50289a308b2442c97a84d2c0a831d5d20422c51a",
+      "size_bytes": 1443619,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vx_plus_0p000_baseline_summary.csv",
+      "sha256": "eac0c67a08c69fd4c05c1830eb1c94f5673a6434370d25c221369eaa095bd30c",
+      "size_bytes": 2481,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vx_plus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "59ed8277b7083942b63a50b29178cba3dc39e5259479070edd6f03e466ad4f2a",
+      "size_bytes": 1478961,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vx_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "d7b25f06500f2fe440274857f31f662f4c53f97e34adcbf459a730390e2fe7b0",
+      "size_bytes": 2500,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vx_plus_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "0befe143fef31c2c482ab0ea7ea203cfee1d7184346dd4ff0d44c37a63440066",
+      "size_bytes": 1480256,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vx_plus_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "7529995492c4fa114ab2dc876de2732a03f34cae02b0fa502a23b6ff401319cf",
+      "size_bytes": 2495,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vx_minus_0p000_baseline_log.csv",
+      "sha256": "d4747d1ec2143f4f3008464f9a14b42b803198487c97bbe504c842c628651cd6",
+      "size_bytes": 1450819,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vx_minus_0p000_baseline_summary.csv",
+      "sha256": "c9fc6ef98c28699f207d16b6038082bc5c4933d68456e26ca2fc6fd41eb557e9",
+      "size_bytes": 2484,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vx_minus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "0455f44d875312f0e20d446e1b89c5f4ac1fa60294974628a3309fe1eb526383",
+      "size_bytes": 1486161,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vx_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "9879510a3315be9b1c13b0dd79f58538d762bbc2ff5db32d1d9a77c3483b421a",
+      "size_bytes": 2503,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vx_minus_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "c305042473d4b65402f7db1f7ac83f469960604fcbd8f76d873bc8d4c74be318",
+      "size_bytes": 1487456,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vx_minus_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "fe4faa0b99be449cb38cc6efd6908cce8cd6a4b0e2032f2dd5a592076ee0bb47",
+      "size_bytes": 2498,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vy_plus_0p000_baseline_log.csv",
+      "sha256": "756e00858975181a18687501529e0fa11550ba2b0801f6894449669ca523f782",
+      "size_bytes": 1443619,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vy_plus_0p000_baseline_summary.csv",
+      "sha256": "f7fdc384a3a9c3c3e3762707cd687fe97efbfa58d00904bfeac6be36637da534",
+      "size_bytes": 2481,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vy_plus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "849e8000ee196f37fedb34e8b2b5c213d342280d481bf44f90d386d5907ee96e",
+      "size_bytes": 1478961,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vy_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "5319d9d9091d30c7be5eb41d9a66f72f898a34507c161c461b16c6d0a28ae8a0",
+      "size_bytes": 2500,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vy_plus_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "783c3b37deab96ed0274d782ba469d2318d7af2b32340fefd49d8c758c9f0882",
+      "size_bytes": 1480256,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vy_plus_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "a0c94097df25387fc065ed6b0b19a24d3648c8ad97cc6e26a3b2bbed5dab3f06",
+      "size_bytes": 2495,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vy_minus_0p000_baseline_log.csv",
+      "sha256": "5c32137ccab3e11137ec2f8d02e8645584186e1f1e147a5802f57b7a43af450c",
+      "size_bytes": 1450819,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vy_minus_0p000_baseline_summary.csv",
+      "sha256": "2a741a8496251950e8691e118f8235d26ab458db8757739c3a36178c79efb278",
+      "size_bytes": 2484,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vy_minus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "b12701f7deac3e1c1ea089a6d41e8873690fe68f10b63f4755381cf0835e8606",
+      "size_bytes": 1486161,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vy_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "d32b6d4b4423e7f75e5dcfa0e19f858a9b60d2708777fe51438573aa03343059",
+      "size_bytes": 2503,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vy_minus_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "23fbef6fa0877e7da57514255a013b62755b3edc00f7fb5bf325931579ec1428",
+      "size_bytes": 1487456,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_vy_minus_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "a905155385188ab21efef5202aa853e3938318b8db935f3f537b50c040719316",
+      "size_bytes": 2498,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p000_baseline_log.csv",
+      "sha256": "04537ee68409e6b3be095acbed94ec57728b4802c0a6e62421e8ff5e45c08893",
+      "size_bytes": 1479619,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p000_baseline_summary.csv",
+      "sha256": "006fee68e5b7b0f13a484f8370fc42cfa00ae8b097c6b8b8d9989b7e1fc1a1d7",
+      "size_bytes": 2496,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "d4b692996b7350d051735e0ddbbb62bdb1ca253e0fbf7b026674e2aebd6e8b38",
+      "size_bytes": 1514961,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "127b535c02c3982cd971533da2604b419bd5172d098475449614e7b9c349c71f",
+      "size_bytes": 2515,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "6000a6199e4e2b8e4af3a68d2791c6bca498a0c40aef0f927f2380fae64da294",
+      "size_bytes": 1516256,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "754ede6dd1a88d9da3dad7f2e1d8ca1bef94da13ed4183c565fb766b78f46f76",
+      "size_bytes": 2510,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p000_baseline_log.csv",
+      "sha256": "51dc75078978bfa41b56b9435c9a76463a233189a1becfbce8ff94f1f033a363",
+      "size_bytes": 1486819,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p000_baseline_summary.csv",
+      "sha256": "c769c3c19da38bf0de06c7122b24d278ebf2e8e644f9002cf4826412d04cabc9",
+      "size_bytes": 2499,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "d0585ea4118ae8143ceaa12b34c55369a3f1bef5258c924bacb5f4361224a2d7",
+      "size_bytes": 1522161,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "78f0190c3aa70aae64149f570e300694dd84334ff808688cb41ef1bfac15609b",
+      "size_bytes": 2518,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p020_mpc_assisted_candidate_log.csv",
+      "sha256": "e3e3ce1de6ce94be7f0923a3e08fdf1b514a3ed2157732a96f4df88d4fcd65a2",
+      "size_bytes": 1523456,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p020_mpc_assisted_candidate_summary.csv",
+      "sha256": "e0fc95e69ca968f79b4e0f121c74745308b2a1445b25b21ae40abb7bdebda006",
+      "size_bytes": 2513,
+      "exists": true
+    }
+  ],
+  "claim_boundary": [
+    "simulation-only qvel perturbation attempt",
+    "negative evidence: no observable summary metric variability",
+    "scale=0.010 is not upgraded to observable-perturbation-tested recommended candidate scale",
+    "Stage 21 local-perturbation-tested recommendation remains the stronger supported wording",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ]
+}

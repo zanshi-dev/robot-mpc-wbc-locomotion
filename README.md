@@ -633,3 +633,49 @@ Stage 21 在 Stage 20 推荐 `scale=0.010` 的基础上，进行了 simulation-o
 
 > Stage 21 对 Stage 20 推荐的 scale=0.010 进行了 simulation-only local perturbation robustness audit。在当前小范围初始状态扰动设置下，scale=0.010 均通过稳定性边界，并在所有扰动工况中保持低于 baseline 和 scale=0.020 的速度误差。因此，scale=0.010 可作为当前仿真证据下的 local-perturbation-tested recommended candidate scale。
 <!-- STAGE21_ENTRY_DOCS_SYNC_END -->
+
+<!-- STAGE22_ENTRY_DOCS_SYNC_START -->
+## Stage 22：observable qvel perturbation audit attempt
+
+Stage 22 在 Stage 21 的基础上尝试引入 qvel 初始速度扰动，用于检查扰动是否能对 rollout summary 指标产生可观测变化。
+
+当前阶段结果：
+
+  * Stage 22.0 result: pass
+  * Stage 22.1 result: pass
+  * Stage 22.2 result: pass
+  * Stage 22.3 result: pass
+
+核心指标：
+
+  * `observable_perturbation_pass=False`
+  * `perturbation_metric_variability_detected=False`
+  * `recommendation_relation_stable=True`
+  * `recommendation_observable_robust=False`
+
+结论：
+
+    Stage 22.3 analysis 通过，但 observable perturbation robustness 不成立。当前 qvel 初始速度扰动没有使 summary 指标产生可观测变化；因此 Stage 22 不能声明完成 observable perturbation robustness audit，只能记录为 qvel perturbation injection attempt。
+
+    当前证据不支持将 scale=0.010 升级为 observable-perturbation-tested recommended candidate scale；仍只能沿用 Stage 21 的 local-perturbation-tested recommended candidate scale 表述。
+
+当前可以声明：
+
+  * Stage 22 完成了 simulation-only qvel initial perturbation injection attempt。
+  * 21 组 rollout 均通过稳定性边界。
+  * `scale=0.010` 的推荐关系在当前记录指标中未被破坏。
+  * 由于 `perturbation_metric_variability_detected=False`，Stage 22 不能声明完成 observable perturbation robustness audit。
+
+当前不能声明：
+
+  * 不能声明 `scale=0.010` 已升级为 observable-perturbation-tested recommended candidate scale；
+  * 不能声明完整 MPC-WBC 速度控制器已经完成；
+  * 不能声明 `scale=0.010` 可以直接用于真实机器人；
+  * 不能声明 `scale=0.010` 对所有速度、地形、扰动和外力冲击都最优；
+  * 不能声明真实机器人 torque 执行或硬件 torque enablement 已完成；
+  * 不能声明复杂地形或外力冲击鲁棒性已完成。
+
+更准确的表述是：
+
+> Stage 22 尝试通过 qvel 初始速度扰动构造 observable perturbation audit。21 组 simulation-only rollout 均通过稳定性边界，且 scale=0.010 的推荐关系在当前记录指标中未被破坏；但扰动没有造成 summary 指标的可观测变化，因此 Stage 22 不能支持 observable perturbation robustness 结论。
+<!-- STAGE22_ENTRY_DOCS_SYNC_END -->

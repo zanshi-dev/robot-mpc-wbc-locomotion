@@ -1,0 +1,507 @@
+{
+  "stage": "22.4",
+  "name": "observable qvel perturbation evidence freeze",
+  "result": "pass",
+  "failure_count": 0,
+  "artifact_count": 73,
+  "observable_perturbation_pass": false,
+  "perturbation_metric_variability_detected": false,
+  "recommendation_relation_stable": true,
+  "recommendation_observable_robust": false,
+  "generated_files": [
+    "results/logs_sample/stage22_4_observable_perturbation_evidence_freeze_validation.csv",
+    "results/logs_sample/stage22_4_observable_perturbation_evidence_hashes.csv",
+    "results/logs_sample/stage22_4_observable_perturbation_evidence_manifest.json",
+    "results/logs_sample/stage22_4_observable_perturbation_evidence_freeze_summary.json",
+    "docs/STAGE22_4_OBSERVABLE_PERTURBATION_EVIDENCE_FREEZE.md"
+  ],
+  "updated_files": [
+    "README.md",
+    "PROJECT_STATUS.md",
+    "docs/ARTIFACT_INDEX.md"
+  ],
+  "conclusion": "Stage 22.3 analysis 通过，但 observable perturbation robustness 不成立。当前 qvel 初始速度扰动没有使 summary 指标产生可观测变化；因此 Stage 22 不能声明完成 observable perturbation robustness audit，只能记录为 qvel perturbation injection attempt。",
+  "claim_support": "当前证据不支持将 scale=0.010 升级为 observable-perturbation-tested recommended candidate scale；仍只能沿用 Stage 21 的 local-perturbation-tested recommended candidate scale 表述。",
+  "checks": [
+    {
+      "check": "required_exists::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "required_exists::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "required_exists::docs/ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE22_OBSERVABLE_PERTURBATION_ROBUSTNESS_ROADMAP.md",
+      "status": "PASS",
+      "detail": "docs/STAGE22_OBSERVABLE_PERTURBATION_ROBUSTNESS_ROADMAP.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE22_1_QVEL_PERTURBATION_PREFLIGHT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE22_1_QVEL_PERTURBATION_PREFLIGHT.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE22_2_OBSERVABLE_PERTURBATION_ROLLOUT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE22_2_OBSERVABLE_PERTURBATION_ROLLOUT.md"
+    },
+    {
+      "check": "required_exists::docs/STAGE22_3_OBSERVABLE_ROBUSTNESS_ANALYSIS.md",
+      "status": "PASS",
+      "detail": "docs/STAGE22_3_OBSERVABLE_ROBUSTNESS_ANALYSIS.md"
+    },
+    {
+      "check": "required_exists::scripts/stage22_0_validate_observable_perturbation_roadmap.py",
+      "status": "PASS",
+      "detail": "scripts/stage22_0_validate_observable_perturbation_roadmap.py"
+    },
+    {
+      "check": "required_exists::scripts/stage22_1_qvel_perturbation_preflight.py",
+      "status": "PASS",
+      "detail": "scripts/stage22_1_qvel_perturbation_preflight.py"
+    },
+    {
+      "check": "required_exists::scripts/stage22_2_observable_perturbation_runner.py",
+      "status": "PASS",
+      "detail": "scripts/stage22_2_observable_perturbation_runner.py"
+    },
+    {
+      "check": "required_exists::scripts/stage22_2_run_observable_perturbation_rollouts.py",
+      "status": "PASS",
+      "detail": "scripts/stage22_2_run_observable_perturbation_rollouts.py"
+    },
+    {
+      "check": "required_exists::scripts/stage22_2_validate_observable_perturbation_rollouts.py",
+      "status": "PASS",
+      "detail": "scripts/stage22_2_validate_observable_perturbation_rollouts.py"
+    },
+    {
+      "check": "required_exists::scripts/stage22_3_observable_robustness_analysis.py",
+      "status": "PASS",
+      "detail": "scripts/stage22_3_observable_robustness_analysis.py"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_0_observable_perturbation_roadmap_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_0_observable_perturbation_roadmap_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_0_observable_perturbation_roadmap_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_0_observable_perturbation_roadmap_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_1_qvel_perturbation_preflight_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_1_qvel_perturbation_preflight_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_1_qvel_perturbation_preflight_context.txt",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_1_qvel_perturbation_preflight_context.txt"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_1_qvel_perturbation_output_plan.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_1_qvel_perturbation_output_plan.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_1_qvel_perturbation_preflight_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_1_qvel_perturbation_preflight_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturbation_execution.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturbation_execution.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturbation_execution_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturbation_execution_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturbation_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturbation_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturbation_table.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturbation_table.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturbation_table.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturbation_table.md"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturbation_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturbation_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_3_observable_robustness_per_perturbation_checks.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_3_observable_robustness_per_perturbation_checks.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_3_observable_robustness_per_scale_stats.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_3_observable_robustness_per_scale_stats.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_3_observable_perturbation_variability.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_3_observable_perturbation_variability.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_3_observable_robustness_validation.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_3_observable_robustness_validation.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_3_observable_robustness_analysis.md",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_3_observable_robustness_analysis.md"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_3_observable_robustness_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_3_observable_robustness_summary.json"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_nominal_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_nominal_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_nominal_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_nominal_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_nominal_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_nominal_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_nominal_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_nominal_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_nominal_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_nominal_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_nominal_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_nominal_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vx_plus_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vx_plus_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vx_plus_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vx_plus_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vx_plus_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vx_plus_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vx_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vx_plus_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vx_plus_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vx_plus_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vx_plus_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vx_plus_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vx_minus_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vx_minus_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vx_minus_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vx_minus_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vx_minus_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vx_minus_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vx_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vx_minus_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vx_minus_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vx_minus_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vx_minus_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vx_minus_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vy_plus_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vy_plus_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vy_plus_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vy_plus_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vy_plus_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vy_plus_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vy_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vy_plus_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vy_plus_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vy_plus_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vy_plus_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vy_plus_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vy_minus_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vy_minus_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vy_minus_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vy_minus_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vy_minus_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vy_minus_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vy_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vy_minus_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vy_minus_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vy_minus_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_vy_minus_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_vy_minus_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_yawrate_plus_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p000_baseline_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p000_baseline_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p000_baseline_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p000_baseline_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p010_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p010_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p010_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p020_mpc_assisted_candidate_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p020_mpc_assisted_candidate_log.csv"
+    },
+    {
+      "check": "required_exists::results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p020_mpc_assisted_candidate_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_2_observable_perturb_yawrate_minus_0p020_mpc_assisted_candidate_summary.csv"
+    },
+    {
+      "check": "summary_result_pass::22.0",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::22.1",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::22.2",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "summary_result_pass::22.3",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "observable_perturbation_pass_false_recorded",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "perturbation_metric_variability_false_recorded",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "recommendation_relation_stable_true_recorded",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "recommendation_observable_robust_false_recorded",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "entry_has_stage22_marker::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_negative_result::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_observable_false::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_recommendation_false::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_mentions_no_real_robot::README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "entry_has_stage22_marker::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_negative_result::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_observable_false::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_recommendation_false::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_mentions_no_real_robot::PROJECT_STATUS.md",
+      "status": "PASS",
+      "detail": "PROJECT_STATUS.md"
+    },
+    {
+      "check": "entry_has_stage22_marker::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_negative_result::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_observable_false::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_recommendation_false::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    },
+    {
+      "check": "entry_mentions_no_real_robot::ARTIFACT_INDEX.md",
+      "status": "PASS",
+      "detail": "docs/ARTIFACT_INDEX.md"
+    }
+  ]
+}
