@@ -1,0 +1,8 @@
+case_id,perturbation_id,perturbation_type,axis,qpos_axis,nominal_ref,trace_csv,row_count,after_mj_step_count,ready_for_stage24_2
+nominal_0p010,nominal,none,qvel_0,qpos_0,self,results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010.csv,15,12,True
+vx_plus_0p010,vx_plus,base_vx,qvel_0,qpos_0,nominal_0p010,results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010.csv,15,12,True
+vx_minus_0p010,vx_minus,base_vx,qvel_0,qpos_0,nominal_0p010,results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010.csv,15,12,True
+vy_plus_0p010,vy_plus,base_vy,qvel_1,qpos_1,nominal_0p010,results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010.csv,15,12,True
+vy_minus_0p010,vy_minus,base_vy,qvel_1,qpos_1,nominal_0p010,results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010.csv,15,12,True
+yawrate_plus_0p010,yawrate_plus,base_yawrate,qvel_5,qpos_3,nominal_0p010,results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010.csv,15,12,True
+yawrate_minus_0p010,yawrate_minus,base_yawrate,qvel_5,qpos_3,nominal_0p010,results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010.csv,15,12,True

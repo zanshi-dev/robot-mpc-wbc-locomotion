@@ -1,0 +1,1445 @@
+{
+  "stage": "24.1",
+  "name": "short-horizon metric design preflight",
+  "result": "pass",
+  "failure_count": 0,
+  "stage23_root_cause": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+  "trace_case_count": 7,
+  "metric_design_count": 15,
+  "all_trace_inputs_ready_for_stage24_2": true,
+  "trace_input_plan": [
+    {
+      "case_id": "nominal_0p010",
+      "perturbation_id": "nominal",
+      "perturbation_type": "none",
+      "axis": "qvel_0",
+      "qpos_axis": "qpos_0",
+      "nominal_ref": "self",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010.csv",
+      "row_count": "15",
+      "after_mj_step_count": "12",
+      "ready_for_stage24_2": "True"
+    },
+    {
+      "case_id": "vx_plus_0p010",
+      "perturbation_id": "vx_plus",
+      "perturbation_type": "base_vx",
+      "axis": "qvel_0",
+      "qpos_axis": "qpos_0",
+      "nominal_ref": "nominal_0p010",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010.csv",
+      "row_count": "15",
+      "after_mj_step_count": "12",
+      "ready_for_stage24_2": "True"
+    },
+    {
+      "case_id": "vx_minus_0p010",
+      "perturbation_id": "vx_minus",
+      "perturbation_type": "base_vx",
+      "axis": "qvel_0",
+      "qpos_axis": "qpos_0",
+      "nominal_ref": "nominal_0p010",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010.csv",
+      "row_count": "15",
+      "after_mj_step_count": "12",
+      "ready_for_stage24_2": "True"
+    },
+    {
+      "case_id": "vy_plus_0p010",
+      "perturbation_id": "vy_plus",
+      "perturbation_type": "base_vy",
+      "axis": "qvel_1",
+      "qpos_axis": "qpos_1",
+      "nominal_ref": "nominal_0p010",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010.csv",
+      "row_count": "15",
+      "after_mj_step_count": "12",
+      "ready_for_stage24_2": "True"
+    },
+    {
+      "case_id": "vy_minus_0p010",
+      "perturbation_id": "vy_minus",
+      "perturbation_type": "base_vy",
+      "axis": "qvel_1",
+      "qpos_axis": "qpos_1",
+      "nominal_ref": "nominal_0p010",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010.csv",
+      "row_count": "15",
+      "after_mj_step_count": "12",
+      "ready_for_stage24_2": "True"
+    },
+    {
+      "case_id": "yawrate_plus_0p010",
+      "perturbation_id": "yawrate_plus",
+      "perturbation_type": "base_yawrate",
+      "axis": "qvel_5",
+      "qpos_axis": "qpos_3",
+      "nominal_ref": "nominal_0p010",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010.csv",
+      "row_count": "15",
+      "after_mj_step_count": "12",
+      "ready_for_stage24_2": "True"
+    },
+    {
+      "case_id": "yawrate_minus_0p010",
+      "perturbation_id": "yawrate_minus",
+      "perturbation_type": "base_yawrate",
+      "axis": "qvel_5",
+      "qpos_axis": "qpos_3",
+      "nominal_ref": "nominal_0p010",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010.csv",
+      "row_count": "15",
+      "after_mj_step_count": "12",
+      "ready_for_stage24_2": "True"
+    }
+  ],
+  "metric_design": [
+    {
+      "metric_name": "injection_written",
+      "metric_group": "injection_preservation",
+      "source": "stage23_3 per-case diagnostic",
+      "description": "Whether qvel perturbation was written to the selected qvel axis.",
+      "expected_use": "confirm perturbation injection validity"
+    },
+    {
+      "metric_name": "after_forward_preserved",
+      "metric_group": "injection_preservation",
+      "source": "stage23_3 per-case diagnostic",
+      "description": "Whether injected qvel perturbation was preserved after mujoco.mj_forward.",
+      "expected_use": "confirm simulation-state synchronization did not erase injection"
+    },
+    {
+      "metric_name": "written_delta",
+      "metric_group": "injection_preservation",
+      "source": "stage23_3 per-case diagnostic",
+      "description": "Injected qvel delta relative to before_injection.",
+      "expected_use": "quantify qvel injection magnitude"
+    },
+    {
+      "metric_name": "after_forward_delta",
+      "metric_group": "injection_preservation",
+      "source": "stage23_3 per-case diagnostic",
+      "description": "qvel delta after mj_forward relative to before_injection.",
+      "expected_use": "quantify preserved qvel delta"
+    },
+    {
+      "metric_name": "first_step_qvel_delta",
+      "metric_group": "first_step_response",
+      "source": "stage23_2 trace",
+      "description": "Selected qvel-axis change from before_injection to first after_mj_step.",
+      "expected_use": "measure immediate qvel response"
+    },
+    {
+      "metric_name": "qpos_delta_first_step",
+      "metric_group": "first_step_response",
+      "source": "stage23_2 trace",
+      "description": "Selected qpos-axis change from before_injection to first after_mj_step.",
+      "expected_use": "measure immediate position response"
+    },
+    {
+      "metric_name": "max_abs_qvel_axis_diff_vs_nominal",
+      "metric_group": "trace_separation_vs_nominal",
+      "source": "aligned early-window trace",
+      "description": "Maximum absolute selected qvel-axis difference versus nominal over early-window steps.",
+      "expected_use": "detect perturbation-sensitive qvel trace separation"
+    },
+    {
+      "metric_name": "mean_abs_qvel_axis_diff_vs_nominal",
+      "metric_group": "trace_separation_vs_nominal",
+      "source": "aligned early-window trace",
+      "description": "Mean absolute selected qvel-axis difference versus nominal over early-window steps.",
+      "expected_use": "detect average qvel trace separation"
+    },
+    {
+      "metric_name": "max_abs_qpos_axis_diff_vs_nominal",
+      "metric_group": "trace_separation_vs_nominal",
+      "source": "aligned early-window trace",
+      "description": "Maximum absolute selected qpos-axis difference versus nominal over early-window steps.",
+      "expected_use": "detect perturbation-sensitive qpos trace separation"
+    },
+    {
+      "metric_name": "mean_abs_qpos_axis_diff_vs_nominal",
+      "metric_group": "trace_separation_vs_nominal",
+      "source": "aligned early-window trace",
+      "description": "Mean absolute selected qpos-axis difference versus nominal over early-window steps.",
+      "expected_use": "detect average qpos trace separation"
+    },
+    {
+      "metric_name": "max_abs_base_vx_fd_diff_vs_nominal",
+      "metric_group": "trace_separation_vs_nominal",
+      "source": "aligned early-window trace",
+      "description": "Maximum absolute base_vx_fd difference versus nominal over early-window steps.",
+      "expected_use": "detect finite-difference velocity separation"
+    },
+    {
+      "metric_name": "max_abs_base_vy_fd_diff_vs_nominal",
+      "metric_group": "trace_separation_vs_nominal",
+      "source": "aligned early-window trace",
+      "description": "Maximum absolute base_vy_fd difference versus nominal over early-window steps.",
+      "expected_use": "detect lateral finite-difference velocity separation"
+    },
+    {
+      "metric_name": "early_window_max_abs_state_delta",
+      "metric_group": "early_window_state_delta",
+      "source": "aligned early-window trace",
+      "description": "Maximum absolute combined state delta versus nominal using selected qvel/qpos/base velocity channels.",
+      "expected_use": "single scalar for short-horizon perturbation observability"
+    },
+    {
+      "metric_name": "early_window_mean_abs_state_delta",
+      "metric_group": "early_window_state_delta",
+      "source": "aligned early-window trace",
+      "description": "Mean absolute combined state delta versus nominal using selected qvel/qpos/base velocity channels.",
+      "expected_use": "average scalar for short-horizon perturbation observability"
+    },
+    {
+      "metric_name": "early_window_trace_separation_detected",
+      "metric_group": "early_window_state_delta",
+      "source": "computed metrics",
+      "description": "Boolean indicating whether early-window trace separation exceeds numerical tolerance.",
+      "expected_use": "decide whether short-horizon metrics detect perturbation"
+    }
+  ],
+  "stage24_2_requirements": [
+    "read nominal trace and perturbation traces",
+    "align after_mj_step rows by trace_step_index",
+    "compute selected-axis qvel/qpos separation versus nominal",
+    "compute base finite-difference velocity separation versus nominal",
+    "compute early-window max/mean absolute state deltas",
+    "produce per-case and aggregate short-horizon perturbation-sensitive metric tables"
+  ],
+  "claim_boundary": [
+    "preflight only",
+    "no new rollout generated",
+    "metric design only",
+    "no observable perturbation robustness claim",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "generated_files": [
+    "results/logs_sample/stage24_1_short_horizon_metric_preflight_validation.csv",
+    "results/logs_sample/stage24_1_short_horizon_metric_design.csv",
+    "results/logs_sample/stage24_1_short_horizon_metric_trace_input_plan.csv",
+    "results/logs_sample/stage24_1_short_horizon_metric_preflight_summary.json",
+    "docs/STAGE24_1_SHORT_HORIZON_METRIC_PREFLIGHT.md"
+  ],
+  "checks": [
+    {
+      "check": "stage24_0_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_0_short_horizon_metric_roadmap_summary.json"
+    },
+    {
+      "check": "stage24_0_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage23_4_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_4_perturbation_observability_evidence_freeze_summary.json"
+    },
+    {
+      "check": "stage23_4_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage23_4_root_cause_expected",
+      "status": "PASS",
+      "detail": "overall_root_cause=C_summary_metrics_insensitive_to_short_horizon_trace_change"
+    },
+    {
+      "check": "stage23_4_confidence_high",
+      "status": "PASS",
+      "detail": "root_cause_confidence=high"
+    },
+    {
+      "check": "stage23_3_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_3_perturbation_observability_root_cause_summary.json"
+    },
+    {
+      "check": "stage23_3_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage23_4_flag::stage23_2_all_nonzero_perturbations_written",
+      "status": "PASS",
+      "detail": "stage23_2_all_nonzero_perturbations_written=True"
+    },
+    {
+      "check": "stage23_4_flag::stage23_2_all_after_forward_preserved",
+      "status": "PASS",
+      "detail": "stage23_2_all_after_forward_preserved=True"
+    },
+    {
+      "check": "stage23_4_flag::stage23_2_any_first_step_state_changed",
+      "status": "PASS",
+      "detail": "stage23_2_any_first_step_state_changed=True"
+    },
+    {
+      "check": "trace_exists::nominal_0p010",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010.csv"
+    },
+    {
+      "check": "trace_rows_nonempty::nominal_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_rows_at_least_15::nominal_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_has::nominal_0p010::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "trace_has::nominal_0p010::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "trace_has::nominal_0p010::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "trace_has::nominal_0p010::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "trace_has::nominal_0p010::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "trace_has::nominal_0p010::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "trace_has::nominal_0p010::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "trace_has::nominal_0p010::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "trace_has::nominal_0p010::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "trace_has::nominal_0p010::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "trace_has::nominal_0p010::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "trace_has::nominal_0p010::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "trace_has::nominal_0p010::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "trace_has::nominal_0p010::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "trace_has::nominal_0p010::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "trace_has::nominal_0p010::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "trace_has::nominal_0p010::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "trace_has::nominal_0p010::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "trace_has::nominal_0p010::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "trace_has::nominal_0p010::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "trace_has::nominal_0p010::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "trace_has::nominal_0p010::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "trace_has::nominal_0p010::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "trace_has::nominal_0p010::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "trace_phase::nominal_0p010::before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "trace_phase::nominal_0p010::after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "trace_phase::nominal_0p010::after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "trace_phase::nominal_0p010::after_mj_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "trace_after_step_count_at_least_12::nominal_0p010",
+      "status": "PASS",
+      "detail": "after_mj_step_count=12"
+    },
+    {
+      "check": "trace_exists::vx_plus_0p010",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010.csv"
+    },
+    {
+      "check": "trace_rows_nonempty::vx_plus_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_rows_at_least_15::vx_plus_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "trace_has::vx_plus_0p010::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "trace_phase::vx_plus_0p010::before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "trace_phase::vx_plus_0p010::after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "trace_phase::vx_plus_0p010::after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "trace_phase::vx_plus_0p010::after_mj_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "trace_after_step_count_at_least_12::vx_plus_0p010",
+      "status": "PASS",
+      "detail": "after_mj_step_count=12"
+    },
+    {
+      "check": "trace_exists::vx_minus_0p010",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010.csv"
+    },
+    {
+      "check": "trace_rows_nonempty::vx_minus_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_rows_at_least_15::vx_minus_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "trace_has::vx_minus_0p010::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "trace_phase::vx_minus_0p010::before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "trace_phase::vx_minus_0p010::after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "trace_phase::vx_minus_0p010::after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "trace_phase::vx_minus_0p010::after_mj_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "trace_after_step_count_at_least_12::vx_minus_0p010",
+      "status": "PASS",
+      "detail": "after_mj_step_count=12"
+    },
+    {
+      "check": "trace_exists::vy_plus_0p010",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010.csv"
+    },
+    {
+      "check": "trace_rows_nonempty::vy_plus_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_rows_at_least_15::vy_plus_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "trace_has::vy_plus_0p010::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "trace_phase::vy_plus_0p010::before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "trace_phase::vy_plus_0p010::after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "trace_phase::vy_plus_0p010::after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "trace_phase::vy_plus_0p010::after_mj_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "trace_after_step_count_at_least_12::vy_plus_0p010",
+      "status": "PASS",
+      "detail": "after_mj_step_count=12"
+    },
+    {
+      "check": "trace_exists::vy_minus_0p010",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010.csv"
+    },
+    {
+      "check": "trace_rows_nonempty::vy_minus_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_rows_at_least_15::vy_minus_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "trace_has::vy_minus_0p010::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "trace_phase::vy_minus_0p010::before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "trace_phase::vy_minus_0p010::after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "trace_phase::vy_minus_0p010::after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "trace_phase::vy_minus_0p010::after_mj_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "trace_after_step_count_at_least_12::vy_minus_0p010",
+      "status": "PASS",
+      "detail": "after_mj_step_count=12"
+    },
+    {
+      "check": "trace_exists::yawrate_plus_0p010",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010.csv"
+    },
+    {
+      "check": "trace_rows_nonempty::yawrate_plus_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_rows_at_least_15::yawrate_plus_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "trace_has::yawrate_plus_0p010::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "trace_phase::yawrate_plus_0p010::before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "trace_phase::yawrate_plus_0p010::after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "trace_phase::yawrate_plus_0p010::after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "trace_phase::yawrate_plus_0p010::after_mj_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "trace_after_step_count_at_least_12::yawrate_plus_0p010",
+      "status": "PASS",
+      "detail": "after_mj_step_count=12"
+    },
+    {
+      "check": "trace_exists::yawrate_minus_0p010",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010.csv"
+    },
+    {
+      "check": "trace_rows_nonempty::yawrate_minus_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_rows_at_least_15::yawrate_minus_0p010",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::trace_case_id",
+      "status": "PASS",
+      "detail": "trace_case_id"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::perturbation_id",
+      "status": "PASS",
+      "detail": "perturbation_id"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::perturbation_type",
+      "status": "PASS",
+      "detail": "perturbation_type"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::perturb_vx",
+      "status": "PASS",
+      "detail": "perturb_vx"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::perturb_vy",
+      "status": "PASS",
+      "detail": "perturb_vy"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::perturb_yawrate",
+      "status": "PASS",
+      "detail": "perturb_yawrate"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::scale",
+      "status": "PASS",
+      "detail": "scale"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::scale_tag",
+      "status": "PASS",
+      "detail": "scale_tag"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::control_mode",
+      "status": "PASS",
+      "detail": "control_mode"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::phase",
+      "status": "PASS",
+      "detail": "phase"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::trace_step_index",
+      "status": "PASS",
+      "detail": "trace_step_index"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::time",
+      "status": "PASS",
+      "detail": "time"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::qpos_0",
+      "status": "PASS",
+      "detail": "qpos_0"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::qpos_1",
+      "status": "PASS",
+      "detail": "qpos_1"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::qpos_2",
+      "status": "PASS",
+      "detail": "qpos_2"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::qpos_3",
+      "status": "PASS",
+      "detail": "qpos_3"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::qvel_0",
+      "status": "PASS",
+      "detail": "qvel_0"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::qvel_1",
+      "status": "PASS",
+      "detail": "qvel_1"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::qvel_5",
+      "status": "PASS",
+      "detail": "qvel_5"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::base_x",
+      "status": "PASS",
+      "detail": "base_x"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::base_y",
+      "status": "PASS",
+      "detail": "base_y"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::base_z",
+      "status": "PASS",
+      "detail": "base_z"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::base_vx_fd",
+      "status": "PASS",
+      "detail": "base_vx_fd"
+    },
+    {
+      "check": "trace_has::yawrate_minus_0p010::base_vy_fd",
+      "status": "PASS",
+      "detail": "base_vy_fd"
+    },
+    {
+      "check": "trace_phase::yawrate_minus_0p010::before_injection",
+      "status": "PASS",
+      "detail": "before_injection"
+    },
+    {
+      "check": "trace_phase::yawrate_minus_0p010::after_injection",
+      "status": "PASS",
+      "detail": "after_injection"
+    },
+    {
+      "check": "trace_phase::yawrate_minus_0p010::after_mj_forward",
+      "status": "PASS",
+      "detail": "after_mj_forward"
+    },
+    {
+      "check": "trace_phase::yawrate_minus_0p010::after_mj_step",
+      "status": "PASS",
+      "detail": "after_mj_step"
+    },
+    {
+      "check": "trace_after_step_count_at_least_12::yawrate_minus_0p010",
+      "status": "PASS",
+      "detail": "after_mj_step_count=12"
+    },
+    {
+      "check": "trace_case_count_7",
+      "status": "PASS",
+      "detail": "count=7"
+    },
+    {
+      "check": "metric_design_count_at_least_10",
+      "status": "PASS",
+      "detail": "count=15"
+    },
+    {
+      "check": "all_trace_inputs_ready_for_stage24_2",
+      "status": "PASS",
+      "detail": "all ready"
+    },
+    {
+      "check": "nominal_reference_available",
+      "status": "PASS",
+      "detail": "nominal_0p010"
+    },
+    {
+      "check": "metric_design_includes_trace_separation",
+      "status": "PASS",
+      "detail": "trace_separation_vs_nominal"
+    },
+    {
+      "check": "metric_design_includes_early_window_delta",
+      "status": "PASS",
+      "detail": "early_window_state_delta"
+    },
+    {
+      "check": "metric_design_includes_injection_preservation",
+      "status": "PASS",
+      "detail": "injection_preservation"
+    },
+    {
+      "check": "metric_design_includes_first_step_response",
+      "status": "PASS",
+      "detail": "first_step_response"
+    }
+  ]
+}

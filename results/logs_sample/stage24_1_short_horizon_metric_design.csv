@@ -1,0 +1,16 @@
+metric_name,metric_group,source,description,expected_use
+injection_written,injection_preservation,stage23_3 per-case diagnostic,Whether qvel perturbation was written to the selected qvel axis.,confirm perturbation injection validity
+after_forward_preserved,injection_preservation,stage23_3 per-case diagnostic,Whether injected qvel perturbation was preserved after mujoco.mj_forward.,confirm simulation-state synchronization did not erase injection
+written_delta,injection_preservation,stage23_3 per-case diagnostic,Injected qvel delta relative to before_injection.,quantify qvel injection magnitude
+after_forward_delta,injection_preservation,stage23_3 per-case diagnostic,qvel delta after mj_forward relative to before_injection.,quantify preserved qvel delta
+first_step_qvel_delta,first_step_response,stage23_2 trace,Selected qvel-axis change from before_injection to first after_mj_step.,measure immediate qvel response
+qpos_delta_first_step,first_step_response,stage23_2 trace,Selected qpos-axis change from before_injection to first after_mj_step.,measure immediate position response
+max_abs_qvel_axis_diff_vs_nominal,trace_separation_vs_nominal,aligned early-window trace,Maximum absolute selected qvel-axis difference versus nominal over early-window steps.,detect perturbation-sensitive qvel trace separation
+mean_abs_qvel_axis_diff_vs_nominal,trace_separation_vs_nominal,aligned early-window trace,Mean absolute selected qvel-axis difference versus nominal over early-window steps.,detect average qvel trace separation
+max_abs_qpos_axis_diff_vs_nominal,trace_separation_vs_nominal,aligned early-window trace,Maximum absolute selected qpos-axis difference versus nominal over early-window steps.,detect perturbation-sensitive qpos trace separation
+mean_abs_qpos_axis_diff_vs_nominal,trace_separation_vs_nominal,aligned early-window trace,Mean absolute selected qpos-axis difference versus nominal over early-window steps.,detect average qpos trace separation
+max_abs_base_vx_fd_diff_vs_nominal,trace_separation_vs_nominal,aligned early-window trace,Maximum absolute base_vx_fd difference versus nominal over early-window steps.,detect finite-difference velocity separation
+max_abs_base_vy_fd_diff_vs_nominal,trace_separation_vs_nominal,aligned early-window trace,Maximum absolute base_vy_fd difference versus nominal over early-window steps.,detect lateral finite-difference velocity separation
+early_window_max_abs_state_delta,early_window_state_delta,aligned early-window trace,Maximum absolute combined state delta versus nominal using selected qvel/qpos/base velocity channels.,single scalar for short-horizon perturbation observability
+early_window_mean_abs_state_delta,early_window_state_delta,aligned early-window trace,Mean absolute combined state delta versus nominal using selected qvel/qpos/base velocity channels.,average scalar for short-horizon perturbation observability
+early_window_trace_separation_detected,early_window_state_delta,computed metrics,Boolean indicating whether early-window trace separation exceeds numerical tolerance.,decide whether short-horizon metrics detect perturbation
