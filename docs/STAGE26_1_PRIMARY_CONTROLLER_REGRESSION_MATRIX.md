@@ -2,7 +2,7 @@
 
 ## 1. 目标
 
-Stage 26.1 用于补充面试展示级回归证据，验证三种控制模式在固定 MuJoCo 仿真设置下的行为差异：
+Stage 26.1 用于补充小规模回归证据，验证三种控制模式在固定 MuJoCo 仿真设置下的行为差异：
 
 - baseline
 - primary_mpc_wbc
@@ -57,7 +57,7 @@ stabilized_primary_mpc_wbc 在相同固定仿真设置下通过全部 3 个 case
 
 - 固定 MuJoCo 仿真设置下，stabilized_primary_mpc_wbc 相比 primary_mpc_wbc 直接主控具有更好的稳定性表现。
 - primary_mpc_wbc 的失败可以作为诊断证据，而不是简单实现失败。
-- stabilized_primary_mpc_wbc 通过了面试展示级 9-case 回归矩阵。
+- stabilized_primary_mpc_wbc 通过了9-case 控制模式回归矩阵。
 
 本阶段不支持的说法：
 

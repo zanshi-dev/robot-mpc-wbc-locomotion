@@ -5476,11 +5476,11 @@ stabilized_primary_mpc_wbc 在直接主控基础上加入 ramp transition、scal
 - results/logs_sample/stage25_7_primary_controller_closure_evidence_manifest.json
 - results/logs_sample/stage25_7_primary_controller_closure_evidence_hashes.csv
 
-## Stage 26：面试展示级 primary controller 回归矩阵
+## Stage 26：primary controller 小规模回归矩阵
 
 当前状态：Stage 26.1 已完成。
 
-Stage 26 的目标是补充面试展示级回归证据，验证 baseline、primary_mpc_wbc 和 stabilized_primary_mpc_wbc 在固定 MuJoCo 仿真设置下的行为差异。
+Stage 26 的目标是补充小规模回归证据，验证 baseline、primary_mpc_wbc 和 stabilized_primary_mpc_wbc 在固定 MuJoCo 仿真设置下的行为差异。
 
 ### Stage 26.1 结果
 
@@ -5500,7 +5500,7 @@ stabilized_primary_mpc_wbc 在 3 个 case 中全部通过，qp_fail_steps = 0，
 
 - 固定 MuJoCo 仿真设置下的 stabilized primary MPC-WBC 主控闭环原型。
 - 直接 primary_mpc_wbc 主控失败已被记录和诊断。
-- stabilized_primary_mpc_wbc 通过了面试展示级 9-case 回归矩阵。
+- stabilized_primary_mpc_wbc 通过了9-case 控制模式回归矩阵。
 
 当前不支持的说法：
 
