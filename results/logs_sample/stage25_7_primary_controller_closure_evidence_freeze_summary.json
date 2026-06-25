@@ -1,0 +1,225 @@
+{
+  "stage": "25.7",
+  "name": "primary controller closure evidence freeze",
+  "result": "pass",
+  "failure_count": 0,
+  "final_claim": "simulation-only stabilized MPC-WBC primary controller closure smoke evidence",
+  "direct_primary_mpc_wbc_status": "executed_but_smoke_failed",
+  "stabilized_primary_mpc_wbc_status": "executed_and_smoke_passed",
+  "comparison": {
+    "direct_primary_mpc_wbc": {
+      "executed": "True",
+      "pass": "False",
+      "max_abs_roll": "0.488712369676",
+      "max_abs_pitch": "0.356235143697",
+      "qp_fail_steps": "0",
+      "saturation_steps": "555",
+      "max_tau_total_abs": "23.700000000000",
+      "failure_class": "posture_limit_violation_with_torque_saturation_no_qp_failure"
+    },
+    "stabilized_primary_mpc_wbc": {
+      "executed": "True",
+      "pass": "True",
+      "stabilized_primary_scale": "0.05",
+      "stabilized_primary_ramp_steps": "600",
+      "max_abs_roll": "0.088212790238",
+      "max_abs_pitch": "0.050696666834",
+      "qp_fail_steps": "0",
+      "saturation_steps": "0",
+      "max_tau_total_abs": "10.890608907787"
+    }
+  },
+  "claim_boundary": [
+    "simulation-only",
+    "stabilized primary variant, not direct full primary torque",
+    "smoke rollout evidence only",
+    "no real robot torque execution",
+    "no hardware torque enablement",
+    "no complex terrain robustness",
+    "no external-force robustness",
+    "not production-grade MPC-WBC maturity"
+  ],
+  "supported_statements": [
+    "primary_mpc_wbc mode was implemented and executed in simulation",
+    "direct primary_mpc_wbc failed smoke stability due to posture violation and torque saturation",
+    "stabilized_primary_mpc_wbc was implemented with ramp, scale, posture residual, and WBC residual",
+    "stabilized_primary_mpc_wbc passed the nominal 2400-step simulation-only smoke rollout",
+    "qp_fail_steps=0 and saturation_steps=0 for the stabilized smoke rollout"
+  ],
+  "unsupported_statements": [
+    "direct primary_mpc_wbc is stable",
+    "full MPC/WBC torque can replace baseline without residual stabilization",
+    "real robot closed loop is complete",
+    "hardware torque enablement is complete",
+    "robustness to terrain or external disturbances has been proven"
+  ],
+  "generated_files": [
+    "results/logs_sample/stage25_7_primary_controller_closure_evidence_freeze_validation.csv",
+    "results/logs_sample/stage25_7_primary_controller_closure_evidence_hashes.csv",
+    "results/logs_sample/stage25_7_primary_controller_closure_evidence_manifest.json",
+    "results/logs_sample/stage25_7_primary_controller_closure_evidence_freeze_summary.json",
+    "docs/STAGE25_7_PRIMARY_CONTROLLER_CLOSURE_EVIDENCE_FREEZE.md"
+  ],
+  "checks": [
+    {
+      "check": "stage25_0_exists",
+      "status": "PASS",
+      "detail": "roadmap summary"
+    },
+    {
+      "check": "stage25_2_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage25_3_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage25_4_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage25_5_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage25_6_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "direct_primary_executed",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "direct_primary_smoke_failed",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "direct_failure_class_recorded",
+      "status": "PASS",
+      "detail": "posture_limit_violation_with_torque_saturation_no_qp_failure"
+    },
+    {
+      "check": "stabilized_primary_executed",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "stabilized_primary_smoke_passed",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "stabilized_qp_fail_zero",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "stabilized_saturation_zero",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "stabilized_simulation_only",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "no_hardware_torque",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "artifact_exists::docs/STAGE25_MPC_WBC_PRIMARY_CONTROLLER_ROADMAP.md",
+      "status": "PASS",
+      "detail": "docs/STAGE25_MPC_WBC_PRIMARY_CONTROLLER_ROADMAP.md"
+    },
+    {
+      "check": "artifact_exists::docs/STAGE25_2_PRIMARY_MPC_WBC_MODE_IMPLEMENTATION.md",
+      "status": "PASS",
+      "detail": "docs/STAGE25_2_PRIMARY_MPC_WBC_MODE_IMPLEMENTATION.md"
+    },
+    {
+      "check": "artifact_exists::docs/STAGE25_3_PRIMARY_MPC_WBC_SMOKE_ROLLOUT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE25_3_PRIMARY_MPC_WBC_SMOKE_ROLLOUT.md"
+    },
+    {
+      "check": "artifact_exists::docs/STAGE25_4_PRIMARY_MPC_WBC_FAILURE_DIAGNOSIS.md",
+      "status": "PASS",
+      "detail": "docs/STAGE25_4_PRIMARY_MPC_WBC_FAILURE_DIAGNOSIS.md"
+    },
+    {
+      "check": "artifact_exists::docs/STAGE25_5_STABILIZED_PRIMARY_MPC_WBC_MODE.md",
+      "status": "PASS",
+      "detail": "docs/STAGE25_5_STABILIZED_PRIMARY_MPC_WBC_MODE.md"
+    },
+    {
+      "check": "artifact_exists::docs/STAGE25_6_STABILIZED_PRIMARY_MPC_WBC_SMOKE_ROLLOUT.md",
+      "status": "PASS",
+      "detail": "docs/STAGE25_6_STABILIZED_PRIMARY_MPC_WBC_SMOKE_ROLLOUT.md"
+    },
+    {
+      "check": "artifact_exists::scripts/stage25_2_primary_mpc_wbc_runner.py",
+      "status": "PASS",
+      "detail": "scripts/stage25_2_primary_mpc_wbc_runner.py"
+    },
+    {
+      "check": "artifact_exists::scripts/stage25_5_stabilized_primary_mpc_wbc_runner.py",
+      "status": "PASS",
+      "detail": "scripts/stage25_5_stabilized_primary_mpc_wbc_runner.py"
+    },
+    {
+      "check": "artifact_exists::results/logs_sample/stage25_2_primary_mpc_wbc_mode_implementation_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_2_primary_mpc_wbc_mode_implementation_summary.json"
+    },
+    {
+      "check": "artifact_exists::results/logs_sample/stage25_3_primary_mpc_wbc_smoke_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_3_primary_mpc_wbc_smoke_summary.json"
+    },
+    {
+      "check": "artifact_exists::results/logs_sample/stage25_4_primary_mpc_wbc_failure_diagnosis_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_4_primary_mpc_wbc_failure_diagnosis_summary.json"
+    },
+    {
+      "check": "artifact_exists::results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_mode_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_mode_summary.json"
+    },
+    {
+      "check": "artifact_exists::results/logs_sample/stage25_6_stabilized_primary_mpc_wbc_smoke_summary.json",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_6_stabilized_primary_mpc_wbc_smoke_summary.json"
+    },
+    {
+      "check": "artifact_exists::results/logs_sample/stage25_2_primary_mpc_wbc_rollout_nominal_primary_primary_mpc_wbc_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_2_primary_mpc_wbc_rollout_nominal_primary_primary_mpc_wbc_summary.csv"
+    },
+    {
+      "check": "artifact_exists::results/logs_sample/stage25_2_primary_mpc_wbc_rollout_nominal_primary_primary_mpc_wbc_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_2_primary_mpc_wbc_rollout_nominal_primary_primary_mpc_wbc_log.csv"
+    },
+    {
+      "check": "artifact_exists::results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_rollout_nominal_stab0p05_stabilized_primary_mpc_wbc_summary.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_rollout_nominal_stab0p05_stabilized_primary_mpc_wbc_summary.csv"
+    },
+    {
+      "check": "artifact_exists::results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_rollout_nominal_stab0p05_stabilized_primary_mpc_wbc_log.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_rollout_nominal_stab0p05_stabilized_primary_mpc_wbc_log.csv"
+    }
+  ]
+}

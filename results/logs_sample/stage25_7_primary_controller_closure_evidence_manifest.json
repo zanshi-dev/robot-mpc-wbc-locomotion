@@ -1,0 +1,106 @@
+{
+  "items": [
+    {
+      "path": "docs/STAGE25_MPC_WBC_PRIMARY_CONTROLLER_ROADMAP.md",
+      "exists": true,
+      "size_bytes": 6485,
+      "sha256": "42d57e0cf9aa475ce1cb81f45bda797c5b101a6c8d3465aa14e0e8523b0bd308"
+    },
+    {
+      "path": "docs/STAGE25_2_PRIMARY_MPC_WBC_MODE_IMPLEMENTATION.md",
+      "exists": true,
+      "size_bytes": 3642,
+      "sha256": "e06d74140b1a46e7a5ec9183b9012de8f1e92f6350c591dd913847402a0d093a"
+    },
+    {
+      "path": "docs/STAGE25_3_PRIMARY_MPC_WBC_SMOKE_ROLLOUT.md",
+      "exists": true,
+      "size_bytes": 4866,
+      "sha256": "721cb67fe39bbdda414d7958bea450ca0015859a6dfa65cecb7b6f6db8d13099"
+    },
+    {
+      "path": "docs/STAGE25_4_PRIMARY_MPC_WBC_FAILURE_DIAGNOSIS.md",
+      "exists": true,
+      "size_bytes": 2163,
+      "sha256": "8a394f0215efa548c3099e428c63e75c1856e5d6cf46dd63c51f438a7d722885"
+    },
+    {
+      "path": "docs/STAGE25_5_STABILIZED_PRIMARY_MPC_WBC_MODE.md",
+      "exists": true,
+      "size_bytes": 2402,
+      "sha256": "5fca62a815874d15865a1117faca5dfd5cc322bcdfe33a1ee60f77a46dc7b00c"
+    },
+    {
+      "path": "docs/STAGE25_6_STABILIZED_PRIMARY_MPC_WBC_SMOKE_ROLLOUT.md",
+      "exists": true,
+      "size_bytes": 5627,
+      "sha256": "7eb51df333b55e897e8133c96e3726bdfd6a377af472088f3978a4d7c314a143"
+    },
+    {
+      "path": "scripts/stage25_2_primary_mpc_wbc_runner.py",
+      "exists": true,
+      "size_bytes": 32849,
+      "sha256": "6cd542d971637d1a363936423109e54a381db680d638845465ef4f6f42d0f275"
+    },
+    {
+      "path": "scripts/stage25_5_stabilized_primary_mpc_wbc_runner.py",
+      "exists": true,
+      "size_bytes": 36939,
+      "sha256": "1ba3a149e12a393d61d69929de54d6ee4257ce7b5e4da82b8c2f16dbc9b7068a"
+    },
+    {
+      "path": "results/logs_sample/stage25_2_primary_mpc_wbc_mode_implementation_summary.json",
+      "exists": true,
+      "size_bytes": 6491,
+      "sha256": "4653c7a0df6708a101a4acc9bba5e07063936f8cdf57e796fe9f2ad345c71fb0"
+    },
+    {
+      "path": "results/logs_sample/stage25_3_primary_mpc_wbc_smoke_summary.json",
+      "exists": true,
+      "size_bytes": 7948,
+      "sha256": "10e99c0f09ff626ba33d839b17a89b90001f5a66a9995be5d49ec3aa22faa4ec"
+    },
+    {
+      "path": "results/logs_sample/stage25_4_primary_mpc_wbc_failure_diagnosis_summary.json",
+      "exists": true,
+      "size_bytes": 3218,
+      "sha256": "670df23213310fb5fc3b64faa18d9fc398e8eea826d933e6f0979df6ca8e662e"
+    },
+    {
+      "path": "results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_mode_summary.json",
+      "exists": true,
+      "size_bytes": 5684,
+      "sha256": "6cebb313b18ed5d674d1eb636666705c9222f445fed65d3272dd7e12fb0e6440"
+    },
+    {
+      "path": "results/logs_sample/stage25_6_stabilized_primary_mpc_wbc_smoke_summary.json",
+      "exists": true,
+      "size_bytes": 8929,
+      "sha256": "4b5167451e0d82f97f198477f2e80b77e98d17c39d39741f140c2723a6dcde54"
+    },
+    {
+      "path": "results/logs_sample/stage25_2_primary_mpc_wbc_rollout_nominal_primary_primary_mpc_wbc_summary.csv",
+      "exists": true,
+      "size_bytes": 2673,
+      "sha256": "f14a1233f96dad89b8affadef528200ab1157bb4e08d6412a6f7419197527fbc"
+    },
+    {
+      "path": "results/logs_sample/stage25_2_primary_mpc_wbc_rollout_nominal_primary_primary_mpc_wbc_log.csv",
+      "exists": true,
+      "size_bytes": 1568307,
+      "sha256": "c08a1a0d7986cc0fcba69c625671e92b481f5e5c33361f521cf5b3a42d83ef5b"
+    },
+    {
+      "path": "results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_rollout_nominal_stab0p05_stabilized_primary_mpc_wbc_summary.csv",
+      "exists": true,
+      "size_bytes": 3014,
+      "sha256": "e2bcaf030b2d695ff036c925a9f4d0d16338a3cc0450246709f6def15a80495f"
+    },
+    {
+      "path": "results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_rollout_nominal_stab0p05_stabilized_primary_mpc_wbc_log.csv",
+      "exists": true,
+      "size_bytes": 1715794,
+      "sha256": "355cf1df3ba7fe305a208c2f949fbc9786fa131e905fe528b77fa5647d610f11"
+    }
+  ]
+}
