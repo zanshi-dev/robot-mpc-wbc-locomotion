@@ -1,0 +1,23 @@
+check,status,detail
+stage25_0_summary_exists,PASS,results/logs_sample/stage25_0_mpc_wbc_primary_controller_roadmap_summary.json
+stage25_0_result_pass,PASS,result=pass
+stage25_0_target_primary,PASS,target=primary_mpc_wbc
+stage25_1_summary_exists,PASS,results/logs_sample/stage25_1_control_source_audit_summary.json
+stage25_1_result_pass,PASS,result=pass
+stage25_1_ready,PASS,ready=True
+source_runner_exists,PASS,scripts/stage23_2_qvel_injection_trace_runner.py
+"runner_contains::CONTROL_MODE_PRIMARY_MPC_WBC = ""primary_mpc_wbc""",PASS,"CONTROL_MODE_PRIMARY_MPC_WBC = ""primary_mpc_wbc"""
+runner_contains::--allow-primary-mpc-wbc,PASS,--allow-primary-mpc-wbc
+runner_contains::CONTROL_MODE_PRIMARY_MPC_WBC,PASS,CONTROL_MODE_PRIMARY_MPC_WBC
+runner_contains::tau_primary_mpc_wbc_raw = stance_mask * tau_candidate + tau_swing_pd,PASS,tau_primary_mpc_wbc_raw = stance_mask * tau_candidate + tau_swing_pd
+runner_contains::if args.control_mode == CONTROL_MODE_PRIMARY_MPC_WBC:,PASS,if args.control_mode == CONTROL_MODE_PRIMARY_MPC_WBC:
+"runner_contains::tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)",PASS,"tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)"
+runner_contains::data.ctrl[:] = tau_total,PASS,data.ctrl[:] = tau_total
+runner_contains::primary_mpc_wbc_mode_present,PASS,primary_mpc_wbc_mode_present
+runner_contains::primary_mpc_wbc_executed,PASS,primary_mpc_wbc_executed
+runner_contains::max_tau_primary_mpc_wbc_raw_abs,PASS,max_tau_primary_mpc_wbc_raw_abs
+baseline_composition_preserved,PASS,baseline / mpc-assisted branch preserved
+candidate_loaded_for_primary,PASS,primary branch loads candidate csv
+existing_source_not_modified,PASS,target runner is derived copy
+target_runner_py_compile,PASS,py_compile ok
+all_patch_notes_applied,PASS,applied=13/13

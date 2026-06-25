@@ -1,0 +1,212 @@
+{
+  "stage": "25.2",
+  "name": "primary_mpc_wbc mode implementation",
+  "result": "pass",
+  "failure_count": 0,
+  "source_runner": "scripts/stage23_2_qvel_injection_trace_runner.py",
+  "target_runner": "scripts/stage25_2_primary_mpc_wbc_runner.py",
+  "target_control_mode": "primary_mpc_wbc",
+  "primary_mpc_wbc_mode_implemented": true,
+  "smoke_rollout_completed": false,
+  "torque_composition": {
+    "baseline_or_assisted_branch": "tau_total_raw = tau_baseline_raw + tau_candidate_scaled",
+    "primary_branch": "tau_total_raw = stance_mask * tau_candidate + tau_swing_pd",
+    "safety_filter": "tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)",
+    "mujoco_write": "data.ctrl[:] = tau_total"
+  },
+  "generated_files": [
+    "scripts/stage25_2_primary_mpc_wbc_runner.py",
+    "results/logs_sample/stage25_2_primary_mpc_wbc_mode_implementation_validation.csv",
+    "results/logs_sample/stage25_2_primary_mpc_wbc_mode_patch_notes.csv",
+    "results/logs_sample/stage25_2_primary_mpc_wbc_mode_implementation_summary.json",
+    "docs/STAGE25_2_PRIMARY_MPC_WBC_MODE_IMPLEMENTATION.md"
+  ],
+  "claim_boundary": [
+    "implementation only",
+    "no smoke rollout yet",
+    "simulation-only primary_mpc_wbc runner",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no observable perturbation robustness claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "patch_notes": [
+    {
+      "patch": "add_primary_control_mode_constant",
+      "status": "APPLIED",
+      "detail": "CONTROL_MODE_PRIMARY_MPC_WBC"
+    },
+    {
+      "patch": "extend_control_mode_choices",
+      "status": "APPLIED",
+      "detail": "--control-mode choices include primary_mpc_wbc or no argparse choices restriction is present"
+    },
+    {
+      "patch": "add_allow_primary_flag",
+      "status": "APPLIED",
+      "detail": "--allow-primary-mpc-wbc"
+    },
+    {
+      "patch": "replace_mode_validation_and_candidate_loading",
+      "status": "APPLIED",
+      "detail": "load candidate rows for primary_mpc_wbc"
+    },
+    {
+      "patch": "candidate_fetch_for_primary",
+      "status": "APPLIED",
+      "detail": "candidate_row_for_step branch"
+    },
+    {
+      "patch": "add_max_tau_primary_metric",
+      "status": "APPLIED",
+      "detail": "max_tau_primary_mpc_wbc_raw_abs"
+    },
+    {
+      "patch": "replace_torque_composition",
+      "status": "APPLIED",
+      "detail": "primary branch before safety clip"
+    },
+    {
+      "patch": "add_tau_primary_abs_per_step",
+      "status": "APPLIED",
+      "detail": "tau_primary_mpc_wbc_raw_abs"
+    },
+    {
+      "patch": "update_max_tau_primary_metric",
+      "status": "APPLIED",
+      "detail": "max_tau_primary_mpc_wbc_raw_abs update"
+    },
+    {
+      "patch": "add_log_tau_primary_column",
+      "status": "APPLIED",
+      "detail": "log column"
+    },
+    {
+      "patch": "add_primary_summary_flags",
+      "status": "APPLIED",
+      "detail": "primary_mpc_wbc summary flags"
+    },
+    {
+      "patch": "candidate_available_for_primary",
+      "status": "APPLIED",
+      "detail": "candidate_available_in_run"
+    },
+    {
+      "patch": "add_summary_primary_tau_metric",
+      "status": "APPLIED",
+      "detail": "summary metric"
+    }
+  ],
+  "checks": [
+    {
+      "check": "stage25_0_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_0_mpc_wbc_primary_controller_roadmap_summary.json"
+    },
+    {
+      "check": "stage25_0_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage25_0_target_primary",
+      "status": "PASS",
+      "detail": "target=primary_mpc_wbc"
+    },
+    {
+      "check": "stage25_1_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage25_1_control_source_audit_summary.json"
+    },
+    {
+      "check": "stage25_1_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage25_1_ready",
+      "status": "PASS",
+      "detail": "ready=True"
+    },
+    {
+      "check": "source_runner_exists",
+      "status": "PASS",
+      "detail": "scripts/stage23_2_qvel_injection_trace_runner.py"
+    },
+    {
+      "check": "runner_contains::CONTROL_MODE_PRIMARY_MPC_WBC = \"primary_mpc_wbc\"",
+      "status": "PASS",
+      "detail": "CONTROL_MODE_PRIMARY_MPC_WBC = \"primary_mpc_wbc\""
+    },
+    {
+      "check": "runner_contains::--allow-primary-mpc-wbc",
+      "status": "PASS",
+      "detail": "--allow-primary-mpc-wbc"
+    },
+    {
+      "check": "runner_contains::CONTROL_MODE_PRIMARY_MPC_WBC",
+      "status": "PASS",
+      "detail": "CONTROL_MODE_PRIMARY_MPC_WBC"
+    },
+    {
+      "check": "runner_contains::tau_primary_mpc_wbc_raw = stance_mask * tau_candidate + tau_swing_pd",
+      "status": "PASS",
+      "detail": "tau_primary_mpc_wbc_raw = stance_mask * tau_candidate + tau_swing_pd"
+    },
+    {
+      "check": "runner_contains::if args.control_mode == CONTROL_MODE_PRIMARY_MPC_WBC:",
+      "status": "PASS",
+      "detail": "if args.control_mode == CONTROL_MODE_PRIMARY_MPC_WBC:"
+    },
+    {
+      "check": "runner_contains::tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)",
+      "status": "PASS",
+      "detail": "tau_total = np.clip(tau_total_raw, -TORQUE_LIMIT, TORQUE_LIMIT)"
+    },
+    {
+      "check": "runner_contains::data.ctrl[:] = tau_total",
+      "status": "PASS",
+      "detail": "data.ctrl[:] = tau_total"
+    },
+    {
+      "check": "runner_contains::primary_mpc_wbc_mode_present",
+      "status": "PASS",
+      "detail": "primary_mpc_wbc_mode_present"
+    },
+    {
+      "check": "runner_contains::primary_mpc_wbc_executed",
+      "status": "PASS",
+      "detail": "primary_mpc_wbc_executed"
+    },
+    {
+      "check": "runner_contains::max_tau_primary_mpc_wbc_raw_abs",
+      "status": "PASS",
+      "detail": "max_tau_primary_mpc_wbc_raw_abs"
+    },
+    {
+      "check": "baseline_composition_preserved",
+      "status": "PASS",
+      "detail": "baseline / mpc-assisted branch preserved"
+    },
+    {
+      "check": "candidate_loaded_for_primary",
+      "status": "PASS",
+      "detail": "primary branch loads candidate csv"
+    },
+    {
+      "check": "existing_source_not_modified",
+      "status": "PASS",
+      "detail": "target runner is derived copy"
+    },
+    {
+      "check": "target_runner_py_compile",
+      "status": "PASS",
+      "detail": "py_compile ok"
+    },
+    {
+      "check": "all_patch_notes_applied",
+      "status": "PASS",
+      "detail": "applied=13/13"
+    }
+  ]
+}
