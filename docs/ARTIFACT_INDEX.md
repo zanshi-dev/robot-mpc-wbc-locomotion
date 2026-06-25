@@ -424,3 +424,21 @@ Stage 24 artifact 记录 short-horizon perturbation-sensitive metric audit。
 | 24.4 | `docs/STAGE24_4_SHORT_HORIZON_METRIC_EVIDENCE_FREEZE.md` | Stage 24 证据冻结报告 |
 | 24.4 | `results/logs_sample/stage24_4_short_horizon_metric_evidence_manifest.json` | Stage 24 manifest |
 <!-- STAGE24_ENTRY_DOCS_SYNC_END -->
+
+## Stage 26：Interview-Ready Primary Controller Regression
+
+| 文件 | 说明 |
+|---|---|
+| docs/STAGE26_1_PRIMARY_CONTROLLER_REGRESSION_MATRIX.md | Stage 26.1 回归矩阵说明与结论边界 |
+| scripts/stage26_1_run_primary_controller_regression_matrix.py | Stage 26.1 回归矩阵运行脚本 |
+| results/logs_sample/stage26_1_primary_controller_regression_matrix.csv | 9-case 回归矩阵结果 |
+| results/logs_sample/stage26_1_primary_controller_regression_summary.json | 回归摘要 |
+| results/logs_sample/stage26_1_trace_stage26_1_base_vx0p00.csv | baseline vx0.0 trace |
+| results/logs_sample/stage26_1_trace_stage26_1_base_vx0p10.csv | baseline vx0.1 trace |
+| results/logs_sample/stage26_1_trace_stage26_1_base_vx0p20.csv | baseline vx0.2 trace |
+| results/logs_sample/stage26_1_trace_stage26_1_primary_vx0p00.csv | primary_mpc_wbc vx0.0 trace |
+| results/logs_sample/stage26_1_trace_stage26_1_primary_vx0p10.csv | primary_mpc_wbc vx0.1 trace |
+| results/logs_sample/stage26_1_trace_stage26_1_primary_vx0p20.csv | primary_mpc_wbc vx0.2 trace |
+| results/logs_sample/stage26_1_trace_stage26_1_stab_vx0p00.csv | stabilized_primary_mpc_wbc vx0.0 trace |
+| results/logs_sample/stage26_1_trace_stage26_1_stab_vx0p10.csv | stabilized_primary_mpc_wbc vx0.1 trace |
+| results/logs_sample/stage26_1_trace_stage26_1_stab_vx0p20.csv | stabilized_primary_mpc_wbc vx0.2 trace |

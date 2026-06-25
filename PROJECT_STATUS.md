@@ -5475,3 +5475,47 @@ stabilized_primary_mpc_wbc 在直接主控基础上加入 ramp transition、scal
 - results/logs_sample/stage25_7_primary_controller_closure_evidence_freeze_summary.json
 - results/logs_sample/stage25_7_primary_controller_closure_evidence_manifest.json
 - results/logs_sample/stage25_7_primary_controller_closure_evidence_hashes.csv
+
+## Stage 26：面试展示级 primary controller 回归矩阵
+
+当前状态：Stage 26.1 已完成。
+
+Stage 26 的目标是补充面试展示级回归证据，验证 baseline、primary_mpc_wbc 和 stabilized_primary_mpc_wbc 在固定 MuJoCo 仿真设置下的行为差异。
+
+### Stage 26.1 结果
+
+| 控制模式 | case 数 | evidence pass | stability pass |
+|---|---:|---:|---:|
+| baseline | 3 | 3 | 3 |
+| primary_mpc_wbc | 3 | 3 | 0 |
+| stabilized_primary_mpc_wbc | 3 | 3 | 3 |
+
+关键结论：
+
+primary_mpc_wbc 直接主控可以进入 MuJoCo 力矩闭环，但未通过稳定性检查。典型失败特征包括 saturation_steps = 555、max_abs_roll = 0.4887、max_abs_pitch = 0.3562，且 qp_fail_steps = 0。这说明失败主要不是 QP 求解失败，而是直接主控接管后的姿态和力矩安全边界问题。
+
+stabilized_primary_mpc_wbc 在 3 个 case 中全部通过，qp_fail_steps = 0，saturation_steps = 0，max_abs_roll = 0.0882，max_abs_pitch = 0.0507。
+
+当前支持的说法：
+
+- 固定 MuJoCo 仿真设置下的 stabilized primary MPC-WBC 主控闭环原型。
+- 直接 primary_mpc_wbc 主控失败已被记录和诊断。
+- stabilized_primary_mpc_wbc 通过了面试展示级 9-case 回归矩阵。
+
+当前不支持的说法：
+
+- 真实机器人部署。
+- 硬件 torque enablement。
+- 复杂地形鲁棒行走。
+- 外力扰动鲁棒行走。
+- 完整工程级 MPC-WBC locomotion controller。
+- 严格速度跟踪鲁棒性。
+
+注意：Stage 26.1 中三个 target_vx 下的核心指标完全相同，因此该阶段应表述为控制模式回归矩阵，而不是速度跟踪性能验证。
+
+主要证据文件：
+
+- docs/STAGE26_1_PRIMARY_CONTROLLER_REGRESSION_MATRIX.md
+- scripts/stage26_1_run_primary_controller_regression_matrix.py
+- results/logs_sample/stage26_1_primary_controller_regression_matrix.csv
+- results/logs_sample/stage26_1_primary_controller_regression_summary.json

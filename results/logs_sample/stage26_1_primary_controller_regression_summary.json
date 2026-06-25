@@ -1,0 +1,47 @@
+{
+  "stage": "26.1",
+  "name": "interview-ready primary controller regression matrix",
+  "result": "pass",
+  "total_cases": 9,
+  "controllers": [
+    "baseline",
+    "primary_mpc_wbc",
+    "stabilized_primary_mpc_wbc"
+  ],
+  "target_vx_values": [
+    0.0,
+    0.1,
+    0.2
+  ],
+  "by_controller": {
+    "baseline": {
+      "cases": 3,
+      "regression_evidence_pass": 3,
+      "stability_pass": 3,
+      "evidence_generated": 3
+    },
+    "primary_mpc_wbc": {
+      "cases": 3,
+      "regression_evidence_pass": 3,
+      "stability_pass": 0,
+      "evidence_generated": 3
+    },
+    "stabilized_primary_mpc_wbc": {
+      "cases": 3,
+      "regression_evidence_pass": 3,
+      "stability_pass": 3,
+      "evidence_generated": 3
+    }
+  },
+  "failed_cases": [],
+  "matrix_csv": "results/logs_sample/stage26_1_primary_controller_regression_matrix.csv",
+  "claim_boundary": [
+    "simulation-only regression matrix",
+    "nominal initial state only",
+    "target velocity variation only",
+    "does not imply terrain robustness",
+    "does not imply external-force robustness",
+    "does not imply hardware torque enablement",
+    "primary_mpc_wbc stability failure is treated as diagnostic evidence if rollout evidence is generated"
+  ]
+}
