@@ -1,0 +1,218 @@
+{
+  "stage": "24.0",
+  "name": "short-horizon perturbation-sensitive metric roadmap",
+  "result": "pass",
+  "failure_count": 0,
+  "roadmap": "docs/STAGE24_SHORT_HORIZON_PERTURBATION_METRIC_ROADMAP.md",
+  "stage23_4_summary": "results/logs_sample/stage23_4_perturbation_observability_evidence_freeze_summary.json",
+  "stage23_root_cause": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+  "planned_stages": [
+    "24.0 roadmap",
+    "24.1 metric design preflight",
+    "24.2 compute short-horizon perturbation-sensitive metrics",
+    "24.3 analyze short-horizon metric observability",
+    "24.4 evidence freeze"
+  ],
+  "planned_metric_groups": [
+    "injection preservation metrics",
+    "first-step response metrics",
+    "trace separation versus nominal",
+    "early-window state delta metrics"
+  ],
+  "claim_boundary": [
+    "roadmap only",
+    "no new rollout generated yet",
+    "metric audit only",
+    "no observable perturbation robustness claim",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "generated_files": [
+    "results/logs_sample/stage24_0_short_horizon_metric_roadmap_validation.csv",
+    "results/logs_sample/stage24_0_short_horizon_metric_roadmap_summary.json"
+  ],
+  "checks": [
+    {
+      "check": "roadmap_exists",
+      "status": "PASS",
+      "detail": "docs/STAGE24_SHORT_HORIZON_PERTURBATION_METRIC_ROADMAP.md"
+    },
+    {
+      "check": "contains::Stage 24",
+      "status": "PASS",
+      "detail": "Stage 24"
+    },
+    {
+      "check": "contains::短时扰动敏感指标",
+      "status": "PASS",
+      "detail": "短时扰动敏感指标"
+    },
+    {
+      "check": "contains::short-horizon",
+      "status": "PASS",
+      "detail": "short-horizon"
+    },
+    {
+      "check": "contains::perturbation-sensitive metrics",
+      "status": "PASS",
+      "detail": "perturbation-sensitive metrics"
+    },
+    {
+      "check": "contains::Stage 22",
+      "status": "PASS",
+      "detail": "Stage 22"
+    },
+    {
+      "check": "contains::Stage 23",
+      "status": "PASS",
+      "detail": "Stage 23"
+    },
+    {
+      "check": "contains::C_summary_metrics_insensitive_to_short_horizon_trace_change",
+      "status": "PASS",
+      "detail": "C_summary_metrics_insensitive_to_short_horizon_trace_change"
+    },
+    {
+      "check": "contains::all_nonzero_perturbations_written=True",
+      "status": "PASS",
+      "detail": "all_nonzero_perturbations_written=True"
+    },
+    {
+      "check": "contains::all_after_forward_preserved=True",
+      "status": "PASS",
+      "detail": "all_after_forward_preserved=True"
+    },
+    {
+      "check": "contains::any_first_step_state_changed=True",
+      "status": "PASS",
+      "detail": "any_first_step_state_changed=True"
+    },
+    {
+      "check": "contains::summary 指标对短时初始 qvel 扰动不敏感",
+      "status": "PASS",
+      "detail": "summary 指标对短时初始 qvel 扰动不敏感"
+    },
+    {
+      "check": "contains::injection_written",
+      "status": "PASS",
+      "detail": "injection_written"
+    },
+    {
+      "check": "contains::after_forward_preserved",
+      "status": "PASS",
+      "detail": "after_forward_preserved"
+    },
+    {
+      "check": "contains::first_step_qvel_delta",
+      "status": "PASS",
+      "detail": "first_step_qvel_delta"
+    },
+    {
+      "check": "contains::qpos_delta_first_step",
+      "status": "PASS",
+      "detail": "qpos_delta_first_step"
+    },
+    {
+      "check": "contains::early_window_trace_separation_detected",
+      "status": "PASS",
+      "detail": "early_window_trace_separation_detected"
+    },
+    {
+      "check": "contains::max_abs_qvel_axis_diff_vs_nominal",
+      "status": "PASS",
+      "detail": "max_abs_qvel_axis_diff_vs_nominal"
+    },
+    {
+      "check": "contains::mean_abs_qvel_axis_diff_vs_nominal",
+      "status": "PASS",
+      "detail": "mean_abs_qvel_axis_diff_vs_nominal"
+    },
+    {
+      "check": "contains::early_window_max_abs_state_delta",
+      "status": "PASS",
+      "detail": "early_window_max_abs_state_delta"
+    },
+    {
+      "check": "contains::不新增控制器",
+      "status": "PASS",
+      "detail": "不新增控制器"
+    },
+    {
+      "check": "contains::不重新声明 observable perturbation robustness",
+      "status": "PASS",
+      "detail": "不重新声明 observable perturbation robustness"
+    },
+    {
+      "check": "contains::不做真实机器人部署",
+      "status": "PASS",
+      "detail": "不做真实机器人部署"
+    },
+    {
+      "check": "contains::不声明 scale=0.010",
+      "status": "PASS",
+      "detail": "不声明 scale=0.010"
+    },
+    {
+      "check": "contains::Stage 24.4",
+      "status": "PASS",
+      "detail": "Stage 24.4"
+    },
+    {
+      "check": "stage23_4_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_4_perturbation_observability_evidence_freeze_summary.json"
+    },
+    {
+      "check": "stage23_4_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage23_4_root_cause_expected",
+      "status": "PASS",
+      "detail": "overall_root_cause=C_summary_metrics_insensitive_to_short_horizon_trace_change"
+    },
+    {
+      "check": "stage23_4_confidence_high",
+      "status": "PASS",
+      "detail": "root_cause_confidence=high"
+    },
+    {
+      "check": "trace_exists::stage23_2_qvel_injection_trace_nominal_0p010.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010.csv"
+    },
+    {
+      "check": "trace_exists::stage23_2_qvel_injection_trace_vx_plus_0p010.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010.csv"
+    },
+    {
+      "check": "trace_exists::stage23_2_qvel_injection_trace_vx_minus_0p010.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010.csv"
+    },
+    {
+      "check": "trace_exists::stage23_2_qvel_injection_trace_vy_plus_0p010.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010.csv"
+    },
+    {
+      "check": "trace_exists::stage23_2_qvel_injection_trace_vy_minus_0p010.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010.csv"
+    },
+    {
+      "check": "trace_exists::stage23_2_qvel_injection_trace_yawrate_plus_0p010.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010.csv"
+    },
+    {
+      "check": "trace_exists::stage23_2_qvel_injection_trace_yawrate_minus_0p010.csv",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010.csv"
+    }
+  ]
+}
