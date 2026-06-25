@@ -1,0 +1,270 @@
+{
+  "stage": "24.3",
+  "name": "short-horizon metric observability analysis",
+  "result": "pass",
+  "failure_count": 0,
+  "metric_observability_class": "pre_step_only_detection_no_post_step_trace_separation",
+  "metric_audit_result": "partial_detection",
+  "overall_explanation": "The short-horizon metric set detects all non-nominal qvel perturbations before or at the mj_forward trace stage, but no perturbation remains separated from nominal in the aligned after_mj_step rows. Therefore, Stage 22 long-horizon summary metrics were insensitive because the perturbation effect did not persist into the rollout-step trace used by downstream summaries.",
+  "conclusion": "Stage 24.3 shows that short-horizon perturbation-sensitive metrics detect the injected qvel perturbations only in the pre-step / mj_forward trace segment. The aligned after_mj_step rows are not separated from nominal. This refines the Stage 23 root cause: Stage 22 summary metrics were insensitive because the perturbation signature was visible at injection time but did not persist into the rollout-step trace.",
+  "supported_claim": "Stage 24 supports adding explicit injection-stage or pre-step trace metrics for future perturbation audits. It does not support observable robustness or a scale=0.010 recommendation upgrade.",
+  "stage22_observable_perturbation_pass": false,
+  "stage22_perturbation_metric_variability_detected": false,
+  "stage22_recommendation_observable_robust": false,
+  "stage23_root_cause": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+  "stage23_confidence": "high",
+  "any_pre_step_trace_separation_detected": true,
+  "all_pre_step_trace_separation_detected": true,
+  "any_post_step_trace_separation_detected": false,
+  "any_early_window_trace_separation_detected": true,
+  "all_early_window_trace_separation_detected": true,
+  "max_pre_step_qvel_axis_diff_vs_nominal": 0.05,
+  "max_post_step_state_delta": 0.0,
+  "max_early_window_state_delta": 0.05,
+  "mean_early_window_state_delta": 0.0016049382716666666,
+  "class_counts": {
+    "nominal_reference": 1,
+    "pre_step_only_detection": 6
+  },
+  "per_case_analysis_rows": [
+    {
+      "case_id": "nominal_0p010",
+      "perturbation_type": "none",
+      "axis": "qvel_0",
+      "written_delta": "0.000000000000",
+      "after_forward_delta": "0.000000000000",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.000000000000",
+      "pre_step_trace_separation_detected": "False",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "False",
+      "case_metric_observability_class": "nominal_reference",
+      "case_explanation": "Nominal reference trace; no perturbation separation expected."
+    },
+    {
+      "case_id": "vx_plus_0p010",
+      "perturbation_type": "base_vx",
+      "axis": "qvel_0",
+      "written_delta": "0.050000000000",
+      "after_forward_delta": "0.050000000000",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.050000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.050000000000",
+      "pre_step_trace_separation_detected": "True",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "True",
+      "case_metric_observability_class": "pre_step_only_detection",
+      "case_explanation": "Perturbation is visible in pre-step qvel difference versus nominal, but not visible in aligned after_mj_step rows."
+    },
+    {
+      "case_id": "vx_minus_0p010",
+      "perturbation_type": "base_vx",
+      "axis": "qvel_0",
+      "written_delta": "-0.050000000000",
+      "after_forward_delta": "-0.050000000000",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.050000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.050000000000",
+      "pre_step_trace_separation_detected": "True",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "True",
+      "case_metric_observability_class": "pre_step_only_detection",
+      "case_explanation": "Perturbation is visible in pre-step qvel difference versus nominal, but not visible in aligned after_mj_step rows."
+    },
+    {
+      "case_id": "vy_plus_0p010",
+      "perturbation_type": "base_vy",
+      "axis": "qvel_1",
+      "written_delta": "0.030000000000",
+      "after_forward_delta": "0.030000000000",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.030000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.030000000000",
+      "pre_step_trace_separation_detected": "True",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "True",
+      "case_metric_observability_class": "pre_step_only_detection",
+      "case_explanation": "Perturbation is visible in pre-step qvel difference versus nominal, but not visible in aligned after_mj_step rows."
+    },
+    {
+      "case_id": "vy_minus_0p010",
+      "perturbation_type": "base_vy",
+      "axis": "qvel_1",
+      "written_delta": "-0.030000000000",
+      "after_forward_delta": "-0.030000000000",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.030000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.030000000000",
+      "pre_step_trace_separation_detected": "True",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "True",
+      "case_metric_observability_class": "pre_step_only_detection",
+      "case_explanation": "Perturbation is visible in pre-step qvel difference versus nominal, but not visible in aligned after_mj_step rows."
+    },
+    {
+      "case_id": "yawrate_plus_0p010",
+      "perturbation_type": "base_yawrate",
+      "axis": "qvel_5",
+      "written_delta": "0.050000000000",
+      "after_forward_delta": "0.050000000000",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.050000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.050000000000",
+      "pre_step_trace_separation_detected": "True",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "True",
+      "case_metric_observability_class": "pre_step_only_detection",
+      "case_explanation": "Perturbation is visible in pre-step qvel difference versus nominal, but not visible in aligned after_mj_step rows."
+    },
+    {
+      "case_id": "yawrate_minus_0p010",
+      "perturbation_type": "base_yawrate",
+      "axis": "qvel_5",
+      "written_delta": "-0.050000000000",
+      "after_forward_delta": "-0.050000000000",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.050000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.050000000000",
+      "pre_step_trace_separation_detected": "True",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "True",
+      "case_metric_observability_class": "pre_step_only_detection",
+      "case_explanation": "Perturbation is visible in pre-step qvel difference versus nominal, but not visible in aligned after_mj_step rows."
+    }
+  ],
+  "generated_files": [
+    "results/logs_sample/stage24_3_short_horizon_metric_observability_analysis.csv",
+    "results/logs_sample/stage24_3_short_horizon_metric_observability_validation.csv",
+    "results/logs_sample/stage24_3_short_horizon_metric_observability_analysis.md",
+    "results/logs_sample/stage24_3_short_horizon_metric_observability_summary.json",
+    "docs/STAGE24_3_SHORT_HORIZON_METRIC_ANALYSIS.md"
+  ],
+  "claim_boundary": [
+    "metric analysis only",
+    "no new rollout generated",
+    "does not upgrade scale=0.010 to observable-perturbation-tested recommended candidate scale",
+    "no observable perturbation robustness claim",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "checks": [
+    {
+      "check": "stage24_2_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_summary.json"
+    },
+    {
+      "check": "stage24_2_per_case_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_per_case.csv"
+    },
+    {
+      "check": "stage24_2_aggregate_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_aggregate.csv"
+    },
+    {
+      "check": "stage23_4_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_4_perturbation_observability_evidence_freeze_summary.json"
+    },
+    {
+      "check": "stage22_4_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_4_observable_perturbation_evidence_freeze_summary.json"
+    },
+    {
+      "check": "stage24_2_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage23_4_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage22_4_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "per_case_row_count_7",
+      "status": "PASS",
+      "detail": "rows=7"
+    },
+    {
+      "check": "aggregate_row_count_at_least_8",
+      "status": "PASS",
+      "detail": "rows=8"
+    },
+    {
+      "check": "stage23_root_cause_expected",
+      "status": "PASS",
+      "detail": "overall_root_cause=C_summary_metrics_insensitive_to_short_horizon_trace_change"
+    },
+    {
+      "check": "stage23_confidence_high",
+      "status": "PASS",
+      "detail": "root_cause_confidence=high"
+    },
+    {
+      "check": "stage22_variability_false",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "stage22_observable_false",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "stage22_recommendation_observable_false",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "stage24_2_any_pre_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "stage24_2_all_pre_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "stage24_2_any_post_false",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "stage24_2_any_early_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "stage24_2_all_early_true",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "metric_observability_class_selected",
+      "status": "PASS",
+      "detail": "pre_step_only_detection_no_post_step_trace_separation"
+    },
+    {
+      "check": "per_case_analysis_rows_7",
+      "status": "PASS",
+      "detail": "rows=7"
+    },
+    {
+      "check": "root_cause_refined_without_robustness_upgrade",
+      "status": "PASS",
+      "detail": "pre_step_only_detection_no_post_step_trace_separation"
+    }
+  ]
+}
