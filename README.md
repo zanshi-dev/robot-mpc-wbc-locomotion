@@ -679,3 +679,50 @@ Stage 22 在 Stage 21 的基础上尝试引入 qvel 初始速度扰动，用于�
 
 > Stage 22 尝试通过 qvel 初始速度扰动构造 observable perturbation audit。21 组 simulation-only rollout 均通过稳定性边界，且 scale=0.010 的推荐关系在当前记录指标中未被破坏；但扰动没有造成 summary 指标的可观测变化，因此 Stage 22 不能支持 observable perturbation robustness 结论。
 <!-- STAGE22_ENTRY_DOCS_SYNC_END -->
+
+<!-- STAGE23_ENTRY_DOCS_SYNC_START -->
+## Stage 23：perturbation observability root-cause audit
+
+Stage 23 对 Stage 22 的 qvel perturbation negative evidence 进行了根因审计。
+
+Stage 22 的冻结结果是：
+
+  * `observable_perturbation_pass=False`
+  * `perturbation_metric_variability_detected=False`
+  * `recommendation_relation_stable=True`
+  * `recommendation_observable_robust=False`
+
+Stage 23 的 trace diagnostic 结果是：
+
+  * `all_nonzero_perturbations_written=True`
+  * `all_after_forward_preserved=True`
+  * `any_first_step_state_changed=True`
+
+Stage 23.3 root-cause conclusion:
+
+  * `overall_root_cause=C_summary_metrics_insensitive_to_short_horizon_trace_change`
+  * `root_cause_confidence=high`
+
+结论：
+
+    Stage 23.3 root-cause analysis indicates that the Stage 22 qvel perturbations were injected and visible in short-horizon trace data, but the Stage 22 rollout summary metrics did not vary. The root cause is therefore summary-metric insensitivity to short-horizon initial qvel perturbations.
+
+    Stage 23 supports explaining Stage 22 negative evidence as a metric/observability limitation, not as a successful observable robustness validation.
+
+当前可以声明：
+
+  * Stage 23 解释了 Stage 22 的 qvel perturbation negative evidence；
+  * qvel 扰动确实写入并在 `mj_forward` 后保持；
+  * qvel 扰动能在短时 trace 中产生状态差异；
+  * Stage 22 summary 指标没有变化的根因是 summary 指标对短时初始 qvel 扰动不敏感。
+
+当前不能声明：
+
+  * 不能声明 `scale=0.010` 已通过 observable perturbation robustness 验证；
+  * 不能声明 `scale=0.010` 升级为 observable-perturbation-tested recommended candidate scale；
+  * 不能声明完整 MPC-WBC 速度控制器已经完成；
+  * 不能声明 `scale=0.010` 可以直接用于真实机器人；
+  * 不能声明真实机器人 torque 执行或硬件 torque enablement 已完成；
+  * 不能声明复杂地形或外力冲击鲁棒性已完成。
+<!-- STAGE23_ENTRY_DOCS_SYNC_END -->
+

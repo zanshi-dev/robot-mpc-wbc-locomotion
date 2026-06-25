@@ -370,3 +370,29 @@ Stage 22 artifact 记录 qvel observable perturbation attempt。注意：Stage 2
 | 22.4 | `docs/STAGE22_4_OBSERVABLE_PERTURBATION_EVIDENCE_FREEZE.md` | Stage 22 证据冻结报告 |
 | 22.4 | `results/logs_sample/stage22_4_observable_perturbation_evidence_manifest.json` | Stage 22 证据 manifest |
 <!-- STAGE22_ENTRY_DOCS_SYNC_END -->
+
+<!-- STAGE23_ENTRY_DOCS_SYNC_START -->
+## Stage 23 Artifacts
+
+Stage 23 artifact 记录 perturbation observability root-cause audit。
+
+结论边界：
+
+  * `overall_root_cause=C_summary_metrics_insensitive_to_short_horizon_trace_change`
+  * `root_cause_confidence=high`
+  * `stage22_perturbation_metric_variability_detected=False`
+  * 当前不将 `scale=0.010` 升级为 observable-perturbation-tested recommended candidate scale。
+  * Stage 22 的 summary 指标对短时初始 qvel 扰动不敏感。
+
+| 阶段 | Artifact | 作用 |
+|---|---|---|
+| 23.0 | `docs/STAGE23_PERTURBATION_OBSERVABILITY_ROOT_CAUSE_ROADMAP.md` | 根因审计路线图 |
+| 23.1 | `docs/STAGE23_1_QVEL_INJECTION_TRACE_PREFLIGHT.md` | qvel trace 预检查 |
+| 23.2 | `docs/STAGE23_2_QVEL_INJECTION_TRACE_DIAGNOSTIC.md` | qvel injection trace diagnostic |
+| 23.2 | `results/logs_sample/stage23_2_qvel_injection_trace_diagnostic_table.csv` | trace 诊断表 |
+| 23.3 | `docs/STAGE23_3_PERTURBATION_OBSERVABILITY_ROOT_CAUSE_ANALYSIS.md` | 根因分析报告 |
+| 23.3 | `results/logs_sample/stage23_3_perturbation_observability_root_cause_summary.json` | 根因分析 summary |
+| 23.4 | `docs/STAGE23_4_PERTURBATION_OBSERVABILITY_EVIDENCE_FREEZE.md` | Stage 23 证据冻结报告 |
+| 23.4 | `results/logs_sample/stage23_4_perturbation_observability_evidence_manifest.json` | Stage 23 manifest |
+<!-- STAGE23_ENTRY_DOCS_SYNC_END -->
+

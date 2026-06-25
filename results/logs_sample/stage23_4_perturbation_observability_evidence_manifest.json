@@ -1,0 +1,372 @@
+{
+  "stage": "23.4",
+  "name": "perturbation observability root-cause evidence freeze",
+  "result": "pass",
+  "failure_count": 0,
+  "artifact_count": 57,
+  "overall_root_cause": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+  "root_cause_confidence": "high",
+  "conclusion": "Stage 23.3 root-cause analysis indicates that the Stage 22 qvel perturbations were injected and visible in short-horizon trace data, but the Stage 22 rollout summary metrics did not vary. The root cause is therefore summary-metric insensitivity to short-horizon initial qvel perturbations.",
+  "supported_claim": "Stage 23 supports explaining Stage 22 negative evidence as a metric/observability limitation, not as a successful observable robustness validation.",
+  "stage22_observable_perturbation_pass": false,
+  "stage22_perturbation_metric_variability_detected": false,
+  "stage22_recommendation_relation_stable": true,
+  "stage22_recommendation_observable_robust": false,
+  "stage23_2_all_nonzero_perturbations_written": true,
+  "stage23_2_all_after_forward_preserved": true,
+  "stage23_2_any_first_step_state_changed": true,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "0418ec93927a6cff67a5d6d93bdc6b2eb9802fafdc69d6720f50d5829332d95a",
+      "size_bytes": 27798,
+      "exists": true
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "sha256": "3ba9351dff29ac473d7771623936cff15b78f6473492c3a72df413c965309a8b",
+      "size_bytes": 172866,
+      "exists": true
+    },
+    {
+      "path": "docs/ARTIFACT_INDEX.md",
+      "sha256": "b06ba0e6e4b1be8b0db54834364af4f5009310450f8b12d8d0c895d3b8e490e9",
+      "size_bytes": 26143,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE23_PERTURBATION_OBSERVABILITY_ROOT_CAUSE_ROADMAP.md",
+      "sha256": "900ebc3bad82dc1d29ec4b31a6869f4fdaafd7c5d8417ef6b47a48f09c77beb3",
+      "size_bytes": 5775,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE23_1_QVEL_INJECTION_TRACE_PREFLIGHT.md",
+      "sha256": "6fa2281821846b239669fe1aac1213d68204afa23694a8319fe85950b0b398ad",
+      "size_bytes": 2804,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE23_2_QVEL_INJECTION_TRACE_DIAGNOSTIC.md",
+      "sha256": "cc63c40bd3ae47c5d691ae0fa389d76f54a81f889e5de43b8efb25bf669de147",
+      "size_bytes": 2662,
+      "exists": true
+    },
+    {
+      "path": "docs/STAGE23_3_PERTURBATION_OBSERVABILITY_ROOT_CAUSE_ANALYSIS.md",
+      "sha256": "c9e519aa69cc96f8e311b874bd72d3af00b72a9e0076a362bf9f3c01e471fcf3",
+      "size_bytes": 3925,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage23_0_validate_perturbation_observability_roadmap.py",
+      "sha256": "a892d9c5d22550e5495212e28452c293b943333e642b75d484bac1731bb477c4",
+      "size_bytes": 5147,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage23_1_qvel_injection_trace_preflight.py",
+      "sha256": "c48176ca9bb44debdee452bc900f49c3a4ab16203b973efbe83e9a63c35eaecd",
+      "size_bytes": 15279,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage23_2_qvel_injection_trace_runner.py",
+      "sha256": "65296f3e7559845147cafb9fa7e564c8a5d702cfdc099cb8ade43c41d6b32dd4",
+      "size_bytes": 31138,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage23_2_run_qvel_injection_trace_diagnostic.py",
+      "sha256": "7918ef6872856d348d23907bc586eb52500df03faf1e679f26c856be44d1c7c2",
+      "size_bytes": 6312,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage23_2_validate_qvel_injection_trace_diagnostic.py",
+      "sha256": "2036919b62cf4f91f860cad110bef18a4174e421f14a20863be442f8105d7a75",
+      "size_bytes": 12785,
+      "exists": true
+    },
+    {
+      "path": "scripts/stage23_3_perturbation_observability_root_cause_analysis.py",
+      "sha256": "b4da86f0444cce46bba9ca5ab54dbac50717899279202d04fab73f3668ed3027",
+      "size_bytes": 18007,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_0_perturbation_observability_roadmap_validation.csv",
+      "sha256": "0335392d508a2d940e3c77bbc5c4ae8b7d9adeb5dbfb1cef244adae9c695e9ec",
+      "size_bytes": 1767,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_0_perturbation_observability_roadmap_summary.json",
+      "sha256": "7c82221a9ffb6f140e62dcc9e0e2cfe1ece6562ef3d4c30b07d1be64814a5712",
+      "size_bytes": 5019,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_1_qvel_injection_trace_preflight_validation.csv",
+      "sha256": "89ca486e8e26b88617322f113bccfa0c26f9e19481becdb646b9708a76ecbcc5",
+      "size_bytes": 2254,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_1_qvel_injection_trace_preflight_context.txt",
+      "sha256": "8d2ee44da04bf1a0611972f0a3039e761edb637177f5f0084017931c03026d6b",
+      "size_bytes": 21365,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_1_qvel_injection_trace_plan.csv",
+      "sha256": "cb4cba12454fd898e06353e1c16667152429c3a2072952063f709abb2a966af2",
+      "size_bytes": 1881,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_1_qvel_injection_trace_preflight_summary.json",
+      "sha256": "80bdaf9b5766744785a5c54989f2c97fdf5e2e42526ab8c77ff8657a56e2cbc9",
+      "size_bytes": 10305,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_execution.csv",
+      "sha256": "c2551b08339270402b614a68cb8ea35e60bf553895e7589150056f569fa30453",
+      "size_bytes": 6975,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_execution_summary.json",
+      "sha256": "fe5e8dac498c68b7a175d8f5b791aae1c5f8e774b98e58ed8f2f5bf4299518c2",
+      "size_bytes": 10102,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_validation.csv",
+      "sha256": "cd56e4add9f5d39a7a09469ddccef335dca55ff95852ac51c4c1660f5165c488",
+      "size_bytes": 13434,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_diagnostic_table.csv",
+      "sha256": "59d72cf9d720898182f0e4da900a0324432227dc556a32d88ba481a395fe18e6",
+      "size_bytes": 2496,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_diagnostic_table.md",
+      "sha256": "36f97784ab2d64b63cf465aae6f71fa169179f23f1a7042bd2be66dc21fa9213",
+      "size_bytes": 1226,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_summary.json",
+      "sha256": "71d203c924a21490c0db0a058002d3667bfe45030c089794d0920912bb6d2a3c",
+      "size_bytes": 36449,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_3_perturbation_observability_root_cause_per_case.csv",
+      "sha256": "f45475e3a1d06b8d07923389a22a343ef407c01d026a8a9be28dcfb7c0a62be3",
+      "size_bytes": 3184,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_3_perturbation_observability_root_cause_validation.csv",
+      "sha256": "f3d6396a021a9defca4edde4191a039d960e32a4584c8aebcb5b40d45c6e3be6",
+      "size_bytes": 1071,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_3_perturbation_observability_root_cause_analysis.md",
+      "sha256": "2938cb0035276914b24df5de454a17d2b280083b969e7b6b0a3bc5261b31fcc6",
+      "size_bytes": 2357,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_3_perturbation_observability_root_cause_summary.json",
+      "sha256": "776da453c2be9a0b7d1b27c5f7158dcad5fd54959f10c4f48ab98ec80034bdb5",
+      "size_bytes": 11079,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010.csv",
+      "sha256": "4df239765395ed756f35ec27d670c201978cbdab7df94e5d0e758424b41105f7",
+      "size_bytes": 7162,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010_summary.json",
+      "sha256": "92ec9bb7fba7c4a4ec304cfae3a8b7599e0165d6317f77166c835acb670d2200",
+      "size_bytes": 2131,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_nominal_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "559fbe59622348ab48b6ea230931195ea9188866b824b7475c6eb132cd8f41cd",
+      "size_bytes": 1483761,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_nominal_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "2370e042aacef1346b5d881adf8d323e45d4fe0646cd97152154b083ba745640",
+      "size_bytes": 2502,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010.csv",
+      "sha256": "5c6f5372d2cb3a6aae8a2b4f08eb5b42cdf3b050797b17871a8e6ad252eab4b4",
+      "size_bytes": 7224,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010_summary.json",
+      "sha256": "c5ef6c668e545e43a1b604c2320cba9d7b593f46fe52f66081e55b5740ffee9d",
+      "size_bytes": 2134,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_vx_plus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "021b7985a4bdafd252cd96d6265f0be91884d536e6e4f1e008fd158fa43a603a",
+      "size_bytes": 1493361,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_vx_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "29a85896fc250a667e644eb4e1256884814949f14351f7d4969e150f0281fe55",
+      "size_bytes": 2506,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010.csv",
+      "sha256": "6ae62c024733afc4c6ef66ff9a7663699bb56b831b06383607cccb5d457f6bb8",
+      "size_bytes": 7271,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010_summary.json",
+      "sha256": "227a536eb0c35489b25b4e667aa93fcd7d0907f5395318beb0250d265ddfad91",
+      "size_bytes": 2142,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_vx_minus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "d63ef616747feebbb6fab95a3c553df8b506e1233586ed3f0dfac857e59bc978",
+      "size_bytes": 1500561,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_vx_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "c7bad82925683d66408ac55b1a9a9f9fae707f83c541be97ffac291289443352",
+      "size_bytes": 2509,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010.csv",
+      "sha256": "5f1fec55483be6b0c039cbef0a4bffea6c3ed10b4f42b03bb02796b37dba4f88",
+      "size_bytes": 7224,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010_summary.json",
+      "sha256": "2c9e5930c1e00d1ecfce4e331dab358f57e273b01dc88bf93514406d570e27bd",
+      "size_bytes": 2134,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_vy_plus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "36db9af1d06446aa5e57caf47d5567b35c178ad0497c4fc8470153e5f31fe95e",
+      "size_bytes": 1493361,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_vy_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "b1a314b56859e5f254b28d7ac2f929cde69513365ddb33160b7b170c20ff27ce",
+      "size_bytes": 2506,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010.csv",
+      "sha256": "a150dcdbe9b1c3c0ef027d7d6bcd4f60d7008599d4870b85a138ae11e95ad086",
+      "size_bytes": 7271,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010_summary.json",
+      "sha256": "b2b3238107bea4e41d0730b5ec199863d5482e0af7c87f220db23942d0aacf27",
+      "size_bytes": 2142,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_vy_minus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "0d12d6743c4b48ba583af4ce2dc2fa4cf77fe89aab4facdbfad9c08ff7af9070",
+      "size_bytes": 1500561,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_vy_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "02e9c22e84753de357a9be33a2c1d8f50d31cd35b96f4b8f3863517ca5a2bcd4",
+      "size_bytes": 2509,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010.csv",
+      "sha256": "84c2fb123a77c2f4408ff3429c36d48fea7e8d320ae3569e45cd5d25c08c2970",
+      "size_bytes": 7449,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010_summary.json",
+      "sha256": "faf5f73eb0c24b8b0bd1b60f2e29bd13e607443374ca40fddf4f61c5713e919b",
+      "size_bytes": 2174,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_yawrate_plus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "86242791155c7a20df271fcbf1eb1e54ad76e0441aca0d3af17190240e1e0d9b",
+      "size_bytes": 1529361,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_yawrate_plus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "360b5e718f04d34b16d8a5bfdac06a95022562311a1e1af636910d036f5c8157",
+      "size_bytes": 2521,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010.csv",
+      "sha256": "04a8036102cebadb3b6590e93e5a0694197688085e4730647a7d17ee320417e7",
+      "size_bytes": 7496,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010_summary.json",
+      "sha256": "303045e4f131bc35af99c743237c8ddf7dae6d7d829f4ecba6c75cbef6c88bc7",
+      "size_bytes": 2181,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_yawrate_minus_0p010_mpc_assisted_candidate_log.csv",
+      "sha256": "b135487249bc7ecab7a4e5c7ec5a589f7eefd1b0ce2523a9623bc867d95b8233",
+      "size_bytes": 1536561,
+      "exists": true
+    },
+    {
+      "path": "results/logs_sample/stage23_2_qvel_trace_rollout_yawrate_minus_0p010_mpc_assisted_candidate_summary.csv",
+      "sha256": "887dde1517add3aa7f61e2c69f40f811bcc6be17b8a6ec596f00e828e90988c4",
+      "size_bytes": 2524,
+      "exists": true
+    }
+  ],
+  "claim_boundary": [
+    "root-cause evidence freeze only",
+    "explains Stage 22 negative evidence",
+    "does not upgrade scale=0.010 to observable-perturbation-tested recommended candidate scale",
+    "no observable perturbation robustness claim",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ]
+}

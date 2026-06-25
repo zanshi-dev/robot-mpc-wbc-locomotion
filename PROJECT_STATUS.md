@@ -5360,3 +5360,36 @@ Stage 17 does not support these statements:
     Stage 22 是一次 qvel observable perturbation attempt。
     由于扰动没有造成 summary 指标可观测变化，不支持 observable perturbation robustness 结论。
 <!-- STAGE22_ENTRY_DOCS_SYNC_END -->
+
+<!-- STAGE23_ENTRY_DOCS_SYNC_START -->
+## Stage 23 状态：perturbation observability root-cause audit
+
+当前状态：已完成 Stage 23.0–23.3，并在 Stage 23.4 冻结证据。
+
+| 阶段 | 结果 | 证据 |
+|---|---:|---|
+| 23.0 | pass | `docs/STAGE23_PERTURBATION_OBSERVABILITY_ROOT_CAUSE_ROADMAP.md` |
+| 23.1 | pass | `docs/STAGE23_1_QVEL_INJECTION_TRACE_PREFLIGHT.md` |
+| 23.2 | pass | `docs/STAGE23_2_QVEL_INJECTION_TRACE_DIAGNOSTIC.md` |
+| 23.3 | pass | `docs/STAGE23_3_PERTURBATION_OBSERVABILITY_ROOT_CAUSE_ANALYSIS.md` |
+
+核心结论：
+
+    overall_root_cause=C_summary_metrics_insensitive_to_short_horizon_trace_change
+    root_cause_confidence=high
+    all_nonzero_perturbations_written=True
+    all_after_forward_preserved=True
+    any_first_step_state_changed=True
+
+解释：
+
+    Stage 22 的 qvel perturbation negative evidence 不是因为 qvel 没有写入；
+    而是因为短时 qvel 扰动没有反映到 Stage 22 的长期 summary 指标变化中。
+    更准确地说，Stage 22 的 summary 指标对短时初始 qvel 扰动不敏感。
+
+结论边界：
+
+    不能声明 `scale=0.010` 升级为 observable-perturbation-tested recommended candidate scale。
+    不能将 Stage 23 解释为 observable perturbation robustness 验证成功。
+<!-- STAGE23_ENTRY_DOCS_SYNC_END -->
+
