@@ -8,8 +8,8 @@
 
 当前项目边界：
 
-  * Stage 25 新增 simulation-only primary controller closure 证据：direct primary_mpc_wbc 已进入 MuJoCo torque loop，但 smoke rollout 未通过稳定性边界。
-  * 当前通过 smoke boundary 的主控闭环版本为 stabilized_primary_mpc_wbc，即在 primary candidate torque 外加入 ramp、scale、stance posture residual、online WBC residual，并保留 swing PD 与 torque safety filter。
+- Stage 25 新增 simulation-only primary controller closure 证据：direct primary_mpc_wbc 已进入 MuJoCo torque loop，但 smoke rollout 未通过稳定性边界。
+- 当前通过 smoke boundary 的主控闭环版本为 stabilized_primary_mpc_wbc，即在 primary candidate torque 外加入 ramp、scale、stance posture residual、online WBC residual，并保留 swing PD 与 torque safety filter。
 - MPC 作为 planning layer，用于生成 contact force reference 或 contact force candidate。
 - MPC 不直接输出最终 joint torque。
 - WBC/QP 或 J^T f 映射层负责把 contact force reference / candidate 转换为 joint torque candidate。
@@ -26,8 +26,8 @@
 
 当前证据支持：
 
-  * primary_mpc_wbc 与 stabilized_primary_mpc_wbc 两类 simulation-only 主控模式验证。
-  * stabilized_primary_mpc_wbc nominal 2400-step smoke rollout 通过证据。
+- primary_mpc_wbc 与 stabilized_primary_mpc_wbc 两类 simulation-only 主控模式验证。
+- stabilized_primary_mpc_wbc nominal 2400-step smoke rollout 通过证据。
 - MuJoCo / Pinocchio simulation-only locomotion baseline。
 - MPC contact-force planning demo。
 - WBC/QP 与 J^T f torque-candidate 验证。
