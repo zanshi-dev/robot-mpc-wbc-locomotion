@@ -1,0 +1,539 @@
+{
+  "stage": "24.2",
+  "name": "compute short-horizon perturbation-sensitive metrics",
+  "result": "pass",
+  "failure_count": 0,
+  "case_count": 7,
+  "non_nominal_case_count": 6,
+  "any_pre_step_trace_separation_detected": true,
+  "all_pre_step_trace_separation_detected": true,
+  "any_post_step_trace_separation_detected": false,
+  "any_early_window_trace_separation_detected": true,
+  "all_early_window_trace_separation_detected": true,
+  "max_early_window_max_abs_state_delta": 0.05,
+  "mean_early_window_mean_abs_state_delta": 0.0016049382716666666,
+  "stage23_root_cause": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+  "per_case_metrics": [
+    {
+      "case_id": "nominal_0p010",
+      "perturbation_id": "nominal",
+      "perturbation_type": "none",
+      "axis": "qvel_0",
+      "qpos_axis": "qpos_0",
+      "nominal_ref": "self",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "written_delta": "0.000000000000",
+      "after_forward_delta": "0.000000000000",
+      "first_step_qvel_delta": "-0.016621033634",
+      "qpos_delta_first_step": "-0.000033242067",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "aligned_after_step_count": "12",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_pre_step_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "post_step_mean_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.000000000000",
+      "early_window_mean_abs_state_delta": "0.000000000000",
+      "pre_step_trace_separation_detected": "False",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "False",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010.csv"
+    },
+    {
+      "case_id": "vx_plus_0p010",
+      "perturbation_id": "vx_plus",
+      "perturbation_type": "base_vx",
+      "axis": "qvel_0",
+      "qpos_axis": "qpos_0",
+      "nominal_ref": "nominal_0p010",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "written_delta": "0.050000000000",
+      "after_forward_delta": "0.050000000000",
+      "first_step_qvel_delta": "-0.016621033634",
+      "qpos_delta_first_step": "-0.000033242067",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "aligned_after_step_count": "12",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.050000000000",
+      "mean_abs_pre_step_qvel_axis_diff_vs_nominal": "0.033333333333",
+      "max_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "post_step_mean_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.050000000000",
+      "early_window_mean_abs_state_delta": "0.001851851852",
+      "pre_step_trace_separation_detected": "True",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010.csv"
+    },
+    {
+      "case_id": "vx_minus_0p010",
+      "perturbation_id": "vx_minus",
+      "perturbation_type": "base_vx",
+      "axis": "qvel_0",
+      "qpos_axis": "qpos_0",
+      "nominal_ref": "nominal_0p010",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "written_delta": "-0.050000000000",
+      "after_forward_delta": "-0.050000000000",
+      "first_step_qvel_delta": "-0.016621033634",
+      "qpos_delta_first_step": "-0.000033242067",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "aligned_after_step_count": "12",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.050000000000",
+      "mean_abs_pre_step_qvel_axis_diff_vs_nominal": "0.033333333333",
+      "max_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "post_step_mean_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.050000000000",
+      "early_window_mean_abs_state_delta": "0.001851851852",
+      "pre_step_trace_separation_detected": "True",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010.csv"
+    },
+    {
+      "case_id": "vy_plus_0p010",
+      "perturbation_id": "vy_plus",
+      "perturbation_type": "base_vy",
+      "axis": "qvel_1",
+      "qpos_axis": "qpos_1",
+      "nominal_ref": "nominal_0p010",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "written_delta": "0.030000000000",
+      "after_forward_delta": "0.030000000000",
+      "first_step_qvel_delta": "0.000213879716",
+      "qpos_delta_first_step": "0.000000427759",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "aligned_after_step_count": "12",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.030000000000",
+      "mean_abs_pre_step_qvel_axis_diff_vs_nominal": "0.020000000000",
+      "max_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "post_step_mean_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.030000000000",
+      "early_window_mean_abs_state_delta": "0.001111111111",
+      "pre_step_trace_separation_detected": "True",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010.csv"
+    },
+    {
+      "case_id": "vy_minus_0p010",
+      "perturbation_id": "vy_minus",
+      "perturbation_type": "base_vy",
+      "axis": "qvel_1",
+      "qpos_axis": "qpos_1",
+      "nominal_ref": "nominal_0p010",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "written_delta": "-0.030000000000",
+      "after_forward_delta": "-0.030000000000",
+      "first_step_qvel_delta": "0.000213879716",
+      "qpos_delta_first_step": "0.000000427759",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "aligned_after_step_count": "12",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.030000000000",
+      "mean_abs_pre_step_qvel_axis_diff_vs_nominal": "0.020000000000",
+      "max_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "post_step_mean_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.030000000000",
+      "early_window_mean_abs_state_delta": "0.001111111111",
+      "pre_step_trace_separation_detected": "True",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010.csv"
+    },
+    {
+      "case_id": "yawrate_plus_0p010",
+      "perturbation_id": "yawrate_plus",
+      "perturbation_type": "base_yawrate",
+      "axis": "qvel_5",
+      "qpos_axis": "qpos_3",
+      "nominal_ref": "nominal_0p010",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "written_delta": "0.050000000000",
+      "after_forward_delta": "0.050000000000",
+      "first_step_qvel_delta": "-0.031726322323",
+      "qpos_delta_first_step": "-0.000000022225",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "aligned_after_step_count": "12",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.050000000000",
+      "mean_abs_pre_step_qvel_axis_diff_vs_nominal": "0.033333333333",
+      "max_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "post_step_mean_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.050000000000",
+      "early_window_mean_abs_state_delta": "0.001851851852",
+      "pre_step_trace_separation_detected": "True",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010.csv"
+    },
+    {
+      "case_id": "yawrate_minus_0p010",
+      "perturbation_id": "yawrate_minus",
+      "perturbation_type": "base_yawrate",
+      "axis": "qvel_5",
+      "qpos_axis": "qpos_3",
+      "nominal_ref": "nominal_0p010",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "written_delta": "-0.050000000000",
+      "after_forward_delta": "-0.050000000000",
+      "first_step_qvel_delta": "-0.031726322323",
+      "qpos_delta_first_step": "-0.000000022225",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "aligned_after_step_count": "12",
+      "max_abs_pre_step_qvel_axis_diff_vs_nominal": "0.050000000000",
+      "mean_abs_pre_step_qvel_axis_diff_vs_nominal": "0.033333333333",
+      "max_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_pre_step_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qvel_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "mean_abs_qpos_axis_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vx_fd_diff_vs_nominal": "0.000000000000",
+      "max_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "mean_abs_base_vy_fd_diff_vs_nominal": "0.000000000000",
+      "post_step_max_abs_state_delta": "0.000000000000",
+      "post_step_mean_abs_state_delta": "0.000000000000",
+      "early_window_max_abs_state_delta": "0.050000000000",
+      "early_window_mean_abs_state_delta": "0.001851851852",
+      "pre_step_trace_separation_detected": "True",
+      "post_step_trace_separation_detected": "False",
+      "early_window_trace_separation_detected": "True",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010.csv"
+    }
+  ],
+  "aggregate_metrics": [
+    {
+      "metric": "non_nominal_case_count",
+      "value": "6",
+      "interpretation": "number of perturbation cases compared with nominal"
+    },
+    {
+      "metric": "any_pre_step_trace_separation_detected",
+      "value": "True",
+      "interpretation": "whether any perturbation is visible before/at mj_forward trace"
+    },
+    {
+      "metric": "all_pre_step_trace_separation_detected",
+      "value": "True",
+      "interpretation": "whether all non-nominal perturbations are visible before/at mj_forward trace"
+    },
+    {
+      "metric": "any_post_step_trace_separation_detected",
+      "value": "False",
+      "interpretation": "whether any perturbation remains separated from nominal during after_mj_step rows"
+    },
+    {
+      "metric": "any_early_window_trace_separation_detected",
+      "value": "True",
+      "interpretation": "whether short-horizon metric set can detect perturbation effect"
+    },
+    {
+      "metric": "all_early_window_trace_separation_detected",
+      "value": "True",
+      "interpretation": "whether all perturbation cases are detected by short-horizon metric set"
+    },
+    {
+      "metric": "max_early_window_max_abs_state_delta",
+      "value": "0.050000000000",
+      "interpretation": "largest detected short-horizon state separation"
+    },
+    {
+      "metric": "mean_early_window_mean_abs_state_delta",
+      "value": "0.001604938272",
+      "interpretation": "average detected short-horizon state separation"
+    }
+  ],
+  "generated_files": [
+    "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_per_case.csv",
+    "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_aggregate.csv",
+    "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_validation.csv",
+    "results/logs_sample/stage24_2_short_horizon_perturbation_metrics.md",
+    "results/logs_sample/stage24_2_short_horizon_perturbation_metrics_summary.json",
+    "docs/STAGE24_2_SHORT_HORIZON_PERTURBATION_METRICS.md"
+  ],
+  "claim_boundary": [
+    "metric computation only",
+    "no new rollout generated",
+    "does not upgrade scale=0.010 to observable-perturbation-tested recommended candidate scale",
+    "no observable perturbation robustness claim",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "checks": [
+    {
+      "check": "stage24_1_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_1_short_horizon_metric_preflight_summary.json"
+    },
+    {
+      "check": "stage24_1_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage24_1_inputs_ready",
+      "status": "PASS",
+      "detail": "ready=True"
+    },
+    {
+      "check": "stage23_4_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_4_perturbation_observability_evidence_freeze_summary.json"
+    },
+    {
+      "check": "stage23_4_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage23_4_root_cause_expected",
+      "status": "PASS",
+      "detail": "overall_root_cause=C_summary_metrics_insensitive_to_short_horizon_trace_change"
+    },
+    {
+      "check": "trace_plan_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage24_1_short_horizon_metric_trace_input_plan.csv"
+    },
+    {
+      "check": "stage23_diag_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_3_perturbation_observability_root_cause_per_case.csv"
+    },
+    {
+      "check": "trace_plan_count_7",
+      "status": "PASS",
+      "detail": "count=7"
+    },
+    {
+      "check": "stage23_diag_count_7",
+      "status": "PASS",
+      "detail": "count=7"
+    },
+    {
+      "check": "nominal_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010.csv"
+    },
+    {
+      "check": "nominal_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "nominal_0p010_after_step_count_at_least_12",
+      "status": "PASS",
+      "detail": "after_step_count=12"
+    },
+    {
+      "check": "vx_plus_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010.csv"
+    },
+    {
+      "check": "vx_plus_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "vx_plus_0p010_after_step_count_at_least_12",
+      "status": "PASS",
+      "detail": "after_step_count=12"
+    },
+    {
+      "check": "vx_minus_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010.csv"
+    },
+    {
+      "check": "vx_minus_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "vx_minus_0p010_after_step_count_at_least_12",
+      "status": "PASS",
+      "detail": "after_step_count=12"
+    },
+    {
+      "check": "vy_plus_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010.csv"
+    },
+    {
+      "check": "vy_plus_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "vy_plus_0p010_after_step_count_at_least_12",
+      "status": "PASS",
+      "detail": "after_step_count=12"
+    },
+    {
+      "check": "vy_minus_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010.csv"
+    },
+    {
+      "check": "vy_minus_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "vy_minus_0p010_after_step_count_at_least_12",
+      "status": "PASS",
+      "detail": "after_step_count=12"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010.csv"
+    },
+    {
+      "check": "yawrate_plus_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "yawrate_plus_0p010_after_step_count_at_least_12",
+      "status": "PASS",
+      "detail": "after_step_count=12"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010.csv"
+    },
+    {
+      "check": "yawrate_minus_0p010_trace_rows_at_least_15",
+      "status": "PASS",
+      "detail": "rows=15"
+    },
+    {
+      "check": "yawrate_minus_0p010_after_step_count_at_least_12",
+      "status": "PASS",
+      "detail": "after_step_count=12"
+    },
+    {
+      "check": "nominal_trace_available",
+      "status": "PASS",
+      "detail": "nominal_0p010"
+    },
+    {
+      "check": "nominal_after_step_count_at_least_12",
+      "status": "PASS",
+      "detail": "count=12"
+    },
+    {
+      "check": "per_case_metric_rows_generated",
+      "status": "PASS",
+      "detail": "rows=7"
+    },
+    {
+      "check": "non_nominal_metric_rows_6",
+      "status": "PASS",
+      "detail": "rows=6"
+    },
+    {
+      "check": "aggregate_rows_generated",
+      "status": "PASS",
+      "detail": "rows=8"
+    },
+    {
+      "check": "metric_has_early_window_detection_flag",
+      "status": "PASS",
+      "detail": "flag present"
+    },
+    {
+      "check": "metric_has_post_step_detection_flag",
+      "status": "PASS",
+      "detail": "flag present"
+    },
+    {
+      "check": "metric_has_pre_step_detection_flag",
+      "status": "PASS",
+      "detail": "flag present"
+    },
+    {
+      "check": "short_horizon_detection_recorded",
+      "status": "PASS",
+      "detail": "True"
+    }
+  ]
+}
