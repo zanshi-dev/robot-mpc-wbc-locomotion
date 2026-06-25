@@ -1,0 +1,251 @@
+{
+  "stage": "23.3",
+  "name": "perturbation observability root-cause analysis",
+  "result": "pass",
+  "failure_count": 0,
+  "overall_root_cause": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+  "overall_explanation": "Nonzero qvel perturbations were written, preserved after mj_forward, and produced short-horizon state differences. However, Stage 22 summary metrics remained identical across perturbation cases. Thus the Stage 22 negative evidence is best explained by summary-metric insensitivity to short-horizon initial qvel changes.",
+  "root_cause_confidence": "high",
+  "stage22_observable_perturbation_pass": false,
+  "stage22_perturbation_metric_variability_detected": false,
+  "stage22_recommendation_relation_stable": true,
+  "stage22_recommendation_observable_robust": false,
+  "stage23_2_all_nonzero_perturbations_written": true,
+  "stage23_2_all_after_forward_preserved": true,
+  "stage23_2_any_first_step_state_changed": true,
+  "classification_counts": {
+    "nominal_reference": 1,
+    "C_summary_metrics_insensitive_to_short_horizon_trace_change": 6
+  },
+  "conclusion": "Stage 23.3 root-cause analysis indicates that the Stage 22 qvel perturbations were injected and visible in short-horizon trace data, but the Stage 22 rollout summary metrics did not vary. The root cause is therefore summary-metric insensitivity to short-horizon initial qvel perturbations.",
+  "supported_claim": "Stage 23 supports explaining Stage 22 negative evidence as a metric/observability limitation, not as a successful observable robustness validation.",
+  "generated_files": [
+    "results/logs_sample/stage23_3_perturbation_observability_root_cause_per_case.csv",
+    "results/logs_sample/stage23_3_perturbation_observability_root_cause_validation.csv",
+    "results/logs_sample/stage23_3_perturbation_observability_root_cause_analysis.md",
+    "results/logs_sample/stage23_3_perturbation_observability_root_cause_summary.json",
+    "docs/STAGE23_3_PERTURBATION_OBSERVABILITY_ROOT_CAUSE_ANALYSIS.md"
+  ],
+  "claim_boundary": [
+    "root-cause analysis only",
+    "explains Stage 22 negative evidence",
+    "does not upgrade scale=0.010 to observable-perturbation-tested recommended candidate scale",
+    "no observable perturbation robustness claim",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "per_case_rows": [
+    {
+      "trace_case_id": "nominal_0p010",
+      "perturbation_id": "nominal",
+      "perturbation_type": "none",
+      "axis": "qvel_0",
+      "expected_delta": "0.000000000000",
+      "written_delta": "0.000000000000",
+      "after_forward_delta": "0.000000000000",
+      "first_step_qvel_delta": "-0.016621033634",
+      "qpos_delta_first_step": "-0.000033242067",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "root_cause_class": "nominal_reference",
+      "root_cause_explanation": "nominal case has no nonzero perturbation and is used as a reference trace.",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_nominal_0p010.csv"
+    },
+    {
+      "trace_case_id": "vx_plus_0p010",
+      "perturbation_id": "vx_plus",
+      "perturbation_type": "base_vx",
+      "axis": "qvel_0",
+      "expected_delta": "0.050000000000",
+      "written_delta": "0.050000000000",
+      "after_forward_delta": "0.050000000000",
+      "first_step_qvel_delta": "-0.016621033634",
+      "qpos_delta_first_step": "-0.000033242067",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "root_cause_class": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+      "root_cause_explanation": "qvel perturbation was written, preserved, and affected short-horizon trace, but Stage 22 summary metrics remained unchanged.",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vx_plus_0p010.csv"
+    },
+    {
+      "trace_case_id": "vx_minus_0p010",
+      "perturbation_id": "vx_minus",
+      "perturbation_type": "base_vx",
+      "axis": "qvel_0",
+      "expected_delta": "-0.050000000000",
+      "written_delta": "-0.050000000000",
+      "after_forward_delta": "-0.050000000000",
+      "first_step_qvel_delta": "-0.016621033634",
+      "qpos_delta_first_step": "-0.000033242067",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "root_cause_class": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+      "root_cause_explanation": "qvel perturbation was written, preserved, and affected short-horizon trace, but Stage 22 summary metrics remained unchanged.",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vx_minus_0p010.csv"
+    },
+    {
+      "trace_case_id": "vy_plus_0p010",
+      "perturbation_id": "vy_plus",
+      "perturbation_type": "base_vy",
+      "axis": "qvel_1",
+      "expected_delta": "0.030000000000",
+      "written_delta": "0.030000000000",
+      "after_forward_delta": "0.030000000000",
+      "first_step_qvel_delta": "0.000213879716",
+      "qpos_delta_first_step": "0.000000427759",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "root_cause_class": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+      "root_cause_explanation": "qvel perturbation was written, preserved, and affected short-horizon trace, but Stage 22 summary metrics remained unchanged.",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vy_plus_0p010.csv"
+    },
+    {
+      "trace_case_id": "vy_minus_0p010",
+      "perturbation_id": "vy_minus",
+      "perturbation_type": "base_vy",
+      "axis": "qvel_1",
+      "expected_delta": "-0.030000000000",
+      "written_delta": "-0.030000000000",
+      "after_forward_delta": "-0.030000000000",
+      "first_step_qvel_delta": "0.000213879716",
+      "qpos_delta_first_step": "0.000000427759",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "root_cause_class": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+      "root_cause_explanation": "qvel perturbation was written, preserved, and affected short-horizon trace, but Stage 22 summary metrics remained unchanged.",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_vy_minus_0p010.csv"
+    },
+    {
+      "trace_case_id": "yawrate_plus_0p010",
+      "perturbation_id": "yawrate_plus",
+      "perturbation_type": "base_yawrate",
+      "axis": "qvel_5",
+      "expected_delta": "0.050000000000",
+      "written_delta": "0.050000000000",
+      "after_forward_delta": "0.050000000000",
+      "first_step_qvel_delta": "-0.031726322323",
+      "qpos_delta_first_step": "-0.000000022225",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "root_cause_class": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+      "root_cause_explanation": "qvel perturbation was written, preserved, and affected short-horizon trace, but Stage 22 summary metrics remained unchanged.",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_plus_0p010.csv"
+    },
+    {
+      "trace_case_id": "yawrate_minus_0p010",
+      "perturbation_id": "yawrate_minus",
+      "perturbation_type": "base_yawrate",
+      "axis": "qvel_5",
+      "expected_delta": "-0.050000000000",
+      "written_delta": "-0.050000000000",
+      "after_forward_delta": "-0.050000000000",
+      "first_step_qvel_delta": "-0.031726322323",
+      "qpos_delta_first_step": "-0.000000022225",
+      "first_step_base_vx_fd": "-0.016621033634",
+      "first_step_base_vy_fd": "0.000213879716",
+      "injection_written": "True",
+      "after_forward_preserved": "True",
+      "first_step_state_changed": "True",
+      "root_cause_class": "C_summary_metrics_insensitive_to_short_horizon_trace_change",
+      "root_cause_explanation": "qvel perturbation was written, preserved, and affected short-horizon trace, but Stage 22 summary metrics remained unchanged.",
+      "trace_csv": "results/logs_sample/stage23_2_qvel_injection_trace_yawrate_minus_0p010.csv"
+    }
+  ],
+  "checks": [
+    {
+      "check": "stage22_3_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_3_observable_robustness_summary.json"
+    },
+    {
+      "check": "stage22_4_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage22_4_observable_perturbation_evidence_freeze_summary.json"
+    },
+    {
+      "check": "stage23_2_summary_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_summary.json"
+    },
+    {
+      "check": "stage23_2_diagnostic_table_exists",
+      "status": "PASS",
+      "detail": "results/logs_sample/stage23_2_qvel_injection_trace_diagnostic_table.csv"
+    },
+    {
+      "check": "stage22_3_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage22_4_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "stage23_2_result_pass",
+      "status": "PASS",
+      "detail": "result=pass"
+    },
+    {
+      "check": "diagnostic_row_count_7",
+      "status": "PASS",
+      "detail": "rows=7"
+    },
+    {
+      "check": "stage22_variability_false_recorded",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "stage22_observable_pass_false_recorded",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "stage22_recommendation_observable_false_recorded",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "check": "stage22_recommendation_relation_stable_true_recorded",
+      "status": "PASS",
+      "detail": "True"
+    },
+    {
+      "check": "overall_root_cause_selected",
+      "status": "PASS",
+      "detail": "C_summary_metrics_insensitive_to_short_horizon_trace_change"
+    },
+    {
+      "check": "per_case_root_cause_rows_generated",
+      "status": "PASS",
+      "detail": "rows=7"
+    },
+    {
+      "check": "root_cause_explains_stage22_negative_evidence",
+      "status": "PASS",
+      "detail": "C_summary_metrics_insensitive_to_short_horizon_trace_change"
+    }
+  ]
+}
