@@ -1,0 +1,227 @@
+{
+  "stage": "22.0",
+  "name": "observable perturbation robustness roadmap",
+  "result": "pass",
+  "failure_count": 0,
+  "roadmap": "docs/STAGE22_OBSERVABLE_PERTURBATION_ROBUSTNESS_ROADMAP.md",
+  "generated_files": [
+    "results/logs_sample/stage22_0_observable_perturbation_roadmap_validation.csv",
+    "results/logs_sample/stage22_0_observable_perturbation_roadmap_summary.json"
+  ],
+  "perturbation_cases": [
+    {
+      "perturbation_id": "nominal",
+      "perturb_vx": 0.0,
+      "perturb_vy": 0.0,
+      "perturb_yawrate": 0.0
+    },
+    {
+      "perturbation_id": "vx_plus",
+      "perturb_vx": 0.05,
+      "perturb_vy": 0.0,
+      "perturb_yawrate": 0.0
+    },
+    {
+      "perturbation_id": "vx_minus",
+      "perturb_vx": -0.05,
+      "perturb_vy": 0.0,
+      "perturb_yawrate": 0.0
+    },
+    {
+      "perturbation_id": "vy_plus",
+      "perturb_vx": 0.0,
+      "perturb_vy": 0.03,
+      "perturb_yawrate": 0.0
+    },
+    {
+      "perturbation_id": "vy_minus",
+      "perturb_vx": 0.0,
+      "perturb_vy": -0.03,
+      "perturb_yawrate": 0.0
+    },
+    {
+      "perturbation_id": "yawrate_plus",
+      "perturb_vx": 0.0,
+      "perturb_vy": 0.0,
+      "perturb_yawrate": 0.05
+    },
+    {
+      "perturbation_id": "yawrate_minus",
+      "perturb_vx": 0.0,
+      "perturb_vy": 0.0,
+      "perturb_yawrate": -0.05
+    }
+  ],
+  "scale_anchors": [
+    0.0,
+    0.01,
+    0.02
+  ],
+  "planned_rollout_count": 21,
+  "claim_boundary": [
+    "roadmap only",
+    "no new rollout generated yet",
+    "no full MPC-WBC velocity controller claim",
+    "no real robot torque execution claim",
+    "no hardware torque enablement claim",
+    "no multi-target-vx generalization claim",
+    "no terrain or external-force robustness claim"
+  ],
+  "checks": [
+    {
+      "check": "roadmap_exists",
+      "status": "PASS",
+      "detail": "docs/STAGE22_OBSERVABLE_PERTURBATION_ROBUSTNESS_ROADMAP.md"
+    },
+    {
+      "check": "contains::Stage 22",
+      "status": "PASS",
+      "detail": "Stage 22"
+    },
+    {
+      "check": "contains::observable perturbation",
+      "status": "PASS",
+      "detail": "observable perturbation"
+    },
+    {
+      "check": "contains::初始速度扰动",
+      "status": "PASS",
+      "detail": "初始速度扰动"
+    },
+    {
+      "check": "contains::qvel",
+      "status": "PASS",
+      "detail": "qvel"
+    },
+    {
+      "check": "contains::scale=0.010",
+      "status": "PASS",
+      "detail": "scale=0.010"
+    },
+    {
+      "check": "contains::scale=0.020",
+      "status": "PASS",
+      "detail": "scale=0.020"
+    },
+    {
+      "check": "contains::scale=0.000",
+      "status": "PASS",
+      "detail": "scale=0.000"
+    },
+    {
+      "check": "contains::nominal",
+      "status": "PASS",
+      "detail": "nominal"
+    },
+    {
+      "check": "contains::vx_plus",
+      "status": "PASS",
+      "detail": "vx_plus"
+    },
+    {
+      "check": "contains::vx_minus",
+      "status": "PASS",
+      "detail": "vx_minus"
+    },
+    {
+      "check": "contains::vy_plus",
+      "status": "PASS",
+      "detail": "vy_plus"
+    },
+    {
+      "check": "contains::vy_minus",
+      "status": "PASS",
+      "detail": "vy_minus"
+    },
+    {
+      "check": "contains::yawrate_plus",
+      "status": "PASS",
+      "detail": "yawrate_plus"
+    },
+    {
+      "check": "contains::yawrate_minus",
+      "status": "PASS",
+      "detail": "yawrate_minus"
+    },
+    {
+      "check": "contains::target_vx",
+      "status": "PASS",
+      "detail": "target_vx"
+    },
+    {
+      "check": "contains::mean_abs_velocity_error",
+      "status": "PASS",
+      "detail": "mean_abs_velocity_error"
+    },
+    {
+      "check": "contains::forward_displacement",
+      "status": "PASS",
+      "detail": "forward_displacement"
+    },
+    {
+      "check": "contains::min_z",
+      "status": "PASS",
+      "detail": "min_z"
+    },
+    {
+      "check": "contains::max_abs_roll",
+      "status": "PASS",
+      "detail": "max_abs_roll"
+    },
+    {
+      "check": "contains::max_abs_pitch",
+      "status": "PASS",
+      "detail": "max_abs_pitch"
+    },
+    {
+      "check": "contains::qp_fail_steps",
+      "status": "PASS",
+      "detail": "qp_fail_steps"
+    },
+    {
+      "check": "contains::saturation_steps",
+      "status": "PASS",
+      "detail": "saturation_steps"
+    },
+    {
+      "check": "contains::perturbation_metric_variability_detected",
+      "status": "PASS",
+      "detail": "perturbation_metric_variability_detected"
+    },
+    {
+      "check": "contains::observable_perturbation_pass",
+      "status": "PASS",
+      "detail": "observable_perturbation_pass"
+    },
+    {
+      "check": "contains::recommendation_observable_robust",
+      "status": "PASS",
+      "detail": "recommendation_observable_robust"
+    },
+    {
+      "check": "contains::不新增控制器",
+      "status": "PASS",
+      "detail": "不新增控制器"
+    },
+    {
+      "check": "contains::不做真实机器人部署",
+      "status": "PASS",
+      "detail": "不做真实机器人部署"
+    },
+    {
+      "check": "contains::不做多 target_vx 泛化声明",
+      "status": "PASS",
+      "detail": "不做多 target_vx 泛化声明"
+    },
+    {
+      "check": "contains::不声明",
+      "status": "PASS",
+      "detail": "不声明"
+    },
+    {
+      "check": "contains::Stage 22.4",
+      "status": "PASS",
+      "detail": "Stage 22.4"
+    }
+  ]
+}
