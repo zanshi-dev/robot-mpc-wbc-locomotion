@@ -1,800 +1,327 @@
 # robot-mpc-wbc-locomotion
 
-<!-- STAGE15_README_ENTRY_BEGIN -->
+四足机器人 MPC-WBC 运动控制仿真项目。项目基于 MuJoCo 和 Pinocchio 搭建四足机器人仿真控制链路，围绕步态调度、接触规划、摆腿轨迹、接触力规划、WBC/QP、`J^T f` 力矩映射和力矩安全限幅进行验证。
 
-## 项目边界与复现入口
+本项目将四足机器人运动控制链路拆解为若干可验证模块，并在 MuJoCo 仿真环境中逐步验证各模块之间的数据流、力矩生成路径、稳定性边界和问题来源。
 
-本仓库是一个 Go1 风格四足机器人的 simulation-only MPC/WBC 运动控制原型。
-
-当前项目边界：
-
-- Stage 25 新增 simulation-only primary controller closure 证据：direct primary_mpc_wbc 已进入 MuJoCo torque loop，但 smoke rollout 未通过稳定性边界。
-- 当前通过 smoke boundary 的主控闭环版本为 stabilized_primary_mpc_wbc，即在 primary candidate torque 外加入 ramp、scale、stance posture residual、online WBC residual，并保留 swing PD 与 torque safety filter。
-- MPC 作为 planning layer，用于生成 contact force reference 或 contact force candidate。
-- MPC 不直接输出最终 joint torque。
-- WBC/QP 或 J^T f 映射层负责把 contact force reference / candidate 转换为 joint torque candidate。
-- 当前冻结稳定基线为 mixed_online_control_baseline。
-- 当前稳定控制结构为：stance posture PD + scaled stance WBC feedforward + memory-based swing target PD + torque safety filter。
-
-本仓库不声明：
-
-- 已完成真实机器人部署。
-- 已完成 actuator enablement。
-- 已完成真实机器人 joint torque 执行。
-- torque_enable_ready=True。
-- 已完成 realtime hardware controller。
-
-当前证据支持：
-
-- primary_mpc_wbc 与 stabilized_primary_mpc_wbc 两类 simulation-only 主控模式验证。
-- stabilized_primary_mpc_wbc nominal 2400-step smoke rollout 通过证据。
-- MuJoCo / Pinocchio simulation-only locomotion baseline。
-- MPC contact-force planning demo。
-- WBC/QP 与 J^T f torque-candidate 验证。
-- ROS2/C++ disabled-controller dry-run 证据。
-- C++ gait scheduler / swing trajectory / torque safety filter 模块测试。
-- report-ready 结果日志与 MuJoCo offscreen-rendered demo video 证据。
-
-### 核心复现入口
-
-从仓库根目录运行：
-
-    bash scripts/stage15_3_reproduce_core_results.sh
-
-该脚本复现当前 report-ready 证据链：
-
-    repo hygiene audit
-    -> base velocity tracking MPC demo
-    -> MPC rollout validation
-    -> ROS2/C++ controller validation
-    -> summary log
-
-期望最终标志：
-
-    stage15_3_result: pass
-
-关键日志：
-
-    results/logs_sample/stage15_3_reproduce_core_results.log
-    results/logs_sample/stage15_3_reproduce_core_results_summary.txt
-
-<!-- STAGE15_README_ENTRY_END -->
-
-
-Go1 风格四足机器人运动控制仿真项目。项目聚焦 **MuJoCo 仿真、Pinocchio 运动学/动力学、MPC/WBC 候选力矩、ROS2/C++ 工程化测试和结果证据归档**。
-
-本仓库当前定位为：仅限仿真验证的四足机器人控制链路工程项目。项目不声明真实机器人部署，不声明已具备力矩使能条件；当前支持的是 stabilized_primary_mpc_wbc 在固定仿真设置下通过 nominal smoke rollout，不声明 direct/full primary MPC-WBC 已经无残差稳定替代 baseline。
+目前项目已经完成从基础 PD/WBC 仿真控制，到 MPC/WBC 候选力矩接入，再到稳定化主控模式的仿真验证。
 
 ---
 
-## 1. 项目定位
+## 1. 项目内容
 
-本项目用于学习和展示四足机器人运动控制系统的核心链路：
+项目主要包含以下部分：
 
-```text
-MuJoCo 仿真状态
--> 状态映射
--> Pinocchio 运动学/动力学计算
--> 步态调度与接触规划
--> PD / WBC / QP / MPC 候选控制链路
--> 接触力到关节力矩候选映射
--> 力矩安全限幅
--> MuJoCo 仿真验证与结果归档
-```
+* MuJoCo 四足机器人仿真；
+* Pinocchio 运动学与动力学计算；
+* 步态调度与接触规划；
+* 摆腿轨迹生成；
+* 接触力 QP；
+* WBC/QP 候选力矩计算；
+* `J^T f` 接触力到关节力矩映射；
+* 力矩限幅和安全过滤；
+* 多阶段仿真运行、指标统计和证据归档。
 
-当前最稳定的控制基线仍然是 `mixed_online_control_baseline`：
-
-```text
-站立腿姿态 PD
-+ 缩放后的站立腿 WBC 前馈
-+ 基于记忆目标的摆动腿 PD
-```
-
-Stage 15/16 新增内容主要是工程证据链：C++ 测试、接触力约束、Pinocchio `J^T f` 候选力矩、MuJoCo joint/actuator 兼容性审计、bounded torque smoke test、公开文档同步和 artifact index。
-
----
-
-## 2. 当前可以声明的内容
-
-当前仓库支持以下说法：
-
-- 已完成 MuJoCo 四足机器人仿真链路的基础验证；
-- 已完成 Pinocchio 运动学/动力学相关候选链路；
-- 已完成步态调度、接触规划、摆腿轨迹和力矩安全限幅等控制模块；
-- 已完成 ROS2/C++ 控制算法模块的 `colcon build/test` 工程化验证；
-- 已完成 C++ contact force QP demo，用于验证接触模式、支撑腿法向力、摆动腿零接触力和摩擦约束；
-- 已完成 contact force 到 torque candidate 的 dry-run 和 alpha sweep；
-- 已完成 Pinocchio foot Jacobian 下的 `J^T f` torque candidate 验证；
-- 已完成 MuJoCo joint/actuator compatibility audit；
-- 已完成 bounded MuJoCo torque smoke test 和 short-horizon policy comparison；
-- 已完成 Stage 15 总结报告、公开文档同步和 artifact index。
-
-完整证据索引见：
-
-```text
-docs/ARTIFACT_INDEX.md
-```
-
----
-
-## 3. 当前不能声明的内容
-
-当前仓库不支持以下说法：
-
-  * 不声明 direct/full primary_mpc_wbc 已经稳定；
-  * 不声明 full MPC/WBC torque 可以无残差替代 baseline；
-  * 不声明 MPC/WBC 已通过复杂地形、外力扰动或真实机器人实验验证；
-  * 不声明 stabilized_primary_mpc_wbc 已达到工程级成熟控制器；
-- 不声明真实机器人部署；
-- 不声明已具备力矩使能条件；
-- 不声明 `torque_enable_ready=True`；
-- 不声明 ROS torque publisher 可以直接用于真实硬件；
-- 不声明实时硬件控制器已经完成；
-- 不声明完整 MPC-WBC closed-loop locomotion controller 已经完成；
-- 不声明 Stage 15 的 bounded torque smoke test 证明了稳定行走；
-- 不声明 MPC/WBC 已通过完整 locomotion 对照实验证明优于 baseline。
-
-更准确的表述是：
-
-> 项目完成了仅限仿真验证的四足机器人运动控制链路工程化升级，包括 ROS2/C++ 测试、contact force QP、Pinocchio `J^T f` 候选力矩、MuJoCo actuator compatibility、bounded torque smoke test、结果归档和公开文档同步。
-
----
-
-## 4. 技术栈
-
-| 模块 | 说明 |
-|---|---|
-| MuJoCo | 机器人仿真环境和 actuator command smoke test |
-| Pinocchio | 运动学、Jacobian 和 `J^T f` 候选力矩计算 |
-| OSQP | Python 侧 QP 求解与 MPC/QP 原型验证 |
-| NumPy / SciPy sparse | 数值计算与稀疏矩阵处理 |
-| ROS2 Jazzy | ROS2/C++ package、节点结构和构建测试 |
-| C++17 | 控制算法模块、GTest、contact force QP demo |
-| Python | 仿真脚本、验证脚本、日志生成和文档同步 |
-
----
-
-## 5. 控制链路概览
-
-### 5.1 基础控制链路
+整体控制链路可以概括为：
 
 ```text
 MuJoCo 当前状态
--> 状态读取与 MuJoCo-Pinocchio 映射
--> 步态调度器
--> 接触规划器
--> 摆腿轨迹生成器
--> PD / WBC / QP 候选控制
--> 关节力矩候选
+-> 状态映射
+-> Pinocchio 计算运动学 / 动力学量
+-> 步态调度与接触规划
+-> PD / WBC / QP / MPC 候选控制
 -> 力矩安全限幅
--> MuJoCo 推进下一步仿真
+-> MuJoCo 执行器输入
+-> 下一步仿真状态
 ```
 
-### 5.2 mixed baseline
+项目的核心亮点是：没有直接将 MPC/WBC 候选力矩包装为稳定主控结论，而是先记录 `primary_mpc_wbc` 直接主控模式的失败，再通过失败诊断引入斜坡过渡、尺度限制、站立腿姿态残差和在线 WBC 残差，最终得到 `stabilized_primary_mpc_wbc` 在固定仿真场景下的闭环运行证据。
 
-当前稳定基线是：
+---
+
+## 2. 控制链路演进
+
+### 2.1 基线控制
+
+项目早期使用较保守的仿真控制结构：
 
 ```text
 站立腿姿态 PD
-+ 小比例站立腿 WBC 前馈
-+ 基于记忆目标的摆动腿 PD
++ 站立腿 WBC 前馈力矩
++ 摆动腿轨迹 PD
++ 力矩安全限幅
 ```
 
-该基线的作用：
+该结构作为后续 MPC/WBC 候选力矩接入的稳定基线。
 
-- 站立腿姿态 PD 提供基础稳定性；
-- WBC 前馈提供小比例动力学补偿；
-- 摆动腿 PD 跟踪记忆摆腿目标；
-- 力矩安全限幅避免候选力矩越界；
-- 后续 MPC/WBC 候选链路都以该基线作为参照，不直接替代它。
+---
 
-### 5.3 Stage 15 候选力矩链路
+### 2.2 MPC/WBC 候选力矩辅助注入
 
-Stage 15 新增的候选力矩链路可以概括为：
+在候选力矩阶段，MPC/WBC 不直接接管整机控制，而是作为辅助项注入：
 
 ```text
-contact force candidate
--> Pinocchio foot Jacobian
--> J^T f torque candidate
--> MuJoCo joint/actuator mapping
--> bounded low-alpha actuator command
--> short-horizon smoke test
+基线力矩
++ 注入尺度 * MPC/WBC 候选力矩
+-> 力矩安全过滤
+-> MuJoCo
 ```
 
-这条链路证明候选力矩路径可以被审计和短时域测试，但不等价于完整稳定 locomotion controller。
+这一阶段主要验证：
+
+* MPC/WBC 候选力矩能否生成；
+* `J^T f` 映射是否合理；
+* 候选力矩能否进入 MuJoCo 执行器；
+* 不同注入尺度对稳定性和速度跟踪有什么影响。
+
+在这一阶段，`scale=0.010` 是当前仿真设置下较合理的低尺度候选项，但它只代表固定仿真条件下的推荐结果，不代表真实机器人鲁棒性。
 
 ---
 
-## 6. Stage 15/16 升级摘要
+### 2.3 primary_mpc_wbc 直接主控尝试
 
-| 阶段 | 内容 | 当前状态 |
-|---|---|---|
-| Stage 15.1 | ROS2/C++ control algorithms 接入 CMake/GTest | 完成 |
-| Stage 15.2 | C++ contact force QP demo | 完成 |
-| Stage 15.3 | contact force -> nominal torque candidate dry-run | 完成 |
-| Stage 15.4 | Pinocchio Jacobian candidate rollout | 完成 |
-| Stage 15.5 | model readiness audit | 完成 |
-| Stage 15.6 | real-model / model-metadata Jacobian candidate rollout | 完成 |
-| Stage 15.7 | MuJoCo candidate compatibility audit | 完成 |
-| Stage 15.8 | bounded MuJoCo torque smoke test | 完成 |
-| Stage 15.9 | `J^T f` candidate low-alpha MuJoCo injection | 完成 |
-| Stage 15.10 | short-horizon policy comparison | 完成 |
-| Stage 15.11 | Stage 15 summary report | 完成 |
-| Stage 16.1 | public docs sync | 完成 |
-| Stage 16.2 | artifact index | 完成 |
+阶段 25 中，项目进一步把 MPC/WBC 候选力矩从“辅助注入”推进到“主控链路”。
 
+直接主控形式为：
+
+```text
+primary_mpc_wbc =
+    stance_mask * tau_candidate
+    + 摆动腿 PD
+    + 力矩安全限幅
+```
+
+该模式已经实际进入 MuJoCo 力矩闭环，但标称 2400 步冒烟测试没有通过稳定性边界。
+
+主要现象是：
+
+```text
+qp_fail_steps = 0
+saturation_steps = 555
+max_abs_roll = 0.4887
+max_abs_pitch = 0.3562
+```
+
+这说明问题不是 QP 求解失败，而是直接把候选力矩作为主控力矩后，姿态控制和力矩饱和没有处理好。
 
 ---
 
-## 7. 关键目录
+### 2.4 stabilized_primary_mpc_wbc 稳定化主控
+
+针对直接主控失败的问题，项目实现了稳定化主控模式：
+
+```text
+stabilized_primary_mpc_wbc =
+    带斜坡过渡和尺度限制的站立腿候选力矩
+    + 站立腿姿态残差
+    + 在线 WBC 残差
+    + 摆动腿 PD
+    + 力矩安全限幅
+```
+
+默认参数为：
+
+```text
+stabilized_primary_scale = 0.05
+stabilized_primary_ramp_steps = 600
+stabilized_posture_residual_scale = 1.0
+stabilized_wbc_residual_scale = 1.0
+```
+
+在标称 2400 步仿真中，该模式通过了冒烟测试：
+
+```text
+pass = True
+qp_fail_steps = 0
+saturation_steps = 0
+max_abs_roll = 0.0882
+max_abs_pitch = 0.0507
+max_tau_total_abs = 10.8906
+torque_limit = 23.7
+```
+
+因此，当前项目可以说明：在固定仿真设置下，`stabilized_primary_mpc_wbc` 已经形成一条可运行的仅仿真 MPC-WBC 主控闭环。
+
+---
+
+## 3. 主要验证过程
+
+| 阶段    | 内容               | 结论                                    |
+| ----- | ---------------- | ------------------------------------- |
+| 阶段 13 | 在线 WBC 与摆腿轨迹验证   | 形成后续仿真运行所需的基础控制数据                     |
+| 阶段 14 | MPC/WBC 候选力矩接入   | 候选力矩路径可以进入 MuJoCo 执行器                 |
+| 阶段 15 | 工程化整理与证据归档       | 补充文档、日志和复现入口                          |
+| 阶段 16 | README 与公开材料同步   | 整理仓库入口和证据索引                           |
+| 阶段 17 | 保守仿真运行审计         | 候选路径可在保守设置下运行                         |
+| 阶段 18 | 速度跟踪指标补齐         | 基线控制器在当前设置下速度跟踪更好                     |
+| 阶段 19 | 候选力矩尺度扫描         | `scale=0.010` 是较合理的低尺度候选项             |
+| 阶段 20 | 推荐尺度可复现性审计       | `scale=0.010` 的结果可重复                  |
+| 阶段 21 | 局部扰动审计           | 推荐关系在局部扰动下保持                          |
+| 阶段 22 | qvel 初始速度扰动尝试    | 长期汇总指标未形成可观测变化                        |
+| 阶段 23 | 扰动不可观测原因分析       | 问题来自汇总指标不敏感                           |
+| 阶段 24 | 短时扰动敏感指标审计       | 短时指标能看到扰动，但不能升级鲁棒性结论                  |
+| 阶段 25 | 稳定化 MPC-WBC 主控闭环 | `stabilized_primary_mpc_wbc` 通过标称冒烟仿真 |
+
+---
+
+## 4. 关键结果
+
+### 4.1 候选力矩辅助注入阶段
+
+MPC/WBC 候选力矩可以进入 MuJoCo 仿真链路，并通过不同注入尺度进行稳定性和速度跟踪审计。
+
+当前固定仿真设置下：
+
+* 低尺度候选力矩注入可以稳定运行；
+* `scale=0.010` 是较合理的低尺度候选项；
+* 该结论只适用于当前仿真设置；
+* 不能据此声明真实机器人鲁棒性。
+
+---
+
+### 4.2 直接主控阶段
+
+`primary_mpc_wbc` 已经进入 MuJoCo 力矩闭环，但没有通过稳定性边界。
+
+诊断结果：
+
+```text
+failure_class = posture_limit_violation_with_torque_saturation_no_qp_failure
+qp_fail_steps = 0
+saturation_steps = 555
+```
+
+结论是：直接主控失败不是因为 QP 求解失败，而是力矩组合缺少稳定化机制。
+
+---
+
+### 4.3 稳定化主控阶段
+
+`stabilized_primary_mpc_wbc` 在标称 2400 步仿真中通过冒烟测试。
+
+关键指标：
+
+```text
+pass = True
+qp_fail_steps = 0
+saturation_steps = 0
+max_abs_roll = 0.0882
+max_abs_pitch = 0.0507
+max_tau_total_abs = 10.8906
+torque_limit = 23.7
+```
+
+该结果说明稳定化后的 MPC-WBC 主控链路在当前仿真条件下可运行。
+
+---
+
+## 5. 快速复现
+
+### 5.1 环境准备
+
+建议使用 Python 3.10 或更高版本。
+
+```bash
+python3 --version
+pip install -r requirements.txt
+```
+
+如果本地已经安装 MuJoCo、Pinocchio 和 OSQP，可以直接运行对应脚本。
+
+---
+
+### 5.2 阶段 25 稳定化主控验证
+
+实现 stabilized primary 控制模式：
+
+```bash
+python3 scripts/stage25_5_implement_stabilized_primary_mpc_wbc_mode.py
+```
+
+运行 stabilized primary 冒烟仿真：
+
+```bash
+python3 scripts/stage25_6_run_stabilized_primary_mpc_wbc_smoke_rollout.py
+python3 scripts/stage25_6_validate_stabilized_primary_mpc_wbc_smoke_rollout.py
+```
+
+冻结阶段 25 证据：
+
+```bash
+python3 scripts/stage25_7_freeze_primary_controller_closure_evidence.py
+```
+
+关键输出文件：
+
+```text
+results/logs_sample/stage25_5_stabilized_primary_mpc_wbc_mode_summary.json
+results/logs_sample/stage25_6_stabilized_primary_mpc_wbc_smoke_summary.json
+results/logs_sample/stage25_7_primary_controller_closure_evidence_freeze_summary.json
+docs/STAGE25_7_PRIMARY_CONTROLLER_CLOSURE_EVIDENCE_FREEZE.md
+```
+
+---
+
+## 6. 目录结构
 
 ```text
 robot-mpc-wbc-locomotion/
-├── assets/                         # MuJoCo / robot model assets
-├── docs/                           # 技术文档与阶段报告
-├── results/logs_sample/            # 验证日志、JSON、CSV 结果
-├── ros2_ws/                        # ROS2 工作区
-│   └── src/robot_mpc_wbc_cpp_controller/
-├── scripts/                        # Python / shell 验证脚本
+├── docs/
+│   ├── ARTIFACT_INDEX.md
+│   └── STAGE25_7_PRIMARY_CONTROLLER_CLOSURE_EVIDENCE_FREEZE.md
+├── results/
+│   └── logs_sample/
+├── scripts/
+│   ├── stage25_5_stabilized_primary_mpc_wbc_runner.py
+│   ├── stage25_6_run_stabilized_primary_mpc_wbc_smoke_rollout.py
+│   └── stage25_7_freeze_primary_controller_closure_evidence.py
+├── src/
 ├── README.md
-├── PROJECT_STATUS.md
 └── requirements.txt
 ```
 
-重点文件：
+---
 
-```text
-docs/ARTIFACT_INDEX.md
-docs/STAGE15_UPGRADE_SUMMARY.md
-docs/ONE_PAGE_TECHNICAL_REPORT.md
-results/logs_sample/
-```
+## 7. 当前可以说明的内容
+
+当前仓库支持以下结论：
+
+* 已完成 MuJoCo 四足机器人仿真控制链路；
+* 已完成 Pinocchio 运动学 / 动力学候选链路；
+* 已完成步态调度、接触规划、摆腿轨迹和力矩安全限幅模块；
+* 已完成接触力 QP 和 `J^T f` 候选力矩验证；
+* 已完成 MPC/WBC 候选力矩辅助注入验证；
+* 已完成候选力矩尺度扫描和推荐尺度可复现性审计；
+* 已完成局部扰动和扰动可观测性审计；
+* 已完成 direct `primary_mpc_wbc` 的执行验证和失败诊断；
+* 已完成 `stabilized_primary_mpc_wbc` 的标称 2400 步冒烟仿真；
+* 稳定化主控版本中记录到 `qp_fail_steps = 0`、`saturation_steps = 0`。
 
 ---
 
-## 8. ROS2/C++ 控制算法模块
+## 8. 当前不能说明的内容
 
-ROS2/C++ package：
+当前仓库不支持以下结论：
 
-```text
-ros2_ws/src/robot_mpc_wbc_cpp_controller/
-```
-
-已纳入 CMake/GTest 的模块包括：
-
-- gait scheduler；
-- swing trajectory；
-- torque safety filter；
-- contact force QP demo。
-
-验证命令：
-
-```bash
-bash scripts/stage15_1_validate_ros2_cpp_controller.sh
-bash scripts/stage15_2_validate_contact_force_qp.sh
-```
-
-验证目标：
-
-```text
-colcon build pass
-colcon test pass
-GTest pass
-validation log archived
-```
+* 不说明真实机器人部署已经完成；
+* 不说明硬件力矩使能已经完成；
+* 不说明 ROS torque publisher 可以直接用于真实硬件；
+* 不说明 direct/full `primary_mpc_wbc` 已经稳定；
+* 不说明 full MPC/WBC torque 可以无残差替代基线控制器；
+* 不说明 `scale=0.010` 已通过可观测扰动鲁棒性验证；
+* 不说明 MPC/WBC 已通过复杂地形、外力扰动或真实机器人实验验证；
+* 不说明 `stabilized_primary_mpc_wbc` 已达到工程级成熟控制器。
 
 ---
 
-## 9. MuJoCo / Pinocchio 候选链路
+## 9. 项目边界
 
-Stage 15 中，项目逐步验证了：
+本项目完成的是一条仅仿真的四足机器人运动控制验证链路。项目从基础 PD/WBC 控制出发，逐步接入 MPC/WBC 候选力矩，并进一步推进到 stabilized primary 控制模式。
 
-```text
-contact force candidate
--> Pinocchio foot Jacobian
--> J^T f torque candidate
--> MuJoCo joint/actuator compatibility
--> bounded MuJoCo actuator command smoke test
-```
-
-相关验证脚本：
+当前最重要的结论是：
 
 ```text
-scripts/stage15_4_validate_pinocchio_jacobian_candidate_rollout.sh
-scripts/stage15_5_validate_model_readiness_audit.sh
-scripts/stage15_6_validate_real_model_jacobian_candidate_rollout.sh
-scripts/stage15_7_validate_mujoco_candidate_compatibility_audit.sh
-scripts/stage15_8_validate_mujoco_torque_smoke_test.sh
-scripts/stage15_9_validate_mujoco_jtf_candidate_injection.sh
-scripts/stage15_10_validate_mujoco_torque_smoke_policy_comparison.sh
+stabilized_primary_mpc_wbc 在固定 MuJoCo 仿真设置下通过标称 2400 步冒烟仿真。
 ```
 
-这些脚本只支持短时域、低幅值、工程验证性质的结论，不支持稳定行走结论。
-
----
-
-## 10. 结果与日志
-
-所有阶段性结果归档在：
-
-```text
-results/logs_sample/
-```
-
-主要结果类型：
-
-- `.log`：终端验证日志；
-- `.json`：机器可读 summary / validation summary；
-- `.csv`：rollout 或 validation 表格结果。
-
-证据索引：
-
-```bash
-bash scripts/stage16_2_validate_artifact_index.sh
-```
-
-通过标志：
-
-```text
-stage16_2_result: pass
-```
-
----
-
-## 11. 推荐审阅顺序
-
-建议按以下顺序查看项目：
-
-1. `README.md`
-2. `docs/ONE_PAGE_TECHNICAL_REPORT.md`
-3. `docs/STAGE15_UPGRADE_SUMMARY.md`
-4. `docs/ARTIFACT_INDEX.md`
-5. `docs/CONTROL_ARCHITECTURE_OVERVIEW.md`
-6. `docs/WBC_QP_EXPLAINED.md`
-7. `results/logs_sample/`
-8. `ros2_ws/src/robot_mpc_wbc_cpp_controller/`
-9. `scripts/`
-
----
-
-## 12. 复现与验证
-
-### 12.1 ROS2/C++ 测试
-
-```bash
-bash scripts/stage15_1_validate_ros2_cpp_controller.sh
-bash scripts/stage15_2_validate_contact_force_qp.sh
-```
-
-### 12.2 Pinocchio / MuJoCo 候选链路验证
-
-```bash
-bash scripts/stage15_6_validate_real_model_jacobian_candidate_rollout.sh
-bash scripts/stage15_7_validate_mujoco_candidate_compatibility_audit.sh
-bash scripts/stage15_8_validate_mujoco_torque_smoke_test.sh
-bash scripts/stage15_9_validate_mujoco_jtf_candidate_injection.sh
-bash scripts/stage15_10_validate_mujoco_torque_smoke_policy_comparison.sh
-```
-
-### 12.3 文档和证据索引验证
-
-```bash
-bash scripts/stage15_11_validate_stage15_summary_report.sh
-bash scripts/stage16_1_validate_public_docs_sync.sh
-bash scripts/stage16_2_validate_artifact_index.sh
-```
-
----
-
-## 14. 术语规范
-
-本仓库采用以下写法：
-
-- 正文以中文技术叙述为主；
-- 标准英文缩写保留，例如 MPC、WBC、QP、PD、EKF、ROS2；
-- 工具和库名保留英文，例如 MuJoCo、Pinocchio、OSQP、CMake、GTest；
-- 代码标识符、路径、脚本名、类名和函数名不翻译；
-- 首次出现的重要术语使用“中文名 + 英文全称 + 缩写”；
-- 避免在同一句话内无必要混用中英文。
-
-示例：
-
-```text
-模型预测控制（Model Predictive Control, MPC）用于生成接触力候选。
-全身控制（Whole-Body Control, WBC）和二次规划（Quadratic Programming, QP）用于构造候选力矩或约束优化问题。
-比例-微分控制（Proportional-Derivative Control, PD）用于基础姿态和摆腿跟踪。
-```
-
----
-
-## 15. 项目当前结论
-
-当前项目已经完成本轮工程化升级。
-
-准确结论：
-
-```text
-完成了 simulation-only 四足机器人控制链路的工程化升级：
-ROS2/C++ 测试、contact force QP、Pinocchio J^T f candidate、MuJoCo actuator compatibility、bounded torque smoke test、结果归档、公开文档同步和 artifact index。
-```
-
-边界结论：
-
-```text
-尚未完成真实机器人部署；
-尚未完成完整 MPC-WBC closed-loop 稳定行走；
-尚未声明 torque_enable_ready=True。
-```
-
-<!-- STAGE17_ENTRY_DOCS_SYNC_START -->
-## Stage 17 — Conservative MPC/WBC Closed-Loop Rollout Evidence
-
-Stage 17 packages the existing simulation-only MPC/WBC candidate path into conservative closed-loop rollout evidence.
-
-Current evidence chain:
-
-- **Stage 17.0**: closed-loop rollout roadmap and claim boundaries. See `docs/STAGE17_CLOSED_LOOP_ROADMAP.md`.
-- **Stage 17.1**: conservative `scale=0.02` MPC/WBC candidate injection validation. See `docs/STAGE17_1_CONSERVATIVE_CLOSED_LOOP_ROLLOUT.md`.
-- **Stage 17.2**: readable rollout metrics table for `scale=0.00 / 0.02 / 0.05 / 0.10`. See `docs/STAGE17_2_CONSERVATIVE_ROLLOUT_METRICS_TABLE.md`.
-
-Current Stage 17 status:
-
-```text
-Stage 17.0 result: pass
-Stage 17.1 result: pass
-Stage 17.2 result: pass
-```
-
-Claim boundary:
-
-- Simulation-only evidence.
-- Conservative low-scale candidate injection.
-- No real robot torque command.
-- No hardware torque enablement claim.
-- No velocity tracking metric in the Stage 14.5e evidence table.
-- No claim that MPC/WBC comprehensively outperforms the baseline.
-<!-- STAGE17_ENTRY_DOCS_SYNC_END -->
-
-<!-- STAGE18_ENTRY_DOCS_SYNC_START -->
-## Stage 18：速度跟踪证据补齐
-
-Stage 18 用于补齐 Stage 17 的主要边界：此前已有高度、姿态、QP failure 和 torque saturation 证据，但缺少速度跟踪指标。
-
-当前证据支持：
-
-  * 已在 simulation-only rollout 中新增 `base_x`、`base_y`、`base_vx_fd`、`target_vx`、`velocity_error`、`mean_vx`、`mean_abs_velocity_error` 和 `forward_displacement` 等速度相关指标。
-  * 已完成 baseline 与低尺度 MPC/WBC candidate 注入工况的速度指标对照。
-  * 已确认两组工况均通过高度、姿态、QP failure 和 torque saturation 安全边界。
-  * 已明确当前低尺度 MPC/WBC candidate 不改善速度跟踪，baseline 速度跟踪优于 candidate。
-
-阶段结果：
-
-    Stage 18.0 result: pass
-    Stage 18.1 result: pass
-    Stage 18.2a result: pass
-    Stage 18.2 result: pass
-    Stage 18.3 result: pass
-
-关键结论：
-
-    Stage 18.2 的低尺度 MPC/WBC candidate 注入工况保持稳定，但不改善速度跟踪。在 target_vx=0.2 m/s 的当前测试中，baseline 的 mean_vx 更高、mean_abs_velocity_error 更低、forward_displacement 更大。
-
-当前不能声明：
-
-  * 不声明低尺度 MPC/WBC candidate 改善了速度跟踪；
-  * 不声明已完成完整 MPC-WBC 速度控制器；
-  * 不声明真实机器人 torque 执行；
-  * 不声明已具备硬件 torque enablement 条件；
-  * 不声明 MPC/WBC 已全面优于 baseline。
-
-更准确的表述是：
-
-> Stage 18 补齐了仅限仿真的速度跟踪证据。在当前 target_vx=0.2 m/s 测试中，baseline 与低尺度 MPC/WBC candidate 注入均通过稳定性和安全边界，但 baseline 的前向速度跟踪更好。
-<!-- STAGE18_ENTRY_DOCS_SYNC_END -->
-
-<!-- STAGE19_ENTRY_DOCS_SYNC_START -->
-## Stage 19：速度感知的 candidate scale sweep
-
-Stage 19 用于进一步分析 Stage 18 中发现的速度跟踪问题。Stage 18 已补齐速度指标，并发现 `scale=0.020` 的低尺度 MPC/WBC candidate 注入虽然通过稳定性边界，但速度跟踪弱于 baseline。Stage 19 在此基础上进行 velocity-aware scale sweep。
-
-当前证据支持：
-
-  * 已完成 `0.000 / 0.005 / 0.010 / 0.020 / 0.050` 五组 scale 的 simulation-only rollout sweep。
-  * 所有测试 scale 均通过高度、姿态、QP failure 和 torque saturation 边界。
-  * candidate scale 对速度跟踪影响呈非单调特征，不是简单的“scale 越大越差”。
-  * 在当前 target_vx=0.2 m/s 测试中，`scale=0.010` 是更合理的低尺度 candidate 注入候选。
-  * `scale=0.020` 虽然稳定，但速度误差明显退化，不适合作为速度跟踪默认注入强度。
-
-阶段结果：
-
-    Stage 19.0 result: pass
-    Stage 19.1 result: pass
-    Stage 19.2 result: pass
-    Stage 19.3 result: pass
-
-关键结论：
-
-    当前 sweep 中所有 scale 均通过稳定性和安全边界；速度误差随 scale 变化呈非单调特征。在已测试 candidate scale 中，scale=0.010 的 mean_abs_velocity_error 最低，相对 baseline 的 delta_error=-0.013229，可作为当前更合理的低尺度 candidate 注入候选。scale=0.020 出现明显速度退化，不建议作为速度跟踪默认注入强度。
-
-当前推荐：
-
-    candidate scale=0.010
-    mean_abs_velocity_error=0.065265
-    delta_error_vs_baseline=-0.013229
-
-当前不能声明：
-
-  * 不声明已完成完整 MPC-WBC 速度控制器；
-  * 不声明 MPC/WBC candidate 已全面优于 baseline；
-  * 不声明真实机器人 torque 执行；
-  * 不声明已具备硬件 torque enablement 条件；
-  * 不声明该结论可直接迁移到真实机器人或复杂地形。
-
-更准确的表述是：
-
-> Stage 19 通过速度感知 scale sweep 发现 candidate scale 对速度跟踪影响并非单调。在当前 target_vx=0.2 m/s 仿真测试中，scale=0.010 是更合理的低尺度 candidate 注入候选，而 scale=0.020 不适合作为速度跟踪默认注入强度。
-<!-- STAGE19_ENTRY_DOCS_SYNC_END -->
-
-<!-- STAGE20_ENTRY_DOCS_SYNC_START -->
-## Stage 20：推荐 candidate scale 可复现性审计
-
-Stage 20 用于审计 Stage 19 推荐的 `scale=0.010` 是否在固定仿真设置下可复现。该阶段不新增控制器，不修改 torque 执行链路，也不声明真实机器人部署。
-
-当前证据支持：
-
-  * 已对 `0.000`、`0.010`、`0.020` 三个锚点进行 replay reproducibility audit。
-  * 每个锚点重复运行 3 次，共 9 组 simulation-only replay rollout。
-  * 三个锚点的 replay 指标在重复运行中完全一致，`reproducibility_pass=True`。
-  * `scale=0.010` 的推荐关系稳定复现，`recommendation_stable=True`。
-  * `scale=0.010` 的 mean_abs_velocity_error 低于 baseline 和 `scale=0.020`。
-  * `scale=0.010` 的 forward_displacement 高于 baseline 和 `scale=0.020`。
-
-关键数据：
-
-    baseline scale=0.000, mean_abs_velocity_error=0.078494000000, forward_displacement=0.630505000000
-    recommended scale=0.010, mean_abs_velocity_error=0.065265000000, forward_displacement=0.822437000000
-    regression anchor scale=0.020, mean_abs_velocity_error=0.147469000000, forward_displacement=0.319838000000
-
-阶段结果：
-
-    Stage 20.0 result: pass
-    Stage 20.1 result: pass
-    Stage 20.2 result: pass
-    Stage 20.3 result: pass
-
-关键结论：
-
-    Stage 20.3 replay reproducibility audit 通过。在当前固定 simulation-only 设置下，baseline、scale=0.010 和 scale=0.020 的三次 replay 结果完全一致；scale=0.010 在每次 replay 中均保持低于 baseline 和 scale=0.020 的 mean_abs_velocity_error，且 forward_displacement 均高于 baseline 和 scale=0.020。因此，Stage 19 的 scale=0.010 推荐关系在 Stage 20 replay audit 中稳定复现。
-
-当前不能声明：
-
-  * 不声明完整 MPC-WBC 速度控制器已经完成；
-  * 不声明 `scale=0.010` 可以直接用于真实机器人；
-  * 不声明 `scale=0.010` 对所有速度、地形和扰动都最优；
-  * 不声明 MPC/WBC candidate 已全面优于 baseline；
-  * 不声明真实机器人 torque 执行已经完成；
-  * 不声明硬件 torque enablement 已经完成。
-
-更准确的表述是：
-
-> Stage 20 对 Stage 19 推荐的 scale=0.010 进行了 simulation-only replay reproducibility audit。在当前固定仿真设置下，baseline、scale=0.010 和 scale=0.020 的重复运行结果完全一致；scale=0.010 相对 baseline 和 scale=0.020 的速度误差优势关系稳定复现。因此，scale=0.010 可作为当前仿真证据下的 recommended candidate scale。
-<!-- STAGE20_ENTRY_DOCS_SYNC_END -->
-
-<!-- STAGE21_ENTRY_DOCS_SYNC_START -->
-## Stage 21：推荐 candidate scale 局部扰动鲁棒性审计
-
-Stage 21 在 Stage 20 推荐 `scale=0.010` 的基础上，进行了 simulation-only local perturbation robustness audit。
-
-当前证据支持：
-
-  * 已测试 7 个小范围初始状态扰动工况：nominal、x_plus、x_minus、y_plus、y_minus、yaw_plus、yaw_minus。
-  * 每个扰动工况测试 3 个 scale anchor：baseline `scale=0.000`、recommended candidate `scale=0.010`、regression anchor `scale=0.020`。
-  * 共生成 21 组 simulation-only rollout evidence。
-  * `scale=0.010` 在所有扰动工况中均通过稳定性边界。
-  * `scale=0.010` 在所有扰动工况中均保持低于 baseline 和 `scale=0.020` 的 mean_abs_velocity_error。
-  * `scale=0.010` 在所有扰动工况中均保持高于 baseline 和 `scale=0.020` 的 forward_displacement。
-  * `local_robustness_pass=True`。
-  * `recommendation_robust=True`。
-
-重要边界：
-
-  * `perturbation_metric_variability_detected=False`。
-  * 当前小范围初始位姿扰动下，记录的 summary 指标未出现可观测变化；因此该结果应解释为当前 runner 与扰动设置下的 local perturbation audit，而不是广义扰动鲁棒性结论。
-
-阶段结果：
-
-    Stage 21.0 result: pass
-    Stage 21.1 result: pass
-    Stage 21.2 result: pass
-    Stage 21.3 result: pass
-
-关键结论：
-
-    Stage 21.3 local robustness analysis 通过。在当前 7 个小范围初始状态扰动工况下，scale=0.010 均通过稳定性边界；scale=0.010 在所有扰动工况中均保持低于 baseline 和 scale=0.020 的 mean_abs_velocity_error，且 forward_displacement 均高于 baseline 和 scale=0.020。因此，scale=0.010 可从 fixed-setting recommended candidate scale 扩展为当前仿真证据下的 local-perturbation-tested recommended candidate scale。
-
-当前不能声明：
-
-  * 不声明完整 MPC-WBC 速度控制器已经完成；
-  * 不声明 `scale=0.010` 可以直接用于真实机器人；
-  * 不声明 `scale=0.010` 对所有速度、地形、扰动和外力冲击都最优；
-  * 不声明 MPC/WBC candidate 已全面优于 baseline；
-  * 不声明真实机器人 torque 执行已经完成；
-  * 不声明硬件 torque enablement 已经完成；
-  * 不声明复杂地形或外力扰动鲁棒性已经完成。
-
-更准确的表述是：
-
-> Stage 21 对 Stage 20 推荐的 scale=0.010 进行了 simulation-only local perturbation robustness audit。在当前小范围初始状态扰动设置下，scale=0.010 均通过稳定性边界，并在所有扰动工况中保持低于 baseline 和 scale=0.020 的速度误差。因此，scale=0.010 可作为当前仿真证据下的 local-perturbation-tested recommended candidate scale。
-<!-- STAGE21_ENTRY_DOCS_SYNC_END -->
-
-<!-- STAGE22_ENTRY_DOCS_SYNC_START -->
-## Stage 22：observable qvel perturbation audit attempt
-
-Stage 22 在 Stage 21 的基础上尝试引入 qvel 初始速度扰动，用于检查扰动是否能对 rollout summary 指标产生可观测变化。
-
-当前阶段结果：
-
-  * Stage 22.0 result: pass
-  * Stage 22.1 result: pass
-  * Stage 22.2 result: pass
-  * Stage 22.3 result: pass
-
-核心指标：
-
-  * `observable_perturbation_pass=False`
-  * `perturbation_metric_variability_detected=False`
-  * `recommendation_relation_stable=True`
-  * `recommendation_observable_robust=False`
-
-结论：
-
-    Stage 22.3 analysis 通过，但 observable perturbation robustness 不成立。当前 qvel 初始速度扰动没有使 summary 指标产生可观测变化；因此 Stage 22 不能声明完成 observable perturbation robustness audit，只能记录为 qvel perturbation injection attempt。
-
-    当前证据不支持将 scale=0.010 升级为 observable-perturbation-tested recommended candidate scale；仍只能沿用 Stage 21 的 local-perturbation-tested recommended candidate scale 表述。
-
-当前可以声明：
-
-  * Stage 22 完成了 simulation-only qvel initial perturbation injection attempt。
-  * 21 组 rollout 均通过稳定性边界。
-  * `scale=0.010` 的推荐关系在当前记录指标中未被破坏。
-  * 由于 `perturbation_metric_variability_detected=False`，Stage 22 不能声明完成 observable perturbation robustness audit。
-
-当前不能声明：
-
-  * 不能声明 `scale=0.010` 已升级为 observable-perturbation-tested recommended candidate scale；
-  * 不能声明完整 MPC-WBC 速度控制器已经完成；
-  * 不能声明 `scale=0.010` 可以直接用于真实机器人；
-  * 不能声明 `scale=0.010` 对所有速度、地形、扰动和外力冲击都最优；
-  * 不能声明真实机器人 torque 执行或硬件 torque enablement 已完成；
-  * 不能声明复杂地形或外力冲击鲁棒性已完成。
-
-更准确的表述是：
-
-> Stage 22 尝试通过 qvel 初始速度扰动构造 observable perturbation audit。21 组 simulation-only rollout 均通过稳定性边界，且 scale=0.010 的推荐关系在当前记录指标中未被破坏；但扰动没有造成 summary 指标的可观测变化，因此 Stage 22 不能支持 observable perturbation robustness 结论。
-<!-- STAGE22_ENTRY_DOCS_SYNC_END -->
-
-<!-- STAGE23_ENTRY_DOCS_SYNC_START -->
-## Stage 23：perturbation observability root-cause audit
-
-Stage 23 对 Stage 22 的 qvel perturbation negative evidence 进行了根因审计。
-
-Stage 22 的冻结结果是：
-
-  * `observable_perturbation_pass=False`
-  * `perturbation_metric_variability_detected=False`
-  * `recommendation_relation_stable=True`
-  * `recommendation_observable_robust=False`
-
-Stage 23 的 trace diagnostic 结果是：
-
-  * `all_nonzero_perturbations_written=True`
-  * `all_after_forward_preserved=True`
-  * `any_first_step_state_changed=True`
-
-Stage 23.3 root-cause conclusion:
-
-  * `overall_root_cause=C_summary_metrics_insensitive_to_short_horizon_trace_change`
-  * `root_cause_confidence=high`
-
-结论：
-
-    Stage 23.3 root-cause analysis indicates that the Stage 22 qvel perturbations were injected and visible in short-horizon trace data, but the Stage 22 rollout summary metrics did not vary. The root cause is therefore summary-metric insensitivity to short-horizon initial qvel perturbations.
-
-    Stage 23 supports explaining Stage 22 negative evidence as a metric/observability limitation, not as a successful observable robustness validation.
-
-当前可以声明：
-
-  * Stage 23 解释了 Stage 22 的 qvel perturbation negative evidence；
-  * qvel 扰动确实写入并在 `mj_forward` 后保持；
-  * qvel 扰动能在短时 trace 中产生状态差异；
-  * Stage 22 summary 指标没有变化的根因是 summary 指标对短时初始 qvel 扰动不敏感。
-
-当前不能声明：
-
-  * 不能声明 `scale=0.010` 已通过 observable perturbation robustness 验证；
-  * 不能声明 `scale=0.010` 升级为 observable-perturbation-tested recommended candidate scale；
-  * 不能声明完整 MPC-WBC 速度控制器已经完成；
-  * 不能声明 `scale=0.010` 可以直接用于真实机器人；
-  * 不能声明真实机器人 torque 执行或硬件 torque enablement 已完成；
-  * 不能声明复杂地形或外力冲击鲁棒性已完成。
-<!-- STAGE23_ENTRY_DOCS_SYNC_END -->
-
-<!-- STAGE24_ENTRY_DOCS_SYNC_START -->
-## Stage 24：short-horizon perturbation-sensitive metric audit
-
-Stage 24 基于 Stage 23 的 qvel trace 数据，构造并分析短时 perturbation-sensitive metrics，用于解释 Stage 22 的长期 summary 指标为什么没有捕捉短时 qvel 初始扰动。
-
-Stage 24.3 metric conclusion:
-
-  * `metric_observability_class=pre_step_only_detection_no_post_step_trace_separation`
-  * `metric_audit_result=partial_detection`
-  * `any_pre_step_trace_separation_detected=True`
-  * `all_pre_step_trace_separation_detected=True`
-  * `any_post_step_trace_separation_detected=False`
-  * `any_early_window_trace_separation_detected=True`
-  * `all_early_window_trace_separation_detected=True`
-
-数值摘要：
-
-  * `max_pre_step_qvel_axis_diff_vs_nominal=0.050000000000`
-  * `max_post_step_state_delta=0.000000000000`
-  * `max_early_window_state_delta=0.050000000000`
-  * `mean_early_window_state_delta=0.001604938272`
-
-结论：
-
-    Stage 24.3 shows that short-horizon perturbation-sensitive metrics detect the injected qvel perturbations only in the pre-step / mj_forward trace segment. The aligned after_mj_step rows are not separated from nominal. This refines the Stage 23 root cause: Stage 22 summary metrics were insensitive because the perturbation signature was visible at injection time but did not persist into the rollout-step trace.
-
-    Stage 24 supports adding explicit injection-stage or pre-step trace metrics for future perturbation audits. It does not support observable robustness or a scale=0.010 recommendation upgrade.
-
-当前可以声明：
-
-  * Stage 24 构造并分析了短时 perturbation-sensitive metrics；
-  * qvel 扰动在 injection / mj_forward 阶段能被短时指标检测到；
-  * aligned after_mj_step rows 中没有相对 nominal 的持续 trace separation；
-  * Stage 22 的长期 summary 指标没有变化是合理的；
-  * 后续扰动审计应显式加入 injection-stage 或 pre-step trace metrics。
-
-当前不能声明：
-
-  * 不能声明 `scale=0.010` 已通过 observable perturbation robustness 验证；
-  * 不能声明 `scale=0.010` 升级为 observable-perturbation-tested recommended candidate scale；
-  * 不能声明完整 MPC-WBC 速度控制器已经完成；
-  * 不能声明 `scale=0.010` 可以直接用于真实机器人；
-  * 不能声明真实机器人 torque 执行或硬件 torque enablement 已完成；
-  * 不能声明复杂地形或外力冲击鲁棒性已完成。
-<!-- STAGE24_ENTRY_DOCS_SYNC_END -->
-
-## Stage 25：simulation-only stabilized MPC-WBC primary controller closure
-
-Stage 25 将 MPC/WBC torque candidate 从辅助注入链路推进到 simulation-only primary controller 链路。
-
-直接主控模式为：
-
-    primary_mpc_wbc =
-        stance_mask * tau_candidate
-        + swing leg PD
-        + torque safety filter
-
-该模式已经实际进入 MuJoCo torque loop，但 nominal smoke rollout 暴露出姿态超限和力矩饱和问题，因此不作为稳定结论。
-
-稳定化主控模式为：
-
-    stabilized_primary_mpc_wbc =
-        ramped / scaled stance candidate torque
-        + stance posture residual
-        + online WBC residual
-        + swing leg PD
-        + torque safety filter
-
-该模式在 nominal 2400-step simulation-only smoke rollout 中通过 smoke stability boundary，记录结果包括：
-
-    qp_fail_steps = 0
-    saturation_steps = 0
-
-该结论只适用于当前固定仿真设置，不等价于真实机器人闭环，也不等价于复杂地形或外力扰动鲁棒性。
-
-证据冻结文件：
-
-    docs/STAGE25_7_PRIMARY_CONTROLLER_CLOSURE_EVIDENCE_FREEZE.md
-
+这个结果说明稳定化后的 MPC-WBC 主控链路在当前仿真条件下可运行，但不等价于真实机器人闭环，也不等价于复杂地形或外力扰动鲁棒性。
