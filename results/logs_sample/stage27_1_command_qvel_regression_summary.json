@@ -1,0 +1,88 @@
+{
+  "stage": "27.1",
+  "name": "command velocity and initial qvel perturbation regression matrix",
+  "result": "pass",
+  "total_cases": 75,
+  "controllers": [
+    "baseline",
+    "primary_mpc_wbc",
+    "stabilized_primary_mpc_wbc"
+  ],
+  "target_vx_values": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4
+  ],
+  "perturbations": [
+    {
+      "id": "nominal",
+      "type": "none",
+      "vx": 0.0,
+      "vy": 0.0,
+      "yawrate": 0.0
+    },
+    {
+      "id": "vx_plus_0p05",
+      "type": "initial_qvel",
+      "vx": 0.05,
+      "vy": 0.0,
+      "yawrate": 0.0
+    },
+    {
+      "id": "vx_minus_0p05",
+      "type": "initial_qvel",
+      "vx": -0.05,
+      "vy": 0.0,
+      "yawrate": 0.0
+    },
+    {
+      "id": "vy_plus_0p03",
+      "type": "initial_qvel",
+      "vx": 0.0,
+      "vy": 0.03,
+      "yawrate": 0.0
+    },
+    {
+      "id": "yaw_plus_0p10",
+      "type": "initial_qvel",
+      "vx": 0.0,
+      "vy": 0.0,
+      "yawrate": 0.1
+    }
+  ],
+  "by_controller": {
+    "baseline": {
+      "cases": 25,
+      "evidence_generated": 25,
+      "stability_pass": 25,
+      "regression_evidence_pass": 25
+    },
+    "primary_mpc_wbc": {
+      "cases": 25,
+      "evidence_generated": 25,
+      "stability_pass": 0,
+      "regression_evidence_pass": 25
+    },
+    "stabilized_primary_mpc_wbc": {
+      "cases": 25,
+      "evidence_generated": 25,
+      "stability_pass": 25,
+      "regression_evidence_pass": 25
+    }
+  },
+  "failed_cases": [],
+  "matrix_csv": "results/logs_sample/stage27_1_command_qvel_regression_matrix.csv",
+  "claim_boundary": [
+    "simulation-only regression matrix",
+    "fixed MuJoCo setup only",
+    "target velocity variation",
+    "initial qvel/yawrate perturbation only",
+    "contact transition window audit from existing rollout logs",
+    "does not imply terrain robustness",
+    "does not imply external-force robustness",
+    "does not imply hardware torque enablement",
+    "primary_mpc_wbc stability failure is diagnostic evidence if rollout evidence is generated"
+  ]
+}
