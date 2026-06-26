@@ -193,7 +193,7 @@ results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json
 
 推荐表述：
 
-> 我没有直接宣称 MPC/WBC 已经全面替代 baseline，而是先做 conservative candidate injection sweep。结果表明，在 simulation-only 环境下，低尺度 candidate 注入没有破坏高度、姿态、QP 求解和力矩饱和边界；其中 scale=0.02 作为最保守工况被封装为 Stage 17.1 evidence。
+> 项目没有直接声明 MPC/WBC 已经全面替代 baseline，而是先做 conservative candidate injection sweep。结果表明，在 simulation-only 环境下，低尺度 candidate 注入没有破坏高度、姿态、QP 求解和力矩饱和边界；其中 scale=0.02 作为最保守工况被封装为 Stage 17.1 evidence。
 
 """
 

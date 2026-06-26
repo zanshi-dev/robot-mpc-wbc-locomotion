@@ -14,7 +14,7 @@
 
 ## 失败路径
 
-项目没有把所有可运行脚本都包装成成功结果。direct full WBC torque 与 swing PD torque 直接相加失败，stance-only WBC + swing-only PD 也失败，说明 full WBC 在当前阶段不能直接替代反馈稳定控制。最终选择 mixed baseline，是因为 stance posture PD 提供稳定基础，WBC feedforward 提供动力学补偿，swing PD tracking 负责摆腿目标跟踪。
+项目没有把所有可运行脚本都归纳为成功结果。direct full WBC torque 与 swing PD torque 直接相加失败，stance-only WBC + swing-only PD 也失败，说明 full WBC 在当前阶段不能直接替代反馈稳定控制。最终选择 mixed baseline，是因为 stance posture PD 提供稳定基础，WBC feedforward 提供动力学补偿，swing PD tracking 负责摆腿目标跟踪。
 
 ## 最终 baseline
 

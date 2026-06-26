@@ -53,10 +53,10 @@ Stage 25 不支持以下表述：
 
 可以说：
 
-    我先把 MPC/WBC candidate torque 接入为 primary stance torque，构成 primary_mpc_wbc 模式。
+    项目先把 MPC/WBC candidate torque 接入为 primary stance torque，构成 primary_mpc_wbc 模式。
     直接主控版本确实进入了 MuJoCo torque loop，但 smoke rollout 暴露出姿态超限和力矩饱和问题。
-    之后我做了失败诊断，确认不是 QP failure，而是 torque composition 需要稳定化。
-    所以我实现了 stabilized_primary_mpc_wbc，在 primary candidate torque 外加入 ramp、scale、stance posture residual 和 online WBC residual。
+    之后进行了失败诊断，确认不是 QP failure，而是 torque composition 需要稳定化。
+    因此实现了 stabilized_primary_mpc_wbc，在 primary candidate torque 外加入 ramp、scale、stance posture residual 和 online WBC residual。
     该稳定化版本在 nominal 2400-step simulation-only smoke rollout 中通过稳定性边界，且没有 QP failure 和 torque saturation。
     这个结果只证明仿真固定场景下的稳定化主控闭环，不代表真实机器人或复杂地形鲁棒性。
 

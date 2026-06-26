@@ -208,7 +208,7 @@ Stage 25 不支持：
 Stage 25 完成后，可以说明：
 
     原项目最初是 baseline + MPC/WBC candidate injection。
-    后续我进一步实现了 simulation-only primary_mpc_wbc 模式，
+    后续进一步实现了 simulation-only primary_mpc_wbc 模式，
     让 MPC/WBC torque 不再只是小比例 candidate injection，
     而是作为 stance primary torque 进入 MuJoCo torque loop；
     同时保留 swing leg PD 和 torque safety filter，

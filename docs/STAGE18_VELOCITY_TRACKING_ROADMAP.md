@@ -117,7 +117,7 @@ Stage 18 最小验收指标：
 
 推荐表述：
 
-> Stage 18 主要补齐 Stage 17 缺少速度指标的问题。我没有直接宣称 MPC/WBC 已经成为完整主控制器，而是在 simulation-only conservative rollout 上增加 base_x、base_vx、mean_vx 和 velocity error 指标，用于评估 baseline 与 low-scale candidate injection 对前向速度的影响。
+> Stage 18 主要补齐 Stage 17 缺少速度指标的问题。项目没有直接声明 MPC/WBC 已经成为完整主控制器，而是在 simulation-only conservative rollout 上增加 base_x、base_vx、mean_vx 和 velocity error 指标，用于评估 baseline 与 low-scale candidate injection 对前向速度的影响。
 
 不推荐表述：
 
