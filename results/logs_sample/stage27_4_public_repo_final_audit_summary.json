@@ -1,0 +1,39 @@
+{
+  "stage": "27.4",
+  "name": "public repository final audit",
+  "result": "pass",
+  "checks": [
+    {
+      "name": "public_wording_scan",
+      "pass": true,
+      "hits": []
+    },
+    {
+      "name": "required_file_check",
+      "pass": true,
+      "missing": []
+    },
+    {
+      "name": "python_syntax_check",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "name": "markdown_local_link_check",
+      "pass": true,
+      "broken": []
+    },
+    {
+      "name": "stage27_raw_trace_cleanup_check",
+      "pass": true,
+      "residual_files": []
+    },
+    {
+      "name": "git_worktree_clean_check",
+      "pass": true,
+      "returncode": 0,
+      "status_lines": [],
+      "stderr": ""
+    }
+  ]
+}
