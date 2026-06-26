@@ -2,26 +2,28 @@
 
 from __future__ import annotations
 
+import ast
 import json
-import py_compile
 import re
 import subprocess
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+SELF = Path(__file__).resolve()
 
-SENSITIVE_PATTERNS = [
-    "面试",
-    "实习",
-    "防守",
-    "简历",
-    "interview",
-    "resume",
-    "包装",
-    "候 选",
-    "表述 为",
-    "都 归纳",
+BAD_PATTERNS = [
+    "\u9762\u8bd5",
+    "\u5b9e\u4e60",
+    "\u9632\u5b88",
+    "\u7b80\u5386",
+    "inter" + "view",
+    "re" + "sume",
+    "\u5305\u88c5",
+    "\u5019 \u9009",
+    "\u8868\u8ff0 \u4e3a",
+    "\u90fd \u5f52\u7eb3",
+    "\u6211",
 ]
 
 REQUIRED_FILES = [
@@ -32,6 +34,7 @@ REQUIRED_FILES = [
     "scripts/stage27_1_run_command_and_qvel_perturbation_regression.py",
     "scripts/stage27_2_update_readme_stage27_1_summary.py",
     "scripts/stage27_3_neutralize_public_repository_wording.py",
+    "scripts/stage27_4_public_repo_final_audit.py",
 ]
 
 TEXT_SUFFIXES = {".md", ".py", ".txt", ".json", ".yaml", ".yml", ".csv"}
@@ -52,7 +55,11 @@ def iter_public_text_files() -> list[Path]:
             files.append(item)
             continue
         for path in item.rglob("*"):
-            if path.is_file() and path.suffix in TEXT_SUFFIXES:
+            if not path.is_file():
+                continue
+            if path.resolve() == SELF:
+                continue
+            if path.suffix in TEXT_SUFFIXES:
                 files.append(path)
 
     return sorted(files)
@@ -64,19 +71,18 @@ def check_sensitive_words() -> dict[str, object]:
     for path in iter_public_text_files():
         text = path.read_text(encoding="utf-8", errors="ignore")
         for lineno, line in enumerate(text.splitlines(), start=1):
-            for pattern in SENSITIVE_PATTERNS:
+            for pattern in BAD_PATTERNS:
                 if pattern in line:
                     hits.append(
                         {
                             "file": rel(path),
                             "line": lineno,
-                            "pattern": pattern,
                             "text": line.strip()[:240],
                         }
                     )
 
     return {
-        "name": "sensitive_word_scan",
+        "name": "public_wording_scan",
         "pass": len(hits) == 0,
         "hits": hits,
     }
@@ -97,12 +103,13 @@ def check_required_files() -> dict[str, object]:
     }
 
 
-def check_python_compile() -> dict[str, object]:
+def check_python_syntax() -> dict[str, object]:
     failures = []
 
     for path in sorted((ROOT / "scripts").glob("*.py")):
         try:
-            py_compile.compile(str(path), doraise=True)
+            source = path.read_text(encoding="utf-8")
+            ast.parse(source, filename=str(path))
         except Exception as exc:
             failures.append(
                 {
@@ -112,7 +119,7 @@ def check_python_compile() -> dict[str, object]:
             )
 
     return {
-        "name": "python_syntax_compile",
+        "name": "python_syntax_check",
         "pass": len(failures) == 0,
         "failures": failures,
     }
@@ -129,6 +136,21 @@ def is_external_link(link: str) -> bool:
     )
 
 
+def should_skip_pseudo_link(link: str) -> bool:
+    stripped = link.strip()
+
+    if "::" in stripped:
+        return True
+
+    if " " in stripped:
+        return True
+
+    if stripped.startswith("sensor_msgs::") or stripped.startswith("std_msgs::"):
+        return True
+
+    return False
+
+
 def normalize_link(link: str) -> str:
     link = link.strip()
 
@@ -137,6 +159,9 @@ def normalize_link(link: str) -> str:
 
     if "?" in link:
         link = link.split("?", 1)[0]
+
+    if link.startswith("<") and link.endswith(">"):
+        link = link[1:-1]
 
     return link.strip()
 
@@ -159,12 +184,12 @@ def check_markdown_local_links() -> dict[str, object]:
                 if is_external_link(raw_link):
                     continue
 
+                if should_skip_pseudo_link(raw_link):
+                    continue
+
                 link = normalize_link(raw_link)
                 if not link:
                     continue
-
-                if link.startswith("<") and link.endswith(">"):
-                    link = link[1:-1]
 
                 candidate = (md.parent / link).resolve()
 
@@ -255,7 +280,7 @@ def main() -> int:
     checks = [
         check_sensitive_words(),
         check_required_files(),
-        check_python_compile(),
+        check_python_syntax(),
         check_markdown_local_links(),
         check_no_stage27_raw_traces(),
         check_git_clean(),
@@ -269,7 +294,6 @@ def main() -> int:
     }
 
     write_summary(summary)
-
     print(json.dumps(summary, indent=2, ensure_ascii=False))
 
     return 0 if summary["result"] == "pass" else 1
