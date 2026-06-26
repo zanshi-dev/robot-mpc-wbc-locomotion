@@ -215,6 +215,22 @@ torque_limit = 23.7
 
 ---
 
+### 4.4 Stage 26.1 控制模式小规模回归矩阵
+
+在 Stage 25 的基础上，项目补充 9-case 控制模式回归矩阵，用于比较 baseline、`primary_mpc_wbc` 和 `stabilized_primary_mpc_wbc` 在固定 MuJoCo 仿真设置下的行为差异。
+
+| 控制模式 | case 数 | evidence pass | stability pass |
+|---|---:|---:|---:|
+| baseline | 3 | 3 | 3 |
+| `primary_mpc_wbc` | 3 | 3 | 0 |
+| `stabilized_primary_mpc_wbc` | 3 | 3 | 3 |
+
+`primary_mpc_wbc` 直接主控能够进入 MuJoCo 力矩闭环，但未通过稳定性检查；典型指标为 `saturation_steps = 555`、`max_abs_roll = 0.4887`、`max_abs_pitch = 0.3562`，且 `qp_fail_steps = 0`。这说明失败主要来自姿态边界和力矩安全边界，而不是 QP 求解失败。
+
+`stabilized_primary_mpc_wbc` 在相同测试设置下全部通过，`qp_fail_steps = 0`、`saturation_steps = 0`、`max_abs_roll = 0.0882`、`max_abs_pitch = 0.0507`。
+
+该阶段只支持固定 MuJoCo 仿真设置下的控制模式回归结论，不支持真实机器人部署、复杂地形鲁棒性、外力扰动鲁棒性或完整工程级 MPC-WBC locomotion controller 结论。
+
 ## 5. 快速复现
 
 ### 5.1 环境准备
@@ -261,6 +277,18 @@ docs/STAGE25_7_PRIMARY_CONTROLLER_CLOSURE_EVIDENCE_FREEZE.md
 ```
 
 ---
+
+### 5.3 Stage 26.1 控制模式小规模回归矩阵
+
+运行回归矩阵：
+
+    python3 scripts/stage26_1_run_primary_controller_regression_matrix.py
+
+主要结果文件：
+
+    results/logs_sample/stage26_1_primary_controller_regression_matrix.csv
+    results/logs_sample/stage26_1_primary_controller_regression_summary.json
+    docs/STAGE26_1_PRIMARY_CONTROLLER_REGRESSION_MATRIX.md
 
 ## 6. 目录结构
 
