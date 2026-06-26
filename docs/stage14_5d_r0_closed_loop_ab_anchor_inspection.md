@@ -144,7 +144,7 @@ count: 232
 - `docs/STAGE10_CONTROLLER_IMPLEMENTATION_PLAN_AND_SAFETY_GATE.md`
 - `docs/STAGE10_TORQUE_PUBLISHER_ENABLE_GATE_DESIGN.md`
 - `docs/WBC_QP_EXPLAINED.md`
-- `docs/interview/INTERVIEW_3MIN_SYSTEM_EXPLANATION.md`
+- `docs/technical_notes/SYSTEM_3MIN_EXPLANATION.md`
 - `docs/stage01_ros2_mujoco_bridge.md`
 - `docs/stage02_pinocchio_kinematics_validation.md`
 - `docs/stage03_standing_pd_baseline.md`

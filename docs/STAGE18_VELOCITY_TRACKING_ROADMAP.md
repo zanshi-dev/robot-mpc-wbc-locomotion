@@ -113,7 +113,7 @@ Stage 18 最小验收指标：
 
 同步 README / PROJECT_STATUS / ARTIFACT_INDEX 并 freeze。
 
-## 7. 面试表述边界
+## 7. 结论表述边界
 
 推荐表述：
 

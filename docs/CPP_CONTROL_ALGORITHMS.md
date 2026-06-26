@@ -10,4 +10,4 @@
 
 第三个模块是 torque safety filter。它接收 12 维 torque，检查 finite 和 torque limit，并对超限或非有限值进行安全处理。它对应 ROS2/C++ safety gate 的核心思想：任何 torque 输出路径都必须先经过 clamp、finite check 和 limit check。
 
-该 C++ 子模块的价值在于，它比直接迁移完整控制器更清楚、更可测试。面试时可以说明：完整 WBC/MPC 控制器仍在 simulation-only 原型中，但 gait scheduler、swing trajectory 和 torque safety filter 这类确定性模块已经可以独立用 C++ 实现和测试，为后续控制器工程化迁移打基础。
+该 C++ 子模块的价值在于，它比直接迁移完整控制器更清楚、更可测试。可以说明：完整 WBC/MPC 控制器仍在 simulation-only 原型中，但 gait scheduler、swing trajectory 和 torque safety filter 这类确定性模块已经可以独立用 C++ 实现和测试，为后续控制器工程化迁移打基础。

@@ -271,7 +271,7 @@ def main() -> int:
 
     summary = {
         "stage": "26.1",
-        "name": "interview-ready primary controller regression matrix",
+        "name": "review-ready primary controller regression matrix",
         "result": "pass" if not failed_cases else "fail",
         "total_cases": len(matrix_rows),
         "controllers": controllers,

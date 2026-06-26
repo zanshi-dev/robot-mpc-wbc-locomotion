@@ -79,7 +79,7 @@ results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json
 results/logs_sample/stage17_1_conservative_closed_loop_rollout_validation.log
 ```
 
-## 6. 面试表述
+## 6. 技术表述
 
 推荐表述：
 

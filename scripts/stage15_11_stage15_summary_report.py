@@ -186,7 +186,7 @@ def write_markdown(report: Dict[str, Any], path: Path) -> None:
     for item in report["non_claimable_items"]:
         lines.append(f"- {item}")
     lines.append("")
-    lines.append("## 4. Interview phrasing")
+    lines.append("## 4. Technical Review phrasing")
     lines.append("")
     lines.append("> I upgraded the project in Stage 15 by closing several engineering evidence loops. First, I moved the ROS2/C++ control modules into CMake/GTest. Then I added a C++ contact-force QP demo and built a Python dry-run path from contact force to torque candidates. After that I connected the candidate chain to Pinocchio Jacobians, audited the real model resources, checked MuJoCo joint/actuator compatibility, and finally ran bounded MuJoCo torque-path smoke tests. These results are still simulation-only and short-horizon; I do not claim stable robot walking, real hardware deployment, or torque-enable readiness.")
     lines.append("")

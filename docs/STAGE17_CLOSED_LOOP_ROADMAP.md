@@ -119,7 +119,7 @@ baseline + MPC/WBC low-alpha
 
 更新 README、PROJECT_STATUS 和 ARTIFACT_INDEX，但只更新到 Stage 17 已完成的实际证据范围。
 
-## 7. 面试表述边界
+## 7. 结论表述边界
 
 推荐表述：
 

@@ -37,7 +37,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     add(rows, "ros2_cpp_evidence", "ROS2/C++" in text and "GTest" in text, "ROS2/C++ evidence")
     add(rows, "pinocchio_jtf_evidence", "Pinocchio" in text and "J^T f" in text, "Pinocchio JTF evidence")
     add(rows, "mujoco_smoke_evidence", "MuJoCo" in text and "smoke test" in text.lower(), "MuJoCo smoke test evidence")
-    add(rows, "no_stage16_3_public_material", "STAGE16_3" not in text and "面试防御材料" not in text, "16.3 personal material not linked")
+    add(rows, "no_stage16_3_public_material", "STAGE16_3" not in text and "技术说明材料" not in text, "16.3 personal material not linked")
     add(rows, "no_hardware_claim", "不声明真实机器人部署" in text, "hardware boundary")
     add(rows, "no_torque_enable_claim", "不声明 `torque_enable_ready=True`" in text or "不声明 torque_enable_ready=True" in text, "torque-enable boundary")
     add(rows, "no_stable_locomotion_claim", "不声明稳定行走" in text or "不声明 Stage 15 的 bounded torque smoke test 证明了稳定行走" in text, "stable locomotion boundary")

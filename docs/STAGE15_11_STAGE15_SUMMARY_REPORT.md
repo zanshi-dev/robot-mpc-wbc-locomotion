@@ -25,7 +25,7 @@ The report separates:
 - what can be claimed
 - what cannot be claimed
 - which parts are still dry-run or smoke-test only
-- how to explain Stage 15 in interviews
+- how to explain Stage 15 in technical reviews
 
 ## 3. Run
 

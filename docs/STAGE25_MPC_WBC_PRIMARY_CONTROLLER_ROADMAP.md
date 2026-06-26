@@ -203,9 +203,9 @@ Stage 25 不支持：
   * 不支持工程级 MPC-WBC 控制器完全成熟；
   * 不支持无 fallback 的硬实时控制器已经完成。
 
-## 9. Stage 25 对面试表述的目标
+## 9. Stage 25 对技术表述的目标
 
-Stage 25 完成后，面试中可以说：
+Stage 25 完成后，可以说明：
 
     原项目最初是 baseline + MPC/WBC candidate injection。
     后续我进一步实现了 simulation-only primary_mpc_wbc 模式，

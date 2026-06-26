@@ -161,7 +161,7 @@ Stage 15/16 scripts, validation logs, JSON/CSV results and documentation are ind
 docs/ARTIFACT_INDEX.md
 ```
 
-Use this index when reviewing the repository or preparing for interview deep dives.
+Use this index when reviewing the repository or preparing for technical reviews.
 {README_END}"""
     if README_START in text and README_END in text:
         before = text.split(README_START, 1)[0].rstrip()

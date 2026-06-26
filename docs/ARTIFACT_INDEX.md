@@ -425,7 +425,7 @@ Stage 24 artifact 记录 short-horizon perturbation-sensitive metric audit。
 | 24.4 | `results/logs_sample/stage24_4_short_horizon_metric_evidence_manifest.json` | Stage 24 manifest |
 <!-- STAGE24_ENTRY_DOCS_SYNC_END -->
 
-## Stage 26：Interview-Ready Primary Controller Regression
+## Stage 26：Technical Review-Ready Primary Controller Regression
 
 | 文件 | 说明 |
 |---|---|

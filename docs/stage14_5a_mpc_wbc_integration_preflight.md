@@ -130,7 +130,7 @@ count: 267
 - `docs/STAGE11_FULL_FREEZE_INTEGRITY_CHECK.md`
 - `docs/STAGE12_CONSTRUCTION_STAGE_PREFLIGHT_FREEZE.md`
 - `docs/WBC_QP_EXPLAINED.md`
-- `docs/interview/INTERVIEW_3MIN_SYSTEM_EXPLANATION.md`
+- `docs/technical_notes/SYSTEM_3MIN_EXPLANATION.md`
 - `docs/stage01_ros2_mujoco_bridge.md`
 - `docs/stage02_pinocchio_kinematics_validation.md`
 - `docs/stage03_standing_pd_baseline.md`
@@ -185,7 +185,7 @@ count: 267
 - `results/logs_sample/stage13_5b_demo_video_evidence_freeze_summary.json`
 - `results/logs_sample/stage13_5c_final_package_with_demo_video_manifest.json`
 - `results/logs_sample/stage13_5c_final_package_with_demo_video_manifest_summary.json`
-- `results/logs_sample/stage14_2_readme_interview_entry_summary.json`
+- `results/logs_sample/stage14_2_readme_technical_entry_summary.json`
 - `results/logs_sample/stage14_4_base_velocity_tracking_mpc_summary.json`
 - `results/logs_sample/stage14_4b_base_velocity_tracking_mpc_validation_summary.json`
 - `results/logs_sample/stage14_4c_mpc_scope_explanation_summary.json`
@@ -447,7 +447,7 @@ count: 331
 - `docs/STAGE12_PUBLISH_CALL_DESIGN_ONLY.md`
 - `docs/STAGE12_PUBLISH_CALL_PREFLIGHT_FREEZE.md`
 - `docs/WBC_QP_EXPLAINED.md`
-- `docs/interview/INTERVIEW_3MIN_SYSTEM_EXPLANATION.md`
+- `docs/technical_notes/SYSTEM_3MIN_EXPLANATION.md`
 - `docs/stage01_ros2_mujoco_bridge.md`
 - `docs/stage02_pinocchio_kinematics_validation.md`
 - `docs/stage03_standing_pd_baseline.md`
@@ -536,7 +536,7 @@ count: 331
 - `results/logs_sample/stage13_5b_demo_video_evidence_freeze_summary.json`
 - `results/logs_sample/stage13_5c_final_package_with_demo_video_manifest.json`
 - `results/logs_sample/stage13_5c_final_package_with_demo_video_manifest_summary.json`
-- `results/logs_sample/stage14_2_readme_interview_entry_summary.json`
+- `results/logs_sample/stage14_2_readme_technical_entry_summary.json`
 - `results/logs_sample/stage14_3_colcon_cpp_control_tests_summary.json`
 - `results/logs_sample/stage14_4c_mpc_scope_explanation_summary.json`
 - `ros2_ws/src/robot_mpc_wbc_bridge/launch/mujoco_bridge.launch.py`
@@ -725,7 +725,7 @@ count: 205
 - `docs/STAGE08_RUNTIME_MAPPING_DUPLICATION_AUDIT.md`
 - `docs/STAGE09_PYTHON_BASELINE_ROS2_FIELD_MAPPING.md`
 - `docs/WBC_QP_EXPLAINED.md`
-- `docs/interview/INTERVIEW_3MIN_SYSTEM_EXPLANATION.md`
+- `docs/technical_notes/SYSTEM_3MIN_EXPLANATION.md`
 - `docs/stage02_pinocchio_kinematics_validation.md`
 - `docs/stage03_standing_pd_baseline.md`
 - `docs/stage06_force_to_joint_torque.md`

@@ -2,7 +2,7 @@
 
 ## 1. 目标
 
-Stage 17.2 将 Stage 14.5e 的 candidate robustness scale sweep 结果整理为可读指标表，用于 README、项目答辩和面试说明。
+Stage 17.2 将 Stage 14.5e 的 candidate robustness scale sweep 结果整理为可读指标表，用于 README、项目答辩和技术说明。
 
 本阶段不新增控制器，不重新声明闭环性能，只做已有 simulation-only 证据的结构化整理。
 
@@ -39,7 +39,7 @@ results/logs_sample/stage17_1_conservative_closed_loop_rollout_summary.json
 - 已证明 MPC/WBC 全面优于 baseline；
 - 已完成高性能 MPC-WBC locomotion controller。
 
-## 5. 面试表述
+## 5. 技术表述
 
 推荐表述：
 
