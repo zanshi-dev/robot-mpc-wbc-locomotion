@@ -4,7 +4,7 @@
 
 本项目将四足机器人运动控制链路拆解为若干可验证模块，并在 MuJoCo 仿真环境中逐步验证各模块之间的数据流、力矩生成路径、稳定性边界和问题来源。
 
-目前项目已经完成从基础 PD/WBC 仿真控制，到 MPC/WBC 候选力矩接入，再到稳定化主控模式的仿真验证。
+目前项目已经完成从基础 PD/WBC 仿真控制，到 MPC/WBC 候选力矩接入，再到稳定化主控模式的仿真验证；并进一步补充 Stage 27.1 命令速度与初始 qvel/yawrate 扰动回归矩阵，用于记录不同控制模式在固定 MuJoCo 仿真设置下的行为差异。
 
 ---
 
@@ -161,6 +161,8 @@ torque_limit = 23.7
 | 阶段 23 | 扰动不可观测原因分析       | 问题来自汇总指标不敏感                           |
 | 阶段 24 | 短时扰动敏感指标审计       | 短时指标能看到扰动，但不能升级鲁棒性结论                  |
 | 阶段 25 | 稳定化 MPC-WBC 主控闭环 | `stabilized_primary_mpc_wbc` 通过标称冒烟仿真 |
+| 阶段 26.1 | 控制模式小规模回归矩阵 | 9-case 矩阵记录 baseline、direct primary 和 stabilized primary 的行为差异 |
+| 阶段 27.1 | 命令速度与初始速度扰动回归矩阵 | 75-case 矩阵补充速度命令、初始 qvel/yawrate 扰动和接触切换窗口审计 |
 
 ---
 
@@ -231,6 +233,35 @@ torque_limit = 23.7
 
 该阶段只支持固定 MuJoCo 仿真设置下的控制模式回归结论，不支持真实机器人部署、复杂地形鲁棒性、外力扰动鲁棒性或完整工程级 MPC-WBC locomotion controller 结论。
 
+### 4.5 Stage 27.1 命令速度与初始速度扰动回归矩阵
+
+在 Stage 26.1 的控制模式回归基础上，项目进一步补充 75-case 命令速度与初始 qvel/yawrate 扰动回归矩阵。
+
+测试维度包括：
+
+```text
+target_vx = 0.0, 0.1, 0.2, 0.3, 0.4
+perturbation = nominal, vx_plus_0p05, vx_minus_0p05, vy_plus_0p03, yaw_plus_0p10
+control_mode = baseline, primary_mpc_wbc, stabilized_primary_mpc_wbc
+```
+
+汇总结果：
+
+| 控制模式 | case 数 | evidence generated | stability pass | regression evidence pass |
+|---|---:|---:|---:|---:|
+| baseline | 25 | 25 | 25 | 25 |
+| `primary_mpc_wbc` | 25 | 25 | 0 | 25 |
+| `stabilized_primary_mpc_wbc` | 25 | 25 | 25 | 25 |
+
+该阶段的判断方式是：
+
+* baseline 和 `stabilized_primary_mpc_wbc` 需要生成 summary/log，且通过稳定性检查；
+* `primary_mpc_wbc` 是直接主控诊断对照组，只要求生成闭环执行证据，稳定性失败作为失败诊断证据保留。
+
+Stage 27.1 进一步说明：在固定 MuJoCo 仿真设置下，项目已经不只验证单一标称场景，而是补充了速度命令变化、初始速度扰动和接触切换窗口指标下的控制模式回归证据。
+
+该阶段仍然不支持真实机器人部署、复杂地形鲁棒性、外力扰动鲁棒性或工程级成熟控制器结论。
+
 ## 5. 快速复现
 
 ### 5.1 环境准备
@@ -290,6 +321,28 @@ docs/STAGE25_7_PRIMARY_CONTROLLER_CLOSURE_EVIDENCE_FREEZE.md
     results/logs_sample/stage26_1_primary_controller_regression_summary.json
     docs/STAGE26_1_PRIMARY_CONTROLLER_REGRESSION_MATRIX.md
 
+### 5.4 Stage 27.1 命令速度与初始速度扰动回归矩阵
+
+运行默认小矩阵：
+
+```bash
+python3 scripts/stage27_1_run_command_and_qvel_perturbation_regression.py
+```
+
+运行完整 75-case 矩阵：
+
+```bash
+python3 scripts/stage27_1_run_command_and_qvel_perturbation_regression.py --full
+```
+
+主要结果文件：
+
+```text
+results/logs_sample/stage27_1_command_qvel_regression_matrix.csv
+results/logs_sample/stage27_1_command_qvel_regression_summary.json
+docs/STAGE27_1_COMMAND_AND_QVEL_PERTURBATION_REGRESSION.md
+```
+
 ## 6. 目录结构
 
 ```text
@@ -323,7 +376,10 @@ robot-mpc-wbc-locomotion/
 * 已完成局部扰动和扰动可观测性审计；
 * 已完成 direct `primary_mpc_wbc` 的执行验证和失败诊断；
 * 已完成 `stabilized_primary_mpc_wbc` 的标称 2400 步冒烟仿真；
-* 稳定化主控版本中记录到 `qp_fail_steps = 0`、`saturation_steps = 0`。
+* 稳定化主控版本中记录到 `qp_fail_steps = 0`、`saturation_steps = 0`；
+* 已完成 Stage 26.1 控制模式小规模回归矩阵；
+* 已完成 Stage 27.1 命令速度与初始 qvel/yawrate 扰动回归矩阵；
+* 已记录 baseline、`primary_mpc_wbc` 和 `stabilized_primary_mpc_wbc` 在多组速度命令和初始速度扰动下的行为差异。
 
 ---
 
@@ -338,6 +394,8 @@ robot-mpc-wbc-locomotion/
 * 不说明 full MPC/WBC torque 可以无残差替代基线控制器；
 * 不说明 `scale=0.010` 已通过可观测扰动鲁棒性验证；
 * 不说明 MPC/WBC 已通过复杂地形、外力扰动或真实机器人实验验证；
+* 不说明 Stage 27.1 的初始 qvel/yawrate 扰动矩阵等价于外力扰动鲁棒性验证；
+* 不说明 Stage 27.1 的速度命令扫描等价于完整速度跟踪控制器验证；
 * 不说明 `stabilized_primary_mpc_wbc` 已达到工程级成熟控制器。
 
 ---
